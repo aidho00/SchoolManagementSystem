@@ -521,12 +521,6 @@
     <Compile Include="Enrollment Module\Library\Add\frmRoom.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Inventory Module\CompLab Management\frmCompLabMain.Designer.vb">
-      <DependentUpon>frmCompLabMain.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Inventory Module\CompLab Management\frmCompLabMain.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Inventory Module\Supply Inventory\Item\frmSupplyCategoryAdd.Designer.vb">
       <DependentUpon>frmSupplyCategoryAdd.vb</DependentUpon>
     </Compile>
@@ -2584,6 +2578,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Inventory Module\CompLab Management\" />
     <Folder Include="Inventory Module\Supply Inventory\Purchasing\" />
   </ItemGroup>
   <ItemGroup>

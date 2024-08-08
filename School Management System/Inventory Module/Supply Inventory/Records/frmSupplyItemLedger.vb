@@ -45,7 +45,7 @@ Public Class frmSupplyItemLedger
         dgLedger.Rows.Clear()
         Dim i As Integer
         Dim sql As String
-        sql = "Select sl_itembarcode, sl_transaction_type, sl_reference_no, sl_remark, sl_date, sl_stockin_added, sl_stockout_deducted, sl_running_balance from tbl_supply_ledger where sl_itembarcode = '" & lblBarcode.Text & "'"
+        sql = "Select sl_itembarcode, sl_transaction_type, sl_reference_no, sl_remark, DATE_FORMAT(sl_date, '%m/%d/%Y') as sl_date, sl_stockin_added, sl_stockout_deducted, sl_running_balance from tbl_supply_ledger where sl_itembarcode = '" & lblBarcode.Text & "'"
         cn.Close()
         cn.Open()
         cm = New MySqlCommand(sql, cn)

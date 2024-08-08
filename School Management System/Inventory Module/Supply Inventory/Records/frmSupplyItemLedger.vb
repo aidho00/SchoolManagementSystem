@@ -42,17 +42,17 @@ Public Class frmSupplyItemLedger
     End Sub
 
     Sub SupplyLedger()
-        dgSupplyItemList.Rows.Clear()
+        dgLedger.Rows.Clear()
         Dim i As Integer
         Dim sql As String
-        sql = "Select sl_transaction_type, sl_reference_no, sl_remark, sl_date, sl_stockin_added, sl_stockout_deducted, sl_running_balance from tbl_supply_ledger where sl_itembarcode = '" & lblBarcode.Text & "'"
+        sql = "Select sl_itembarcode, sl_transaction_type, sl_reference_no, sl_remark, sl_date, sl_stockin_added, sl_stockout_deducted, sl_running_balance from tbl_supply_ledger where sl_itembarcode = '" & lblBarcode.Text & "'"
         cn.Close()
         cn.Open()
         cm = New MySqlCommand(sql, cn)
         dr = cm.ExecuteReader
         While dr.Read
             i += 1
-            dgSupplyItemList.Rows.Add(i, dr.Item("sl_transaction_type").ToString, dr.Item("sl_reference_no").ToString, dr.Item("sl_remark").ToString, dr.Item("sl_date").ToString, dr.Item("sl_stockin_added").ToString, dr.Item("sl_stockout_deducted").ToString, dr.Item("sl_running_balance").ToString)
+            dgLedger.Rows.Add(i, dr.Item("sl_transaction_type").ToString, dr.Item("sl_transaction_type").ToString, dr.Item("sl_reference_no").ToString, dr.Item("sl_remark").ToString, dr.Item("sl_date").ToString, dr.Item("sl_stockin_added").ToString, dr.Item("sl_stockout_deducted").ToString, dr.Item("sl_running_balance").ToString)
         End While
         dr.Close()
         cn.Close()

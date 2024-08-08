@@ -196,7 +196,7 @@ Public Class frmSupplyItemAdd
         If IS_EMPTY(txtPrice) = True Then Return
         If CHECK_EXISTING("SELECT * FROM tbl_supply_item WHERE supply_type = '" & cbSupplyType.Text & "' and categoryid = " & CategoryID & " and sizesid = " & SizeID & "") = True Then Return
         AutoBarCode()
-        query("INSERT INTO `tbl_supply_item`(`barcodeid`, `description`, `categoryid`, `sizesid`, `item_price`, `item_status`, `item_open_stock`, `item_reorder_point`) VALUES ('" & barcodeID.Text & "', '" & txtSupplyDesc.Text & "', " & CategoryID & ", " & SizeID & ", " & CDec(txtPrice.Text) & ", '" & cbSupplyStatus.Text & "', " & CInt(txtOpeningStock.Text) & " , " & CInt(txtReOrderPoint.Text) & "")
+        query("INSERT INTO `tbl_supply_item`(`barcodeid`, `description`, `categoryid`, `sizesid`, `item_price`, `item_status`, `item_open_stock`, `item_reorder_point`) VALUES ('" & barcodeID.Text & "', '" & txtSupplyDesc.Text & "', " & CategoryID & ", " & SizeID & ", " & CDec(txtPrice.Text) & ", '" & cbSupplyStatus.Text & "', " & CInt(txtOpeningStock.Text) & " , " & CInt(txtReOrderPoint.Text) & ")")
         query("INSERT INTO `tbl_supply_inventory`(`itembarcode`, `Spare`, `Deployed`, `Defect`) VALUES ('" & barcodeID.Text & "', " & CInt(txtOpeningStock.Text) & ", 0, 0)")
 
         'Stock Ledger

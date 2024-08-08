@@ -6,8 +6,8 @@
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         If IS_EMPTY(txtDesc) = True Then Return
         If CHECK_EXISTING("SELECT * FROM tbl_supply_category WHERE categoryname = '" & txtDesc.Text & "' and categorytype = '" & frmSupplyItemAdd.cbSupplyType.Text & "'") = True Then Return
-        query("INSERT INTO `tbl_supply_item`(categoryname, categorytype) VALUES ('" & txtDesc.Text & "', '" & frmSupplyItemAdd.cbSupplyType.Text & "'")
-        UserActivity("Added a(n) " & frmSupplyItemAdd.cbSupplyType.Text & " category " & txtDesc.Text.Trim & "", "SUPPLY ITEM ENTRY")
+        query("INSERT INTO `tbl_supply_category` (categoryname, categorytype) VALUES ('" & txtDesc.Text & "', '" & frmSupplyItemAdd.cbSupplyType.Text & "')")
+        UserActivity("Added a(n) " & frmSupplyItemAdd.cbSupplyType.Text & " category " & txtDesc.Text.Trim & "", "SUPPLY ITEM CATEGORY ENTRY")
         frmWait.seconds = 1
         frmWait.ShowDialog()
         MsgBox("New " & frmSupplyItemAdd.cbSupplyType.Text & " category has been successfully added.", vbInformation, "")

@@ -482,6 +482,12 @@ Public Class frmMain
                 Else
                 End If
             End If
+        ElseIf formTitle.Text = "Supply Item Ledger" Then
+            If frmSupplyItemLedger.SearchPanel.Visible = True Then
+                frmSupplyItemLedger.SearchPanel.Visible = False
+            Else
+                formPanels.Visible = False
+            End If
         Else
             formPanels.Visible = False
         End If
@@ -560,7 +566,7 @@ Public Class frmMain
     End Sub
 
     Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
-        If MsgBox("Are you sure you want to logout?", vbYesNo + vbQuestion) = vbYes Then
+        If MsgBox("Are you sure you want To logout?", vbYesNo + vbQuestion) = vbYes Then
             UserActivity("Logged-out.", "LOGOUT")
             Me.Close()
             frmLogin.Show()
@@ -569,7 +575,7 @@ Public Class frmMain
     End Sub
 
     Private Sub btnUploadPortal_Click(sender As Object, e As EventArgs) Handles btnUploadPortal.Click
-        fillCombo("SELECT CONCAT(period_name,'-',period_semester) as 'PERIOD', period_id FROM tbl_class_schedule t1 JOIN tbl_period t2 ON t1.csperiod_id = t2.period_id group by t1.csperiod_id order by `period_name` desc, `period_status` ASC, `period_semester` desc", frmGradesPortalUpload.cbAcademicYear, "tbl_period", "PERIOD", "period_id")
+        fillCombo("Select CONCAT(period_name,'-',period_semester) as 'PERIOD', period_id FROM tbl_class_schedule t1 JOIN tbl_period t2 ON t1.csperiod_id = t2.period_id group by t1.csperiod_id order by `period_name` desc, `period_status` ASC, `period_semester` desc", frmGradesPortalUpload.cbAcademicYear, "tbl_period", "PERIOD", "period_id")
         'OpenForm(frmGradesPortalUpload, "Upload Grades from Portal")
         'HideAllFormsInPanelExcept(frmGradesPortalUpload)
         'controlsPanel.Visible = False

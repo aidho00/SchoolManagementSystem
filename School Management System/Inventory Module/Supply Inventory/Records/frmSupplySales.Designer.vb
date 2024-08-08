@@ -50,7 +50,9 @@ Partial Class frmSupplySales
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel2.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         CType(Me.dgSales, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -168,10 +170,11 @@ Partial Class frmSupplySales
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.Panel3)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 31)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1166, 30)
+        Me.Panel1.Size = New System.Drawing.Size(1166, 12)
         Me.Panel1.TabIndex = 12
         '
         'dgSales
@@ -202,12 +205,12 @@ Partial Class frmSupplySales
         Me.dgSales.DefaultCellStyle = DataGridViewCellStyle5
         Me.dgSales.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgSales.EnableHeadersVisualStyles = False
-        Me.dgSales.Location = New System.Drawing.Point(0, 61)
+        Me.dgSales.Location = New System.Drawing.Point(0, 43)
         Me.dgSales.Name = "dgSales"
         Me.dgSales.RowHeadersVisible = False
         Me.dgSales.RowTemplate.Height = 26
         Me.dgSales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgSales.Size = New System.Drawing.Size(1166, 633)
+        Me.dgSales.Size = New System.Drawing.Size(1166, 651)
         Me.dgSales.TabIndex = 13
         '
         'Column5
@@ -310,6 +313,15 @@ Partial Class frmSupplySales
         Me.Column10.Name = "Column10"
         Me.Column10.Width = 71
         '
+        'Panel3
+        '
+        Me.Panel3.BackColor = System.Drawing.Color.Black
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel3.Location = New System.Drawing.Point(0, 11)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(1166, 1)
+        Me.Panel3.TabIndex = 4
+        '
         'frmSupplySales
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
@@ -329,6 +341,7 @@ Partial Class frmSupplySales
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
         CType(Me.dgSales, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -356,4 +369,5 @@ Partial Class frmSupplySales
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents Column9 As DataGridViewTextBoxColumn
     Friend WithEvents Column10 As DataGridViewTextBoxColumn
+    Friend WithEvents Panel3 As Panel
 End Class

@@ -28,11 +28,6 @@ Partial Class frmSupplyBestSelling
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.dgBestSelling = New System.Windows.Forms.DataGridView()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.dtTo = New System.Windows.Forms.DateTimePicker()
-        Me.dtFrom = New System.Windows.Forms.DateTimePicker()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -40,6 +35,12 @@ Partial Class frmSupplyBestSelling
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.dtTo = New System.Windows.Forms.DateTimePicker()
+        Me.dtFrom = New System.Windows.Forms.DateTimePicker()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         CType(Me.dgBestSelling, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
@@ -73,68 +74,13 @@ Partial Class frmSupplyBestSelling
         Me.dgBestSelling.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgBestSelling.EnableHeadersVisualStyles = False
         Me.dgBestSelling.GridColor = System.Drawing.Color.Black
-        Me.dgBestSelling.Location = New System.Drawing.Point(0, 59)
+        Me.dgBestSelling.Location = New System.Drawing.Point(0, 42)
         Me.dgBestSelling.Name = "dgBestSelling"
         Me.dgBestSelling.RowHeadersVisible = False
         Me.dgBestSelling.RowTemplate.Height = 26
         Me.dgBestSelling.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgBestSelling.Size = New System.Drawing.Size(1166, 680)
+        Me.dgBestSelling.Size = New System.Drawing.Size(1166, 697)
         Me.dgBestSelling.TabIndex = 20
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.Black
-        Me.Label2.Location = New System.Drawing.Point(9, 7)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(141, 16)
-        Me.Label2.TabIndex = 2
-        Me.Label2.Text = "FILTER DATE  [FROM - TO]"
-        '
-        'Panel2
-        '
-        Me.Panel2.BackColor = System.Drawing.Color.White
-        Me.Panel2.Controls.Add(Me.dtTo)
-        Me.Panel2.Controls.Add(Me.dtFrom)
-        Me.Panel2.Controls.Add(Me.Label1)
-        Me.Panel2.Controls.Add(Me.Label2)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1166, 59)
-        Me.Panel2.TabIndex = 19
-        '
-        'dtTo
-        '
-        Me.dtTo.CustomFormat = "yyyy/MM/dd"
-        Me.dtTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtTo.Location = New System.Drawing.Point(269, 5)
-        Me.dtTo.Name = "dtTo"
-        Me.dtTo.Size = New System.Drawing.Size(112, 21)
-        Me.dtTo.TabIndex = 3
-        '
-        'dtFrom
-        '
-        Me.dtFrom.CustomFormat = "yyyy/MM/dd"
-        Me.dtFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtFrom.Location = New System.Drawing.Point(152, 5)
-        Me.dtFrom.Name = "dtFrom"
-        Me.dtFrom.Size = New System.Drawing.Size(112, 21)
-        Me.dtFrom.TabIndex = 3
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(251, 7)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(12, 16)
-        Me.Label1.TabIndex = 2
-        Me.Label1.Text = "-"
         '
         'Column5
         '
@@ -197,6 +143,71 @@ Partial Class frmSupplyBestSelling
         Me.Column7.ReadOnly = True
         Me.Column7.Width = 57
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.Black
+        Me.Label2.Location = New System.Drawing.Point(9, 7)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(141, 16)
+        Me.Label2.TabIndex = 2
+        Me.Label2.Text = "FILTER DATE  [FROM - TO]"
+        '
+        'Panel2
+        '
+        Me.Panel2.BackColor = System.Drawing.Color.White
+        Me.Panel2.Controls.Add(Me.Panel1)
+        Me.Panel2.Controls.Add(Me.dtTo)
+        Me.Panel2.Controls.Add(Me.dtFrom)
+        Me.Panel2.Controls.Add(Me.Label1)
+        Me.Panel2.Controls.Add(Me.Label2)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel2.Location = New System.Drawing.Point(0, 0)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(1166, 42)
+        Me.Panel2.TabIndex = 19
+        '
+        'dtTo
+        '
+        Me.dtTo.CustomFormat = "yyyy/MM/dd"
+        Me.dtTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dtTo.Location = New System.Drawing.Point(269, 5)
+        Me.dtTo.Name = "dtTo"
+        Me.dtTo.Size = New System.Drawing.Size(112, 21)
+        Me.dtTo.TabIndex = 3
+        '
+        'dtFrom
+        '
+        Me.dtFrom.CustomFormat = "yyyy/MM/dd"
+        Me.dtFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dtFrom.Location = New System.Drawing.Point(152, 5)
+        Me.dtFrom.Name = "dtFrom"
+        Me.dtFrom.Size = New System.Drawing.Size(112, 21)
+        Me.dtFrom.TabIndex = 3
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.Black
+        Me.Label1.Location = New System.Drawing.Point(251, 7)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(12, 16)
+        Me.Label1.TabIndex = 2
+        Me.Label1.Text = "-"
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.Black
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel1.Location = New System.Drawing.Point(0, 41)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(1166, 1)
+        Me.Panel1.TabIndex = 4
+        '
         'frmSupplyBestSelling
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
@@ -230,4 +241,5 @@ Partial Class frmSupplyBestSelling
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
+    Friend WithEvents Panel1 As Panel
 End Class

@@ -1689,6 +1689,12 @@ Public Class frmMain
         SelectionTitle.Text = cmbSupplyType.Text
         MainSearch()
     End Sub
+
+    Private Sub btnItemLedger_Click(sender As Object, e As EventArgs) Handles btnItemLedger.Click
+        OpenForm(frmSupplyItemLedger, "Supply Item Ledger")
+        HideAllFormsInPanelExcept(frmSupplyItemLedger)
+        controlsPanel.Visible = False
+    End Sub
 End Class
 
 Public Class RotatedLabel

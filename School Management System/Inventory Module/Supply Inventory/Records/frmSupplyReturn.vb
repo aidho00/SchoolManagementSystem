@@ -26,6 +26,10 @@ Public Class frmSupplyReturn
                     cmd.ExecuteNonQuery()
                     cmd.Dispose()
                 End Using
+
+
+                StockLedger(dgCart.CurrentRow.Cells(0).Value, CInt(row.Cells(5).Value), 0, "-", "Stock Return", "REQUEST ID: " & frmSupplyRecords.lblReportRequestID.Text)
+
                 'Using cmd As New MySqlCommand("INSERT INTO tbl_supply_ledger (sl_itembarcode, sl_stockin_added, sl_stockout_deducted, sl_running_balance, sl_date, sl_remark) values (@1, @2, @3, @4, @5, @6)", dbconn)
                 '    cmd.Parameters.AddWithValue("@1", row.Cells(0).Value)
                 '    cmd.Parameters.AddWithValue("@2", row.Cells(4).Value)

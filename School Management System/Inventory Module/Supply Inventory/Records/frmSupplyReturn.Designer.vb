@@ -71,7 +71,7 @@ Partial Class frmSupplyReturn
         Me.btn_cancel.Name = "btn_cancel"
         Me.btn_cancel.Size = New System.Drawing.Size(118, 31)
         Me.btn_cancel.TabIndex = 83
-        Me.btn_cancel.Text = "RETURN ALL"
+        Me.btn_cancel.Text = "RETURN"
         '
         'DataGridViewImageColumn1
         '
@@ -265,7 +265,7 @@ Partial Class frmSupplyReturn
         Me.colRemove.UseColumnTextForButtonValue = True
         Me.colRemove.Width = 5
         '
-        'SupplyReturn
+        'frmSupplyReturn
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -280,7 +280,7 @@ Partial Class frmSupplyReturn
         Me.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.Name = "SupplyReturn"
+        Me.Name = "frmSupplyReturn"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Panel3.ResumeLayout(False)
         Me.Panel5.ResumeLayout(False)

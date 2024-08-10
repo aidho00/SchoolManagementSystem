@@ -2,9 +2,6 @@
 
 Public Class frmLogin
 
-    Private Const SecretWord As String = "connection"
-    Private typedCharacters As String = String.Empty
-
 #Region "Drag Form"
 
     Public MoveForm As Boolean
@@ -229,24 +226,11 @@ Public Class frmLogin
         CheckConnection()
     End Sub
 
-
-    Private Sub txtPassword_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPassword.KeyPress
-        ' Add the pressed key to the typedCharacters string.
-        typedCharacters &= e.KeyChar
-
-        ' Check if the typed characters contain the secret word.
-        If typedCharacters.ToLower().Contains(SecretWord) Then
-            ' Show the SecretForm.
+    Private Sub txtPassword_TextChanged(sender As Object, e As EventArgs) Handles txtPassword.TextChanged
+        If txtPassword.Text = "systemconnection" Then
             PanelLogo.Visible = False
             txtPassword.Text = String.Empty
             txtHost.Focus()
-            ' Clear the typedCharacters after showing the form.
-            typedCharacters = String.Empty
-        End If
-
-        ' Optionally, clear the typedCharacters string if it gets too long.
-        If typedCharacters.Length > SecretWord.Length Then
-            typedCharacters = typedCharacters.Substring(typedCharacters.Length - SecretWord.Length)
         End If
     End Sub
 End Class

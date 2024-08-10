@@ -200,7 +200,7 @@ Public Class frmSupplyItemAdd
         query("INSERT INTO `tbl_supply_inventory`(`itembarcode`, `Spare`, `Deployed`, `Defect`) VALUES ('" & barcodeID.Text & "', " & CInt(txtOpeningStock.Text) & ", 0, 0)")
 
         'Stock Ledger
-        StockLedger(barcodeID.Text, CInt(txtOpeningStock.Text), 0, "-", "Opening Stock", "-")
+        StockLedger(barcodeID.Text, CInt(txtOpeningStock.Text), 0, "Opening Stock", "Opening Stock", "-")
 
         UserActivity("Added a(n) " & cbSupplyType.Text & " supply item " & txtSupplyDesc.Text.Trim & " - " & cbSupplyCategory.Text.Trim & " " & cbSupplySize.Text.Trim & ". Barcode: " & barcodeID.Text & "", "SUPPLY ITEM ENTRY")
         frmWait.seconds = 1

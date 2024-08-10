@@ -662,7 +662,7 @@ Partial Class frmReports
         'ReportsControlsPanel
         '
         Me.ReportsControlsPanel.AutoScroll = True
-        Me.ReportsControlsPanel.BackColor = System.Drawing.SystemColors.Control
+        Me.ReportsControlsPanel.BackColor = System.Drawing.Color.White
         Me.ReportsControlsPanel.Controls.Add(Me.FlowLayoutPanel2)
         Me.ReportsControlsPanel.Controls.Add(Me.Panel1)
         Me.ReportsControlsPanel.Dock = System.Windows.Forms.DockStyle.Left

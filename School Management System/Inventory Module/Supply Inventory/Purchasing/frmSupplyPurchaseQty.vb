@@ -22,9 +22,17 @@ Public Class frmSupplyPurchaseQty
         If e.KeyCode = Keys.Escape Then
             Me.Dispose()
         ElseIf e.KeyCode = Keys.Enter Then
-            frmSupplyPurchaseRequest.dgPRtemList.Rows.Add(frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(1).Value, frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(2).Value, frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(3).Value, frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(4).Value, frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(5).Value, txtQty.Text, CDec(frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(5).Value) * CInt(txtQty.Text))
+            If PurchasingStatus = "Purchase Request" Then
+                frmSupplyPurchaseRequest.dgPRitemList.Rows.Add(frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(1).Value, frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(2).Value, frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(3).Value, frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(4).Value, frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(5).Value, txtQty.Text, CDec(frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(5).Value) * CInt(txtQty.Text))
+                frmSupplyPurchaseRequest.SearchPanel.Visible = False
+            ElseIf PurchasingStatus = "Purchase Order" Then
+            ElseIf PurchasingStatus = "Goods Receipt" Then
+            End If
             Me.Dispose()
-            frmSupplyPurchaseRequest.SearchPanel.Visible = False
         End If
+    End Sub
+
+    Private Sub txtQty_TextChanged(sender As Object, e As EventArgs) Handles txtQty.TextChanged
+
     End Sub
 End Class

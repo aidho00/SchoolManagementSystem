@@ -545,10 +545,34 @@
     <Compile Include="Inventory Module\Supply Inventory\Item\frmSupplySizeAdd.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Inventory Module\Supply Inventory\Purchasing\frmSupplyGRRecords.Designer.vb">
+      <DependentUpon>frmSupplyGRRecords.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory Module\Supply Inventory\Purchasing\frmSupplyGRRecords.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory Module\Supply Inventory\Purchasing\frmSupplyPORecords.Designer.vb">
+      <DependentUpon>frmSupplyPORecords.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory Module\Supply Inventory\Purchasing\frmSupplyPORecords.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Inventory Module\Supply Inventory\Purchasing\frmSupplyPRRecords.Designer.vb">
       <DependentUpon>frmSupplyPRRecords.vb</DependentUpon>
     </Compile>
     <Compile Include="Inventory Module\Supply Inventory\Purchasing\frmSupplyPRRecords.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory Module\Supply Inventory\Purchasing\frmSupplyPurchaseGReceipt.Designer.vb">
+      <DependentUpon>frmSupplyPurchaseGReceipt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory Module\Supply Inventory\Purchasing\frmSupplyPurchaseGReceipt.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory Module\Supply Inventory\Purchasing\frmSupplyPurchaseOrder.Designer.vb">
+      <DependentUpon>frmSupplyPurchaseOrder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory Module\Supply Inventory\Purchasing\frmSupplyPurchaseOrder.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Inventory Module\Supply Inventory\Purchasing\frmSupplyPurchaseQty.Designer.vb">
@@ -1848,8 +1872,20 @@
     <EmbeddedResource Include="Inventory Module\Supply Inventory\Item\frmSupplySizeAdd.resx">
       <DependentUpon>frmSupplySizeAdd.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Inventory Module\Supply Inventory\Purchasing\frmSupplyGRRecords.resx">
+      <DependentUpon>frmSupplyGRRecords.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory Module\Supply Inventory\Purchasing\frmSupplyPORecords.resx">
+      <DependentUpon>frmSupplyPORecords.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inventory Module\Supply Inventory\Purchasing\frmSupplyPRRecords.resx">
       <DependentUpon>frmSupplyPRRecords.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory Module\Supply Inventory\Purchasing\frmSupplyPurchaseGReceipt.resx">
+      <DependentUpon>frmSupplyPurchaseGReceipt.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory Module\Supply Inventory\Purchasing\frmSupplyPurchaseOrder.resx">
+      <DependentUpon>frmSupplyPurchaseOrder.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory Module\Supply Inventory\Purchasing\frmSupplyPurchaseQty.resx">
       <DependentUpon>frmSupplyPurchaseQty.vb</DependentUpon>

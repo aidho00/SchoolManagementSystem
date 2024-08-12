@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmSupplyPurchaseRequest
+Partial Class frmSupplyPurchaseOrder
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,12 +22,12 @@ Partial Class frmSupplyPurchaseRequest
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSupplyPurchaseRequest))
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSupplyPurchaseOrder))
         Me.systemSign = New System.Windows.Forms.Panel()
         Me.btnClose = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -54,7 +54,7 @@ Partial Class frmSupplyPurchaseRequest
         Me.btnCancelSearch = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.dgPRitemList = New System.Windows.Forms.DataGridView()
+        Me.dgPOitemList = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -64,8 +64,6 @@ Partial Class frmSupplyPurchaseRequest
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colRemove = New System.Windows.Forms.DataGridViewImageColumn()
         Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.lblTotal = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.txtRemarks = New System.Windows.Forms.TextBox()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -75,6 +73,13 @@ Partial Class frmSupplyPurchaseRequest
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnSave = New System.Windows.Forms.Button()
+        Me.Panel9 = New System.Windows.Forms.Panel()
+        Me.Panel11 = New System.Windows.Forms.Panel()
+        Me.lblTotal = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lblPOno = New System.Windows.Forms.Label()
         Me.systemSign.SuspendLayout()
         Me.BasePanel.SuspendLayout()
         Me.SearchPanel.SuspendLayout()
@@ -87,10 +92,12 @@ Partial Class frmSupplyPurchaseRequest
         Me.Panel10.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel6.SuspendLayout()
-        CType(Me.dgPRitemList, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgPOitemList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel4.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.FlowLayoutPanel1.SuspendLayout()
+        Me.Panel9.SuspendLayout()
+        Me.Panel11.SuspendLayout()
         Me.SuspendLayout()
         '
         'systemSign
@@ -104,7 +111,7 @@ Partial Class frmSupplyPurchaseRequest
         Me.systemSign.Name = "systemSign"
         Me.systemSign.Padding = New System.Windows.Forms.Padding(6)
         Me.systemSign.Size = New System.Drawing.Size(848, 39)
-        Me.systemSign.TabIndex = 18
+        Me.systemSign.TabIndex = 20
         '
         'btnClose
         '
@@ -128,7 +135,7 @@ Partial Class frmSupplyPurchaseRequest
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(449, 27)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Create Supply Purchase Request"
+        Me.Label1.Text = "Create Supply Purchase Order"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Panel1
@@ -140,7 +147,7 @@ Partial Class frmSupplyPurchaseRequest
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Padding = New System.Windows.Forms.Padding(6)
         Me.Panel1.Size = New System.Drawing.Size(848, 10)
-        Me.Panel1.TabIndex = 17
+        Me.Panel1.TabIndex = 19
         '
         'BasePanel
         '
@@ -150,7 +157,7 @@ Partial Class frmSupplyPurchaseRequest
         Me.BasePanel.Location = New System.Drawing.Point(0, 49)
         Me.BasePanel.Name = "BasePanel"
         Me.BasePanel.Size = New System.Drawing.Size(848, 629)
-        Me.BasePanel.TabIndex = 19
+        Me.BasePanel.TabIndex = 21
         '
         'SearchPanel
         '
@@ -190,25 +197,25 @@ Partial Class frmSupplyPurchaseRequest
         Me.dgSupplyItemList.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgSupplyItemList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgSupplyItemList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgSupplyItemList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgSupplyItemList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.dgSupplyItemList.ColumnHeadersHeight = 40
         Me.dgSupplyItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgSupplyItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.Column5, Me.DataGridViewTextBoxColumn9})
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgSupplyItemList.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgSupplyItemList.DefaultCellStyle = DataGridViewCellStyle5
         Me.dgSupplyItemList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgSupplyItemList.EnableHeadersVisualStyles = False
         Me.dgSupplyItemList.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
@@ -379,7 +386,7 @@ Partial Class frmSupplyPurchaseRequest
         '
         'Panel6
         '
-        Me.Panel6.Controls.Add(Me.dgPRitemList)
+        Me.Panel6.Controls.Add(Me.dgPOitemList)
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel6.Location = New System.Drawing.Point(0, 160)
         Me.Panel6.Name = "Panel6"
@@ -387,43 +394,43 @@ Partial Class frmSupplyPurchaseRequest
         Me.Panel6.Size = New System.Drawing.Size(848, 430)
         Me.Panel6.TabIndex = 166
         '
-        'dgPRitemList
+        'dgPOitemList
         '
-        Me.dgPRitemList.AllowUserToAddRows = False
-        Me.dgPRitemList.BackgroundColor = System.Drawing.Color.White
-        Me.dgPRitemList.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dgPRitemList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.dgPRitemList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgPRitemList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
-        Me.dgPRitemList.ColumnHeadersHeight = 40
-        Me.dgPRitemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgPRitemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.colRemove})
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgPRitemList.DefaultCellStyle = DataGridViewCellStyle10
-        Me.dgPRitemList.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgPRitemList.EnableHeadersVisualStyles = False
-        Me.dgPRitemList.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.dgPRitemList.Location = New System.Drawing.Point(10, 0)
-        Me.dgPRitemList.Name = "dgPRitemList"
-        Me.dgPRitemList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        Me.dgPRitemList.RowHeadersVisible = False
-        Me.dgPRitemList.RowTemplate.Height = 26
-        Me.dgPRitemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgPRitemList.Size = New System.Drawing.Size(828, 430)
-        Me.dgPRitemList.TabIndex = 167
+        Me.dgPOitemList.AllowUserToAddRows = False
+        Me.dgPOitemList.BackgroundColor = System.Drawing.Color.White
+        Me.dgPOitemList.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgPOitemList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.dgPOitemList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgPOitemList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.dgPOitemList.ColumnHeadersHeight = 40
+        Me.dgPOitemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.dgPOitemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.colRemove})
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgPOitemList.DefaultCellStyle = DataGridViewCellStyle3
+        Me.dgPOitemList.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgPOitemList.EnableHeadersVisualStyles = False
+        Me.dgPOitemList.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.dgPOitemList.Location = New System.Drawing.Point(10, 0)
+        Me.dgPOitemList.Name = "dgPOitemList"
+        Me.dgPOitemList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.dgPOitemList.RowHeadersVisible = False
+        Me.dgPOitemList.RowTemplate.Height = 26
+        Me.dgPOitemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgPOitemList.Size = New System.Drawing.Size(828, 430)
+        Me.dgPOitemList.TabIndex = 167
         '
         'DataGridViewTextBoxColumn1
         '
@@ -466,8 +473,8 @@ Partial Class frmSupplyPurchaseRequest
         'Column3
         '
         Me.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Column3.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Column3.DefaultCellStyle = DataGridViewCellStyle2
         Me.Column3.HeaderText = "Qty"
         Me.Column3.Name = "Column3"
         Me.Column3.Width = 51
@@ -490,8 +497,7 @@ Partial Class frmSupplyPurchaseRequest
         '
         'Panel4
         '
-        Me.Panel4.Controls.Add(Me.lblTotal)
-        Me.Panel4.Controls.Add(Me.Label3)
+        Me.Panel4.Controls.Add(Me.Panel9)
         Me.Panel4.Controls.Add(Me.txtRemarks)
         Me.Panel4.Controls.Add(Me.Panel5)
         Me.Panel4.Controls.Add(Me.Label2)
@@ -504,36 +510,13 @@ Partial Class frmSupplyPurchaseRequest
         Me.Panel4.Size = New System.Drawing.Size(848, 160)
         Me.Panel4.TabIndex = 165
         '
-        'lblTotal
-        '
-        Me.lblTotal.BackColor = System.Drawing.Color.White
-        Me.lblTotal.Dock = System.Windows.Forms.DockStyle.Top
-        Me.lblTotal.Font = New System.Drawing.Font("Century Gothic", 27.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotal.ForeColor = System.Drawing.Color.Black
-        Me.lblTotal.Location = New System.Drawing.Point(10, 16)
-        Me.lblTotal.Name = "lblTotal"
-        Me.lblTotal.Size = New System.Drawing.Size(828, 51)
-        Me.lblTotal.TabIndex = 486
-        Me.lblTotal.Text = "0.00"
-        Me.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'Label3
-        '
-        Me.Label3.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Label3.Location = New System.Drawing.Point(10, 0)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(828, 16)
-        Me.Label3.TabIndex = 485
-        Me.Label3.Text = "Total"
-        Me.Label3.TextAlign = System.Drawing.ContentAlignment.TopRight
-        '
         'txtRemarks
         '
         Me.txtRemarks.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.txtRemarks.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtRemarks.Location = New System.Drawing.Point(10, 94)
+        Me.txtRemarks.Location = New System.Drawing.Point(10, 91)
         Me.txtRemarks.Name = "txtRemarks"
-        Me.txtRemarks.Size = New System.Drawing.Size(828, 21)
+        Me.txtRemarks.Size = New System.Drawing.Size(830, 21)
         Me.txtRemarks.TabIndex = 126
         '
         'Panel5
@@ -549,7 +532,7 @@ Partial Class frmSupplyPurchaseRequest
         '
         Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(8, 75)
+        Me.Label2.Location = New System.Drawing.Point(8, 72)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(87, 16)
         Me.Label2.TabIndex = 124
@@ -564,6 +547,7 @@ Partial Class frmSupplyPurchaseRequest
         Me.Label10.Size = New System.Drawing.Size(113, 16)
         Me.Label10.TabIndex = 124
         Me.Label10.Text = "Search Supply Item"
+        Me.Label10.Visible = False
         '
         'btnSearchItems
         '
@@ -576,6 +560,7 @@ Partial Class frmSupplyPurchaseRequest
         Me.btnSearchItems.TabIndex = 123
         Me.btnSearchItems.Text = "🔍"
         Me.btnSearchItems.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnSearchItems.Visible = False
         '
         'Panel3
         '
@@ -618,7 +603,85 @@ Partial Class frmSupplyPurchaseRequest
         Me.btnSave.Text = "SAVE"
         Me.btnSave.UseVisualStyleBackColor = True
         '
-        'frmSupplyPurchaseRequest
+        'Panel9
+        '
+        Me.Panel9.Controls.Add(Me.Panel11)
+        Me.Panel9.Controls.Add(Me.Label5)
+        Me.Panel9.Controls.Add(Me.Label4)
+        Me.Panel9.Controls.Add(Me.lblPOno)
+        Me.Panel9.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel9.Location = New System.Drawing.Point(10, 0)
+        Me.Panel9.Name = "Panel9"
+        Me.Panel9.Size = New System.Drawing.Size(828, 67)
+        Me.Panel9.TabIndex = 127
+        '
+        'Panel11
+        '
+        Me.Panel11.Controls.Add(Me.lblTotal)
+        Me.Panel11.Controls.Add(Me.Label3)
+        Me.Panel11.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Panel11.Location = New System.Drawing.Point(346, 0)
+        Me.Panel11.Name = "Panel11"
+        Me.Panel11.Size = New System.Drawing.Size(482, 67)
+        Me.Panel11.TabIndex = 0
+        '
+        'lblTotal
+        '
+        Me.lblTotal.BackColor = System.Drawing.Color.White
+        Me.lblTotal.Dock = System.Windows.Forms.DockStyle.Top
+        Me.lblTotal.Font = New System.Drawing.Font("Century Gothic", 27.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotal.ForeColor = System.Drawing.Color.Black
+        Me.lblTotal.Location = New System.Drawing.Point(0, 16)
+        Me.lblTotal.Name = "lblTotal"
+        Me.lblTotal.Size = New System.Drawing.Size(482, 51)
+        Me.lblTotal.TabIndex = 488
+        Me.lblTotal.Text = "0.00"
+        Me.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label3
+        '
+        Me.Label3.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Label3.Location = New System.Drawing.Point(0, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(482, 16)
+        Me.Label3.TabIndex = 487
+        Me.Label3.Text = "Total"
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.TopRight
+        '
+        'Label4
+        '
+        Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Label4.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Label4.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(185, 5)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(25, 21)
+        Me.Label4.TabIndex = 123
+        Me.Label4.Text = "🔍"
+        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label5
+        '
+        Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(-3, 8)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(186, 16)
+        Me.Label5.TabIndex = 124
+        Me.Label5.Text = "Search Supply Purchase Request"
+        '
+        'lblPOno
+        '
+        Me.lblPOno.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.lblPOno.AutoSize = True
+        Me.lblPOno.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPOno.Location = New System.Drawing.Point(-2, 33)
+        Me.lblPOno.Name = "lblPOno"
+        Me.lblPOno.Size = New System.Drawing.Size(13, 16)
+        Me.lblPOno.TabIndex = 124
+        Me.lblPOno.Text = "-"
+        '
+        'frmSupplyPurchaseOrder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -631,7 +694,7 @@ Partial Class frmSupplyPurchaseRequest
         Me.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.Name = "frmSupplyPurchaseRequest"
+        Me.Name = "frmSupplyPurchaseOrder"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.systemSign.ResumeLayout(False)
         Me.BasePanel.ResumeLayout(False)
@@ -646,11 +709,14 @@ Partial Class frmSupplyPurchaseRequest
         Me.Panel10.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel6.ResumeLayout(False)
-        CType(Me.dgPRitemList, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgPOitemList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.FlowLayoutPanel1.ResumeLayout(False)
+        Me.Panel9.ResumeLayout(False)
+        Me.Panel9.PerformLayout()
+        Me.Panel11.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -661,30 +727,8 @@ Partial Class frmSupplyPurchaseRequest
     Friend WithEvents Panel1 As Panel
     Friend WithEvents BasePanel As Panel
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents Panel4 As Panel
-    Friend WithEvents Panel3 As Panel
-    Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
-    Friend WithEvents btnCancel As Button
-    Friend WithEvents btnSave As Button
-    Friend WithEvents Label10 As Label
-    Friend WithEvents btnSearchItems As Label
-    Friend WithEvents SearchPanel As Panel
-    Friend WithEvents SearchBasePanel As Panel
-    Friend WithEvents dgPanel As Panel
-    Friend WithEvents Panel7 As Panel
-    Friend WithEvents Panel8 As Panel
-    Friend WithEvents frmTitle As Label
-    Friend WithEvents btnAdd As PictureBox
-    Friend WithEvents txtSearch As TextBox
-    Friend WithEvents Panel10 As Panel
-    Friend WithEvents btnSelect As Button
-    Friend WithEvents btnCancelSearch As Button
-    Friend WithEvents Panel5 As Panel
-    Friend WithEvents Label2 As Label
-    Friend WithEvents dgSupplyItemList As DataGridView
-    Friend WithEvents txtRemarks As TextBox
     Friend WithEvents Panel6 As Panel
-    Friend WithEvents dgPRitemList As DataGridView
+    Friend WithEvents dgPOitemList As DataGridView
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
@@ -693,8 +737,27 @@ Partial Class frmSupplyPurchaseRequest
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents colRemove As DataGridViewImageColumn
+    Friend WithEvents Panel4 As Panel
+    Friend WithEvents Panel9 As Panel
+    Friend WithEvents Panel11 As Panel
     Friend WithEvents lblTotal As Label
     Friend WithEvents Label3 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents lblPOno As Label
+    Friend WithEvents txtRemarks As TextBox
+    Friend WithEvents Panel5 As Panel
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents btnSearchItems As Label
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
+    Friend WithEvents btnCancel As Button
+    Friend WithEvents btnSave As Button
+    Friend WithEvents SearchPanel As Panel
+    Friend WithEvents SearchBasePanel As Panel
+    Friend WithEvents dgPanel As Panel
+    Friend WithEvents dgSupplyItemList As DataGridView
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
@@ -702,4 +765,12 @@ Partial Class frmSupplyPurchaseRequest
     Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
+    Friend WithEvents Panel7 As Panel
+    Friend WithEvents Panel8 As Panel
+    Friend WithEvents frmTitle As Label
+    Friend WithEvents btnAdd As PictureBox
+    Friend WithEvents txtSearch As TextBox
+    Friend WithEvents Panel10 As Panel
+    Friend WithEvents btnSelect As Button
+    Friend WithEvents btnCancelSearch As Button
 End Class

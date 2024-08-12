@@ -2,6 +2,35 @@
 
 Public Class frmSupplyPurchaseRequest
 
+
+#Region "Drag Form"
+
+    Public MoveForm As Boolean
+    Public MoveForm_MousePosition As Point
+    Public Sub MoveForm_MouseDown(sender As Object, e As MouseEventArgs) Handles systemSign.MouseDown, Panel1.MouseDown  ' Add more handles here (Example: PictureBox1.MouseDown)
+        If e.Button = MouseButtons.Left Then
+            MoveForm = True
+            Me.Cursor = Cursors.Default
+            MoveForm_MousePosition = e.Location
+        End If
+    End Sub
+
+    Public Sub MoveForm_MouseMove(sender As Object, e As MouseEventArgs) Handles systemSign.MouseMove, Panel1.MouseMove  ' Add more handles here (Example: PictureBox1.MouseMove)
+        If MoveForm Then
+            Me.Location = Me.Location + (e.Location - MoveForm_MousePosition)
+        End If
+    End Sub
+
+    Public Sub MoveForm_MouseUp(sender As Object, e As MouseEventArgs) Handles systemSign.MouseUp, Panel1.MouseUp   ' Add more handles here (Example: PictureBox1.MouseUp)
+        If e.Button = MouseButtons.Left Then
+            MoveForm = False
+            Me.Cursor = Cursors.Default
+        End If
+    End Sub
+
+#End Region
+
+
     Function GetTransno() As String
         Dim yearid As String = YearToday
         cn.Close()
@@ -39,14 +68,14 @@ Public Class frmSupplyPurchaseRequest
         dgSupplyItemList.Rows.Clear()
         Dim i As Integer
         Dim sql As String
-        sql = "Select (BarcodeID) as 'Barcode', Description, (CategoryName) as 'Category', Sizes, (item_price) as 'Price', tbl_supply_category.catid as CATID, tbl_supply_sizes.sizeid as SIZEID, tbl_supply_item.item_open_stock as OpenStock, tbl_supply_item.item_reorder_point as ReOrderPoint, tbl_supply_category.categorytype as SupplyType from tbl_supply_item JOIN tbl_supply_category ON tbl_supply_item.CategoryID = tbl_supply_category.catid JOIN tbl_supply_sizes ON tbl_supply_item.sizesid = tbl_supply_sizes.sizeid where (BarcodeID LIKE '%" & txtSearch.Text & "%' or CategoryName LIKE '%" & txtSearch.Text & "%' or Description LIKE '%" & txtSearch.Text & "%' or Sizes LIKE '%" & txtSearch.Text & "%')"
+        sql = "Select (BarcodeID) as 'Item ID', Description, (CategoryName) as 'Category', Sizes, item_price, (tbl_supply_inventory.Spare) as 'Stock' from tbl_supply_item JOIN tbl_supply_category ON tbl_supply_item.CategoryID = tbl_supply_category.catid JOIN tbl_supply_sizes ON tbl_supply_item.sizesid = tbl_supply_sizes.sizeid JOIN tbl_supply_inventory ON tbl_supply_item.barcodeid = tbl_supply_inventory.itembarcode where tbl_supply_item.item_status = 'Available' and (BarcodeID LIKE '%" & txtSearch.Text & "%' or CategoryName LIKE '%" & txtSearch.Text & "%' or Description LIKE '%" & txtSearch.Text & "%' or Sizes LIKE '%" & txtSearch.Text & "%') order by tbl_supply_inventory.Spare asc"
         cn.Close()
         cn.Open()
         cm = New MySqlCommand(sql, cn)
         dr = cm.ExecuteReader
         While dr.Read
             i += 1
-            dgSupplyItemList.Rows.Add(i, dr.Item("Barcode").ToString, dr.Item("Description").ToString, dr.Item("Category").ToString, dr.Item("Sizes").ToString, dr.Item("Price").ToString, dr.Item("CATID").ToString, dr.Item("SIZEID").ToString, dr.Item("OpenStock").ToString, dr.Item("ReOrderPoint").ToString, dr.Item("SupplyType").ToString)
+            dgSupplyItemList.Rows.Add(i, dr.Item("Item ID").ToString, dr.Item("Description").ToString, dr.Item("Category").ToString, dr.Item("Sizes").ToString, dr.Item("item_price").ToString, dr.Item("Stock").ToString)
         End While
         dr.Close()
         cn.Close()

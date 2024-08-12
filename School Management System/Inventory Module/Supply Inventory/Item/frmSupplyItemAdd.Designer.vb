@@ -333,6 +333,7 @@ Partial Class frmSupplyItemAdd
         '
         'btnAdd
         '
+        Me.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnAdd.Dock = System.Windows.Forms.DockStyle.Left
         Me.btnAdd.Image = CType(resources.GetObject("btnAdd.Image"), System.Drawing.Image)
         Me.btnAdd.Location = New System.Drawing.Point(0, 0)

@@ -22,7 +22,7 @@ Public Class frmSupplyPurchaseQty
         If e.KeyCode = Keys.Escape Then
             Me.Dispose()
         ElseIf e.KeyCode = Keys.Enter Then
-            frmSupplyPurchaseRequest.dgPRtemList.Rows.Add(frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(1).Value, frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(2).Value, frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(3).Value, frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(4).Value, frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(5).Value)
+            frmSupplyPurchaseRequest.dgPRtemList.Rows.Add(frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(1).Value, frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(2).Value, frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(3).Value, frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(4).Value, frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(5).Value, txtQty.Text, CDec(frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(5).Value) * CInt(txtQty.Text))
             Me.Dispose()
             frmSupplyPurchaseRequest.SearchPanel.Visible = False
         End If

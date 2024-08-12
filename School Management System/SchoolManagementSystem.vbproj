@@ -545,6 +545,24 @@
     <Compile Include="Inventory Module\Supply Inventory\Item\frmSupplySizeAdd.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Inventory Module\Supply Inventory\Purchasing\frmSupplyPRRecords.Designer.vb">
+      <DependentUpon>frmSupplyPRRecords.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory Module\Supply Inventory\Purchasing\frmSupplyPRRecords.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory Module\Supply Inventory\Purchasing\frmSupplyPurchaseQty.Designer.vb">
+      <DependentUpon>frmSupplyPurchaseQty.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory Module\Supply Inventory\Purchasing\frmSupplyPurchaseQty.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory Module\Supply Inventory\Purchasing\frmSupplyPurchaseRequest.Designer.vb">
+      <DependentUpon>frmSupplyPurchaseRequest.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory Module\Supply Inventory\Purchasing\frmSupplyPurchaseRequest.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Inventory Module\Supply Inventory\Records\frmSupplyBestSelling.Designer.vb">
       <DependentUpon>frmSupplyBestSelling.vb</DependentUpon>
     </Compile>
@@ -1830,6 +1848,15 @@
     <EmbeddedResource Include="Inventory Module\Supply Inventory\Item\frmSupplySizeAdd.resx">
       <DependentUpon>frmSupplySizeAdd.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Inventory Module\Supply Inventory\Purchasing\frmSupplyPRRecords.resx">
+      <DependentUpon>frmSupplyPRRecords.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory Module\Supply Inventory\Purchasing\frmSupplyPurchaseQty.resx">
+      <DependentUpon>frmSupplyPurchaseQty.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory Module\Supply Inventory\Purchasing\frmSupplyPurchaseRequest.resx">
+      <DependentUpon>frmSupplyPurchaseRequest.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inventory Module\Supply Inventory\Records\frmSupplyBestSelling.resx">
       <DependentUpon>frmSupplyBestSelling.vb</DependentUpon>
     </EmbeddedResource>
@@ -2588,7 +2615,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Inventory Module\MIS Inventory\" />
-    <Folder Include="Inventory Module\Supply Inventory\Purchasing\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico">

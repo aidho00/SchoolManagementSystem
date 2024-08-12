@@ -685,7 +685,7 @@ Partial Class frmMain
         Me.btnPRD.Name = "btnPRD"
         Me.btnPRD.Size = New System.Drawing.Size(167, 24)
         Me.btnPRD.TabIndex = 34
-        Me.btnPRD.Text = "Purchase Received"
+        Me.btnPRD.Text = "Goods Receipt"
         Me.btnPRD.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnPRD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnPRD.UseVisualStyleBackColor = False

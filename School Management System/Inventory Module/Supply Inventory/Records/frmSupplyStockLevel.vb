@@ -5,7 +5,7 @@ Public Class frmSupplyStockLevel
         dgSupplyItemList.Rows.Clear()
         Dim i As Integer
         Dim sql As String
-        sql = "Select (BarcodeID) as 'Barcode', Description, (CategoryName) as 'Category', Sizes, (tbl_supply_inventory.Spare) as 'Stock' from tbl_supply_item JOIN tbl_supply_category ON tbl_supply_item.CategoryID = tbl_supply_category.catid JOIN tbl_supply_sizes ON tbl_supply_item.sizesid = tbl_supply_sizes.sizeid JOIN tbl_supply_inventory ON tbl_supply_item.barcodeid = tbl_supply_inventory.itembarcode where tbl_supply_category.categorytype = '" & frmMain.SelectionTitle.Text & "' and tbl_supply_item.item_status = 'Available' and (BarcodeID LIKE '%" & frmMain.txtSearch.Text & "%' or CategoryName LIKE '%" & frmMain.txtSearch.Text & "%' or Description LIKE '%" & frmMain.txtSearch.Text & "%' or Sizes LIKE '%" & frmMain.txtSearch.Text & "%')"
+        sql = "Select (BarcodeID) as 'Item ID', Description, (CategoryName) as 'Category', Sizes, (tbl_supply_inventory.Spare) as 'Stock' from tbl_supply_item JOIN tbl_supply_category ON tbl_supply_item.CategoryID = tbl_supply_category.catid JOIN tbl_supply_sizes ON tbl_supply_item.sizesid = tbl_supply_sizes.sizeid JOIN tbl_supply_inventory ON tbl_supply_item.barcodeid = tbl_supply_inventory.itembarcode where tbl_supply_category.categorytype = '" & frmMain.SelectionTitle.Text & "' and tbl_supply_item.item_status = 'Available' and (BarcodeID LIKE '%" & frmMain.txtSearch.Text & "%' or CategoryName LIKE '%" & frmMain.txtSearch.Text & "%' or Description LIKE '%" & frmMain.txtSearch.Text & "%' or Sizes LIKE '%" & frmMain.txtSearch.Text & "%')"
         cn.Close()
         cn.Open()
         cm = New MySqlCommand(sql, cn)

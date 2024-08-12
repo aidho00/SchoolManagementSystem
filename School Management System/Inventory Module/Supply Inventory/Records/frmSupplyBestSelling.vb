@@ -21,11 +21,11 @@ Public Class frmSupplyBestSelling
             dgBestSelling.Rows.Clear()
             Dim i As Integer
             cn.Open()
-            cm = New MySqlCommand("select distinct c.dbarcode, p.description, s.categoryname, c.dprice, ifnull(round(sum(c.dqty)),0) as qty, ifnull(sum(c.ditem_price),0) as total from tbl_supply_deployed as c inner join tbl_supply_item as p on c.dbarcode = p.barcodeid inner join tbl_supply_category s on p.categoryid = s.catID where c.dstatus = 'APPROVED' and c.ddate between '" & sdate1 & "' and '" & sdate2 & "' group by c.dbarcode order by qty desc, total desc", cn)
+            cm = New MySqlCommand("select distinct c.dbarcode, p.description, s.categoryname, sz.sizes, c.dprice, ifnull(round(sum(c.dqty)),0) as qty, ifnull(sum(c.ditem_price),0) as total from tbl_supply_deployed as c inner join tbl_supply_item as p on c.dbarcode = p.barcodeid inner join tbl_supply_category s on p.categoryid = s.catID inner JOIN tbl_supply_sizes sz ON s.catID = sz.category_id where c.dstatus = 'APPROVED' and c.ddate between '" & sdate1 & "' and '" & sdate2 & "' group by c.dbarcode order by qty desc, total desc", cn)
             dr = cm.ExecuteReader
             While dr.Read
                 i += 1
-                dgBestSelling.Rows.Add(i, dr.Item("dbarcode").ToString, dr.Item("description").ToString, dr.Item("categoryname").ToString, Format(CDbl(dr.Item("dprice").ToString), "#,##0.00"), CInt(dr.Item("qty").ToString), Format(CDbl(dr.Item("total").ToString), "#,##0.00"))
+                dgBestSelling.Rows.Add(i, dr.Item("dbarcode").ToString, dr.Item("description").ToString, dr.Item("categoryname").ToString, dr.Item("sizes").ToString, Format(CDbl(dr.Item("dprice").ToString), "#,##0.00"), CInt(dr.Item("qty").ToString), Format(CDbl(dr.Item("total").ToString), "#,##0.00"))
             End While
             dr.Close()
             cn.Close()

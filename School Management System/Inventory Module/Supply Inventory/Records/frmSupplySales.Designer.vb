@@ -37,6 +37,7 @@ Partial Class frmSupplySales
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Panel3 = New System.Windows.Forms.Panel()
         Me.dgSales = New System.Windows.Forms.DataGridView()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -45,12 +46,12 @@ Partial Class frmSupplySales
         Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.dgSales, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -177,6 +178,15 @@ Partial Class frmSupplySales
         Me.Panel1.Size = New System.Drawing.Size(1166, 12)
         Me.Panel1.TabIndex = 12
         '
+        'Panel3
+        '
+        Me.Panel3.BackColor = System.Drawing.Color.Black
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel3.Location = New System.Drawing.Point(0, 11)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(1166, 1)
+        Me.Panel3.TabIndex = 4
+        '
         'dgSales
         '
         Me.dgSales.AllowUserToAddRows = False
@@ -194,7 +204,7 @@ Partial Class frmSupplySales
         Me.dgSales.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgSales.ColumnHeadersHeight = 40
         Me.dgSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgSales.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column5, Me.Column1, Me.Column8, Me.Column6, Me.Column11, Me.Column2, Me.Column12, Me.Column3, Me.Column4, Me.Column7, Me.Column9, Me.Column10})
+        Me.dgSales.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column5, Me.Column1, Me.Column8, Me.Column6, Me.Column11, Me.Column2, Me.Column12, Me.Column13, Me.Column3, Me.Column4, Me.Column7, Me.Column9, Me.Column10})
         DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle5.BackColor = System.Drawing.Color.White
         DataGridViewCellStyle5.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -235,7 +245,7 @@ Partial Class frmSupplySales
         Me.Column8.Name = "Column8"
         Me.Column8.ReadOnly = True
         Me.Column8.Visible = False
-        Me.Column8.Width = 70
+        Me.Column8.Width = 68
         '
         'Column6
         '
@@ -247,10 +257,10 @@ Partial Class frmSupplySales
         'Column11
         '
         Me.Column11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column11.HeaderText = "Item Barcode"
+        Me.Column11.HeaderText = "Item ID"
         Me.Column11.Name = "Column11"
         Me.Column11.ReadOnly = True
-        Me.Column11.Width = 95
+        Me.Column11.Width = 64
         '
         'Column2
         '
@@ -267,6 +277,13 @@ Partial Class frmSupplySales
         Me.Column12.Name = "Column12"
         Me.Column12.ReadOnly = True
         Me.Column12.Width = 82
+        '
+        'Column13
+        '
+        Me.Column13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column13.HeaderText = "Size"
+        Me.Column13.Name = "Column13"
+        Me.Column13.Width = 51
         '
         'Column3
         '
@@ -304,7 +321,7 @@ Partial Class frmSupplySales
         Me.Column9.HeaderText = "Date"
         Me.Column9.Name = "Column9"
         Me.Column9.Visible = False
-        Me.Column9.Width = 60
+        Me.Column9.Width = 58
         '
         'Column10
         '
@@ -312,15 +329,6 @@ Partial Class frmSupplySales
         Me.Column10.HeaderText = "Cashier"
         Me.Column10.Name = "Column10"
         Me.Column10.Width = 71
-        '
-        'Panel3
-        '
-        Me.Panel3.BackColor = System.Drawing.Color.Black
-        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel3.Location = New System.Drawing.Point(0, 11)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1166, 1)
-        Me.Panel3.TabIndex = 4
         '
         'frmSupplySales
         '
@@ -357,6 +365,7 @@ Partial Class frmSupplySales
     Friend WithEvents ToolStripButton4 As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents dgSales As DataGridView
+    Friend WithEvents Panel3 As Panel
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column8 As DataGridViewTextBoxColumn
@@ -364,10 +373,10 @@ Partial Class frmSupplySales
     Friend WithEvents Column11 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column12 As DataGridViewTextBoxColumn
+    Friend WithEvents Column13 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents Column9 As DataGridViewTextBoxColumn
     Friend WithEvents Column10 As DataGridViewTextBoxColumn
-    Friend WithEvents Panel3 As Panel
 End Class

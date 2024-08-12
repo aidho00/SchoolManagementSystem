@@ -197,15 +197,15 @@ Partial Class frmSupplyReturn
         'Column1
         '
         Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column1.HeaderText = "ITEM BARCODE"
+        Me.Column1.HeaderText = "Item ID"
         Me.Column1.Name = "Column1"
         Me.Column1.ReadOnly = True
-        Me.Column1.Width = 112
+        Me.Column1.Width = 69
         '
         'Column2
         '
         Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Column2.HeaderText = "DESCRIPTION"
+        Me.Column2.HeaderText = "Description"
         Me.Column2.Name = "Column2"
         Me.Column2.ReadOnly = True
         '
@@ -214,46 +214,46 @@ Partial Class frmSupplyReturn
         Me.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
         Me.Column3.DefaultCellStyle = DataGridViewCellStyle2
-        Me.Column3.HeaderText = "PRICE"
+        Me.Column3.HeaderText = "Price"
         Me.Column3.Name = "Column3"
         Me.Column3.ReadOnly = True
-        Me.Column3.Width = 63
+        Me.Column3.Width = 57
         '
         'Column4
         '
         Me.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         Me.Column4.DefaultCellStyle = DataGridViewCellStyle3
-        Me.Column4.HeaderText = "QTY"
+        Me.Column4.HeaderText = "Qty"
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
-        Me.Column4.Width = 53
+        Me.Column4.Width = 51
         '
         'Column5
         '
         Me.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column5.HeaderText = "RQST"
+        Me.Column5.HeaderText = "Rqst"
         Me.Column5.Name = "Column5"
         Me.Column5.ReadOnly = True
-        Me.Column5.Width = 59
+        Me.Column5.Width = 54
         '
         'Column6
         '
         Me.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column6.HeaderText = "RTRN"
+        Me.Column6.HeaderText = "Rtrn"
         Me.Column6.Name = "Column6"
         Me.Column6.ReadOnly = True
-        Me.Column6.Width = 58
+        Me.Column6.Width = 52
         '
         'Column7
         '
         Me.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
         Me.Column7.DefaultCellStyle = DataGridViewCellStyle4
-        Me.Column7.HeaderText = "TOTAL"
+        Me.Column7.HeaderText = "Total"
         Me.Column7.Name = "Column7"
         Me.Column7.ReadOnly = True
-        Me.Column7.Width = 63
+        Me.Column7.Width = 57
         '
         'colRemove
         '
@@ -298,6 +298,7 @@ Partial Class frmSupplyReturn
     Friend WithEvents btn_cancel_login As Label
     Friend WithEvents Panel5 As Panel
     Friend WithEvents dgCart As DataGridView
+    Friend WithEvents btnClose As Label
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
@@ -306,5 +307,4 @@ Partial Class frmSupplyReturn
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents colRemove As DataGridViewButtonColumn
-    Friend WithEvents btnClose As Label
 End Class

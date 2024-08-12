@@ -86,10 +86,10 @@ Partial Class frmSupplyStockLevel
         'DataGridViewTextBoxColumn1
         '
         Me.DataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.DataGridViewTextBoxColumn1.HeaderText = "Barcode ID"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "Item ID"
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
         Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Width = 84
+        Me.DataGridViewTextBoxColumn1.Width = 64
         '
         'DataGridViewTextBoxColumn2
         '

@@ -1701,6 +1701,21 @@ Public Class frmMain
         HideAllFormsInPanelExcept(frmSupplyItemLedger)
         controlsPanel.Visible = False
     End Sub
+
+    Private Sub btnPR_Click(sender As Object, e As EventArgs) Handles btnPR.Click
+        If Application.OpenForms.OfType(Of frmSupplyPRRecords)().Any() Then
+        Else
+            frmSupplyPRRecords.PurchaseRequestList()
+        End If
+        OpenForm(frmSupplyPRRecords, "List Of Purchase Requests")
+        HideAllFormsInPanelExcept(frmSupplyPRRecords)
+        controlsPanel.Visible = True
+        btnAdd.Visible = True
+    End Sub
+
+    Private Sub btnPRD_Click(sender As Object, e As EventArgs) Handles btnPRD.Click
+
+    End Sub
 End Class
 
 Public Class RotatedLabel

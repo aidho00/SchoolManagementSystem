@@ -181,6 +181,12 @@ Module Records
                     .AutoBarCode()
                     .ShowDialog()
                 End With
+            Case "List Of Purchase Requests"
+                With frmSupplyPurchaseRequest
+                    ResetControls(frmSupplyPurchaseRequest)
+                    .btnSave.Visible = True
+                    .ShowDialog()
+                End With
         End Select
     End Sub
 

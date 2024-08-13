@@ -16,35 +16,35 @@ Public Class frmSupplyPOSQty
 
                 If frmSupplyPOS.lblLocation.Text = "Student" Then
 
-                    Dim itemcount As Integer = 0
+                    'Dim itemcount As Integer = 0
 
-                    cn.Open()
+                    'cn.Open()
 
-                    Dim sql As String
-                    If frmSupplyPOS.cs_hs.Text = "cs" Then
-                        sql = "select count(*) as count from cfcissmsdb.tbl_assessment_additional where additional_stud_id = @1 and additional_period_id = @2 and additional_item_id = @3"
-                    ElseIf frmSupplyPOS.cs_hs.Text = "hs" Then
-                        sql = "select count(*) as count from cfcissmsdbhighschool.tbl_assessment_additional where additional_stud_id = @1 and additional_period_id = @2 and additional_item_id = @3"
-                    End If
+                    'Dim sql As String
+                    'If frmSupplyPOS.cs_hs.Text = "cs" Then
+                    '    sql = "select count(*) as count from cfcissmsdb.tbl_assessment_additional where additional_stud_id = @1 and additional_period_id = @2 and additional_item_id = @3"
+                    'ElseIf frmSupplyPOS.cs_hs.Text = "hs" Then
+                    '    sql = "select count(*) as count from cfcissmsdbhighschool.tbl_assessment_additional where additional_stud_id = @1 and additional_period_id = @2 and additional_item_id = @3"
+                    'End If
 
-                    cm = New MySqlCommand(sql, cn)
-                    With cm
-                        .Parameters.AddWithValue("@1", frmSupplyPOS.stud_id.Text)
-                        .Parameters.AddWithValue("@2", frmSupplyPOS.period_id.Text)
-                        .Parameters.AddWithValue("@3", frmSupplyPOS.txtItemID.Text)
-                    End With
-                    dr = cm.ExecuteReader
-                    While dr.Read
-                        itemcount = itemcount + CInt(dr.Item("count").ToString)
-                    End While
-                    cn.Close()
+                    'cm = New MySqlCommand(sql, cn)
+                    'With cm
+                    '    .Parameters.AddWithValue("@1", frmSupplyPOS.stud_id.Text)
+                    '    .Parameters.AddWithValue("@2", frmSupplyPOS.period_id.Text)
+                    '    .Parameters.AddWithValue("@3", frmSupplyPOS.txtItemID.Text)
+                    'End With
+                    'dr = cm.ExecuteReader
+                    'While dr.Read
+                    '    itemcount = itemcount + CInt(dr.Item("count").ToString)
+                    'End While
+                    'cn.Close()
 
-                    Dim studentstatus As String = ""
-                    If frmSupplyPOS.cs_hs.Text = "cs" Then
-                        studentstatus = "college"
-                    ElseIf frmSupplyPOS.cs_hs.Text = "hs" Then
-                        studentstatus = "highschool"
-                    End If
+                    'Dim studentstatus As String = ""
+                    'If frmSupplyPOS.cs_hs.Text = "cs" Then
+                    '    studentstatus = "college"
+                    'ElseIf frmSupplyPOS.cs_hs.Text = "hs" Then
+                    '    studentstatus = "highschool"
+                    'End If
 
                     'If itemcount = 0 Then
 
@@ -120,8 +120,6 @@ Public Class frmSupplyPOSQty
                     'End If
 
                 Else
-
-
 
                     Dim itemcount As Integer = 0
 

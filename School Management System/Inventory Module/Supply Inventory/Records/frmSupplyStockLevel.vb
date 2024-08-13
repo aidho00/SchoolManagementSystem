@@ -12,7 +12,7 @@ Public Class frmSupplyStockLevel
         dr = cm.ExecuteReader
         While dr.Read
             i += 1
-            dgSupplyItemList.Rows.Add(i, dr.Item("Barcode").ToString, dr.Item("Description").ToString, dr.Item("Category").ToString, dr.Item("Sizes").ToString, dr.Item("Stock").ToString)
+            dgSupplyItemList.Rows.Add(i, dr.Item("Item ID").ToString, dr.Item("Description").ToString, dr.Item("Category").ToString, dr.Item("Sizes").ToString, dr.Item("Stock").ToString)
         End While
         dr.Close()
         cn.Close()

@@ -20,7 +20,7 @@ Public Class frmSupplyPurchaseQty
 
     Private Sub txtQty_KeyDown(sender As Object, e As KeyEventArgs) Handles txtQty.KeyDown
         If e.KeyCode = Keys.Escape Then
-            Me.Dispose()
+            Me.Close()
         ElseIf e.KeyCode = Keys.Enter Then
             If PurchasingStatus = "Purchase Request" Then
                 frmSupplyPurchaseRequest.dgPRitemList.Rows.Add(frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(1).Value, frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(2).Value, frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(3).Value, frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(4).Value, frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(5).Value, txtQty.Text, CDec(frmSupplyPurchaseRequest.dgSupplyItemList.CurrentRow.Cells(5).Value) * CInt(txtQty.Text))
@@ -28,7 +28,7 @@ Public Class frmSupplyPurchaseQty
             ElseIf PurchasingStatus = "Purchase Order" Then
             ElseIf PurchasingStatus = "Goods Receipt" Then
             End If
-            Me.Dispose()
+            Me.Close()
         End If
     End Sub
 

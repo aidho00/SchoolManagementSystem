@@ -56,6 +56,16 @@ Public Class frmSupplyPurchaseRequest
     End Function
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        If dgPRitemList.RowCount = 0 Then
+            MsgBox("There are no items in the list. Please add an item.", vbCritical)
+            Return
+        End If
+        If IS_EMPTY(txtRemarks) = True Then Return
+        Dim PO_No As String = GetTransno()
+        query("")
+        query("")
+        'PurchaseRequestRPT
+        MsgBox("Purchase Request Created sucessfully.", vbInformation)
 
     End Sub
 
@@ -100,5 +110,20 @@ Public Class frmSupplyPurchaseRequest
 
     Private Sub btnCancelSearch_Click(sender As Object, e As EventArgs) Handles btnCancelSearch.Click
         SearchPanel.Visible = False
+    End Sub
+
+    Private Sub dgPRitemList_RowsAdded(sender As Object, e As DataGridViewRowsAddedEventArgs) Handles dgPRitemList.RowsAdded
+        lblTotal.Text = Format(CDec(GetColumnSum(dgPRitemList, 6)), "#,##0.00")
+    End Sub
+
+    Private Sub dgPRitemList_RowsRemoved(sender As Object, e As DataGridViewRowsRemovedEventArgs) Handles dgPRitemList.RowsRemoved
+        lblTotal.Text = Format(CDec(GetColumnSum(dgPRitemList, 6)), "#,##0.00")
+    End Sub
+
+    Private Sub dgPRitemList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgPRitemList.CellContentClick
+        Dim colname As String = dgPRitemList.Columns(e.ColumnIndex).Name
+        If colname = "colRemove" Then
+            dgPRitemList.Rows.Remove(dgPRitemList.CurrentRow)
+        End If
     End Sub
 End Class

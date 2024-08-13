@@ -2863,9 +2863,9 @@ Partial Class frmMain
         Me.controlsPanel.Controls.Add(Me.txtSearch)
         Me.controlsPanel.Controls.Add(Me.ComboClick)
         Me.controlsPanel.Controls.Add(Me.btnAddStudent)
-        Me.controlsPanel.Location = New System.Drawing.Point(438, 0)
+        Me.controlsPanel.Location = New System.Drawing.Point(366, 0)
         Me.controlsPanel.Name = "controlsPanel"
-        Me.controlsPanel.Size = New System.Drawing.Size(543, 35)
+        Me.controlsPanel.Size = New System.Drawing.Size(615, 35)
         Me.controlsPanel.TabIndex = 17
         '
         'SelectionTitle
@@ -2873,8 +2873,8 @@ Partial Class frmMain
         Me.SelectionTitle.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.SelectionTitle.BackColor = System.Drawing.Color.Transparent
         Me.SelectionTitle.Font = New System.Drawing.Font("Century Gothic", 6.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.SelectionTitle.ForeColor = System.Drawing.Color.Silver
-        Me.SelectionTitle.Location = New System.Drawing.Point(331, 5)
+        Me.SelectionTitle.ForeColor = System.Drawing.Color.DimGray
+        Me.SelectionTitle.Location = New System.Drawing.Point(405, 5)
         Me.SelectionTitle.Name = "SelectionTitle"
         Me.SelectionTitle.Size = New System.Drawing.Size(163, 22)
         Me.SelectionTitle.TabIndex = 31
@@ -2897,7 +2897,7 @@ Partial Class frmMain
         '
         Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label3.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(30, 1)
+        Me.Label3.Location = New System.Drawing.Point(29, 1)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(96, 35)
         Me.Label3.TabIndex = 30
@@ -2908,7 +2908,7 @@ Partial Class frmMain
         '
         Me.Label14.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label14.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(110, 0)
+        Me.Label14.Location = New System.Drawing.Point(109, 0)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(68, 35)
         Me.Label14.TabIndex = 30
@@ -2922,9 +2922,9 @@ Partial Class frmMain
         Me.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtSearch.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSearch.Location = New System.Drawing.Point(185, 3)
+        Me.txtSearch.Location = New System.Drawing.Point(177, 3)
         Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(316, 27)
+        Me.txtSearch.Size = New System.Drawing.Size(395, 27)
         Me.txtSearch.TabIndex = 29
         '
         'ComboClick
@@ -2934,7 +2934,7 @@ Partial Class frmMain
         Me.ComboClick.Cursor = System.Windows.Forms.Cursors.Hand
         Me.ComboClick.Font = New System.Drawing.Font("Corbel", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboClick.ForeColor = System.Drawing.SystemColors.ControlDark
-        Me.ComboClick.Location = New System.Drawing.Point(501, 0)
+        Me.ComboClick.Location = New System.Drawing.Point(573, 0)
         Me.ComboClick.Name = "ComboClick"
         Me.ComboClick.Size = New System.Drawing.Size(27, 35)
         Me.ComboClick.TabIndex = 28

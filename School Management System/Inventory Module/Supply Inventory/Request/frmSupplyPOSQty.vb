@@ -39,70 +39,86 @@ Public Class frmSupplyPOSQty
                     End While
                     cn.Close()
 
-
-                    If itemcount = 0 Then
-
-                        cn.Open()
-
-                        Dim sql2 As String
-                        If frmSupplyPOS.cs_hs.Text = "cs" Then
-                            sql2 = "insert into cfcissmsdb.tbl_assessment_additional (additional_period_id, additional_item_id, additional_stud_id, additional_amount, additional_date_added, additional_added_by, additional_qty, additional_price) values (@1,@2,@3,@4,@5,@6,@7,@8)"
-                        ElseIf frmSupplyPOS.cs_hs.Text = "hs" Then
-                            sql2 = "insert into cfcissmsdbhighschool.tbl_assessment_additional (additional_period_id, additional_item_id, additional_stud_id, additional_amount, additional_date_added, additional_added_by, additional_qty, additional_price) values (@1,@2,@3,@4,@5,@6,@7,@8)"
-                        End If
-
-                        cm = New MySqlCommand(sql2, cn)
-                        With cm
-                            .Parameters.AddWithValue("@1", frmSupplyPOS.period_id.Text)
-                            .Parameters.AddWithValue("@2", frmSupplyPOS.txtItemID.Text)
-                            .Parameters.AddWithValue("@3", frmSupplyPOS.stud_id.Text)
-                            .Parameters.AddWithValue("@4", CDbl(frmSupplyPOS.lblItemPrice.Text) * CDbl(txtQty.Text))
-                            .Parameters.AddWithValue("@5", sdate)
-                            .Parameters.AddWithValue("@6", str_userid)
-                            .Parameters.AddWithValue("@7", CDbl(txtQty.Text))
-                            .Parameters.AddWithValue("@8", CDbl(frmSupplyPOS.lblItemPrice.Text))
-                            .ExecuteNonQuery()
-                        End With
-                        cn.Close()
-                        cn.Open()
-                        cm = New MySqlCommand("Update tbl_supply_inventory set deployed = deployed+@deployqty, spare = spare-@deployqty where itembarcode = @itembarcode", cn)
-                        With cm
-                            .Parameters.AddWithValue("@deployqty", CInt(txtQty.Text))
-                            .Parameters.AddWithValue("@itembarcode", frmSupplyPOS.txtItemID.Text)
-                            .ExecuteNonQuery()
-                        End With
-                        cn.Close()
-                    Else
-
-                        cn.Open()
-
-                        Dim sql3 As String
-                        If frmSupplyPOS.cs_hs.Text = "cs" Then
-                            sql3 = "update cfcissmsdb.tbl_assessment_additional set additional_qty = additional_qty+@1, additional_amount = additional_price * additional_qty where additional_stud_id = @2 and additional_item_id = @3 and additional_period_id = @4"
-                        ElseIf frmSupplyPOS.cs_hs.Text = "hs" Then
-                            sql3 = "update cfcissmsdbhighschool.tbl_assessment_additional set additional_qty = additional_qty+@1, additional_amount = additional_price * additional_qty where additional_stud_id = @2 and additional_item_id = @3 and additional_period_id = @4"
-                        End If
-
-                        cm = New MySqlCommand(sql3, cn)
-                        With cm
-                            .Parameters.AddWithValue("@1", CInt(txtQty.Text))
-                            .Parameters.AddWithValue("@2", frmSupplyPOS.stud_id.Text)
-                            .Parameters.AddWithValue("@3", frmSupplyPOS.txtItemID.Text)
-                            .Parameters.AddWithValue("@4", CInt(frmSupplyPOS.period_id.Text))
-                            .ExecuteNonQuery()
-                        End With
-                        cn.Close()
-
-                        cn.Open()
-                        cm = New MySqlCommand("Update tbl_supply_inventory set deployed = deployed+@deployqty, spare = spare-@deployqty where itembarcode = @itembarcode", cn)
-                        With cm
-                            .Parameters.AddWithValue("@deployqty", CDbl(txtQty.Text))
-                            .Parameters.AddWithValue("@itembarcode", frmSupplyPOS.txtItemID.Text)
-                            .ExecuteNonQuery()
-                        End With
-
-                        cn.Close()
+                    Dim studentstatus As String = ""
+                    If frmSupplyPOS.cs_hs.Text = "cs" Then
+                        studentstatus = "college"
+                    ElseIf frmSupplyPOS.cs_hs.Text = "hs" Then
+                        studentstatus = "highschool"
                     End If
+
+                    'If itemcount = 0 Then
+
+                    '    cn.Open()
+
+                    '    Dim sql2 As String
+
+                    '    If frmSupplyPOS.cs_hs.Text = "cs" Then
+                    '        studentstatus = "college"
+                    '        sql2 = "insert into cfcissmsdb.tbl_assessment_additional (additional_period_id, additional_item_id, additional_stud_id, additional_amount, additional_date_added, additional_added_by, additional_qty, additional_price) values (@1,@2,@3,@4,@5,@6,@7,@8)"
+                    '    ElseIf frmSupplyPOS.cs_hs.Text = "hs" Then
+                    '        studentstatus = "highschool"
+                    '        sql2 = "insert into cfcissmsdbhighschool.tbl_assessment_additional (additional_period_id, additional_item_id, additional_stud_id, additional_amount, additional_date_added, additional_added_by, additional_qty, additional_price) values (@1,@2,@3,@4,@5,@6,@7,@8)"
+                    '    End If
+
+                    '    cm = New MySqlCommand(sql2, cn)
+                    '    With cm
+                    '        .Parameters.AddWithValue("@1", frmSupplyPOS.period_id.Text)
+                    '        .Parameters.AddWithValue("@2", frmSupplyPOS.txtItemID.Text)
+                    '        .Parameters.AddWithValue("@3", frmSupplyPOS.stud_id.Text)
+                    '        .Parameters.AddWithValue("@4", CDbl(frmSupplyPOS.lblItemPrice.Text) * CDbl(txtQty.Text))
+                    '        .Parameters.AddWithValue("@5", sdate)
+                    '        .Parameters.AddWithValue("@6", str_userid)
+                    '        .Parameters.AddWithValue("@7", CDbl(txtQty.Text))
+                    '        .Parameters.AddWithValue("@8", CDbl(frmSupplyPOS.lblItemPrice.Text))
+                    '        .ExecuteNonQuery()
+                    '    End With
+                    '    cn.Close()
+                    '    cn.Open()
+                    '    cm = New MySqlCommand("Update tbl_supply_inventory set deployed = deployed+@deployqty, spare = spare-@deployqty where itembarcode = @itembarcode", cn)
+                    '    With cm
+                    '        .Parameters.AddWithValue("@deployqty", CInt(txtQty.Text))
+                    '        .Parameters.AddWithValue("@itembarcode", frmSupplyPOS.txtItemID.Text)
+                    '        .ExecuteNonQuery()
+                    '    End With
+                    '    cn.Close()
+
+                    '    StockLedger(frmSupplyPOS.txtItemID.Text, 0, CInt(txtQty.Text), "Issued to " & studentstatus & " student.", "Student Item Release", "Student ID Number " & frmSupplyPOS.stud_id.Text & "")
+
+                    'Else
+
+                    '    cn.Open()
+
+                    '    Dim sql3 As String
+                    '    If frmSupplyPOS.cs_hs.Text = "cs" Then
+                    '        sql3 = "update cfcissmsdb.tbl_assessment_additional set additional_qty = additional_qty+@1, additional_amount = additional_price * additional_qty where additional_stud_id = @2 and additional_item_id = @3 and additional_period_id = @4"
+                    '    ElseIf frmSupplyPOS.cs_hs.Text = "hs" Then
+                    '        sql3 = "update cfcissmsdbhighschool.tbl_assessment_additional set additional_qty = additional_qty+@1, additional_amount = additional_price * additional_qty where additional_stud_id = @2 and additional_item_id = @3 and additional_period_id = @4"
+                    '    End If
+
+                    '    cm = New MySqlCommand(sql3, cn)
+                    '    With cm
+                    '        .Parameters.AddWithValue("@1", CInt(txtQty.Text))
+                    '        .Parameters.AddWithValue("@2", frmSupplyPOS.stud_id.Text)
+                    '        .Parameters.AddWithValue("@3", frmSupplyPOS.txtItemID.Text)
+                    '        .Parameters.AddWithValue("@4", CInt(frmSupplyPOS.period_id.Text))
+                    '        .ExecuteNonQuery()
+                    '    End With
+                    '    cn.Close()
+
+                    '    cn.Open()
+                    '    cm = New MySqlCommand("Update tbl_supply_inventory set deployed = deployed+@deployqty, spare = spare-@deployqty where itembarcode = @itembarcode", cn)
+                    '    With cm
+                    '        .Parameters.AddWithValue("@deployqty", CDbl(txtQty.Text))
+                    '        .Parameters.AddWithValue("@itembarcode", frmSupplyPOS.txtItemID.Text)
+                    '        .ExecuteNonQuery()
+                    '    End With
+
+                    '    cn.Close()
+
+                    '    StockLedger(frmSupplyPOS.txtItemID.Text, 0, CInt(txtQty.Text), "Issued to " & studentstatus & " student.", "Student Item Release", "Student ID Number " & frmSupplyPOS.stud_id.Text & "")
+
+                    'End If
+
                 Else
 
 
@@ -134,19 +150,19 @@ Public Class frmSupplyPOSQty
                             .Parameters.AddWithValue("@5", CDbl(frmSupplyPOS.lblItemPrice.Text))
                             .Parameters.AddWithValue("@6", CDbl(frmSupplyPOS.lblItemPrice.Text) * CDbl(txtQty.Text))
                             .Parameters.AddWithValue("@7", CInt(TextBox1.Text))
-                            .Parameters.AddWithValue("@8", txtbox_code.Text)
+                            .Parameters.AddWithValue("@8", "")
                             .Parameters.AddWithValue("@9", str_userid)
                             .ExecuteNonQuery()
                         End With
-                        cn.Close()
-                        cn.Open()
-                        cm = New MySqlCommand("Update tbl_supply_inventory set deployed = deployed+@deployqty, spare = spare-@deployqty where itembarcode = @itembarcode", cn)
-                        With cm
-                            .Parameters.AddWithValue("@deployqty", CInt(txtQty.Text))
-                            .Parameters.AddWithValue("@itembarcode", frmSupplyPOS.txtItemID.Text)
-                            .ExecuteNonQuery()
-                        End With
-                        cn.Close()
+                        'cn.Close()
+                        'cn.Open()
+                        'cm = New MySqlCommand("Update tbl_supply_inventory set deployed = deployed+@deployqty, spare = spare-@deployqty where itembarcode = @itembarcode", cn)
+                        'With cm
+                        '    .Parameters.AddWithValue("@deployqty", CInt(txtQty.Text))
+                        '    .Parameters.AddWithValue("@itembarcode", frmSupplyPOS.txtItemID.Text)
+                        '    .ExecuteNonQuery()
+                        'End With
+                        'cn.Close()
                     Else
 
                         cn.Open()
@@ -160,15 +176,15 @@ Public Class frmSupplyPOSQty
                         End With
                         cn.Close()
 
-                        cn.Open()
-                        cm = New MySqlCommand("Update tbl_supply_inventory set deployed = deployed+@deployqty, spare = spare-@deployqty where itembarcode = @itembarcode", cn)
-                        With cm
-                            .Parameters.AddWithValue("@deployqty", CDbl(txtQty.Text))
-                            .Parameters.AddWithValue("@itembarcode", frmSupplyPOS.txtItemID.Text)
-                            .ExecuteNonQuery()
-                        End With
+                        'cn.Open()
+                        'cm = New MySqlCommand("Update tbl_supply_inventory set deployed = deployed+@deployqty, spare = spare-@deployqty where itembarcode = @itembarcode", cn)
+                        'With cm
+                        '    .Parameters.AddWithValue("@deployqty", CDbl(txtQty.Text))
+                        '    .Parameters.AddWithValue("@itembarcode", frmSupplyPOS.txtItemID.Text)
+                        '    .ExecuteNonQuery()
+                        'End With
 
-                        cn.Close()
+                        'cn.Close()
 
                     End If
 

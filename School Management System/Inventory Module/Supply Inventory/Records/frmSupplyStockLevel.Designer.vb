@@ -104,6 +104,7 @@ Partial Class frmSupplyStockLevel
         Me.DataGridViewTextBoxColumn3.HeaderText = "Category"
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
         Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        Me.DataGridViewTextBoxColumn3.Visible = False
         Me.DataGridViewTextBoxColumn3.Width = 82
         '
         'Column1
@@ -112,6 +113,7 @@ Partial Class frmSupplyStockLevel
         Me.Column1.HeaderText = "Size"
         Me.Column1.Name = "Column1"
         Me.Column1.ReadOnly = True
+        Me.Column1.Visible = False
         Me.Column1.Width = 51
         '
         'Column2

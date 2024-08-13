@@ -108,9 +108,9 @@ Public Class frmSupplyRecords
 
                 dgdeployrecords.Columns(0).Visible = False
                 dgdeployrecords.Columns(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-                dgdeployrecords.Columns(2).Visible = False
-                dgdeployrecords.Columns(3).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-                dgdeployrecords.Columns(4).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+                dgdeployrecords.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+                dgdeployrecords.Columns(3).Visible = False
+                dgdeployrecords.Columns(4).Visible = False
                 dgdeployrecords.Columns(5).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
                 dgdeployrecords.Columns(6).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
                 dgdeployrecords.Columns(7).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
@@ -134,9 +134,9 @@ Public Class frmSupplyRecords
 
                 dgdeployrecords.Columns(0).Visible = False
                 dgdeployrecords.Columns(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-                dgdeployrecords.Columns(2).Visible = False
-                dgdeployrecords.Columns(3).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-                dgdeployrecords.Columns(4).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+                dgdeployrecords.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+                dgdeployrecords.Columns(3).Visible = False
+                dgdeployrecords.Columns(4).Visible = False
                 dgdeployrecords.Columns(5).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
                 dgdeployrecords.Columns(6).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
                 dgdeployrecords.Columns(7).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
@@ -160,7 +160,8 @@ Public Class frmSupplyRecords
 
                 dgdeployrecords.Columns(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
                 dgdeployrecords.Columns(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-                dgdeployrecords.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+                dgdeployrecords.Columns(2).Visible = False
+                dgdeployrecords.Columns(3).Visible = False
                 dgdeployrecords.Columns(3).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
                 dgdeployrecords.Columns(4).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
                 dgdeployrecords.Columns(5).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells

@@ -521,6 +521,12 @@
     <Compile Include="Enrollment Module\Library\Add\frmRoom.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Inventory Module\Supply Inventory\Item\frmSupplyBrandAdd.Designer.vb">
+      <DependentUpon>frmSupplyBrandAdd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory Module\Supply Inventory\Item\frmSupplyBrandAdd.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Inventory Module\Supply Inventory\Item\frmSupplyCategoryAdd.Designer.vb">
       <DependentUpon>frmSupplyCategoryAdd.vb</DependentUpon>
     </Compile>
@@ -775,6 +781,12 @@
     </Compile>
     <Compile Include="Inventory Module\Supply Inventory\Reports\Supply_Ledger_2.vb">
       <DependentUpon>Supply_Ledger_2.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Inventory Module\Supply Inventory\Reports\PurchaseRequest.vb">
+      <DependentUpon>PurchaseRequest.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -1860,6 +1872,9 @@
     <EmbeddedResource Include="Enrollment Module\Library\Add\frmRoom.resx">
       <DependentUpon>frmRoom.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Inventory Module\Supply Inventory\Item\frmSupplyBrandAdd.resx">
+      <DependentUpon>frmSupplyBrandAdd.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inventory Module\Supply Inventory\Item\frmSupplyCategoryAdd.resx">
       <DependentUpon>frmSupplyCategoryAdd.vb</DependentUpon>
     </EmbeddedResource>
@@ -2012,6 +2027,10 @@
     <EmbeddedResource Include="Inventory Module\Supply Inventory\Reports\Supply_Ledger_2.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Supply_Ledger_2.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory Module\Supply Inventory\Reports\PurchaseRequest.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PurchaseRequest.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory Module\Supply Inventory\Reports\Supply_Request.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

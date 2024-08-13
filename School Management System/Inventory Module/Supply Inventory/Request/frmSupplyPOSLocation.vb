@@ -139,4 +139,8 @@ Public Class frmSupplyPOSLocation
         ResetControls(frmSupplyPOSLocationAdd)
         frmSupplyPOSLocationAdd.ShowDialog()
     End Sub
+
+    Private Sub tablePanel_Paint(sender As Object, e As PaintEventArgs) Handles tablePanel.Paint
+
+    End Sub
 End Class

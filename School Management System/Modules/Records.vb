@@ -174,6 +174,7 @@ Module Records
             Case "List Of Supply Items"
                 With frmSupplyItemAdd
                     ResetControls(frmSupplyItemAdd)
+                    .txtOpeningStock.Enabled = True
                     .btnUpdate.Visible = False
                     .btnSave.Visible = True
                     .CategoryID = 0

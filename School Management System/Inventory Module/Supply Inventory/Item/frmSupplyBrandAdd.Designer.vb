@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmSupplyCategoryAdd
+Partial Class frmSupplyBrandAdd
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -25,10 +25,10 @@ Partial Class frmSupplyCategoryAdd
         Me.systemSign = New System.Windows.Forms.Panel()
         Me.btnClose = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.btnSave = New System.Windows.Forms.Button()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.txtDesc = New System.Windows.Forms.TextBox()
         Me.systemSign.SuspendLayout()
@@ -47,7 +47,7 @@ Partial Class frmSupplyCategoryAdd
         Me.systemSign.Name = "systemSign"
         Me.systemSign.Padding = New System.Windows.Forms.Padding(6)
         Me.systemSign.Size = New System.Drawing.Size(450, 39)
-        Me.systemSign.TabIndex = 28
+        Me.systemSign.TabIndex = 99
         '
         'btnClose
         '
@@ -71,19 +71,8 @@ Partial Class frmSupplyCategoryAdd
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(449, 27)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Supply Item Category Entry"
+        Me.Label1.Text = "Supply Item Brand Entry"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'Panel1
-        '
-        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(101, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Padding = New System.Windows.Forms.Padding(6)
-        Me.Panel1.Size = New System.Drawing.Size(450, 10)
-        Me.Panel1.TabIndex = 27
         '
         'Panel3
         '
@@ -92,7 +81,7 @@ Partial Class frmSupplyCategoryAdd
         Me.Panel3.Location = New System.Drawing.Point(0, 145)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(450, 39)
-        Me.Panel3.TabIndex = 95
+        Me.Panel3.TabIndex = 100
         '
         'FlowLayoutPanel1
         '
@@ -114,14 +103,25 @@ Partial Class frmSupplyCategoryAdd
         Me.btnSave.Text = "SAVE"
         Me.btnSave.UseVisualStyleBackColor = True
         '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(101, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Padding = New System.Windows.Forms.Padding(6)
+        Me.Panel1.Size = New System.Drawing.Size(450, 10)
+        Me.Panel1.TabIndex = 98
+        '
         'Label9
         '
         Me.Label9.AutoSize = True
         Me.Label9.Location = New System.Drawing.Point(46, 75)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(121, 16)
-        Me.Label9.TabIndex = 97
-        Me.Label9.Text = "Category Description"
+        Me.Label9.Size = New System.Drawing.Size(102, 16)
+        Me.Label9.TabIndex = 102
+        Me.Label9.Text = "Brand Description"
         '
         'txtDesc
         '
@@ -130,25 +130,24 @@ Partial Class frmSupplyCategoryAdd
         Me.txtDesc.Location = New System.Drawing.Point(49, 94)
         Me.txtDesc.Name = "txtDesc"
         Me.txtDesc.Size = New System.Drawing.Size(356, 21)
-        Me.txtDesc.TabIndex = 96
+        Me.txtDesc.TabIndex = 101
         '
-        'frmSupplyCategoryAdd
+        'frmSupplyBrandAdd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(450, 184)
         Me.ControlBox = False
+        Me.Controls.Add(Me.systemSign)
+        Me.Controls.Add(Me.Panel3)
+        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.txtDesc)
-        Me.Controls.Add(Me.Panel3)
-        Me.Controls.Add(Me.systemSign)
-        Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.Name = "frmSupplyCategoryAdd"
-        Me.ShowInTaskbar = False
+        Me.Name = "frmSupplyBrandAdd"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.systemSign.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
@@ -161,10 +160,10 @@ Partial Class frmSupplyCategoryAdd
     Friend WithEvents systemSign As Panel
     Friend WithEvents btnClose As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel3 As Panel
     Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
     Friend WithEvents btnSave As Button
+    Friend WithEvents Panel1 As Panel
     Friend WithEvents Label9 As Label
     Friend WithEvents txtDesc As TextBox
 End Class

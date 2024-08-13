@@ -1,4 +1,5 @@
 ﻿Imports MySql.Data.MySqlClient
+Imports System.Globalization
 
 Public Class frmSupplyPurchaseRequest
 
@@ -61,12 +62,49 @@ Public Class frmSupplyPurchaseRequest
             Return
         End If
         If IS_EMPTY(txtRemarks) = True Then Return
-        Dim PO_No As String = GetTransno()
-        query("")
-        query("")
-        'PurchaseRequestRPT
-        MsgBox("Purchase Request Created sucessfully.", vbInformation)
+        Dim PRNo As String = GetTransno()
+        query("INSERT INTO `tbl_supply_purchaserequest`(`prno`, `prtotal`, `prremarks`) VALUES ('" & PRNo & "'," & CDec(lblTotal.Text) & ",'" & txtRemarks.Text & "')")
+        For Each row As DataGridViewRow In dgPRitemList.Rows
+            query("INSERT INTO `tbl_supply_purchaserequest_items`(`prno`, `itemid`, `itemqty`, `itemprice`, `itemtotal`) VALUES ('" & PRNo & "'," & CInt(row.Cells(0).Value) & "," & CInt(row.Cells(5).Value) & "," & CInt(row.Cells(4).Value) & "," & CDec(row.Cells(6).Value) & ")")
+        Next
 
+        PurchaseRequestRPT(PRNo)
+        MsgBox("Purchase Request sucessfully created.", vbInformation)
+
+    End Sub
+
+    Sub PurchaseRequestRPT(prno As String)
+        frmReportViewer.Show()
+        Dim dt As New DataTable
+        With dt
+            .Columns.Add("barcodeid")
+            .Columns.Add("description")
+            .Columns.Add("categoryname")
+            .Columns.Add("sizes")
+            .Columns.Add("dprice")
+            .Columns.Add("dqty")
+            .Columns.Add("ditemprice")
+        End With
+        For Each dr As DataGridViewRow In dgPRitemList.Rows
+            dt.Rows.Add(dr.Cells(0).Value, dr.Cells(1).Value, dr.Cells(2).Value, dr.Cells(3).Value, dr.Cells(4).Value, dr.Cells(5).Value, dr.Cells(6).Value)
+        Next
+        Dim iDate As String = DateToday
+        Dim oDate As DateTime = Convert.ToDateTime(iDate)
+        Dim rptdoc As CrystalDecisions.CrystalReports.Engine.ReportDocument
+        rptdoc = New Ack_Report
+        rptdoc.SetDataSource(dt)
+        'rptdoc.SetParameterValue("studentname", cmb_student.Text)
+        rptdoc.SetParameterValue("requestdate", Format(Convert.ToDateTime(DateToday), "MMMM d, yyyy"))
+        rptdoc.SetParameterValue("requestno", prno)
+        rptdoc.SetParameterValue("requestremarks", txtRemarks.Text)
+
+        Dim input As String = str_name
+        Dim cultureInfo As CultureInfo = CultureInfo.CurrentCulture
+        Dim textInfo As TextInfo = cultureInfo.TextInfo
+        Dim user_name As String = textInfo.ToTitleCase(input.ToLower())
+
+        rptdoc.SetParameterValue("preparedby", user_name)
+        frmReportViewer.ReportViewer.ReportSource = rptdoc
     End Sub
 
     Private Sub btnSearchItems_Click(sender As Object, e As EventArgs) Handles btnSearchItems.Click
@@ -78,7 +116,7 @@ Public Class frmSupplyPurchaseRequest
         dgSupplyItemList.Rows.Clear()
         Dim i As Integer
         Dim sql As String
-        sql = "Select (BarcodeID) as 'Item ID', Description, (CategoryName) as 'Category', Sizes, item_price, (tbl_supply_inventory.Spare) as 'Stock' from tbl_supply_item JOIN tbl_supply_category ON tbl_supply_item.CategoryID = tbl_supply_category.catid JOIN tbl_supply_sizes ON tbl_supply_item.sizesid = tbl_supply_sizes.sizeid JOIN tbl_supply_inventory ON tbl_supply_item.barcodeid = tbl_supply_inventory.itembarcode where tbl_supply_item.item_status = 'Available' and (BarcodeID LIKE '%" & txtSearch.Text & "%' or CategoryName LIKE '%" & txtSearch.Text & "%' or Description LIKE '%" & txtSearch.Text & "%' or Sizes LIKE '%" & txtSearch.Text & "%') order by tbl_supply_inventory.Spare asc"
+        sql = "Select (BarcodeID) as 'Item ID', Description, (CategoryName) as 'Category', Sizes, item_price, (tbl_supply_inventory.Spare) as 'Stock' from tbl_supply_item JOIN tbl_supply_category ON tbl_supply_item.CategoryID = tbl_supply_category.catid JOIN tbl_supply_sizes ON tbl_supply_item.sizesid = tbl_supply_sizes.sizeid JOIN tbl_supply_inventory ON tbl_supply_item.barcodeid = tbl_supply_inventory.itembarcode JOIN tbl_supply_brand ON tbl_supply_item.brandid = tbl_supply_brand.brandid where tbl_supply_item.item_status = 'Available' and (BarcodeID LIKE '%" & txtSearch.Text & "%' or CategoryName LIKE '%" & txtSearch.Text & "%' or Description LIKE '%" & txtSearch.Text & "%' or Sizes LIKE '%" & txtSearch.Text & "%' or brandname LIKE '%" & txtSearch.Text & "%') order by tbl_supply_inventory.Spare asc"
         cn.Close()
         cn.Open()
         cm = New MySqlCommand(sql, cn)
@@ -96,8 +134,19 @@ Public Class frmSupplyPurchaseRequest
     End Sub
 
     Private Sub btnSelect_Click(sender As Object, e As EventArgs) Handles btnSelect.Click
-        frmSupplyPurchaseQty.PurchasingStatus = "Purchase Request"
-        frmSupplyPurchaseQty.ShowDialog()
+        Dim isFound As Boolean = False
+        For Each row As DataGridViewRow In dgPRitemList.Rows
+            If row.Cells(0).Value = dgSupplyItemList.CurrentRow.Cells(1).Value Then
+                isFound = True
+                Exit For
+            End If
+        Next
+        If isFound = False Then
+            frmSupplyPurchaseQty.PurchasingStatus = "Purchase Request"
+            frmSupplyPurchaseQty.ShowDialog()
+        Else
+            MsgBox("The item is already on the list. Please add a different item.", vbCritical)
+        End If
     End Sub
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click

@@ -7,7 +7,7 @@ Public Class frmSupplyItemLedger
         dgSupplyItemList.Rows.Clear()
         Dim i As Integer
         Dim sql As String
-        sql = "Select (BarcodeID) as 'Barcode', Description, (CategoryName) as 'Category', Sizes, (item_price) as 'Price', tbl_supply_category.catid as CATID, tbl_supply_sizes.sizeid as SIZEID, tbl_supply_item.item_open_stock as OpenStock, tbl_supply_item.item_reorder_point as ReOrderPoint, tbl_supply_category.categorytype as SupplyType from tbl_supply_item JOIN tbl_supply_category ON tbl_supply_item.CategoryID = tbl_supply_category.catid JOIN tbl_supply_sizes ON tbl_supply_item.sizesid = tbl_supply_sizes.sizeid where (BarcodeID LIKE '%" & txtSearch.Text & "%' or CategoryName LIKE '%" & txtSearch.Text & "%' or Description LIKE '%" & txtSearch.Text & "%' or Sizes LIKE '%" & txtSearch.Text & "%')"
+        sql = "Select (BarcodeID) as 'Barcode', Description, (CategoryName) as 'Category', Sizes, (item_price) as 'Price', tbl_supply_category.catid as CATID, tbl_supply_sizes.sizeid as SIZEID, tbl_supply_item.item_open_stock as OpenStock, tbl_supply_item.item_reorder_point as ReOrderPoint, tbl_supply_category.categorytype as SupplyType from tbl_supply_item JOIN tbl_supply_category ON tbl_supply_item.CategoryID = tbl_supply_category.catid JOIN tbl_supply_sizes ON tbl_supply_item.sizesid = tbl_supply_sizes.sizeid JOIN tbl_supply_brand ON tbl_supply_item.brandid = tbl_supply_brand.brandid where (BarcodeID LIKE '%" & txtSearch.Text & "%' or CategoryName LIKE '%" & txtSearch.Text & "%' or Description LIKE '%" & txtSearch.Text & "%' or Sizes LIKE '%" & txtSearch.Text & "%' or Sizes brandname '%" & txtSearch.Text & "%')"
         cn.Close()
         cn.Open()
         cm = New MySqlCommand(sql, cn)
@@ -36,7 +36,7 @@ Public Class frmSupplyItemLedger
 
     Private Sub btnSelect_Click(sender As Object, e As EventArgs) Handles btnSelect.Click
         lblBarcode.Text = dgSupplyItemList.CurrentRow.Cells(1).Value
-        lblDescription.Text = dgSupplyItemList.CurrentRow.Cells(2).Value & " " & dgSupplyItemList.CurrentRow.Cells(3).Value & " " & dgSupplyItemList.CurrentRow.Cells(4).Value
+        lblDescription.Text = dgSupplyItemList.CurrentRow.Cells(2).Value
         SupplyLedger()
         SearchPanel.Visible = False
     End Sub
@@ -56,5 +56,9 @@ Public Class frmSupplyItemLedger
         End While
         dr.Close()
         cn.Close()
+    End Sub
+
+    Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
+        SupplyItemList()
     End Sub
 End Class

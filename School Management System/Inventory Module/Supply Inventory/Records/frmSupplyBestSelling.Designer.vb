@@ -177,6 +177,7 @@ Partial Class frmSupplyBestSelling
         Me.Column6.HeaderText = "Category"
         Me.Column6.Name = "Column6"
         Me.Column6.ReadOnly = True
+        Me.Column6.Visible = False
         Me.Column6.Width = 82
         '
         'Column8
@@ -184,6 +185,7 @@ Partial Class frmSupplyBestSelling
         Me.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.Column8.HeaderText = "Size"
         Me.Column8.Name = "Column8"
+        Me.Column8.Visible = False
         Me.Column8.Width = 51
         '
         'Column3

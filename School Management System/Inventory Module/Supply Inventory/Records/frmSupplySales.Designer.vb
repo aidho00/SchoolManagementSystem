@@ -264,11 +264,10 @@ Partial Class frmSupplySales
         '
         'Column2
         '
-        Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.Column2.HeaderText = "Description"
         Me.Column2.Name = "Column2"
         Me.Column2.ReadOnly = True
-        Me.Column2.Width = 90
         '
         'Column12
         '
@@ -276,6 +275,7 @@ Partial Class frmSupplySales
         Me.Column12.HeaderText = "Category"
         Me.Column12.Name = "Column12"
         Me.Column12.ReadOnly = True
+        Me.Column12.Visible = False
         Me.Column12.Width = 82
         '
         'Column13
@@ -283,6 +283,7 @@ Partial Class frmSupplySales
         Me.Column13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.Column13.HeaderText = "Size"
         Me.Column13.Name = "Column13"
+        Me.Column13.Visible = False
         Me.Column13.Width = 51
         '
         'Column3

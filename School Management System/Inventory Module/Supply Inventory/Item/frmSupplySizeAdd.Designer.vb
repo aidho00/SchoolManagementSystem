@@ -71,7 +71,7 @@ Partial Class frmSupplySizeAdd
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(449, 27)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Sypply Item Size Entry"
+        Me.Label1.Text = "Supply Item Size Entry"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Panel3

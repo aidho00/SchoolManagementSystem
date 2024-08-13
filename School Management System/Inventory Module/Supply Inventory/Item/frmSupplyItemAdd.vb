@@ -6,6 +6,7 @@ Public Class frmSupplyItemAdd
     Dim Barcode As String = ""
 
     Public CategoryID As Integer = 0
+    Public BrandID As Integer = 0
     Public SizeID As Integer = 0
 
 #Region "Drag Form"
@@ -69,14 +70,14 @@ Public Class frmSupplyItemAdd
             Dim lastCode As String = cm.ExecuteScalar
             cn.Close()
             If lastCode.ToString.Length = 13 Then
-                Barcode = yearid & "0000001"
+                Barcode = yearid & "00001"
             Else
                 lastCode = lastCode.Remove(0, 4)
                 Barcode = CInt(yearid & lastCode) + 1
             End If
         Else
             dr.Close()
-            Barcode = yearid & "0000001"
+            Barcode = yearid & "00001"
         End If
         cn.Close()
         barcodeID.Text = Barcode
@@ -116,6 +117,21 @@ Public Class frmSupplyItemAdd
         dr = cm.ExecuteReader
         While dr.Read
             dgSupplyCategory.Rows.Add(dr.Item("ID").ToString, dr.Item("Desc").ToString)
+        End While
+        dr.Close()
+        cn.Close()
+    End Sub
+
+    Sub SupplyBrandList()
+        dgSupplyBrand.Rows.Clear()
+        Dim sql As String
+        sql = "select (brandid) as 'ID', (brandname) as 'Desc' from tbl_supply_brand where brandname like '%" & txtSearch.Text & "%' and catid = " & CategoryID & ""
+        cn.Close()
+        cn.Open()
+        cm = New MySqlCommand(sql, cn)
+        dr = cm.ExecuteReader
+        While dr.Read
+            dgSupplyBrand.Rows.Add(dr.Item("ID").ToString, dr.Item("Desc").ToString)
         End While
         dr.Close()
         cn.Close()
@@ -164,6 +180,9 @@ Public Class frmSupplyItemAdd
         ElseIf frmTitle.Text = "Search Size" Then
             SizeID = dgSupplySize.CurrentRow.Cells(0).Value
             cbSupplySize.Text = dgSupplySize.CurrentRow.Cells(1).Value
+        ElseIf frmTitle.Text = "Search Brand" Then
+            BrandID = dgSupplyBrand.CurrentRow.Cells(0).Value
+            cbSupplyBrand.Text = dgSupplyBrand.CurrentRow.Cells(1).Value
         End If
         SearchPanel.Visible = False
     End Sub
@@ -175,6 +194,9 @@ Public Class frmSupplyItemAdd
         ElseIf frmTitle.Text = "Search Size" Then
             ResetControls(frmSupplySizeAdd)
             frmSupplySizeAdd.ShowDialog()
+        ElseIf frmTitle.Text = "Search Brand" Then
+            ResetControls(frmSupplyBrandAdd)
+            frmSupplyBrandAdd.ShowDialog()
         End If
     End Sub
 
@@ -189,14 +211,15 @@ Public Class frmSupplyItemAdd
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         If IS_EMPTY(cbSupplyType) = True Then Return
         If IS_EMPTY(cbSupplyCategory) = True Then Return
+        If IS_EMPTY(cbSupplyBrand) = True Then Return
         If IS_EMPTY(cbSupplySize) = True Then Return
         If IS_EMPTY(txtSupplyDesc) = True Then Return
         If IS_EMPTY(txtOpeningStock) = True Then Return
         If IS_EMPTY(txtReOrderPoint) = True Then Return
         If IS_EMPTY(txtPrice) = True Then Return
-        If CHECK_EXISTING("SELECT * FROM tbl_supply_item WHERE supply_type = '" & cbSupplyType.Text & "' and categoryid = " & CategoryID & " and sizesid = " & SizeID & "") = True Then Return
+        If CHECK_EXISTING("SELECT * FROM tbl_supply_item WHERE categoryid = " & CategoryID & " and sizesid = " & SizeID & "") = True Then Return
         AutoBarCode()
-        query("INSERT INTO `tbl_supply_item`(`barcodeid`, `description`, `categoryid`, `sizesid`, `item_price`, `item_status`, `item_open_stock`, `item_reorder_point`) VALUES ('" & barcodeID.Text & "', '" & txtSupplyDesc.Text & "', " & CategoryID & ", " & SizeID & ", " & CDec(txtPrice.Text) & ", '" & cbSupplyStatus.Text & "', " & CInt(txtOpeningStock.Text) & " , " & CInt(txtReOrderPoint.Text) & ")")
+        query("INSERT INTO `tbl_supply_item`(`barcodeid`, `description`, `categoryid`, `brandid`, `sizesid`, `item_price`, `item_status`, `item_open_stock`, `item_reorder_point`) VALUES ('" & barcodeID.Text & "', '" & txtSupplyDesc.Text & "', " & CategoryID & ",  " & BrandID & ", " & SizeID & ", " & CDec(txtPrice.Text) & ", '" & cbSupplyStatus.Text & "', " & CInt(txtOpeningStock.Text) & " , " & CInt(txtReOrderPoint.Text) & ")")
         query("INSERT INTO `tbl_supply_inventory`(`itembarcode`, `Spare`, `Deployed`, `Defect`) VALUES ('" & barcodeID.Text & "', " & CInt(txtOpeningStock.Text) & ", 0, 0)")
 
         'Stock Ledger
@@ -207,19 +230,23 @@ Public Class frmSupplyItemAdd
         frmWait.ShowDialog()
         MsgBox("New supply item has been successfully added.", vbInformation, "")
         frmSupplyItems.SupplyItemList()
-        Me.Close()
+        'Me.Close()
+
+        AutoBarCode()
+        cbSupplySize.Text = String.Empty
     End Sub
 
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
         If IS_EMPTY(cbSupplyType) = True Then Return
         If IS_EMPTY(cbSupplyCategory) = True Then Return
+        If IS_EMPTY(cbSupplyBrand) = True Then Return
         If IS_EMPTY(cbSupplySize) = True Then Return
         If IS_EMPTY(txtSupplyDesc) = True Then Return
         If IS_EMPTY(txtOpeningStock) = True Then Return
         If IS_EMPTY(txtReOrderPoint) = True Then Return
         If IS_EMPTY(txtPrice) = True Then Return
-        If CHECK_EXISTING("SELECT * FROM tbl_supply_item WHERE supply_type = '" & cbSupplyType.Text & "' and categoryid = " & CategoryID & " and sizesid = " & SizeID & " and barcodeid NOT IN ('" & barcodeID.Text & "')") = True Then Return
-        query("UPDATE `tbl_supply_item` set `description` = '" & txtSupplyDesc.Text & "', `categoryid` = " & CategoryID & ", `sizesid` = " & SizeID & ", `item_price` = " & CDec(txtPrice.Text) & ", `item_status` = '" & cbSupplyStatus.Text & "', `item_reorder_point` = " & CInt(txtReOrderPoint.Text) & " WHERE barcodeid = '" & barcodeID.Text & "'")
+        If CHECK_EXISTING("SELECT * FROM tbl_supply_item WHERE categoryid = " & CategoryID & " and brandid = " & BrandID & " and sizesid = " & SizeID & " and barcodeid NOT IN ('" & barcodeID.Text & "')") = True Then Return
+        query("UPDATE `tbl_supply_item` set `description` = '" & txtSupplyDesc.Text & "', `categoryid` = " & CategoryID & ", brandid = " & BrandID & ", `sizesid` = " & SizeID & ", `item_price` = " & CDec(txtPrice.Text) & ", `item_status` = '" & cbSupplyStatus.Text & "', `item_reorder_point` = " & CInt(txtReOrderPoint.Text) & " WHERE barcodeid = '" & barcodeID.Text & "'")
         UserActivity("Updated a(n) " & cbSupplyType.Text & " item " & txtSupplyDesc.Text.Trim & " - " & cbSupplyCategory.Text.Trim & " " & cbSupplySize.Text.Trim & ". Barcode: " & barcodeID.Text & "", "SUPPLY ITEM UPDATE")
         frmWait.seconds = 1
         frmWait.ShowDialog()
@@ -232,7 +259,7 @@ Public Class frmSupplyItemAdd
         Me.Close()
     End Sub
 
-    Private Sub cbSupplyCategory_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cbSupplyCategory.KeyPress, cbSupplySize.KeyPress
+    Private Sub cbSupplyCategory_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cbSupplyCategory.KeyPress, cbSupplySize.KeyPress, cbSupplyBrand.KeyPress, txtSupplyDesc.KeyPress
         e.Handled = True
     End Sub
 
@@ -240,10 +267,28 @@ Public Class frmSupplyItemAdd
         cbSupplySize.Text = String.Empty
         SizeID = 0
 
-        txtSupplyDesc.Text = String.Empty
+        txtSupplyDesc.Text = cbSupplyBrand.Text & " - " & cbSupplyCategory.Text & " - " & cbSupplySize.Text
+    End Sub
+
+    Private Sub cbSupplySize_TextChanged(sender As Object, e As EventArgs) Handles cbSupplySize.TextChanged, cbSupplyBrand.TextChanged
+        txtSupplyDesc.Text = cbSupplyBrand.Text & " - " & cbSupplyCategory.Text & " - " & cbSupplySize.Text
     End Sub
 
     Private Sub btnCancelSearch_Click(sender As Object, e As EventArgs) Handles btnCancelSearch.Click
         SearchPanel.Visible = False
+    End Sub
+
+    Private Sub btnSearchBrand_Click(sender As Object, e As EventArgs) Handles btnSearchBrand.Click
+        If cbSupplyCategory.Text = String.Empty Then
+        Else
+            SearchPanel.Visible = True
+            dgSupplyBrand.BringToFront()
+            frmTitle.Text = "Search Brand"
+            SupplyBrandList()
+        End If
+    End Sub
+
+    Private Sub txtSupplyDesc_TextChanged(sender As Object, e As EventArgs) Handles txtSupplyDesc.TextChanged
+
     End Sub
 End Class

@@ -278,14 +278,16 @@ Public Class frmSupplyPOS
 
                     cn.Open()
                     cm = New MySqlCommand("Update tbl_supply_deployed set dstudentid = @1 , dstatus = 'APPROVED', duser_id = '" & str_userid & "' where dlocation = '" & lblLocationNumber.Text & "' and dstatus = 'PENDING'", cn)
-                    'If stud_id.Text = 0 Then
-                    '    cm.Parameters.AddWithValue("@1", stud_id.Text)
-                    'Else
                     cm.Parameters.AddWithValue("@1", lblTransno.Text)
-                    'End If
                     cm.ExecuteNonQuery()
                     cn.Close()
 
+                    For Each row As DataGridViewRow In dgCart.Rows
+                        StockLedger(row.Cells(0).Value, 0, CInt(row.Cells(3).Value), "Issued to " & lblLocation.Text & ".", "Office Item Release", "Item Release No." & lblTransno.Text & "")
+                    Next
+
+
+                        cn.Close()
                     cn.Open()
                     cm = New MySqlCommand("Update tbl_supply_location set status = 'False' where locationname = '" & lblLocation.Text & "'", cn)
                     cm.ExecuteNonQuery()
@@ -357,9 +359,9 @@ Public Class frmSupplyPOS
             cn.Open()
             Dim sql As String = ""
             If lblLocation.Text = "Student" Then
-                sql = "Select barcodeid, description, (categoryname) as category, item_price from tbl_supply_item t1 JOIN tbl_supply_category t2 ON t1.categoryid = t2.catID where t1.supply_type  = 'School Consumable' and CONCAT(t1.description,t2.categoryname) like '%" & txtSearch.Text & "%'"
+                sql = "Select barcodeid, description, (categoryname) as category, item_price from tbl_supply_item t1 JOIN tbl_supply_category t2 ON t1.categoryid = t2.catID where t2.supply_type  = 'School Consumable' and CONCAT(t1.description,t2.categoryname) like '%" & txtSearch.Text & "%'"
             Else
-                sql = "Select barcodeid, description, (categoryname) as category, item_price from tbl_supply_item t1 JOIN tbl_supply_category t2 ON t1.categoryid = t2.catID where t1.supply_type  = 'Office Supply' and CONCAT(t1.description,t2.categoryname) like '%" & txtSearch.Text & "%'"
+                sql = "Select barcodeid, description, (categoryname) as category, item_price from tbl_supply_item t1 JOIN tbl_supply_category t2 ON t1.categoryid = t2.catID where t2.supply_type  = 'Office Supply' and CONCAT(t1.description,t2.categoryname) like '%" & txtSearch.Text & "%'"
             End If
             cm = New MySqlCommand(sql, cn)
             dr = cm.ExecuteReader()

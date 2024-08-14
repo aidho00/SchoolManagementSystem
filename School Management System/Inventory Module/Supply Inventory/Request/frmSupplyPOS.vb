@@ -462,7 +462,7 @@ Public Class frmSupplyPOS
         loaditems()
     End Sub
 
-    Private Sub btn_cancel_Click(sender As Object, e As EventArgs) Handles btn_cancel.Click
+    Private Sub btn_cancel_Click(sender As Object, e As EventArgs)
         Panel4.Visible = False
     End Sub
 

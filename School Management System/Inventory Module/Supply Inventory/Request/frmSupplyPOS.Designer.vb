@@ -41,7 +41,6 @@ Partial Class frmSupplyPOS
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.btn_cancel = New System.Windows.Forms.Button()
         Me.btnSelect = New System.Windows.Forms.Button()
         Me.period_id = New System.Windows.Forms.Label()
         Me.yearid = New System.Windows.Forms.Label()
@@ -93,6 +92,8 @@ Partial Class frmSupplyPOS
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colRemove = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.btn_cancel = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel4.SuspendLayout()
         CType(Me.dgItemList, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -233,6 +234,7 @@ Partial Class frmSupplyPOS
         '
         Me.Panel3.BackColor = System.Drawing.Color.White
         Me.Panel3.Controls.Add(Me.btn_cancel)
+        Me.Panel3.Controls.Add(Me.Label14)
         Me.Panel3.Controls.Add(Me.btnSelect)
         Me.Panel3.Controls.Add(Me.period_id)
         Me.Panel3.Controls.Add(Me.yearid)
@@ -245,29 +247,20 @@ Partial Class frmSupplyPOS
         Me.Panel3.Size = New System.Drawing.Size(723, 47)
         Me.Panel3.TabIndex = 83
         '
-        'btn_cancel
-        '
-        Me.btn_cancel.BackColor = System.Drawing.SystemColors.Control
-        Me.btn_cancel.Dock = System.Windows.Forms.DockStyle.Left
-        Me.btn_cancel.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_cancel.ForeColor = System.Drawing.Color.Black
-        Me.btn_cancel.Location = New System.Drawing.Point(123, 5)
-        Me.btn_cancel.Name = "btn_cancel"
-        Me.btn_cancel.Size = New System.Drawing.Size(118, 37)
-        Me.btn_cancel.TabIndex = 448
-        Me.btn_cancel.Text = "CANCEL"
-        Me.btn_cancel.UseVisualStyleBackColor = False
-        '
         'btnSelect
         '
+        Me.btnSelect.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(46, Byte), Integer))
         Me.btnSelect.Dock = System.Windows.Forms.DockStyle.Left
+        Me.btnSelect.FlatAppearance.BorderSize = 0
+        Me.btnSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSelect.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSelect.ForeColor = System.Drawing.Color.Black
+        Me.btnSelect.ForeColor = System.Drawing.Color.White
         Me.btnSelect.Location = New System.Drawing.Point(5, 5)
         Me.btnSelect.Name = "btnSelect"
         Me.btnSelect.Size = New System.Drawing.Size(118, 37)
         Me.btnSelect.TabIndex = 447
         Me.btnSelect.Text = "SELECT"
+        Me.btnSelect.UseVisualStyleBackColor = False
         '
         'period_id
         '
@@ -602,9 +595,9 @@ Partial Class frmSupplyPOS
         Me.Label13.ForeColor = System.Drawing.Color.White
         Me.Label13.Location = New System.Drawing.Point(0, 108)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(170, 32)
+        Me.Label13.Size = New System.Drawing.Size(173, 32)
         Me.Label13.TabIndex = 493
-        Me.Label13.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Year/Grade- Course/Strand"
+        Me.Label13.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Year/Grade - Course/Strand"
         '
         'stud_name
         '
@@ -910,6 +903,35 @@ Partial Class frmSupplyPOS
         Me.colRemove.Name = "colRemove"
         Me.colRemove.Width = 5
         '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Label14.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.ForeColor = System.Drawing.Color.Black
+        Me.Label14.Location = New System.Drawing.Point(123, 5)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(12, 17)
+        Me.Label14.TabIndex = 448
+        Me.Label14.Text = " "
+        Me.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label14.Visible = False
+        '
+        'btn_cancel
+        '
+        Me.btn_cancel.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(46, Byte), Integer))
+        Me.btn_cancel.Dock = System.Windows.Forms.DockStyle.Left
+        Me.btn_cancel.FlatAppearance.BorderSize = 0
+        Me.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_cancel.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_cancel.ForeColor = System.Drawing.Color.White
+        Me.btn_cancel.Location = New System.Drawing.Point(135, 5)
+        Me.btn_cancel.Name = "btn_cancel"
+        Me.btn_cancel.Size = New System.Drawing.Size(118, 37)
+        Me.btn_cancel.TabIndex = 450
+        Me.btn_cancel.Text = "CANCEL"
+        Me.btn_cancel.UseVisualStyleBackColor = False
+        '
         'frmSupplyPOS
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
@@ -996,7 +1018,6 @@ Partial Class frmSupplyPOS
     Friend WithEvents txtbox_code As Label
     Friend WithEvents btnClose As Label
     Friend WithEvents Label11 As Label
-    Friend WithEvents btn_cancel As Button
     Friend WithEvents btnSelect As Button
     Friend WithEvents Panel7 As Panel
     Friend WithEvents dgItemList As DataGridView
@@ -1011,4 +1032,6 @@ Partial Class frmSupplyPOS
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents colRemove As DataGridViewImageColumn
+    Friend WithEvents btn_cancel As Button
+    Friend WithEvents Label14 As Label
 End Class

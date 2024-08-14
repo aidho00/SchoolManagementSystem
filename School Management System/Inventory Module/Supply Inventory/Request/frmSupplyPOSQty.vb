@@ -5,6 +5,8 @@ Public Class frmSupplyPOSQty
     Private Sub frmQty_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then
             frmSupplyPOS.txtItemID.Clear()
+            frmSupplyPOS.lblDescription.Text = ""
+            frmSupplyPOS.lblItemPrice.Text = "0.00"
             Me.Dispose()
         ElseIf e.KeyCode = Keys.Enter Then
             Dim sdate As String = Now.ToString("yyyy-MM-dd")
@@ -29,7 +31,7 @@ Public Class frmSupplyPOSQty
                             rqstdValue = CInt(row.Cells(3).Value) + CInt(txtQty.Text)
                             If rqstdValue > CInt(frmSupplyPOS.lblItemQTY.Text) Then
                                 isFound = True
-                                MsgBox("Insufficient stockQuantity to release is greater than current item stock. Current Item Stock: '" & CInt(frmSupplyPOS.lblItemQTY.Text) & "'", vbExclamation)
+                                MsgBox("Insufficient stock. Quantity to release is greater than current item stock. Current Item Stock: '" & CInt(frmSupplyPOS.lblItemQTY.Text) & "'", vbExclamation)
                                 Exit For
                             Else
                                 isFound = True
@@ -72,7 +74,7 @@ Public Class frmSupplyPOSQty
 
 
                     If itemcount = 0 Then
-                        AutoNumber()
+
                         cn.Open()
                         cm = New MySqlCommand("insert into tbl_supply_deployed (dbarcode, dqty, dlocation, ddate, dprice, ditem_price, qty_requested,dstudentid, duser_id) values (@1,@2,@3,CURDATE(),@5,@6,@7,@8,@9)", cn)
                         With cm
@@ -167,27 +169,5 @@ Public Class frmSupplyPOSQty
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
         frmSupplyPOS.txtItemID.Clear()
         Me.Dispose()
-    End Sub
-
-    Private Sub AutoNumber()
-        Dim yearid As String = YearToday
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand("SELECT dstudentid FROM tbl_supply_deployed WHERE dlocation NOT IN (0) and dstudentid like '" & yearid & "%'", cn)
-        dr = cm.ExecuteReader()
-        If dr.HasRows Then
-            dr.Close()
-            cn.Close()
-            cn.Open()
-            cm = New MySqlCommand("SELECT MAX(dstudentid) as ID from tbl_supply_deployed", cn)
-            Dim lastCode As String = cm.ExecuteScalar
-            cn.Close()
-            lastCode = lastCode.Remove(0, 4)
-            txtbox_code.Text = CInt(yearid & lastCode) + 1
-        Else
-            dr.Close()
-            txtbox_code.Text = yearid & "00001"
-        End If
-        cn.Close()
     End Sub
 End Class

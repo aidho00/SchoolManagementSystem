@@ -120,20 +120,20 @@ Public Class frmSupplyPOS
         Dim yearid As String = YearToday
         cn.Close()
         cn.Open()
-        cm = New MySqlCommand("SELECT dstudentid FROM tbl_supply_deployed WHERE dstudentid like '" & yearid & "%'", cn)
+        cm = New MySqlCommand("SELECT dstudentid FROM tbl_supply_deployed WHERE dstudentid like 'SI-RQST" & yearid & "%'", cn)
         dr = cm.ExecuteReader()
         If dr.HasRows Then
             dr.Close()
             cn.Close()
             cn.Open()
-            cm = New MySqlCommand("SELECT MAX(dstudentid) as ID from tbl_supply_deployed", cn)
+            cm = New MySqlCommand("SELECT MAX(dtransno) as ID from tbl_supply_deployed", cn)
             Dim lastCode As String = cm.ExecuteScalar
             cn.Close()
-            lastCode = lastCode.Remove(0, 4)
-            GetTransno = CInt(yearid & lastCode) + 1
+            lastCode = lastCode.Remove(0, 11)
+            GetTransno = "SI-RQST" & CInt(yearid & lastCode) + 1
         Else
             dr.Close()
-            GetTransno = yearid & "00001"
+            GetTransno = "SI-RQST" & yearid & "00001"
         End If
         cn.Close()
 

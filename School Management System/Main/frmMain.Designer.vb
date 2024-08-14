@@ -258,11 +258,12 @@ Partial Class frmMain
         Me.Panel27 = New System.Windows.Forms.Panel()
         Me.dummypic = New System.Windows.Forms.PictureBox()
         Me.PanelSupplyWarning = New System.Windows.Forms.Panel()
-        Me.Panel15 = New System.Windows.Forms.Panel()
-        Me.Panel29 = New System.Windows.Forms.Panel()
-        Me.PictureBox13 = New System.Windows.Forms.PictureBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.btnStockRecount = New System.Windows.Forms.Button()
+        Me.warning = New System.Windows.Forms.Panel()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.PictureBox13 = New System.Windows.Forms.PictureBox()
         Me.systemSign.SuspendLayout()
         CType(Me.schoolLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ComboBoxMenu.SuspendLayout()
@@ -335,7 +336,7 @@ Partial Class frmMain
         Me.Panel27.SuspendLayout()
         CType(Me.dummypic, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelSupplyWarning.SuspendLayout()
-        Me.Panel29.SuspendLayout()
+        Me.warning.SuspendLayout()
         CType(Me.PictureBox13, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -3982,45 +3983,14 @@ Partial Class frmMain
         'PanelSupplyWarning
         '
         Me.PanelSupplyWarning.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PanelSupplyWarning.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.PanelSupplyWarning.Controls.Add(Me.Panel15)
-        Me.PanelSupplyWarning.Controls.Add(Me.Panel29)
+        Me.PanelSupplyWarning.BackColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(84, Byte), Integer), CType(CType(96, Byte), Integer))
+        Me.PanelSupplyWarning.Controls.Add(Me.warning)
         Me.PanelSupplyWarning.Controls.Add(Me.Label7)
-        Me.PanelSupplyWarning.Location = New System.Drawing.Point(774, 570)
+        Me.PanelSupplyWarning.Location = New System.Drawing.Point(774, 567)
         Me.PanelSupplyWarning.Name = "PanelSupplyWarning"
-        Me.PanelSupplyWarning.Size = New System.Drawing.Size(484, 107)
+        Me.PanelSupplyWarning.Size = New System.Drawing.Size(484, 110)
         Me.PanelSupplyWarning.TabIndex = 25
         Me.PanelSupplyWarning.Visible = False
-        '
-        'Panel15
-        '
-        Me.Panel15.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel15.Location = New System.Drawing.Point(124, 0)
-        Me.Panel15.Name = "Panel15"
-        Me.Panel15.Padding = New System.Windows.Forms.Padding(8)
-        Me.Panel15.Size = New System.Drawing.Size(338, 107)
-        Me.Panel15.TabIndex = 19
-        '
-        'Panel29
-        '
-        Me.Panel29.Controls.Add(Me.PictureBox13)
-        Me.Panel29.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel29.Location = New System.Drawing.Point(0, 0)
-        Me.Panel29.Name = "Panel29"
-        Me.Panel29.Padding = New System.Windows.Forms.Padding(8)
-        Me.Panel29.Size = New System.Drawing.Size(124, 107)
-        Me.Panel29.TabIndex = 18
-        '
-        'PictureBox13
-        '
-        Me.PictureBox13.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PictureBox13.Image = CType(resources.GetObject("PictureBox13.Image"), System.Drawing.Image)
-        Me.PictureBox13.Location = New System.Drawing.Point(8, 8)
-        Me.PictureBox13.Name = "PictureBox13"
-        Me.PictureBox13.Size = New System.Drawing.Size(108, 91)
-        Me.PictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox13.TabIndex = 0
-        Me.PictureBox13.TabStop = False
         '
         'Label7
         '
@@ -4057,6 +4027,52 @@ Partial Class frmMain
         Me.btnStockRecount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnStockRecount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnStockRecount.UseVisualStyleBackColor = False
+        '
+        'warning
+        '
+        Me.warning.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.warning.BackColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(84, Byte), Integer), CType(CType(96, Byte), Integer))
+        Me.warning.Controls.Add(Me.Label12)
+        Me.warning.Controls.Add(Me.Label16)
+        Me.warning.Controls.Add(Me.PictureBox13)
+        Me.warning.Location = New System.Drawing.Point(9, 8)
+        Me.warning.Name = "warning"
+        Me.warning.Size = New System.Drawing.Size(432, 95)
+        Me.warning.TabIndex = 424
+        Me.warning.Visible = False
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Verdana", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.ForeColor = System.Drawing.Color.White
+        Me.Label12.Location = New System.Drawing.Point(112, 28)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(86, 23)
+        Me.Label12.TabIndex = 399
+        Me.Label12.Text = "ALERT!"
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.ForeColor = System.Drawing.Color.White
+        Me.Label16.Location = New System.Drawing.Point(112, 53)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(221, 18)
+        Me.Label16.TabIndex = 7
+        Me.Label16.Text = "Supply Item Out of Stock!"
+        '
+        'PictureBox13
+        '
+        Me.PictureBox13.BackColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(84, Byte), Integer), CType(CType(96, Byte), Integer))
+        Me.PictureBox13.Image = CType(resources.GetObject("PictureBox13.Image"), System.Drawing.Image)
+        Me.PictureBox13.Location = New System.Drawing.Point(-35, -36)
+        Me.PictureBox13.Name = "PictureBox13"
+        Me.PictureBox13.Size = New System.Drawing.Size(188, 159)
+        Me.PictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox13.TabIndex = 0
+        Me.PictureBox13.TabStop = False
         '
         'frmMain
         '
@@ -4153,7 +4169,8 @@ Partial Class frmMain
         CType(Me.dummypic, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelSupplyWarning.ResumeLayout(False)
         Me.PanelSupplyWarning.PerformLayout()
-        Me.Panel29.ResumeLayout(False)
+        Me.warning.ResumeLayout(False)
+        Me.warning.PerformLayout()
         CType(Me.PictureBox13, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -4393,10 +4410,11 @@ Partial Class frmMain
     Friend WithEvents btnItemRequest As Button
     Friend WithEvents btnSupply As Button
     Friend WithEvents PanelSupplyWarning As Panel
-    Friend WithEvents Panel15 As Panel
-    Friend WithEvents Panel29 As Panel
-    Friend WithEvents PictureBox13 As PictureBox
     Friend WithEvents Label7 As Label
     Friend WithEvents cmbSupplyType As ToolStripComboBox
     Friend WithEvents btnStockRecount As Button
+    Friend WithEvents warning As Panel
+    Friend WithEvents Label12 As Label
+    Friend WithEvents Label16 As Label
+    Friend WithEvents PictureBox13 As PictureBox
 End Class

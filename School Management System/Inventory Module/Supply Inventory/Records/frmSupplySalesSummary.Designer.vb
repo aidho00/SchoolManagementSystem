@@ -22,30 +22,35 @@ Partial Class frmSupplySalesSummary
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle37 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle40 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle38 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle39 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle41 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle45 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle42 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle43 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle44 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle46 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle50 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle47 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle48 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle49 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle51 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle54 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle52 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle53 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.dtTo = New System.Windows.Forms.DateTimePicker()
         Me.dtFrom = New System.Windows.Forms.DateTimePicker()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.dgYearlySales = New System.Windows.Forms.DataGridView()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -66,11 +71,6 @@ Partial Class frmSupplySalesSummary
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -95,6 +95,19 @@ Partial Class frmSupplySalesSummary
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1166, 31)
         Me.Panel2.TabIndex = 20
+        '
+        'Label3
+        '
+        Me.Label3.BackColor = System.Drawing.Color.Transparent
+        Me.Label3.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Label3.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.Black
+        Me.Label3.Location = New System.Drawing.Point(1113, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(53, 31)
+        Me.Label3.TabIndex = 4
+        Me.Label3.Text = "[ PRINT ]"
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'dtTo
         '
@@ -150,6 +163,54 @@ Partial Class frmSupplySalesSummary
         Me.Panel3.Size = New System.Drawing.Size(1166, 31)
         Me.Panel3.TabIndex = 21
         '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.BackColor = System.Drawing.Color.Transparent
+        Me.Label7.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.ForeColor = System.Drawing.Color.Black
+        Me.Label7.Location = New System.Drawing.Point(756, 12)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(38, 16)
+        Me.Label7.TabIndex = 6
+        Me.Label7.Text = "DAILY"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.BackColor = System.Drawing.Color.Transparent
+        Me.Label6.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.ForeColor = System.Drawing.Color.Black
+        Me.Label6.Location = New System.Drawing.Point(504, 12)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(62, 16)
+        Me.Label6.TabIndex = 5
+        Me.Label6.Text = "MONTHLY"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.BackColor = System.Drawing.Color.Transparent
+        Me.Label5.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.Black
+        Me.Label5.Location = New System.Drawing.Point(253, 12)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(70, 16)
+        Me.Label5.TabIndex = 4
+        Me.Label5.Text = "QUARTERLY"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.BackColor = System.Drawing.Color.Transparent
+        Me.Label4.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.Black
+        Me.Label4.Location = New System.Drawing.Point(2, 12)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(47, 16)
+        Me.Label4.TabIndex = 3
+        Me.Label4.Text = "YEARLY"
+        '
         'Panel4
         '
         Me.Panel4.Controls.Add(Me.dgYearlySales)
@@ -165,27 +226,27 @@ Partial Class frmSupplySalesSummary
         Me.dgYearlySales.AllowUserToAddRows = False
         Me.dgYearlySales.BackgroundColor = System.Drawing.Color.White
         Me.dgYearlySales.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dgYearlySales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
+        Me.dgYearlySales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgYearlySales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle37.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle37.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle37.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle37.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle37.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgYearlySales.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle37
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgYearlySales.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgYearlySales.ColumnHeadersHeight = 30
         Me.dgYearlySales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgYearlySales.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column4, Me.Column7})
-        DataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle40.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle40.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle40.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle40.SelectionBackColor = System.Drawing.Color.Silver
-        DataGridViewCellStyle40.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgYearlySales.DefaultCellStyle = DataGridViewCellStyle40
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Silver
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgYearlySales.DefaultCellStyle = DataGridViewCellStyle4
         Me.dgYearlySales.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgYearlySales.EnableHeadersVisualStyles = False
         Me.dgYearlySales.Location = New System.Drawing.Point(0, 1)
@@ -199,8 +260,8 @@ Partial Class frmSupplySalesSummary
         'Column4
         '
         Me.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle38
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle2
         Me.Column4.HeaderText = "YEAR"
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
@@ -208,8 +269,8 @@ Partial Class frmSupplySalesSummary
         'Column7
         '
         Me.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column7.DefaultCellStyle = DataGridViewCellStyle39
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column7.DefaultCellStyle = DataGridViewCellStyle3
         Me.Column7.HeaderText = "TOTAL"
         Me.Column7.Name = "Column7"
         Me.Column7.ReadOnly = True
@@ -230,27 +291,27 @@ Partial Class frmSupplySalesSummary
         Me.dgQuarterlySales.AllowUserToAddRows = False
         Me.dgQuarterlySales.BackgroundColor = System.Drawing.Color.White
         Me.dgQuarterlySales.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dgQuarterlySales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
+        Me.dgQuarterlySales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgQuarterlySales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle41.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle41.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle41.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle41.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle41.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle41.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgQuarterlySales.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle41
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgQuarterlySales.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.dgQuarterlySales.ColumnHeadersHeight = 30
         Me.dgQuarterlySales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgQuarterlySales.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3})
-        DataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle45.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle45.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle45.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle45.SelectionBackColor = System.Drawing.Color.Silver
-        DataGridViewCellStyle45.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle45.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgQuarterlySales.DefaultCellStyle = DataGridViewCellStyle45
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Silver
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgQuarterlySales.DefaultCellStyle = DataGridViewCellStyle9
         Me.dgQuarterlySales.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgQuarterlySales.EnableHeadersVisualStyles = False
         Me.dgQuarterlySales.Location = New System.Drawing.Point(1, 1)
@@ -264,8 +325,8 @@ Partial Class frmSupplySalesSummary
         'Column1
         '
         Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.Column1.DefaultCellStyle = DataGridViewCellStyle42
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.Column1.DefaultCellStyle = DataGridViewCellStyle6
         Me.Column1.HeaderText = "YEAR"
         Me.Column1.Name = "Column1"
         Me.Column1.ReadOnly = True
@@ -273,8 +334,8 @@ Partial Class frmSupplySalesSummary
         'DataGridViewTextBoxColumn2
         '
         Me.DataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle43
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle7
         Me.DataGridViewTextBoxColumn2.HeaderText = "QUARTER"
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
         Me.DataGridViewTextBoxColumn2.ReadOnly = True
@@ -283,8 +344,8 @@ Partial Class frmSupplySalesSummary
         'DataGridViewTextBoxColumn3
         '
         Me.DataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle44
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle8
         Me.DataGridViewTextBoxColumn3.HeaderText = "TOTAL"
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
         Me.DataGridViewTextBoxColumn3.ReadOnly = True
@@ -305,27 +366,27 @@ Partial Class frmSupplySalesSummary
         Me.dgMonthlySales.AllowUserToAddRows = False
         Me.dgMonthlySales.BackgroundColor = System.Drawing.Color.White
         Me.dgMonthlySales.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dgMonthlySales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
+        Me.dgMonthlySales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgMonthlySales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle46.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle46.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle46.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle46.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle46.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle46.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgMonthlySales.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle46
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgMonthlySales.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle10
         Me.dgMonthlySales.ColumnHeadersHeight = 30
         Me.dgMonthlySales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgMonthlySales.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column2, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6})
-        DataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle50.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle50.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle50.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle50.SelectionBackColor = System.Drawing.Color.Silver
-        DataGridViewCellStyle50.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle50.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgMonthlySales.DefaultCellStyle = DataGridViewCellStyle50
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.Silver
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgMonthlySales.DefaultCellStyle = DataGridViewCellStyle14
         Me.dgMonthlySales.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgMonthlySales.EnableHeadersVisualStyles = False
         Me.dgMonthlySales.Location = New System.Drawing.Point(1, 1)
@@ -339,8 +400,8 @@ Partial Class frmSupplySalesSummary
         'Column2
         '
         Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.Column2.DefaultCellStyle = DataGridViewCellStyle47
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.Column2.DefaultCellStyle = DataGridViewCellStyle11
         Me.Column2.HeaderText = "YEAR"
         Me.Column2.Name = "Column2"
         Me.Column2.ReadOnly = True
@@ -349,8 +410,8 @@ Partial Class frmSupplySalesSummary
         'DataGridViewTextBoxColumn5
         '
         Me.DataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.DataGridViewTextBoxColumn5.DefaultCellStyle = DataGridViewCellStyle48
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.DataGridViewTextBoxColumn5.DefaultCellStyle = DataGridViewCellStyle12
         Me.DataGridViewTextBoxColumn5.HeaderText = "MONTH"
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
         Me.DataGridViewTextBoxColumn5.ReadOnly = True
@@ -358,8 +419,8 @@ Partial Class frmSupplySalesSummary
         'DataGridViewTextBoxColumn6
         '
         Me.DataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle49
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle13
         Me.DataGridViewTextBoxColumn6.HeaderText = "TOTAL"
         Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
         Me.DataGridViewTextBoxColumn6.ReadOnly = True
@@ -380,27 +441,27 @@ Partial Class frmSupplySalesSummary
         Me.dgDailySales.AllowUserToAddRows = False
         Me.dgDailySales.BackgroundColor = System.Drawing.Color.White
         Me.dgDailySales.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dgDailySales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
+        Me.dgDailySales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgDailySales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle51.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle51.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle51.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle51.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle51.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle51.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgDailySales.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle51
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle15.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle15.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgDailySales.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle15
         Me.dgDailySales.ColumnHeadersHeight = 30
         Me.dgDailySales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgDailySales.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn8, Me.Column3, Me.Column5, Me.DataGridViewTextBoxColumn9})
-        DataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle54.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle54.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle54.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle54.SelectionBackColor = System.Drawing.Color.Silver
-        DataGridViewCellStyle54.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle54.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgDailySales.DefaultCellStyle = DataGridViewCellStyle54
+        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle18.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.Silver
+        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgDailySales.DefaultCellStyle = DataGridViewCellStyle18
         Me.dgDailySales.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgDailySales.EnableHeadersVisualStyles = False
         Me.dgDailySales.Location = New System.Drawing.Point(1, 1)
@@ -414,8 +475,8 @@ Partial Class frmSupplySalesSummary
         'DataGridViewTextBoxColumn8
         '
         Me.DataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle52
+        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle16
         Me.DataGridViewTextBoxColumn8.HeaderText = "YEAR"
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
         Me.DataGridViewTextBoxColumn8.ReadOnly = True
@@ -439,75 +500,14 @@ Partial Class frmSupplySalesSummary
         'DataGridViewTextBoxColumn9
         '
         Me.DataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.DataGridViewTextBoxColumn9.DefaultCellStyle = DataGridViewCellStyle53
+        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn9.DefaultCellStyle = DataGridViewCellStyle17
         Me.DataGridViewTextBoxColumn9.HeaderText = "TOTAL"
         Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
         Me.DataGridViewTextBoxColumn9.ReadOnly = True
         Me.DataGridViewTextBoxColumn9.Width = 63
         '
-        'Label3
-        '
-        Me.Label3.BackColor = System.Drawing.Color.Transparent
-        Me.Label3.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Label3.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.Black
-        Me.Label3.Location = New System.Drawing.Point(1113, 0)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(53, 31)
-        Me.Label3.TabIndex = 4
-        Me.Label3.Text = "[ PRINT ]"
-        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.BackColor = System.Drawing.Color.Transparent
-        Me.Label4.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.Black
-        Me.Label4.Location = New System.Drawing.Point(2, 12)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(47, 16)
-        Me.Label4.TabIndex = 3
-        Me.Label4.Text = "YEARLY"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.BackColor = System.Drawing.Color.Transparent
-        Me.Label5.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(253, 12)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(70, 16)
-        Me.Label5.TabIndex = 4
-        Me.Label5.Text = "QUARTERLY"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.BackColor = System.Drawing.Color.Transparent
-        Me.Label6.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.ForeColor = System.Drawing.Color.Black
-        Me.Label6.Location = New System.Drawing.Point(504, 12)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(62, 16)
-        Me.Label6.TabIndex = 5
-        Me.Label6.Text = "MONTHLY"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.BackColor = System.Drawing.Color.Transparent
-        Me.Label7.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.ForeColor = System.Drawing.Color.Black
-        Me.Label7.Location = New System.Drawing.Point(756, 12)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(38, 16)
-        Me.Label7.TabIndex = 6
-        Me.Label7.Text = "DAILY"
-        '
-        'frmSalesSummary
+        'frmSupplySalesSummary
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -523,7 +523,7 @@ Partial Class frmSupplySalesSummary
         Me.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.Name = "frmSalesSummary"
+        Me.Name = "frmSupplySalesSummary"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel2.ResumeLayout(False)

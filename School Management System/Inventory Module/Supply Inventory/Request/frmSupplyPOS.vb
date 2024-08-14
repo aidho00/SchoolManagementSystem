@@ -260,10 +260,10 @@ Public Class frmSupplyPOS
                         Dim sql2 As String
                         If cs_hs.Text = "cs" Then
                             studentstatus = "college"
-                            sql2 = "insert into cfcissmsdb.tbl_assessment_additional (additional_period_id, additional_item_id, additional_stud_id, additional_amount, additional_date_added, additional_added_by, additional_qty, additional_price) values (@1,@2,@3,@4,CURDATE(),@6,@7,@8)"
+                            sql2 = "insert into cfcissmsdb.tbl_assessment_additional (additional_period_id, additional_item_id, additional_stud_id, additional_amount, additional_date_added, additional_added_by, additional_qty, additional_price, additional_transno) values (@1,@2,@3,@4,CURDATE(),@6,@7,@8,@9)"
                         ElseIf cs_hs.Text = "hs" Then
                             studentstatus = "highschool"
-                            sql2 = "insert into cfcissmsdbhighschool.tbl_assessment_additional (additional_period_id, additional_item_id, additional_stud_id, additional_amount, additional_date_added, additional_added_by, additional_qty, additional_price) values (@1,@2,@3,@4,CURDATE(),@6,@7,@8)"
+                            sql2 = "insert into cfcissmsdbhighschool.tbl_assessment_additional (additional_period_id, additional_item_id, additional_stud_id, additional_amount, additional_date_added, additional_added_by, additional_qty, additional_price, additional_transno) values (@1,@2,@3,@4,CURDATE(),@6,@7,@8,@9)"
                         End If
 
                         cm = New MySqlCommand(sql2, cn)
@@ -276,14 +276,15 @@ Public Class frmSupplyPOS
                             .Parameters.AddWithValue("@6", str_userid)
                             .Parameters.AddWithValue("@7", CInt(row.Cells(3).Value))
                             .Parameters.AddWithValue("@8", CInt(row.Cells(2).Value))
+                            .Parameters.AddWithValue("@9", lblTransno.Text)
                             .ExecuteNonQuery()
                         End With
                         cn.Close()
 
                         cn.Open()
-                        cm = New MySqlCommand("insert into tbl_supply_deployed (dbarcode, dqty, dlocation, ddate, dprice, ditem_price, qty_requested,dstudentid, duser_id) values (@1,@2,@3,CURDATE(),@5,@6,@7,@8,@9)", cn)
+                        cm = New MySqlCommand("insert into tbl_supply_deployed (dbarcode, dqty, dlocation, ddate, dprice, ditem_price, qty_requested,dstudentid, druser_id, dperiodid, dtransno) values (@1,@2,@3,CURDATE(),@5,@6,@7,@8,@9,@10,@11)", cn)
                         With cm
-                            .Parameters.AddWithValue("@1", CInt(cmb_period.SelectedValue))
+                            .Parameters.AddWithValue("@1", row.Cells(0).Value)
                             .Parameters.AddWithValue("@2", CInt(row.Cells(3).Value))
                             .Parameters.AddWithValue("@3", lblLocationNumber.Text)
 
@@ -296,6 +297,8 @@ Public Class frmSupplyPOS
                                 .Parameters.AddWithValue("@8", "HS - " & stud_id.Text)
                             End If
                             .Parameters.AddWithValue("@9", str_userid)
+                            .Parameters.AddWithValue("@10", CInt(cmb_period.SelectedValue))
+                            .Parameters.AddWithValue("@11", lblTransno.Text)
                             .ExecuteNonQuery()
                         End With
                         StockLedger(row.Cells(0).Value, 0, CInt(row.Cells(3).Value), "Issued to " & studentstatus & " student.", "Student Item Release", "Item Release No." & lblTransno.Text & "")

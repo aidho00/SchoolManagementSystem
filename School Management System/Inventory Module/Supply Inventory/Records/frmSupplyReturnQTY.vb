@@ -16,7 +16,7 @@ Public Class frmSupplyReturnQTY
                 If x = 0 Then
                     cn.Close()
                     cn.Open()
-                    cm = New MySqlCommand("Update tbl_supply_deployed set dqty = @1, qty_returned = @2, dstatus = 'CANCELLED', ditem_price = dprice * @1 where dbarcode = @3 and dstudentid = @4", cn)
+                    cm = New MySqlCommand("Update tbl_supply_deployed set dqty = @1, qty_returned = @2, dstatus = 'CANCELLED', ditem_price = dprice * @1 where dbarcode = @3 and dtransno = @4", cn)
                     With cm
                         .Parameters.AddWithValue("@1", x)
                         .Parameters.AddWithValue("@2", CInt(txtQty.Text))
@@ -37,6 +37,8 @@ Public Class frmSupplyReturnQTY
                         .Dispose()
                     End With
                     cn.Close()
+
+                    StockLedger(frmSupplyReturn.dgCart.CurrentRow.Cells(0).Value, CInt(txtQty.Text), 0, "Supply Request Item Return", "Stock Return", "REQUEST ID: " & frmSupplyRecords.cbRequests.Text)
 
                     MsgBox("Item(s) has been successfully returned!", vbInformation)
 
@@ -68,6 +70,9 @@ Public Class frmSupplyReturnQTY
                         .Dispose()
                     End With
                     cn.Close()
+
+                    StockLedger(frmSupplyReturn.dgCart.CurrentRow.Cells(0).Value, CInt(txtQty.Text), 0, "Supply Request Item Return", "Stock Return", "REQUEST ID: " & frmSupplyRecords.cbRequests.Text)
+
 
                     MsgBox("Item(s) has been successfully returned!", vbInformation)
 

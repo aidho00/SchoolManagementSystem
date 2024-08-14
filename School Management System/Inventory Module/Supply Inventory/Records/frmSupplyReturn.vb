@@ -90,7 +90,7 @@ Public Class frmSupplyReturn
         Return tot
     End Function
 
-    Private Sub btnClose_Click(sender As Object, e As EventArgs)
-        Me.Dispose()
+    Private Sub btnClose_Click_1(sender As Object, e As EventArgs) Handles btnClose.Click
+        Me.Close()
     End Sub
 End Class

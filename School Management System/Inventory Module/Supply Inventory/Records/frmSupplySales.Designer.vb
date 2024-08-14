@@ -192,7 +192,7 @@ Partial Class frmSupplySales
         Me.dgSales.AllowUserToAddRows = False
         Me.dgSales.BackgroundColor = System.Drawing.Color.White
         Me.dgSales.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dgSales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
+        Me.dgSales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgSales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.Color.White

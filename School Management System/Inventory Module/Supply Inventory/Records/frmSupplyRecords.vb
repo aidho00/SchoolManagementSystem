@@ -377,7 +377,7 @@ Public Class frmSupplyRecords
         Dim x As Integer = CInt(txtboxlocation.SelectedValue)
         Dim sdate1 As String = dtFrom.Value.ToString("yyyy-MM-dd")
         Dim sdate2 As String = dtTo.Value.ToString("yyyy-MM-dd")
-        fillCombo("select distinct(dstudentid) as ID, dstatus from tbl_supply_deployed where ddate between '" & dtFrom.Text & "' and '" & dtTo.Text & "' and dlocation = " & x & " order by dstudentid desc", cbRequests, "tbl_supply_deployed", "ID", "dstatus")
+        fillCombo("select distinct(dtransno) as ID, dstatus from tbl_supply_deployed where ddate between '" & dtFrom.Text & "' and '" & dtTo.Text & "' and dlocation = " & x & " order by dstudentid desc", cbRequests, "tbl_supply_deployed", "ID", "dstatus")
     End Sub
 
     Private Sub cbRequests_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbRequests.SelectedIndexChanged, ComboBox1.SelectedIndexChanged
@@ -433,9 +433,9 @@ Public Class frmSupplyRecords
     End Sub
 
     Private Sub lbl_status_TextChanged(sender As Object, e As EventArgs) Handles lbl_status.TextChanged
-        If lbl_status.Text = "APPROVED" Or lbl_status.Text = "CANCELLED" Then
+        If lbl_status.Text = "APPROVED" Then
             btn_return.Visible = True
-        ElseIf lbl_status.Text = "PENDING" Then
+        ElseIf lbl_status.Text = "PENDING" Or lbl_status.Text = "CANCELLED" Then
             btn_return.Visible = False
         End If
     End Sub

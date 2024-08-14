@@ -169,7 +169,7 @@ Partial Class frmSupplyPOS
         Me.dgItemList.AllowUserToAddRows = False
         Me.dgItemList.BackgroundColor = System.Drawing.Color.White
         Me.dgItemList.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dgItemList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
+        Me.dgItemList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgItemList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(46, Byte), Integer))

@@ -226,6 +226,7 @@ Partial Class frmMain
         Me.Label13 = New System.Windows.Forms.Label()
         Me.dashBoardPanel_Enrollment = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.lblAcadYear = New System.Windows.Forms.Label()
         Me.lblSemester = New System.Windows.Forms.Label()
@@ -264,7 +265,6 @@ Partial Class frmMain
         Me.Label16 = New System.Windows.Forms.Label()
         Me.PictureBox13 = New System.Windows.Forms.PictureBox()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.systemSign.SuspendLayout()
         CType(Me.schoolLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ComboBoxMenu.SuspendLayout()
@@ -3666,6 +3666,14 @@ Partial Class frmMain
         Me.Panel2.Size = New System.Drawing.Size(213, 101)
         Me.Panel2.TabIndex = 2
         '
+        'GroupBox4
+        '
+        Me.GroupBox4.Location = New System.Drawing.Point(40, 1)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(2, 95)
+        Me.GroupBox4.TabIndex = 13
+        Me.GroupBox4.TabStop = False
+        '
         'Label8
         '
         Me.Label8.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -4075,14 +4083,6 @@ Partial Class frmMain
         Me.Label7.TabIndex = 17
         Me.Label7.Text = "✕"
         Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'GroupBox4
-        '
-        Me.GroupBox4.Location = New System.Drawing.Point(40, 1)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(2, 95)
-        Me.GroupBox4.TabIndex = 13
-        Me.GroupBox4.TabStop = False
         '
         'frmMain
         '

@@ -36,7 +36,7 @@ Partial Class frmSupplyPOSStudID
         Me.lblQty.Name = "lblQty"
         Me.lblQty.Size = New System.Drawing.Size(276, 21)
         Me.lblQty.TabIndex = 20
-        Me.lblQty.Text = "STUDENT ID"
+        Me.lblQty.Text = "SCAN/INPUT STUDENT ID"
         Me.lblQty.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'txtStudentID
@@ -76,7 +76,7 @@ Partial Class frmSupplyPOSStudID
         Me.highschool.Text = "          Basic Education"
         Me.highschool.UseVisualStyleBackColor = False
         '
-        'SupplyPOSStudID
+        'frmSupplyPOSStudID
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -90,7 +90,7 @@ Partial Class frmSupplyPOSStudID
         Me.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.Name = "SupplyPOSStudID"
+        Me.Name = "frmSupplyPOSStudID"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.ResumeLayout(False)
         Me.PerformLayout()

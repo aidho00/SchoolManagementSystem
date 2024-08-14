@@ -28,8 +28,8 @@ Public Class frmSupplyPOSStudID
             End If
         Else
             If txtStudentID.Text.Length = 7 Then
-                cn.Open()
                 cn.Close()
+                cn.Open()
                 Dim sql As String
 
                 If college.Checked = True Then
@@ -77,6 +77,10 @@ Public Class frmSupplyPOSStudID
                             frmSupplyPOS.cs_hs.Text = "hs"
                             fillCombo("SELECT CONCAT(period_name,'-',period_semester) as 'PERIOD', period_id FROM  cfcissmsdbhighschool.tbl_period t1 JOIN cfcissmsdbhighschool.tbl_student_paid_account_breakdown t2 ON t1.period_id = t2.spab_period_id where t2.spab_stud_id = '" & txtStudentID.Text & "' order by  `period_name` desc, `period_semester` desc, `period_status` asc", frmSupplyPOS.cmb_period, "period", "PERIOD", "period_id")
                         End If
+                        Try
+                            frmSupplyPOS.cmb_period.SelectedIndex = 0
+                        Catch ex As Exception
+                        End Try
                     Catch ex As Exception
                     End Try
                     txtStudentID.Text = ""

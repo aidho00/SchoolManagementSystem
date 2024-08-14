@@ -46,8 +46,23 @@ Public Class frmSupplyPOSLocation
 
     Sub GetTable_Click(sender As Object, e As EventArgs)
         Try
+
+            frmSupplyPOS.lblLocationNumber.Text = "0"
+            frmSupplyPOS.txtItemID.Clear()
+            frmSupplyPOS.lblTotal.Text = "0.00"
+            frmSupplyPOS.lblLocation.Text = ""
+            frmSupplyPOS.lblTransno.Text = ""
+            frmSupplyPOS.dgCart.Rows.Clear()
+
+            frmSupplyPOS.stud_gender.Text = ""
+            frmSupplyPOS.stud_id.Text = ""
+            frmSupplyPOS.stud_name.Text = ""
+            frmSupplyPOS.stud_yrcourse.Text = ""
+            frmSupplyPOS.cmb_period.DataSource = Nothing
+
             Dim location As String = sender.tag.ToString
             Dim locationname As String
+            cn.Close()
             cn.Open()
             cm = New MySqlCommand("Select locationname from tbl_supply_location where locationnumber = " & location & "", cn)
             dr = cm.ExecuteReader
@@ -56,64 +71,19 @@ Public Class frmSupplyPOSLocation
             End While
             cn.Close()
 
-            If locationname = frmSupplyPOS.lblLocation.Text Then
+            If frmSupplyPOS.lblLocation.Text = "STUDENT" Then
                 With frmSupplyPOS
-                    .lblLocation.Text = locationname
                     .lblLocationNumber.Text = location
+                    .lblLocation.Text = locationname
                 End With
-                Me.Dispose()
-                If frmSupplyPOS.lblLocationNumber.Text = "0" Then
-                    frmSupplyPOSStudID.ShowDialog()
-                End If
             Else
-                Dim found As Boolean
-                cn.Open()
-                cm = New MySqlCommand("select * from tbl_supply_location where locationnumber = @1 and status = 'False'", cn)
-                With cm
-                    .Parameters.AddWithValue("@1", location)
+                With frmSupplyPOS
+                    .lblLocationNumber.Text = location
+                    .lblLocation.Text = locationname
+                    .loadCart()
                 End With
-                dr = cm.ExecuteReader
-                dr.Read()
-                If dr.HasRows Then
-                    found = True
-                Else
-                    found = False
-                End If
-                cn.Close()
-
-                If found = True Then
-                    cn.Open()
-                    cm = New MySqlCommand("Update tbl_supply_location set status = 'True' where locationnumber = " & location & "", cn)
-                    cm.ExecuteNonQuery()
-                    cn.Close()
-
-                    cn.Open()
-                    cm = New MySqlCommand("Update tbl_supply_location set status = 'False' where locationnumber = '" & frmSupplyPOS.lblLocationNumber.Text & "'", cn)
-                    cm.ExecuteNonQuery()
-                    cn.Close()
-
-                    With frmSupplyPOS
-                        .lblLocation.Text = locationname
-                        .lblLocationNumber.Text = location
-                        .loadCart()
-                    End With
-
-                    'If frmDeployedPOS.lblLocation.Text = String.Empty Then
-                    'Else
-                    '    AuditTrail("Closed table " & frmDeployedPOS.lblLocation.Text & ".")
-                    'End If
-
-                    'AuditTrail("Opens table " & table & " for a new order.")
-
-                    Me.Dispose()
-                    If frmSupplyPOS.lblLocationNumber.Text = "0" Then
-                        frmSupplyPOSStudID.ShowDialog()
-                    End If
-                ElseIf found = False Then
-                    MsgBox("This office/table is already open for ordering/billing on another user's transaction window!", vbExclamation)
-                    Return
-                End If
             End If
+            Me.Close()
         Catch ex As Exception
             cn.Close()
             MsgBox(ex.Message, vbCritical)
@@ -138,9 +108,5 @@ Public Class frmSupplyPOSLocation
     Private Sub ToolStripButton3_Click(sender As Object, e As EventArgs) Handles ToolStripButton3.Click
         ResetControls(frmSupplyPOSLocationAdd)
         frmSupplyPOSLocationAdd.ShowDialog()
-    End Sub
-
-    Private Sub tablePanel_Paint(sender As Object, e As PaintEventArgs) Handles tablePanel.Paint
-
     End Sub
 End Class

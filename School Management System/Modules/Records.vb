@@ -174,9 +174,15 @@ Module Records
             Case "List Of Supply Items"
                 With frmSupplyItemAdd
                     ResetControls(frmSupplyItemAdd)
+                    .cbSupplyType.Enabled = True
                     .txtOpeningStock.Enabled = True
                     .btnUpdate.Visible = False
                     .btnSave.Visible = True
+
+                    .btnSearchBrand.Visible = True
+                    .btnSearchCategory.Visible = True
+                    .btnSearchSize.Visible = True
+
                     .CategoryID = 0
                     .SizeID = 0
                     .AutoBarCode()

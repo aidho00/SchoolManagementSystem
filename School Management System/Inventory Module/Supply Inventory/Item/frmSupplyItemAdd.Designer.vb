@@ -34,6 +34,26 @@ Partial Class frmSupplyItemAdd
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.BasePanel = New System.Windows.Forms.Panel()
+        Me.SearchPanel = New System.Windows.Forms.Panel()
+        Me.SearchBasePanel = New System.Windows.Forms.Panel()
+        Me.dgPanel = New System.Windows.Forms.Panel()
+        Me.dgSupplyBrand = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgSupplyCategory = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgSupplySize = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.frmTitle = New System.Windows.Forms.Label()
+        Me.btnAdd = New System.Windows.Forms.PictureBox()
+        Me.txtSearch = New System.Windows.Forms.TextBox()
+        Me.Panel10 = New System.Windows.Forms.Panel()
+        Me.btnSelect = New System.Windows.Forms.Button()
+        Me.btnCancelSearch = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.cbSupplyBrand = New System.Windows.Forms.TextBox()
@@ -66,32 +86,8 @@ Partial Class frmSupplyItemAdd
         Me.txtPrice = New System.Windows.Forms.TextBox()
         Me.txtOpeningStock = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.SearchPanel = New System.Windows.Forms.Panel()
-        Me.SearchBasePanel = New System.Windows.Forms.Panel()
-        Me.dgPanel = New System.Windows.Forms.Panel()
-        Me.dgSupplyBrand = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.dgSupplyCategory = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.dgSupplySize = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Panel7 = New System.Windows.Forms.Panel()
-        Me.Panel8 = New System.Windows.Forms.Panel()
-        Me.frmTitle = New System.Windows.Forms.Label()
-        Me.btnAdd = New System.Windows.Forms.PictureBox()
-        Me.txtSearch = New System.Windows.Forms.TextBox()
-        Me.Panel10 = New System.Windows.Forms.Panel()
-        Me.btnSelect = New System.Windows.Forms.Button()
-        Me.btnCancelSearch = New System.Windows.Forms.Button()
         Me.systemSign.SuspendLayout()
         Me.BasePanel.SuspendLayout()
-        Me.Panel2.SuspendLayout()
-        Me.Panel3.SuspendLayout()
-        Me.FlowLayoutPanel1.SuspendLayout()
-        CType(Me.barcodeIMG, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SearchPanel.SuspendLayout()
         Me.SearchBasePanel.SuspendLayout()
         Me.dgPanel.SuspendLayout()
@@ -102,6 +98,10 @@ Partial Class frmSupplyItemAdd
         Me.Panel8.SuspendLayout()
         CType(Me.btnAdd, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel10.SuspendLayout()
+        Me.Panel2.SuspendLayout()
+        Me.Panel3.SuspendLayout()
+        Me.FlowLayoutPanel1.SuspendLayout()
+        CType(Me.barcodeIMG, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'systemSign
@@ -162,347 +162,6 @@ Partial Class frmSupplyItemAdd
         Me.BasePanel.Name = "BasePanel"
         Me.BasePanel.Size = New System.Drawing.Size(828, 430)
         Me.BasePanel.TabIndex = 419
-        '
-        'Panel2
-        '
-        Me.Panel2.Controls.Add(Me.Panel4)
-        Me.Panel2.Controls.Add(Me.cbSupplyBrand)
-        Me.Panel2.Controls.Add(Me.txtSupplyDesc)
-        Me.Panel2.Controls.Add(Me.cbSupplySize)
-        Me.Panel2.Controls.Add(Me.cbSupplyCategory)
-        Me.Panel2.Controls.Add(Me.Panel3)
-        Me.Panel2.Controls.Add(Me.barcodeIMG)
-        Me.Panel2.Controls.Add(Me.Label8)
-        Me.Panel2.Controls.Add(Me.Label10)
-        Me.Panel2.Controls.Add(Me.Label4)
-        Me.Panel2.Controls.Add(Me.Label6)
-        Me.Panel2.Controls.Add(Me.Label13)
-        Me.Panel2.Controls.Add(Me.Label9)
-        Me.Panel2.Controls.Add(Me.Label5)
-        Me.Panel2.Controls.Add(Me.Label3)
-        Me.Panel2.Controls.Add(Me.cbSupplyStatus)
-        Me.Panel2.Controls.Add(Me.Label11)
-        Me.Panel2.Controls.Add(Me.btnSearchBrand)
-        Me.Panel2.Controls.Add(Me.cbSupplyType)
-        Me.Panel2.Controls.Add(Me.btnSearchSize)
-        Me.Panel2.Controls.Add(Me.btnSearchCategory)
-        Me.Panel2.Controls.Add(Me.Label7)
-        Me.Panel2.Controls.Add(Me.barcodeID)
-        Me.Panel2.Controls.Add(Me.txtReOrderPoint)
-        Me.Panel2.Controls.Add(Me.txtPrice)
-        Me.Panel2.Controls.Add(Me.txtOpeningStock)
-        Me.Panel2.Controls.Add(Me.Label2)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(828, 430)
-        Me.Panel2.TabIndex = 0
-        '
-        'Panel4
-        '
-        Me.Panel4.BackColor = System.Drawing.Color.Black
-        Me.Panel4.Location = New System.Drawing.Point(78, 257)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(682, 1)
-        Me.Panel4.TabIndex = 443
-        '
-        'cbSupplyBrand
-        '
-        Me.cbSupplyBrand.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.cbSupplyBrand.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.cbSupplyBrand.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbSupplyBrand.Location = New System.Drawing.Point(206, 158)
-        Me.cbSupplyBrand.Name = "cbSupplyBrand"
-        Me.cbSupplyBrand.Size = New System.Drawing.Size(280, 21)
-        Me.cbSupplyBrand.TabIndex = 442
-        '
-        'txtSupplyDesc
-        '
-        Me.txtSupplyDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtSupplyDesc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtSupplyDesc.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSupplyDesc.Location = New System.Drawing.Point(206, 212)
-        Me.txtSupplyDesc.Name = "txtSupplyDesc"
-        Me.txtSupplyDesc.Size = New System.Drawing.Size(554, 21)
-        Me.txtSupplyDesc.TabIndex = 442
-        '
-        'cbSupplySize
-        '
-        Me.cbSupplySize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.cbSupplySize.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.cbSupplySize.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbSupplySize.Location = New System.Drawing.Point(206, 185)
-        Me.cbSupplySize.Name = "cbSupplySize"
-        Me.cbSupplySize.Size = New System.Drawing.Size(280, 21)
-        Me.cbSupplySize.TabIndex = 442
-        '
-        'cbSupplyCategory
-        '
-        Me.cbSupplyCategory.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.cbSupplyCategory.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.cbSupplyCategory.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbSupplyCategory.Location = New System.Drawing.Point(206, 131)
-        Me.cbSupplyCategory.Name = "cbSupplyCategory"
-        Me.cbSupplyCategory.Size = New System.Drawing.Size(280, 21)
-        Me.cbSupplyCategory.TabIndex = 442
-        '
-        'Panel3
-        '
-        Me.Panel3.Controls.Add(Me.FlowLayoutPanel1)
-        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel3.Location = New System.Drawing.Point(0, 391)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(828, 39)
-        Me.Panel3.TabIndex = 441
-        '
-        'FlowLayoutPanel1
-        '
-        Me.FlowLayoutPanel1.Controls.Add(Me.btnCancel)
-        Me.FlowLayoutPanel1.Controls.Add(Me.btnSave)
-        Me.FlowLayoutPanel1.Controls.Add(Me.btnUpdate)
-        Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right
-        Me.FlowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft
-        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(451, 0)
-        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(377, 39)
-        Me.FlowLayoutPanel1.TabIndex = 1
-        '
-        'btnCancel
-        '
-        Me.btnCancel.BackColor = System.Drawing.SystemColors.Control
-        Me.btnCancel.FlatAppearance.BorderSize = 0
-        Me.btnCancel.Location = New System.Drawing.Point(278, 3)
-        Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(96, 34)
-        Me.btnCancel.TabIndex = 0
-        Me.btnCancel.Text = "CANCEL"
-        Me.btnCancel.UseVisualStyleBackColor = False
-        '
-        'btnSave
-        '
-        Me.btnSave.FlatAppearance.BorderSize = 0
-        Me.btnSave.Location = New System.Drawing.Point(176, 3)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(96, 34)
-        Me.btnSave.TabIndex = 2
-        Me.btnSave.Text = "SAVE"
-        Me.btnSave.UseVisualStyleBackColor = True
-        '
-        'btnUpdate
-        '
-        Me.btnUpdate.FlatAppearance.BorderSize = 0
-        Me.btnUpdate.Location = New System.Drawing.Point(74, 3)
-        Me.btnUpdate.Name = "btnUpdate"
-        Me.btnUpdate.Size = New System.Drawing.Size(96, 34)
-        Me.btnUpdate.TabIndex = 1
-        Me.btnUpdate.Text = "UPDATE"
-        Me.btnUpdate.UseVisualStyleBackColor = True
-        '
-        'barcodeIMG
-        '
-        Me.barcodeIMG.Location = New System.Drawing.Point(531, 96)
-        Me.barcodeIMG.Name = "barcodeIMG"
-        Me.barcodeIMG.Size = New System.Drawing.Size(229, 109)
-        Me.barcodeIMG.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.barcodeIMG.TabIndex = 440
-        Me.barcodeIMG.TabStop = False
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(528, 73)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(54, 16)
-        Me.Label8.TabIndex = 432
-        Me.Label8.Text = "Barcode"
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(75, 281)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(34, 16)
-        Me.Label10.TabIndex = 431
-        Me.Label10.Text = "Price"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(75, 310)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(80, 16)
-        Me.Label4.TabIndex = 430
-        Me.Label4.Text = "Reorder Point"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(75, 339)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(88, 16)
-        Me.Label6.TabIndex = 429
-        Me.Label6.Text = "Opening Stock"
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(75, 162)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(40, 16)
-        Me.Label13.TabIndex = 427
-        Me.Label13.Text = "Brand"
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(75, 215)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(110, 16)
-        Me.Label9.TabIndex = 428
-        Me.Label9.Text = "Description (Brand)"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(75, 189)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(28, 16)
-        Me.Label5.TabIndex = 427
-        Me.Label5.Text = "Size"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(75, 133)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(59, 16)
-        Me.Label3.TabIndex = 426
-        Me.Label3.Text = "Category"
-        '
-        'cbSupplyStatus
-        '
-        Me.cbSupplyStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbSupplyStatus.FormattingEnabled = True
-        Me.cbSupplyStatus.Items.AddRange(New Object() {"Available", "Unavailable"})
-        Me.cbSupplyStatus.Location = New System.Drawing.Point(616, 34)
-        Me.cbSupplyStatus.Name = "cbSupplyStatus"
-        Me.cbSupplyStatus.Size = New System.Drawing.Size(144, 24)
-        Me.cbSupplyStatus.TabIndex = 436
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(528, 37)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(41, 16)
-        Me.Label11.TabIndex = 425
-        Me.Label11.Text = "Status"
-        '
-        'btnSearchBrand
-        '
-        Me.btnSearchBrand.AutoSize = True
-        Me.btnSearchBrand.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnSearchBrand.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSearchBrand.Location = New System.Drawing.Point(492, 159)
-        Me.btnSearchBrand.Name = "btnSearchBrand"
-        Me.btnSearchBrand.Size = New System.Drawing.Size(24, 17)
-        Me.btnSearchBrand.TabIndex = 424
-        Me.btnSearchBrand.Text = "🔍"
-        '
-        'cbSupplyType
-        '
-        Me.cbSupplyType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbSupplyType.FormattingEnabled = True
-        Me.cbSupplyType.Items.AddRange(New Object() {"", "Office Supply", "School Consumable"})
-        Me.cbSupplyType.Location = New System.Drawing.Point(206, 100)
-        Me.cbSupplyType.Name = "cbSupplyType"
-        Me.cbSupplyType.Size = New System.Drawing.Size(280, 24)
-        Me.cbSupplyType.TabIndex = 439
-        '
-        'btnSearchSize
-        '
-        Me.btnSearchSize.AutoSize = True
-        Me.btnSearchSize.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnSearchSize.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSearchSize.Location = New System.Drawing.Point(492, 186)
-        Me.btnSearchSize.Name = "btnSearchSize"
-        Me.btnSearchSize.Size = New System.Drawing.Size(24, 17)
-        Me.btnSearchSize.TabIndex = 424
-        Me.btnSearchSize.Text = "🔍"
-        '
-        'btnSearchCategory
-        '
-        Me.btnSearchCategory.AutoSize = True
-        Me.btnSearchCategory.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnSearchCategory.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSearchCategory.Location = New System.Drawing.Point(492, 131)
-        Me.btnSearchCategory.Name = "btnSearchCategory"
-        Me.btnSearchCategory.Size = New System.Drawing.Size(24, 17)
-        Me.btnSearchCategory.TabIndex = 423
-        Me.btnSearchCategory.Text = "🔍"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(75, 103)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(34, 16)
-        Me.Label7.TabIndex = 433
-        Me.Label7.Text = "Type"
-        '
-        'barcodeID
-        '
-        Me.barcodeID.AutoSize = True
-        Me.barcodeID.Location = New System.Drawing.Point(203, 73)
-        Me.barcodeID.Name = "barcodeID"
-        Me.barcodeID.Size = New System.Drawing.Size(12, 16)
-        Me.barcodeID.TabIndex = 435
-        Me.barcodeID.Text = "-"
-        '
-        'txtReOrderPoint
-        '
-        Me.txtReOrderPoint.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtReOrderPoint.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtReOrderPoint.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtReOrderPoint.Location = New System.Drawing.Point(206, 307)
-        Me.txtReOrderPoint.Name = "txtReOrderPoint"
-        Me.txtReOrderPoint.Size = New System.Drawing.Size(280, 23)
-        Me.txtReOrderPoint.TabIndex = 422
-        Me.txtReOrderPoint.Text = "0"
-        Me.txtReOrderPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'txtPrice
-        '
-        Me.txtPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtPrice.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtPrice.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPrice.Location = New System.Drawing.Point(206, 278)
-        Me.txtPrice.Name = "txtPrice"
-        Me.txtPrice.Size = New System.Drawing.Size(280, 23)
-        Me.txtPrice.TabIndex = 421
-        Me.txtPrice.Text = "0.00"
-        Me.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'txtOpeningStock
-        '
-        Me.txtOpeningStock.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtOpeningStock.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtOpeningStock.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtOpeningStock.Location = New System.Drawing.Point(206, 336)
-        Me.txtOpeningStock.Name = "txtOpeningStock"
-        Me.txtOpeningStock.Size = New System.Drawing.Size(280, 23)
-        Me.txtOpeningStock.TabIndex = 420
-        Me.txtOpeningStock.Text = "0"
-        Me.txtOpeningStock.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(75, 73)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(53, 16)
-        Me.Label2.TabIndex = 434
-        Me.Label2.Text = "Item No."
         '
         'SearchPanel
         '
@@ -794,6 +453,347 @@ Partial Class frmSupplyItemAdd
         Me.btnCancelSearch.Text = "CANCEL"
         Me.btnCancelSearch.UseVisualStyleBackColor = True
         '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.Panel4)
+        Me.Panel2.Controls.Add(Me.cbSupplyBrand)
+        Me.Panel2.Controls.Add(Me.txtSupplyDesc)
+        Me.Panel2.Controls.Add(Me.cbSupplySize)
+        Me.Panel2.Controls.Add(Me.cbSupplyCategory)
+        Me.Panel2.Controls.Add(Me.Panel3)
+        Me.Panel2.Controls.Add(Me.barcodeIMG)
+        Me.Panel2.Controls.Add(Me.Label8)
+        Me.Panel2.Controls.Add(Me.Label10)
+        Me.Panel2.Controls.Add(Me.Label4)
+        Me.Panel2.Controls.Add(Me.Label6)
+        Me.Panel2.Controls.Add(Me.Label13)
+        Me.Panel2.Controls.Add(Me.Label9)
+        Me.Panel2.Controls.Add(Me.Label5)
+        Me.Panel2.Controls.Add(Me.Label3)
+        Me.Panel2.Controls.Add(Me.cbSupplyStatus)
+        Me.Panel2.Controls.Add(Me.Label11)
+        Me.Panel2.Controls.Add(Me.btnSearchBrand)
+        Me.Panel2.Controls.Add(Me.cbSupplyType)
+        Me.Panel2.Controls.Add(Me.btnSearchSize)
+        Me.Panel2.Controls.Add(Me.btnSearchCategory)
+        Me.Panel2.Controls.Add(Me.Label7)
+        Me.Panel2.Controls.Add(Me.barcodeID)
+        Me.Panel2.Controls.Add(Me.txtReOrderPoint)
+        Me.Panel2.Controls.Add(Me.txtPrice)
+        Me.Panel2.Controls.Add(Me.txtOpeningStock)
+        Me.Panel2.Controls.Add(Me.Label2)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel2.Location = New System.Drawing.Point(0, 0)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(828, 430)
+        Me.Panel2.TabIndex = 0
+        '
+        'Panel4
+        '
+        Me.Panel4.BackColor = System.Drawing.Color.Black
+        Me.Panel4.Location = New System.Drawing.Point(78, 257)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(682, 1)
+        Me.Panel4.TabIndex = 443
+        '
+        'cbSupplyBrand
+        '
+        Me.cbSupplyBrand.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.cbSupplyBrand.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.cbSupplyBrand.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbSupplyBrand.Location = New System.Drawing.Point(206, 158)
+        Me.cbSupplyBrand.Name = "cbSupplyBrand"
+        Me.cbSupplyBrand.Size = New System.Drawing.Size(280, 21)
+        Me.cbSupplyBrand.TabIndex = 442
+        '
+        'txtSupplyDesc
+        '
+        Me.txtSupplyDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtSupplyDesc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txtSupplyDesc.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSupplyDesc.Location = New System.Drawing.Point(206, 212)
+        Me.txtSupplyDesc.Name = "txtSupplyDesc"
+        Me.txtSupplyDesc.Size = New System.Drawing.Size(554, 21)
+        Me.txtSupplyDesc.TabIndex = 442
+        '
+        'cbSupplySize
+        '
+        Me.cbSupplySize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.cbSupplySize.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.cbSupplySize.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbSupplySize.Location = New System.Drawing.Point(206, 185)
+        Me.cbSupplySize.Name = "cbSupplySize"
+        Me.cbSupplySize.Size = New System.Drawing.Size(280, 21)
+        Me.cbSupplySize.TabIndex = 442
+        '
+        'cbSupplyCategory
+        '
+        Me.cbSupplyCategory.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.cbSupplyCategory.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.cbSupplyCategory.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbSupplyCategory.Location = New System.Drawing.Point(206, 131)
+        Me.cbSupplyCategory.Name = "cbSupplyCategory"
+        Me.cbSupplyCategory.Size = New System.Drawing.Size(280, 21)
+        Me.cbSupplyCategory.TabIndex = 442
+        '
+        'Panel3
+        '
+        Me.Panel3.Controls.Add(Me.FlowLayoutPanel1)
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel3.Location = New System.Drawing.Point(0, 391)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(828, 39)
+        Me.Panel3.TabIndex = 441
+        '
+        'FlowLayoutPanel1
+        '
+        Me.FlowLayoutPanel1.Controls.Add(Me.btnCancel)
+        Me.FlowLayoutPanel1.Controls.Add(Me.btnSave)
+        Me.FlowLayoutPanel1.Controls.Add(Me.btnUpdate)
+        Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right
+        Me.FlowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft
+        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(451, 0)
+        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(377, 39)
+        Me.FlowLayoutPanel1.TabIndex = 1
+        '
+        'btnCancel
+        '
+        Me.btnCancel.BackColor = System.Drawing.SystemColors.Control
+        Me.btnCancel.FlatAppearance.BorderSize = 0
+        Me.btnCancel.Location = New System.Drawing.Point(278, 3)
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(96, 34)
+        Me.btnCancel.TabIndex = 0
+        Me.btnCancel.Text = "CANCEL"
+        Me.btnCancel.UseVisualStyleBackColor = True
+        '
+        'btnSave
+        '
+        Me.btnSave.FlatAppearance.BorderSize = 0
+        Me.btnSave.Location = New System.Drawing.Point(176, 3)
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(96, 34)
+        Me.btnSave.TabIndex = 2
+        Me.btnSave.Text = "SAVE"
+        Me.btnSave.UseVisualStyleBackColor = True
+        '
+        'btnUpdate
+        '
+        Me.btnUpdate.FlatAppearance.BorderSize = 0
+        Me.btnUpdate.Location = New System.Drawing.Point(74, 3)
+        Me.btnUpdate.Name = "btnUpdate"
+        Me.btnUpdate.Size = New System.Drawing.Size(96, 34)
+        Me.btnUpdate.TabIndex = 1
+        Me.btnUpdate.Text = "UPDATE"
+        Me.btnUpdate.UseVisualStyleBackColor = True
+        '
+        'barcodeIMG
+        '
+        Me.barcodeIMG.Location = New System.Drawing.Point(531, 96)
+        Me.barcodeIMG.Name = "barcodeIMG"
+        Me.barcodeIMG.Size = New System.Drawing.Size(229, 109)
+        Me.barcodeIMG.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.barcodeIMG.TabIndex = 440
+        Me.barcodeIMG.TabStop = False
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(528, 73)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(54, 16)
+        Me.Label8.TabIndex = 432
+        Me.Label8.Text = "Barcode"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(75, 281)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(34, 16)
+        Me.Label10.TabIndex = 431
+        Me.Label10.Text = "Price"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(75, 310)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(80, 16)
+        Me.Label4.TabIndex = 430
+        Me.Label4.Text = "Reorder Point"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(75, 339)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(88, 16)
+        Me.Label6.TabIndex = 429
+        Me.Label6.Text = "Opening Stock"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(75, 162)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(40, 16)
+        Me.Label13.TabIndex = 427
+        Me.Label13.Text = "Brand"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(75, 215)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(110, 16)
+        Me.Label9.TabIndex = 428
+        Me.Label9.Text = "Description (Brand)"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(75, 189)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(28, 16)
+        Me.Label5.TabIndex = 427
+        Me.Label5.Text = "Size"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(75, 133)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(59, 16)
+        Me.Label3.TabIndex = 426
+        Me.Label3.Text = "Category"
+        '
+        'cbSupplyStatus
+        '
+        Me.cbSupplyStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbSupplyStatus.FormattingEnabled = True
+        Me.cbSupplyStatus.Items.AddRange(New Object() {"Available", "Unavailable"})
+        Me.cbSupplyStatus.Location = New System.Drawing.Point(616, 34)
+        Me.cbSupplyStatus.Name = "cbSupplyStatus"
+        Me.cbSupplyStatus.Size = New System.Drawing.Size(144, 24)
+        Me.cbSupplyStatus.TabIndex = 436
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(528, 37)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(41, 16)
+        Me.Label11.TabIndex = 425
+        Me.Label11.Text = "Status"
+        '
+        'btnSearchBrand
+        '
+        Me.btnSearchBrand.AutoSize = True
+        Me.btnSearchBrand.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnSearchBrand.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSearchBrand.Location = New System.Drawing.Point(492, 159)
+        Me.btnSearchBrand.Name = "btnSearchBrand"
+        Me.btnSearchBrand.Size = New System.Drawing.Size(24, 17)
+        Me.btnSearchBrand.TabIndex = 424
+        Me.btnSearchBrand.Text = "🔍"
+        '
+        'cbSupplyType
+        '
+        Me.cbSupplyType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbSupplyType.FormattingEnabled = True
+        Me.cbSupplyType.Items.AddRange(New Object() {"", "Office Supply", "School Consumable"})
+        Me.cbSupplyType.Location = New System.Drawing.Point(206, 100)
+        Me.cbSupplyType.Name = "cbSupplyType"
+        Me.cbSupplyType.Size = New System.Drawing.Size(280, 24)
+        Me.cbSupplyType.TabIndex = 439
+        '
+        'btnSearchSize
+        '
+        Me.btnSearchSize.AutoSize = True
+        Me.btnSearchSize.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnSearchSize.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSearchSize.Location = New System.Drawing.Point(492, 186)
+        Me.btnSearchSize.Name = "btnSearchSize"
+        Me.btnSearchSize.Size = New System.Drawing.Size(24, 17)
+        Me.btnSearchSize.TabIndex = 424
+        Me.btnSearchSize.Text = "🔍"
+        '
+        'btnSearchCategory
+        '
+        Me.btnSearchCategory.AutoSize = True
+        Me.btnSearchCategory.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnSearchCategory.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSearchCategory.Location = New System.Drawing.Point(492, 131)
+        Me.btnSearchCategory.Name = "btnSearchCategory"
+        Me.btnSearchCategory.Size = New System.Drawing.Size(24, 17)
+        Me.btnSearchCategory.TabIndex = 423
+        Me.btnSearchCategory.Text = "🔍"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(75, 103)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(34, 16)
+        Me.Label7.TabIndex = 433
+        Me.Label7.Text = "Type"
+        '
+        'barcodeID
+        '
+        Me.barcodeID.AutoSize = True
+        Me.barcodeID.Location = New System.Drawing.Point(203, 73)
+        Me.barcodeID.Name = "barcodeID"
+        Me.barcodeID.Size = New System.Drawing.Size(12, 16)
+        Me.barcodeID.TabIndex = 435
+        Me.barcodeID.Text = "-"
+        '
+        'txtReOrderPoint
+        '
+        Me.txtReOrderPoint.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtReOrderPoint.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txtReOrderPoint.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtReOrderPoint.Location = New System.Drawing.Point(206, 307)
+        Me.txtReOrderPoint.Name = "txtReOrderPoint"
+        Me.txtReOrderPoint.Size = New System.Drawing.Size(280, 23)
+        Me.txtReOrderPoint.TabIndex = 422
+        Me.txtReOrderPoint.Text = "0"
+        Me.txtReOrderPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtPrice
+        '
+        Me.txtPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtPrice.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txtPrice.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPrice.Location = New System.Drawing.Point(206, 278)
+        Me.txtPrice.Name = "txtPrice"
+        Me.txtPrice.Size = New System.Drawing.Size(280, 23)
+        Me.txtPrice.TabIndex = 421
+        Me.txtPrice.Text = "0.00"
+        Me.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtOpeningStock
+        '
+        Me.txtOpeningStock.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtOpeningStock.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txtOpeningStock.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtOpeningStock.Location = New System.Drawing.Point(206, 336)
+        Me.txtOpeningStock.Name = "txtOpeningStock"
+        Me.txtOpeningStock.Size = New System.Drawing.Size(280, 23)
+        Me.txtOpeningStock.TabIndex = 420
+        Me.txtOpeningStock.Text = "0"
+        Me.txtOpeningStock.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(75, 73)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(53, 16)
+        Me.Label2.TabIndex = 434
+        Me.Label2.Text = "Item No."
+        '
         'frmSupplyItemAdd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
@@ -811,11 +811,6 @@ Partial Class frmSupplyItemAdd
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.systemSign.ResumeLayout(False)
         Me.BasePanel.ResumeLayout(False)
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
-        Me.Panel3.ResumeLayout(False)
-        Me.FlowLayoutPanel1.ResumeLayout(False)
-        CType(Me.barcodeIMG, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SearchPanel.ResumeLayout(False)
         Me.SearchBasePanel.ResumeLayout(False)
         Me.dgPanel.ResumeLayout(False)
@@ -827,6 +822,11 @@ Partial Class frmSupplyItemAdd
         Me.Panel8.PerformLayout()
         CType(Me.btnAdd, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel10.ResumeLayout(False)
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
+        Me.Panel3.ResumeLayout(False)
+        Me.FlowLayoutPanel1.ResumeLayout(False)
+        CType(Me.barcodeIMG, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

@@ -122,10 +122,10 @@ Partial Class frmSupplyStockLevel
         Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         Me.Column2.DefaultCellStyle = DataGridViewCellStyle2
-        Me.Column2.HeaderText = "Stock Level"
+        Me.Column2.HeaderText = "Stock"
         Me.Column2.Name = "Column2"
         Me.Column2.ReadOnly = True
-        Me.Column2.Width = 85
+        Me.Column2.Width = 60
         '
         'colUpdate
         '

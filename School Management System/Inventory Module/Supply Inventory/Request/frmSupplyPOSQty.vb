@@ -36,6 +36,7 @@ Public Class frmSupplyPOSQty
                             Else
                                 isFound = True
                                 row.Cells(3).Value = CInt(row.Cells(3).Value) + CInt(txtQty.Text)
+                                row.Cells(4).Value = CInt(row.Cells(4).Value) + CInt(TextBox1.Text)
                                 row.Cells(5).Value = CDec(row.Cells(2).Value) * CInt(row.Cells(3).Value)
                                 frmSupplyPOS.lblTotal.Text = Format(GetColumnSum(frmSupplyPOS.dgCart, 5), "#,##0.00")
                                 Exit For
@@ -49,10 +50,18 @@ Public Class frmSupplyPOSQty
                         frmSupplyPOS.dgCart.Rows.Add(frmSupplyPOS.txtItemID.Text, frmSupplyPOS.lblDescription.Text, CDec(frmSupplyPOS.lblItemPrice.Text), CInt(txtQty.Text), CInt(TextBox1.Text), CDec(frmSupplyPOS.lblItemPrice.Text) * CInt(txtQty.Text))
                     End If
 
+
+
                     With frmSupplyPOS
                         .txtItemID.Clear()
                         .lblDescription.Text = ""
                         .lblItemPrice.Text = "0.00"
+
+                        If .dgCart.Rows.Count = 0 Then
+                            .btnSettle.Enabled = False
+                        Else
+                            .btnSettle.Enabled = True
+                        End If
                     End With
                     Me.Dispose()
 
@@ -89,28 +98,57 @@ Public Class frmSupplyPOSQty
                             .Parameters.AddWithValue("@9", str_userid)
                             .ExecuteNonQuery()
                         End With
-
+                        'ElseIf (itemcount + CInt(txtQty.text)) > CInt(frmSupplyPOS.lblItemQTY.text) Then
+                        '    MsgBox("Insufficient stock. Quantity to release is greater than current item stock. Current Item Stock: '" & CInt(frmSupplyPOS.lblItemQTY.Text) & "'", vbExclamation)
+                        '    With frmSupplyPOS
+                        '        .txtItemID.Clear()
+                        '        .lblDescription.Text = ""
+                        '        .lblItemPrice.Text = "0.00"
+                        '    End With
+                        '    Me.Dispose()
                     Else
 
-                        cn.Open()
-                        cm = New MySqlCommand("update tbl_supply_deployed set ddate = CURDATE(), dqty = dqty+@1, qty_requested = qty_requested+@4, ditem_price = dprice * dqty where dlocation = @2 and dbarcode = @3 and dstatus = 'PENDING'", cn)
-                        With cm
-                            .Parameters.AddWithValue("@1", CInt(txtQty.Text))
-                            .Parameters.AddWithValue("@2", frmSupplyPOS.lblLocationNumber.Text)
-                            .Parameters.AddWithValue("@3", frmSupplyPOS.txtItemID.Text)
-                            .Parameters.AddWithValue("@4", CInt(TextBox1.Text))
-                            .ExecuteNonQuery()
-                        End With
-                        cn.Close()
+                        Dim isFound As Boolean = False
+                        Dim insufficientStock As Boolean = False
+                        Dim rqstdValue As Integer = 0
 
+                        For Each row As DataGridViewRow In frmSupplyPOS.dgCart.Rows
+                            If row.Cells(0).Value = frmSupplyPOS.txtItemID.Text Then
+
+                                rqstdValue = CInt(row.Cells(3).Value) + CInt(txtQty.Text)
+                                If rqstdValue > CInt(frmSupplyPOS.lblItemQTY.Text) Then
+                                    isFound = True
+                                    MsgBox("Insufficient stock. Quantity to release is greater than current item stock. Current Item Stock: '" & CInt(frmSupplyPOS.lblItemQTY.Text) & "'", vbExclamation)
+                                    Exit For
+                                Else
+                                    isFound = True
+                                    Exit For
+                                End If
+                            Else
+                                isFound = False
+                            End If
+                        Next
+
+                        If isFound = False Then
+                            cn.Open()
+                            cm = New MySqlCommand("update tbl_supply_deployed set ddate = CURDATE(), dqty = dqty+@1, qty_requested = qty_requested+@4, ditem_price = dprice * dqty where dlocation = @2 and dbarcode = @3 and dstatus = 'PENDING'", cn)
+                            With cm
+                                .Parameters.AddWithValue("@1", CInt(txtQty.Text))
+                                .Parameters.AddWithValue("@2", frmSupplyPOS.lblLocationNumber.Text)
+                                .Parameters.AddWithValue("@3", frmSupplyPOS.txtItemID.Text)
+                                .Parameters.AddWithValue("@4", CInt(TextBox1.Text))
+                                .ExecuteNonQuery()
+                            End With
+                            cn.Close()
+                        End If
                     End If
+                    With frmSupplyPOS
+                        .loadCart()
+                        .txtItemID.Clear()
+                        .lblDescription.Text = ""
+                        .lblItemPrice.Text = "0.00"
+                    End With
                 End If
-                With frmSupplyPOS
-                    .loadCart()
-                    .txtItemID.Clear()
-                    .lblDescription.Text = ""
-                    .lblItemPrice.Text = "0.00"
-                End With
                 Me.Dispose()
             End If
         End If

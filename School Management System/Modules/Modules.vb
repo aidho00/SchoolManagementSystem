@@ -301,7 +301,11 @@ Module Modules
                                                End Sub
 
                 AddHandler control.MouseLeave, Sub(sender As Object, e As EventArgs)
-                                                   control.ForeColor = Color.Black
+                                                   If control.BackColor = Color.FromArgb(30, 39, 46) Then
+                                                       control.ForeColor = Color.White
+                                                   Else
+                                                       control.ForeColor = Color.Black
+                                                   End If
                                                End Sub
             ElseIf buttonControl.Text = "LOGIN" Then
                 AddHandler control.MouseHover, Sub(sender As Object, e As EventArgs)

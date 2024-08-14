@@ -266,7 +266,7 @@ Public Class frmSupplyItemAdd
         If IS_EMPTY(txtReOrderPoint) = True Then Return
         If IS_EMPTY(txtPrice) = True Then Return
         If CHECK_EXISTING("SELECT * FROM tbl_supply_item WHERE brandid = " & BrandID & " and categoryid = " & CategoryID & " and brandid = " & BrandID & " and sizesid = " & SizeID & " and barcodeid NOT IN ('" & barcodeID.Text & "')") = True Then Return
-        query("UPDATE `tbl_supply_item` set `description` = '" & txtSupplyDesc.Text & "', `categoryid` = " & CategoryID & ", brandid = " & BrandID & ", `sizesid` = " & SizeID & ", `item_price` = " & CDec(txtPrice.Text) & ", `item_status` = '" & cbSupplyStatus.Text & "', `item_reorder_point` = " & CInt(txtReOrderPoint.Text) & " WHERE barcodeid = '" & barcodeID.Text & "'")
+        query("UPDATE `tbl_supply_item` set `description` = '" & txtSupplyDesc.Text & "', `item_price` = " & CDec(txtPrice.Text) & ", `item_status` = '" & cbSupplyStatus.Text & "', `item_reorder_point` = " & CInt(txtReOrderPoint.Text) & " WHERE barcodeid = '" & barcodeID.Text & "'")
         UserActivity("Updated a(n) " & cbSupplyType.Text & " item " & txtSupplyDesc.Text.Trim & " - " & cbSupplyCategory.Text.Trim & " " & cbSupplySize.Text.Trim & ". Barcode: " & barcodeID.Text & "", "SUPPLY ITEM UPDATE")
         frmWait.seconds = 1
         frmWait.ShowDialog()

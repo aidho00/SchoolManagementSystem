@@ -39,6 +39,7 @@ Partial Class frmSupplyItems
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colUpdate = New System.Windows.Forms.DataGridViewImageColumn()
         CType(Me.dgSupplyItemList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -46,6 +47,7 @@ Partial Class frmSupplyItems
         'dgSupplyItemList
         '
         Me.dgSupplyItemList.AllowUserToAddRows = False
+        Me.dgSupplyItemList.AllowUserToDeleteRows = False
         Me.dgSupplyItemList.BackgroundColor = System.Drawing.Color.White
         Me.dgSupplyItemList.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgSupplyItemList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
@@ -60,7 +62,7 @@ Partial Class frmSupplyItems
         Me.dgSupplyItemList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgSupplyItemList.ColumnHeadersHeight = 40
         Me.dgSupplyItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgSupplyItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column4, Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.Column10, Me.Column1, Me.Column2, Me.Column3, Me.Column9, Me.Column5, Me.Column6, Me.Column7, Me.Column8, Me.colUpdate})
+        Me.dgSupplyItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column4, Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.Column10, Me.Column1, Me.Column2, Me.Column3, Me.Column9, Me.Column5, Me.Column6, Me.Column7, Me.Column8, Me.Column11, Me.colUpdate})
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -180,6 +182,14 @@ Partial Class frmSupplyItems
         Me.Column8.ReadOnly = True
         Me.Column8.Visible = False
         '
+        'Column11
+        '
+        Me.Column11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column11.HeaderText = "Status"
+        Me.Column11.Name = "Column11"
+        Me.Column11.ReadOnly = True
+        Me.Column11.Width = 64
+        '
         'colUpdate
         '
         Me.colUpdate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
@@ -221,5 +231,6 @@ Partial Class frmSupplyItems
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents Column8 As DataGridViewTextBoxColumn
+    Friend WithEvents Column11 As DataGridViewTextBoxColumn
     Friend WithEvents colUpdate As DataGridViewImageColumn
 End Class

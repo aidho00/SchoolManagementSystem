@@ -60,31 +60,18 @@ Public Class frmSupplyItemAdd
         Dim yearid As String = YearToday
         cn.Close()
         cn.Open()
-        Dim sql As String
-        If cbSupplyType.Text = "Office Supply" Then
-        ElseIf cbSupplyType.text = "School Consumable" Then
-        End If
+
         cm = New MySqlCommand("SELECT barcodeid FROM tbl_supply_item WHERE barcodeid like '" & yearid & "%'", cn)
         dr = cm.ExecuteReader()
         If dr.HasRows Then
             dr.Close()
             cn.Close()
             cn.Open()
-
-            Dim sql2 As String
-            If cbSupplyType.Text = "Office Supply" Then
-            ElseIf cbSupplyType.Text = "School Consumable" Then
-            End If
-
             cm = New MySqlCommand("SELECT MAX(barcodeid) as Barcode from tbl_supply_item", cn)
             Dim lastCode As String = cm.ExecuteScalar
             cn.Close()
-            If lastCode.ToString.Length = 13 Then
-                Barcode = yearid & "00001"
-            Else
-                lastCode = lastCode.Remove(0, 4)
-                Barcode = CInt(yearid & lastCode) + 1
-            End If
+            lastCode = lastCode.Remove(0, 4)
+            Barcode = CInt(yearid & lastCode) + 1
         Else
             dr.Close()
             Barcode = yearid & "00001"

@@ -25,10 +25,11 @@ Partial Class frmSupplyPOS
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSupplyPOS))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnClose = New System.Windows.Forms.Label()
@@ -41,6 +42,8 @@ Partial Class frmSupplyPOS
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.btn_cancel = New System.Windows.Forms.Button()
+        Me.Label14 = New System.Windows.Forms.Label()
         Me.btnSelect = New System.Windows.Forms.Button()
         Me.period_id = New System.Windows.Forms.Label()
         Me.yearid = New System.Windows.Forms.Label()
@@ -92,8 +95,6 @@ Partial Class frmSupplyPOS
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colRemove = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.btn_cancel = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel4.SuspendLayout()
         CType(Me.dgItemList, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -110,7 +111,7 @@ Partial Class frmSupplyPOS
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(46, Byte), Integer))
+        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(101, Byte), Integer), CType(CType(208, Byte), Integer))
         Me.Panel1.Controls.Add(Me.btnClose)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
@@ -135,14 +136,14 @@ Partial Class frmSupplyPOS
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(46, Byte), Integer))
-        Me.Label1.Font = New System.Drawing.Font("Century Gothic", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(101, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.Label1.Font = New System.Drawing.Font("Century Gothic", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(9, 10)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(226, 25)
+        Me.Label1.Size = New System.Drawing.Size(219, 24)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "SUPPLY ITEM REQUEST"
+        Me.Label1.Text = "Supply Item Request"
         '
         'Panel4
         '
@@ -170,7 +171,7 @@ Partial Class frmSupplyPOS
         Me.dgItemList.AllowUserToAddRows = False
         Me.dgItemList.BackgroundColor = System.Drawing.Color.White
         Me.dgItemList.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dgItemList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.dgItemList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.dgItemList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(46, Byte), Integer))
@@ -185,7 +186,7 @@ Partial Class frmSupplyPOS
         Me.dgItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.Column6, Me.DataGridViewTextBoxColumn1})
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
         DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
@@ -246,6 +247,35 @@ Partial Class frmSupplyPOS
         Me.Panel3.Padding = New System.Windows.Forms.Padding(5)
         Me.Panel3.Size = New System.Drawing.Size(723, 47)
         Me.Panel3.TabIndex = 83
+        '
+        'btn_cancel
+        '
+        Me.btn_cancel.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(46, Byte), Integer))
+        Me.btn_cancel.Dock = System.Windows.Forms.DockStyle.Left
+        Me.btn_cancel.FlatAppearance.BorderSize = 0
+        Me.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_cancel.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_cancel.ForeColor = System.Drawing.Color.White
+        Me.btn_cancel.Location = New System.Drawing.Point(135, 5)
+        Me.btn_cancel.Name = "btn_cancel"
+        Me.btn_cancel.Size = New System.Drawing.Size(118, 37)
+        Me.btn_cancel.TabIndex = 450
+        Me.btn_cancel.Text = "CANCEL"
+        Me.btn_cancel.UseVisualStyleBackColor = False
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Label14.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.ForeColor = System.Drawing.Color.Black
+        Me.Label14.Location = New System.Drawing.Point(123, 5)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(12, 17)
+        Me.Label14.TabIndex = 448
+        Me.Label14.Text = " "
+        Me.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label14.Visible = False
         '
         'btnSelect
         '
@@ -385,14 +415,14 @@ Partial Class frmSupplyPOS
         Me.dgCart.ColumnHeadersHeight = 30
         Me.dgCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgCart.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column7, Me.colRemove})
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Silver
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgCart.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Silver
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgCart.DefaultCellStyle = DataGridViewCellStyle8
         Me.dgCart.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgCart.EnableHeadersVisualStyles = False
         Me.dgCart.Location = New System.Drawing.Point(2, 2)
@@ -767,7 +797,7 @@ Partial Class frmSupplyPOS
         '
         Me.lblTotal.BackColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(54, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.lblTotal.Dock = System.Windows.Forms.DockStyle.Top
-        Me.lblTotal.Font = New System.Drawing.Font("Century Gothic", 27.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotal.Font = New System.Drawing.Font("Century Gothic", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTotal.ForeColor = System.Drawing.Color.White
         Me.lblTotal.Location = New System.Drawing.Point(2, 32)
         Me.lblTotal.Name = "lblTotal"
@@ -879,6 +909,8 @@ Partial Class frmSupplyPOS
         'Column5
         '
         Me.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column5.DefaultCellStyle = DataGridViewCellStyle6
         Me.Column5.HeaderText = "Rqstd Qty"
         Me.Column5.Name = "Column5"
         Me.Column5.ReadOnly = True
@@ -887,8 +919,8 @@ Partial Class frmSupplyPOS
         'Column7
         '
         Me.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column7.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column7.DefaultCellStyle = DataGridViewCellStyle7
         Me.Column7.HeaderText = "Total"
         Me.Column7.Name = "Column7"
         Me.Column7.ReadOnly = True
@@ -902,35 +934,6 @@ Partial Class frmSupplyPOS
         Me.colRemove.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom
         Me.colRemove.Name = "colRemove"
         Me.colRemove.Width = 5
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label14.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.ForeColor = System.Drawing.Color.Black
-        Me.Label14.Location = New System.Drawing.Point(123, 5)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(12, 17)
-        Me.Label14.TabIndex = 448
-        Me.Label14.Text = " "
-        Me.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label14.Visible = False
-        '
-        'btn_cancel
-        '
-        Me.btn_cancel.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(46, Byte), Integer))
-        Me.btn_cancel.Dock = System.Windows.Forms.DockStyle.Left
-        Me.btn_cancel.FlatAppearance.BorderSize = 0
-        Me.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_cancel.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_cancel.ForeColor = System.Drawing.Color.White
-        Me.btn_cancel.Location = New System.Drawing.Point(135, 5)
-        Me.btn_cancel.Name = "btn_cancel"
-        Me.btn_cancel.Size = New System.Drawing.Size(118, 37)
-        Me.btn_cancel.TabIndex = 450
-        Me.btn_cancel.Text = "CANCEL"
-        Me.btn_cancel.UseVisualStyleBackColor = False
         '
         'frmSupplyPOS
         '
@@ -1025,6 +1028,8 @@ Partial Class frmSupplyPOS
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents btn_cancel As Button
+    Friend WithEvents Label14 As Label
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
@@ -1032,6 +1037,4 @@ Partial Class frmSupplyPOS
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents colRemove As DataGridViewImageColumn
-    Friend WithEvents btn_cancel As Button
-    Friend WithEvents Label14 As Label
 End Class

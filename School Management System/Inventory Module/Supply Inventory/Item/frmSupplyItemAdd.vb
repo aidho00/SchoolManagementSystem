@@ -57,27 +57,50 @@ Public Class frmSupplyItemAdd
 
 
     Sub AutoBarCode()
-        Dim yearid As String = YearToday
-        cn.Close()
-        cn.Open()
-
-        cm = New MySqlCommand("SELECT barcodeid FROM tbl_supply_item WHERE barcodeid like '" & yearid & "%'", cn)
-        dr = cm.ExecuteReader()
-        If dr.HasRows Then
-            dr.Close()
+        If cbSupplyType.Text = String.Empty Then
+        Else
+            Dim yearid As String = YearToday
             cn.Close()
             cn.Open()
-            cm = New MySqlCommand("SELECT MAX(barcodeid) as Barcode from tbl_supply_item", cn)
-            Dim lastCode As String = cm.ExecuteScalar
+            Dim sql As String
+            If cbSupplyType.Text = "Office Supply" Then
+                sql = "SELECT barcodeid FROM tbl_supply_item WHERE barcodeid like 'SI-OFCSP" & yearid & "%'"
+            ElseIf cbSupplyType.Text = "School Consumable" Then
+                sql = "SELECT barcodeid FROM tbl_supply_item WHERE barcodeid like 'SI-SCHCS" & yearid & "%'"
+            End If
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader()
+            If dr.HasRows Then
+                dr.Close()
+                cn.Close()
+                cn.Open()
+                Dim sql2 As String
+                If cbSupplyType.Text = "Office Supply" Then
+                    sql2 = "SELECT MAX(barcodeid) as Barcode from tbl_supply_item WHERE barcodeid like 'SI-OFCSP%'"
+                ElseIf cbSupplyType.Text = "School Consumable" Then
+                    sql2 = "SELECT MAX(barcodeid) as Barcode from tbl_supply_item WHERE barcodeid like 'SI-SCHCS%'"
+                End If
+
+                cm = New MySqlCommand(sql2, cn)
+                Dim lastCode As String = cm.ExecuteScalar
+                cn.Close()
+                lastCode = lastCode.Remove(0, 12)
+                If cbSupplyType.Text = "Office Supply" Then
+                    Barcode = "SI-OFCSP" & CInt(yearid & lastCode) + 1
+                ElseIf cbSupplyType.Text = "School Consumable" Then
+                    Barcode = "SI-SCHCS" & CInt(yearid & lastCode) + 1
+                End If
+            Else
+                dr.Close()
+                If cbSupplyType.Text = "Office Supply" Then
+                    Barcode = "SI-OFCSP" & yearid & "00001"
+                ElseIf cbSupplyType.Text = "School Consumable" Then
+                    Barcode = "SI-SCHCS" & yearid & "00001"
+                End If
+            End If
             cn.Close()
-            lastCode = lastCode.Remove(0, 4)
-            Barcode = CInt(yearid & lastCode) + 1
-        Else
-            dr.Close()
-            Barcode = yearid & "00001"
+            barcodeID.Text = Barcode
         End If
-        cn.Close()
-        barcodeID.Text = Barcode
     End Sub
 
     Private Sub txtPrice_TextChanged(sender As Object, e As EventArgs) Handles txtPrice.TextChanged
@@ -288,7 +311,7 @@ Public Class frmSupplyItemAdd
         End If
     End Sub
 
-    Private Sub txtSupplyDesc_TextChanged(sender As Object, e As EventArgs) Handles txtSupplyDesc.TextChanged
-
+    Private Sub cbSupplyType_TextChanged(sender As Object, e As EventArgs) Handles cbSupplyType.TextChanged
+        AutoBarCode()
     End Sub
 End Class

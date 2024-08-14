@@ -160,16 +160,17 @@ Partial Class frmSupplySalesSummary
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(0, 31)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1166, 31)
+        Me.Panel3.Size = New System.Drawing.Size(1166, 46)
         Me.Panel3.TabIndex = 21
         '
         'Label7
         '
+        Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.BackColor = System.Drawing.Color.Transparent
         Me.Label7.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.Black
-        Me.Label7.Location = New System.Drawing.Point(756, 12)
+        Me.Label7.Location = New System.Drawing.Point(756, 27)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(38, 16)
         Me.Label7.TabIndex = 6
@@ -177,11 +178,12 @@ Partial Class frmSupplySalesSummary
         '
         'Label6
         '
+        Me.Label6.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label6.AutoSize = True
         Me.Label6.BackColor = System.Drawing.Color.Transparent
         Me.Label6.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.Black
-        Me.Label6.Location = New System.Drawing.Point(504, 12)
+        Me.Label6.Location = New System.Drawing.Point(504, 27)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(62, 16)
         Me.Label6.TabIndex = 5
@@ -189,11 +191,12 @@ Partial Class frmSupplySalesSummary
         '
         'Label5
         '
+        Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label5.AutoSize = True
         Me.Label5.BackColor = System.Drawing.Color.Transparent
         Me.Label5.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(253, 12)
+        Me.Label5.Location = New System.Drawing.Point(253, 27)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(70, 16)
         Me.Label5.TabIndex = 4
@@ -201,11 +204,12 @@ Partial Class frmSupplySalesSummary
         '
         'Label4
         '
+        Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label4.AutoSize = True
         Me.Label4.BackColor = System.Drawing.Color.Transparent
         Me.Label4.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.Black
-        Me.Label4.Location = New System.Drawing.Point(2, 12)
+        Me.Label4.Location = New System.Drawing.Point(2, 27)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(47, 16)
         Me.Label4.TabIndex = 3
@@ -215,10 +219,10 @@ Partial Class frmSupplySalesSummary
         '
         Me.Panel4.Controls.Add(Me.dgYearlySales)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel4.Location = New System.Drawing.Point(0, 62)
+        Me.Panel4.Location = New System.Drawing.Point(0, 77)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Padding = New System.Windows.Forms.Padding(0, 1, 1, 0)
-        Me.Panel4.Size = New System.Drawing.Size(251, 677)
+        Me.Panel4.Size = New System.Drawing.Size(251, 662)
         Me.Panel4.TabIndex = 22
         '
         'dgYearlySales
@@ -226,7 +230,7 @@ Partial Class frmSupplySalesSummary
         Me.dgYearlySales.AllowUserToAddRows = False
         Me.dgYearlySales.BackgroundColor = System.Drawing.Color.White
         Me.dgYearlySales.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dgYearlySales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.dgYearlySales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.dgYearlySales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
@@ -249,12 +253,13 @@ Partial Class frmSupplySalesSummary
         Me.dgYearlySales.DefaultCellStyle = DataGridViewCellStyle4
         Me.dgYearlySales.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgYearlySales.EnableHeadersVisualStyles = False
+        Me.dgYearlySales.GridColor = System.Drawing.Color.Black
         Me.dgYearlySales.Location = New System.Drawing.Point(0, 1)
         Me.dgYearlySales.Name = "dgYearlySales"
         Me.dgYearlySales.RowHeadersVisible = False
         Me.dgYearlySales.RowTemplate.Height = 26
         Me.dgYearlySales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgYearlySales.Size = New System.Drawing.Size(250, 676)
+        Me.dgYearlySales.Size = New System.Drawing.Size(250, 661)
         Me.dgYearlySales.TabIndex = 18
         '
         'Column4
@@ -280,10 +285,10 @@ Partial Class frmSupplySalesSummary
         '
         Me.Panel6.Controls.Add(Me.dgQuarterlySales)
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel6.Location = New System.Drawing.Point(251, 62)
+        Me.Panel6.Location = New System.Drawing.Point(251, 77)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Padding = New System.Windows.Forms.Padding(1, 1, 1, 0)
-        Me.Panel6.Size = New System.Drawing.Size(251, 677)
+        Me.Panel6.Size = New System.Drawing.Size(251, 662)
         Me.Panel6.TabIndex = 24
         '
         'dgQuarterlySales
@@ -291,7 +296,7 @@ Partial Class frmSupplySalesSummary
         Me.dgQuarterlySales.AllowUserToAddRows = False
         Me.dgQuarterlySales.BackgroundColor = System.Drawing.Color.White
         Me.dgQuarterlySales.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dgQuarterlySales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.dgQuarterlySales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.dgQuarterlySales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle5.BackColor = System.Drawing.Color.White
@@ -314,12 +319,13 @@ Partial Class frmSupplySalesSummary
         Me.dgQuarterlySales.DefaultCellStyle = DataGridViewCellStyle9
         Me.dgQuarterlySales.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgQuarterlySales.EnableHeadersVisualStyles = False
+        Me.dgQuarterlySales.GridColor = System.Drawing.Color.Black
         Me.dgQuarterlySales.Location = New System.Drawing.Point(1, 1)
         Me.dgQuarterlySales.Name = "dgQuarterlySales"
         Me.dgQuarterlySales.RowHeadersVisible = False
         Me.dgQuarterlySales.RowTemplate.Height = 26
         Me.dgQuarterlySales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgQuarterlySales.Size = New System.Drawing.Size(249, 676)
+        Me.dgQuarterlySales.Size = New System.Drawing.Size(249, 661)
         Me.dgQuarterlySales.TabIndex = 19
         '
         'Column1
@@ -355,10 +361,10 @@ Partial Class frmSupplySalesSummary
         '
         Me.Panel5.Controls.Add(Me.dgMonthlySales)
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel5.Location = New System.Drawing.Point(502, 62)
+        Me.Panel5.Location = New System.Drawing.Point(502, 77)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Padding = New System.Windows.Forms.Padding(1, 1, 1, 0)
-        Me.Panel5.Size = New System.Drawing.Size(251, 677)
+        Me.Panel5.Size = New System.Drawing.Size(251, 662)
         Me.Panel5.TabIndex = 25
         '
         'dgMonthlySales
@@ -366,7 +372,7 @@ Partial Class frmSupplySalesSummary
         Me.dgMonthlySales.AllowUserToAddRows = False
         Me.dgMonthlySales.BackgroundColor = System.Drawing.Color.White
         Me.dgMonthlySales.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dgMonthlySales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.dgMonthlySales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.dgMonthlySales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle10.BackColor = System.Drawing.Color.White
@@ -389,12 +395,13 @@ Partial Class frmSupplySalesSummary
         Me.dgMonthlySales.DefaultCellStyle = DataGridViewCellStyle14
         Me.dgMonthlySales.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgMonthlySales.EnableHeadersVisualStyles = False
+        Me.dgMonthlySales.GridColor = System.Drawing.Color.Black
         Me.dgMonthlySales.Location = New System.Drawing.Point(1, 1)
         Me.dgMonthlySales.Name = "dgMonthlySales"
         Me.dgMonthlySales.RowHeadersVisible = False
         Me.dgMonthlySales.RowTemplate.Height = 26
         Me.dgMonthlySales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgMonthlySales.Size = New System.Drawing.Size(249, 676)
+        Me.dgMonthlySales.Size = New System.Drawing.Size(249, 661)
         Me.dgMonthlySales.TabIndex = 19
         '
         'Column2
@@ -430,10 +437,10 @@ Partial Class frmSupplySalesSummary
         '
         Me.Panel7.Controls.Add(Me.dgDailySales)
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel7.Location = New System.Drawing.Point(753, 62)
+        Me.Panel7.Location = New System.Drawing.Point(753, 77)
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Padding = New System.Windows.Forms.Padding(1, 1, 0, 0)
-        Me.Panel7.Size = New System.Drawing.Size(413, 677)
+        Me.Panel7.Size = New System.Drawing.Size(413, 662)
         Me.Panel7.TabIndex = 26
         '
         'dgDailySales
@@ -441,7 +448,7 @@ Partial Class frmSupplySalesSummary
         Me.dgDailySales.AllowUserToAddRows = False
         Me.dgDailySales.BackgroundColor = System.Drawing.Color.White
         Me.dgDailySales.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dgDailySales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.dgDailySales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.dgDailySales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle15.BackColor = System.Drawing.Color.White
@@ -464,12 +471,13 @@ Partial Class frmSupplySalesSummary
         Me.dgDailySales.DefaultCellStyle = DataGridViewCellStyle18
         Me.dgDailySales.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgDailySales.EnableHeadersVisualStyles = False
+        Me.dgDailySales.GridColor = System.Drawing.Color.Black
         Me.dgDailySales.Location = New System.Drawing.Point(1, 1)
         Me.dgDailySales.Name = "dgDailySales"
         Me.dgDailySales.RowHeadersVisible = False
         Me.dgDailySales.RowTemplate.Height = 26
         Me.dgDailySales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgDailySales.Size = New System.Drawing.Size(412, 676)
+        Me.dgDailySales.Size = New System.Drawing.Size(412, 661)
         Me.dgDailySales.TabIndex = 19
         '
         'DataGridViewTextBoxColumn8

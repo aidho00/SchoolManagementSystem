@@ -34,7 +34,7 @@ Partial Class frmSupplyReturnQTY
         Me.lblQty.Name = "lblQty"
         Me.lblQty.Size = New System.Drawing.Size(276, 21)
         Me.lblQty.TabIndex = 20
-        Me.lblQty.Text = "RETURN QUANTITY"
+        Me.lblQty.Text = "QUANTITY TO RETURN"
         Me.lblQty.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'txtQty

@@ -45,6 +45,7 @@ Partial Class frmMain
         Me.btnRequests = New System.Windows.Forms.Button()
         Me.btnSupplyRecords = New System.Windows.Forms.Button()
         Me.panelInventory = New System.Windows.Forms.Panel()
+        Me.btnStockRecount = New System.Windows.Forms.Button()
         Me.PanelPurchasing = New System.Windows.Forms.Panel()
         Me.btnPRD = New System.Windows.Forms.Button()
         Me.btnPO = New System.Windows.Forms.Button()
@@ -258,12 +259,12 @@ Partial Class frmMain
         Me.Panel27 = New System.Windows.Forms.Panel()
         Me.dummypic = New System.Windows.Forms.PictureBox()
         Me.PanelSupplyWarning = New System.Windows.Forms.Panel()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.btnStockRecount = New System.Windows.Forms.Button()
         Me.warning = New System.Windows.Forms.Panel()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.PictureBox13 = New System.Windows.Forms.PictureBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.systemSign.SuspendLayout()
         CType(Me.schoolLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ComboBoxMenu.SuspendLayout()
@@ -656,6 +657,28 @@ Partial Class frmMain
         Me.panelInventory.Size = New System.Drawing.Size(197, 216)
         Me.panelInventory.TabIndex = 132
         Me.panelInventory.Visible = False
+        '
+        'btnStockRecount
+        '
+        Me.btnStockRecount.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnStockRecount.Cursor = System.Windows.Forms.Cursors.Default
+        Me.btnStockRecount.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnStockRecount.FlatAppearance.BorderSize = 0
+        Me.btnStockRecount.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnStockRecount.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnStockRecount.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnStockRecount.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnStockRecount.ForeColor = System.Drawing.Color.White
+        Me.btnStockRecount.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnStockRecount.Location = New System.Drawing.Point(15, 192)
+        Me.btnStockRecount.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnStockRecount.Name = "btnStockRecount"
+        Me.btnStockRecount.Size = New System.Drawing.Size(182, 24)
+        Me.btnStockRecount.TabIndex = 130
+        Me.btnStockRecount.Text = "Inventory/Stock Recounting"
+        Me.btnStockRecount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnStockRecount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnStockRecount.UseVisualStyleBackColor = False
         '
         'PanelPurchasing
         '
@@ -2876,7 +2899,7 @@ Partial Class frmMain
         Me.SelectionTitle.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.SelectionTitle.BackColor = System.Drawing.Color.Transparent
         Me.SelectionTitle.Font = New System.Drawing.Font("Century Gothic", 6.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.SelectionTitle.ForeColor = System.Drawing.Color.DimGray
+        Me.SelectionTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.SelectionTitle.Location = New System.Drawing.Point(405, 5)
         Me.SelectionTitle.Name = "SelectionTitle"
         Me.SelectionTitle.Size = New System.Drawing.Size(163, 22)
@@ -3634,6 +3657,7 @@ Partial Class frmMain
         '
         Me.Panel2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.Panel2.Controls.Add(Me.GroupBox4)
         Me.Panel2.Controls.Add(Me.Label8)
         Me.Panel2.Controls.Add(Me.lblAcadYear)
         Me.Panel2.Controls.Add(Me.lblSemester)
@@ -3646,7 +3670,7 @@ Partial Class frmMain
         '
         Me.Label8.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.White
-        Me.Label8.Location = New System.Drawing.Point(37, 63)
+        Me.Label8.Location = New System.Drawing.Point(47, 63)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(150, 33)
         Me.Label8.TabIndex = 12
@@ -3658,7 +3682,7 @@ Partial Class frmMain
         Me.lblAcadYear.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblAcadYear.Font = New System.Drawing.Font("Century Gothic", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAcadYear.ForeColor = System.Drawing.Color.White
-        Me.lblAcadYear.Location = New System.Drawing.Point(33, 2)
+        Me.lblAcadYear.Location = New System.Drawing.Point(43, 2)
         Me.lblAcadYear.Name = "lblAcadYear"
         Me.lblAcadYear.Size = New System.Drawing.Size(179, 39)
         Me.lblAcadYear.TabIndex = 8
@@ -3670,7 +3694,7 @@ Partial Class frmMain
         Me.lblSemester.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblSemester.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSemester.ForeColor = System.Drawing.Color.White
-        Me.lblSemester.Location = New System.Drawing.Point(37, 36)
+        Me.lblSemester.Location = New System.Drawing.Point(47, 36)
         Me.lblSemester.Name = "lblSemester"
         Me.lblSemester.Size = New System.Drawing.Size(121, 24)
         Me.lblSemester.TabIndex = 6
@@ -3986,47 +4010,11 @@ Partial Class frmMain
         Me.PanelSupplyWarning.BackColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(84, Byte), Integer), CType(CType(96, Byte), Integer))
         Me.PanelSupplyWarning.Controls.Add(Me.warning)
         Me.PanelSupplyWarning.Controls.Add(Me.Label7)
-        Me.PanelSupplyWarning.Location = New System.Drawing.Point(774, 567)
+        Me.PanelSupplyWarning.Location = New System.Drawing.Point(774, 564)
         Me.PanelSupplyWarning.Name = "PanelSupplyWarning"
-        Me.PanelSupplyWarning.Size = New System.Drawing.Size(484, 110)
+        Me.PanelSupplyWarning.Size = New System.Drawing.Size(484, 101)
         Me.PanelSupplyWarning.TabIndex = 25
         Me.PanelSupplyWarning.Visible = False
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label7.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Label7.Font = New System.Drawing.Font("Corbel", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.ForeColor = System.Drawing.Color.Black
-        Me.Label7.Location = New System.Drawing.Point(462, 0)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(22, 23)
-        Me.Label7.TabIndex = 17
-        Me.Label7.Text = "✕"
-        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'btnStockRecount
-        '
-        Me.btnStockRecount.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnStockRecount.Cursor = System.Windows.Forms.Cursors.Default
-        Me.btnStockRecount.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnStockRecount.FlatAppearance.BorderSize = 0
-        Me.btnStockRecount.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnStockRecount.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnStockRecount.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnStockRecount.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnStockRecount.ForeColor = System.Drawing.Color.White
-        Me.btnStockRecount.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnStockRecount.Location = New System.Drawing.Point(15, 192)
-        Me.btnStockRecount.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnStockRecount.Name = "btnStockRecount"
-        Me.btnStockRecount.Size = New System.Drawing.Size(182, 24)
-        Me.btnStockRecount.TabIndex = 130
-        Me.btnStockRecount.Text = "Inventory/Stock Recounting"
-        Me.btnStockRecount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnStockRecount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnStockRecount.UseVisualStyleBackColor = False
         '
         'warning
         '
@@ -4035,7 +4023,7 @@ Partial Class frmMain
         Me.warning.Controls.Add(Me.Label12)
         Me.warning.Controls.Add(Me.Label16)
         Me.warning.Controls.Add(Me.PictureBox13)
-        Me.warning.Location = New System.Drawing.Point(9, 8)
+        Me.warning.Location = New System.Drawing.Point(9, -1)
         Me.warning.Name = "warning"
         Me.warning.Size = New System.Drawing.Size(432, 95)
         Me.warning.TabIndex = 424
@@ -4044,22 +4032,22 @@ Partial Class frmMain
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Verdana", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Font = New System.Drawing.Font("Century Gothic", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label12.ForeColor = System.Drawing.Color.White
-        Me.Label12.Location = New System.Drawing.Point(112, 28)
+        Me.Label12.Location = New System.Drawing.Point(110, 22)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(86, 23)
+        Me.Label12.Size = New System.Drawing.Size(96, 32)
         Me.Label12.TabIndex = 399
         Me.Label12.Text = "ALERT!"
         '
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.ForeColor = System.Drawing.Color.White
         Me.Label16.Location = New System.Drawing.Point(112, 53)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(221, 18)
+        Me.Label16.Size = New System.Drawing.Size(207, 21)
         Me.Label16.TabIndex = 7
         Me.Label16.Text = "Supply Item Out of Stock!"
         '
@@ -4067,12 +4055,34 @@ Partial Class frmMain
         '
         Me.PictureBox13.BackColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(84, Byte), Integer), CType(CType(96, Byte), Integer))
         Me.PictureBox13.Image = CType(resources.GetObject("PictureBox13.Image"), System.Drawing.Image)
-        Me.PictureBox13.Location = New System.Drawing.Point(-35, -36)
+        Me.PictureBox13.Location = New System.Drawing.Point(-35, -32)
         Me.PictureBox13.Name = "PictureBox13"
         Me.PictureBox13.Size = New System.Drawing.Size(188, 159)
         Me.PictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox13.TabIndex = 0
         Me.PictureBox13.TabStop = False
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Label7.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Label7.Font = New System.Drawing.Font("Corbel", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.ForeColor = System.Drawing.Color.White
+        Me.Label7.Location = New System.Drawing.Point(462, 0)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(22, 23)
+        Me.Label7.TabIndex = 17
+        Me.Label7.Text = "✕"
+        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Location = New System.Drawing.Point(40, 1)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(2, 95)
+        Me.GroupBox4.TabIndex = 13
+        Me.GroupBox4.TabStop = False
         '
         'frmMain
         '
@@ -4417,4 +4427,5 @@ Partial Class frmMain
     Friend WithEvents Label12 As Label
     Friend WithEvents Label16 As Label
     Friend WithEvents PictureBox13 As PictureBox
+    Friend WithEvents GroupBox4 As GroupBox
 End Class

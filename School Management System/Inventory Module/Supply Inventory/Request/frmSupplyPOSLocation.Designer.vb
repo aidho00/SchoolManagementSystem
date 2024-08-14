@@ -62,12 +62,13 @@ Partial Class frmSupplyPOSLocation
         'ToolStripButton2
         '
         Me.ToolStripButton2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.ToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.ToolStripButton2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolStripButton2.ForeColor = System.Drawing.Color.Black
         Me.ToolStripButton2.Image = CType(resources.GetObject("ToolStripButton2.Image"), System.Drawing.Image)
         Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton2.Name = "ToolStripButton2"
-        Me.ToolStripButton2.Size = New System.Drawing.Size(64, 22)
+        Me.ToolStripButton2.Size = New System.Drawing.Size(23, 22)
         Me.ToolStripButton2.Text = "CLOSE"
         '
         'ToolStripTextBox1
@@ -84,8 +85,8 @@ Partial Class frmSupplyPOSLocation
         Me.ToolStripButton3.Image = CType(resources.GetObject("ToolStripButton3.Image"), System.Drawing.Image)
         Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton3.Name = "ToolStripButton3"
-        Me.ToolStripButton3.Size = New System.Drawing.Size(77, 22)
-        Me.ToolStripButton3.Text = "MANAGE"
+        Me.ToolStripButton3.Size = New System.Drawing.Size(96, 22)
+        Me.ToolStripButton3.Text = "CREATE NEW"
         '
         'tablePanel
         '

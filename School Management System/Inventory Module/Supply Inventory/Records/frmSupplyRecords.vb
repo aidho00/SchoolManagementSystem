@@ -419,16 +419,21 @@ Public Class frmSupplyRecords
             fillCombo("select distinct(dstudentid) as ID, dstatus from tbl_supply_deployed where ddate between '" & dtFrom.Text & "' and '" & dtTo.Text & "' and dlocation = " & x & " order by dstudentid desc", cbRequests, "tbl_supply_deployed", "ID", "dstatus")
         Catch ex As Exception
         End Try
-        If txtboxlocation.Text = "Student" Then
+        If txtboxlocation.Text = "STUDENT" Then
+
             Label5.Visible = True
             ComboBox1.Visible = True
             cb_as.Visible = False
             cb_aps.Visible = False
+            Panel10.Visible = False
+            Panel11.Visible = True
         Else
             Label5.Visible = False
             ComboBox1.Visible = False
             cb_as.Visible = True
             cb_aps.Visible = True
+            Panel10.Visible = True
+            Panel11.Visible = False
         End If
     End Sub
 

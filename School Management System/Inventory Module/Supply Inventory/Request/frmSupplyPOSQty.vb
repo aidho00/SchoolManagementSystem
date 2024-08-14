@@ -9,12 +9,38 @@ Public Class frmSupplyPOSQty
         ElseIf e.KeyCode = Keys.Enter Then
             Dim sdate As String = Now.ToString("yyyy-MM-dd")
             If CInt(txtQty.Text) > CInt(frmSupplyPOS.lblItemQTY.Text) Then
-                MsgBox("Quantity to release is greater than current item spare. Current Item Spare: '" & CInt(frmSupplyPOS.lblItemQTY.Text) & "'", vbCritical)
+                MsgBox("Quantity to release is greater than current item stock. Current Item Stock: '" & CInt(frmSupplyPOS.lblItemQTY.Text) & "'", vbCritical)
                 txtQty.Select()
             Else
 
 
                 If frmSupplyPOS.lblLocation.Text = "Student" Then
+
+                    Dim isFound As Boolean = False
+
+                    For Each row As DataGridViewRow In frmSupplyPOS.dgCart.Rows
+                        If row.Cells(0).Value = frmSupplyPOS.txtItemID.Text Then
+                            isFound = True
+                            row.Cells(3).Value = CInt(row.Cells(3).Value) + CInt(txtQty.Text)
+                            row.Cells(5).Value = CDec(row.Cells(2).Value) * CInt(row.Cells(3).Value)
+                            frmSupplyPOS.lblTotal.Text = Format(GetColumnSum(frmSupplyPOS.dgCart, 5), "#,##0.00")
+                            Exit For
+                        Else
+                            isFound = False
+                        End If
+                    Next
+
+                    If isFound = False Then
+                        frmSupplyPOS.dgCart.Rows.Add(frmSupplyPOS.txtItemID.Text, frmSupplyPOS.lblDescription.Text, CDec(frmSupplyPOS.lblItemPrice.Text), CInt(txtQty.Text), CInt(TextBox1.Text), CDec(frmSupplyPOS.lblItemPrice.Text) * CInt(txtQty.Text))
+                    End If
+
+                    With frmSupplyPOS
+                        .txtItemID.Clear()
+                        .lblDescription.Text = ""
+                        .lblItemPrice.Text = "0.00"
+                    End With
+                    Me.Dispose()
+
 
                     'Dim itemcount As Integer = 0
 
@@ -139,12 +165,12 @@ Public Class frmSupplyPOSQty
                     If itemcount = 0 Then
                         AutoNumber()
                         cn.Open()
-                        cm = New MySqlCommand("insert into tbl_supply_deployed (dbarcode, dqty, dlocation, ddate, dprice, ditem_price, qty_requested,dstudentid, duser_id) values (@1,@2,@3,@4,@5,@6,@7,@8,@9)", cn)
+                        cm = New MySqlCommand("insert into tbl_supply_deployed (dbarcode, dqty, dlocation, ddate, dprice, ditem_price, qty_requested,dstudentid, duser_id) values (@1,@2,@3,CURDATE(),@5,@6,@7,@8,@9)", cn)
                         With cm
                             .Parameters.AddWithValue("@1", frmSupplyPOS.txtItemID.Text)
                             .Parameters.AddWithValue("@2", CInt(txtQty.Text))
                             .Parameters.AddWithValue("@3", frmSupplyPOS.lblLocationNumber.Text)
-                            .Parameters.AddWithValue("@4", sdate)
+
                             .Parameters.AddWithValue("@5", CDbl(frmSupplyPOS.lblItemPrice.Text))
                             .Parameters.AddWithValue("@6", CDbl(frmSupplyPOS.lblItemPrice.Text) * CDbl(txtQty.Text))
                             .Parameters.AddWithValue("@7", CInt(TextBox1.Text))
@@ -152,19 +178,11 @@ Public Class frmSupplyPOSQty
                             .Parameters.AddWithValue("@9", str_userid)
                             .ExecuteNonQuery()
                         End With
-                        'cn.Close()
-                        'cn.Open()
-                        'cm = New MySqlCommand("Update tbl_supply_inventory set deployed = deployed+@deployqty, spare = spare-@deployqty where itembarcode = @itembarcode", cn)
-                        'With cm
-                        '    .Parameters.AddWithValue("@deployqty", CInt(txtQty.Text))
-                        '    .Parameters.AddWithValue("@itembarcode", frmSupplyPOS.txtItemID.Text)
-                        '    .ExecuteNonQuery()
-                        'End With
-                        'cn.Close()
+
                     Else
 
                         cn.Open()
-                        cm = New MySqlCommand("update tbl_supply_deployed set dqty = dqty+@1, qty_requested = @4, ditem_price = dprice * dqty where dlocation = @2 and dbarcode = @3 and dstatus = 'PENDING'", cn)
+                        cm = New MySqlCommand("update tbl_supply_deployed set ddate = CURDATE(), dqty = dqty+@1, qty_requested = @4, ditem_price = dprice * dqty where dlocation = @2 and dbarcode = @3 and dstatus = 'PENDING'", cn)
                         With cm
                             .Parameters.AddWithValue("@1", CInt(txtQty.Text))
                             .Parameters.AddWithValue("@2", frmSupplyPOS.lblLocationNumber.Text)
@@ -174,27 +192,8 @@ Public Class frmSupplyPOSQty
                         End With
                         cn.Close()
 
-                        'cn.Open()
-                        'cm = New MySqlCommand("Update tbl_supply_inventory set deployed = deployed+@deployqty, spare = spare-@deployqty where itembarcode = @itembarcode", cn)
-                        'With cm
-                        '    .Parameters.AddWithValue("@deployqty", CDbl(txtQty.Text))
-                        '    .Parameters.AddWithValue("@itembarcode", frmSupplyPOS.txtItemID.Text)
-                        '    .ExecuteNonQuery()
-                        'End With
-
-                        'cn.Close()
-
                     End If
-
-
-
                 End If
-
-                'cn.Open()
-                'cm = New MySqlCommand("Update tblcart set total = price * qty where tableno = '" & frmPOS.lblTable.Text & "' and status = 'Pending'", cn)
-                'cm.ExecuteNonQuery()
-                'cn.Close()
-                'AuditTrail("Added an order product id " & id & "; price " & Format(price, "n2") & "; order " & txtQty.Text & "; total " & Format(price * CDbl(txtQty.Text), "n2") & "; discount " & txtDiscount.Text & " for table " & SupplyPOS.lblLocation.Text & ".")
                 With frmSupplyPOS
                     .loadCart()
                     .txtItemID.Clear()

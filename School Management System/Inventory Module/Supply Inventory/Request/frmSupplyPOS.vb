@@ -90,8 +90,6 @@ Public Class frmSupplyPOS
                 cn.Close()
             End If
 
-
-
         Else
 
             dgCart.Rows.Clear()
@@ -234,11 +232,71 @@ Public Class frmSupplyPOS
         '    .txtTotal.Text = lblTotal.Text
         '    .ShowDialog()
         'End With
+        If dgCart.RowCount = 0 Then
+            MsgBox("Transaction Failed! There are no items on the list.", vbCritical)
+            Return
+        End If
         If MsgBox("Are you sure you want to settle/aprrove this request?", vbYesNo + vbQuestion) = vbYes Then
             Try
 
                 If lblLocation.Text = "Student" Then
-                    MsgBox("Student request/additional has already been Settled/Approved!", vbInformation)
+
+                    Dim studentstatus As String = ""
+                    If cs_hs.Text = "cs" Then
+                        studentstatus = "college"
+                    ElseIf cs_hs.Text = "hs" Then
+                        studentstatus = "highschool"
+                    End If
+                    lblTransno.Text = GetTransno()
+                    For Each row As DataGridViewRow In dgCart.Rows
+                        cn.Close()
+                        cn.Open()
+                        Dim sql2 As String
+                        If cs_hs.Text = "cs" Then
+                            studentstatus = "college"
+                            sql2 = "insert into cfcissmsdb.tbl_assessment_additional (additional_period_id, additional_item_id, additional_stud_id, additional_amount, additional_date_added, additional_added_by, additional_qty, additional_price) values (@1,@2,@3,@4,CURDATE(),@6,@7,@8)"
+                        ElseIf cs_hs.Text = "hs" Then
+                            studentstatus = "highschool"
+                            sql2 = "insert into cfcissmsdbhighschool.tbl_assessment_additional (additional_period_id, additional_item_id, additional_stud_id, additional_amount, additional_date_added, additional_added_by, additional_qty, additional_price) values (@1,@2,@3,@4,CURDATE(),@6,@7,@8)"
+                        End If
+
+                        cm = New MySqlCommand(sql2, cn)
+                        With cm
+                            .Parameters.AddWithValue("@1", CInt(cmb_period.SelectedValue))
+                            .Parameters.AddWithValue("@2", row.Cells(0).Value)
+                            .Parameters.AddWithValue("@3", stud_id.Text)
+                            .Parameters.AddWithValue("@4", CDec(row.Cells(5).Value))
+
+                            .Parameters.AddWithValue("@6", str_userid)
+                            .Parameters.AddWithValue("@7", CInt(row.Cells(3).Value))
+                            .Parameters.AddWithValue("@8", CInt(row.Cells(2).Value))
+                            .ExecuteNonQuery()
+                        End With
+                        cn.Close()
+
+                        cn.Open()
+                        cm = New MySqlCommand("insert into tbl_supply_deployed (dbarcode, dqty, dlocation, ddate, dprice, ditem_price, qty_requested,dstudentid, duser_id) values (@1,@2,@3,CURDATE(),@5,@6,@7,@8,@9)", cn)
+                        With cm
+                            .Parameters.AddWithValue("@1", CInt(cmb_period.SelectedValue))
+                            .Parameters.AddWithValue("@2", CInt(row.Cells(3).Value))
+                            .Parameters.AddWithValue("@3", lblLocationNumber.Text)
+
+                            .Parameters.AddWithValue("@5", CDec(row.Cells(2).Value))
+                            .Parameters.AddWithValue("@6", CDec(row.Cells(2).Value) * CInt(row.Cells(3).Value))
+                            .Parameters.AddWithValue("@7", CInt(row.Cells(4).Value))
+                            If cs_hs.Text = "cs" Then
+                                .Parameters.AddWithValue("@8", "CS - " & stud_id.Text)
+                            ElseIf cs_hs.Text = "hs" Then
+                                .Parameters.AddWithValue("@8", "HS - " & stud_id.Text)
+                            End If
+                            .Parameters.AddWithValue("@9", str_userid)
+                            .ExecuteNonQuery()
+                        End With
+                        StockLedger(row.Cells(0).Value, 0, CInt(row.Cells(3).Value), "Issued to " & studentstatus & " student.", "Student Item Release", "Item Release No." & lblTransno.Text & "")
+                    Next
+
+                    MsgBox("Items have been issued to the student successfully!", vbInformation)
+
                     Try
                         Dim dt As New DataTable
                         With dt
@@ -276,28 +334,17 @@ Public Class frmSupplyPOS
                     Dim sdate As String = Now.ToString("yyyy-MM-dd")
                     Dim stime As String = Now.ToString("hh:mm:ss")
 
-                    cn.Open()
-                    cm = New MySqlCommand("Update tbl_supply_deployed set dstudentid = @1 , dstatus = 'APPROVED', duser_id = '" & str_userid & "' where dlocation = '" & lblLocationNumber.Text & "' and dstatus = 'PENDING'", cn)
-                    cm.Parameters.AddWithValue("@1", lblTransno.Text)
-                    cm.ExecuteNonQuery()
-                    cn.Close()
-
                     For Each row As DataGridViewRow In dgCart.Rows
+                        query("Update tbl_supply_deployed set dtransno = '" & lblTransno.Text & "' , dstatus = 'APPROVED', druser_id = '" & str_userid & "', drdate = CURDATE() where dlocation = '" & lblLocationNumber.Text & "' and dbarcode = '" & row.Cells(0).Value & "' and dstatus = 'PENDING'")
                         StockLedger(row.Cells(0).Value, 0, CInt(row.Cells(3).Value), "Issued to " & lblLocation.Text & ".", "Office Item Release", "Item Release No." & lblTransno.Text & "")
                     Next
 
-
-                        cn.Close()
-                    cn.Open()
-                    cm = New MySqlCommand("Update tbl_supply_location set status = 'False' where locationname = '" & lblLocation.Text & "'", cn)
-                    cm.ExecuteNonQuery()
-                    cn.Close()
+                    query("Update tbl_supply_location set status = 'False' where locationname = '" & lblLocation.Text & "'")
 
                     lblLocation.Text = String.Empty
                     lblTransno.Text = String.Empty
                     loadCart()
-                    'stud_id.Visible = False
-                    MsgBox("Request successfully Settled/Approved!", vbInformation)
+                    MsgBox("Request successfully settled/approved!", vbInformation)
                 End If
 
                 'Me.Dispose()
@@ -338,9 +385,13 @@ Public Class frmSupplyPOS
                     End If
                     dr.Close()
                     cn.Close()
-                    With frmSupplyPOSQty
-                        .ShowDialog()
-                    End With
+                    If CInt(lblItemQTY.Text) = 0 Then
+                        MsgBox("Item is out of stock!", vbExclamation)
+                    Else
+                        With frmSupplyPOSQty
+                            .ShowDialog()
+                        End With
+                    End If
                 End If
             Else
             End If
@@ -376,11 +427,11 @@ Public Class frmSupplyPOS
 
     Private Sub DataGridView1_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgItemList.CellDoubleClick
         If lblLocation.Text = String.Empty And txtItemID.Text = String.Empty Then
-            MsgBox("Please start new request first and select location!", vbCritical)
+            MsgBox("Please start new request first and select requester!", vbCritical)
             txtItemID.Clear()
             Panel4.Visible = False
         ElseIf lblLocation.Text = String.Empty Then
-            MsgBox("Please start new request first and select location!", vbCritical)
+            MsgBox("Please start new request first and select requester!", vbCritical)
             txtItemID.Clear()
             Panel4.Visible = False
         Else
@@ -463,5 +514,13 @@ Public Class frmSupplyPOS
             Panel4.Visible = False
             FlowLayoutPanel1.Size = New Size(725, 89)
         End If
+    End Sub
+
+    Private Sub dgCart_RowsAdded(sender As Object, e As DataGridViewRowsAddedEventArgs) Handles dgCart.RowsAdded
+        lblTotal.Text = Format(GetColumnSum(dgCart, 5), "#,##0.00")
+    End Sub
+
+    Private Sub dgCart_RowsRemoved(sender As Object, e As DataGridViewRowsRemovedEventArgs) Handles dgCart.RowsRemoved
+        lblTotal.Text = Format(GetColumnSum(dgCart, 5), "#,##0.00")
     End Sub
 End Class

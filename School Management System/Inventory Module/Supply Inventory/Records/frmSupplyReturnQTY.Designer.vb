@@ -48,7 +48,7 @@ Partial Class frmSupplyReturnQTY
         Me.txtQty.TabIndex = 19
         Me.txtQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'SupplyReturnQTY
+        'frmSupplyReturnQTY
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -60,7 +60,8 @@ Partial Class frmSupplyReturnQTY
         Me.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.Name = "SupplyReturnQTY"
+        Me.Name = "frmSupplyReturnQTY"
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.ResumeLayout(False)
         Me.PerformLayout()

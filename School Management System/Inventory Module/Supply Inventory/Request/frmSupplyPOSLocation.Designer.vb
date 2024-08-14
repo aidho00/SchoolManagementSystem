@@ -48,16 +48,16 @@ Partial Class frmSupplyPOSLocation
         Me.ToolStripLabel2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolStripLabel2.ForeColor = System.Drawing.Color.Black
         Me.ToolStripLabel2.Name = "ToolStripLabel2"
-        Me.ToolStripLabel2.Size = New System.Drawing.Size(162, 22)
-        Me.ToolStripLabel2.Text = "SELECT LOCATION  |  OFFICE"
+        Me.ToolStripLabel2.Size = New System.Drawing.Size(98, 22)
+        Me.ToolStripLabel2.Text = "Select Requester"
         '
         'ToolStripLabel1
         '
         Me.ToolStripLabel1.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolStripLabel1.ForeColor = System.Drawing.Color.Black
         Me.ToolStripLabel1.Name = "ToolStripLabel1"
-        Me.ToolStripLabel1.Size = New System.Drawing.Size(96, 22)
-        Me.ToolStripLabel1.Text = "               SEARCH"
+        Me.ToolStripLabel1.Size = New System.Drawing.Size(66, 22)
+        Me.ToolStripLabel1.Text = "     SEARCH"
         '
         'ToolStripButton2
         '

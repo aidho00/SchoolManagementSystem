@@ -36,6 +36,10 @@ Partial Class frmSupplyPOS
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.dgItemList = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.btn_cancel = New System.Windows.Forms.Button()
         Me.btnSelect = New System.Windows.Forms.Button()
@@ -49,6 +53,13 @@ Partial Class frmSupplyPOS
         Me.cs_hs = New System.Windows.Forms.Label()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.dgCart = New System.Windows.Forms.DataGridView()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colRemove = New System.Windows.Forms.DataGridViewImageColumn()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.lblLocation = New System.Windows.Forms.Label()
@@ -82,17 +93,6 @@ Partial Class frmSupplyPOS
         Me.btnSettle = New System.Windows.Forms.Button()
         Me.btnNewOrder = New System.Windows.Forms.Button()
         Me.DataGridViewImageColumn1 = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colRemove = New System.Windows.Forms.DataGridViewImageColumn()
         Me.Panel1.SuspendLayout()
         Me.Panel4.SuspendLayout()
         CType(Me.dgItemList, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -199,6 +199,35 @@ Partial Class frmSupplyPOS
         Me.dgItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgItemList.Size = New System.Drawing.Size(723, 509)
         Me.dgItemList.TabIndex = 86
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Item ID"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn4.HeaderText = "Description"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        '
+        'Column6
+        '
+        Me.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column6.HeaderText = "CATEGORY"
+        Me.Column6.Name = "Column6"
+        Me.Column6.ReadOnly = True
+        Me.Column6.Visible = False
+        Me.Column6.Width = 94
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.DataGridViewTextBoxColumn1.HeaderText = "Price"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.Width = 57
         '
         'Panel3
         '
@@ -326,7 +355,7 @@ Partial Class frmSupplyPOS
         Me.cs_hs.AutoSize = True
         Me.cs_hs.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cs_hs.ForeColor = System.Drawing.Color.Black
-        Me.cs_hs.Location = New System.Drawing.Point(416, 9)
+        Me.cs_hs.Location = New System.Drawing.Point(355, 9)
         Me.cs_hs.Name = "cs_hs"
         Me.cs_hs.Size = New System.Drawing.Size(15, 17)
         Me.cs_hs.TabIndex = 445
@@ -381,6 +410,68 @@ Partial Class frmSupplyPOS
         Me.dgCart.Size = New System.Drawing.Size(723, 602)
         Me.dgCart.TabIndex = 22
         '
+        'Column1
+        '
+        Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column1.HeaderText = "Item ID"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Width = 69
+        '
+        'Column2
+        '
+        Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Column2.HeaderText = "Description"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        '
+        'Column3
+        '
+        Me.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column3.DefaultCellStyle = DataGridViewCellStyle4
+        Me.Column3.HeaderText = "Price"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        Me.Column3.Width = 57
+        '
+        'Column4
+        '
+        Me.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle5
+        Me.Column4.HeaderText = "Qty"
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        Me.Column4.Width = 51
+        '
+        'Column5
+        '
+        Me.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column5.HeaderText = "Rqst"
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
+        Me.Column5.Width = 54
+        '
+        'Column7
+        '
+        Me.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column7.DefaultCellStyle = DataGridViewCellStyle6
+        Me.Column7.HeaderText = "Total"
+        Me.Column7.Name = "Column7"
+        Me.Column7.ReadOnly = True
+        Me.Column7.Width = 57
+        '
+        'colRemove
+        '
+        Me.colRemove.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.colRemove.HeaderText = ""
+        Me.colRemove.Image = CType(resources.GetObject("colRemove.Image"), System.Drawing.Image)
+        Me.colRemove.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom
+        Me.colRemove.Name = "colRemove"
+        Me.colRemove.Width = 5
+        '
         'FlowLayoutPanel1
         '
         Me.FlowLayoutPanel1.Controls.Add(Me.Label6)
@@ -404,9 +495,9 @@ Partial Class frmSupplyPOS
         Me.Label6.ForeColor = System.Drawing.Color.White
         Me.Label6.Location = New System.Drawing.Point(10, 9)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(188, 22)
+        Me.Label6.Size = New System.Drawing.Size(159, 22)
         Me.Label6.TabIndex = 7
-        Me.Label6.Text = "OFFICE/LOCATION:"
+        Me.Label6.Text = "Office/Location:"
         Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'lblLocation
@@ -415,7 +506,7 @@ Partial Class frmSupplyPOS
         Me.lblLocation.BackColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(54, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.lblLocation.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblLocation.ForeColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(92, Byte), Integer), CType(CType(101, Byte), Integer))
-        Me.lblLocation.Location = New System.Drawing.Point(204, 9)
+        Me.lblLocation.Location = New System.Drawing.Point(175, 9)
         Me.lblLocation.Name = "lblLocation"
         Me.lblLocation.Size = New System.Drawing.Size(0, 22)
         Me.lblLocation.TabIndex = 5
@@ -427,11 +518,11 @@ Partial Class frmSupplyPOS
         Me.Label5.BackColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(54, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Label5.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(210, 9)
+        Me.Label5.Location = New System.Drawing.Point(181, 9)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(188, 22)
+        Me.Label5.Size = New System.Drawing.Size(156, 22)
         Me.Label5.TabIndex = 5
-        Me.Label5.Text = "TRANSACTION NO.:"
+        Me.Label5.Text = "Transaction No.:"
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Label5.Visible = False
         '
@@ -441,7 +532,7 @@ Partial Class frmSupplyPOS
         Me.lblTransno.BackColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(54, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.lblTransno.Font = New System.Drawing.Font("Century Gothic", 14.25!)
         Me.lblTransno.ForeColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(92, Byte), Integer), CType(CType(101, Byte), Integer))
-        Me.lblTransno.Location = New System.Drawing.Point(404, 9)
+        Me.lblTransno.Location = New System.Drawing.Point(343, 9)
         Me.lblTransno.Name = "lblTransno"
         Me.lblTransno.Size = New System.Drawing.Size(0, 22)
         Me.lblTransno.TabIndex = 5
@@ -454,7 +545,7 @@ Partial Class frmSupplyPOS
         Me.lblLocationNumber.BackColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(54, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.lblLocationNumber.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblLocationNumber.ForeColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(92, Byte), Integer), CType(CType(101, Byte), Integer))
-        Me.lblLocationNumber.Location = New System.Drawing.Point(410, 9)
+        Me.lblLocationNumber.Location = New System.Drawing.Point(349, 9)
         Me.lblLocationNumber.Name = "lblLocationNumber"
         Me.lblLocationNumber.Size = New System.Drawing.Size(0, 22)
         Me.lblLocationNumber.TabIndex = 8
@@ -525,9 +616,9 @@ Partial Class frmSupplyPOS
         Me.GunaLabel2.ForeColor = System.Drawing.Color.White
         Me.GunaLabel2.Location = New System.Drawing.Point(0, 216)
         Me.GunaLabel2.Name = "GunaLabel2"
-        Me.GunaLabel2.Size = New System.Drawing.Size(99, 30)
+        Me.GunaLabel2.Size = New System.Drawing.Size(94, 30)
         Me.GunaLabel2.TabIndex = 497
-        Me.GunaLabel2.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "ACADEMIC YEAR"
+        Me.GunaLabel2.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Academic Year"
         '
         'stud_gender
         '
@@ -549,9 +640,9 @@ Partial Class frmSupplyPOS
         Me.Label12.ForeColor = System.Drawing.Color.White
         Me.Label12.Location = New System.Drawing.Point(0, 162)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(55, 32)
+        Me.Label12.Size = New System.Drawing.Size(53, 32)
         Me.Label12.TabIndex = 495
-        Me.Label12.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "GENDER"
+        Me.Label12.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Gender"
         '
         'stud_yrcourse
         '
@@ -573,9 +664,9 @@ Partial Class frmSupplyPOS
         Me.Label13.ForeColor = System.Drawing.Color.White
         Me.Label13.Location = New System.Drawing.Point(0, 108)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(94, 32)
+        Me.Label13.Size = New System.Drawing.Size(170, 32)
         Me.Label13.TabIndex = 493
-        Me.Label13.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "YEAR - COURSE"
+        Me.Label13.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Year/Grade- Course/Strand"
         '
         'stud_name
         '
@@ -597,9 +688,9 @@ Partial Class frmSupplyPOS
         Me.Label9.ForeColor = System.Drawing.Color.White
         Me.Label9.Location = New System.Drawing.Point(0, 54)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(43, 32)
+        Me.Label9.Size = New System.Drawing.Size(46, 32)
         Me.Label9.TabIndex = 491
-        Me.Label9.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "NAME"
+        Me.Label9.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Name"
         '
         'stud_id
         '
@@ -621,9 +712,9 @@ Partial Class frmSupplyPOS
         Me.Label4.ForeColor = System.Drawing.Color.White
         Me.Label4.Location = New System.Drawing.Point(0, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(71, 32)
+        Me.Label4.Size = New System.Drawing.Size(69, 32)
         Me.Label4.TabIndex = 489
-        Me.Label4.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "STUDENT ID"
+        Me.Label4.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Student ID"
         '
         'lblItemQTY
         '
@@ -660,9 +751,9 @@ Partial Class frmSupplyPOS
         Me.Label10.ForeColor = System.Drawing.Color.White
         Me.Label10.Location = New System.Drawing.Point(2, 239)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(41, 32)
+        Me.Label10.Size = New System.Drawing.Size(38, 32)
         Me.Label10.TabIndex = 487
-        Me.Label10.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "PRICE"
+        Me.Label10.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Price" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'lblDescription
         '
@@ -685,9 +776,9 @@ Partial Class frmSupplyPOS
         Me.Label8.ForeColor = System.Drawing.Color.White
         Me.Label8.Location = New System.Drawing.Point(2, 186)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(83, 32)
+        Me.Label8.Size = New System.Drawing.Size(76, 32)
         Me.Label8.TabIndex = 485
-        Me.Label8.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "DESCRIPTION"
+        Me.Label8.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Description"
         '
         'lblSearch
         '
@@ -701,7 +792,7 @@ Partial Class frmSupplyPOS
         Me.lblSearch.Name = "lblSearch"
         Me.lblSearch.Size = New System.Drawing.Size(73, 16)
         Me.lblSearch.TabIndex = 484
-        Me.lblSearch.Text = "SEARCH 🔍"
+        Me.lblSearch.Text = "Ssearch 🔍"
         '
         'txtItemID
         '
@@ -738,7 +829,7 @@ Partial Class frmSupplyPOS
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(437, 29)
         Me.Label11.TabIndex = 2
-        Me.Label11.Text = "SCAN/INPUT ITEM BARCODE"
+        Me.Label11.Text = "SCAN BARCODE or INPUT ITEM ID"
         Me.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'lblTotal
@@ -818,97 +909,6 @@ Partial Class frmSupplyPOS
         Me.DataGridViewImageColumn1.Image = CType(resources.GetObject("DataGridViewImageColumn1.Image"), System.Drawing.Image)
         Me.DataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom
         Me.DataGridViewImageColumn1.Name = "DataGridViewImageColumn1"
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Item ID"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Description"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        '
-        'Column6
-        '
-        Me.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column6.HeaderText = "CATEGORY"
-        Me.Column6.Name = "Column6"
-        Me.Column6.ReadOnly = True
-        Me.Column6.Visible = False
-        Me.Column6.Width = 92
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.DataGridViewTextBoxColumn1.HeaderText = "Price"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Width = 57
-        '
-        'Column1
-        '
-        Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column1.HeaderText = "Item ID"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.Width = 69
-        '
-        'Column2
-        '
-        Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Column2.HeaderText = "Description"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        '
-        'Column3
-        '
-        Me.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column3.DefaultCellStyle = DataGridViewCellStyle4
-        Me.Column3.HeaderText = "Price"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        Me.Column3.Width = 57
-        '
-        'Column4
-        '
-        Me.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle5
-        Me.Column4.HeaderText = "Qty"
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
-        Me.Column4.Width = 51
-        '
-        'Column5
-        '
-        Me.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column5.HeaderText = "Rqst"
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
-        Me.Column5.Width = 54
-        '
-        'Column7
-        '
-        Me.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column7.DefaultCellStyle = DataGridViewCellStyle6
-        Me.Column7.HeaderText = "Total"
-        Me.Column7.Name = "Column7"
-        Me.Column7.ReadOnly = True
-        Me.Column7.Width = 57
-        '
-        'colRemove
-        '
-        Me.colRemove.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.colRemove.HeaderText = ""
-        Me.colRemove.Image = CType(resources.GetObject("colRemove.Image"), System.Drawing.Image)
-        Me.colRemove.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom
-        Me.colRemove.Name = "colRemove"
-        Me.colRemove.Width = 5
         '
         'frmSupplyPOS
         '

@@ -23,7 +23,7 @@ Public Class frmSupplyPOSStudID
         If college.Checked = False And highschool.Checked = False Then
             If txtStudentID.Text = "" Then
             Else
-                MessageBox.Show("Please select status of student whether he/she is College or Basic Education student. Re-scan/input student ID.", "System", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("Please select status of student whether he/she is College or Basic Education student. Re-scan/input Student ID.", "", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 txtStudentID.Text = ""
             End If
         Else
@@ -41,7 +41,7 @@ Public Class frmSupplyPOSStudID
                 cm = New MySqlCommand(sql, cn)
                 Dim sdr2 As MySqlDataReader = cm.ExecuteReader()
                 If (sdr2.Read() = False) Then
-                    MessageBox.Show("ID Number " & txtStudentID.Text & " is not registered.", "System", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("Student ID Number " & txtStudentID.Text & " is not registered.", "", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     txtStudentID.Text = ""
                     cn.Close()
                     sdr2.Dispose()

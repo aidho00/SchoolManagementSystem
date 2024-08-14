@@ -71,7 +71,7 @@ Partial Class frmSupplyPOSLocationAdd
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(449, 27)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Supply Request Location Entry"
+        Me.Label1.Text = "Supply Request Requester Entry"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Panel3
@@ -132,7 +132,7 @@ Partial Class frmSupplyPOSLocationAdd
         Me.txtDesc.Size = New System.Drawing.Size(657, 21)
         Me.txtDesc.TabIndex = 101
         '
-        'frmLocationAdd
+        'frmSupplyPOSLocationAdd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -147,7 +147,7 @@ Partial Class frmSupplyPOSLocationAdd
         Me.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.Name = "frmLocationAdd"
+        Me.Name = "frmSupplyPOSLocationAdd"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.systemSign.ResumeLayout(False)

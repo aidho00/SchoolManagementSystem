@@ -129,7 +129,7 @@ Partial Class frmSupplySales
         '
         'dtTo
         '
-        Me.dtTo.CustomFormat = "yyyy-MM-dd"
+        Me.dtTo.CustomFormat = "yyyy/MM/dd"
         Me.dtTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dtTo.Location = New System.Drawing.Point(269, 5)
         Me.dtTo.Name = "dtTo"
@@ -138,7 +138,7 @@ Partial Class frmSupplySales
         '
         'dtFrom
         '
-        Me.dtFrom.CustomFormat = "yyyy-MM-dd"
+        Me.dtFrom.CustomFormat = "yyyy/MM/dd"
         Me.dtFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dtFrom.Location = New System.Drawing.Point(152, 5)
         Me.dtFrom.Name = "dtFrom"
@@ -245,7 +245,7 @@ Partial Class frmSupplySales
         Me.Column8.Name = "Column8"
         Me.Column8.ReadOnly = True
         Me.Column8.Visible = False
-        Me.Column8.Width = 68
+        Me.Column8.Width = 70
         '
         'Column6
         '
@@ -276,7 +276,7 @@ Partial Class frmSupplySales
         Me.Column12.Name = "Column12"
         Me.Column12.ReadOnly = True
         Me.Column12.Visible = False
-        Me.Column12.Width = 82
+        Me.Column12.Width = 84
         '
         'Column13
         '
@@ -284,7 +284,7 @@ Partial Class frmSupplySales
         Me.Column13.HeaderText = "Size"
         Me.Column13.Name = "Column13"
         Me.Column13.Visible = False
-        Me.Column13.Width = 51
+        Me.Column13.Width = 53
         '
         'Column3
         '
@@ -322,7 +322,7 @@ Partial Class frmSupplySales
         Me.Column9.HeaderText = "Date"
         Me.Column9.Name = "Column9"
         Me.Column9.Visible = False
-        Me.Column9.Width = 58
+        Me.Column9.Width = 60
         '
         'Column10
         '

@@ -1668,12 +1668,14 @@ Public Class frmMain
     Private Sub btnBestRequested_Click(sender As Object, e As EventArgs) Handles btnBestRequested.Click
         OpenForm(frmSupplyBestSelling, "Supply Best Requested Items")
         HideAllFormsInPanelExcept(frmSupplyBestSelling)
+        frmSupplyBestSelling.loadRecords()
         controlsPanel.Visible = False
     End Sub
 
     Private Sub btnSupplySales_Click(sender As Object, e As EventArgs) Handles btnSupplySales.Click
         OpenForm(frmSupplySales, "Supply Sales")
         HideAllFormsInPanelExcept(frmSupplySales)
+        frmSupplySales.loadSales()
         controlsPanel.Visible = False
     End Sub
 

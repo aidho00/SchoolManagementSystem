@@ -37,6 +37,7 @@ Partial Class frmSupplyItemAdd
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.cbSupplyBrand = New System.Windows.Forms.TextBox()
+        Me.txtSupplyDesc = New System.Windows.Forms.TextBox()
         Me.cbSupplySize = New System.Windows.Forms.TextBox()
         Me.cbSupplyCategory = New System.Windows.Forms.TextBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
@@ -85,7 +86,6 @@ Partial Class frmSupplyItemAdd
         Me.Panel10 = New System.Windows.Forms.Panel()
         Me.btnSelect = New System.Windows.Forms.Button()
         Me.btnCancelSearch = New System.Windows.Forms.Button()
-        Me.txtSupplyDesc = New System.Windows.Forms.TextBox()
         Me.systemSign.SuspendLayout()
         Me.BasePanel.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -155,8 +155,8 @@ Partial Class frmSupplyItemAdd
         '
         'BasePanel
         '
-        Me.BasePanel.Controls.Add(Me.Panel2)
         Me.BasePanel.Controls.Add(Me.SearchPanel)
+        Me.BasePanel.Controls.Add(Me.Panel2)
         Me.BasePanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.BasePanel.Location = New System.Drawing.Point(0, 49)
         Me.BasePanel.Name = "BasePanel"
@@ -215,6 +215,16 @@ Partial Class frmSupplyItemAdd
         Me.cbSupplyBrand.Name = "cbSupplyBrand"
         Me.cbSupplyBrand.Size = New System.Drawing.Size(280, 21)
         Me.cbSupplyBrand.TabIndex = 442
+        '
+        'txtSupplyDesc
+        '
+        Me.txtSupplyDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtSupplyDesc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txtSupplyDesc.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSupplyDesc.Location = New System.Drawing.Point(206, 212)
+        Me.txtSupplyDesc.Name = "txtSupplyDesc"
+        Me.txtSupplyDesc.Size = New System.Drawing.Size(554, 21)
+        Me.txtSupplyDesc.TabIndex = 442
         '
         'cbSupplySize
         '
@@ -783,16 +793,6 @@ Partial Class frmSupplyItemAdd
         Me.btnCancelSearch.TabIndex = 4
         Me.btnCancelSearch.Text = "CANCEL"
         Me.btnCancelSearch.UseVisualStyleBackColor = True
-        '
-        'txtSupplyDesc
-        '
-        Me.txtSupplyDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtSupplyDesc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtSupplyDesc.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSupplyDesc.Location = New System.Drawing.Point(206, 212)
-        Me.txtSupplyDesc.Name = "txtSupplyDesc"
-        Me.txtSupplyDesc.Size = New System.Drawing.Size(554, 21)
-        Me.txtSupplyDesc.TabIndex = 442
         '
         'frmSupplyItemAdd
         '

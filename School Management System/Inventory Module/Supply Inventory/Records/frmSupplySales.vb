@@ -13,7 +13,7 @@ Public Class frmSupplySales
             dgSales.Rows.Clear()
             Dim i As Integer
             cn.Open()
-            cm = New MySqlCommand("select c.dno, c.dstatus, c.dstudentid, c.dbarcode, p.description, s.categoryname, sz.sizes, c.dprice, round(c.dqty) as dqty, c.ditem_price, c.ddate as 'transDate', u.AccountName as 'cashier' from tbl_supply_deployed as c inner join tbl_supply_item as p on c.dbarcode = p.barcodeid LEFT join useraccounts u on c.duser_id = u.useraccountID inner join tbl_supply_category s on p.categoryid = s.catID inner JOIN tbl_supply_sizes sz ON s.catID = sz.category_id where c.dstatus = 'APPROVED' and c.ddate between '" & sdate1 & "' and '" & sdate2 & "'", cn)
+            cm = New MySqlCommand("select c.dno, c.dstatus, c.dstudentid, c.dbarcode, p.description, s.categoryname, sz.sizes, c.dprice, round(c.dqty) as dqty, c.ditem_price, c.ddate as 'transDate', u.AccountName as 'cashier' from tbl_supply_deployed as c inner join tbl_supply_item as p on c.dbarcode = p.barcodeid LEFT join useraccounts u on c.druser_id = u.useraccountID inner join tbl_supply_category s on p.categoryid = s.catID JOIN tbl_supply_sizes sz ON p.sizesid = sz.category_id where c.dstatus = 'APPROVED' and c.ddate between '" & sdate1 & "' and '" & sdate2 & "'", cn)
             dr = cm.ExecuteReader
             While dr.Read
                 i += 1
@@ -50,16 +50,17 @@ Public Class frmSupplySales
     Private Sub ToolStripButton3_Click(sender As Object, e As EventArgs) Handles ToolStripButton3.Click
         frmMain.OpenForm(frmSupplySalesSummary, "Supply Sales Summary")
         frmMain.HideAllFormsInPanelExcept(frmSupplySalesSummary)
+        frmSupplySalesSummary.loadDailySales()
+        frmSupplySalesSummary.loadMonthlySales()
+        frmSupplySalesSummary.loadQuarterlySales()
+        frmSupplySalesSummary.loadYearlySales()
         frmMain.controlsPanel.Visible = False
     End Sub
 
     Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
         frmMain.OpenForm(frmSupplyBestSelling, "Supply Best Requested Items")
         frmMain.HideAllFormsInPanelExcept(frmSupplyBestSelling)
+        frmSupplyBestSelling.loadRecords()
         frmMain.controlsPanel.Visible = False
-    End Sub
-
-    Private Sub ToolStripButton4_Click(sender As Object, e As EventArgs) Handles ToolStripButton4.Click
-
     End Sub
 End Class

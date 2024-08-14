@@ -262,6 +262,7 @@ Partial Class frmMain
         Me.Panel29 = New System.Windows.Forms.Panel()
         Me.PictureBox13 = New System.Windows.Forms.PictureBox()
         Me.Label7 = New System.Windows.Forms.Label()
+        Me.btnStockRecount = New System.Windows.Forms.Button()
         Me.systemSign.SuspendLayout()
         CType(Me.schoolLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ComboBoxMenu.SuspendLayout()
@@ -509,7 +510,7 @@ Partial Class frmMain
         Me.supplyPanel.Location = New System.Drawing.Point(0, 1782)
         Me.supplyPanel.Name = "supplyPanel"
         Me.supplyPanel.Padding = New System.Windows.Forms.Padding(24, 0, 0, 0)
-        Me.supplyPanel.Size = New System.Drawing.Size(221, 360)
+        Me.supplyPanel.Size = New System.Drawing.Size(221, 384)
         Me.supplyPanel.TabIndex = 54
         Me.supplyPanel.Visible = False
         '
@@ -521,7 +522,7 @@ Partial Class frmMain
         Me.PanelRecords.Controls.Add(Me.btnItemLedger)
         Me.PanelRecords.Controls.Add(Me.btnRequests)
         Me.PanelRecords.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PanelRecords.Location = New System.Drawing.Point(24, 264)
+        Me.PanelRecords.Location = New System.Drawing.Point(24, 288)
         Me.PanelRecords.Name = "PanelRecords"
         Me.PanelRecords.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
         Me.PanelRecords.Size = New System.Drawing.Size(197, 96)
@@ -628,7 +629,7 @@ Partial Class frmMain
         Me.btnSupplyRecords.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSupplyRecords.ForeColor = System.Drawing.Color.White
         Me.btnSupplyRecords.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSupplyRecords.Location = New System.Drawing.Point(24, 240)
+        Me.btnSupplyRecords.Location = New System.Drawing.Point(24, 264)
         Me.btnSupplyRecords.Margin = New System.Windows.Forms.Padding(0)
         Me.btnSupplyRecords.Name = "btnSupplyRecords"
         Me.btnSupplyRecords.Size = New System.Drawing.Size(197, 24)
@@ -641,6 +642,7 @@ Partial Class frmMain
         'panelInventory
         '
         Me.panelInventory.AutoSize = True
+        Me.panelInventory.Controls.Add(Me.btnStockRecount)
         Me.panelInventory.Controls.Add(Me.PanelPurchasing)
         Me.panelInventory.Controls.Add(Me.btnPurchasing)
         Me.panelInventory.Controls.Add(Me.btnStockLevel)
@@ -650,7 +652,7 @@ Partial Class frmMain
         Me.panelInventory.Location = New System.Drawing.Point(24, 48)
         Me.panelInventory.Name = "panelInventory"
         Me.panelInventory.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
-        Me.panelInventory.Size = New System.Drawing.Size(197, 192)
+        Me.panelInventory.Size = New System.Drawing.Size(197, 216)
         Me.panelInventory.TabIndex = 132
         Me.panelInventory.Visible = False
         '
@@ -773,7 +775,7 @@ Partial Class frmMain
         Me.btnStockLevel.Name = "btnStockLevel"
         Me.btnStockLevel.Size = New System.Drawing.Size(182, 24)
         Me.btnStockLevel.TabIndex = 127
-        Me.btnStockLevel.Text = "Stock Level"
+        Me.btnStockLevel.Text = "Inventory/Stock Level"
         Me.btnStockLevel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnStockLevel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnStockLevel.UseVisualStyleBackColor = False
@@ -852,7 +854,7 @@ Partial Class frmMain
         Me.btnItems.Name = "btnItems"
         Me.btnItems.Size = New System.Drawing.Size(182, 24)
         Me.btnItems.TabIndex = 28
-        Me.btnItems.Text = "Item Entry"
+        Me.btnItems.Text = "Entry"
         Me.btnItems.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnItems.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnItems.UseVisualStyleBackColor = False
@@ -874,7 +876,7 @@ Partial Class frmMain
         Me.btnSupplyInventory.Name = "btnSupplyInventory"
         Me.btnSupplyInventory.Size = New System.Drawing.Size(197, 24)
         Me.btnSupplyInventory.TabIndex = 131
-        Me.btnSupplyInventory.Text = "Inventory"
+        Me.btnSupplyInventory.Text = "Items"
         Me.btnSupplyInventory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnSupplyInventory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnSupplyInventory.UseVisualStyleBackColor = False
@@ -2399,7 +2401,7 @@ Partial Class frmMain
         Me.btnLogout.ForeColor = System.Drawing.Color.White
         Me.btnLogout.Image = CType(resources.GetObject("btnLogout.Image"), System.Drawing.Image)
         Me.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnLogout.Location = New System.Drawing.Point(0, 2142)
+        Me.btnLogout.Location = New System.Drawing.Point(0, 2166)
         Me.btnLogout.Name = "btnLogout"
         Me.btnLogout.Size = New System.Drawing.Size(221, 31)
         Me.btnLogout.TabIndex = 38
@@ -4034,6 +4036,28 @@ Partial Class frmMain
         Me.Label7.Text = "✕"
         Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'btnStockRecount
+        '
+        Me.btnStockRecount.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnStockRecount.Cursor = System.Windows.Forms.Cursors.Default
+        Me.btnStockRecount.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnStockRecount.FlatAppearance.BorderSize = 0
+        Me.btnStockRecount.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnStockRecount.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnStockRecount.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnStockRecount.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnStockRecount.ForeColor = System.Drawing.Color.White
+        Me.btnStockRecount.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnStockRecount.Location = New System.Drawing.Point(15, 192)
+        Me.btnStockRecount.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnStockRecount.Name = "btnStockRecount"
+        Me.btnStockRecount.Size = New System.Drawing.Size(182, 24)
+        Me.btnStockRecount.TabIndex = 130
+        Me.btnStockRecount.Text = "Inventory/Stock Recounting"
+        Me.btnStockRecount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnStockRecount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnStockRecount.UseVisualStyleBackColor = False
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -4374,4 +4398,5 @@ Partial Class frmMain
     Friend WithEvents PictureBox13 As PictureBox
     Friend WithEvents Label7 As Label
     Friend WithEvents cmbSupplyType As ToolStripComboBox
+    Friend WithEvents btnStockRecount As Button
 End Class

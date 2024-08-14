@@ -217,7 +217,7 @@ Public Class frmSupplyItemAdd
         If IS_EMPTY(txtOpeningStock) = True Then Return
         If IS_EMPTY(txtReOrderPoint) = True Then Return
         If IS_EMPTY(txtPrice) = True Then Return
-        If CHECK_EXISTING("SELECT * FROM tbl_supply_item WHERE categoryid = " & CategoryID & " and sizesid = " & SizeID & "") = True Then Return
+        If CHECK_EXISTING("SELECT * FROM tbl_supply_item WHERE brandid = " & BrandID & " and categoryid = " & CategoryID & " and sizesid = " & SizeID & "") = True Then Return
         AutoBarCode()
         query("INSERT INTO `tbl_supply_item`(`barcodeid`, `description`, `categoryid`, `brandid`, `sizesid`, `item_price`, `item_status`, `item_open_stock`, `item_reorder_point`) VALUES ('" & barcodeID.Text & "', '" & txtSupplyDesc.Text & "', " & CategoryID & ",  " & BrandID & ", " & SizeID & ", " & CDec(txtPrice.Text) & ", '" & cbSupplyStatus.Text & "', " & CInt(txtOpeningStock.Text) & " , " & CInt(txtReOrderPoint.Text) & ")")
         query("INSERT INTO `tbl_supply_inventory`(`itembarcode`, `Spare`, `Deployed`, `Defect`) VALUES ('" & barcodeID.Text & "', " & CInt(txtOpeningStock.Text) & ", 0, 0)")
@@ -245,7 +245,7 @@ Public Class frmSupplyItemAdd
         If IS_EMPTY(txtOpeningStock) = True Then Return
         If IS_EMPTY(txtReOrderPoint) = True Then Return
         If IS_EMPTY(txtPrice) = True Then Return
-        If CHECK_EXISTING("SELECT * FROM tbl_supply_item WHERE categoryid = " & CategoryID & " and brandid = " & BrandID & " and sizesid = " & SizeID & " and barcodeid NOT IN ('" & barcodeID.Text & "')") = True Then Return
+        If CHECK_EXISTING("SELECT * FROM tbl_supply_item WHERE brandid = " & BrandID & " and categoryid = " & CategoryID & " and brandid = " & BrandID & " and sizesid = " & SizeID & " and barcodeid NOT IN ('" & barcodeID.Text & "')") = True Then Return
         query("UPDATE `tbl_supply_item` set `description` = '" & txtSupplyDesc.Text & "', `categoryid` = " & CategoryID & ", brandid = " & BrandID & ", `sizesid` = " & SizeID & ", `item_price` = " & CDec(txtPrice.Text) & ", `item_status` = '" & cbSupplyStatus.Text & "', `item_reorder_point` = " & CInt(txtReOrderPoint.Text) & " WHERE barcodeid = '" & barcodeID.Text & "'")
         UserActivity("Updated a(n) " & cbSupplyType.Text & " item " & txtSupplyDesc.Text.Trim & " - " & cbSupplyCategory.Text.Trim & " " & cbSupplySize.Text.Trim & ". Barcode: " & barcodeID.Text & "", "SUPPLY ITEM UPDATE")
         frmWait.seconds = 1
@@ -264,6 +264,9 @@ Public Class frmSupplyItemAdd
     End Sub
 
     Private Sub cbSupplyCategory_TextChanged(sender As Object, e As EventArgs) Handles cbSupplyCategory.TextChanged
+        cbSupplyBrand.Text = String.Empty
+        BrandID = 0
+
         cbSupplySize.Text = String.Empty
         SizeID = 0
 

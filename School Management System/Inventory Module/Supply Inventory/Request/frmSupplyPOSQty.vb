@@ -8,23 +8,36 @@ Public Class frmSupplyPOSQty
             Me.Dispose()
         ElseIf e.KeyCode = Keys.Enter Then
             Dim sdate As String = Now.ToString("yyyy-MM-dd")
+
+            If IS_EMPTY(TextBox1) = True Then Return
+            If IS_EMPTY(txtQty) = True Then Return
+
             If CInt(txtQty.Text) > CInt(frmSupplyPOS.lblItemQTY.Text) Then
-                MsgBox("Quantity to release is greater than current item stock. Current Item Stock: '" & CInt(frmSupplyPOS.lblItemQTY.Text) & "'", vbCritical)
+                MsgBox("Quantity to release is greater than current item stock. Current Item Stock: '" & CInt(frmSupplyPOS.lblItemQTY.Text) & "'", vbExclamation)
                 txtQty.Select()
             Else
 
-
-                If frmSupplyPOS.lblLocation.Text = "Student" Then
+                If frmSupplyPOS.lblLocation.Text = "STUDENT" Then
 
                     Dim isFound As Boolean = False
+                    Dim insufficientStock As Boolean = False
+                    Dim rqstdValue As Integer = 0
 
                     For Each row As DataGridViewRow In frmSupplyPOS.dgCart.Rows
                         If row.Cells(0).Value = frmSupplyPOS.txtItemID.Text Then
-                            isFound = True
-                            row.Cells(3).Value = CInt(row.Cells(3).Value) + CInt(txtQty.Text)
-                            row.Cells(5).Value = CDec(row.Cells(2).Value) * CInt(row.Cells(3).Value)
-                            frmSupplyPOS.lblTotal.Text = Format(GetColumnSum(frmSupplyPOS.dgCart, 5), "#,##0.00")
-                            Exit For
+
+                            rqstdValue = CInt(row.Cells(3).Value) + CInt(txtQty.Text)
+                            If rqstdValue > CInt(frmSupplyPOS.lblItemQTY.Text) Then
+                                isFound = True
+                                MsgBox("Insufficient stockQuantity to release is greater than current item stock. Current Item Stock: '" & CInt(frmSupplyPOS.lblItemQTY.Text) & "'", vbExclamation)
+                                Exit For
+                            Else
+                                isFound = True
+                                row.Cells(3).Value = CInt(row.Cells(3).Value) + CInt(txtQty.Text)
+                                row.Cells(5).Value = CDec(row.Cells(2).Value) * CInt(row.Cells(3).Value)
+                                frmSupplyPOS.lblTotal.Text = Format(GetColumnSum(frmSupplyPOS.dgCart, 5), "#,##0.00")
+                                Exit For
+                            End If
                         Else
                             isFound = False
                         End If
@@ -40,110 +53,6 @@ Public Class frmSupplyPOSQty
                         .lblItemPrice.Text = "0.00"
                     End With
                     Me.Dispose()
-
-
-                    'Dim itemcount As Integer = 0
-
-                    'cn.Open()
-
-                    'Dim sql As String
-                    'If frmSupplyPOS.cs_hs.Text = "cs" Then
-                    '    sql = "select count(*) as count from cfcissmsdb.tbl_assessment_additional where additional_stud_id = @1 and additional_period_id = @2 and additional_item_id = @3"
-                    'ElseIf frmSupplyPOS.cs_hs.Text = "hs" Then
-                    '    sql = "select count(*) as count from cfcissmsdbhighschool.tbl_assessment_additional where additional_stud_id = @1 and additional_period_id = @2 and additional_item_id = @3"
-                    'End If
-
-                    'cm = New MySqlCommand(sql, cn)
-                    'With cm
-                    '    .Parameters.AddWithValue("@1", frmSupplyPOS.stud_id.Text)
-                    '    .Parameters.AddWithValue("@2", frmSupplyPOS.period_id.Text)
-                    '    .Parameters.AddWithValue("@3", frmSupplyPOS.txtItemID.Text)
-                    'End With
-                    'dr = cm.ExecuteReader
-                    'While dr.Read
-                    '    itemcount = itemcount + CInt(dr.Item("count").ToString)
-                    'End While
-                    'cn.Close()
-
-                    'Dim studentstatus As String = ""
-                    'If frmSupplyPOS.cs_hs.Text = "cs" Then
-                    '    studentstatus = "college"
-                    'ElseIf frmSupplyPOS.cs_hs.Text = "hs" Then
-                    '    studentstatus = "highschool"
-                    'End If
-
-                    'If itemcount = 0 Then
-
-                    '    cn.Open()
-
-                    '    Dim sql2 As String
-
-                    '    If frmSupplyPOS.cs_hs.Text = "cs" Then
-                    '        studentstatus = "college"
-                    '        sql2 = "insert into cfcissmsdb.tbl_assessment_additional (additional_period_id, additional_item_id, additional_stud_id, additional_amount, additional_date_added, additional_added_by, additional_qty, additional_price) values (@1,@2,@3,@4,@5,@6,@7,@8)"
-                    '    ElseIf frmSupplyPOS.cs_hs.Text = "hs" Then
-                    '        studentstatus = "highschool"
-                    '        sql2 = "insert into cfcissmsdbhighschool.tbl_assessment_additional (additional_period_id, additional_item_id, additional_stud_id, additional_amount, additional_date_added, additional_added_by, additional_qty, additional_price) values (@1,@2,@3,@4,@5,@6,@7,@8)"
-                    '    End If
-
-                    '    cm = New MySqlCommand(sql2, cn)
-                    '    With cm
-                    '        .Parameters.AddWithValue("@1", frmSupplyPOS.period_id.Text)
-                    '        .Parameters.AddWithValue("@2", frmSupplyPOS.txtItemID.Text)
-                    '        .Parameters.AddWithValue("@3", frmSupplyPOS.stud_id.Text)
-                    '        .Parameters.AddWithValue("@4", CDbl(frmSupplyPOS.lblItemPrice.Text) * CDbl(txtQty.Text))
-                    '        .Parameters.AddWithValue("@5", sdate)
-                    '        .Parameters.AddWithValue("@6", str_userid)
-                    '        .Parameters.AddWithValue("@7", CDbl(txtQty.Text))
-                    '        .Parameters.AddWithValue("@8", CDbl(frmSupplyPOS.lblItemPrice.Text))
-                    '        .ExecuteNonQuery()
-                    '    End With
-                    '    cn.Close()
-                    '    cn.Open()
-                    '    cm = New MySqlCommand("Update tbl_supply_inventory set deployed = deployed+@deployqty, spare = spare-@deployqty where itembarcode = @itembarcode", cn)
-                    '    With cm
-                    '        .Parameters.AddWithValue("@deployqty", CInt(txtQty.Text))
-                    '        .Parameters.AddWithValue("@itembarcode", frmSupplyPOS.txtItemID.Text)
-                    '        .ExecuteNonQuery()
-                    '    End With
-                    '    cn.Close()
-
-                    '    StockLedger(frmSupplyPOS.txtItemID.Text, 0, CInt(txtQty.Text), "Issued to " & studentstatus & " student.", "Student Item Release", "Student ID Number " & frmSupplyPOS.stud_id.Text & "")
-
-                    'Else
-
-                    '    cn.Open()
-
-                    '    Dim sql3 As String
-                    '    If frmSupplyPOS.cs_hs.Text = "cs" Then
-                    '        sql3 = "update cfcissmsdb.tbl_assessment_additional set additional_qty = additional_qty+@1, additional_amount = additional_price * additional_qty where additional_stud_id = @2 and additional_item_id = @3 and additional_period_id = @4"
-                    '    ElseIf frmSupplyPOS.cs_hs.Text = "hs" Then
-                    '        sql3 = "update cfcissmsdbhighschool.tbl_assessment_additional set additional_qty = additional_qty+@1, additional_amount = additional_price * additional_qty where additional_stud_id = @2 and additional_item_id = @3 and additional_period_id = @4"
-                    '    End If
-
-                    '    cm = New MySqlCommand(sql3, cn)
-                    '    With cm
-                    '        .Parameters.AddWithValue("@1", CInt(txtQty.Text))
-                    '        .Parameters.AddWithValue("@2", frmSupplyPOS.stud_id.Text)
-                    '        .Parameters.AddWithValue("@3", frmSupplyPOS.txtItemID.Text)
-                    '        .Parameters.AddWithValue("@4", CInt(frmSupplyPOS.period_id.Text))
-                    '        .ExecuteNonQuery()
-                    '    End With
-                    '    cn.Close()
-
-                    '    cn.Open()
-                    '    cm = New MySqlCommand("Update tbl_supply_inventory set deployed = deployed+@deployqty, spare = spare-@deployqty where itembarcode = @itembarcode", cn)
-                    '    With cm
-                    '        .Parameters.AddWithValue("@deployqty", CDbl(txtQty.Text))
-                    '        .Parameters.AddWithValue("@itembarcode", frmSupplyPOS.txtItemID.Text)
-                    '        .ExecuteNonQuery()
-                    '    End With
-
-                    '    cn.Close()
-
-                    '    StockLedger(frmSupplyPOS.txtItemID.Text, 0, CInt(txtQty.Text), "Issued to " & studentstatus & " student.", "Student Item Release", "Student ID Number " & frmSupplyPOS.stud_id.Text & "")
-
-                    'End If
 
                 Else
 
@@ -182,7 +91,7 @@ Public Class frmSupplyPOSQty
                     Else
 
                         cn.Open()
-                        cm = New MySqlCommand("update tbl_supply_deployed set ddate = CURDATE(), dqty = dqty+@1, qty_requested = @4, ditem_price = dprice * dqty where dlocation = @2 and dbarcode = @3 and dstatus = 'PENDING'", cn)
+                        cm = New MySqlCommand("update tbl_supply_deployed set ddate = CURDATE(), dqty = dqty+@1, qty_requested = qty_requested+@4, ditem_price = dprice * dqty where dlocation = @2 and dbarcode = @3 and dstatus = 'PENDING'", cn)
                         With cm
                             .Parameters.AddWithValue("@1", CInt(txtQty.Text))
                             .Parameters.AddWithValue("@2", frmSupplyPOS.lblLocationNumber.Text)
@@ -221,7 +130,7 @@ Public Class frmSupplyPOSQty
     Private Sub frmQty_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.KeyPreview = True
 
-        If frmSupplyPOS.lblLocation.Text = "Student" Then
+        If frmSupplyPOS.lblLocation.Text = "STUDENT" Then
             Me.Height = 108
         Else
             Me.Height = 208

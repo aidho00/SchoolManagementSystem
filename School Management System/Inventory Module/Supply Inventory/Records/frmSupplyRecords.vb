@@ -12,7 +12,16 @@ Public Class frmSupplyRecords
         'dtFrom.Value = Now.ToString("yyyy-MM-dd")
         'dtTo.Value = Now.ToString("yyyy-MM-dd")
         fillCombo("SELECT Locationname, locationnumber from tbl_supply_location", txtboxlocation, "tbl_supply_location", "Locationname", "locationnumber")
+
         'inventoryshow()
+        txtboxlocation.SelectedIndex = 0
+
+        Try
+            fillCombo("select distinct(dtransno) as ID, dstatus from tbl_supply_deployed where drdate between '" & dtFrom.Text & "' and '" & dtTo.Text & "' and dlocation = " & CInt(txtboxlocation.SelectedValue) & " order by dstatus asc", cbRequests, "tbl_supply_deployed", "ID", "dstatus")
+            cbRequests.SelectedIndex = 0
+            lbl_status.Text = cbRequests.SelectedValue
+        Catch ex As Exception
+        End Try
 
         ComboBox1.SelectedIndex = 0
     End Sub
@@ -374,14 +383,34 @@ Public Class frmSupplyRecords
 
         Dim sdate1 As String = dtFrom.Value.ToString("yyyy-MM-dd")
         Dim sdate2 As String = dtTo.Value.ToString("yyyy-MM-dd")
-        fillCombo("select distinct(dtransno) as ID, dstatus from tbl_supply_deployed where ddate between '" & dtFrom.Text & "' and '" & dtTo.Text & "' and dlocation = " & CInt(txtboxlocation.SelectedValue) & " order by dstudentid desc", cbRequests, "tbl_supply_deployed", "ID", "dstatus")
+        fillCombo("select distinct(dtransno) as ID, dstatus from tbl_supply_deployed where drdate between '" & dtFrom.Text & "' and '" & dtTo.Text & "' and dlocation = " & CInt(txtboxlocation.SelectedValue) & " order by dstudentid desc", cbRequests, "tbl_supply_deployed", "ID", "dstatus")
     End Sub
 
-    Private Sub cbRequests_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbRequests.SelectedIndexChanged, ComboBox1.SelectedIndexChanged
+    Private Sub cbRequests_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbRequests.SelectedIndexChanged, cbRequests.TextChanged
         'dgdeployrecords.DataSource = Nothing
 
         Try
-            lbl_status.Text = cbRequests.SelectedValue
+            If cbRequests.Text = String.Empty Then
+                lbl_status.Text = ""
+            Else
+                lbl_status.Text = cbRequests.SelectedValue
+            End If
+        Catch ex As Exception
+        End Try
+
+        Try
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand("select distinct(dtransno) as ID, dstatus, t2.StudentID, t2.StudentFullName from tbl_supply_deployed t1 JOIN students t2 ON right(t1.dstudentid,7) =	t2.StudentID where t1.dtransno = '" & cbRequests.Text & "'", cn)
+            dr = cm.ExecuteReader
+            dr.Read()
+            If dr.HasRows Then
+                lblStudentID.Text = dr.Item("StudentID").ToString
+                lblStudentName.Text = dr.Item("StudentFullName").ToString
+            Else
+            End If
+            dr.Close()
+            cn.Close()
         Catch ex As Exception
         End Try
 
@@ -417,19 +446,19 @@ Public Class frmSupplyRecords
 
     Private Sub txtboxlocation_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txtboxlocation.SelectedIndexChanged
         Try
-            fillCombo("select distinct(dtransno) as ID, dstatus from tbl_supply_deployed where ddate between '" & dtFrom.Text & "' and '" & dtTo.Text & "' and dlocation = " & CInt(txtboxlocation.SelectedValue) & " order by dstatus asc", cbRequests, "tbl_supply_deployed", "ID", "dstatus")
+            fillCombo("select distinct(dtransno) as ID, dstatus from tbl_supply_deployed where drdate between '" & dtFrom.Text & "' and '" & dtTo.Text & "' and dlocation = " & CInt(txtboxlocation.SelectedValue) & " order by dstatus asc", cbRequests, "tbl_supply_deployed", "ID", "dstatus")
             cbRequests.SelectedIndex = 0
             lbl_status.Text = cbRequests.SelectedValue
         Catch ex As Exception
         End Try
         If txtboxlocation.Text = "STUDENT" Then
-
             Label5.Visible = True
             ComboBox1.Visible = True
             cb_as.Visible = False
             cb_aps.Visible = False
             Panel10.Visible = False
             Panel11.Visible = True
+            studentInfoPanel.Visible = True
         Else
             Label5.Visible = False
             ComboBox1.Visible = False
@@ -437,6 +466,7 @@ Public Class frmSupplyRecords
             cb_aps.Visible = True
             Panel10.Visible = True
             Panel11.Visible = False
+            studentInfoPanel.Visible = False
         End If
     End Sub
 
@@ -488,4 +518,5 @@ Public Class frmSupplyRecords
         dgdeployrecords.Visible = True
         CrystalReportViewer.Visible = False
     End Sub
+
 End Class

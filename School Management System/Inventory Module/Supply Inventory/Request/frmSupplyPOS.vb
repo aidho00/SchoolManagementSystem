@@ -62,40 +62,39 @@ Public Class frmSupplyPOS
         If lblLocation.Text = "STUDENT" Then
 
             dgCart.Rows.Clear()
-            Try
+            'Try
+            '    cn.Close()
+            '    cn.Open()
 
+            '    Dim sql As String
+            '    If cs_hs.Text = "cs" Then
+            '        cm = New MySqlCommand("Select barcodeid, description, cfcissmsdb.tbl_assessment_additional.additional_price as Price, (cfcissmsdb.tbl_assessment_additional.additional_qty) as QTY, (cfcissmsdb.tbl_assessment_additional.additional_qty) as RQTY, cfcissmsdb.tbl_assessment_additional.additional_amount as Total, ifnull(cfcissmsdb.tbl_assessment_additional.additional_transno, '') as TransNo from cfcissmsdb.tbl_assessment_additional, cfcissmsdb.tbl_supply_item, cfcissmsdb.tbl_supply_category where cfcissmsdb.tbl_assessment_additional.additional_item_id = cfcissmsdb.tbl_supply_item.barcodeid AND cfcissmsdb.tbl_supply_item.categoryid = cfcissmsdb.tbl_supply_category.catid and cfcissmsdb.tbl_assessment_additional.additional_period_id = @1 and cfcissmsdb.tbl_assessment_additional.additional_stud_id = @2", cn)
+            '        cm.Parameters.AddWithValue("@1", CInt(cmb_period.SelectedValue))
+            '        cm.Parameters.AddWithValue("@2", stud_id.Text)
+            '        dr = cm.ExecuteReader()
+            '        While dr.Read
+            '            lblTransno.Text = dr.Item("TransNo").ToString
+            '            _total += CDbl(dr.Item("Total").ToString)
+            '            dgCart.Rows.Add(dr.Item("barcodeid").ToString, dr.Item("description").ToString, dr.Item("Price").ToString, dr.Item("QTY").ToString, dr.Item("RQTY").ToString, dr.Item("Total").ToString)
+            '        End While
+            '        dr.Close()
+            '        cn.Close()
+            '    ElseIf cs_hs.Text = "hs" Then
+            '        cm = New MySqlCommand("Select barcodeid, description, cfcissmsdbhighschool.tbl_assessment_additional.additional_price as Price, (cfcissmsdbhighschool.tbl_assessment_additional.additional_qty) as QTY, (cfcissmsdbhighschool.tbl_assessment_additional.additional_qty) as RQTY, cfcissmsdbhighschool.tbl_assessment_additional.additional_amount as Total, ifnull(cfcissmsdbhighschool.tbl_assessment_additional.additional_transno, '') as TransNo from cfcissmsdbhighschool.tbl_assessment_additional, cfcissmsdb.tbl_supply_item, cfcissmsdb.tbl_supply_category where cfcissmsdbhighschool.tbl_assessment_additional.additional_item_id = cfcissmsdb.tbl_supply_item.barcodeid AND cfcissmsdb.tbl_supply_item.categoryid = cfcissmsdb.tbl_supply_category.catid and cfcissmsdbhighschool.tbl_assessment_additional.additional_period_id = @1 and cfcissmsdbhighschool.tbl_assessment_additional.additional_stud_id = @2", cn)
+            '        cm.Parameters.AddWithValue("@1", CInt(cmb_period.SelectedValue))
+            '        cm.Parameters.AddWithValue("@2", stud_id.Text)
+            '        dr = cm.ExecuteReader()
+            '        While dr.Read
+            '            lblTransno.Text = dr.Item("TransNo").ToString
+            '            _total += CDbl(dr.Item("Total").ToString)
+            '            dgCart.Rows.Add(dr.Item("barcodeid").ToString, dr.Item("description").ToString, dr.Item("Price").ToString, dr.Item("QTY").ToString, dr.Item("RQTY").ToString, dr.Item("Total").ToString)
+            '        End While
+            '        dr.Close()
+            '        cn.Close()
+            '    End If
+            'Catch ex As Exception
+            'End Try
 
-                cn.Close()
-                cn.Open()
-
-                Dim sql As String
-                If cs_hs.Text = "cs" Then
-                    cm = New MySqlCommand("Select barcodeid, description, cfcissmsdb.tbl_assessment_additional.additional_price as Price, (cfcissmsdb.tbl_assessment_additional.additional_qty) as QTY, (cfcissmsdb.tbl_assessment_additional.additional_qty) as RQTY, cfcissmsdb.tbl_assessment_additional.additional_amount as Total, ifnull(cfcissmsdb.tbl_assessment_additional.additional_transno, '') as TransNo from cfcissmsdb.tbl_assessment_additional, cfcissmsdb.tbl_supply_item, cfcissmsdb.tbl_supply_category where cfcissmsdb.tbl_assessment_additional.additional_item_id = cfcissmsdb.tbl_supply_item.barcodeid AND cfcissmsdb.tbl_supply_item.categoryid = cfcissmsdb.tbl_supply_category.catid and cfcissmsdb.tbl_assessment_additional.additional_period_id = @1 and cfcissmsdb.tbl_assessment_additional.additional_stud_id = @2", cn)
-                    cm.Parameters.AddWithValue("@1", CInt(cmb_period.SelectedValue))
-                    cm.Parameters.AddWithValue("@2", stud_id.Text)
-                    dr = cm.ExecuteReader()
-                    While dr.Read
-                        lblTransno.Text = dr.Item("TransNo").ToString
-                        _total += CDbl(dr.Item("Total").ToString)
-                        dgCart.Rows.Add(dr.Item("barcodeid").ToString, dr.Item("description").ToString, dr.Item("Price").ToString, dr.Item("QTY").ToString, dr.Item("RQTY").ToString, dr.Item("Total").ToString)
-                    End While
-                    dr.Close()
-                    cn.Close()
-                ElseIf cs_hs.Text = "hs" Then
-                    cm = New MySqlCommand("Select barcodeid, description, cfcissmsdbhighschool.tbl_assessment_additional.additional_price as Price, (cfcissmsdbhighschool.tbl_assessment_additional.additional_qty) as QTY, (cfcissmsdbhighschool.tbl_assessment_additional.additional_qty) as RQTY, cfcissmsdbhighschool.tbl_assessment_additional.additional_amount as Total, ifnull(cfcissmsdbhighschool.tbl_assessment_additional.additional_transno, '') as TransNo from cfcissmsdbhighschool.tbl_assessment_additional, cfcissmsdb.tbl_supply_item, cfcissmsdb.tbl_supply_category where cfcissmsdbhighschool.tbl_assessment_additional.additional_item_id = cfcissmsdb.tbl_supply_item.barcodeid AND cfcissmsdb.tbl_supply_item.categoryid = cfcissmsdb.tbl_supply_category.catid and cfcissmsdbhighschool.tbl_assessment_additional.additional_period_id = @1 and cfcissmsdbhighschool.tbl_assessment_additional.additional_stud_id = @2", cn)
-                    cm.Parameters.AddWithValue("@1", CInt(cmb_period.SelectedValue))
-                    cm.Parameters.AddWithValue("@2", stud_id.Text)
-                    dr = cm.ExecuteReader()
-                    While dr.Read
-                        lblTransno.Text = dr.Item("TransNo").ToString
-                        _total += CDbl(dr.Item("Total").ToString)
-                        dgCart.Rows.Add(dr.Item("barcodeid").ToString, dr.Item("description").ToString, dr.Item("Price").ToString, dr.Item("QTY").ToString, dr.Item("RQTY").ToString, dr.Item("Total").ToString)
-                    End While
-                    dr.Close()
-                    cn.Close()
-                End If
-            Catch ex As Exception
-            End Try
         Else
 
             dgCart.Rows.Clear()
@@ -124,7 +123,7 @@ Public Class frmSupplyPOS
         Dim yearid As String = YearToday
         cn.Close()
         cn.Open()
-        cm = New MySqlCommand("SELECT dstudentid FROM tbl_supply_deployed WHERE dstudentid like 'SI-RQST" & yearid & "%'", cn)
+        cm = New MySqlCommand("SELECT dtransno FROM tbl_supply_deployed WHERE dtransno like 'SI-RQST" & yearid & "%'", cn)
         dr = cm.ExecuteReader()
         If dr.HasRows Then
             dr.Close()
@@ -241,7 +240,7 @@ Public Class frmSupplyPOS
                         cn.Close()
 
                         cn.Open()
-                        cm = New MySqlCommand("insert into tbl_supply_deployed (dbarcode, dqty, dlocation, ddate, dprice, ditem_price, qty_requested,dstudentid, druser_id, dperiodid, dtransno, dstatus) values (@1,@2,@3,CURDATE(),@5,@6,@7,@8,@9,@10,@11,'APPROVED')", cn)
+                        cm = New MySqlCommand("insert into tbl_supply_deployed (dbarcode, dqty, dlocation, drdate, dprice, ditem_price, qty_requested,dstudentid, druser_id, dperiodid, dtransno, dstatus) values (@1,@2,@3,CURDATE(),@5,@6,@7,@8,@9,@10,@11,'APPROVED')", cn)
                         With cm
                             .Parameters.AddWithValue("@1", row.Cells(0).Value)
                             .Parameters.AddWithValue("@2", CInt(row.Cells(3).Value))
@@ -262,6 +261,8 @@ Public Class frmSupplyPOS
                         End With
                         StockLedger(row.Cells(0).Value, 0, CInt(row.Cells(3).Value), "Issued to " & studentstatus & " student.", "Student Item Release", "Item Release No." & lblTransno.Text & ". Student ID: " & stud_id.Text & ".")
                     Next
+
+                    MsgBox("Items have been issued to the student successfully!", vbInformation)
 
                     Try
                         Dim dt As New DataTable
@@ -302,8 +303,6 @@ Public Class frmSupplyPOS
                     cmb_period.DataSource = Nothing
                     student_info_panel.Visible = False
 
-                    MsgBox("Items have been issued to the student successfully!", vbInformation)
-
                 Else
 
                     lblTransno.Text = GetTransno()
@@ -312,6 +311,9 @@ Public Class frmSupplyPOS
                         query("Update tbl_supply_deployed set dtransno = '" & lblTransno.Text & "' , dstatus = 'APPROVED', druser_id = '" & str_userid & "', drdate = CURDATE() where dlocation = '" & lblLocationNumber.Text & "' and dbarcode = '" & row.Cells(0).Value & "' and dstatus = 'PENDING'")
                         StockLedger(row.Cells(0).Value, 0, CInt(row.Cells(3).Value), "Issued to " & lblLocation.Text & ".", "Office Item Release", "Item Release No." & lblTransno.Text & "")
                     Next
+
+                    MsgBox("Request successfully settled/approved!", vbInformation)
+
                     Try
                         Dim dt As New DataTable
                         With dt
@@ -342,8 +344,6 @@ Public Class frmSupplyPOS
                     lblLocation.Text = String.Empty
                     lblTransno.Text = String.Empty
                     loadCart()
-
-                    MsgBox("Request successfully settled/approved!", vbInformation)
                 End If
 
                 'Me.Dispose()

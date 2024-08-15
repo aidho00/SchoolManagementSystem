@@ -66,11 +66,11 @@ Public Class frmSupplyReturn
         dgCart.Rows.Clear()
         cn.Close()
         cn.Open()
-        cm = New MySqlCommand("Select barcodeid, description, tbl_supply_deployed.dprice as Price, (dqty) as QTY, qty_requested as RQST, qty_returned as RTRN, tbl_supply_deployed.ditem_price as Total from tbl_supply_deployed, tbl_supply_item, tbl_supply_category where tbl_supply_deployed.dbarcode = tbl_supply_item.barcodeid AND tbl_supply_item.categoryid = tbl_supply_category.catid and tbl_supply_deployed.dstatus = 'APPROVED' and tbl_supply_deployed.dtransno = '" & frmSupplyRecords.cbRequests.Text & "'", cn)
+        cm = New MySqlCommand("Select barcodeid, description, tbl_supply_deployed.dprice as Price, (dqty) as QTY, qty_requested as RQST, qty_returned as RTRN, tbl_supply_deployed.ditem_price as Total, dstudentid from tbl_supply_deployed, tbl_supply_item, tbl_supply_category where tbl_supply_deployed.dbarcode = tbl_supply_item.barcodeid AND tbl_supply_item.categoryid = tbl_supply_category.catid and tbl_supply_deployed.dstatus = 'APPROVED' and tbl_supply_deployed.dtransno = '" & frmSupplyRecords.cbRequests.Text & "'", cn)
         dr = cm.ExecuteReader()
         While dr.Read
             _total += CDbl(dr.Item("Total").ToString)
-            dgCart.Rows.Add(dr.Item("barcodeid").ToString, dr.Item("description").ToString, dr.Item("Price").ToString, dr.Item("QTY").ToString, dr.Item("RQST").ToString, dr.Item("RTRN").ToString, dr.Item("Total").ToString)
+            dgCart.Rows.Add(dr.Item("barcodeid").ToString, dr.Item("description").ToString, dr.Item("Price").ToString, dr.Item("QTY").ToString, dr.Item("RQST").ToString, dr.Item("RTRN").ToString, dr.Item("Total").ToString, dr.Item("dstudentid").ToString)
         End While
         dr.Close()
         cn.Close()

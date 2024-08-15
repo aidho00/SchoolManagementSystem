@@ -6,13 +6,13 @@ Public Class frmSupplyReturnQTY
             'frmDefectivePOS.txtItemID.Clear()
             Me.Dispose()
         ElseIf e.KeyCode = Keys.Enter Then
-            If CInt(txtQty.Text) > CInt(frmSupplyReturn.dgCart.CurrentRow.Cells(3).Value) Then
+            If CInt(txtQty.Text) > CInt(frmSupplyReturn.dgCart.CurrentRow.Cells(3).Value) Or CInt(txtQty.Text) = 0 Then
                 MsgBox("Invalid item quantity to return!",)
                 Return
             End If
             Dim x As Integer
             x = CInt(frmSupplyReturn.dgCart.CurrentRow.Cells(3).Value) - CInt(txtQty.Text)
-            If MsgBox("Return this item(s)?", vbYesNo + vbQuestion) = vbYes Then
+            If MsgBox("Are you sure you want to return this item(s)?", vbYesNo + vbQuestion) = vbYes Then
                 If x = 0 Then
                     cn.Close()
                     cn.Open()
@@ -37,6 +37,19 @@ Public Class frmSupplyReturnQTY
                         .Dispose()
                     End With
                     cn.Close()
+
+                    If frmSupplyRecords.txtboxlocation.Text = "STUDENT" Then
+                        cn.Open()
+                        cm = New MySqlCommand("update tbl_assessment_additional set additional_qty = 0, additional_amount = 0 where additional_item_id = @1 and additional_transno = @2", cn)
+                        With cm
+                            .Parameters.AddWithValue("@1", frmSupplyReturn.dgCart.CurrentRow.Cells(0).Value)
+                            .Parameters.AddWithValue("@2", frmSupplyRecords.cbRequests.Text)
+                            .ExecuteNonQuery()
+                            .Dispose()
+                        End With
+                        cn.Close()
+                    Else
+                    End If
 
                     StockLedger(frmSupplyReturn.dgCart.CurrentRow.Cells(0).Value, CInt(txtQty.Text), 0, "Supply Request Item Return", "Stock Return", "REQUEST ID: " & frmSupplyRecords.cbRequests.Text)
 
@@ -71,8 +84,21 @@ Public Class frmSupplyReturnQTY
                     End With
                     cn.Close()
 
-                    StockLedger(frmSupplyReturn.dgCart.CurrentRow.Cells(0).Value, CInt(txtQty.Text), 0, "Supply Request Item Return", "Stock Return", "REQUEST ID: " & frmSupplyRecords.cbRequests.Text)
+                    If frmSupplyRecords.txtboxlocation.Text = "STUDENT" Then
+                        cn.Open()
+                        cm = New MySqlCommand("update tbl_assessment_additional set additional_qty = @3, additional_amount = additional_price * @3  where additional_item_id = @1 and additional_transno = @2", cn)
+                        With cm
+                            .Parameters.AddWithValue("@1", frmSupplyReturn.dgCart.CurrentRow.Cells(0).Value)
+                            .Parameters.AddWithValue("@2", frmSupplyRecords.cbRequests.Text)
+                            .Parameters.AddWithValue("@3", x)
+                            .ExecuteNonQuery()
+                            .Dispose()
+                        End With
+                        cn.Close()
+                    Else
+                    End If
 
+                    StockLedger(frmSupplyReturn.dgCart.CurrentRow.Cells(0).Value, CInt(txtQty.Text), 0, "Supply Requested Item Return", "Stock Return", "REQUEST ID: " & frmSupplyRecords.cbRequests.Text & "")
 
                     MsgBox("Item(s) has been successfully returned!", vbInformation)
 
@@ -81,8 +107,8 @@ Public Class frmSupplyReturnQTY
                     End With
                     Me.Dispose()
                 End If
-            Else
             End If
+        Else
         End If
     End Sub
 

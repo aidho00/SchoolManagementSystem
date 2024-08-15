@@ -156,54 +156,9 @@ Public Class frmSupplyPOS
                 If MsgBox("Cancel this item?", vbYesNo + vbQuestion) = vbYes Then
                     If lblLocation.Text = "STUDENT" Then
                         If str_role <> "Administrator" Then
-                            MsgBox("Your are not authorized to cancel items(s)!", vbCritical)
+                            MsgBox("Your are not authorized to cancel item(s)!", vbCritical)
                         Else
                             dgCart.Rows.Remove(dgCart.CurrentRow)
-                            'If cs_hs.Text = "cs" Then
-                            '    cn.Open()
-                            '    cm = New MySqlCommand("delete from cfcissmsdb.tbl_assessment_additional where additional_item_id = @1 and additional_stud_id = @2 and additional_period_id = @3", cn)
-                            '    With cm
-                            '        .Parameters.AddWithValue("@1", dgCart.Rows(e.RowIndex).Cells(0).Value)
-                            '        .Parameters.AddWithValue("@2", stud_id.Text)
-                            '        .Parameters.AddWithValue("@3", CInt(cmb_period.SelectedValue))
-                            '    End With
-                            '    result = cm.ExecuteNonQuery
-                            '    If result = 0 Then
-                            '        MsgBox("Item has failed to cancel!", vbCritical)
-                            '        cm.Dispose()
-                            '        cn.Close()
-                            '    Else
-                            '        StockLedger(dgCart.Rows(e.RowIndex).Cells(0).Value, dgCart.Rows(e.RowIndex).Cells(3).Value, 0, "Student Item Cancel", "Stock Return", "Student ID: " & stud_id.Text & ", Item Release No." & lblTransno.Text & "")
-
-                            '        MsgBox("Item has been successfully cancelled!", vbInformation)
-                            '        cm.Dispose()
-                            '        cn.Close()
-                            '        'AuditTrail("Voided an order with description " & dgCart.Rows(e.RowIndex).Cells(1).Value & "; price " & dgCart.Rows(e.RowIndex).Cells(2).Value & "; order " & dgCart.Rows(e.RowIndex).Cells(3).Value & "; total " & dgCart.Rows(e.RowIndex).Cells(4).Value & " from table " & lblLocation.Text & ".")
-                            '        loadCart()
-                            '    End If
-                            'ElseIf cs_hs.Text = "hs" Then
-                            '    cn.Open()
-                            '    cm = New MySqlCommand("delete from cfcissmsdbhighschool.tbl_assessment_additional where additional_item_id = @1 and additional_stud_id = @2 and additional_period_id = @3", cn)
-                            '    With cm
-                            '        .Parameters.AddWithValue("@1", dgCart.Rows(e.RowIndex).Cells(0).Value)
-                            '        .Parameters.AddWithValue("@2", stud_id.Text)
-                            '        .Parameters.AddWithValue("@3", CInt(cmb_period.SelectedValue))
-                            '    End With
-                            '    result = cm.ExecuteNonQuery
-                            '    If result = 0 Then
-                            '        MsgBox("Item has failed to cancel!", vbCritical)
-                            '        cm.Dispose()
-                            '        cn.Close()
-                            '    Else
-                            '        StockLedger(dgCart.Rows(e.RowIndex).Cells(0).Value, dgCart.Rows(e.RowIndex).Cells(3).Value, 0, "Student Item Cancel", "Stock Return", "Student ID: " & stud_id.Text & ", Item Release No." & lblTransno.Text & "")
-
-                            '        MsgBox("Item has been successfully cancelled!", vbInformation)
-                            '        cm.Dispose()
-                            '        cn.Close()
-                            '        'AuditTrail("Voided an order with description " & dgCart.Rows(e.RowIndex).Cells(1).Value & "; price " & dgCart.Rows(e.RowIndex).Cells(2).Value & "; order " & dgCart.Rows(e.RowIndex).Cells(3).Value & "; total " & dgCart.Rows(e.RowIndex).Cells(4).Value & " from table " & lblLocation.Text & ".")
-                            '        loadCart()
-                            '    End If
-                            'End If
                         End If
                     Else
                         cn.Open()
@@ -221,7 +176,6 @@ Public Class frmSupplyPOS
                             MsgBox("Item has been successfully cancelled!", vbInformation)
                             cm.Dispose()
                             cn.Close()
-                            'AuditTrail("Voided an order with description " & dgCart.Rows(e.RowIndex).Cells(1).Value & "; price " & dgCart.Rows(e.RowIndex).Cells(2).Value & "; order " & dgCart.Rows(e.RowIndex).Cells(3).Value & "; total " & dgCart.Rows(e.RowIndex).Cells(4).Value & " from table " & lblLocation.Text & ".")
                             loadCart()
                         End If
                     End If
@@ -306,10 +260,8 @@ Public Class frmSupplyPOS
                             .Parameters.AddWithValue("@11", lblTransno.Text)
                             .ExecuteNonQuery()
                         End With
-                        StockLedger(row.Cells(0).Value, 0, CInt(row.Cells(3).Value), "Issued to " & studentstatus & " student.", "Student Item Release", "Item Release No." & lblTransno.Text & "")
+                        StockLedger(row.Cells(0).Value, 0, CInt(row.Cells(3).Value), "Issued to " & studentstatus & " student.", "Student Item Release", "Item Release No." & lblTransno.Text & ". Student ID: " & stud_id.Text & ".")
                     Next
-
-                    MsgBox("Items have been issued to the student successfully!", vbInformation)
 
                     Try
                         Dim dt As New DataTable
@@ -336,7 +288,6 @@ Public Class frmSupplyPOS
                         MessageBox.Show("No Crystal Report found. Please install crystal report from application directory.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                     End Try
 
-
                     lblLocationNumber.Text = "0"
                     txtItemID.Clear()
                     lblTotal.Text = "0.00"
@@ -351,22 +302,47 @@ Public Class frmSupplyPOS
                     cmb_period.DataSource = Nothing
                     student_info_panel.Visible = False
 
-                Else
-                    lblTransno.Text = GetTransno()
+                    MsgBox("Items have been issued to the student successfully!", vbInformation)
 
-                    Dim sdate As String = Now.ToString("yyyy-MM-dd")
-                    Dim stime As String = Now.ToString("hh:mm:ss")
+                Else
+
+                    lblTransno.Text = GetTransno()
 
                     For Each row As DataGridViewRow In dgCart.Rows
                         query("Update tbl_supply_deployed set dtransno = '" & lblTransno.Text & "' , dstatus = 'APPROVED', druser_id = '" & str_userid & "', drdate = CURDATE() where dlocation = '" & lblLocationNumber.Text & "' and dbarcode = '" & row.Cells(0).Value & "' and dstatus = 'PENDING'")
                         StockLedger(row.Cells(0).Value, 0, CInt(row.Cells(3).Value), "Issued to " & lblLocation.Text & ".", "Office Item Release", "Item Release No." & lblTransno.Text & "")
                     Next
-
-                    query("Update tbl_supply_location set status = 'False' where locationname = '" & lblLocation.Text & "'")
-
+                    Try
+                        Dim dt As New DataTable
+                        With dt
+                            .Columns.Add("barcodeid")
+                            .Columns.Add("description")
+                            .Columns.Add("categoryname")
+                            .Columns.Add("sizes")
+                            .Columns.Add("dqty")
+                            .Columns.Add("dprice")
+                            .Columns.Add("ditemprice")
+                        End With
+                        For Each dvr As DataGridViewRow In dgCart.Rows
+                            dt.Rows.Add(dvr.Cells(0).Value, dvr.Cells(1).Value, "", "", dvr.Cells(3).Value, dvr.Cells(2).Value, dvr.Cells(5).Value)
+                        Next
+                        Dim rptdoc As CrystalDecisions.CrystalReports.Engine.ReportDocument
+                        rptdoc = New Supply_Request
+                        rptdoc.SetDataSource(dt)
+                        rptdoc.SetParameterValue("preparedby", str_name)
+                        rptdoc.SetParameterValue("requestoffice", lblLocation.Text)
+                        rptdoc.SetParameterValue("requestdate", Format(Convert.ToDateTime(DateToday), "MMMM d, yyyy"))
+                        rptdoc.SetParameterValue("requestid", lblTransno.Text)
+                        rptdoc.SetParameterValue("requeststatus", "APPROVED")
+                        frmReportViewer.ReportViewer.ReportSource = rptdoc
+                        frmReportViewer.ShowDialog()
+                    Catch ex As Exception
+                        MessageBox.Show("No Crystal Report found. Please install crystal report from application directory.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    End Try
                     lblLocation.Text = String.Empty
                     lblTransno.Text = String.Empty
                     loadCart()
+
                     MsgBox("Request successfully settled/approved!", vbInformation)
                 End If
 
@@ -387,15 +363,15 @@ Public Class frmSupplyPOS
         If lblLocation.Text = String.Empty And txtItemID.Text = String.Empty Then
 
         ElseIf lblLocation.Text = String.Empty Then
-            MsgBox("Please start new request first to select location!", vbCritical)
+            MsgBox("Please start new request first to select requester!", vbCritical)
             txtItemID.Clear()
         Else
-            If txtItemID.Text.Length = 17 Then
+            If txtItemID.Text.Length = 16 Then
                 If lblLocation.Text = String.Empty And txtItemID.Text = String.Empty Then
-                    MsgBox("Please start new request first to select location!", vbCritical)
+                    MsgBox("Please start new request first to select requester!", vbCritical)
                     txtItemID.Clear()
                 ElseIf lblLocation.Text = String.Empty Then
-                    MsgBox("Please start new request first to select location!", vbCritical)
+                    MsgBox("Please start new request first to select requester!", vbCritical)
                     txtItemID.Clear()
                 Else
                     cn.Open()
@@ -428,6 +404,7 @@ Public Class frmSupplyPOS
 
     Private Sub lblSearch_Click(sender As Object, e As EventArgs) Handles lblSearch.Click
         If lblLocation.Text = String.Empty Then
+            MsgBox("Please start new request first to select requester!", vbCritical)
         Else
             loaditems()
             Panel4.Visible = True

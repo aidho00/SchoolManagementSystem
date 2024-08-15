@@ -21,7 +21,7 @@ Public Class frmSupplyBestSelling
             dgBestSelling.Rows.Clear()
             Dim i As Integer
             cn.Open()
-            cm = New MySqlCommand("select distinct c.dbarcode, p.description, s.categoryname, sz.sizes, c.dprice, ifnull(round(sum(c.dqty)),0) as qty, ifnull(sum(c.ditem_price),0) as total from tbl_supply_deployed as c inner join tbl_supply_item as p on c.dbarcode = p.barcodeid inner join tbl_supply_category s on p.categoryid = s.catID inner JOIN tbl_supply_sizes sz ON p.sizesid = sz.category_id where c.dstatus = 'APPROVED' and c.ddate between '" & sdate1 & "' and '" & sdate2 & "' group by c.dbarcode order by qty desc, total desc", cn)
+            cm = New MySqlCommand("Select distinct c.dbarcode, p.description, '' as categoryname, '' as sizes, c.dprice, ifnull(round(sum(c.dqty)),0) as qty, ifnull(sum(c.ditem_price),0) as total from tbl_supply_deployed as c inner join tbl_supply_item as p on c.dbarcode = p.barcodeid where c.dstatus = 'APPROVED' and c.ddate between '" & sdate1 & "' and '" & sdate2 & "' group by c.dbarcode, c.dprice order by qty desc, total desc", cn)
             dr = cm.ExecuteReader
             While dr.Read
                 i += 1

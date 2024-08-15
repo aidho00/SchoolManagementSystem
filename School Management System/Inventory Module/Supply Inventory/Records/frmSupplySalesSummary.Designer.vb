@@ -247,7 +247,7 @@ Partial Class frmSupplySalesSummary
         DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Silver
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White
         DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
         DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.dgYearlySales.DefaultCellStyle = DataGridViewCellStyle4
@@ -313,7 +313,7 @@ Partial Class frmSupplySalesSummary
         DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle9.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Silver
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.White
         DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black
         DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.dgQuarterlySales.DefaultCellStyle = DataGridViewCellStyle9
@@ -389,7 +389,7 @@ Partial Class frmSupplySalesSummary
         DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle14.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.Silver
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.White
         DataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black
         DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.dgMonthlySales.DefaultCellStyle = DataGridViewCellStyle14
@@ -465,7 +465,7 @@ Partial Class frmSupplySalesSummary
         DataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle18.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.Silver
+        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.White
         DataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black
         DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.dgDailySales.DefaultCellStyle = DataGridViewCellStyle18

@@ -295,7 +295,7 @@ Module Modules
                 AddHandler control.MouseLeave, Sub(sender As Object, e As EventArgs)
                                                    control.ForeColor = Color.White
                                                End Sub
-            ElseIf buttonControl.Text = "SAVE" Or buttonControl.Text = "UPDATE" Or buttonControl.Text = "SELECT" Or buttonControl.Text = "IMPORT" Or buttonControl.Text = "UPLOAD" Or buttonControl.Text = "GENERATE" Or buttonControl.Text = "PRINT" Or buttonControl.Text = "PRINTER SETUP" Or buttonControl.Text = "ADD" Or buttonControl.Text = "ASSIGN" Or buttonControl.Text = "START CAMERA" Or buttonControl.Text = "COPY" Or buttonControl.Text = "CAPTURE" Or buttonControl.Text = "BROWSE" Or buttonControl.Text = "LINK" Or buttonControl.Text = "REMOVE PRE-REQUISITE" Or buttonControl.Text = "ADD SUBJECT" Or buttonControl.Text = "RETURN" Then
+            ElseIf buttonControl.Text = "SAVE" Or buttonControl.Text = "UPDATE" Or buttonControl.Text = "SELECT" Or buttonControl.Text = "IMPORT" Or buttonControl.Text = "UPLOAD" Or buttonControl.Text = "GENERATE" Or buttonControl.Text = "PRINT" Or buttonControl.Text = "PRINTER SETUP" Or buttonControl.Text = "ADD" Or buttonControl.Text = "ASSIGN" Or buttonControl.Text = "START CAMERA" Or buttonControl.Text = "COPY" Or buttonControl.Text = "CAPTURE" Or buttonControl.Text = "BROWSE" Or buttonControl.Text = "LINK" Or buttonControl.Text = "REMOVE PRE-REQUISITE" Or buttonControl.Text = "ADD SUBJECT" Or buttonControl.Text = "RETURN" Or buttonControl.Text = "PRINT PREVIEW" Then
                 AddHandler control.MouseHover, Sub(sender As Object, e As EventArgs)
                                                    control.ForeColor = Color.FromArgb(15, 101, 208)
                                                End Sub
@@ -402,11 +402,16 @@ Module Modules
         ElseIf TypeOf control Is ComboBox Then
             control.Cursor = Cursors.Hand
             AddHandler control.MouseHover, Sub(sender As Object, e As EventArgs)
-                                               control.BackColor = Color.FromName("Control")
+                                               If control.BackColor = Color.FromArgb(72, 84, 96) Then
+                                               Else
+                                                   control.BackColor = Color.FromName("Control")
+                                               End If
                                            End Sub
-
             AddHandler control.MouseLeave, Sub(sender As Object, e As EventArgs)
-                                               control.BackColor = Color.White
+                                               If control.BackColor = Color.FromArgb(72, 84, 96) Then
+                                               Else
+                                                   control.BackColor = Color.White
+                                               End If
                                            End Sub
         ElseIf TypeOf control Is DateTimePicker Then
             control.Cursor = Cursors.Hand

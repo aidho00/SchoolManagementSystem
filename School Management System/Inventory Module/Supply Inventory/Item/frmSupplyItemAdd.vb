@@ -93,9 +93,9 @@ Public Class frmSupplyItemAdd
             Else
                 dr.Close()
                 If cbSupplyType.Text = "Office Supply" Then
-                    Barcode = "SI-OFCSP" & yearid & "00001"
+                    Barcode = "SI-OFCSP" & yearid & "0001"
                 ElseIf cbSupplyType.Text = "School Consumable" Then
-                    Barcode = "SI-SCHCS" & yearid & "00001"
+                    Barcode = "SI-SCHCS" & yearid & "0001"
                 End If
             End If
             cn.Close()
@@ -313,5 +313,13 @@ Public Class frmSupplyItemAdd
 
     Private Sub cbSupplyType_TextChanged(sender As Object, e As EventArgs) Handles cbSupplyType.TextChanged
         AutoBarCode()
+        cbSupplyCategory.Text = String.Empty
+        CategoryID = 0
+
+        cbSupplyBrand.Text = String.Empty
+        BrandID = 0
+
+        cbSupplySize.Text = String.Empty
+        SizeID = 0
     End Sub
 End Class

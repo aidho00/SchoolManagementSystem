@@ -63,8 +63,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>software-engineer.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
@@ -611,16 +610,16 @@
     <Compile Include="Inventory Module\Supply Inventory\Records\frmSupplyRecords.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Inventory Module\Supply Inventory\Records\frmSupplyReturn.Designer.vb">
+    <Compile Include="Inventory Module\Supply Inventory\Request\frmSupplyReturn.Designer.vb">
       <DependentUpon>frmSupplyReturn.vb</DependentUpon>
     </Compile>
-    <Compile Include="Inventory Module\Supply Inventory\Records\frmSupplyReturn.vb">
+    <Compile Include="Inventory Module\Supply Inventory\Request\frmSupplyReturn.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Inventory Module\Supply Inventory\Records\frmSupplyReturnQTY.Designer.vb">
+    <Compile Include="Inventory Module\Supply Inventory\Request\frmSupplyReturnQTY.Designer.vb">
       <DependentUpon>frmSupplyReturnQTY.vb</DependentUpon>
     </Compile>
-    <Compile Include="Inventory Module\Supply Inventory\Records\frmSupplyReturnQTY.vb">
+    <Compile Include="Inventory Module\Supply Inventory\Request\frmSupplyReturnQTY.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Inventory Module\Supply Inventory\Records\frmSupplySales.Designer.vb">
@@ -1917,10 +1916,10 @@
     <EmbeddedResource Include="Inventory Module\Supply Inventory\Records\frmSupplyRecords.resx">
       <DependentUpon>frmSupplyRecords.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Inventory Module\Supply Inventory\Records\frmSupplyReturn.resx">
+    <EmbeddedResource Include="Inventory Module\Supply Inventory\Request\frmSupplyReturn.resx">
       <DependentUpon>frmSupplyReturn.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Inventory Module\Supply Inventory\Records\frmSupplyReturnQTY.resx">
+    <EmbeddedResource Include="Inventory Module\Supply Inventory\Request\frmSupplyReturnQTY.resx">
       <DependentUpon>frmSupplyReturnQTY.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory Module\Supply Inventory\Records\frmSupplySales.resx">
@@ -2675,6 +2674,7 @@
     <Content Include="icon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="software-engineer.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

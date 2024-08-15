@@ -94,8 +94,6 @@ Public Class frmSupplyRecords
 
             dgdeployrecords.Visible = True
             CrystalReportViewer.Visible = False
-            Label4.Visible = True
-            lblTotal.Visible = True
 
             Dim x As Integer = CInt(txtboxlocation.SelectedValue)
             Dim sdate1 As String = dtFrom.Value.ToString("yyyy-MM-dd")
@@ -156,7 +154,7 @@ Public Class frmSupplyRecords
                 lblReportRequestID.Text = cbRequests.Text
 
 
-                load_datagrid("Select (barcodeid) as 'Item ID', Description, (categoryname) as Category, (Sizes) as Size, (dqty) as QTY, (qty_requested) as RQTY, (item_price) as 'Price', ditem_price as 'Sub-Total', (ddate) as Date, (dstatus) as Status from tbl_supply_deployed, tbl_supply_item, tbl_supply_category, tbl_supply_location, tbl_supply_sizes where tbl_supply_deployed.dbarcode = tbl_supply_item.barcodeid AND tbl_supply_item.categoryid = tbl_supply_category.catid and tbl_supply_deployed.dlocation = tbl_supply_location.locationnumber and tbl_supply_sizes.sizeid = tbl_supply_item.sizesid AND dstudentid = '" & cbRequests.Text & "'", dgdeployrecords)
+                load_datagrid("Select (barcodeid) as 'Item ID', Description, (categoryname) as Category, (Sizes) as Size, (dqty) as QTY, (qty_requested) as RQTY, (item_price) as 'Price', ditem_price as 'Sub-Total', (ddate) as Date, (dstatus) as Status from tbl_supply_deployed, tbl_supply_item, tbl_supply_category, tbl_supply_location, tbl_supply_sizes where tbl_supply_deployed.dbarcode = tbl_supply_item.barcodeid AND tbl_supply_item.categoryid = tbl_supply_category.catid and tbl_supply_deployed.dlocation = tbl_supply_location.locationnumber and tbl_supply_sizes.sizeid = tbl_supply_item.sizesid AND dtransno = '" & cbRequests.Text & "'", dgdeployrecords)
 
                 dgdeployrecords.Columns(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
                 dgdeployrecords.Columns(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
@@ -233,6 +231,9 @@ Public Class frmSupplyRecords
 
 
     Private Sub btnPreview_Click(sender As Object, e As EventArgs) Handles btnPreview.Click
+        dgdeployrecords.Visible = False
+        CrystalReportViewer.Visible = True
+
         If txtboxlocation.Text = "Student" Then
             If dgdeployrecords.RowCount = 0 Then
             Else
@@ -275,10 +276,6 @@ Public Class frmSupplyRecords
 
             If dgdeployrecords.RowCount = 0 Then
             Else
-                dgdeployrecords.Visible = False
-                CrystalReportViewer.Visible = True
-                Label4.Visible = False
-                lblTotal.Visible = False
 
                 Dim sdate1 As String = dtFrom.Value.ToString("yyyy-MM-dd")
                 Dim sdate2 As String = dtTo.Value.ToString("yyyy-MM-dd")
@@ -374,22 +371,27 @@ Public Class frmSupplyRecords
 
     Private Sub dtFrom_ValueChanged(sender As Object, e As EventArgs) Handles dtFrom.ValueChanged, dtTo.ValueChanged
         'dgdeployrecords.DataSource = Nothing
-        Dim x As Integer = CInt(txtboxlocation.SelectedValue)
+
         Dim sdate1 As String = dtFrom.Value.ToString("yyyy-MM-dd")
         Dim sdate2 As String = dtTo.Value.ToString("yyyy-MM-dd")
-        fillCombo("select distinct(dtransno) as ID, dstatus from tbl_supply_deployed where ddate between '" & dtFrom.Text & "' and '" & dtTo.Text & "' and dlocation = " & x & " order by dstudentid desc", cbRequests, "tbl_supply_deployed", "ID", "dstatus")
+        fillCombo("select distinct(dtransno) as ID, dstatus from tbl_supply_deployed where ddate between '" & dtFrom.Text & "' and '" & dtTo.Text & "' and dlocation = " & CInt(txtboxlocation.SelectedValue) & " order by dstudentid desc", cbRequests, "tbl_supply_deployed", "ID", "dstatus")
     End Sub
 
     Private Sub cbRequests_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbRequests.SelectedIndexChanged, ComboBox1.SelectedIndexChanged
         'dgdeployrecords.DataSource = Nothing
-        lbl_status.Text = cbRequests.SelectedValue
-        If lbl_status.Text = "APPROVED" Or lbl_status.Text = "CANCELLED" Then
-            btn_return.Enabled = True
-            btn_return.Visible = True
-        ElseIf lbl_status.Text = "PENDING" Then
-            btn_return.Enabled = False
-            btn_return.Visible = False
-        End If
+
+        Try
+            lbl_status.Text = cbRequests.SelectedValue
+        Catch ex As Exception
+        End Try
+
+        'If lbl_status.Text = "APPROVED" Or lbl_status.Text = "CANCELLED" Then
+        '    btn_return.Enabled = True
+        '    btn_return.Visible = True
+        'ElseIf lbl_status.Text = "PENDING" Then
+        '    btn_return.Enabled = False
+        '    btn_return.Visible = False
+        'End If
     End Sub
 
     Private Sub cb_as_Click(sender As Object, e As EventArgs) Handles cb_as.Click
@@ -415,8 +417,9 @@ Public Class frmSupplyRecords
 
     Private Sub txtboxlocation_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txtboxlocation.SelectedIndexChanged
         Try
-            Dim x As Integer = CInt(txtboxlocation.SelectedValue)
-            fillCombo("select distinct(dstudentid) as ID, dstatus from tbl_supply_deployed where ddate between '" & dtFrom.Text & "' and '" & dtTo.Text & "' and dlocation = " & x & " order by dstudentid desc", cbRequests, "tbl_supply_deployed", "ID", "dstatus")
+            fillCombo("select distinct(dtransno) as ID, dstatus from tbl_supply_deployed where ddate between '" & dtFrom.Text & "' and '" & dtTo.Text & "' and dlocation = " & CInt(txtboxlocation.SelectedValue) & " order by dstatus asc", cbRequests, "tbl_supply_deployed", "ID", "dstatus")
+            cbRequests.SelectedIndex = 0
+            lbl_status.Text = cbRequests.SelectedValue
         Catch ex As Exception
         End Try
         If txtboxlocation.Text = "STUDENT" Then
@@ -479,5 +482,10 @@ Public Class frmSupplyRecords
             ' Handle any exceptions
             MsgBox("Error printing report: " & ex.Message, vbCritical)
         End Try
+    End Sub
+
+    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
+        dgdeployrecords.Visible = True
+        CrystalReportViewer.Visible = False
     End Sub
 End Class

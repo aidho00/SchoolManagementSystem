@@ -7,7 +7,7 @@ Public Class frmSupplyReturnQTY
             Me.Dispose()
         ElseIf e.KeyCode = Keys.Enter Then
             If CInt(txtQty.Text) > CInt(frmSupplyReturn.dgCart.CurrentRow.Cells(3).Value) Then
-                MsgBox("Invalid return quantity!",)
+                MsgBox("Invalid item quantity to return!",)
                 Return
             End If
             Dim x As Integer
@@ -49,7 +49,7 @@ Public Class frmSupplyReturnQTY
                 Else
                     cn.Close()
                     cn.Open()
-                    cm = New MySqlCommand("Update tbl_supply_deployed set dqty = @1, qty_returned = @2, ditem_price = dprice * @1 where dbarcode = @3 and dstudentid = @4", cn)
+                    cm = New MySqlCommand("Update tbl_supply_deployed set dqty = @1, qty_returned = @2, ditem_price = dprice * @1 where dbarcode = @3 and dtransno = @4", cn)
                     With cm
                         .Parameters.AddWithValue("@1", x)
                         .Parameters.AddWithValue("@2", CInt(txtQty.Text))

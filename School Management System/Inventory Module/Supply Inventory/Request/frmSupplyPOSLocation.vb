@@ -25,7 +25,7 @@ Public Class frmSupplyPOSLocation
                 btnTable.BackColor = Color.FromArgb(30, 39, 46)
                 btnTable.ForeColor = Color.White
             Else
-                btnTable.Text = dr.Item("location").ToString & " - ₱" & dr.Item("bill").ToString
+                btnTable.Text = dr.Item("location").ToString & " - ₱ " & dr.Item("bill").ToString
                 btnTable.BackColor = Color.FromArgb(252, 92, 101)
                 btnTable.ForeColor = Color.Black
             End If

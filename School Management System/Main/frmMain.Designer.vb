@@ -45,6 +45,7 @@ Partial Class frmMain
         Me.btnRequests = New System.Windows.Forms.Button()
         Me.btnSupplyRecords = New System.Windows.Forms.Button()
         Me.panelInventory = New System.Windows.Forms.Panel()
+        Me.btnStockLevel = New System.Windows.Forms.Button()
         Me.btnStockRecount = New System.Windows.Forms.Button()
         Me.PanelPurchasing = New System.Windows.Forms.Panel()
         Me.btnPRD = New System.Windows.Forms.Button()
@@ -264,7 +265,6 @@ Partial Class frmMain
         Me.Label16 = New System.Windows.Forms.Label()
         Me.PictureBox13 = New System.Windows.Forms.PictureBox()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.btnStockLevel = New System.Windows.Forms.Button()
         Me.systemSign.SuspendLayout()
         CType(Me.schoolLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ComboBoxMenu.SuspendLayout()
@@ -657,6 +657,28 @@ Partial Class frmMain
         Me.panelInventory.Size = New System.Drawing.Size(197, 216)
         Me.panelInventory.TabIndex = 132
         Me.panelInventory.Visible = False
+        '
+        'btnStockLevel
+        '
+        Me.btnStockLevel.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnStockLevel.Cursor = System.Windows.Forms.Cursors.Default
+        Me.btnStockLevel.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnStockLevel.FlatAppearance.BorderSize = 0
+        Me.btnStockLevel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnStockLevel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnStockLevel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnStockLevel.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnStockLevel.ForeColor = System.Drawing.Color.White
+        Me.btnStockLevel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnStockLevel.Location = New System.Drawing.Point(15, 192)
+        Me.btnStockLevel.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnStockLevel.Name = "btnStockLevel"
+        Me.btnStockLevel.Size = New System.Drawing.Size(182, 24)
+        Me.btnStockLevel.TabIndex = 131
+        Me.btnStockLevel.Text = "Inventory/Stock Level"
+        Me.btnStockLevel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnStockLevel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnStockLevel.UseVisualStyleBackColor = False
         '
         'btnStockRecount
         '
@@ -4061,28 +4083,6 @@ Partial Class frmMain
         Me.Label7.TabIndex = 17
         Me.Label7.Text = "✕"
         Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'btnStockLevel
-        '
-        Me.btnStockLevel.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnStockLevel.Cursor = System.Windows.Forms.Cursors.Default
-        Me.btnStockLevel.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnStockLevel.FlatAppearance.BorderSize = 0
-        Me.btnStockLevel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnStockLevel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnStockLevel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnStockLevel.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnStockLevel.ForeColor = System.Drawing.Color.White
-        Me.btnStockLevel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnStockLevel.Location = New System.Drawing.Point(15, 192)
-        Me.btnStockLevel.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnStockLevel.Name = "btnStockLevel"
-        Me.btnStockLevel.Size = New System.Drawing.Size(182, 24)
-        Me.btnStockLevel.TabIndex = 131
-        Me.btnStockLevel.Text = "Inventory/Stock Level"
-        Me.btnStockLevel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnStockLevel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnStockLevel.UseVisualStyleBackColor = False
         '
         'frmMain
         '

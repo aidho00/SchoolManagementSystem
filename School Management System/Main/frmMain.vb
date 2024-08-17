@@ -1720,9 +1720,9 @@ Public Class frmMain
     End Sub
 
     Private Sub btnStockRecount_Click(sender As Object, e As EventArgs) Handles btnStockRecount.Click
-        OpenForm(frmSupplyPhysicalInventory, "Supply Items Stock Recounting")
-        HideAllFormsInPanelExcept(frmSupplyPhysicalInventory)
-        controlsPanel.Visible = False
+        OpenForm(frmSupplyPhysicalInventoryRecords, "Supply Items Stock Recounting Records")
+        HideAllFormsInPanelExcept(frmSupplyPhysicalInventoryRecords)
+        controlsPanel.Visible = True
     End Sub
 End Class
 

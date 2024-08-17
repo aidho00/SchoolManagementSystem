@@ -43,7 +43,7 @@ Public Class frmSupplyPhysicalInventory
         cn.Close()
     End Sub
 
-    Private Sub btnGenerate_Click(sender As Object, e As EventArgs) Handles btnGenerate.Click
+    Private Sub btnGenerate_Click(sender As Object, e As EventArgs)
         If dgSupplyItemList.RowCount > 0 Then
             Dim dr As DialogResult
             dr = MessageBox.Show("Are you sure you want to regenerate the supply item list for recounting? Any changes made will be reset.", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question)

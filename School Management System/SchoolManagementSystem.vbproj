@@ -610,6 +610,12 @@
     <Compile Include="Inventory Module\Supply Inventory\Records\frmSupplyPhysicalInventory.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Inventory Module\Supply Inventory\Records\frmSupplyPhysicalInventoryRecords.Designer.vb">
+      <DependentUpon>frmSupplyPhysicalInventoryRecords.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory Module\Supply Inventory\Records\frmSupplyPhysicalInventoryRecords.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Inventory Module\Supply Inventory\Records\frmSupplyRecords.Designer.vb">
       <DependentUpon>frmSupplyRecords.vb</DependentUpon>
     </Compile>
@@ -1921,6 +1927,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory Module\Supply Inventory\Records\frmSupplyPhysicalInventory.resx">
       <DependentUpon>frmSupplyPhysicalInventory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory Module\Supply Inventory\Records\frmSupplyPhysicalInventoryRecords.resx">
+      <DependentUpon>frmSupplyPhysicalInventoryRecords.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory Module\Supply Inventory\Records\frmSupplyRecords.resx">
       <DependentUpon>frmSupplyRecords.vb</DependentUpon>

@@ -194,6 +194,12 @@ Module Records
                     .btnSave.Visible = True
                     .ShowDialog()
                 End With
+            Case "Supply Items Stock Recounting Records"
+                With frmSupplyPhysicalInventory
+                    ResetControls(frmSupplyPhysicalInventory)
+                    .PhysicalCountSupplyItemStockLevel()
+                    .ShowDialog()
+                End With
         End Select
     End Sub
 

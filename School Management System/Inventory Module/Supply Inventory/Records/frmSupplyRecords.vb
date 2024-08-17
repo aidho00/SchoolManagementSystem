@@ -111,7 +111,7 @@ Public Class frmSupplyRecords
             If cb_as.Checked = True Then
                 'Try
                 lblReportRequestID.Text = "-"
-                load_datagrid("Select dstudentid, (barcodeid) as `Item ID`, Description, (categoryname) as Item, (Sizes) as Size, (dprice) as Price, (dqty) as QTY, (qty_requested) as RQTY, ditem_price as 'Total', (ddate) as Date from tbl_supply_deployed, tbl_supply_item, tbl_supply_category, tbl_supply_location, tbl_supply_sizes where tbl_supply_deployed.dbarcode = tbl_supply_item.barcodeid AND tbl_supply_item.categoryid = tbl_supply_category.catid and tbl_supply_deployed.dlocation = tbl_supply_location.locationnumber and tbl_supply_sizes.sizeid = tbl_supply_item.sizesid and dlocation = " & x & " and ddate between '" & sdate1 & "' and '" & sdate2 & "' and dstatus = 'APPROVED' order by Description", dgdeployrecords)
+                load_datagrid("Select dtransno, (barcodeid) as `Item ID`, Description, (categoryname) as Item, (Sizes) as Size, (dprice) as Price, (dqty) as QTY, (qty_requested) as RQTY, ditem_price as 'Total', (ddate) as Date from tbl_supply_deployed, tbl_supply_item, tbl_supply_category, tbl_supply_location, tbl_supply_sizes where tbl_supply_deployed.dbarcode = tbl_supply_item.barcodeid AND tbl_supply_item.categoryid = tbl_supply_category.catid and tbl_supply_deployed.dlocation = tbl_supply_location.locationnumber and tbl_supply_sizes.sizeid = tbl_supply_item.sizesid and dlocation = " & x & " and ddate between '" & sdate1 & "' and '" & sdate2 & "' and dstatus = 'APPROVED' order by Description", dgdeployrecords)
 
                 dgdeployrecords.Columns(0).Visible = False
                 dgdeployrecords.Columns(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
@@ -136,7 +136,7 @@ Public Class frmSupplyRecords
             ElseIf cb_aps.Checked = True Then
                 'Try
                 lblReportRequestID.Text = "-"
-                load_datagrid("Select dstudentid, (barcodeid) as `Item ID`, Description, (categoryname) as Item, (Sizes) as Size, (item_price) as Price, SUM(dqty) as QTY,  SUM(qty_requested) as RQTY,  SUM(ditem_price) as 'Total', (ddate) as Date, locationname as Location from tbl_supply_deployed, tbl_supply_item, tbl_supply_category, tbl_supply_location, tbl_supply_sizes where tbl_supply_deployed.dbarcode = tbl_supply_item.barcodeid AND tbl_supply_item.categoryid = tbl_supply_category.catid and tbl_supply_deployed.dlocation = tbl_supply_location.locationnumber and tbl_supply_sizes.sizeid = tbl_supply_item.sizesid and ddate between '" & sdate1 & "' and '" & sdate2 & "' and dstatus = 'APPROVED' group by barcodeid, dlocation order by Description", dgdeployrecords)
+                load_datagrid("Select dtransno, (barcodeid) as `Item ID`, Description, (categoryname) as Item, (Sizes) as Size, (item_price) as Price, SUM(dqty) as QTY,  SUM(qty_requested) as RQTY,  SUM(ditem_price) as 'Total', (ddate) as Date, locationname as Location from tbl_supply_deployed, tbl_supply_item, tbl_supply_category, tbl_supply_location, tbl_supply_sizes where tbl_supply_deployed.dbarcode = tbl_supply_item.barcodeid AND tbl_supply_item.categoryid = tbl_supply_category.catid and tbl_supply_deployed.dlocation = tbl_supply_location.locationnumber and tbl_supply_sizes.sizeid = tbl_supply_item.sizesid and ddate between '" & sdate1 & "' and '" & sdate2 & "' and dstatus = 'APPROVED' group by barcodeid, dlocation order by Description", dgdeployrecords)
 
 
                 dgdeployrecords.Columns(0).Visible = False

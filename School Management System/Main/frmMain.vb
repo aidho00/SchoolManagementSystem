@@ -1718,6 +1718,12 @@ Public Class frmMain
     Private Sub btnPRD_Click(sender As Object, e As EventArgs) Handles btnPRD.Click
 
     End Sub
+
+    Private Sub btnStockRecount_Click(sender As Object, e As EventArgs) Handles btnStockRecount.Click
+        OpenForm(frmSupplyPhysicalInventory, "Supply Items Stock Recounting")
+        HideAllFormsInPanelExcept(frmSupplyPhysicalInventory)
+        controlsPanel.Visible = False
+    End Sub
 End Class
 
 Public Class RotatedLabel

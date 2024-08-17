@@ -51,7 +51,6 @@ Partial Class frmMain
         Me.btnPO = New System.Windows.Forms.Button()
         Me.btnPR = New System.Windows.Forms.Button()
         Me.btnPurchasing = New System.Windows.Forms.Button()
-        Me.btnStockLevel = New System.Windows.Forms.Button()
         Me.PanelItem = New System.Windows.Forms.Panel()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.btnCategory = New System.Windows.Forms.Button()
@@ -265,6 +264,7 @@ Partial Class frmMain
         Me.Label16 = New System.Windows.Forms.Label()
         Me.PictureBox13 = New System.Windows.Forms.PictureBox()
         Me.Label7 = New System.Windows.Forms.Label()
+        Me.btnStockLevel = New System.Windows.Forms.Button()
         Me.systemSign.SuspendLayout()
         CType(Me.schoolLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ComboBoxMenu.SuspendLayout()
@@ -644,10 +644,10 @@ Partial Class frmMain
         'panelInventory
         '
         Me.panelInventory.AutoSize = True
+        Me.panelInventory.Controls.Add(Me.btnStockLevel)
         Me.panelInventory.Controls.Add(Me.btnStockRecount)
         Me.panelInventory.Controls.Add(Me.PanelPurchasing)
         Me.panelInventory.Controls.Add(Me.btnPurchasing)
-        Me.panelInventory.Controls.Add(Me.btnStockLevel)
         Me.panelInventory.Controls.Add(Me.PanelItem)
         Me.panelInventory.Controls.Add(Me.btnItems)
         Me.panelInventory.Dock = System.Windows.Forms.DockStyle.Top
@@ -670,7 +670,7 @@ Partial Class frmMain
         Me.btnStockRecount.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnStockRecount.ForeColor = System.Drawing.Color.White
         Me.btnStockRecount.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnStockRecount.Location = New System.Drawing.Point(15, 192)
+        Me.btnStockRecount.Location = New System.Drawing.Point(15, 168)
         Me.btnStockRecount.Margin = New System.Windows.Forms.Padding(0)
         Me.btnStockRecount.Name = "btnStockRecount"
         Me.btnStockRecount.Size = New System.Drawing.Size(182, 24)
@@ -687,7 +687,7 @@ Partial Class frmMain
         Me.PanelPurchasing.Controls.Add(Me.btnPO)
         Me.PanelPurchasing.Controls.Add(Me.btnPR)
         Me.PanelPurchasing.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PanelPurchasing.Location = New System.Drawing.Point(15, 120)
+        Me.PanelPurchasing.Location = New System.Drawing.Point(15, 96)
         Me.PanelPurchasing.Name = "PanelPurchasing"
         Me.PanelPurchasing.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
         Me.PanelPurchasing.Size = New System.Drawing.Size(182, 72)
@@ -772,7 +772,7 @@ Partial Class frmMain
         Me.btnPurchasing.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnPurchasing.ForeColor = System.Drawing.Color.White
         Me.btnPurchasing.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnPurchasing.Location = New System.Drawing.Point(15, 96)
+        Me.btnPurchasing.Location = New System.Drawing.Point(15, 72)
         Me.btnPurchasing.Margin = New System.Windows.Forms.Padding(0)
         Me.btnPurchasing.Name = "btnPurchasing"
         Me.btnPurchasing.Size = New System.Drawing.Size(182, 24)
@@ -781,28 +781,6 @@ Partial Class frmMain
         Me.btnPurchasing.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnPurchasing.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnPurchasing.UseVisualStyleBackColor = False
-        '
-        'btnStockLevel
-        '
-        Me.btnStockLevel.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnStockLevel.Cursor = System.Windows.Forms.Cursors.Default
-        Me.btnStockLevel.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnStockLevel.FlatAppearance.BorderSize = 0
-        Me.btnStockLevel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnStockLevel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnStockLevel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnStockLevel.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnStockLevel.ForeColor = System.Drawing.Color.White
-        Me.btnStockLevel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnStockLevel.Location = New System.Drawing.Point(15, 72)
-        Me.btnStockLevel.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnStockLevel.Name = "btnStockLevel"
-        Me.btnStockLevel.Size = New System.Drawing.Size(182, 24)
-        Me.btnStockLevel.TabIndex = 127
-        Me.btnStockLevel.Text = "Inventory/Stock Level"
-        Me.btnStockLevel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnStockLevel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnStockLevel.UseVisualStyleBackColor = False
         '
         'PanelItem
         '
@@ -4084,6 +4062,28 @@ Partial Class frmMain
         Me.Label7.Text = "✕"
         Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'btnStockLevel
+        '
+        Me.btnStockLevel.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnStockLevel.Cursor = System.Windows.Forms.Cursors.Default
+        Me.btnStockLevel.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnStockLevel.FlatAppearance.BorderSize = 0
+        Me.btnStockLevel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnStockLevel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnStockLevel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnStockLevel.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnStockLevel.ForeColor = System.Drawing.Color.White
+        Me.btnStockLevel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnStockLevel.Location = New System.Drawing.Point(15, 192)
+        Me.btnStockLevel.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnStockLevel.Name = "btnStockLevel"
+        Me.btnStockLevel.Size = New System.Drawing.Size(182, 24)
+        Me.btnStockLevel.TabIndex = 131
+        Me.btnStockLevel.Text = "Inventory/Stock Level"
+        Me.btnStockLevel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnStockLevel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnStockLevel.UseVisualStyleBackColor = False
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -4411,7 +4411,6 @@ Partial Class frmMain
     Friend WithEvents btnPO As Button
     Friend WithEvents btnPR As Button
     Friend WithEvents btnPurchasing As Button
-    Friend WithEvents btnStockLevel As Button
     Friend WithEvents PanelItem As Panel
     Friend WithEvents Button1 As Button
     Friend WithEvents btnCategory As Button
@@ -4428,4 +4427,5 @@ Partial Class frmMain
     Friend WithEvents Label16 As Label
     Friend WithEvents PictureBox13 As PictureBox
     Friend WithEvents GroupBox4 As GroupBox
+    Friend WithEvents btnStockLevel As Button
 End Class

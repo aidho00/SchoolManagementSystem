@@ -353,7 +353,7 @@ Module Modules
                 AddHandler labelControl.MouseLeave, Sub(sender As Object, e As EventArgs)
                                                         labelControl.ForeColor = lblcolor
                                                     End Sub
-            ElseIf labelControl.Text = "[ ADD ]" Or labelControl.Text = "[ CAPTURE ]" Or labelControl.Text = "[ UPLOAD ]" Or labelControl.Text = "🔍" Or labelControl.Text = "[ View SOA ]" Or labelControl.Text = "[ View Entry ]" Or labelControl.Text = "[ PRINT ]" Or labelControl.Text = "[ FETCH ]" Or labelControl.Text = "[ FETCH SCHEDULE ]" Or labelControl.Text = "[ SET ]" Or labelControl.Text = "[ ASSIGN ]" Or labelControl.Text = "[ SUBJECTS ]" Then
+            ElseIf labelControl.Text = "[ ADD ]" Or labelControl.Text = "[ CAPTURE ]" Or labelControl.Text = "[ UPLOAD ]" Or labelControl.Text = "🔍" Or labelControl.Text = "[ View SOA ]" Or labelControl.Text = "[ View Entry ]" Or labelControl.Text = "[ PRINT ]" Or labelControl.Text = "[ FETCH ]" Or labelControl.Text = "[ FETCH SCHEDULE ]" Or labelControl.Text = "[ SET ]" Or labelControl.Text = "[ ASSIGN ]" Or labelControl.Text = "[ SUBJECTS ]" Or labelControl.Text = "[ Generate Supply Item List ]" Then
                 AddHandler labelControl.MouseHover, Sub(sender As Object, e As EventArgs)
                                                         labelControl.ForeColor = Color.FromArgb(15, 101, 208)
 

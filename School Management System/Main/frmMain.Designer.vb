@@ -2476,7 +2476,6 @@ Partial Class frmMain
         Me.btnClassSchedList.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnClassSchedList.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnClassSchedList.UseVisualStyleBackColor = False
-        Me.btnClassSchedList.Visible = False
         '
         'btnEmployeeList
         '

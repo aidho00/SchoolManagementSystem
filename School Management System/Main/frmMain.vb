@@ -1725,12 +1725,23 @@ Public Class frmMain
     End Sub
 
     Private Sub btnPR_Click(sender As Object, e As EventArgs) Handles btnPR.Click
-        'If Application.OpenForms.OfType(Of frmSupplyPRRecords)().Any() Then
-        'Else
-        frmSupplyPRRecords.PurchaseRequestList()
-        'End If
+        If Application.OpenForms.OfType(Of frmSupplyPRRecords)().Any() Then
+        Else
+            frmSupplyPRRecords.PurchaseRequestList()
+        End If
         OpenForm(frmSupplyPRRecords, "List Of Purchase Requests")
         HideAllFormsInPanelExcept(frmSupplyPRRecords)
+        controlsPanel.Visible = True
+        btnAdd.Visible = True
+    End Sub
+
+    Private Sub btnPO_Click(sender As Object, e As EventArgs) Handles btnPO.Click
+        If Application.OpenForms.OfType(Of frmSupplyPORecords)().Any() Then
+        Else
+            'frmSupplyPRRecords.PurchaseRequestList()
+        End If
+        OpenForm(frmSupplyPORecords, "List Of Purchase Orders")
+        HideAllFormsInPanelExcept(frmSupplyPORecords)
         controlsPanel.Visible = True
         btnAdd.Visible = True
     End Sub
@@ -1749,6 +1760,7 @@ Public Class frmMain
     Private Sub formTitle_Click(sender As Object, e As EventArgs) Handles formTitle.Click
 
     End Sub
+
 End Class
 
 Public Class RotatedLabel

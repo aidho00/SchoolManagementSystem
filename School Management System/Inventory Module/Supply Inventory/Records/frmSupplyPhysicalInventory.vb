@@ -2,6 +2,34 @@
 
 Public Class frmSupplyPhysicalInventory
 
+
+#Region "Drag Form"
+
+    Public MoveForm As Boolean
+    Public MoveForm_MousePosition As Point
+    Public Sub MoveForm_MouseDown(sender As Object, e As MouseEventArgs) Handles systemSign.MouseDown, Panel1.MouseDown  ' Add more handles here (Example: PictureBox1.MouseDown)
+        If e.Button = MouseButtons.Left Then
+            MoveForm = True
+            Me.Cursor = Cursors.Default
+            MoveForm_MousePosition = e.Location
+        End If
+    End Sub
+
+    Public Sub MoveForm_MouseMove(sender As Object, e As MouseEventArgs) Handles systemSign.MouseMove, Panel1.MouseMove  ' Add more handles here (Example: PictureBox1.MouseMove)
+        If MoveForm Then
+            Me.Location = Me.Location + (e.Location - MoveForm_MousePosition)
+        End If
+    End Sub
+
+    Public Sub MoveForm_MouseUp(sender As Object, e As MouseEventArgs) Handles systemSign.MouseUp, Panel1.MouseUp   ' Add more handles here (Example: PictureBox1.MouseUp)
+        If e.Button = MouseButtons.Left Then
+            MoveForm = False
+            Me.Cursor = Cursors.Default
+        End If
+    End Sub
+#End Region
+
+
     Function GetTransno() As String
         Dim yearid As String = YearToday
         cn.Close()
@@ -30,7 +58,7 @@ Public Class frmSupplyPhysicalInventory
         dgSupplyItemList.Rows.Clear()
         Dim i As Integer
         Dim sql As String
-        sql = "Select (BarcodeID) as 'Item ID', Description, (CategoryName) as 'Category', Sizes, (tbl_supply_inventory.Spare) as 'Stock' from tbl_supply_item JOIN tbl_supply_category ON tbl_supply_item.CategoryID = tbl_supply_category.catid JOIN tbl_supply_sizes ON tbl_supply_item.sizesid = tbl_supply_sizes.sizeid JOIN tbl_supply_inventory ON tbl_supply_item.barcodeid = tbl_supply_inventory.itembarcode JOIN tbl_supply_brand ON tbl_supply_item.brandid = tbl_supply_brand.brandid order by Description asc"
+        sql = "Select (BarcodeID) as 'Item ID', Description, (CategoryName) as 'Category', Sizes, (tbl_supply_inventory.Spare) as 'Stock' from tbl_supply_item JOIN tbl_supply_category ON tbl_supply_item.CategoryID = tbl_supply_category.catid JOIN tbl_supply_sizes ON tbl_supply_item.sizesid = tbl_supply_sizes.sizeid JOIN tbl_supply_inventory ON tbl_supply_item.barcodeid = tbl_supply_inventory.itembarcode JOIN tbl_supply_brand ON tbl_supply_item.brandid = tbl_supply_brand.brandid where item_status = 'Available' order by Description asc"
         cn.Close()
         cn.Open()
         cm = New MySqlCommand(sql, cn)
@@ -66,6 +94,7 @@ Public Class frmSupplyPhysicalInventory
                 query("INSERT INTO tbl_supply_physicalinventory (pino, item_barcode, currspare, sparephysicalcount, spareadjustment, userid) VALUES ('" & transno & "', '" & row.Cells(1).Value & "', " & CInt(row.Cells(5).Value) & ", " & CInt(row.Cells(6).Value) & ", '" & CInt(row.Cells(7).Value) & "', " & str_userid & ")")
                 StockLedgerPhysicalRecount(row.Cells(1).Value, 0, 0, "Physical count adjustment.", "Supply Item Stock Adjustment", "Physical Count No." & transno & "", CInt(row.Cells(6).Value))
             Next
+            frmSupplyPhysicalInventoryRecords.PhysicalCountRecords()
             MsgBox("The recount was successfully recorded.", vbInformation, "")
         End If
     End Sub
@@ -95,12 +124,32 @@ Public Class frmSupplyPhysicalInventory
     End Sub
 
     Private Sub frmSupplyPhysicalInventory_Load(sender As Object, e As EventArgs) Handles Me.Load
+        SetFormIcon(Me)
+        ApplyHoverEffectToControls(Me)
         AddHandler dgSupplyItemList.CellValidating, AddressOf dgSupplyItemList_CellValidating
     End Sub
 
     Private Sub dgSupplyItemList_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgSupplyItemList.CellEndEdit
         If dgSupplyItemList.Columns(e.ColumnIndex).Name = "Column3" Then
             dgSupplyItemList.CurrentRow.Cells(7).Value = CInt(dgSupplyItemList.CurrentRow.Cells(6).Value) - CInt(dgSupplyItemList.CurrentRow.Cells(5).Value)
+        End If
+    End Sub
+
+    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
+        Dim dr As DialogResult
+        dr = MessageBox.Show("Are you sure you want to cancel counting?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If dr = DialogResult.No Then
+        Else
+            Me.Close()
+        End If
+    End Sub
+
+    Private Sub btnCancelSearch_Click(sender As Object, e As EventArgs) Handles btnCancelSearch.Click
+        Dim dr As DialogResult
+        dr = MessageBox.Show("Are you sure you want to cancel counting?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If dr = DialogResult.No Then
+        Else
+            Me.Close()
         End If
     End Sub
 End Class

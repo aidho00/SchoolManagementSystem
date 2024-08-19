@@ -310,10 +310,12 @@ Public Class frmMain
         Else
             LibraryClassSchedList()
         End If
+        controlsPanel.Visible = True
         OpenForm(frmClassSchedList, "List Of Class Schedules")
         HideAllFormsInPanelExcept(frmClassSchedList)
-        controlsPanel.Visible = True
-        btnAdd.Visible = True
+        btnAdd.Visible = False
+        Label3.Visible = False
+        frmClassSchedList.colUpdate.Visible = False
     End Sub
 
 #Region "List Of Class Schedules"
@@ -530,7 +532,7 @@ Public Class frmMain
     End Sub
 
     Private Sub formTitle_TextChanged(sender As Object, e As EventArgs) Handles formTitle.TextChanged
-        If formTitle.Text = "List Of Class Schedules" Then
+        If formTitle.Text = "List Of Class Schedules" Or formTitle.Text = "Setup Class Schedules" Then
             SelectionTitle.Visible = True
             ComboClick.Text = "  ▼  "
             ComboClick.Enabled = True
@@ -562,6 +564,16 @@ Public Class frmMain
             PanelCredReq.Visible = False
             frmReports.dgStudentView.Visible = False
             frmReports.rbViewClass.Checked = False
+        End If
+
+        If formTitle.Text = "List Of Class Schedules" Then
+            btnAdd.Visible = False
+            Label3.Visible = False
+            frmClassSchedList.colUpdate.Visible = False
+        Else
+            btnAdd.Visible = True
+            Label3.Visible = True
+            frmClassSchedList.colUpdate.Visible = True
         End If
     End Sub
 
@@ -954,7 +966,7 @@ Public Class frmMain
         Else
             LibraryClassSchedList()
         End If
-        OpenForm(frmClassSchedList, "List Of Class Schedules")
+        OpenForm(frmClassSchedList, "Setup Class Schedules")
         HideAllFormsInPanelExcept(frmClassSchedList)
         controlsPanel.Visible = True
     End Sub
@@ -1720,12 +1732,13 @@ Public Class frmMain
     End Sub
 
     Private Sub btnStockRecount_Click(sender As Object, e As EventArgs) Handles btnStockRecount.Click
-        OpenForm(frmSupplyPhysicalInventoryRecords, "Supply Items Stock Recounting Records")
+        frmSupplyPhysicalInventoryRecords.PhysicalCountRecords()
+        OpenForm(frmSupplyPhysicalInventoryRecords, "Supply Items Stock Recount Records")
         HideAllFormsInPanelExcept(frmSupplyPhysicalInventoryRecords)
-        controlsPanel.Visible = True
+        controlsPanel.Visible = False
     End Sub
 
-    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
+    Private Sub formTitle_Click(sender As Object, e As EventArgs) Handles formTitle.Click
 
     End Sub
 End Class

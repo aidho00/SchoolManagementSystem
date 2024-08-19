@@ -55,17 +55,17 @@ Partial Class frmSupplyPhysicalInventory
         Me.Panel10.Controls.Add(Me.btnSave)
         Me.Panel10.Controls.Add(Me.btnCancelSearch)
         Me.Panel10.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel10.Location = New System.Drawing.Point(0, 622)
+        Me.Panel10.Location = New System.Drawing.Point(0, 573)
         Me.Panel10.Name = "Panel10"
         Me.Panel10.Padding = New System.Windows.Forms.Padding(8)
-        Me.Panel10.Size = New System.Drawing.Size(830, 50)
+        Me.Panel10.Size = New System.Drawing.Size(1027, 50)
         Me.Panel10.TabIndex = 89
         '
         'btnSave
         '
         Me.btnSave.Dock = System.Windows.Forms.DockStyle.Right
         Me.btnSave.FlatAppearance.BorderSize = 0
-        Me.btnSave.Location = New System.Drawing.Point(630, 8)
+        Me.btnSave.Location = New System.Drawing.Point(827, 8)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(96, 34)
         Me.btnSave.TabIndex = 5
@@ -76,7 +76,7 @@ Partial Class frmSupplyPhysicalInventory
         '
         Me.btnCancelSearch.Dock = System.Windows.Forms.DockStyle.Right
         Me.btnCancelSearch.FlatAppearance.BorderSize = 0
-        Me.btnCancelSearch.Location = New System.Drawing.Point(726, 8)
+        Me.btnCancelSearch.Location = New System.Drawing.Point(923, 8)
         Me.btnCancelSearch.Name = "btnCancelSearch"
         Me.btnCancelSearch.Size = New System.Drawing.Size(96, 34)
         Me.btnCancelSearch.TabIndex = 4
@@ -93,7 +93,7 @@ Partial Class frmSupplyPhysicalInventory
         Me.systemSign.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.systemSign.Name = "systemSign"
         Me.systemSign.Padding = New System.Windows.Forms.Padding(6)
-        Me.systemSign.Size = New System.Drawing.Size(830, 39)
+        Me.systemSign.Size = New System.Drawing.Size(1027, 39)
         Me.systemSign.TabIndex = 101
         '
         'btnClose
@@ -102,7 +102,7 @@ Partial Class frmSupplyPhysicalInventory
         Me.btnClose.Dock = System.Windows.Forms.DockStyle.Right
         Me.btnClose.Font = New System.Drawing.Font("Corbel", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnClose.ForeColor = System.Drawing.Color.Black
-        Me.btnClose.Location = New System.Drawing.Point(804, 6)
+        Me.btnClose.Location = New System.Drawing.Point(1001, 6)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(20, 27)
         Me.btnClose.TabIndex = 3
@@ -129,7 +129,7 @@ Partial Class frmSupplyPhysicalInventory
         Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Padding = New System.Windows.Forms.Padding(6)
-        Me.Panel1.Size = New System.Drawing.Size(830, 10)
+        Me.Panel1.Size = New System.Drawing.Size(1027, 10)
         Me.Panel1.TabIndex = 100
         '
         'dgSupplyItemList
@@ -168,7 +168,7 @@ Partial Class frmSupplyPhysicalInventory
         Me.dgSupplyItemList.RowHeadersVisible = False
         Me.dgSupplyItemList.RowTemplate.Height = 26
         Me.dgSupplyItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgSupplyItemList.Size = New System.Drawing.Size(830, 573)
+        Me.dgSupplyItemList.Size = New System.Drawing.Size(1027, 524)
         Me.dgSupplyItemList.TabIndex = 102
         '
         'Column4
@@ -252,18 +252,17 @@ Partial Class frmSupplyPhysicalInventory
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(830, 672)
+        Me.ClientSize = New System.Drawing.Size(1027, 623)
         Me.ControlBox = False
         Me.Controls.Add(Me.dgSupplyItemList)
         Me.Controls.Add(Me.systemSign)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel10)
         Me.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "frmSupplyPhysicalInventory"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel10.ResumeLayout(False)
         Me.systemSign.ResumeLayout(False)
         CType(Me.dgSupplyItemList, System.ComponentModel.ISupportInitialize).EndInit()

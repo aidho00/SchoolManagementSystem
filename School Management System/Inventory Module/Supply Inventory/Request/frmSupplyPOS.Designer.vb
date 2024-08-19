@@ -357,17 +357,17 @@ Partial Class frmSupplyPOS
         '
         Me.Label3.AutoSize = True
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(3, 17)
+        Me.Label3.Location = New System.Drawing.Point(8, 17)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(51, 16)
+        Me.Label3.Size = New System.Drawing.Size(46, 16)
         Me.Label3.TabIndex = 1
-        Me.Label3.Text = "SEARCH"
+        Me.Label3.Text = "Search"
         '
         'txtSearch
         '
         Me.txtSearch.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtSearch.Location = New System.Drawing.Point(62, 14)
+        Me.txtSearch.Location = New System.Drawing.Point(56, 14)
         Me.txtSearch.Name = "txtSearch"
         Me.txtSearch.Size = New System.Drawing.Size(655, 21)
         Me.txtSearch.TabIndex = 0

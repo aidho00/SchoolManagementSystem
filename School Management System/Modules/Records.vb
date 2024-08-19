@@ -65,6 +65,8 @@ Module Records
                 frmSupplyItems.SupplyItemList()
             Case "Supply Items Stock Level"
                 frmSupplyStockLevel.SupplyItemStockLevel()
+            Case "List Of Purchase Requests"
+                frmSupplyPRRecords.PurchaseRequestList()
         End Select
     End Sub
 
@@ -89,7 +91,7 @@ Module Records
                     .btnSave.Visible = True
                     .ShowDialog()
                 End With
-            Case "List Of Class Schedules"
+            Case "Setup Class Schedules"
                 With frmClassSched
                     frmClassSchedList.LoadComboBoxData()
                     ResetControls(frmClassSched)
@@ -192,12 +194,6 @@ Module Records
                 With frmSupplyPurchaseRequest
                     ResetControls(frmSupplyPurchaseRequest)
                     .btnSave.Visible = True
-                    .ShowDialog()
-                End With
-            Case "Supply Items Stock Recounting Records"
-                With frmSupplyPhysicalInventory
-                    ResetControls(frmSupplyPhysicalInventory)
-                    .PhysicalCountSupplyItemStockLevel()
                     .ShowDialog()
                 End With
         End Select

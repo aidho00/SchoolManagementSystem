@@ -46,10 +46,10 @@ Public Class frmSupplyPurchaseRequest
             Dim lastCode As String = cm.ExecuteScalar
             cn.Close()
             lastCode = lastCode.Remove(0, 6)
-            GetTransno = "EN" & CInt(yearid & lastCode) + 1
+            GetTransno = "PR" & CInt(yearid & lastCode) + 1
         Else
             dr.Close()
-            GetTransno = "EN" & yearid & "00001"
+            GetTransno = "PR" & yearid & "00001"
         End If
         cn.Close()
 
@@ -63,14 +63,13 @@ Public Class frmSupplyPurchaseRequest
         End If
         If IS_EMPTY(txtRemarks) = True Then Return
         Dim PRNo As String = GetTransno()
-        query("INSERT INTO `tbl_supply_purchaserequest`(`prno`, `prtotal`, `prremarks`) VALUES ('" & PRNo & "'," & CDec(lblTotal.Text) & ",'" & txtRemarks.Text & "')")
+        query("INSERT INTO `tbl_supply_purchaserequest`(`prno`, `prtotal`, `prremarks`, `pruser_id`) VALUES ('" & PRNo & "'," & CDec(lblTotal.Text) & ",'" & txtRemarks.Text & "', " & str_userid & ")")
         For Each row As DataGridViewRow In dgPRitemList.Rows
-            query("INSERT INTO `tbl_supply_purchaserequest_items`(`prno`, `itemid`, `itemqty`, `itemprice`, `itemtotal`) VALUES ('" & PRNo & "'," & CInt(row.Cells(0).Value) & "," & CInt(row.Cells(5).Value) & "," & CInt(row.Cells(4).Value) & "," & CDec(row.Cells(6).Value) & ")")
+            query("INSERT INTO `tbl_supply_purchaserequest_items`(`prno`, `itemid`, `itemqty`, `itemprice`, `itemtotal`) VALUES ('" & PRNo & "','" & row.Cells(0).Value & "'," & CInt(row.Cells(5).Value) & "," & CInt(row.Cells(4).Value) & "," & CDec(row.Cells(6).Value) & ")")
         Next
-
-        PurchaseRequestRPT(PRNo)
+        frmSupplyPRRecords.PurchaseRequestList()
         MsgBox("Purchase Request sucessfully created.", vbInformation)
-
+        PurchaseRequestRPT(PRNo)
     End Sub
 
     Sub PurchaseRequestRPT(prno As String)
@@ -91,7 +90,7 @@ Public Class frmSupplyPurchaseRequest
         Dim iDate As String = DateToday
         Dim oDate As DateTime = Convert.ToDateTime(iDate)
         Dim rptdoc As CrystalDecisions.CrystalReports.Engine.ReportDocument
-        rptdoc = New Ack_Report
+        rptdoc = New PurchaseRequest
         rptdoc.SetDataSource(dt)
         'rptdoc.SetParameterValue("studentname", cmb_student.Text)
         rptdoc.SetParameterValue("requestdate", Format(Convert.ToDateTime(DateToday), "MMMM d, yyyy"))
@@ -134,19 +133,8 @@ Public Class frmSupplyPurchaseRequest
     End Sub
 
     Private Sub btnSelect_Click(sender As Object, e As EventArgs) Handles btnSelect.Click
-        Dim isFound As Boolean = False
-        For Each row As DataGridViewRow In dgPRitemList.Rows
-            If row.Cells(0).Value = dgSupplyItemList.CurrentRow.Cells(1).Value Then
-                isFound = True
-                Exit For
-            End If
-        Next
-        If isFound = False Then
-            frmSupplyPurchaseQty.PurchasingStatus = "Purchase Request"
-            frmSupplyPurchaseQty.ShowDialog()
-        Else
-            MsgBox("The item is already on the list. Please add a different item.", vbCritical)
-        End If
+        frmSupplyPurchaseQty.PurchasingStatus = "Purchase Request"
+        frmSupplyPurchaseQty.ShowDialog()
     End Sub
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
@@ -174,5 +162,62 @@ Public Class frmSupplyPurchaseRequest
         If colname = "colRemove" Then
             dgPRitemList.Rows.Remove(dgPRitemList.CurrentRow)
         End If
+    End Sub
+
+    Private isAlreadyValidated As Boolean = False
+
+    Private Sub dgPRitemList_CellValidating(sender As Object, e As DataGridViewCellValidatingEventArgs) Handles dgPRitemList.CellValidating
+        Dim dataGridView As DataGridView = DirectCast(sender, DataGridView)
+        ' Check if the column being edited is the numeric column
+        If dataGridView.Columns(e.ColumnIndex).Name = "Column3" Then
+            Dim newValue As String = e.FormattedValue.ToString()
+
+            ' Check if the input is numeric
+            If Not IsNumeric(newValue) Then
+                ' Cancel the event
+                e.Cancel = True
+                ' Show the error message only if it hasn't been shown yet
+                If Not isAlreadyValidated Then
+                    isAlreadyValidated = True
+                    MessageBox.Show("Please enter a valid quantity.", "", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
+            Else
+                ' Reset the flag if validation passes
+                isAlreadyValidated = False
+            End If
+        ElseIf dataGridView.Columns(e.ColumnIndex).Name = "Column2" Then
+            Dim currencyPattern As String = "^\d+(\.\d{1,2})?$"
+
+            Dim newValue As String = e.FormattedValue.ToString()
+
+            ' Check if the input matches the currency pattern
+            If Not System.Text.RegularExpressions.Regex.IsMatch(newValue, currencyPattern) Then
+                ' Cancel the event
+                e.Cancel = True
+                ' Show the error message only if it hasn't been shown yet
+                If Not isAlreadyValidated Then
+                    isAlreadyValidated = True
+                    MessageBox.Show("Please enter a valid amount.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
+            Else
+                ' Reset the flag if validation passes
+                isAlreadyValidated = False
+            End If
+        End If
+    End Sub
+
+    Private Sub dgPRitemList_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgPRitemList.CellEndEdit
+        If dgPRitemList.Columns(e.ColumnIndex).Name = "Column2" Or dgPRitemList.Columns(e.ColumnIndex).Name = "Column3" Then
+            dgPRitemList.CurrentRow.Cells(6).Value = CDec(dgPRitemList.CurrentRow.Cells(4).Value) * CInt(dgPRitemList.CurrentRow.Cells(5).Value)
+        End If
+    End Sub
+
+    Private Sub frmSupplyPurchaseRequest_Load(sender As Object, e As EventArgs) Handles Me.Load
+        ApplyHoverEffectToControls(Me)
+        AddHandler dgPRitemList.CellValidating, AddressOf dgPRitemList_CellValidating
+    End Sub
+
+    Private Sub dgPRitemList_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles dgPRitemList.CellValueChanged
+        lblTotal.Text = Format(CDec(GetColumnSum(dgPRitemList, 6)), "#,##0.00")
     End Sub
 End Class

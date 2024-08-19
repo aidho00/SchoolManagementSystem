@@ -85,7 +85,7 @@ Public Class frmSupplyPhysicalInventory
                 ' Show the error message only if it hasn't been shown yet
                 If Not isAlreadyValidated Then
                     isAlreadyValidated = True
-                    MessageBox.Show("Please enter a valid number.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("Please enter a valid quantity.", "", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
             Else
                 ' Reset the flag if validation passes

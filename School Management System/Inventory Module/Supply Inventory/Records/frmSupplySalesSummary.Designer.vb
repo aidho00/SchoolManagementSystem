@@ -108,6 +108,7 @@ Partial Class frmSupplySalesSummary
         Me.Label3.TabIndex = 4
         Me.Label3.Text = "[ PRINT ]"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Label3.Visible = False
         '
         'dtTo
         '

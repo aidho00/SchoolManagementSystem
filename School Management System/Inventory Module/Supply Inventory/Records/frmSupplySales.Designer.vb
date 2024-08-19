@@ -126,6 +126,7 @@ Partial Class frmSupplySales
         Me.ToolStripButton4.TabIndex = 5
         Me.ToolStripButton4.Text = "[ PRINT ]"
         Me.ToolStripButton4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.ToolStripButton4.Visible = False
         '
         'dtTo
         '

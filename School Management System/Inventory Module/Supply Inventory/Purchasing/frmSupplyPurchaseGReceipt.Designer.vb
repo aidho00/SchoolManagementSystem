@@ -106,7 +106,7 @@ Partial Class frmSupplyPurchaseGReceipt
         Me.systemSign.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.systemSign.Name = "systemSign"
         Me.systemSign.Padding = New System.Windows.Forms.Padding(6)
-        Me.systemSign.Size = New System.Drawing.Size(933, 39)
+        Me.systemSign.Size = New System.Drawing.Size(848, 39)
         Me.systemSign.TabIndex = 22
         '
         'btnClose
@@ -115,7 +115,7 @@ Partial Class frmSupplyPurchaseGReceipt
         Me.btnClose.Dock = System.Windows.Forms.DockStyle.Right
         Me.btnClose.Font = New System.Drawing.Font("Corbel", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnClose.ForeColor = System.Drawing.Color.Black
-        Me.btnClose.Location = New System.Drawing.Point(907, 6)
+        Me.btnClose.Location = New System.Drawing.Point(822, 6)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(20, 27)
         Me.btnClose.TabIndex = 3
@@ -142,7 +142,7 @@ Partial Class frmSupplyPurchaseGReceipt
         Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Padding = New System.Windows.Forms.Padding(6)
-        Me.Panel1.Size = New System.Drawing.Size(933, 10)
+        Me.Panel1.Size = New System.Drawing.Size(848, 10)
         Me.Panel1.TabIndex = 21
         '
         'BasePanel
@@ -152,7 +152,7 @@ Partial Class frmSupplyPurchaseGReceipt
         Me.BasePanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.BasePanel.Location = New System.Drawing.Point(0, 49)
         Me.BasePanel.Name = "BasePanel"
-        Me.BasePanel.Size = New System.Drawing.Size(933, 505)
+        Me.BasePanel.Size = New System.Drawing.Size(848, 629)
         Me.BasePanel.TabIndex = 23
         '
         'Panel2
@@ -162,7 +162,7 @@ Partial Class frmSupplyPurchaseGReceipt
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(933, 505)
+        Me.Panel2.Size = New System.Drawing.Size(848, 629)
         Me.Panel2.TabIndex = 0
         '
         'Panel6
@@ -172,7 +172,7 @@ Partial Class frmSupplyPurchaseGReceipt
         Me.Panel6.Location = New System.Drawing.Point(0, 200)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Padding = New System.Windows.Forms.Padding(10, 0, 10, 0)
-        Me.Panel6.Size = New System.Drawing.Size(933, 305)
+        Me.Panel6.Size = New System.Drawing.Size(848, 429)
         Me.Panel6.TabIndex = 169
         '
         'dgPOitemList
@@ -210,7 +210,7 @@ Partial Class frmSupplyPurchaseGReceipt
         Me.dgPOitemList.RowHeadersVisible = False
         Me.dgPOitemList.RowTemplate.Height = 26
         Me.dgPOitemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgPOitemList.Size = New System.Drawing.Size(913, 305)
+        Me.dgPOitemList.Size = New System.Drawing.Size(828, 429)
         Me.dgPOitemList.TabIndex = 167
         '
         'DataGridViewTextBoxColumn1
@@ -290,7 +290,7 @@ Partial Class frmSupplyPurchaseGReceipt
         Me.Panel4.Location = New System.Drawing.Point(0, 0)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Padding = New System.Windows.Forms.Padding(10, 0, 10, 0)
-        Me.Panel4.Size = New System.Drawing.Size(933, 200)
+        Me.Panel4.Size = New System.Drawing.Size(848, 200)
         Me.Panel4.TabIndex = 168
         '
         'Panel9
@@ -302,7 +302,7 @@ Partial Class frmSupplyPurchaseGReceipt
         Me.Panel9.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel9.Location = New System.Drawing.Point(10, 0)
         Me.Panel9.Name = "Panel9"
-        Me.Panel9.Size = New System.Drawing.Size(913, 67)
+        Me.Panel9.Size = New System.Drawing.Size(828, 67)
         Me.Panel9.TabIndex = 127
         '
         'Panel11
@@ -310,7 +310,7 @@ Partial Class frmSupplyPurchaseGReceipt
         Me.Panel11.Controls.Add(Me.lblTotal)
         Me.Panel11.Controls.Add(Me.Label3)
         Me.Panel11.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel11.Location = New System.Drawing.Point(431, 0)
+        Me.Panel11.Location = New System.Drawing.Point(346, 0)
         Me.Panel11.Name = "Panel11"
         Me.Panel11.Size = New System.Drawing.Size(482, 67)
         Me.Panel11.TabIndex = 0
@@ -409,7 +409,7 @@ Partial Class frmSupplyPurchaseGReceipt
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel5.Location = New System.Drawing.Point(10, 199)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(913, 1)
+        Me.Panel5.Size = New System.Drawing.Size(828, 1)
         Me.Panel5.TabIndex = 125
         '
         'Label2
@@ -453,7 +453,7 @@ Partial Class frmSupplyPurchaseGReceipt
         Me.SearchPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SearchPanel.Location = New System.Drawing.Point(0, 0)
         Me.SearchPanel.Name = "SearchPanel"
-        Me.SearchPanel.Size = New System.Drawing.Size(933, 505)
+        Me.SearchPanel.Size = New System.Drawing.Size(848, 629)
         Me.SearchPanel.TabIndex = 173
         Me.SearchPanel.Visible = False
         '
@@ -464,7 +464,7 @@ Partial Class frmSupplyPurchaseGReceipt
         Me.SearchBasePanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SearchBasePanel.Location = New System.Drawing.Point(0, 0)
         Me.SearchBasePanel.Name = "SearchBasePanel"
-        Me.SearchBasePanel.Size = New System.Drawing.Size(933, 455)
+        Me.SearchBasePanel.Size = New System.Drawing.Size(848, 579)
         Me.SearchBasePanel.TabIndex = 101
         '
         'dgPanel
@@ -474,7 +474,7 @@ Partial Class frmSupplyPurchaseGReceipt
         Me.dgPanel.Location = New System.Drawing.Point(0, 35)
         Me.dgPanel.Name = "dgPanel"
         Me.dgPanel.Padding = New System.Windows.Forms.Padding(7, 0, 0, 0)
-        Me.dgPanel.Size = New System.Drawing.Size(933, 420)
+        Me.dgPanel.Size = New System.Drawing.Size(848, 544)
         Me.dgPanel.TabIndex = 104
         '
         'dgSupplyItemList
@@ -513,7 +513,7 @@ Partial Class frmSupplyPurchaseGReceipt
         Me.dgSupplyItemList.RowHeadersVisible = False
         Me.dgSupplyItemList.RowTemplate.Height = 26
         Me.dgSupplyItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgSupplyItemList.Size = New System.Drawing.Size(926, 420)
+        Me.dgSupplyItemList.Size = New System.Drawing.Size(841, 544)
         Me.dgSupplyItemList.TabIndex = 87
         '
         'DataGridViewTextBoxColumn4
@@ -579,7 +579,7 @@ Partial Class frmSupplyPurchaseGReceipt
         Me.Panel7.Location = New System.Drawing.Point(0, 0)
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Padding = New System.Windows.Forms.Padding(3)
-        Me.Panel7.Size = New System.Drawing.Size(933, 35)
+        Me.Panel7.Size = New System.Drawing.Size(848, 35)
         Me.Panel7.TabIndex = 103
         '
         'Panel8
@@ -590,7 +590,7 @@ Partial Class frmSupplyPurchaseGReceipt
         Me.Panel8.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel8.Location = New System.Drawing.Point(3, 3)
         Me.Panel8.Name = "Panel8"
-        Me.Panel8.Size = New System.Drawing.Size(927, 29)
+        Me.Panel8.Size = New System.Drawing.Size(842, 29)
         Me.Panel8.TabIndex = 11
         '
         'frmTitle
@@ -632,17 +632,17 @@ Partial Class frmSupplyPurchaseGReceipt
         Me.Panel10.Controls.Add(Me.btnSelect)
         Me.Panel10.Controls.Add(Me.btnCancelSearch)
         Me.Panel10.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel10.Location = New System.Drawing.Point(0, 455)
+        Me.Panel10.Location = New System.Drawing.Point(0, 579)
         Me.Panel10.Name = "Panel10"
         Me.Panel10.Padding = New System.Windows.Forms.Padding(8)
-        Me.Panel10.Size = New System.Drawing.Size(933, 50)
+        Me.Panel10.Size = New System.Drawing.Size(848, 50)
         Me.Panel10.TabIndex = 0
         '
         'btnSelect
         '
         Me.btnSelect.Dock = System.Windows.Forms.DockStyle.Right
         Me.btnSelect.FlatAppearance.BorderSize = 0
-        Me.btnSelect.Location = New System.Drawing.Point(733, 8)
+        Me.btnSelect.Location = New System.Drawing.Point(648, 8)
         Me.btnSelect.Name = "btnSelect"
         Me.btnSelect.Size = New System.Drawing.Size(96, 34)
         Me.btnSelect.TabIndex = 5
@@ -653,7 +653,7 @@ Partial Class frmSupplyPurchaseGReceipt
         '
         Me.btnCancelSearch.Dock = System.Windows.Forms.DockStyle.Right
         Me.btnCancelSearch.FlatAppearance.BorderSize = 0
-        Me.btnCancelSearch.Location = New System.Drawing.Point(829, 8)
+        Me.btnCancelSearch.Location = New System.Drawing.Point(744, 8)
         Me.btnCancelSearch.Name = "btnCancelSearch"
         Me.btnCancelSearch.Size = New System.Drawing.Size(96, 34)
         Me.btnCancelSearch.TabIndex = 4
@@ -665,7 +665,7 @@ Partial Class frmSupplyPurchaseGReceipt
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(933, 554)
+        Me.ClientSize = New System.Drawing.Size(848, 678)
         Me.ControlBox = False
         Me.Controls.Add(Me.BasePanel)
         Me.Controls.Add(Me.systemSign)

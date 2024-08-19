@@ -70,6 +70,7 @@ Public Class frmSupplyPurchaseRequest
         frmSupplyPRRecords.PurchaseRequestList()
         MsgBox("Purchase Request sucessfully created.", vbInformation)
         PurchaseRequestRPT(PRNo)
+        Me.Close()
     End Sub
 
     Sub PurchaseRequestRPT(prno As String)

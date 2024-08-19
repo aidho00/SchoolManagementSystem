@@ -557,6 +557,14 @@ Public Class frmMain
             cmbAcad.Visible = False
             cmbSupplyType.Visible = True
             cmbSupplyType.SelectedIndex = 0
+        ElseIf formTitle.Text = "List Of Purchase Requests" Then
+            SelectionTitle.Visible = False
+            ComboClick.Text = "     "
+            ComboClick.Enabled = False
+            PanelCredReq.Visible = False
+            frmReports.dgStudentView.Visible = False
+            frmReports.rbViewClass.Checked = False
+            frmSupplyPRRecords.PurchaseRequestList()
         Else
             SelectionTitle.Visible = False
             ComboClick.Text = "     "
@@ -1717,10 +1725,10 @@ Public Class frmMain
     End Sub
 
     Private Sub btnPR_Click(sender As Object, e As EventArgs) Handles btnPR.Click
-        If Application.OpenForms.OfType(Of frmSupplyPRRecords)().Any() Then
-        Else
-            frmSupplyPRRecords.PurchaseRequestList()
-        End If
+        'If Application.OpenForms.OfType(Of frmSupplyPRRecords)().Any() Then
+        'Else
+        frmSupplyPRRecords.PurchaseRequestList()
+        'End If
         OpenForm(frmSupplyPRRecords, "List Of Purchase Requests")
         HideAllFormsInPanelExcept(frmSupplyPRRecords)
         controlsPanel.Visible = True

@@ -565,6 +565,14 @@ Public Class frmMain
             frmReports.dgStudentView.Visible = False
             frmReports.rbViewClass.Checked = False
             frmSupplyPRRecords.PurchaseRequestList()
+        ElseIf formTitle.Text = "List Of Purchase Orders" Then
+            SelectionTitle.Visible = False
+            ComboClick.Text = "     "
+            ComboClick.Enabled = False
+            PanelCredReq.Visible = False
+            frmReports.dgStudentView.Visible = False
+            frmReports.rbViewClass.Checked = False
+            frmSupplyPORecords.PurchaseOrderList()
         Else
             SelectionTitle.Visible = False
             ComboClick.Text = "     "
@@ -1738,7 +1746,7 @@ Public Class frmMain
     Private Sub btnPO_Click(sender As Object, e As EventArgs) Handles btnPO.Click
         If Application.OpenForms.OfType(Of frmSupplyPORecords)().Any() Then
         Else
-            'frmSupplyPRRecords.PurchaseRequestList()
+            frmSupplyPORecords.PurchaseOrderList()
         End If
         OpenForm(frmSupplyPORecords, "List Of Purchase Orders")
         HideAllFormsInPanelExcept(frmSupplyPORecords)

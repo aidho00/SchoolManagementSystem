@@ -67,6 +67,8 @@ Module Records
                 frmSupplyStockLevel.SupplyItemStockLevel()
             Case "List Of Purchase Requests"
                 frmSupplyPRRecords.PurchaseRequestList()
+            Case "List Of Purchase Orders"
+                frmSupplyPORecords.PurchaseOrderList()
         End Select
     End Sub
 
@@ -193,6 +195,12 @@ Module Records
             Case "List Of Purchase Requests"
                 With frmSupplyPurchaseRequest
                     ResetControls(frmSupplyPurchaseRequest)
+                    .btnSave.Visible = True
+                    .ShowDialog()
+                End With
+            Case "List Of Purchase Orders"
+                With frmSupplyPurchaseOrder
+                    ResetControls(frmSupplyPurchaseOrder)
                     .btnSave.Visible = True
                     .ShowDialog()
                 End With

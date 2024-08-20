@@ -622,6 +622,18 @@
     <Compile Include="Inventory Module\Supply Inventory\Records\frmSupplyRecords.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Inventory Module\Supply Inventory\Reports\PurchaseOrder.vb">
+      <DependentUpon>PurchaseOrder.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Inventory Module\Supply Inventory\Reports\PurchaseRequest2.vb">
+      <DependentUpon>PurchaseRequest2.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Inventory Module\Supply Inventory\Request\frmSupplyReturn.Designer.vb">
       <DependentUpon>frmSupplyReturn.vb</DependentUpon>
     </Compile>
@@ -1933,6 +1945,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory Module\Supply Inventory\Records\frmSupplyRecords.resx">
       <DependentUpon>frmSupplyRecords.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory Module\Supply Inventory\Reports\PurchaseOrder.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PurchaseOrder.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory Module\Supply Inventory\Reports\PurchaseRequest2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PurchaseRequest2.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory Module\Supply Inventory\Request\frmSupplyReturn.resx">
       <DependentUpon>frmSupplyReturn.vb</DependentUpon>

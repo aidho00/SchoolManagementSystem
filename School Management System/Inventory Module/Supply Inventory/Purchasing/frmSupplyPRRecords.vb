@@ -41,7 +41,13 @@ Public Class frmSupplyPRRecords
             Dim iDate As String = dgPRList.CurrentRow.Cells(3).Value
             Dim oDate As DateTime = Convert.ToDateTime(iDate)
             Dim rptdoc As CrystalDecisions.CrystalReports.Engine.ReportDocument
-            rptdoc = New PurchaseRequest
+            Dim drr As DialogResult
+            drr = MessageBox.Show("Do you want to use the price specified in the inventory for this item in the Purchase Request?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If drr = DialogResult.No Then
+                rptdoc = New PurchaseRequest2
+            Else
+                rptdoc = New PurchaseRequest
+            End If
             rptdoc.SetDataSource(dt)
             rptdoc.SetParameterValue("requestdate", Format(Convert.ToDateTime(dgPRList.CurrentRow.Cells(3).Value), "MMMM d, yyyy"))
             rptdoc.SetParameterValue("requestno", dgPRList.CurrentRow.Cells(1).Value)

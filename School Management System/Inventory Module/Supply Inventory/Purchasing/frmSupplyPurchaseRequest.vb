@@ -57,20 +57,25 @@ Public Class frmSupplyPurchaseRequest
     End Function
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        If dgPRitemList.RowCount = 0 Then
-            MsgBox("There are no items in the list. Please add an item.", vbCritical)
-            Return
+        Dim dr As DialogResult
+        dr = MessageBox.Show("Are you sure you want to save this purchase request?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If dr = DialogResult.No Then
+        Else
+            If dgPRitemList.RowCount = 0 Then
+                MsgBox("There are no items in the list. Please add an item.", vbCritical)
+                Return
+            End If
+            If IS_EMPTY(txtRemarks) = True Then Return
+            Dim PRNo As String = GetTransno()
+            query("INSERT INTO `tbl_supply_purchaserequest`(`prno`, `prtotal`, `prremarks`, `pruser_id`) VALUES ('" & PRNo & "'," & CDec(lblTotal.Text) & ",'" & txtRemarks.Text & "', " & str_userid & ")")
+            For Each row As DataGridViewRow In dgPRitemList.Rows
+                query("INSERT INTO `tbl_supply_purchaserequest_items`(`prno`, `itemid`, `itemqty`, `itemprice`, `itemtotal`) VALUES ('" & PRNo & "','" & row.Cells(0).Value & "'," & CInt(row.Cells(5).Value) & "," & CInt(row.Cells(4).Value) & "," & CDec(row.Cells(6).Value) & ")")
+            Next
+            frmSupplyPRRecords.PurchaseRequestList()
+            MsgBox("Purchase Request sucessfully created.", vbInformation)
+            PurchaseRequestRPT(PRNo)
+            Me.Close()
         End If
-        If IS_EMPTY(txtRemarks) = True Then Return
-        Dim PRNo As String = GetTransno()
-        query("INSERT INTO `tbl_supply_purchaserequest`(`prno`, `prtotal`, `prremarks`, `pruser_id`) VALUES ('" & PRNo & "'," & CDec(lblTotal.Text) & ",'" & txtRemarks.Text & "', " & str_userid & ")")
-        For Each row As DataGridViewRow In dgPRitemList.Rows
-            query("INSERT INTO `tbl_supply_purchaserequest_items`(`prno`, `itemid`, `itemqty`, `itemprice`, `itemtotal`) VALUES ('" & PRNo & "','" & row.Cells(0).Value & "'," & CInt(row.Cells(5).Value) & "," & CInt(row.Cells(4).Value) & "," & CDec(row.Cells(6).Value) & ")")
-        Next
-        frmSupplyPRRecords.PurchaseRequestList()
-        MsgBox("Purchase Request sucessfully created.", vbInformation)
-        PurchaseRequestRPT(PRNo)
-        Me.Close()
     End Sub
 
     Sub PurchaseRequestRPT(prno As String)
@@ -91,18 +96,22 @@ Public Class frmSupplyPurchaseRequest
         Dim iDate As String = DateToday
         Dim oDate As DateTime = Convert.ToDateTime(iDate)
         Dim rptdoc As CrystalDecisions.CrystalReports.Engine.ReportDocument
+        Dim drr As DialogResult
+        drr = MessageBox.Show("Do you want to use the price specified in the inventory for this item in the Purchase Request?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If drr = DialogResult.No Then
+            rptdoc = New PurchaseRequest2
+        Else
+            rptdoc = New PurchaseRequest
+        End If
         rptdoc = New PurchaseRequest
         rptdoc.SetDataSource(dt)
-        'rptdoc.SetParameterValue("studentname", cmb_student.Text)
         rptdoc.SetParameterValue("requestdate", Format(Convert.ToDateTime(DateToday), "MMMM d, yyyy"))
         rptdoc.SetParameterValue("requestno", prno)
         rptdoc.SetParameterValue("requestremarks", txtRemarks.Text)
-
         Dim input As String = str_name
         Dim cultureInfo As CultureInfo = CultureInfo.CurrentCulture
         Dim textInfo As TextInfo = cultureInfo.TextInfo
         Dim user_name As String = textInfo.ToTitleCase(input.ToLower())
-
         rptdoc.SetParameterValue("preparedby", user_name)
         frmReportViewer.ReportViewer.ReportSource = rptdoc
     End Sub
@@ -155,6 +164,10 @@ Public Class frmSupplyPurchaseRequest
     End Sub
 
     Private Sub dgPRitemList_RowsRemoved(sender As Object, e As DataGridViewRowsRemovedEventArgs) Handles dgPRitemList.RowsRemoved
+        lblTotal.Text = Format(CDec(GetColumnSum(dgPRitemList, 6)), "#,##0.00")
+    End Sub
+
+    Private Sub dgPRitemList_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles dgPRitemList.CellValueChanged
         lblTotal.Text = Format(CDec(GetColumnSum(dgPRitemList, 6)), "#,##0.00")
     End Sub
 
@@ -218,7 +231,4 @@ Public Class frmSupplyPurchaseRequest
         AddHandler dgPRitemList.CellValidating, AddressOf dgPRitemList_CellValidating
     End Sub
 
-    Private Sub dgPRitemList_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles dgPRitemList.CellValueChanged
-        lblTotal.Text = Format(CDec(GetColumnSum(dgPRitemList, 6)), "#,##0.00")
-    End Sub
 End Class

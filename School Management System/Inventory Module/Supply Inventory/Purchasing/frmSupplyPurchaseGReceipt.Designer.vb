@@ -22,12 +22,12 @@ Partial Class frmSupplyPurchaseGReceipt
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSupplyPurchaseGReceipt))
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.systemSign = New System.Windows.Forms.Panel()
         Me.btnClose = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -35,15 +35,6 @@ Partial Class frmSupplyPurchaseGReceipt
         Me.BasePanel = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.dgPOitemList = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colRemove = New System.Windows.Forms.DataGridViewImageColumn()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.Panel11 = New System.Windows.Forms.Panel()
@@ -78,11 +69,19 @@ Partial Class frmSupplyPurchaseGReceipt
         Me.Panel10 = New System.Windows.Forms.Panel()
         Me.btnSelect = New System.Windows.Forms.Button()
         Me.btnCancelSearch = New System.Windows.Forms.Button()
+        Me.dgGRitemList = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colRemove = New System.Windows.Forms.DataGridViewImageColumn()
         Me.systemSign.SuspendLayout()
         Me.BasePanel.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel6.SuspendLayout()
-        CType(Me.dgPOitemList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel4.SuspendLayout()
         Me.Panel9.SuspendLayout()
         Me.Panel11.SuspendLayout()
@@ -94,6 +93,7 @@ Partial Class frmSupplyPurchaseGReceipt
         Me.Panel8.SuspendLayout()
         CType(Me.btnAdd, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel10.SuspendLayout()
+        CType(Me.dgGRitemList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'systemSign
@@ -167,114 +167,13 @@ Partial Class frmSupplyPurchaseGReceipt
         '
         'Panel6
         '
-        Me.Panel6.Controls.Add(Me.dgPOitemList)
+        Me.Panel6.Controls.Add(Me.dgGRitemList)
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel6.Location = New System.Drawing.Point(0, 200)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Padding = New System.Windows.Forms.Padding(10, 0, 10, 0)
         Me.Panel6.Size = New System.Drawing.Size(848, 429)
         Me.Panel6.TabIndex = 169
-        '
-        'dgPOitemList
-        '
-        Me.dgPOitemList.AllowUserToAddRows = False
-        Me.dgPOitemList.BackgroundColor = System.Drawing.Color.White
-        Me.dgPOitemList.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dgPOitemList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.dgPOitemList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgPOitemList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.dgPOitemList.ColumnHeadersHeight = 40
-        Me.dgPOitemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgPOitemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.colRemove})
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgPOitemList.DefaultCellStyle = DataGridViewCellStyle3
-        Me.dgPOitemList.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgPOitemList.EnableHeadersVisualStyles = False
-        Me.dgPOitemList.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.dgPOitemList.Location = New System.Drawing.Point(10, 0)
-        Me.dgPOitemList.Name = "dgPOitemList"
-        Me.dgPOitemList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        Me.dgPOitemList.RowHeadersVisible = False
-        Me.dgPOitemList.RowTemplate.Height = 26
-        Me.dgPOitemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgPOitemList.Size = New System.Drawing.Size(828, 429)
-        Me.dgPOitemList.TabIndex = 167
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.DataGridViewTextBoxColumn1.HeaderText = "Item ID"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Width = 64
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Description"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Category"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = True
-        Me.DataGridViewTextBoxColumn3.Width = 82
-        '
-        'Column1
-        '
-        Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column1.HeaderText = "Size"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.Width = 51
-        '
-        'Column2
-        '
-        Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column2.HeaderText = "Price"
-        Me.Column2.Name = "Column2"
-        Me.Column2.Width = 57
-        '
-        'Column3
-        '
-        Me.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Column3.DefaultCellStyle = DataGridViewCellStyle2
-        Me.Column3.HeaderText = "Qty"
-        Me.Column3.Name = "Column3"
-        Me.Column3.Width = 51
-        '
-        'Column4
-        '
-        Me.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column4.HeaderText = "Total"
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
-        Me.Column4.Width = 57
-        '
-        'colRemove
-        '
-        Me.colRemove.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.colRemove.HeaderText = ""
-        Me.colRemove.Image = CType(resources.GetObject("colRemove.Image"), System.Drawing.Image)
-        Me.colRemove.Name = "colRemove"
-        Me.colRemove.Width = 5
         '
         'Panel4
         '
@@ -379,18 +278,18 @@ Partial Class frmSupplyPurchaseGReceipt
         '
         Me.TextBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox1.Location = New System.Drawing.Point(10, 86)
+        Me.TextBox1.Location = New System.Drawing.Point(11, 86)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(913, 21)
+        Me.TextBox1.Size = New System.Drawing.Size(824, 21)
         Me.TextBox1.TabIndex = 126
         '
         'txtRemarks
         '
         Me.txtRemarks.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.txtRemarks.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtRemarks.Location = New System.Drawing.Point(10, 137)
+        Me.txtRemarks.Location = New System.Drawing.Point(11, 137)
         Me.txtRemarks.Name = "txtRemarks"
-        Me.txtRemarks.Size = New System.Drawing.Size(913, 21)
+        Me.txtRemarks.Size = New System.Drawing.Size(824, 21)
         Me.txtRemarks.TabIndex = 126
         '
         'Label6
@@ -660,6 +559,111 @@ Partial Class frmSupplyPurchaseGReceipt
         Me.btnCancelSearch.Text = "CANCEL"
         Me.btnCancelSearch.UseVisualStyleBackColor = True
         '
+        'dgGRitemList
+        '
+        Me.dgGRitemList.AllowUserToAddRows = False
+        Me.dgGRitemList.AllowUserToDeleteRows = False
+        Me.dgGRitemList.BackgroundColor = System.Drawing.Color.White
+        Me.dgGRitemList.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgGRitemList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.dgGRitemList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgGRitemList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.dgGRitemList.ColumnHeadersHeight = 40
+        Me.dgGRitemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.dgGRitemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.colRemove})
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgGRitemList.DefaultCellStyle = DataGridViewCellStyle3
+        Me.dgGRitemList.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgGRitemList.EnableHeadersVisualStyles = False
+        Me.dgGRitemList.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.dgGRitemList.Location = New System.Drawing.Point(10, 0)
+        Me.dgGRitemList.Name = "dgGRitemList"
+        Me.dgGRitemList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.dgGRitemList.RowHeadersVisible = False
+        Me.dgGRitemList.RowTemplate.Height = 26
+        Me.dgGRitemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgGRitemList.Size = New System.Drawing.Size(828, 429)
+        Me.dgGRitemList.TabIndex = 169
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.DataGridViewTextBoxColumn1.HeaderText = "Item ID"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.Width = 64
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn2.HeaderText = "Description"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Category"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        Me.DataGridViewTextBoxColumn3.Visible = False
+        Me.DataGridViewTextBoxColumn3.Width = 84
+        '
+        'Column1
+        '
+        Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column1.HeaderText = "Size"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Visible = False
+        Me.Column1.Width = 53
+        '
+        'Column2
+        '
+        Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column2.HeaderText = "Price"
+        Me.Column2.Name = "Column2"
+        Me.Column2.Width = 57
+        '
+        'Column3
+        '
+        Me.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Column3.DefaultCellStyle = DataGridViewCellStyle2
+        Me.Column3.HeaderText = "Qty"
+        Me.Column3.Name = "Column3"
+        Me.Column3.Width = 51
+        '
+        'Column4
+        '
+        Me.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column4.HeaderText = "Total"
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        Me.Column4.Width = 57
+        '
+        'colRemove
+        '
+        Me.colRemove.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.colRemove.HeaderText = ""
+        Me.colRemove.Image = CType(resources.GetObject("colRemove.Image"), System.Drawing.Image)
+        Me.colRemove.Name = "colRemove"
+        Me.colRemove.Visible = False
+        Me.colRemove.Width = 5
+        '
         'frmSupplyPurchaseGReceipt
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
@@ -680,7 +684,6 @@ Partial Class frmSupplyPurchaseGReceipt
         Me.BasePanel.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel6.ResumeLayout(False)
-        CType(Me.dgPOitemList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
         Me.Panel9.ResumeLayout(False)
@@ -695,6 +698,7 @@ Partial Class frmSupplyPurchaseGReceipt
         Me.Panel8.PerformLayout()
         CType(Me.btnAdd, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel10.ResumeLayout(False)
+        CType(Me.dgGRitemList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -706,15 +710,6 @@ Partial Class frmSupplyPurchaseGReceipt
     Friend WithEvents BasePanel As Panel
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Panel6 As Panel
-    Friend WithEvents dgPOitemList As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
-    Friend WithEvents Column1 As DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As DataGridViewTextBoxColumn
-    Friend WithEvents colRemove As DataGridViewImageColumn
     Friend WithEvents Panel4 As Panel
     Friend WithEvents Panel9 As Panel
     Friend WithEvents Panel11 As Panel
@@ -749,4 +744,13 @@ Partial Class frmSupplyPurchaseGReceipt
     Friend WithEvents Panel10 As Panel
     Friend WithEvents btnSelect As Button
     Friend WithEvents btnCancelSearch As Button
+    Friend WithEvents dgGRitemList As DataGridView
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As DataGridViewTextBoxColumn
+    Friend WithEvents colRemove As DataGridViewImageColumn
 End Class

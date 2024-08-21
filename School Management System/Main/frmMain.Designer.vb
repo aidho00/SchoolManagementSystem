@@ -3687,6 +3687,7 @@ Partial Class frmMain
         'lblAcadYear
         '
         Me.lblAcadYear.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblAcadYear.Cursor = System.Windows.Forms.Cursors.Hand
         Me.lblAcadYear.Font = New System.Drawing.Font("Century Gothic", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAcadYear.ForeColor = System.Drawing.Color.White
         Me.lblAcadYear.Location = New System.Drawing.Point(43, 2)
@@ -3699,6 +3700,7 @@ Partial Class frmMain
         'lblSemester
         '
         Me.lblSemester.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblSemester.Cursor = System.Windows.Forms.Cursors.Hand
         Me.lblSemester.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSemester.ForeColor = System.Drawing.Color.White
         Me.lblSemester.Location = New System.Drawing.Point(47, 36)
@@ -3762,6 +3764,7 @@ Partial Class frmMain
         '
         'btnEnrolledBreakdown2
         '
+        Me.btnEnrolledBreakdown2.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnEnrolledBreakdown2.Font = New System.Drawing.Font("Century Gothic", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnEnrolledBreakdown2.ForeColor = System.Drawing.Color.White
         Me.btnEnrolledBreakdown2.Location = New System.Drawing.Point(56, 1)

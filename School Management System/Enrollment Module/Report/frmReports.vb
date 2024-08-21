@@ -205,12 +205,9 @@ Public Class frmReports
                 studentMName = dgStudentList.CurrentRow.Cells(4).Value
                 studentEXTName = dgStudentList.CurrentRow.Cells(5).Value
 
-
                 studentYearLevel = dgStudentList.CurrentRow.Cells(7).Value
                 studentCourse = dgStudentList.CurrentRow.Cells(8).Value
                 studentCourseId = dgStudentList.CurrentRow.Cells(9).Value
-
-
 
                 studentCourseDesc = dgStudentList.CurrentRow.Cells(10).Value
 
@@ -220,11 +217,13 @@ Public Class frmReports
                 studentCourseSector = cm.ExecuteScalar
                 cn.Close()
 
-                'studentCourseSector = dgStudentList.CurrentRow.Cells(11).Value
                 studentGender = dgStudentList.CurrentRow.Cells(6).Value
                 txtStudent.Text = dgStudentList.CurrentRow.Cells(2).Value & " " & dgStudentList.CurrentRow.Cells(5).Value & ", " & dgStudentList.CurrentRow.Cells(3).Value & " " & dgStudentList.CurrentRow.Cells(4).Value
 
                 fillCombo("SELECT CONCAT(period_name,'-',period_semester) as 'PERIOD', period_id FROM tbl_students_grades t1 JOIN tbl_period t2 ON t1.sg_period_id = t2.period_id where t1.sg_student_id = '" & studentId & "' group by t1.sg_period_id order by `period_name` desc, `period_status` ASC, `period_semester` desc", cbAcademicYear, "tbl_period", "PERIOD", "period_id")
+                If cbAcademicYear.Items.Count = 0 Then
+                    fillCombo("SELECT CONCAT(period_name,'-',period_semester) as 'PERIOD', period_id FROM tbl_withdraw_students_grades t1 JOIN tbl_period t2 ON t1.sg_period_id = t2.period_id where t1.sg_student_id = '" & studentId & "' group by t1.sg_period_id order by `period_name` desc, `period_status` ASC, `period_semester` desc", cbAcademicYear, "tbl_period", "PERIOD", "period_id")
+                End If
                 YearLevelStudentGradeLevel()
             Case "Search Class Schedule"
                 classId = dgClassSchedList.CurrentRow.Cells(1).Value
@@ -301,17 +300,18 @@ Public Class frmReports
                 MsgBox("Please select Academic Year.", vbCritical)
                 cbAcademicYear.Select()
             Else
-                cn.Close()
-                cn.Open()
-                cm = New MySqlCommand("SELECT * from tbl_enrollment where estudent_id = '" & studentId & "' and eperiod_id = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
-                dr = cm.ExecuteReader
-                dr.Read()
-                If dr.HasRows Then
-                    NextBtn()
-                    dr.Close()
+                Try
+                    Dim enrolledStatus As String = ""
                     cn.Close()
                     cn.Open()
-                    Try
+                    cm = New MySqlCommand("SELECT * from tbl_enrollment where estudent_id = '" & studentId & "' and eperiod_id = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
+                    dr = cm.ExecuteReader
+                    dr.Read()
+                    If dr.HasRows Then
+                        enrolledStatus = "Enrolled"
+                        dr.Close()
+                        cn.Close()
+                        cn.Open()
                         Dim dtable As DataTable
                         Dim dbcommand As New MySqlCommand("Select (class_schedule_id) As 'ID', (cb_code) as 'Class', (subject_code) as 'Subject Code', (subject_description) as 'Subject Desc.', (subject_units) as 'Units', if(ds_code = 'M T W TH F SAT SUN', 'DAILY', ds_code) as 'Days', (time_start_schedule) as 'Start Time', (time_end_schedule) as 'End Time', (room_code) as 'Room', (Instructor) as 'Instructor', DATE_FORMAT(tbl_enrollment.eenrolledby_datetime,'%M %d, %Y') as 'DateEnrolled', CONCAT(tbl_user_account.ua_first_name,' ',tbl_user_account.ua_middle_name, ' ', tbl_user_account.ua_last_name) as 'EnrolledBy', ewithdrawn_datetime from tbl_class_schedule, tbl_class_block, tbl_subject, tbl_day_schedule, tbl_room, employee, tbl_enrollment, tbl_students_grades, tbl_user_account where tbl_class_schedule.class_block_id = tbl_class_block.cb_id and tbl_class_schedule.cssubject_id = tbl_subject.subject_id and tbl_class_schedule.days_schedule = tbl_day_schedule.ds_id and tbl_class_schedule.csroom_id = tbl_room.room_id and tbl_class_schedule.csemp_id = employee.emp_id and tbl_class_schedule.class_schedule_id = tbl_students_grades.sg_class_id and tbl_enrollment.estudent_id = tbl_students_grades.sg_student_id and tbl_class_schedule.csperiod_id = tbl_students_grades.sg_period_id and tbl_enrollment.eperiod_id = tbl_students_grades.sg_period_id and tbl_enrollment.eenrolledby_id = tbl_user_account.ua_id and tbl_enrollment.estudent_id = '" & studentId & "' and tbl_enrollment.eperiod_id = " & CInt(cbAcademicYear.SelectedValue) & "  order by Days asc, STR_TO_DATE(`Start Time`,'%l:%i:%s %p') asc", cn)
                         Dim adt As New MySqlDataAdapter
@@ -321,80 +321,119 @@ Public Class frmReports
                         dg_report.DataSource = dtable
                         adt.Dispose()
                         dbcommand.Dispose()
-
-                        dt.Columns.Clear()
-                        dt.Rows.Clear()
-                        With dt
-                            .Columns.Add("cb_code")
-                            .Columns.Add("subject_code")
-                            .Columns.Add("subject_description")
-                            .Columns.Add("ds_code")
-                            .Columns.Add("time_start_schedule")
-                            .Columns.Add("time_end_schedule")
-                            .Columns.Add("subject_units")
-                            .Columns.Add("room_code")
-                            .Columns.Add("instructor")
-                            .Columns.Add("eenrolledby_datetime")
-                        End With
-
-                        For Each dr As DataGridViewRow In dg_report.Rows
-                            dt.Rows.Add(dr.Cells(1).Value, dr.Cells(2).Value, dr.Cells(3).Value, dr.Cells(5).Value, dr.Cells(6).Value, dr.Cells(7).Value, dr.Cells(4).Value, dr.Cells(8).Value, dr.Cells(9).Value, dr.Cells(10).Value)
-                        Next
-
-                        Dim iDate As String = DateToday
-                        Dim oDate As DateTime = Convert.ToDateTime(iDate)
-                        Dim iDate2 As String
-                        Dim oDate2 As DateTime
-                        Try
-                            iDate2 = dg_report.Rows(0).Cells(12).Value.ToString()
-                            oDate2 = Convert.ToDateTime(iDate2)
-                        Catch ex As Exception
-                        End Try
-
-                        Dim rptdoc As CrystalDecisions.CrystalReports.Engine.ReportDocument
-                        rptdoc = New Enrollment_Student_COR
-                        rptdoc.SetDataSource(dt)
-                        rptdoc.SetParameterValue("studentname", studentName)
-                        rptdoc.SetParameterValue("studentcourse", studentGradeLevelCourse)
-                        rptdoc.SetParameterValue("schoolyear", cbAcademicYear.Text)
-                        rptdoc.SetParameterValue("studentyearlevel", studentGradeLevel)
-                        rptdoc.SetParameterValue("studentidnumber", studentId)
-                        rptdoc.SetParameterValue("enrolledby", dg_report.CurrentRow.Cells(11).Value)
-                        rptdoc.SetParameterValue("enrolleddate", dg_report.CurrentRow.Cells(10).Value)
-                        rptdoc.SetParameterValue("dategenerated", oDate.ToString("MMMM' 'dd', 'yyyy"))
-
+                        cn.Close()
+                    Else
+                        dr.Close()
                         cn.Close()
                         cn.Open()
-                        cm = New MySqlCommand("SELECT * from tbl_enrollment where estudent_id = '" & studentId & "' and eperiod_id = " & CInt(cbAcademicYear.SelectedValue) & " and enrollment_status = 'Withdrawn'", cn)
+                        cm = New MySqlCommand("SELECT * from tbl_withdraw_enrollment where estudent_id = '" & studentId & "' and eperiod_id = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
                         dr = cm.ExecuteReader
                         dr.Read()
                         If dr.HasRows Then
-                            rptdoc.SetParameterValue("enrollment_status", "WITHDRAWN")
-                            rptdoc.SetParameterValue("wdate", "Date Withdrawn:")
-                            rptdoc.SetParameterValue("wdate2", oDate2.ToString("MMMM' 'dd', 'yyyy"))
+                            enrolledStatus = "Withdrawn"
+                            dr.Close()
+                            cn.Close()
+                            cn.Open()
+                            Dim dtable As DataTable
+                            'Dim dbcommand As New MySqlCommand("Select (class_schedule_id) As 'ID', (cb_code) as 'Class', (subject_code) as 'Subject Code', (subject_description) as 'Subject Desc.', (subject_units) as 'Units', if(ds_code = 'M T W TH F SAT SUN', 'DAILY', ds_code) as 'Days', (time_start_schedule) as 'Start Time', (time_end_schedule) as 'End Time', (room_code) as 'Room', (Instructor) as 'Instructor', DATE_FORMAT(tbl_enrollment.eenrolledby_datetime,'%M %d, %Y') as 'DateEnrolled', CONCAT(tbl_user_account.ua_first_name,' ',tbl_user_account.ua_middle_name, ' ', tbl_user_account.ua_last_name) as 'EnrolledBy', ewithdrawn_datetime from tbl_class_schedule, tbl_class_block, tbl_subject, tbl_day_schedule, tbl_room, employee, tbl_enrollment, tbl_students_grades, tbl_user_account where tbl_class_schedule.class_block_id = tbl_class_block.cb_id and tbl_class_schedule.cssubject_id = tbl_subject.subject_id and tbl_class_schedule.days_schedule = tbl_day_schedule.ds_id and tbl_class_schedule.csroom_id = tbl_room.room_id and tbl_class_schedule.csemp_id = employee.emp_id and tbl_class_schedule.class_schedule_id = tbl_students_grades.sg_class_id and tbl_enrollment.estudent_id = tbl_students_grades.sg_student_id and tbl_class_schedule.csperiod_id = tbl_students_grades.sg_period_id and tbl_enrollment.eperiod_id = tbl_students_grades.sg_period_id and tbl_enrollment.eenrolledby_id = tbl_user_account.ua_id and tbl_enrollment.estudent_id = '" & studentId & "' and tbl_enrollment.eperiod_id = " & CInt(cbAcademicYear.SelectedValue) & " order by Days asc, STR_TO_DATE(`Start Time`,'%l:%i:%s %p') asc", cn)
+                            Dim dbcommand As New MySqlCommand("Select (class_schedule_id) As 'ID', (cb_code) as 'Class', (subject_code) as 'Subject Code', (subject_description) as 'Subject Desc.', (subject_units) as 'Units', (ds_code) as 'Days', (time_start_schedule) as 'Start Time', (time_end_schedule) as 'End Time', (room_code) as 'Room', (Instructor) as 'Instructor', DATE_FORMAT(tbl_withdraw_enrollment.eenrolledby_datetime,'%M %d, %Y') as 'DateEnrolled', CONCAT(tbl_user_account.ua_first_name,' ',tbl_user_account.ua_middle_name, ' ', tbl_user_account.ua_last_name) as 'EnrolledBy', e_withdrawn_date from tbl_class_schedule, tbl_class_block, tbl_subject, tbl_day_schedule, tbl_room, employee, tbl_withdraw_enrollment, tbl_withdraw_students_grades, tbl_user_account where tbl_class_schedule.class_block_id = tbl_class_block.cb_id and tbl_class_schedule.cssubject_id = tbl_subject.subject_id and tbl_class_schedule.days_schedule = tbl_day_schedule.ds_id and tbl_class_schedule.csroom_id = tbl_room.room_id and tbl_class_schedule.csemp_id = employee.emp_id and tbl_class_schedule.class_schedule_id = tbl_withdraw_students_grades.sg_class_id and tbl_withdraw_enrollment.estudent_id = tbl_withdraw_students_grades.sg_student_id and tbl_class_schedule.csperiod_id = tbl_withdraw_students_grades.sg_period_id and tbl_withdraw_enrollment.eperiod_id = tbl_withdraw_students_grades.sg_period_id and tbl_withdraw_enrollment.eenrolledby_id = tbl_user_account.ua_id and tbl_withdraw_enrollment.estudent_id = '" & studentId & "' and tbl_withdraw_enrollment.eperiod_id = " & CInt(cbAcademicYear.SelectedValue) & " order by Days asc, STR_TO_DATE(`Start Time`,'%l:%i:%s %p') asc", cn)
+                            Dim adt As New MySqlDataAdapter
+                            adt.SelectCommand = dbcommand
+                            dtable = New DataTable
+                            adt.Fill(dtable)
+                            dg_report.DataSource = dtable
+                            adt.Dispose()
+                            dbcommand.Dispose()
+                            cn.Close()
                         Else
-                            rptdoc.SetParameterValue("enrollment_status", " ")
-                            rptdoc.SetParameterValue("wdate", " ")
-                            rptdoc.SetParameterValue("wdate2", " ")
+                            enrolledStatus = "Not Enrolled"
+                            dr.Close()
+                            cn.Close()
+                            MsgBox("Student '" & studentName & "' with ID Number '" & studentId & "' is not enrolled in Academic Year '" & cbAcademicYear.Text & "'.", vbCritical)
+                            Return
                         End If
-                        dr.Close()
-                        cn.Close()
+                    End If
 
-                        ReportViewer.ReportSource = rptdoc
-                        dg_report.DataSource = Nothing
-                        ReportViewer.Select()
-                        ReportGenerated = True
+                    NextBtn()
+
+                    Dim dt As New DataTable
+                    With dt
+                        .Columns.Add("cb_code")
+                        .Columns.Add("subject_code")
+                        .Columns.Add("subject_description")
+                        .Columns.Add("ds_code")
+                        .Columns.Add("time_start_schedule")
+                        .Columns.Add("time_end_schedule")
+                        .Columns.Add("subject_units")
+                        .Columns.Add("room_code")
+                        .Columns.Add("instructor")
+                        .Columns.Add("eenrolledby_datetime")
+                    End With
+
+                    For Each dr As DataGridViewRow In dg_report.Rows
+                        dt.Rows.Add(dr.Cells(1).Value, dr.Cells(2).Value, dr.Cells(3).Value, dr.Cells(5).Value, dr.Cells(6).Value, dr.Cells(7).Value, dr.Cells(4).Value, dr.Cells(8).Value, dr.Cells(9).Value, dr.Cells(10).Value)
+                    Next
+
+                    Dim iDate As String = DateToday
+                    Dim oDate As DateTime = Convert.ToDateTime(iDate)
+                    Dim iDate2 As String
+                    Dim oDate2 As DateTime
+                    Try
+                        iDate2 = dg_report.Rows(0).Cells(12).Value.ToString()
+                        oDate2 = Convert.ToDateTime(iDate2)
                     Catch ex As Exception
-                        MsgBox(ex.Message, vbCritical)
-                        cn.Close()
-                        PrevBtn()
                     End Try
-                Else
-                    dr.Close()
-                    cn.Close()
-                    MsgBox("Student '" & studentName & "' with ID Number '" & studentId & "' is not enrolled in Academic Year '" & cbAcademicYear.Text & "'.", vbCritical)
-                End If
 
+                    Dim rptdoc As CrystalDecisions.CrystalReports.Engine.ReportDocument
+                    rptdoc = New Enrollment_Student_COR
+                    rptdoc.SetDataSource(dt)
+                    rptdoc.SetParameterValue("studentname", studentName)
+
+                    If enrolledStatus = "Withdrawn" Then
+                        cn.Close()
+                        cn.Open()
+                        cm = New MySqlCommand("SELECT CONCAT(`course_code`,' - ',`course_name`) FROM `tbl_student` t1 JOIN tbl_course t2 ON t1.s_course_id = t2.course_id WHERE `s_id_no` = '" & studentId & "'", cn)
+                        studentGradeLevelCourseName = cm.ExecuteScalar
+                        cn.Close()
+
+                        cn.Close()
+                        cn.Open()
+                        cm = New MySqlCommand("SELECT `s_yr_lvl` FROM `tbl_student` WHERE `s_id_no` = '" & studentId & "'", cn)
+                        studentGradeLevel = cm.ExecuteScalar
+                        cn.Close()
+
+                        rptdoc.SetParameterValue("studentcourse", studentGradeLevelCourseName)
+                        rptdoc.SetParameterValue("studentyearlevel", studentGradeLevel)
+                    ElseIf enrolledStatus = "Enrolled" Then
+                        rptdoc.SetParameterValue("studentcourse", studentGradeLevelCourse)
+                        rptdoc.SetParameterValue("studentyearlevel", studentGradeLevel)
+                    End If
+
+                    rptdoc.SetParameterValue("schoolyear", cbAcademicYear.Text)
+                    rptdoc.SetParameterValue("studentidnumber", studentId)
+                    rptdoc.SetParameterValue("enrolledby", dg_report.CurrentRow.Cells(11).Value)
+                    rptdoc.SetParameterValue("enrolleddate", dg_report.CurrentRow.Cells(10).Value)
+                    rptdoc.SetParameterValue("dategenerated", oDate.ToString("MMMM' 'dd', 'yyyy"))
+
+                    If enrolledStatus = "Withdrawn" Then
+                        rptdoc.SetParameterValue("enrollment_status", "WITHDRAWN")
+                        rptdoc.SetParameterValue("wdate", "Date Withdrawn:")
+                        rptdoc.SetParameterValue("wdate2", oDate2.ToString("MMMM' 'dd', 'yyyy"))
+                    ElseIf enrolledStatus = "Enrolled" Then
+                        rptdoc.SetParameterValue("enrollment_status", " ")
+                        rptdoc.SetParameterValue("wdate", " ")
+                        rptdoc.SetParameterValue("wdate2", " ")
+                    End If
+
+                    ReportViewer.ReportSource = rptdoc
+                    dg_report.DataSource = Nothing
+                    ReportViewer.Select()
+                    ReportGenerated = True
+                Catch ex As Exception
+                    MsgBox(ex.Message, vbCritical)
+                    cn.Close()
+                    PrevBtn()
+                End Try
             End If
         ElseIf frmMain.formTitle.Text = "Generate Class Master List" Then
             If CInt(cbAcademicYear.SelectedValue) <= 0 Then

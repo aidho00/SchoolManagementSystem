@@ -1,6 +1,25 @@
 ﻿Imports MySql.Data.MySqlClient
 
 Public Class frmEnrollmentEditor
+
+    Dim studentGradeLevel As String = ""
+    Dim studentGradeLevelCourse As String = ""
+    Dim studentGradeLevelCourseName As String = ""
+    Dim studentGradeLevelCourseCode As String = ""
+
+    Private Sub YearLevelStudentGradeLevel()
+        Try
+
+            'cn.Open()
+            'cm = New MySqlCommand("SELECT sg_course_id FROM `tbl_students_grades` t1 JOIN tbl_course t2 ON t1.sg_course_id = t2.course_id WHERE `sg_student_id` = '" & studentId & "' and `sg_period_id` = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
+            'studentCourseId = cm.ExecuteScalar
+            'cn.Close()
+            'cn.Open()
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
     Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
         LibraryWithdrawEnrollmentStudentList()
     End Sub
@@ -44,6 +63,32 @@ Public Class frmEnrollmentEditor
                 dr2 = MessageBox.Show("Are you REALLY SURE you want to WITHDRAW student " & dgStudentList.CurrentRow.Cells(2).Value & ", " & dgStudentList.CurrentRow.Cells(3).Value & " " & dgStudentList.CurrentRow.Cells(4).Value & "?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
                 If dr2 = DialogResult.No Then
                 Else
+
+                    Try
+                        cn.Close()
+                        cn.Open()
+                        cm = New MySqlCommand("SELECT `sg_yearlevel` FROM `tbl_students_grades` t1 JOIN tbl_course t2 ON t1.sg_course_id = t2.course_id WHERE `sg_student_id` = '" & dgStudentList.CurrentRow.Cells(1).Value & "' and `sg_period_id` = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
+                        studentGradeLevel = cm.ExecuteScalar
+                        cn.Close()
+                        cn.Open()
+                        cm = New MySqlCommand("SELECT CONCAT(`course_code`,' - ',`course_name`) FROM `tbl_students_grades` t1 JOIN tbl_course t2 ON t1.sg_course_id = t2.course_id WHERE `sg_student_id` = '" & dgStudentList.CurrentRow.Cells(1).Value & "' and `sg_period_id` = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
+                        studentGradeLevelCourse = cm.ExecuteScalar
+                        cn.Close()
+                        cn.Open()
+                        cm = New MySqlCommand("SELECT `course_name` FROM `tbl_students_grades` t1 JOIN tbl_course t2 ON t1.sg_course_id = t2.course_id WHERE `sg_student_id` = '" & dgStudentList.CurrentRow.Cells(1).Value & "' and `sg_period_id` = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
+                        studentGradeLevelCourseName = cm.ExecuteScalar
+                        cn.Close()
+                        cn.Open()
+                        cm = New MySqlCommand("SELECT `course_code` FROM `tbl_students_grades` t1 JOIN tbl_course t2 ON t1.sg_course_id = t2.course_id WHERE `sg_student_id` = '" & dgStudentList.CurrentRow.Cells(1).Value & "' and `sg_period_id` = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
+                        studentGradeLevelCourseCode = cm.ExecuteScalar
+                        cn.Close()
+                    Catch ex As Exception
+
+                    End Try
+
+
+
+
                     dg_list.DataSource = Nothing
                     load_datagrid("SELECT * from tbl_students_grades where sg_student_id = '" & dgStudentList.CurrentRow.Cells(1).Value & "' and sg_period_id = " & CInt(cbAcademicYear.SelectedValue) & "", dg_list)
 
@@ -71,10 +116,10 @@ Public Class frmEnrollmentEditor
                     cn.Close()
                     cn.Open()
 
-                    query("delete from tbl_students_grades where sg_student_id = " & dgStudentList.CurrentRow.Cells(1).Value & " And sg_period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
+                    query("delete from tbl_students_grades where sg_student_id = '" & dgStudentList.CurrentRow.Cells(1).Value & "' And sg_period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
 
                     dg_list.DataSource = Nothing
-                    load_datagrid("Select * from tbl_enrollment where estudent_id = " & dgStudentList.CurrentRow.Cells(1).Value & " And eperiod_id = " & CInt(cbAcademicYear.SelectedValue) & "", dg_list)
+                    load_datagrid("Select * from tbl_enrollment where estudent_id = '" & dgStudentList.CurrentRow.Cells(1).Value & "' And eperiod_id = " & CInt(cbAcademicYear.SelectedValue) & "", dg_list)
 
                     cn.Close()
                     cn.Open()
@@ -100,10 +145,10 @@ Public Class frmEnrollmentEditor
                     cn.Close()
                     cn.Open()
 
-                    query("delete from tbl_enrollment where estudent_id = " & dgStudentList.CurrentRow.Cells(1).Value & " And eperiod_id = " & CInt(cbAcademicYear.SelectedValue) & "")
+                    query("delete from tbl_enrollment where estudent_id = '" & dgStudentList.CurrentRow.Cells(1).Value & "' And eperiod_id = " & CInt(cbAcademicYear.SelectedValue) & "")
 
                     dg_list.DataSource = Nothing
-                    load_datagrid("Select * from tbl_student_paid_account_breakdown where spab_stud_id = " & dgStudentList.CurrentRow.Cells(1).Value & " And spab_period_id = " & CInt(cbAcademicYear.SelectedValue) & "", dg_list)
+                    load_datagrid("Select * from tbl_student_paid_account_breakdown where spab_stud_id = '" & dgStudentList.CurrentRow.Cells(1).Value & "' And spab_period_id = " & CInt(cbAcademicYear.SelectedValue) & "", dg_list)
 
                     cn.Close()
                     cn.Open()
@@ -126,10 +171,10 @@ Public Class frmEnrollmentEditor
                     cn.Close()
                     cn.Open()
 
-                    query("delete from tbl_student_paid_account_breakdown where spab_stud_id = " & dgStudentList.CurrentRow.Cells(1).Value & " And spab_period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
+                    query("delete from tbl_student_paid_account_breakdown where spab_stud_id = '" & dgStudentList.CurrentRow.Cells(1).Value & "' And spab_period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
 
                     dg_list.DataSource = Nothing
-                    load_datagrid("Select * from tbl_pre_cashiering where student_id = " & dgStudentList.CurrentRow.Cells(1).Value & " And period_id = " & CInt(cbAcademicYear.SelectedValue) & "", dg_list)
+                    load_datagrid("Select * from tbl_pre_cashiering where student_id = '" & dgStudentList.CurrentRow.Cells(1).Value & "' And period_id = " & CInt(cbAcademicYear.SelectedValue) & "", dg_list)
 
                     cn.Close()
                     cn.Open()
@@ -155,10 +200,10 @@ Public Class frmEnrollmentEditor
                     cn.Close()
                     cn.Open()
 
-                    query("delete from tbl_pre_cashiering where student_id = " & dgStudentList.CurrentRow.Cells(1).Value & " And period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
+                    query("delete from tbl_pre_cashiering where student_id = '" & dgStudentList.CurrentRow.Cells(1).Value & "' And period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
 
                     dg_list.DataSource = Nothing
-                    load_datagrid("Select * from tbl_cashiering where csh_stud_id = " & dgStudentList.CurrentRow.Cells(1).Value & " And csh_period_id = " & CInt(cbAcademicYear.SelectedValue) & "", dg_list)
+                    load_datagrid("Select * from tbl_cashiering where csh_stud_id = '" & dgStudentList.CurrentRow.Cells(1).Value & "' And csh_period_id = " & CInt(cbAcademicYear.SelectedValue) & "", dg_list)
 
                     cn.Close()
                     cn.Open()
@@ -181,10 +226,10 @@ Public Class frmEnrollmentEditor
                     cn.Close()
                     cn.Open()
 
-                    query("delete from tbl_cashiering where csh_stud_id = " & dgStudentList.CurrentRow.Cells(1).Value & " And csh_period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
+                    query("delete from tbl_cashiering where csh_stud_id = '" & dgStudentList.CurrentRow.Cells(1).Value & "' And csh_period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
 
                     dg_list.DataSource = Nothing
-                    load_datagrid("Select * from tbl_assessment_institutional_discount where aid_student_id = " & dgStudentList.CurrentRow.Cells(1).Value & " And aid_period_id = " & CInt(cbAcademicYear.SelectedValue) & "", dg_list)
+                    load_datagrid("Select * from tbl_assessment_institutional_discount where aid_student_id = '" & dgStudentList.CurrentRow.Cells(1).Value & "' And aid_period_id = " & CInt(cbAcademicYear.SelectedValue) & "", dg_list)
 
                     cn.Close()
                     cn.Open()
@@ -201,7 +246,7 @@ Public Class frmEnrollmentEditor
                     cn.Close()
                     cn.Open()
 
-                    query("delete from tbl_assessment_institutional_discount where aid_student_id = " & dgStudentList.CurrentRow.Cells(1).Value & " And aid_period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
+                    query("delete from tbl_assessment_institutional_discount where aid_student_id = '" & dgStudentList.CurrentRow.Cells(1).Value & "' And aid_period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
 
                     StudentCOR()
                     MessageBox.Show("Student " & dgStudentList.CurrentRow.Cells(2).Value & ", " & dgStudentList.CurrentRow.Cells(3).Value & " " & dgStudentList.CurrentRow.Cells(4).Value & " with ID Number '" & dgStudentList.CurrentRow.Cells(1).Value & "' enrollment for " & cbAcademicYear.Text & " has been successfully dropped.", "", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -219,7 +264,7 @@ Public Class frmEnrollmentEditor
                 Else
 
                     dg_list.DataSource = Nothing
-                    load_datagrid("Select * from tbl_students_grades where sg_student_id = " & dgStudentList.CurrentRow.Cells(1).Value & " And sg_period_id = " & CInt(cbAcademicYear.SelectedValue) & "", dg_list)
+                    load_datagrid("Select * from tbl_students_grades where sg_student_id = '" & dgStudentList.CurrentRow.Cells(1).Value & "' And sg_period_id = " & CInt(cbAcademicYear.SelectedValue) & "", dg_list)
 
                     cn.Close()
                     cn.Open()
@@ -246,7 +291,7 @@ Public Class frmEnrollmentEditor
                     cn.Open()
 
                     dg_list.DataSource = Nothing
-                    load_datagrid("Select * from tbl_enrollment where estudent_id = " & dgStudentList.CurrentRow.Cells(1).Value & " And eperiod_id = " & CInt(cbAcademicYear.SelectedValue) & "", dg_list)
+                    load_datagrid("Select * from tbl_enrollment where estudent_id = '" & dgStudentList.CurrentRow.Cells(1).Value & "' And eperiod_id = " & CInt(cbAcademicYear.SelectedValue) & "", dg_list)
 
                     cn.Close()
                     cn.Open()
@@ -287,7 +332,7 @@ Public Class frmEnrollmentEditor
 
 
                     dg_list.DataSource = Nothing
-                    load_datagrid("Select * from tbl_student_paid_account_breakdown where spab_stud_id = " & dgStudentList.CurrentRow.Cells(1).Value & " And spab_period_id = " & CInt(cbAcademicYear.SelectedValue) & "", dg_list)
+                    load_datagrid("Select * from tbl_student_paid_account_breakdown where spab_stud_id = '" & dgStudentList.CurrentRow.Cells(1).Value & "' And spab_period_id = " & CInt(cbAcademicYear.SelectedValue) & "", dg_list)
 
                     cn.Close()
                     cn.Open()
@@ -310,10 +355,10 @@ Public Class frmEnrollmentEditor
                     cn.Close()
                     cn.Open()
 
-                    query("delete from tbl_student_paid_account_breakdown where spab_stud_id = " & dgStudentList.CurrentRow.Cells(1).Value & " And spab_period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
+                    query("delete from tbl_student_paid_account_breakdown where spab_stud_id = '" & dgStudentList.CurrentRow.Cells(1).Value & "' And spab_period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
 
                     dg_list.DataSource = Nothing
-                    load_datagrid("Select * from tbl_pre_cashiering where student_id = " & dgStudentList.CurrentRow.Cells(1).Value & " And period_id = " & CInt(cbAcademicYear.SelectedValue) & "", dg_list)
+                    load_datagrid("Select * from tbl_pre_cashiering where student_id = '" & dgStudentList.CurrentRow.Cells(1).Value & "' And period_id = " & CInt(cbAcademicYear.SelectedValue) & "", dg_list)
 
                     cn.Close()
                     cn.Open()
@@ -339,10 +384,10 @@ Public Class frmEnrollmentEditor
                     cn.Close()
                     cn.Open()
 
-                    query("delete from tbl_pre_cashiering where student_id = " & dgStudentList.CurrentRow.Cells(1).Value & " And period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
+                    query("delete from tbl_pre_cashiering where student_id = '" & dgStudentList.CurrentRow.Cells(1).Value & "' And period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
 
                     dg_list.DataSource = Nothing
-                    load_datagrid("Select * from tbl_cashiering where csh_stud_id = " & dgStudentList.CurrentRow.Cells(1).Value & " And csh_period_id = " & CInt(cbAcademicYear.SelectedValue) & "", dg_list)
+                    load_datagrid("Select * from tbl_cashiering where csh_stud_id = '" & dgStudentList.CurrentRow.Cells(1).Value & "' And csh_period_id = " & CInt(cbAcademicYear.SelectedValue) & "", dg_list)
 
                     cn.Close()
                     cn.Open()
@@ -365,10 +410,10 @@ Public Class frmEnrollmentEditor
                     cn.Close()
                     cn.Open()
 
-                    query("delete from tbl_cashiering where csh_stud_id = " & dgStudentList.CurrentRow.Cells(1).Value & " And csh_period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
+                    query("delete from tbl_cashiering where csh_stud_id = '" & dgStudentList.CurrentRow.Cells(1).Value & "' And csh_period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
 
                     dg_list.DataSource = Nothing
-                    load_datagrid("Select * from tbl_assessment_institutional_discount where aid_student_id = " & dgStudentList.CurrentRow.Cells(1).Value & " And aid_period_id = " & CInt(cbAcademicYear.SelectedValue) & "", dg_list)
+                    load_datagrid("Select * from tbl_assessment_institutional_discount where aid_student_id = '" & dgStudentList.CurrentRow.Cells(1).Value & "' And aid_period_id = " & CInt(cbAcademicYear.SelectedValue) & "", dg_list)
 
                     cn.Close()
                     cn.Open()
@@ -385,7 +430,7 @@ Public Class frmEnrollmentEditor
                     cn.Close()
                     cn.Open()
 
-                    query("delete from tbl_assessment_institutional_discount where aid_student_id = " & dgStudentList.CurrentRow.Cells(1).Value & " And aid_period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
+                    query("delete from tbl_assessment_institutional_discount where aid_student_id = '" & dgStudentList.CurrentRow.Cells(1).Value & "' And aid_period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
 
                     StudentCOR()
                     MessageBox.Show("Student " & dgStudentList.CurrentRow.Cells(2).Value & ", " & dgStudentList.CurrentRow.Cells(3).Value & " " & dgStudentList.CurrentRow.Cells(2).Value & " with ID Number '" & dgStudentList.CurrentRow.Cells(1).Value & "' enrollment for " & cbAcademicYear.Text & " has been successfully dropped.", "", MessageBoxButtons.OK, MessageBoxIcon.Information)

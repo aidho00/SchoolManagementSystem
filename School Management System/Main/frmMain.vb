@@ -10,6 +10,7 @@ Public Class frmMain
 
     Dim GraphSelectedCourse As String = ""
     Dim GraphSelectedYear As String = ""
+    Dim GraphSelectedAcademicYear As String = ""
 #Region "Drag Form"
 
     Public MoveForm As Boolean
@@ -1226,7 +1227,7 @@ Public Class frmMain
         dashboard.Visible = False
         lblDashboardDetailsTitle.Text = "Enrolled Students Academic Year " & lblAcadYear.Text & " - " & lblSemester.Text & ""
         PanelEnrollmentDetails.BringToFront()
-        CreateOverAllEnrolledBarGraph()
+        CreateOverAllEnrolledBarGraph(activeAcademicYear)
         GraphSelectedCourse = ""
         GraphSelectedYear = ""
     End Sub
@@ -1287,10 +1288,10 @@ Public Class frmMain
 
 
 
-    Function GetDataOverAll() As DataTable
+    Function GetDataOverAll(acadID As Integer) As DataTable
         Dim dt As New DataTable
         Try
-            Using cmd As New MySqlCommand("select DISTINCT(t1.course_code) as Course, ifNULL(t100.Total,0) as Students, t1.course_id as CourseID from (SELECT t1.sg_student_id as SCount, s_fn, s_mn, s_ln, s_gender, sg_yearlevel, s_status, course_code, course_major, course_id FROM tbl_students_grades t1 LEFT JOIN tbl_student t2 ON t1.sg_student_id = t2.s_id_no LEFT JOIN tbl_course t3 ON t1.sg_course_id = t3.course_id where t1.sg_period_id = 188 and t1.sg_grade_status = 'Enrolled' GROUP BY t1.sg_student_id) t1 LEFT JOIN (select COUNT(SCount) as 'Total', course_id from (SELECT t1.sg_student_id as SCount, s_fn, s_mn, s_ln, s_gender, sg_yearlevel, s_status, course_code, course_major, course_id FROM tbl_students_grades t1 LEFT JOIN tbl_student t2 ON t1.sg_student_id = t2.s_id_no LEFT JOIN tbl_course t3 ON t1.sg_course_id = t3.course_id where t1.sg_period_id = " & activeAcademicYear & " and t1.sg_grade_status = 'Enrolled' GROUP BY t1.sg_student_id) t1 group by course_id) t100 ON t1.course_id = t100.course_id", cn)
+            Using cmd As New MySqlCommand("select DISTINCT(t1.course_code) as Course, ifNULL(t100.Total,0) as Students, t1.course_id as CourseID from (SELECT t1.sg_student_id as SCount, s_fn, s_mn, s_ln, s_gender, sg_yearlevel, s_status, course_code, course_major, course_id FROM tbl_students_grades t1 LEFT JOIN tbl_student t2 ON t1.sg_student_id = t2.s_id_no LEFT JOIN tbl_course t3 ON t1.sg_course_id = t3.course_id where t1.sg_period_id = " & acadID & " and t1.sg_grade_status = 'Enrolled' GROUP BY t1.sg_student_id) t1 LEFT JOIN (select COUNT(SCount) as 'Total', course_id from (SELECT t1.sg_student_id as SCount, s_fn, s_mn, s_ln, s_gender, sg_yearlevel, s_status, course_code, course_major, course_id FROM tbl_students_grades t1 LEFT JOIN tbl_student t2 ON t1.sg_student_id = t2.s_id_no LEFT JOIN tbl_course t3 ON t1.sg_course_id = t3.course_id where t1.sg_period_id = " & acadID & " and t1.sg_grade_status = 'Enrolled' GROUP BY t1.sg_student_id) t1 group by course_id) t100 ON t1.course_id = t100.course_id", cn)
                 cn.Close()
                 cn.Open()
                 Using reader As MySqlDataReader = cmd.ExecuteReader()
@@ -1303,10 +1304,10 @@ Public Class frmMain
 
         Return dt
     End Function
-    Sub CreateOverAllEnrolledBarGraph()
+    Sub CreateOverAllEnrolledBarGraph(acadid As Integer)
         EnrollmentBarGraph.Controls.Clear()
 
-        Dim dt As DataTable = GetDataOverAll()
+        Dim dt As DataTable = GetDataOverAll(acadid)
 
         If dt.Rows.Count = 0 Then
             MessageBox.Show("No data available to display the bar graph.")
@@ -1328,7 +1329,7 @@ Public Class frmMain
 
         For Each row As DataRow In dt.Rows
             Dim barPanel As New Panel
-            Dim barHeight As Integer = If(CInt(Convert.ToInt32(row.Field(Of Long)("Students"))) >= 15, CInt((Convert.ToInt32(row.Field(Of Long)("Students")) / maxValue) * panelHeight), 20)
+            Dim barHeight As Integer = If(CInt(Convert.ToInt32(row.Field(Of Long)("Students"))) >= 15, CInt((Convert.ToInt32(row.Field(Of Long)("Students")) / maxValue) * panelHeight), 30)
             barPanel.Width = barWidth
             barPanel.Height = barHeight
             barPanel.BackColor = Color.FromArgb(15, 101, 208)
@@ -1769,6 +1770,215 @@ Public Class frmMain
 
     End Sub
 
+
+
+
+
+
+    Function GetDataOverAllPerSemester() As DataTable
+        Dim dt As New DataTable
+        Try
+            Using cmd As New MySqlCommand("SELECT CONCAT(t2.period_name,'-',t2.period_semester) as AcademicYear, COUNT(DISTINCT t1.sg_student_id) as Students, CAST(t2.period_id AS CHAR) as AcadID FROM tbl_students_grades t1 LEFT JOIN tbl_period t2 ON t1.sg_period_id = t2.period_id where t1.sg_grade_status = 'Enrolled' and t2.period_semester NOT LIKE '%Review%' GROUP BY t1.sg_period_id order by t2.`period_name` desc, t2.`period_status` ASC, t2.`period_semester` desc", cn)
+                cn.Close()
+                cn.Open()
+                Using reader As MySqlDataReader = cmd.ExecuteReader()
+                    dt.Load(reader)
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error accessing the database: " & ex.Message)
+        End Try
+
+        Return dt
+    End Function
+
+    Private Sub ValueLabel2_Click(sender As Object, e As EventArgs)
+        Dim valueLabel As Label = CType(sender, Label)
+        Dim rotatedLabel As RotatedLabel = CType(valueLabel.Tag, RotatedLabel)
+
+        If rotatedLabel IsNot Nothing Then
+            lblDashboardDetailsTitle.Text = "Enrolled Students Academic Year " & rotatedLabel.Text & ""
+            CreateOverAllEnrolledBarGraph2(rotatedLabel.Text)
+            GraphSelectedAcademicYear = rotatedLabel.Text
+        End If
+    End Sub
+
+    Sub CreateOverAllEnrolledBarGraphPerSemester()
+        EnrollmentBarGraph.Controls.Clear()
+
+        Dim dt As DataTable = GetDataOverAllPerSemester()
+
+        If dt.Rows.Count = 0 Then
+            MessageBox.Show("No data available to display the bar graph.")
+            Return
+        End If
+
+        Dim maxValue As Integer
+        Try
+            maxValue = dt.AsEnumerable().Max(Function(row) Convert.ToInt32(row.Field(Of Long)("Students")))
+        Catch ex As Exception
+            MessageBox.Show("Error calculating max value: " & ex.Message)
+            Return
+        End Try
+
+        Dim panelWidth As Integer = EnrollmentBarGraph.Width
+        Dim panelHeight As Integer = EnrollmentBarGraph.Height
+        Dim barSpacing As Integer = 10
+        Dim barWidth As Integer = (panelWidth - ((dt.Rows.Count + 1) * barSpacing)) / dt.Rows.Count
+
+        For Each row As DataRow In dt.Rows
+            Dim barPanel As New Panel
+            Dim barHeight As Integer = If(CInt(Convert.ToInt32(row.Field(Of Long)("Students"))) >= 100, CInt((Convert.ToInt32(row.Field(Of Long)("Students")) / maxValue) * panelHeight), 30)
+            barPanel.Width = barWidth
+            barPanel.Height = barHeight
+            barPanel.BackColor = Color.FromArgb(15, 101, 208)
+            barPanel.Location = New Point(barSpacing + (barWidth + barSpacing) * dt.Rows.IndexOf(row), panelHeight - barHeight)
+            EnrollmentBarGraph.Controls.Add(barPanel)
+
+            ' Create and add label for the number value inside the bar panel
+            Dim valueLabel As New Label
+            valueLabel.Text = Convert.ToInt32(row.Field(Of Long)("Students")).ToString()
+            valueLabel.Font = New Font("Century Gothic", 8, FontStyle.Regular)
+            valueLabel.ForeColor = Color.White
+            valueLabel.AutoSize = False
+            valueLabel.Dock = DockStyle.Top
+            valueLabel.TextAlign = ContentAlignment.MiddleCenter
+            valueLabel.Cursor = Cursors.Hand
+
+            ' Temporary size and background color for debugging
+            valueLabel.BackColor = Color.Red ' Set a distinct color for visibility
+            'valueLabel.Size = New Size(50, 20) ' Adjust size for testing
+            ' Position the value label inside the bar panel
+            valueLabel.Location = New Point((barWidth - valueLabel.Width) / 2, barHeight - valueLabel.Height - 2) ' Adjusted position with 2 pixels padding
+            AddHandler valueLabel.Click, AddressOf ValueLabel2_Click
+            barPanel.Controls.Add(valueLabel)
+            valueLabel.BringToFront()
+
+            Dim rotatedLabel As New RotatedLabel
+            rotatedLabel.Text = row.Field(Of String)("AcademicYear")
+            rotatedLabel.Font = New Font("Century Gothic", 8, FontStyle.Regular)
+            rotatedLabel.ForeColor = Color.Black
+            rotatedLabel.Cursor = Cursors.Hand
+            rotatedLabel.Angle = -90 ' Adjust the angle as needed
+            ' Set a size for the control that will fit the rotated text
+            rotatedLabel.Size = New Size(100, 50) ' Adjust size as needed
+            If panelHeight - barHeight - 10 >= rotatedLabel.Height Then
+                ' Enough space above the bar panel
+                rotatedLabel.Location = New Point(barPanel.Location.X + (barWidth - rotatedLabel.Width) / 2, panelHeight - barHeight - rotatedLabel.Height - 5) ' Center above the bar panel
+            Else
+                ' Not enough space, place label inside the bar panel
+                rotatedLabel.Location = New Point(barPanel.Location.X + barWidth / 2 - rotatedLabel.Width / 2, barPanel.Location.Y + 30) ' Adjust this value to set the label at the top
+                rotatedLabel.BackColor = Color.FromArgb(15, 101, 208)
+                rotatedLabel.ForeColor = Color.White
+            End If
+            EnrollmentBarGraph.Controls.Add(rotatedLabel)
+            rotatedLabel.BringToFront()
+            valueLabel.Tag = rotatedLabel
+            AddHandler rotatedLabel.Click, AddressOf RotatedLabel_Click
+        Next
+    End Sub
+
+
+
+    Function GetDataOverAll2(acadYear As String) As DataTable
+        Dim dt As New DataTable
+        Try
+            Using cmd As New MySqlCommand("select DISTINCT(t1.course_code) as Course, ifNULL(t100.Total,0) as Students, t1.course_id as CourseID from (SELECT t1.sg_student_id as SCount, s_fn, s_mn, s_ln, s_gender, sg_yearlevel, s_status, course_code, course_major, course_id FROM tbl_students_grades t1 LEFT JOIN tbl_student t2 ON t1.sg_student_id = t2.s_id_no LEFT JOIN tbl_course t3 ON t1.sg_course_id = t3.course_id JOIN tbl_period t4 ON t1.sg_period_id =  t4.period_id where CONCAT(t4.period_name,'-',t4.period_semester) = '" & acadYear & "' and t1.sg_grade_status = 'Enrolled' GROUP BY t1.sg_student_id) t1 LEFT JOIN (select COUNT(SCount) as 'Total', course_id from (SELECT t1.sg_student_id as SCount, s_fn, s_mn, s_ln, s_gender, sg_yearlevel, s_status, course_code, course_major, course_id FROM tbl_students_grades t1 LEFT JOIN tbl_student t2 ON t1.sg_student_id = t2.s_id_no LEFT JOIN tbl_course t3 ON t1.sg_course_id = t3.course_id JOIN tbl_period t4 ON t1.sg_period_id =  t4.period_id where CONCAT(t4.period_name,'-',t4.period_semester) = '" & acadYear & "' and t1.sg_grade_status = 'Enrolled' GROUP BY t1.sg_student_id) t1 group by course_id) t100 ON t1.course_id = t100.course_id", cn)
+                cn.Close()
+                cn.Open()
+                Using reader As MySqlDataReader = cmd.ExecuteReader()
+                    dt.Load(reader)
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error accessing the database: " & ex.Message)
+        End Try
+
+        Return dt
+    End Function
+    Sub CreateOverAllEnrolledBarGraph2(acadYear As String)
+        EnrollmentBarGraph.Controls.Clear()
+
+        Dim dt As DataTable = GetDataOverAll2(acadYear)
+
+        If dt.Rows.Count = 0 Then
+            MessageBox.Show("No data available to display the bar graph.")
+            Return
+        End If
+
+        Dim maxValue As Integer
+        Try
+            maxValue = dt.AsEnumerable().Max(Function(row) Convert.ToInt32(row.Field(Of Long)("Students")))
+        Catch ex As Exception
+            MessageBox.Show("Error calculating max value: " & ex.Message)
+            Return
+        End Try
+
+        Dim panelWidth As Integer = EnrollmentBarGraph.Width
+        Dim panelHeight As Integer = EnrollmentBarGraph.Height
+        Dim barSpacing As Integer = 10
+        Dim barWidth As Integer = (panelWidth - ((dt.Rows.Count + 1) * barSpacing)) / dt.Rows.Count
+
+        For Each row As DataRow In dt.Rows
+            Dim barPanel As New Panel
+            Dim barHeight As Integer = If(CInt(Convert.ToInt32(row.Field(Of Long)("Students"))) >= 15, CInt((Convert.ToInt32(row.Field(Of Long)("Students")) / maxValue) * panelHeight), 30)
+            barPanel.Width = barWidth
+            barPanel.Height = barHeight
+            barPanel.BackColor = Color.FromArgb(15, 101, 208)
+            barPanel.Location = New Point(barSpacing + (barWidth + barSpacing) * dt.Rows.IndexOf(row), panelHeight - barHeight)
+            EnrollmentBarGraph.Controls.Add(barPanel)
+
+            ' Create and add label for the number value inside the bar panel
+            Dim valueLabel As New Label
+            valueLabel.Text = Convert.ToInt32(row.Field(Of Long)("Students")).ToString()
+            valueLabel.Font = New Font("Century Gothic", 8, FontStyle.Regular)
+            valueLabel.ForeColor = Color.White
+            valueLabel.AutoSize = False
+            valueLabel.Dock = DockStyle.Top
+            valueLabel.TextAlign = ContentAlignment.MiddleCenter
+            valueLabel.Cursor = Cursors.Hand
+
+            ' Temporary size and background color for debugging
+            valueLabel.BackColor = Color.Red ' Set a distinct color for visibility
+            'valueLabel.Size = New Size(50, 20) ' Adjust size for testing
+            ' Position the value label inside the bar panel
+            valueLabel.Location = New Point((barWidth - valueLabel.Width) / 2, barHeight - valueLabel.Height - 2) ' Adjusted position with 2 pixels padding
+            AddHandler valueLabel.Click, AddressOf ValueLabel_Click
+            barPanel.Controls.Add(valueLabel)
+            valueLabel.BringToFront()
+
+            Dim rotatedLabel As New RotatedLabel
+            rotatedLabel.Text = row.Field(Of String)("Course")
+            rotatedLabel.Font = New Font("Century Gothic", 8, FontStyle.Regular)
+            rotatedLabel.ForeColor = Color.Black
+            rotatedLabel.Cursor = Cursors.Hand
+            rotatedLabel.Angle = -90 ' Adjust the angle as needed
+            ' Set a size for the control that will fit the rotated text
+            rotatedLabel.Size = New Size(100, 50) ' Adjust size as needed
+            If panelHeight - barHeight - 10 >= rotatedLabel.Height Then
+                ' Enough space above the bar panel
+                rotatedLabel.Location = New Point(barPanel.Location.X + (barWidth - rotatedLabel.Width) / 2, panelHeight - barHeight - rotatedLabel.Height - 5) ' Center above the bar panel
+            Else
+                ' Not enough space, place label inside the bar panel
+                rotatedLabel.Location = New Point(barPanel.Location.X + barWidth / 2 - rotatedLabel.Width / 2, barPanel.Location.Y + 30) ' Adjust this value to set the label at the top
+                rotatedLabel.BackColor = Color.FromArgb(15, 101, 208)
+                rotatedLabel.ForeColor = Color.White
+            End If
+            EnrollmentBarGraph.Controls.Add(rotatedLabel)
+            rotatedLabel.BringToFront()
+            valueLabel.Tag = rotatedLabel
+            AddHandler rotatedLabel.Click, AddressOf RotatedLabel_Click
+        Next
+    End Sub
+
+    Private Sub lblSemester_Click(sender As Object, e As EventArgs) Handles lblSemester.Click, lblAcadYear.Click
+        dashboard.Visible = False
+        lblDashboardDetailsTitle.Text = "Enrolled Students Per Academic Year"
+        PanelEnrollmentDetails.BringToFront()
+        CreateOverAllEnrolledBarGraphPerSemester()
+        GraphSelectedCourse = ""
+        GraphSelectedYear = ""
+    End Sub
 End Class
 
 Public Class RotatedLabel

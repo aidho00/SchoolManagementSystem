@@ -87,6 +87,14 @@ Module Modules
         If sText.Text = String.Empty Then
             IS_EMPTY = True
             sText.BackColor = Color.FromArgb(255, 192, 192)
+
+            ' Scroll to the control
+            Dim parentControl As Control = sText.Parent
+            If TypeOf parentControl Is ScrollableControl Then
+                Dim scrollableParent As ScrollableControl = CType(parentControl, ScrollableControl)
+                scrollableParent.ScrollControlIntoView(sText)
+            End If
+
             sText.SetFocus()
             MsgBox("Warning: Required missing field. Please fill in all required fields marked in red.", vbExclamation)
         Else

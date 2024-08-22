@@ -35,7 +35,7 @@ Public Class frmSupplyPurchaseOrder
         Dim yearid As String = YearToday
         cn.Close()
         cn.Open()
-        cm = New MySqlCommand("SELECT pono FROM tbl_supply_purchaseorder WHERE pono like 'PR" & yearid & "%'", cn)
+        cm = New MySqlCommand("SELECT pono FROM tbl_supply_purchaseorder WHERE pono like 'PO" & yearid & "%'", cn)
         dr = cm.ExecuteReader()
         If dr.HasRows Then
             dr.Close()

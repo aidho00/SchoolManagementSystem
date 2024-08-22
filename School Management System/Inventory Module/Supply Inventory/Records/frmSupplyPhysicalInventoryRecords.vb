@@ -2,7 +2,9 @@
 
 Public Class frmSupplyPhysicalInventoryRecords
     Sub PhysicalCountRecords()
-        dgPhysicalInventoryList.Rows.Clear()
+        Try
+
+            dgPhysicalInventoryList.Rows.Clear()
         Dim i As Integer
         Dim sql As String
         sql = "SELECT `pino` as 'RecountNo' , DATE_FORMAT(`pidate`, '%m/%d/%Y') as 'RecountDate'FROM `tbl_supply_physicalinventory` where pino LIKE '%" & txtSearch.Text & "%' GROUP BY `pino` ORDER by `pidate` desc"
@@ -15,7 +17,14 @@ Public Class frmSupplyPhysicalInventoryRecords
             dgPhysicalInventoryList.Rows.Add(i, dr.Item("RecountNo").ToString, dr.Item("RecountDate").ToString)
         End While
         dr.Close()
-        cn.Close()
+            cn.Close()
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            dgPhysicalInventoryList.Rows.Clear()
+
+        End Try
     End Sub
 
     Private Sub dgPhysicalInventoryList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgPhysicalInventoryList.CellContentClick

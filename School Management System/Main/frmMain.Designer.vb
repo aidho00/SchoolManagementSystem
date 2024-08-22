@@ -59,12 +59,6 @@ Partial Class frmMain
         Me.btnSupplyInventory = New System.Windows.Forms.Button()
         Me.btnItemRequest = New System.Windows.Forms.Button()
         Me.btnSupply = New System.Windows.Forms.Button()
-        Me.databasePanel = New System.Windows.Forms.Panel()
-        Me.btnUserAccounts = New System.Windows.Forms.Button()
-        Me.cbUserLogs = New System.Windows.Forms.Button()
-        Me.btnDBrestore = New System.Windows.Forms.Button()
-        Me.btnDBbackup = New System.Windows.Forms.Button()
-        Me.btnDatabase = New System.Windows.Forms.Button()
         Me.registrarPanel = New System.Windows.Forms.Panel()
         Me.PanelOther = New System.Windows.Forms.Panel()
         Me.btnHemis = New System.Windows.Forms.Button()
@@ -265,6 +259,12 @@ Partial Class frmMain
         Me.Label16 = New System.Windows.Forms.Label()
         Me.PictureBox13 = New System.Windows.Forms.PictureBox()
         Me.Label7 = New System.Windows.Forms.Label()
+        Me.databasePanel = New System.Windows.Forms.Panel()
+        Me.btnUserAccounts = New System.Windows.Forms.Button()
+        Me.cbUserLogs = New System.Windows.Forms.Button()
+        Me.btnDBrestore = New System.Windows.Forms.Button()
+        Me.btnDBbackup = New System.Windows.Forms.Button()
+        Me.btnDatabase = New System.Windows.Forms.Button()
         Me.systemSign.SuspendLayout()
         CType(Me.schoolLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ComboBoxMenu.SuspendLayout()
@@ -275,7 +275,6 @@ Partial Class frmMain
         Me.panelInventory.SuspendLayout()
         Me.PanelPurchasing.SuspendLayout()
         Me.PanelItem.SuspendLayout()
-        Me.databasePanel.SuspendLayout()
         Me.registrarPanel.SuspendLayout()
         Me.PanelOther.SuspendLayout()
         Me.PanelMonitoring.SuspendLayout()
@@ -339,6 +338,7 @@ Partial Class frmMain
         Me.PanelSupplyWarning.SuspendLayout()
         Me.warning.SuspendLayout()
         CType(Me.PictureBox13, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.databasePanel.SuspendLayout()
         Me.SuspendLayout()
         '
         'systemSign
@@ -477,10 +477,10 @@ Partial Class frmMain
         Me.PanelMenu.AutoScroll = True
         Me.PanelMenu.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
         Me.PanelMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PanelMenu.Controls.Add(Me.supplyPanel)
-        Me.PanelMenu.Controls.Add(Me.btnSupply)
         Me.PanelMenu.Controls.Add(Me.databasePanel)
         Me.PanelMenu.Controls.Add(Me.btnDatabase)
+        Me.PanelMenu.Controls.Add(Me.supplyPanel)
+        Me.PanelMenu.Controls.Add(Me.btnSupply)
         Me.PanelMenu.Controls.Add(Me.registrarPanel)
         Me.PanelMenu.Controls.Add(Me.btnRegistrar)
         Me.PanelMenu.Controls.Add(Me.reportsPanel)
@@ -509,7 +509,7 @@ Partial Class frmMain
         Me.supplyPanel.Controls.Add(Me.btnSupplyInventory)
         Me.supplyPanel.Controls.Add(Me.btnItemRequest)
         Me.supplyPanel.Dock = System.Windows.Forms.DockStyle.Top
-        Me.supplyPanel.Location = New System.Drawing.Point(0, 1782)
+        Me.supplyPanel.Location = New System.Drawing.Point(0, 1655)
         Me.supplyPanel.Name = "supplyPanel"
         Me.supplyPanel.Padding = New System.Windows.Forms.Padding(24, 0, 0, 0)
         Me.supplyPanel.Size = New System.Drawing.Size(221, 384)
@@ -940,7 +940,7 @@ Partial Class frmMain
         Me.btnSupply.ForeColor = System.Drawing.Color.White
         Me.btnSupply.Image = CType(resources.GetObject("btnSupply.Image"), System.Drawing.Image)
         Me.btnSupply.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSupply.Location = New System.Drawing.Point(0, 1751)
+        Me.btnSupply.Location = New System.Drawing.Point(0, 1624)
         Me.btnSupply.Name = "btnSupply"
         Me.btnSupply.Size = New System.Drawing.Size(221, 31)
         Me.btnSupply.TabIndex = 53
@@ -948,133 +948,6 @@ Partial Class frmMain
         Me.btnSupply.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnSupply.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnSupply.UseVisualStyleBackColor = False
-        '
-        'databasePanel
-        '
-        Me.databasePanel.AutoSize = True
-        Me.databasePanel.Controls.Add(Me.btnUserAccounts)
-        Me.databasePanel.Controls.Add(Me.cbUserLogs)
-        Me.databasePanel.Controls.Add(Me.btnDBrestore)
-        Me.databasePanel.Controls.Add(Me.btnDBbackup)
-        Me.databasePanel.Dock = System.Windows.Forms.DockStyle.Top
-        Me.databasePanel.Location = New System.Drawing.Point(0, 1655)
-        Me.databasePanel.Name = "databasePanel"
-        Me.databasePanel.Padding = New System.Windows.Forms.Padding(24, 0, 0, 0)
-        Me.databasePanel.Size = New System.Drawing.Size(221, 96)
-        Me.databasePanel.TabIndex = 50
-        Me.databasePanel.Visible = False
-        '
-        'btnUserAccounts
-        '
-        Me.btnUserAccounts.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnUserAccounts.Cursor = System.Windows.Forms.Cursors.Default
-        Me.btnUserAccounts.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnUserAccounts.FlatAppearance.BorderSize = 0
-        Me.btnUserAccounts.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnUserAccounts.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnUserAccounts.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnUserAccounts.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnUserAccounts.ForeColor = System.Drawing.Color.White
-        Me.btnUserAccounts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnUserAccounts.Location = New System.Drawing.Point(24, 72)
-        Me.btnUserAccounts.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnUserAccounts.Name = "btnUserAccounts"
-        Me.btnUserAccounts.Size = New System.Drawing.Size(197, 24)
-        Me.btnUserAccounts.TabIndex = 31
-        Me.btnUserAccounts.Text = "User Accounts"
-        Me.btnUserAccounts.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnUserAccounts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnUserAccounts.UseVisualStyleBackColor = False
-        '
-        'cbUserLogs
-        '
-        Me.cbUserLogs.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.cbUserLogs.Cursor = System.Windows.Forms.Cursors.Default
-        Me.cbUserLogs.Dock = System.Windows.Forms.DockStyle.Top
-        Me.cbUserLogs.FlatAppearance.BorderSize = 0
-        Me.cbUserLogs.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.cbUserLogs.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.cbUserLogs.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cbUserLogs.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbUserLogs.ForeColor = System.Drawing.Color.White
-        Me.cbUserLogs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cbUserLogs.Location = New System.Drawing.Point(24, 48)
-        Me.cbUserLogs.Margin = New System.Windows.Forms.Padding(0)
-        Me.cbUserLogs.Name = "cbUserLogs"
-        Me.cbUserLogs.Size = New System.Drawing.Size(197, 24)
-        Me.cbUserLogs.TabIndex = 30
-        Me.cbUserLogs.Text = "User Logs"
-        Me.cbUserLogs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cbUserLogs.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.cbUserLogs.UseVisualStyleBackColor = False
-        '
-        'btnDBrestore
-        '
-        Me.btnDBrestore.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnDBrestore.Cursor = System.Windows.Forms.Cursors.Default
-        Me.btnDBrestore.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnDBrestore.Enabled = False
-        Me.btnDBrestore.FlatAppearance.BorderSize = 0
-        Me.btnDBrestore.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnDBrestore.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnDBrestore.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnDBrestore.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDBrestore.ForeColor = System.Drawing.Color.White
-        Me.btnDBrestore.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDBrestore.Location = New System.Drawing.Point(24, 24)
-        Me.btnDBrestore.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnDBrestore.Name = "btnDBrestore"
-        Me.btnDBrestore.Size = New System.Drawing.Size(197, 24)
-        Me.btnDBrestore.TabIndex = 29
-        Me.btnDBrestore.Text = "Restore"
-        Me.btnDBrestore.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDBrestore.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnDBrestore.UseVisualStyleBackColor = False
-        '
-        'btnDBbackup
-        '
-        Me.btnDBbackup.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnDBbackup.Cursor = System.Windows.Forms.Cursors.Default
-        Me.btnDBbackup.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnDBbackup.Enabled = False
-        Me.btnDBbackup.FlatAppearance.BorderSize = 0
-        Me.btnDBbackup.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnDBbackup.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnDBbackup.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnDBbackup.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDBbackup.ForeColor = System.Drawing.Color.White
-        Me.btnDBbackup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDBbackup.Location = New System.Drawing.Point(24, 0)
-        Me.btnDBbackup.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnDBbackup.Name = "btnDBbackup"
-        Me.btnDBbackup.Size = New System.Drawing.Size(197, 24)
-        Me.btnDBbackup.TabIndex = 23
-        Me.btnDBbackup.Text = "Backup"
-        Me.btnDBbackup.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDBbackup.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnDBbackup.UseVisualStyleBackColor = False
-        '
-        'btnDatabase
-        '
-        Me.btnDatabase.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnDatabase.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnDatabase.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnDatabase.FlatAppearance.BorderSize = 0
-        Me.btnDatabase.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnDatabase.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnDatabase.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnDatabase.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDatabase.ForeColor = System.Drawing.Color.White
-        Me.btnDatabase.Image = CType(resources.GetObject("btnDatabase.Image"), System.Drawing.Image)
-        Me.btnDatabase.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDatabase.Location = New System.Drawing.Point(0, 1624)
-        Me.btnDatabase.Name = "btnDatabase"
-        Me.btnDatabase.Size = New System.Drawing.Size(221, 31)
-        Me.btnDatabase.TabIndex = 49
-        Me.btnDatabase.Text = "  Database"
-        Me.btnDatabase.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDatabase.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnDatabase.UseVisualStyleBackColor = False
         '
         'registrarPanel
         '
@@ -4086,6 +3959,133 @@ Partial Class frmMain
         Me.Label7.Text = "✕"
         Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'databasePanel
+        '
+        Me.databasePanel.AutoSize = True
+        Me.databasePanel.Controls.Add(Me.btnUserAccounts)
+        Me.databasePanel.Controls.Add(Me.cbUserLogs)
+        Me.databasePanel.Controls.Add(Me.btnDBrestore)
+        Me.databasePanel.Controls.Add(Me.btnDBbackup)
+        Me.databasePanel.Dock = System.Windows.Forms.DockStyle.Top
+        Me.databasePanel.Location = New System.Drawing.Point(0, 2070)
+        Me.databasePanel.Name = "databasePanel"
+        Me.databasePanel.Padding = New System.Windows.Forms.Padding(24, 0, 0, 0)
+        Me.databasePanel.Size = New System.Drawing.Size(221, 96)
+        Me.databasePanel.TabIndex = 56
+        Me.databasePanel.Visible = False
+        '
+        'btnUserAccounts
+        '
+        Me.btnUserAccounts.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnUserAccounts.Cursor = System.Windows.Forms.Cursors.Default
+        Me.btnUserAccounts.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnUserAccounts.FlatAppearance.BorderSize = 0
+        Me.btnUserAccounts.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnUserAccounts.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnUserAccounts.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnUserAccounts.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnUserAccounts.ForeColor = System.Drawing.Color.White
+        Me.btnUserAccounts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnUserAccounts.Location = New System.Drawing.Point(24, 72)
+        Me.btnUserAccounts.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnUserAccounts.Name = "btnUserAccounts"
+        Me.btnUserAccounts.Size = New System.Drawing.Size(197, 24)
+        Me.btnUserAccounts.TabIndex = 31
+        Me.btnUserAccounts.Text = "User Accounts"
+        Me.btnUserAccounts.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnUserAccounts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnUserAccounts.UseVisualStyleBackColor = False
+        '
+        'cbUserLogs
+        '
+        Me.cbUserLogs.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.cbUserLogs.Cursor = System.Windows.Forms.Cursors.Default
+        Me.cbUserLogs.Dock = System.Windows.Forms.DockStyle.Top
+        Me.cbUserLogs.FlatAppearance.BorderSize = 0
+        Me.cbUserLogs.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.cbUserLogs.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.cbUserLogs.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbUserLogs.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbUserLogs.ForeColor = System.Drawing.Color.White
+        Me.cbUserLogs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cbUserLogs.Location = New System.Drawing.Point(24, 48)
+        Me.cbUserLogs.Margin = New System.Windows.Forms.Padding(0)
+        Me.cbUserLogs.Name = "cbUserLogs"
+        Me.cbUserLogs.Size = New System.Drawing.Size(197, 24)
+        Me.cbUserLogs.TabIndex = 30
+        Me.cbUserLogs.Text = "User Logs"
+        Me.cbUserLogs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cbUserLogs.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.cbUserLogs.UseVisualStyleBackColor = False
+        '
+        'btnDBrestore
+        '
+        Me.btnDBrestore.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnDBrestore.Cursor = System.Windows.Forms.Cursors.Default
+        Me.btnDBrestore.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnDBrestore.Enabled = False
+        Me.btnDBrestore.FlatAppearance.BorderSize = 0
+        Me.btnDBrestore.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnDBrestore.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnDBrestore.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDBrestore.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDBrestore.ForeColor = System.Drawing.Color.White
+        Me.btnDBrestore.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnDBrestore.Location = New System.Drawing.Point(24, 24)
+        Me.btnDBrestore.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnDBrestore.Name = "btnDBrestore"
+        Me.btnDBrestore.Size = New System.Drawing.Size(197, 24)
+        Me.btnDBrestore.TabIndex = 29
+        Me.btnDBrestore.Text = "Restore"
+        Me.btnDBrestore.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnDBrestore.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnDBrestore.UseVisualStyleBackColor = False
+        '
+        'btnDBbackup
+        '
+        Me.btnDBbackup.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnDBbackup.Cursor = System.Windows.Forms.Cursors.Default
+        Me.btnDBbackup.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnDBbackup.Enabled = False
+        Me.btnDBbackup.FlatAppearance.BorderSize = 0
+        Me.btnDBbackup.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnDBbackup.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnDBbackup.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDBbackup.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDBbackup.ForeColor = System.Drawing.Color.White
+        Me.btnDBbackup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnDBbackup.Location = New System.Drawing.Point(24, 0)
+        Me.btnDBbackup.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnDBbackup.Name = "btnDBbackup"
+        Me.btnDBbackup.Size = New System.Drawing.Size(197, 24)
+        Me.btnDBbackup.TabIndex = 23
+        Me.btnDBbackup.Text = "Backup"
+        Me.btnDBbackup.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnDBbackup.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnDBbackup.UseVisualStyleBackColor = False
+        '
+        'btnDatabase
+        '
+        Me.btnDatabase.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnDatabase.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnDatabase.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnDatabase.FlatAppearance.BorderSize = 0
+        Me.btnDatabase.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnDatabase.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnDatabase.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDatabase.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDatabase.ForeColor = System.Drawing.Color.White
+        Me.btnDatabase.Image = CType(resources.GetObject("btnDatabase.Image"), System.Drawing.Image)
+        Me.btnDatabase.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnDatabase.Location = New System.Drawing.Point(0, 2039)
+        Me.btnDatabase.Name = "btnDatabase"
+        Me.btnDatabase.Size = New System.Drawing.Size(221, 31)
+        Me.btnDatabase.TabIndex = 55
+        Me.btnDatabase.Text = "  Database"
+        Me.btnDatabase.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnDatabase.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnDatabase.UseVisualStyleBackColor = False
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -4114,7 +4114,6 @@ Partial Class frmMain
         Me.panelInventory.PerformLayout()
         Me.PanelPurchasing.ResumeLayout(False)
         Me.PanelItem.ResumeLayout(False)
-        Me.databasePanel.ResumeLayout(False)
         Me.registrarPanel.ResumeLayout(False)
         Me.registrarPanel.PerformLayout()
         Me.PanelOther.ResumeLayout(False)
@@ -4184,6 +4183,7 @@ Partial Class frmMain
         Me.warning.ResumeLayout(False)
         Me.warning.PerformLayout()
         CType(Me.PictureBox13, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.databasePanel.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -4216,10 +4216,6 @@ Partial Class frmMain
     Friend WithEvents btnDashboard As Button
     Friend WithEvents Panel12 As Panel
     Friend WithEvents btnLogout As Button
-    Friend WithEvents databasePanel As Panel
-    Friend WithEvents btnDBrestore As Button
-    Friend WithEvents btnDBbackup As Button
-    Friend WithEvents btnDatabase As Button
     Friend WithEvents registrarPanel As Panel
     Friend WithEvents btnTOR2 As Button
     Friend WithEvents gradingPanel As Panel
@@ -4276,7 +4272,6 @@ Partial Class frmMain
     Friend WithEvents btnEnrollList As Button
     Friend WithEvents btnForm9 As Button
     Friend WithEvents btnTransmittal As Button
-    Friend WithEvents cbUserLogs As Button
     Friend WithEvents btnClassSched As Button
     Friend WithEvents btnCurSetup As Button
     Friend WithEvents PanelAssessment As Panel
@@ -4394,7 +4389,6 @@ Partial Class frmMain
     Friend WithEvents schoolName As Label
     Friend WithEvents PictureBox4 As PictureBox
     Friend WithEvents formTitle As Label
-    Friend WithEvents btnUserAccounts As Button
     Friend WithEvents Label3 As Label
     Friend WithEvents EnrollmentSubGraph As Panel
     Friend WithEvents EnrollmentBarGraph As Panel
@@ -4430,4 +4424,10 @@ Partial Class frmMain
     Friend WithEvents PictureBox13 As PictureBox
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents btnStockLevel As Button
+    Friend WithEvents databasePanel As Panel
+    Friend WithEvents btnUserAccounts As Button
+    Friend WithEvents cbUserLogs As Button
+    Friend WithEvents btnDBrestore As Button
+    Friend WithEvents btnDBbackup As Button
+    Friend WithEvents btnDatabase As Button
 End Class

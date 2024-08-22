@@ -96,20 +96,23 @@ Public Class frmSupplyPOS
             'End Try
 
         Else
-
-            dgCart.Rows.Clear()
-            cn.Close()
-            cn.Open()
-            cm = New MySqlCommand("Select barcodeid, description, tbl_supply_deployed.dprice As Price, (dqty) As QTY, qty_requested As RQTY, tbl_supply_deployed.ditem_price As Total from tbl_supply_deployed, tbl_supply_item, tbl_supply_category where tbl_supply_deployed.dbarcode = tbl_supply_item.barcodeid And tbl_supply_item.categoryid = tbl_supply_category.catid And tbl_supply_deployed.dstatus = 'PENDING' and tbl_supply_deployed.dlocation = @1", cn)
-            cm.Parameters.AddWithValue("@1", lblLocationNumber.Text)
-            dr = cm.ExecuteReader()
-            While dr.Read
-                _total += CDbl(dr.Item("Total").ToString)
-                dgCart.Rows.Add(dr.Item("barcodeid").ToString, dr.Item("description").ToString, dr.Item("Price").ToString, dr.Item("QTY").ToString, dr.Item("RQTY").ToString, dr.Item("Total").ToString)
-            End While
-            dr.Close()
-            cn.Close()
-
+            Try
+                dgCart.Rows.Clear()
+                cn.Close()
+                cn.Open()
+                cm = New MySqlCommand("Select barcodeid, description, tbl_supply_deployed.dprice As Price, (dqty) As QTY, qty_requested As RQTY, tbl_supply_deployed.ditem_price As Total from tbl_supply_deployed, tbl_supply_item, tbl_supply_category where tbl_supply_deployed.dbarcode = tbl_supply_item.barcodeid And tbl_supply_item.categoryid = tbl_supply_category.catid And tbl_supply_deployed.dstatus = 'PENDING' and tbl_supply_deployed.dlocation = @1", cn)
+                cm.Parameters.AddWithValue("@1", lblLocationNumber.Text)
+                dr = cm.ExecuteReader()
+                While dr.Read
+                    _total += CDbl(dr.Item("Total").ToString)
+                    dgCart.Rows.Add(dr.Item("barcodeid").ToString, dr.Item("description").ToString, dr.Item("Price").ToString, dr.Item("QTY").ToString, dr.Item("RQTY").ToString, dr.Item("Total").ToString)
+                End While
+                dr.Close()
+                cn.Close()
+            Catch ex As Exception
+                dr.Close()
+                cn.Close()
+            End Try
         End If
         lblTotal.Text = Format(_total, "#,##0.00")
         If dgCart.Rows.Count = 0 Then
@@ -430,6 +433,10 @@ Public Class frmSupplyPOS
             dr.Close()
             cn.Close()
         Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            dgItemList.Rows.Clear()
+
         End Try
     End Sub
 

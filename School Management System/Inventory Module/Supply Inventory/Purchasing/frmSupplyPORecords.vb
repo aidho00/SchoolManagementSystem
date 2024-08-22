@@ -2,8 +2,9 @@
 
 Public Class frmSupplyPORecords
     Sub PurchaseOrderList()
+        Try
 
-        dgPOList.Rows.Clear()
+            dgPOList.Rows.Clear()
         Dim i As Integer
         Dim sql As String
         sql = "Select pono, prno, pototal, po.status, DATE_FORMAT(podate, '%m/%d/%Y') as podate, AccountName, poremarks from tbl_supply_purchaseorder po JOIN useraccounts ua ON po.pouser_id = ua.useraccountID where prno LIKE '%" & frmMain.txtSearch.Text & "%'"
@@ -16,7 +17,14 @@ Public Class frmSupplyPORecords
             dgPOList.Rows.Add(i, dr.Item("pono").ToString, dr.Item("prno").ToString, dr.Item("pototal").ToString, dr.Item("podate").ToString, dr.Item("status").ToString, dr.Item("AccountName").ToString, dr.Item("poremarks").ToString)
         End While
         dr.Close()
-        cn.Close()
+            cn.Close()
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            dgPOList.Rows.Clear()
+
+        End Try
     End Sub
 
     Private Sub dgPOList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgPOList.CellContentClick
@@ -38,10 +46,10 @@ Public Class frmSupplyPORecords
             For Each dr As DataGridViewRow In dg_report.Rows
                 dt.Rows.Add(dr.Cells(0).Value, dr.Cells(1).Value, dr.Cells(2).Value, dr.Cells(3).Value, dr.Cells(5).Value, dr.Cells(4).Value, dr.Cells(6).Value)
             Next
-            Dim iDate As String = dgPOList.CurrentRow.Cells(3).Value
-            Dim oDate As DateTime = Convert.ToDateTime(iDate)
+            'Dim iDate As String = dgPOList.CurrentRow.Cells(3).Value
+            'Dim oDate As DateTime = Convert.ToDateTime(iDate)
             Dim rptdoc As CrystalDecisions.CrystalReports.Engine.ReportDocument
-            rptdoc = New PurchaseRequest
+            rptdoc = New PurchaseOrder
             rptdoc.SetDataSource(dt)
             rptdoc.SetParameterValue("orderno", dgPOList.CurrentRow.Cells(1).Value)
             rptdoc.SetParameterValue("requestdate", Format(Convert.ToDateTime(dgPOList.CurrentRow.Cells(4).Value), "MMMM d, yyyy"))

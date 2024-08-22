@@ -11,6 +11,7 @@ Public Class frmMain
     Dim GraphSelectedCourse As String = ""
     Dim GraphSelectedYear As String = ""
     Dim GraphSelectedAcademicYear As String = ""
+    Dim AcademicYearID2 As Integer = activeAcademicYear
 #Region "Drag Form"
 
     Public MoveForm As Boolean
@@ -574,6 +575,14 @@ Public Class frmMain
             frmReports.dgStudentView.Visible = False
             frmReports.rbViewClass.Checked = False
             frmSupplyPORecords.PurchaseOrderList()
+        ElseIf formTitle.Text = "List Of Goods Receipt" Then
+            SelectionTitle.Visible = False
+            ComboClick.Text = "     "
+            ComboClick.Enabled = False
+            PanelCredReq.Visible = False
+            frmReports.dgStudentView.Visible = False
+            frmReports.rbViewClass.Checked = False
+            frmSupplyGRRecords.GoodsReceiptList()
         Else
             SelectionTitle.Visible = False
             ComboClick.Text = "     "
@@ -1227,7 +1236,8 @@ Public Class frmMain
         dashboard.Visible = False
         lblDashboardDetailsTitle.Text = "Enrolled Students Academic Year " & lblAcadYear.Text & " - " & lblSemester.Text & ""
         PanelEnrollmentDetails.BringToFront()
-        CreateOverAllEnrolledBarGraph(activeAcademicYear)
+        AcademicYearID2 = activeAcademicYear
+        CreateOverAllEnrolledBarGraph(AcademicYearID2)
         GraphSelectedCourse = ""
         GraphSelectedYear = ""
     End Sub
@@ -1257,14 +1267,6 @@ Public Class frmMain
         controlsPanel.Visible = True
         btnAdd.Visible = True
     End Sub
-
-
-
-
-
-
-
-
 
 
     ' Event handler for valueLabel click
@@ -1329,7 +1331,7 @@ Public Class frmMain
 
         For Each row As DataRow In dt.Rows
             Dim barPanel As New Panel
-            Dim barHeight As Integer = If(CInt(Convert.ToInt32(row.Field(Of Long)("Students"))) >= 15, CInt((Convert.ToInt32(row.Field(Of Long)("Students")) / maxValue) * panelHeight), 30)
+            Dim barHeight As Integer = If(CInt(Convert.ToInt32(row.Field(Of Long)("Students"))) >= 100, CInt((Convert.ToInt32(row.Field(Of Long)("Students")) / maxValue) * panelHeight), 40)
             barPanel.Width = barWidth
             barPanel.Height = barHeight
             barPanel.BackColor = Color.FromArgb(15, 101, 208)
@@ -1385,7 +1387,7 @@ Public Class frmMain
     Function GetDataYearLevel(ByVal Course As String) As DataTable
         Dim dt As New DataTable
         Try
-            Using cmd As New MySqlCommand("select (tt1.sg_yearlevel) as 'Year Level', ifNULL(SUM(tt1.SCount),0) as Students from (SELECT count(DISTINCT t1.sg_student_id) as SCount, sg_yearlevel FROM tbl_students_grades t1 LEFT JOIN tbl_student t2 ON t1.sg_student_id = t2.s_id_no LEFT JOIN tbl_course t3 ON t1.sg_course_id = t3.course_id LEFT JOIN (SELECT DISTINCT(estudent_id) as Student, eperiod_id as Period, eenrolledby_datetime as EnrollDate from tbl_enrollment where eperiod_id = " & activeAcademicYear & ") t4 ON t1.sg_student_id = t4.Student and t1.sg_period_id = t4.Period where t1.sg_period_id = " & activeAcademicYear & " and t1.sg_grade_status = 'Enrolled'  and t3.course_code = '" & Course & "' GROUP BY t1.sg_course_id, t1.sg_yearlevel) tt1 group by tt1.sg_yearlevel", cn)
+            Using cmd As New MySqlCommand("select (tt1.sg_yearlevel) as 'Year Level', ifNULL(SUM(tt1.SCount),0) as Students from (SELECT count(DISTINCT t1.sg_student_id) as SCount, sg_yearlevel FROM tbl_students_grades t1 LEFT JOIN tbl_student t2 ON t1.sg_student_id = t2.s_id_no LEFT JOIN tbl_course t3 ON t1.sg_course_id = t3.course_id LEFT JOIN (SELECT DISTINCT(estudent_id) as Student, eperiod_id as Period, eenrolledby_datetime as EnrollDate from tbl_enrollment where eperiod_id = " & AcademicYearID2 & ") t4 ON t1.sg_student_id = t4.Student and t1.sg_period_id = t4.Period where t1.sg_period_id = " & AcademicYearID2 & " and t1.sg_grade_status = 'Enrolled'  and t3.course_code = '" & Course & "' GROUP BY t1.sg_course_id, t1.sg_yearlevel) tt1 group by tt1.sg_yearlevel", cn)
                 cn.Close()
                 cn.Open()
                 Using reader As MySqlDataReader = cmd.ExecuteReader()
@@ -1431,7 +1433,7 @@ Public Class frmMain
             Dim students As Integer = If(IsDBNull(row("Students")), 0, Convert.ToInt32(row("Students")))
 
 
-            Dim barHeight As Integer = If(students >= 15, CInt((students / maxValue) * panelHeight), 20)
+            Dim barHeight As Integer = If(students >= 15, CInt((students / maxValue) * panelHeight), 40)
 
             If dt.Rows.Count = 1 Then
                 ' Set a fixed width for a single bar
@@ -1508,7 +1510,7 @@ Public Class frmMain
     Function GetDataStudentsEnrolled() As DataTable
         Dim dt As New DataTable
         Try
-            Using cmd As New MySqlCommand("Select count(tt1.SCount)as Student, tt1.s_status as 'Status' From (SELECT t1.sg_student_id as SCount, s_fn, s_mn, s_ln, s_gender, sg_yearlevel, course_code, course_name, DATE_FORMAT(EnrollDate, '%M %d, %Y'), s_status FROM tbl_students_grades t1 LEFT JOIN tbl_student t2 ON t1.sg_student_id = t2.s_id_no LEFT JOIN tbl_course t3 ON t1.sg_course_id = t3.course_id LEFT JOIN (SELECT DISTINCT(estudent_id) as Student, eperiod_id as Period, eenrolledby_datetime as EnrollDate from tbl_enrollment where eperiod_id = " & activeAcademicYear & ") t4 ON t1.sg_student_id = t4.Student and t1.sg_period_id = t4.Period where t1.sg_period_id = " & activeAcademicYear & " and t1.sg_grade_status = 'Enrolled' GROUP BY t1.sg_student_id order by course_code asc) tt1 WHERE tt1.course_code = '" & GraphSelectedCourse & "' and tt1.sg_yearlevel = '" & GraphSelectedYear & "' group by s_status", cn)
+            Using cmd As New MySqlCommand("Select count(tt1.SCount)as Student, tt1.s_status as 'Status' From (SELECT t1.sg_student_id as SCount, s_fn, s_mn, s_ln, s_gender, sg_yearlevel, course_code, course_name, DATE_FORMAT(EnrollDate, '%M %d, %Y'), s_status FROM tbl_students_grades t1 LEFT JOIN tbl_student t2 ON t1.sg_student_id = t2.s_id_no LEFT JOIN tbl_course t3 ON t1.sg_course_id = t3.course_id LEFT JOIN (SELECT DISTINCT(estudent_id) as Student, eperiod_id as Period, eenrolledby_datetime as EnrollDate from tbl_enrollment where eperiod_id = " & AcademicYearID2 & ") t4 ON t1.sg_student_id = t4.Student and t1.sg_period_id = t4.Period where t1.sg_period_id = " & AcademicYearID2 & " and t1.sg_grade_status = 'Enrolled' GROUP BY t1.sg_student_id order by course_code asc) tt1 WHERE tt1.course_code = '" & GraphSelectedCourse & "' and tt1.sg_yearlevel = '" & GraphSelectedYear & "' group by s_status", cn)
                 cn.Close()
                 cn.Open()
                 Using reader As MySqlDataReader = cmd.ExecuteReader()
@@ -1756,7 +1758,14 @@ Public Class frmMain
     End Sub
 
     Private Sub btnPRD_Click(sender As Object, e As EventArgs) Handles btnPRD.Click
-
+        If Application.OpenForms.OfType(Of frmSupplyGRRecords)().Any() Then
+        Else
+            frmSupplyGRRecords.GoodsReceiptList()
+        End If
+        OpenForm(frmSupplyGRRecords, "List Of Goods Receipt")
+        HideAllFormsInPanelExcept(frmSupplyGRRecords)
+        controlsPanel.Visible = True
+        btnAdd.Visible = True
     End Sub
 
     Private Sub btnStockRecount_Click(sender As Object, e As EventArgs) Handles btnStockRecount.Click
@@ -1800,6 +1809,13 @@ Public Class frmMain
             lblDashboardDetailsTitle.Text = "Enrolled Students Academic Year " & rotatedLabel.Text & ""
             CreateOverAllEnrolledBarGraph2(rotatedLabel.Text)
             GraphSelectedAcademicYear = rotatedLabel.Text
+
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand("SELECT period_id as PERIOD from tbl_period where CONCAT(period_name,'-',period_semester) = '" & GraphSelectedAcademicYear & "'", cn)
+            AcademicYearID2 = CInt(cm.ExecuteScalar)
+            cn.Close()
+
         End If
     End Sub
 
@@ -1828,7 +1844,7 @@ Public Class frmMain
 
         For Each row As DataRow In dt.Rows
             Dim barPanel As New Panel
-            Dim barHeight As Integer = If(CInt(Convert.ToInt32(row.Field(Of Long)("Students"))) >= 100, CInt((Convert.ToInt32(row.Field(Of Long)("Students")) / maxValue) * panelHeight), 30)
+            Dim barHeight As Integer = If(CInt(Convert.ToInt32(row.Field(Of Long)("Students"))) >= 100, CInt((Convert.ToInt32(row.Field(Of Long)("Students")) / maxValue) * panelHeight), 40)
             barPanel.Width = barWidth
             barPanel.Height = barHeight
             barPanel.BackColor = Color.FromArgb(15, 101, 208)
@@ -1921,7 +1937,7 @@ Public Class frmMain
 
         For Each row As DataRow In dt.Rows
             Dim barPanel As New Panel
-            Dim barHeight As Integer = If(CInt(Convert.ToInt32(row.Field(Of Long)("Students"))) >= 15, CInt((Convert.ToInt32(row.Field(Of Long)("Students")) / maxValue) * panelHeight), 30)
+            Dim barHeight As Integer = If(CInt(Convert.ToInt32(row.Field(Of Long)("Students"))) >= 50, CInt((Convert.ToInt32(row.Field(Of Long)("Students")) / maxValue) * panelHeight), 30)
             barPanel.Width = barWidth
             barPanel.Height = barHeight
             barPanel.BackColor = Color.FromArgb(15, 101, 208)

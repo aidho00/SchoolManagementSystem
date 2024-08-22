@@ -29,28 +29,37 @@ Public Class frmEnrollmentEditor
     End Sub
 
     Sub LibraryWithdrawEnrollmentStudentList()
-        dgStudentList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select DISTINCT(s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (sg_yearlevel) as 'Year Level', (course_code) as 'Course', course_id, course_name, s_course_status from tbl_students_grades JOIN tbl_student ON tbl_students_grades.sg_student_id = tbl_student.s_id_no JOIN tbl_course ON tbl_students_grades.sg_course_id = tbl_course.course_id where tbl_students_grades.sg_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and tbl_students_grades.sg_grade_status = 'Enrolled' and (tbl_student.s_ln like '" & txtSearch.Text & "%' or tbl_student.s_fn like '" & txtSearch.Text & "%' or tbl_student.s_mn like '" & txtSearch.Text & "%' or tbl_student.s_id_no like '" & txtSearch.Text & "%' or tbl_student.s_yr_lvl like '" & txtSearch.Text & "%') order by s_id_no asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            dgStudentList.Rows.Add(i, dr.Item("ID Number").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, dr.Item("Suffix").ToString, dr.Item("Gender").ToString, dr.Item("Year Level").ToString, dr.Item("Course").ToString, dr.Item("course_id").ToString, dr.Item("course_name").ToString, dr.Item("s_course_status").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
 
-        If frmMain.systemModule.Text = "College Module" Then
-            dgStudentList.Columns(8).HeaderText = "Course"
-        Else
-            dgStudentList.Columns(8).HeaderText = "Strand/Grade"
-        End If
 
-        dgPanelPadding(dgStudentList, dgPanel)
+            dgStudentList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select DISTINCT(s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (sg_yearlevel) as 'Year Level', (course_code) as 'Course', course_id, course_name, s_course_status from tbl_students_grades JOIN tbl_student ON tbl_students_grades.sg_student_id = tbl_student.s_id_no JOIN tbl_course ON tbl_students_grades.sg_course_id = tbl_course.course_id where tbl_students_grades.sg_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and tbl_students_grades.sg_grade_status = 'Enrolled' and (tbl_student.s_ln like '" & txtSearch.Text & "%' or tbl_student.s_fn like '" & txtSearch.Text & "%' or tbl_student.s_mn like '" & txtSearch.Text & "%' or tbl_student.s_id_no like '" & txtSearch.Text & "%' or tbl_student.s_yr_lvl like '" & txtSearch.Text & "%') order by s_id_no asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                dgStudentList.Rows.Add(i, dr.Item("ID Number").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, dr.Item("Suffix").ToString, dr.Item("Gender").ToString, dr.Item("Year Level").ToString, dr.Item("Course").ToString, dr.Item("course_id").ToString, dr.Item("course_name").ToString, dr.Item("s_course_status").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+            If frmMain.systemModule.Text = "College Module" Then
+                dgStudentList.Columns(8).HeaderText = "Course"
+            Else
+                dgStudentList.Columns(8).HeaderText = "Strand/Grade"
+            End If
+
+            dgPanelPadding(dgStudentList, dgPanel)
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            dgStudentList.Rows.Clear()
+
+        End Try
     End Sub
 
     Private Sub btnSelect_Click(sender As Object, e As EventArgs) Handles btnSelect.Click

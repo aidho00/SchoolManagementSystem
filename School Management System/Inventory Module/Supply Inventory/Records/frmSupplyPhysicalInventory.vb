@@ -55,20 +55,26 @@ Public Class frmSupplyPhysicalInventory
     End Function
 
     Sub PhysicalCountSupplyItemStockLevel()
-        dgSupplyItemList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "Select (BarcodeID) as 'Item ID', Description, (CategoryName) as 'Category', Sizes, (tbl_supply_inventory.Spare) as 'Stock' from tbl_supply_item JOIN tbl_supply_category ON tbl_supply_item.CategoryID = tbl_supply_category.catid JOIN tbl_supply_sizes ON tbl_supply_item.sizesid = tbl_supply_sizes.sizeid JOIN tbl_supply_inventory ON tbl_supply_item.barcodeid = tbl_supply_inventory.itembarcode JOIN tbl_supply_brand ON tbl_supply_item.brandid = tbl_supply_brand.brandid where item_status = 'Available' order by Description asc"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            dgSupplyItemList.Rows.Add(i, dr.Item("Item ID").ToString, dr.Item("Description").ToString, dr.Item("Category").ToString, dr.Item("Sizes").ToString, dr.Item("Stock").ToString, dr.Item("Stock").ToString, "0")
-        End While
-        dr.Close()
-        cn.Close()
+        Try
+            dgSupplyItemList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "Select (BarcodeID) as 'Item ID', Description, (CategoryName) as 'Category', Sizes, (tbl_supply_inventory.Spare) as 'Stock' from tbl_supply_item JOIN tbl_supply_category ON tbl_supply_item.CategoryID = tbl_supply_category.catid JOIN tbl_supply_sizes ON tbl_supply_item.sizesid = tbl_supply_sizes.sizeid JOIN tbl_supply_inventory ON tbl_supply_item.barcodeid = tbl_supply_inventory.itembarcode JOIN tbl_supply_brand ON tbl_supply_item.brandid = tbl_supply_brand.brandid where item_status = 'Available' order by Description asc"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                dgSupplyItemList.Rows.Add(i, dr.Item("Item ID").ToString, dr.Item("Description").ToString, dr.Item("Category").ToString, dr.Item("Sizes").ToString, dr.Item("Stock").ToString, dr.Item("Stock").ToString, "0")
+            End While
+            dr.Close()
+            cn.Close()
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            dgSupplyItemList.Rows.Clear()
+        End Try
     End Sub
 
     Private Sub btnGenerate_Click(sender As Object, e As EventArgs)

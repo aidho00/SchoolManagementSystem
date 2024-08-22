@@ -10,38 +10,46 @@ Public Class frmSupplyPOSLocation
         Me.Dispose()
     End Sub
     Sub loadTable()
-        tablePanel.AutoScroll = True
-        tablePanel.Controls.Clear()
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand("Select * from vwlocationbill2 where location like '%" & ToolStripTextBox1.Text & "%'", cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            btnTable = New Button
-            btnTable.Width = 151
-            btnTable.Height = 40
-            If CDbl(dr.Item("bill").ToString) = 0 Then
-                btnTable.Text = dr.Item("location").ToString
-                btnTable.BackColor = Color.FromArgb(30, 39, 46)
-                btnTable.ForeColor = Color.White
-            Else
-                btnTable.Text = dr.Item("location").ToString & " - ₱ " & dr.Item("bill").ToString
-                btnTable.BackColor = Color.FromArgb(252, 92, 101)
-                btnTable.ForeColor = Color.Black
-            End If
+        Try
 
-            btnTable.Tag = dr.Item("locationnumber")
-            btnTable.FlatStyle = FlatStyle.Flat
-            btnTable.FlatAppearance.BorderSize = 0
+            tablePanel.AutoScroll = True
+            tablePanel.Controls.Clear()
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand("Select * from vwlocationbill2 where location like '%" & ToolStripTextBox1.Text & "%'", cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                btnTable = New Button
+                btnTable.Width = 151
+                btnTable.Height = 40
+                If CDbl(dr.Item("bill").ToString) = 0 Then
+                    btnTable.Text = dr.Item("location").ToString
+                    btnTable.BackColor = Color.FromArgb(30, 39, 46)
+                    btnTable.ForeColor = Color.White
+                Else
+                    btnTable.Text = dr.Item("location").ToString & " - ₱ " & dr.Item("bill").ToString
+                    btnTable.BackColor = Color.FromArgb(252, 92, 101)
+                    btnTable.ForeColor = Color.Black
+                End If
 
-            btnTable.Cursor = Cursors.Hand
-            btnTable.TextAlign = ContentAlignment.MiddleLeft
-            tablePanel.Controls.Add(btnTable)
+                btnTable.Tag = dr.Item("locationnumber")
+                btnTable.FlatStyle = FlatStyle.Flat
+                btnTable.FlatAppearance.BorderSize = 0
 
-            AddHandler btnTable.Click, AddressOf GetTable_Click
-        End While
-        dr.Close()
-        cn.Close()
+                btnTable.Cursor = Cursors.Hand
+                btnTable.TextAlign = ContentAlignment.MiddleLeft
+                tablePanel.Controls.Add(btnTable)
+
+                AddHandler btnTable.Click, AddressOf GetTable_Click
+            End While
+            dr.Close()
+            cn.Close()
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            tablePanel.Controls.Clear()
+        End Try
     End Sub
 
     Sub GetTable_Click(sender As Object, e As EventArgs)
@@ -108,5 +116,9 @@ Public Class frmSupplyPOSLocation
     Private Sub ToolStripButton3_Click(sender As Object, e As EventArgs) Handles ToolStripButton3.Click
         ResetControls(frmSupplyPOSLocationAdd)
         frmSupplyPOSLocationAdd.ShowDialog()
+    End Sub
+
+    Private Sub ToolStripTextBox1_Click(sender As Object, e As EventArgs) Handles ToolStripTextBox1.Click
+
     End Sub
 End Class

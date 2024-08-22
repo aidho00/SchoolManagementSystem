@@ -69,6 +69,8 @@ Module Records
                 frmSupplyPRRecords.PurchaseRequestList()
             Case "List Of Purchase Orders"
                 frmSupplyPORecords.PurchaseOrderList()
+            Case "List Of Goods Receipt"
+                frmSupplyGRRecords.GoodsReceiptList()
         End Select
     End Sub
 
@@ -204,6 +206,12 @@ Module Records
                     .btnSave.Visible = True
                     .ShowDialog()
                 End With
+            Case "List Of Goods Receipt"
+                With frmSupplyPurchaseGReceipt
+                    ResetControls(frmSupplyPurchaseGReceipt)
+                    .btnSave.Visible = True
+                    .ShowDialog()
+                End With
         End Select
     End Sub
 
@@ -217,7 +225,9 @@ Module Records
     End Sub
 
     Public Sub UserLogList()
-        frmUserLogs.dgUserLogs.Rows.Clear()
+        Try
+
+            frmUserLogs.dgUserLogs.Rows.Clear()
         Dim i As Integer
         Dim sql As String
         If str_role = "Administrator" Then
@@ -234,38 +244,56 @@ Module Records
             frmUserLogs.dgUserLogs.Rows.Add(i, dr.Item("Name").ToString, dr.Item("Date").ToString, dr.Item("Time").ToString, dr.Item("Location").ToString, dr.Item("Area").ToString, dr.Item("Action").ToString)
         End While
         dr.Close()
-        cn.Close()
+            cn.Close()
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmUserLogs.dgUserLogs.Rows.Clear()
+
+        End Try
     End Sub
 
     Public Sub LibraryStudentList()
-        frmStudentList.dgStudentList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course' from tbl_student JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where (s_ln like '%" & frmMain.txtSearch.Text & "%' or s_fn like '%" & frmMain.txtSearch.Text & "%' or s_mn like '%" & frmMain.txtSearch.Text & "%' or s_id_no like '%" & frmMain.txtSearch.Text & "%' or course_code like '%" & frmMain.txtSearch.Text & "%' or s_yr_lvl like '%" & frmMain.txtSearch.Text & "%') order by s_id_no asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmStudentList.dgStudentList.Rows.Add(i, dr.Item("ID Number").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, dr.Item("Suffix").ToString, dr.Item("Gender").ToString, dr.Item("Year Level").ToString, dr.Item("Course").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
 
-        If frmMain.systemModule.Text = "College Module" Then
-            frmStudentList.dgStudentList.Columns(7).HeaderText = "Year Level"
-            frmStudentList.dgStudentList.Columns(8).HeaderText = "Course"
-        Else
-            frmStudentList.dgStudentList.Columns(8).HeaderText = "Strand/Grade"
-            frmStudentList.dgStudentList.Columns(7).HeaderText = "Grade Level"
-        End If
+            frmStudentList.dgStudentList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course' from tbl_student JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where (s_ln like '%" & frmMain.txtSearch.Text & "%' or s_fn like '%" & frmMain.txtSearch.Text & "%' or s_mn like '%" & frmMain.txtSearch.Text & "%' or s_id_no like '%" & frmMain.txtSearch.Text & "%' or course_code like '%" & frmMain.txtSearch.Text & "%' or s_yr_lvl like '%" & frmMain.txtSearch.Text & "%') order by s_id_no asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmStudentList.dgStudentList.Rows.Add(i, dr.Item("ID Number").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, dr.Item("Suffix").ToString, dr.Item("Gender").ToString, dr.Item("Year Level").ToString, dr.Item("Course").ToString)
+            End While
+            dr.Close()
+            cn.Close()
 
-        dgPanelPadding(frmStudentList.dgStudentList, frmStudentList.dgPanel)
+            If frmMain.systemModule.Text = "College Module" Then
+                frmStudentList.dgStudentList.Columns(7).HeaderText = "Year Level"
+                frmStudentList.dgStudentList.Columns(8).HeaderText = "Course"
+            Else
+                frmStudentList.dgStudentList.Columns(8).HeaderText = "Strand/Grade"
+                frmStudentList.dgStudentList.Columns(7).HeaderText = "Grade Level"
+            End If
+
+            dgPanelPadding(frmStudentList.dgStudentList, frmStudentList.dgPanel)
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmStudentList.dgStudentList.Rows.Clear()
+
+        End Try
     End Sub
 
     Public Sub LibraryCourseList()
-        frmCourseList.dgCourseList.Rows.Clear()
+        Try
+
+            frmCourseList.dgCourseList.Rows.Clear()
         Dim i As Integer
         Dim sql As String
         sql = "select course_id, course_code, course_name, course_major, course_status from tbl_course where (course_code LIKE '%" & frmMain.txtSearch.Text & "%' or course_name LIKE '%" & frmMain.txtSearch.Text & "%') order by course_name asc limit 500"
@@ -282,214 +310,311 @@ Module Records
 
         dgPanelPadding(frmCourseList.dgCourseList, frmCourseList.dgPanel)
 
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmCourseList.dgCourseList.Rows.Clear()
 
+        End Try
     End Sub
 
     Public Sub LibraryAcadList()
-        frmAcademicYearList.dgAcadList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select period_id, (period_name) as 'Period', (period_semester) as 'Semester', (period_status) as 'Status', period_enrollment_status, period_enrollment_ad_status from tbl_period where (period_name LIKE '%" & frmMain.txtSearch.Text & "%' or period_semester LIKE '%" & frmMain.txtSearch.Text & "%') order by `period_name` desc, `period_semester` desc, `period_status` asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmAcademicYearList.dgAcadList.Rows.Add(i, dr.Item("period_id").ToString, dr.Item("Period").ToString, dr.Item("Semester").ToString, dr.Item("period_enrollment_status").ToString, dr.Item("period_enrollment_ad_status").ToString, dr.Item("Status").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
 
-        dgPanelPadding(frmAcademicYearList.dgAcadList, frmAcademicYearList.dgPanel)
+            frmAcademicYearList.dgAcadList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select period_id, (period_name) as 'Period', (period_semester) as 'Semester', (period_status) as 'Status', period_enrollment_status, period_enrollment_ad_status from tbl_period where (period_name LIKE '%" & frmMain.txtSearch.Text & "%' or period_semester LIKE '%" & frmMain.txtSearch.Text & "%') order by `period_name` desc, `period_semester` desc, `period_status` asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmAcademicYearList.dgAcadList.Rows.Add(i, dr.Item("period_id").ToString, dr.Item("Period").ToString, dr.Item("Semester").ToString, dr.Item("period_enrollment_status").ToString, dr.Item("period_enrollment_ad_status").ToString, dr.Item("Status").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+            dgPanelPadding(frmAcademicYearList.dgAcadList, frmAcademicYearList.dgPanel)
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmAcademicYearList.dgAcadList.Rows.Clear()
+        End Try
     End Sub
 
     Public Sub LibrarySubjectList()
-        frmSubjectList.dgSubjectList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select (b.subject_id) as 'ID', (b.subject_code) as 'Code', (b.subject_description) as 'Description', (b.subject_Type) as 'Type', (b.subject_group) as 'Group', (b.subject_units) as 'Units', CONCAT(a.subject_description,'-',a.subject_code) as 'Prerequisite', (b.subject_active_status) as 'Status' from tbl_subject b LEFT JOIN tbl_subject a ON a.subject_id = b.subject_prerequisite where (b.subject_code LIKE '" & frmMain.txtSearch.Text & "%' or b.subject_description LIKE '" & frmMain.txtSearch.Text & "%') order by b.subject_description asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmSubjectList.dgSubjectList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("Description").ToString, dr.Item("Type").ToString, dr.Item("Group").ToString, dr.Item("Units").ToString, dr.Item("Prerequisite").ToString, dr.Item("Status").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
 
-        dgPanelPadding(frmSubjectList.dgSubjectList, frmSubjectList.dgPanel)
+            frmSubjectList.dgSubjectList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select (b.subject_id) as 'ID', (b.subject_code) as 'Code', (b.subject_description) as 'Description', (b.subject_Type) as 'Type', (b.subject_group) as 'Group', (b.subject_units) as 'Units', CONCAT(a.subject_description,'-',a.subject_code) as 'Prerequisite', (b.subject_active_status) as 'Status' from tbl_subject b LEFT JOIN tbl_subject a ON a.subject_id = b.subject_prerequisite where (b.subject_code LIKE '" & frmMain.txtSearch.Text & "%' or b.subject_description LIKE '" & frmMain.txtSearch.Text & "%') order by b.subject_description asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmSubjectList.dgSubjectList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("Description").ToString, dr.Item("Type").ToString, dr.Item("Group").ToString, dr.Item("Units").ToString, dr.Item("Prerequisite").ToString, dr.Item("Status").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+            dgPanelPadding(frmSubjectList.dgSubjectList, frmSubjectList.dgPanel)
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmSubjectList.dgSubjectList.Rows.Clear()
+
+        End Try
     End Sub
 
     Public Sub LibrarySubjectListModule()
-        frmSubject.dgSubjectList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select (b.subject_id) as 'ID', (b.subject_code) as 'Code', (b.subject_description) as 'Description', (b.subject_Type) as 'Type', (b.subject_group) as 'Group', (b.subject_units) as 'Units', CONCAT(a.subject_description,'-',a.subject_code) as 'Prerequisite', (b.subject_active_status) as 'Status' from tbl_subject b JOIN tbl_subject a ON a.subject_id = b.subject_prerequisite where b.subject_active_status = 'Active' and (b.subject_code LIKE '" & frmSubject.txtSearch.Text & "%' or b.subject_description LIKE '" & frmSubject.txtSearch.Text & "%') order by b.subject_description asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmSubject.dgSubjectList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("Description").ToString, dr.Item("Type").ToString, dr.Item("Group").ToString, dr.Item("Units").ToString, dr.Item("Prerequisite").ToString, dr.Item("Status").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
+
+            frmSubject.dgSubjectList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select (b.subject_id) as 'ID', (b.subject_code) as 'Code', (b.subject_description) as 'Description', (b.subject_Type) as 'Type', (b.subject_group) as 'Group', (b.subject_units) as 'Units', CONCAT(a.subject_description,'-',a.subject_code) as 'Prerequisite', (b.subject_active_status) as 'Status' from tbl_subject b JOIN tbl_subject a ON a.subject_id = b.subject_prerequisite where b.subject_active_status = 'Active' and (b.subject_code LIKE '" & frmSubject.txtSearch.Text & "%' or b.subject_description LIKE '" & frmSubject.txtSearch.Text & "%') order by b.subject_description asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmSubject.dgSubjectList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("Description").ToString, dr.Item("Type").ToString, dr.Item("Group").ToString, dr.Item("Units").ToString, dr.Item("Prerequisite").ToString, dr.Item("Status").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmSubject.dgSubjectList.Rows.Clear()
+        End Try
     End Sub
 
     Public Sub LibrarySectionList()
-        frmSectionList.dgSectionList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select (cb_id) as 'ID', (cb_code) as 'Code', (cb_description) as 'Description' from tbl_class_block where (cb_code LIKE '%" & frmMain.txtSearch.Text & "%' or cb_description LIKE '%" & frmMain.txtSearch.Text & "%') order by cb_description asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmSectionList.dgSectionList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("Description").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
 
-        dgPanelPadding(frmSectionList.dgSectionList, frmSectionList.dgPanel)
+            frmSectionList.dgSectionList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select (cb_id) as 'ID', (cb_code) as 'Code', (cb_description) as 'Description' from tbl_class_block where (cb_code LIKE '%" & frmMain.txtSearch.Text & "%' or cb_description LIKE '%" & frmMain.txtSearch.Text & "%') order by cb_description asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmSectionList.dgSectionList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("Description").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+            dgPanelPadding(frmSectionList.dgSectionList, frmSectionList.dgPanel)
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmSectionList.dgSectionList.Rows.Clear()
+        End Try
     End Sub
 
     Public Sub LibraryDaySchedList()
-        frmDaySchedList.dgDaySchedList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select (ds_id) as 'ID', (ds_code) as 'Code', (ds_description) as 'Description' from tbl_day_schedule where (ds_code LIKE '%" & frmMain.txtSearch.Text & "%' or ds_description LIKE '%" & frmMain.txtSearch.Text & "%') order by ds_description asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmDaySchedList.dgDaySchedList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("Description").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
 
-        dgPanelPadding(frmDaySchedList.dgDaySchedList, frmSectionList.dgPanel)
+            frmDaySchedList.dgDaySchedList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select (ds_id) as 'ID', (ds_code) as 'Code', (ds_description) as 'Description' from tbl_day_schedule where (ds_code LIKE '%" & frmMain.txtSearch.Text & "%' or ds_description LIKE '%" & frmMain.txtSearch.Text & "%') order by ds_description asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmDaySchedList.dgDaySchedList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("Description").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+            dgPanelPadding(frmDaySchedList.dgDaySchedList, frmSectionList.dgPanel)
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmDaySchedList.dgDaySchedList.Rows.Clear()
+        End Try
     End Sub
 
     Public Sub LibraryRoomList()
-        frmRoomList.dgRoomList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select room_id as 'ID', (room_code) as 'Code', (room_description) as 'Description', (is_active) as 'Status', (capacity) as 'Capacity' from tbl_room where (room_code LIKE '%" & frmMain.txtSearch.Text & "%' or room_description LIKE '%" & frmMain.txtSearch.Text & "%') order by room_description asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmRoomList.dgRoomList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("Description").ToString, dr.Item("Capacity").ToString, dr.Item("Status").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
 
-        dgPanelPadding(frmRoomList.dgRoomList, frmSectionList.dgPanel)
+            frmRoomList.dgRoomList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select room_id as 'ID', (room_code) as 'Code', (room_description) as 'Description', (is_active) as 'Status', (capacity) as 'Capacity' from tbl_room where (room_code LIKE '%" & frmMain.txtSearch.Text & "%' or room_description LIKE '%" & frmMain.txtSearch.Text & "%') order by room_description asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmRoomList.dgRoomList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("Description").ToString, dr.Item("Capacity").ToString, dr.Item("Status").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+            dgPanelPadding(frmRoomList.dgRoomList, frmSectionList.dgPanel)
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmRoomList.dgRoomList.Rows.Clear()
+
+        End Try
     End Sub
 
     Public Sub LibrarySchoolList()
-        frmSchoolList.dgSchoolList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select (schl_id) as 'ID', (schl_code) as 'Code', (schl_name) as 'School Name', (schl_address) as 'School Address' from tbl_schools where (schl_code LIKE '%" & frmMain.txtSearch.Text & "%' or schl_name LIKE '%" & frmMain.txtSearch.Text & "%') order by schl_name asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmSchoolList.dgSchoolList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("School Name").ToString, dr.Item("School Address").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
 
-        dgPanelPadding(frmSchoolList.dgSchoolList, frmSchoolList.dgPanel)
+            frmSchoolList.dgSchoolList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select (schl_id) as 'ID', (schl_code) as 'Code', (schl_name) as 'School Name', (schl_address) as 'School Address' from tbl_schools where (schl_code LIKE '%" & frmMain.txtSearch.Text & "%' or schl_name LIKE '%" & frmMain.txtSearch.Text & "%') order by schl_name asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmSchoolList.dgSchoolList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("School Name").ToString, dr.Item("School Address").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+            dgPanelPadding(frmSchoolList.dgSchoolList, frmSchoolList.dgPanel)
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmSchoolList.dgSchoolList.Rows.Clear()
+
+        End Try
     End Sub
 
     Public Sub LibraryEmployeeList()
-        frmEmployeeList.dgEmployeeList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select emp_id, (emp_code) as 'BIO No.', (emp_Last_name) as 'Last Name', (emp_first_name) as 'First Name', (emp_middle_name) as 'Middle Name', (position_id) as 'Position', (emp_status) as 'Status', required_subject_load as 'Required Subject Load (Units)' from tbl_employee where (emp_code LIKE '%" & frmMain.txtSearch.Text & "%' or emp_Last_name LIKE '%" & frmMain.txtSearch.Text & "%' or emp_first_name LIKE '%" & frmMain.txtSearch.Text & "%' or emp_middle_name LIKE '%" & frmMain.txtSearch.Text & "%') order by emp_Last_name asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmEmployeeList.dgEmployeeList.Rows.Add(i, dr.Item("emp_id").ToString, dr.Item("BIO No.").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, "", dr.Item("Status").ToString, dr.Item("Required Subject Load (Units)").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
 
-        dgPanelPadding(frmEmployeeList.dgEmployeeList, frmEmployeeList.dgPanel)
+            frmEmployeeList.dgEmployeeList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select emp_id, (emp_code) as 'BIO No.', (emp_Last_name) as 'Last Name', (emp_first_name) as 'First Name', (emp_middle_name) as 'Middle Name', (position_id) as 'Position', (emp_status) as 'Status', required_subject_load as 'Required Subject Load (Units)' from tbl_employee where (emp_code LIKE '%" & frmMain.txtSearch.Text & "%' or emp_Last_name LIKE '%" & frmMain.txtSearch.Text & "%' or emp_first_name LIKE '%" & frmMain.txtSearch.Text & "%' or emp_middle_name LIKE '%" & frmMain.txtSearch.Text & "%') order by emp_Last_name asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmEmployeeList.dgEmployeeList.Rows.Add(i, dr.Item("emp_id").ToString, dr.Item("BIO No.").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, "", dr.Item("Status").ToString, dr.Item("Required Subject Load (Units)").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+            dgPanelPadding(frmEmployeeList.dgEmployeeList, frmEmployeeList.dgPanel)
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmEmployeeList.dgEmployeeList.Rows.Clear()
+
+        End Try
     End Sub
 
     Public Sub LibraryClassSchedList()
-        frmClassSchedList.dgClassSchedList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnMode.None
-        frmClassSchedList.dgClassSchedList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "SELECT t1.`class_schedule_id`, t1.`cb_code`, t1.`subject_code`, t1.`subject_description`, t1.`subject_units`, t1.`ds_code`, t1.`time_start_schedule`, t1.`time_end_schedule`, t1.`room_code`, t1.`Instructor`, t1.`population`, t1.`csperiod_id`, t1.`is_active` FROM `classschedulelist` t1 where t1.csperiod_id = " & acadID & " and (t1.cb_code LIKE '%" & frmMain.txtSearch.Text & "%' or t1.subject_code LIKE '%" & frmMain.txtSearch.Text & "%' or t1.subject_description LIKE '%" & frmMain.txtSearch.Text & "%' or t1.Instructor LIKE '%" & frmMain.txtSearch.Text & "%') limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmClassSchedList.dgClassSchedList.Rows.Add(i, dr.Item("class_schedule_id").ToString, dr.Item("cb_code").ToString, dr.Item("subject_code").ToString, dr.Item("subject_description").ToString, dr.Item("subject_units").ToString, dr.Item("ds_code").ToString, dr.Item("time_start_schedule").ToString, dr.Item("time_end_schedule").ToString, dr.Item("room_code").ToString, dr.Item("Instructor").ToString, dr.Item("population").ToString, "👁", dr.Item("csperiod_id").ToString, dr.Item("is_active").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
 
-        dgPanelPadding(frmClassSchedList.dgClassSchedList, frmClassSchedList.dgPanel)
+            frmClassSchedList.dgClassSchedList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnMode.None
+            frmClassSchedList.dgClassSchedList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "SELECT t1.`class_schedule_id`, t1.`cb_code`, t1.`subject_code`, t1.`subject_description`, t1.`subject_units`, t1.`ds_code`, t1.`time_start_schedule`, t1.`time_end_schedule`, t1.`room_code`, t1.`Instructor`, t1.`population`, t1.`csperiod_id`, t1.`is_active` FROM `classschedulelist` t1 where t1.csperiod_id = " & acadID & " and (t1.cb_code LIKE '%" & frmMain.txtSearch.Text & "%' or t1.subject_code LIKE '%" & frmMain.txtSearch.Text & "%' or t1.subject_description LIKE '%" & frmMain.txtSearch.Text & "%' or t1.Instructor LIKE '%" & frmMain.txtSearch.Text & "%') limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmClassSchedList.dgClassSchedList.Rows.Add(i, dr.Item("class_schedule_id").ToString, dr.Item("cb_code").ToString, dr.Item("subject_code").ToString, dr.Item("subject_description").ToString, dr.Item("subject_units").ToString, dr.Item("ds_code").ToString, dr.Item("time_start_schedule").ToString, dr.Item("time_end_schedule").ToString, dr.Item("room_code").ToString, dr.Item("Instructor").ToString, dr.Item("population").ToString, "👁", dr.Item("csperiod_id").ToString, dr.Item("is_active").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+            dgPanelPadding(frmClassSchedList.dgClassSchedList, frmClassSchedList.dgPanel)
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmClassSchedList.dgClassSchedList.Rows.Clear()
+
+        End Try
     End Sub
 
     Public Sub LibraryUserList()
-        frmUserList.dgUserList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "SELECT `ua_id` as 'ID', `ua_user_name` as 'Username', CONCAT(`ua_first_name`, ' ',`ua_middle_name`, ' ', `ua_last_name`) as 'Name', `ua_account_type` as 'Role' FROM `tbl_user_account` where CONCAT(`ua_first_name`, ' ',`ua_middle_name`, ' ', `ua_last_name`) LIKE '%" & frmMain.txtSearch.Text & "%' order by Name asc"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmUserList.dgUserList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Username").ToString, dr.Item("Name").ToString, dr.Item("Role").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
 
-        dgPanelPadding(frmUserList.dgUserList, frmUserList.dgPanel)
+            frmUserList.dgUserList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "SELECT `ua_id` as 'ID', `ua_user_name` as 'Username', CONCAT(`ua_first_name`, ' ',`ua_middle_name`, ' ', `ua_last_name`) as 'Name', `ua_account_type` as 'Role' FROM `tbl_user_account` where CONCAT(`ua_first_name`, ' ',`ua_middle_name`, ' ', `ua_last_name`) LIKE '%" & frmMain.txtSearch.Text & "%' order by Name asc"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmUserList.dgUserList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Username").ToString, dr.Item("Name").ToString, dr.Item("Role").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+            dgPanelPadding(frmUserList.dgUserList, frmUserList.dgPanel)
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmUserList.dgUserList.Rows.Clear()
+        End Try
     End Sub
 
     Public Sub GradingClassSchedList()
-        frmClassGradeEditor.dgClassSchedList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnMode.None
-        frmClassGradeEditor.dgClassSchedList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "SELECT t1.`class_schedule_id`, t1.`cb_code`, t1.`subject_code`, t1.`subject_description`, t1.`subject_units`, t1.`ds_code`, t1.`time_start_schedule`, t1.`time_end_schedule`, t1.`room_code`, t1.`Instructor`, t1.`population`, t1.`csperiod_id`, t1.`is_active` FROM `classschedulelist` t1 where t1.csperiod_id = " & CInt(frmClassGradeEditor.cbAcademicYear.SelectedValue) & " and (t1.cb_code LIKE '%" & frmClassGradeEditor.txtSearch.Text & "%' or t1.subject_code LIKE '%" & frmClassGradeEditor.txtSearch.Text & "%' or t1.subject_description LIKE '%" & frmClassGradeEditor.txtSearch.Text & "%' or t1.Instructor LIKE '%" & frmClassGradeEditor.txtSearch.Text & "%') limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmClassGradeEditor.dgClassSchedList.Rows.Add(i, dr.Item("class_schedule_id").ToString, dr.Item("cb_code").ToString, dr.Item("subject_code").ToString, dr.Item("subject_description").ToString, dr.Item("subject_units").ToString, dr.Item("ds_code").ToString, dr.Item("time_start_schedule").ToString, dr.Item("time_end_schedule").ToString, dr.Item("room_code").ToString, dr.Item("Instructor").ToString, dr.Item("population").ToString, "👁", dr.Item("csperiod_id").ToString, dr.Item("is_active").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
+
+            frmClassGradeEditor.dgClassSchedList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnMode.None
+            frmClassGradeEditor.dgClassSchedList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "SELECT t1.`class_schedule_id`, t1.`cb_code`, t1.`subject_code`, t1.`subject_description`, t1.`subject_units`, t1.`ds_code`, t1.`time_start_schedule`, t1.`time_end_schedule`, t1.`room_code`, t1.`Instructor`, t1.`population`, t1.`csperiod_id`, t1.`is_active` FROM `classschedulelist` t1 where t1.csperiod_id = " & CInt(frmClassGradeEditor.cbAcademicYear.SelectedValue) & " and (t1.cb_code LIKE '%" & frmClassGradeEditor.txtSearch.Text & "%' or t1.subject_code LIKE '%" & frmClassGradeEditor.txtSearch.Text & "%' or t1.subject_description LIKE '%" & frmClassGradeEditor.txtSearch.Text & "%' or t1.Instructor LIKE '%" & frmClassGradeEditor.txtSearch.Text & "%') limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmClassGradeEditor.dgClassSchedList.Rows.Add(i, dr.Item("class_schedule_id").ToString, dr.Item("cb_code").ToString, dr.Item("subject_code").ToString, dr.Item("subject_description").ToString, dr.Item("subject_units").ToString, dr.Item("ds_code").ToString, dr.Item("time_start_schedule").ToString, dr.Item("time_end_schedule").ToString, dr.Item("room_code").ToString, dr.Item("Instructor").ToString, dr.Item("population").ToString, "👁", dr.Item("csperiod_id").ToString, dr.Item("is_active").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmClassGradeEditor.dgClassSchedList.Rows.Clear()
+        End Try
     End Sub
 
     Function CountEnrolled(ByVal classID As Integer) As Integer
@@ -566,142 +691,197 @@ Module Records
     End Sub
 
     Public Sub LibraryClassSectionList()
-        frmClassSched.dgSectionList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select (cb_id) as 'ID', (cb_code) as 'Code', (cb_description) as 'Description' from tbl_class_block where (cb_code LIKE '%" & frmClassSched.txtSearch.Text & "%' or cb_description LIKE '%" & frmClassSched.txtSearch.Text & "%') order by cb_description asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmClassSched.dgSectionList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("Description").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
 
-        dgPanelPadding(frmClassSched.dgSectionList, frmClassSched.dgPanel)
+            frmClassSched.dgSectionList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select (cb_id) as 'ID', (cb_code) as 'Code', (cb_description) as 'Description' from tbl_class_block where (cb_code LIKE '%" & frmClassSched.txtSearch.Text & "%' or cb_description LIKE '%" & frmClassSched.txtSearch.Text & "%') order by cb_description asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmClassSched.dgSectionList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("Description").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+            dgPanelPadding(frmClassSched.dgSectionList, frmClassSched.dgPanel)
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmClassSched.dgSectionList.Rows.Clear()
+        End Try
     End Sub
 
     Public Sub LibraryClassEmployeeList()
-        frmClassSched.dgEmployeeList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select emp_id, (emp_code) as 'BIO No.', (emp_Last_name) as 'Last Name', (emp_first_name) as 'First Name', (emp_middle_name) as 'Middle Name', (position_id) as 'Position', (emp_status) as 'Status', required_subject_load as 'Required Subject Load (Units)' from tbl_employee where (emp_code LIKE '%" & frmClassSched.txtSearch.Text & "%' or emp_Last_name LIKE '%" & frmClassSched.txtSearch.Text & "%' or emp_first_name LIKE '%" & frmClassSched.txtSearch.Text & "%' or emp_middle_name LIKE '%" & frmClassSched.txtSearch.Text & "%') order by emp_Last_name asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmClassSched.dgEmployeeList.Rows.Add(i, dr.Item("emp_id").ToString, dr.Item("BIO No.").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, "", dr.Item("Status").ToString, dr.Item("Required Subject Load (Units)").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
 
-        dgPanelPadding(frmClassSched.dgEmployeeList, frmClassSched.dgPanel)
+
+            frmClassSched.dgEmployeeList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select emp_id, (emp_code) as 'BIO No.', (emp_Last_name) as 'Last Name', (emp_first_name) as 'First Name', (emp_middle_name) as 'Middle Name', (position_id) as 'Position', (emp_status) as 'Status', required_subject_load as 'Required Subject Load (Units)' from tbl_employee where (emp_code LIKE '%" & frmClassSched.txtSearch.Text & "%' or emp_Last_name LIKE '%" & frmClassSched.txtSearch.Text & "%' or emp_first_name LIKE '%" & frmClassSched.txtSearch.Text & "%' or emp_middle_name LIKE '%" & frmClassSched.txtSearch.Text & "%') order by emp_Last_name asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmClassSched.dgEmployeeList.Rows.Add(i, dr.Item("emp_id").ToString, dr.Item("BIO No.").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, "", dr.Item("Status").ToString, dr.Item("Required Subject Load (Units)").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+            dgPanelPadding(frmClassSched.dgEmployeeList, frmClassSched.dgPanel)
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmClassSched.dgEmployeeList.Rows.Clear()
+        End Try
     End Sub
 
     Public Sub LibraryClassDaySchedList()
-        frmClassSched.dgDaySchedList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select (ds_id) as 'ID', (ds_code) as 'Code', (ds_description) as 'Description' from tbl_day_schedule where (ds_code LIKE '%" & frmClassSched.txtSearch.Text & "%' or ds_description LIKE '%" & frmClassSched.txtSearch.Text & "%') order by ds_description asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmClassSched.dgDaySchedList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("Description").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
 
-        dgPanelPadding(frmClassSched.dgDaySchedList, frmClassSched.dgPanel)
+
+            frmClassSched.dgDaySchedList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select (ds_id) as 'ID', (ds_code) as 'Code', (ds_description) as 'Description' from tbl_day_schedule where (ds_code LIKE '%" & frmClassSched.txtSearch.Text & "%' or ds_description LIKE '%" & frmClassSched.txtSearch.Text & "%') order by ds_description asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmClassSched.dgDaySchedList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("Description").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+            dgPanelPadding(frmClassSched.dgDaySchedList, frmClassSched.dgPanel)
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmClassSched.dgDaySchedList.Rows.Clear()
+        End Try
     End Sub
 
     Public Sub LibraryClassRoomList()
-        frmClassSched.dgRoomList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select room_id as 'ID', (room_code) as 'Code', (room_description) as 'Description', (is_active) as 'Status', (capacity) as 'Capacity' from tbl_room where (room_code LIKE '%" & frmClassSched.txtSearch.Text & "%' or room_description LIKE '%" & frmClassSched.txtSearch.Text & "%') order by room_description asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmClassSched.dgRoomList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("Description").ToString, dr.Item("Capacity").ToString, dr.Item("Status").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
 
-        dgPanelPadding(frmClassSched.dgRoomList, frmClassSched.dgPanel)
+
+            frmClassSched.dgRoomList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select room_id as 'ID', (room_code) as 'Code', (room_description) as 'Description', (is_active) as 'Status', (capacity) as 'Capacity' from tbl_room where (room_code LIKE '%" & frmClassSched.txtSearch.Text & "%' or room_description LIKE '%" & frmClassSched.txtSearch.Text & "%') order by room_description asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmClassSched.dgRoomList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("Description").ToString, dr.Item("Capacity").ToString, dr.Item("Status").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+            dgPanelPadding(frmClassSched.dgRoomList, frmClassSched.dgPanel)
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmClassSched.dgRoomList.Rows.Clear()
+        End Try
     End Sub
 
     Public Sub LibraryClassAcadList()
-        frmClassSched.dgAcadList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select period_id, (period_name) as 'Period', (period_semester) as 'Semester', (period_status) as 'Status', period_enrollment_status, period_enrollment_ad_status from tbl_period where (period_name LIKE '%" & frmClassSched.txtSearch.Text & "%' or period_semester LIKE '%" & frmClassSched.txtSearch.Text & "%') order by `period_name` desc, `period_semester` desc, `period_status` asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmClassSched.dgAcadList.Rows.Add(i, dr.Item("period_id").ToString, dr.Item("Period").ToString, dr.Item("Semester").ToString, dr.Item("period_enrollment_status").ToString, dr.Item("period_enrollment_ad_status").ToString, dr.Item("Status").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
 
-        dgPanelPadding(frmClassSched.dgAcadList, frmClassSched.dgPanel)
+
+            frmClassSched.dgAcadList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select period_id, (period_name) as 'Period', (period_semester) as 'Semester', (period_status) as 'Status', period_enrollment_status, period_enrollment_ad_status from tbl_period where (period_name LIKE '%" & frmClassSched.txtSearch.Text & "%' or period_semester LIKE '%" & frmClassSched.txtSearch.Text & "%') order by `period_name` desc, `period_semester` desc, `period_status` asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmClassSched.dgAcadList.Rows.Add(i, dr.Item("period_id").ToString, dr.Item("Period").ToString, dr.Item("Semester").ToString, dr.Item("period_enrollment_status").ToString, dr.Item("period_enrollment_ad_status").ToString, dr.Item("Status").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+            dgPanelPadding(frmClassSched.dgAcadList, frmClassSched.dgPanel)
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmClassSched.dgAcadList.Rows.Clear()
+        End Try
     End Sub
 
     Public Sub LibraryClassCurList()
-        frmClassSched.dgCurList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select curriculum_id, (curriculum_code) as 'Curriculum', (course_code) as 'Course', (datetime_created) as 'Created', CONCAT(ua_first_name,' ',ua_middle_name,' ',ua_last_name) as 'Created By', (is_active) as 'Status', (is_current) as 'Is Current?' from (tbl_curriculum JOIN tbl_course) JOIN tbl_user_account where tbl_curriculum.prepared_by_id = tbl_user_account.ua_id and tbl_curriculum.curr_course_id = tbl_course.course_id and curriculum_code LIKE '%" & frmClassSched.txtSearch.Text & "%' order by datetime_created asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmClassSched.dgCurList.Rows.Add(i, dr.Item("curriculum_id").ToString, dr.Item("Curriculum").ToString, dr.Item("Course").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
 
-        dgPanelPadding(frmClassSched.dgCurList, frmClassSched.dgPanel)
+            frmClassSched.dgCurList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select curriculum_id, (curriculum_code) as 'Curriculum', (course_code) as 'Course', (datetime_created) as 'Created', CONCAT(ua_first_name,' ',ua_middle_name,' ',ua_last_name) as 'Created By', (is_active) as 'Status', (is_current) as 'Is Current?' from (tbl_curriculum JOIN tbl_course) JOIN tbl_user_account where tbl_curriculum.prepared_by_id = tbl_user_account.ua_id and tbl_curriculum.curr_course_id = tbl_course.course_id and curriculum_code LIKE '%" & frmClassSched.txtSearch.Text & "%' order by datetime_created asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmClassSched.dgCurList.Rows.Add(i, dr.Item("curriculum_id").ToString, dr.Item("Curriculum").ToString, dr.Item("Course").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+            dgPanelPadding(frmClassSched.dgCurList, frmClassSched.dgPanel)
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmClassSched.dgCurList.Rows.Clear()
+        End Try
     End Sub
 
     Public Sub LibraryClassSubjectList()
-        frmClassSched.dgSubjectList.Rows.Clear()
-        Dim curID As Integer = 0
         Try
-            curID = CInt(frmClassSched.cbCur.SelectedValue)
-        Catch ex As Exception
-            curID = 0
-        End Try
-        Dim i As Integer
-        Dim sql As String
-        sql = "select Subject_ID, Subject, `Group` as SubGroup, Type, Units from subjectspercurriculum where Curr_ID = " & curID & " and Subject LIKE '%" & frmClassSched.txtSearch.Text & "%' order by Subject asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmClassSched.dgSubjectList.Rows.Add(i, dr.Item("Subject_ID").ToString, dr.Item("Subject").ToString, dr.Item("SubGroup").ToString, dr.Item("Type").ToString, dr.Item("Units").ToString)
-        End While
-        dr.Close()
-        cn.Close()
 
-        dgPanelPadding(frmClassSched.dgSubjectList, frmClassSched.dgPanel)
+
+            frmClassSched.dgSubjectList.Rows.Clear()
+            Dim curID As Integer = 0
+            Try
+                curID = CInt(frmClassSched.cbCur.SelectedValue)
+            Catch ex As Exception
+                curID = 0
+            End Try
+            Dim i As Integer
+            Dim sql As String
+            sql = "select Subject_ID, Subject, `Group` as SubGroup, Type, Units from subjectspercurriculum where Curr_ID = " & curID & " and Subject LIKE '%" & frmClassSched.txtSearch.Text & "%' order by Subject asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmClassSched.dgSubjectList.Rows.Add(i, dr.Item("Subject_ID").ToString, dr.Item("Subject").ToString, dr.Item("SubGroup").ToString, dr.Item("Type").ToString, dr.Item("Units").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+            dgPanelPadding(frmClassSched.dgSubjectList, frmClassSched.dgPanel)
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmClassSched.dgSubjectList.Rows.Clear()
+        End Try
     End Sub
     Public Sub AddSubjectSchedule()
         Try
@@ -1119,37 +1299,54 @@ Module Records
     End Sub
 
     Public Sub SubjectListPerSection()
-        frmClassSchedList.dgClassSchedList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "SELECT `tbl_class_schedule`.`class_schedule_id` AS `ID`, `tbl_class_block`.`cb_code` as 'Class', `period`.`PERIOD` as 'Period', CONCAT(`tbl_class_block`.`cb_code`, ' - ', `period`.`PERIOD`) AS `Code`, CONCAT(`tbl_subject`.`subject_code`, ' - ', `tbl_subject`.`subject_description` ) AS `Subject`, `tbl_subject`.`subject_units` AS `Units`, if(`tbl_day_schedule`.`ds_code` = 'M T W TH F SAT SUN', 'DAILY', `tbl_day_schedule`.`ds_code`) AS `Day Schedule`, `tbl_class_schedule`.`time_start_schedule` AS `Time Start`, `tbl_class_schedule`.`time_end_schedule` as `Time End`, `tbl_room`.`room_code` AS `Room`, CONCAT( `tbl_employee`.`emp_last_name`, ', ', `tbl_employee`.`emp_first_name`, ' ', `tbl_employee`.`emp_middle_name` ) AS `Instructor`, `tbl_class_schedule`.`population` AS `Population`, period_id, if(tbl_class_schedule.class_status = 'Merged', CONCAT(tbl_class_schedule.is_active,' - ',tbl_class_schedule.class_status), tbl_class_schedule.is_active) as 'Status' FROM (((((`tbl_class_schedule`JOIN `tbl_class_block`)JOIN `tbl_subject`)JOIN `tbl_day_schedule`)JOIN `tbl_room`)JOIN `tbl_employee`)JOIN `period` WHERE `tbl_class_schedule`.`class_block_id` = `tbl_class_block`.`cb_id` AND `tbl_class_schedule`.`cssubject_id` = `tbl_subject`.`subject_id` AND `tbl_class_schedule`.`days_schedule` = `tbl_day_schedule`.`ds_id` AND `tbl_class_schedule`.`csroom_id` = `tbl_room`.`room_id` AND `tbl_class_schedule`.`csemp_id` = `tbl_employee`.`emp_id` and `tbl_class_schedule`.`csperiod_id` = `period`.`period_id` and period_id = " & acadID & " and cb_id = " & CInt(frmClassSched.cbSection.SelectedValue) & " and `tbl_class_schedule`.`class_schedule_id` NOT IN (" & frmClassSched.ClassID & ") group by `class_schedule_id` limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmClassSchedList.dgClassSchedList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Class").ToString, dr.Item("Code").ToString, dr.Item("Subject").ToString, dr.Item("Units").ToString, dr.Item("Day Schedule").ToString, dr.Item("Time Start").ToString, dr.Item("Time End").ToString, dr.Item("Room").ToString, dr.Item("Instructor").ToString, dr.Item("Population").ToString, "", dr.Item("period_id").ToString, dr.Item("status").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
+
+            frmClassSchedList.dgClassSchedList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "SELECT `tbl_class_schedule`.`class_schedule_id` AS `ID`, `tbl_class_block`.`cb_code` as 'Class', `period`.`PERIOD` as 'Period', CONCAT(`tbl_class_block`.`cb_code`, ' - ', `period`.`PERIOD`) AS `Code`, CONCAT(`tbl_subject`.`subject_code`, ' - ', `tbl_subject`.`subject_description` ) AS `Subject`, `tbl_subject`.`subject_units` AS `Units`, if(`tbl_day_schedule`.`ds_code` = 'M T W TH F SAT SUN', 'DAILY', `tbl_day_schedule`.`ds_code`) AS `Day Schedule`, `tbl_class_schedule`.`time_start_schedule` AS `Time Start`, `tbl_class_schedule`.`time_end_schedule` as `Time End`, `tbl_room`.`room_code` AS `Room`, CONCAT( `tbl_employee`.`emp_last_name`, ', ', `tbl_employee`.`emp_first_name`, ' ', `tbl_employee`.`emp_middle_name` ) AS `Instructor`, `tbl_class_schedule`.`population` AS `Population`, period_id, if(tbl_class_schedule.class_status = 'Merged', CONCAT(tbl_class_schedule.is_active,' - ',tbl_class_schedule.class_status), tbl_class_schedule.is_active) as 'Status' FROM (((((`tbl_class_schedule`JOIN `tbl_class_block`)JOIN `tbl_subject`)JOIN `tbl_day_schedule`)JOIN `tbl_room`)JOIN `tbl_employee`)JOIN `period` WHERE `tbl_class_schedule`.`class_block_id` = `tbl_class_block`.`cb_id` AND `tbl_class_schedule`.`cssubject_id` = `tbl_subject`.`subject_id` AND `tbl_class_schedule`.`days_schedule` = `tbl_day_schedule`.`ds_id` AND `tbl_class_schedule`.`csroom_id` = `tbl_room`.`room_id` AND `tbl_class_schedule`.`csemp_id` = `tbl_employee`.`emp_id` and `tbl_class_schedule`.`csperiod_id` = `period`.`period_id` and period_id = " & acadID & " and cb_id = " & CInt(frmClassSched.cbSection.SelectedValue) & " and `tbl_class_schedule`.`class_schedule_id` NOT IN (" & frmClassSched.ClassID & ") group by `class_schedule_id` limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmClassSchedList.dgClassSchedList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Class").ToString, dr.Item("Code").ToString, dr.Item("Subject").ToString, dr.Item("Units").ToString, dr.Item("Day Schedule").ToString, dr.Item("Time Start").ToString, dr.Item("Time End").ToString, dr.Item("Room").ToString, dr.Item("Instructor").ToString, dr.Item("Population").ToString, "", dr.Item("period_id").ToString, dr.Item("status").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmClassSchedList.dgClassSchedList.Rows.Clear()
+        End Try
     End Sub
 
     Public Sub SubjectListPerInstructor()
-        frmClassSchedList.dgClassSchedList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "SELECT `tbl_class_schedule`.`class_schedule_id` AS `ID`, `tbl_class_block`.`cb_code` as 'Class', `period`.`PERIOD` as 'Period', CONCAT(`tbl_class_block`.`cb_code`, ' - ', `period`.`PERIOD`) AS `Code`, CONCAT(`tbl_subject`.`subject_code`, ' - ', `tbl_subject`.`subject_description` ) AS `Subject`, `tbl_subject`.`subject_units` AS `Units`, if(`tbl_day_schedule`.`ds_code` = 'M T W TH F SAT SUN', 'DAILY', `tbl_day_schedule`.`ds_code`) AS `Day Schedule`, `tbl_class_schedule`.`time_start_schedule` AS `Time Start`, `tbl_class_schedule`.`time_end_schedule` as `Time End`, `tbl_room`.`room_code` AS `Room`, CONCAT( `tbl_employee`.`emp_last_name`, ', ', `tbl_employee`.`emp_first_name`, ' ', `tbl_employee`.`emp_middle_name` ) AS `Instructor`, `tbl_class_schedule`.`population` AS `Population`, period_id, if(tbl_class_schedule.class_status = 'Merged', CONCAT(tbl_class_schedule.is_active,' - ',tbl_class_schedule.class_status), tbl_class_schedule.is_active) as 'Status' FROM (((((`tbl_class_schedule`JOIN `tbl_class_block`)JOIN `tbl_subject`)JOIN `tbl_day_schedule`)JOIN `tbl_room`)JOIN `tbl_employee`)JOIN `period` WHERE `tbl_class_schedule`.`class_block_id` = `tbl_class_block`.`cb_id` AND `tbl_class_schedule`.`cssubject_id` = `tbl_subject`.`subject_id` AND `tbl_class_schedule`.`days_schedule` = `tbl_day_schedule`.`ds_id` AND `tbl_class_schedule`.`csroom_id` = `tbl_room`.`room_id` AND `tbl_class_schedule`.`csemp_id` = `tbl_employee`.`emp_id` and `tbl_class_schedule`.`csperiod_id` = `period`.`period_id` and period_id = " & acadID & " and csemp_id = " & CInt(frmClassSched.cbInstructor.SelectedValue) & " and `tbl_class_schedule`.`class_schedule_id` NOT IN (" & frmClassSched.ClassID & ") group by `class_schedule_id` limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmClassSchedList.dgClassSchedList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Class").ToString, dr.Item("Code").ToString, dr.Item("Subject").ToString, dr.Item("Units").ToString, dr.Item("Day Schedule").ToString, dr.Item("Time Start").ToString, dr.Item("Time End").ToString, dr.Item("Room").ToString, dr.Item("Instructor").ToString, dr.Item("Population").ToString, "", dr.Item("period_id").ToString, dr.Item("status").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
+
+
+            frmClassSchedList.dgClassSchedList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "SELECT `tbl_class_schedule`.`class_schedule_id` AS `ID`, `tbl_class_block`.`cb_code` as 'Class', `period`.`PERIOD` as 'Period', CONCAT(`tbl_class_block`.`cb_code`, ' - ', `period`.`PERIOD`) AS `Code`, CONCAT(`tbl_subject`.`subject_code`, ' - ', `tbl_subject`.`subject_description` ) AS `Subject`, `tbl_subject`.`subject_units` AS `Units`, if(`tbl_day_schedule`.`ds_code` = 'M T W TH F SAT SUN', 'DAILY', `tbl_day_schedule`.`ds_code`) AS `Day Schedule`, `tbl_class_schedule`.`time_start_schedule` AS `Time Start`, `tbl_class_schedule`.`time_end_schedule` as `Time End`, `tbl_room`.`room_code` AS `Room`, CONCAT( `tbl_employee`.`emp_last_name`, ', ', `tbl_employee`.`emp_first_name`, ' ', `tbl_employee`.`emp_middle_name` ) AS `Instructor`, `tbl_class_schedule`.`population` AS `Population`, period_id, if(tbl_class_schedule.class_status = 'Merged', CONCAT(tbl_class_schedule.is_active,' - ',tbl_class_schedule.class_status), tbl_class_schedule.is_active) as 'Status' FROM (((((`tbl_class_schedule`JOIN `tbl_class_block`)JOIN `tbl_subject`)JOIN `tbl_day_schedule`)JOIN `tbl_room`)JOIN `tbl_employee`)JOIN `period` WHERE `tbl_class_schedule`.`class_block_id` = `tbl_class_block`.`cb_id` AND `tbl_class_schedule`.`cssubject_id` = `tbl_subject`.`subject_id` AND `tbl_class_schedule`.`days_schedule` = `tbl_day_schedule`.`ds_id` AND `tbl_class_schedule`.`csroom_id` = `tbl_room`.`room_id` AND `tbl_class_schedule`.`csemp_id` = `tbl_employee`.`emp_id` and `tbl_class_schedule`.`csperiod_id` = `period`.`period_id` and period_id = " & acadID & " and csemp_id = " & CInt(frmClassSched.cbInstructor.SelectedValue) & " and `tbl_class_schedule`.`class_schedule_id` NOT IN (" & frmClassSched.ClassID & ") group by `class_schedule_id` limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmClassSchedList.dgClassSchedList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Class").ToString, dr.Item("Code").ToString, dr.Item("Subject").ToString, dr.Item("Units").ToString, dr.Item("Day Schedule").ToString, dr.Item("Time Start").ToString, dr.Item("Time End").ToString, dr.Item("Room").ToString, dr.Item("Instructor").ToString, dr.Item("Population").ToString, "", dr.Item("period_id").ToString, dr.Item("status").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmClassSchedList.dgClassSchedList.Rows.Clear()
+
+        End Try
     End Sub
 
 #End Region
@@ -1182,22 +1379,30 @@ Module Records
     End Sub
 
     Public Sub LibraryStudentCourseList()
-        frmStudentInfo.dgCourseList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select course_id, course_code, course_name, course_major, course_status from tbl_course where (course_code LIKE '%" & frmStudentInfo.txtSearch.Text & "%' or course_name LIKE '%" & frmStudentInfo.txtSearch.Text & "%') order by course_name asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmStudentInfo.dgCourseList.Rows.Add(i, dr.Item("course_id").ToString, dr.Item("course_code").ToString, dr.Item("course_name").ToString, dr.Item("course_major").ToString, dr.Item("course_status").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
 
-        dgPanelPadding(frmStudentInfo.dgCourseList, frmStudentInfo.dgPanel)
+
+            frmStudentInfo.dgCourseList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select course_id, course_code, course_name, course_major, course_status from tbl_course where (course_code LIKE '%" & frmStudentInfo.txtSearch.Text & "%' or course_name LIKE '%" & frmStudentInfo.txtSearch.Text & "%') order by course_name asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmStudentInfo.dgCourseList.Rows.Add(i, dr.Item("course_id").ToString, dr.Item("course_code").ToString, dr.Item("course_name").ToString, dr.Item("course_major").ToString, dr.Item("course_status").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+            dgPanelPadding(frmStudentInfo.dgCourseList, frmStudentInfo.dgPanel)
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmStudentInfo.dgCourseList.Rows.Clear()
+        End Try
     End Sub
 
     Public Sub LibraryStudentReligionList()
@@ -1239,41 +1444,58 @@ Module Records
     End Sub
 
     Public Sub LibraryStudentScholarshipList()
-        frmStudentInfo.dgScholarshipList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select * from tbl_scholarship_status where scholar_name LIKE '%" & frmStudentInfo.txtSearch.Text & "%' order by scholar_name asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmStudentInfo.dgScholarshipList.Rows.Add(i, dr.Item("scholar_id").ToString, dr.Item("scholar_name").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
 
-        dgPanelPadding(frmStudentInfo.dgScholarshipList, frmStudentInfo.dgPanel)
+            frmStudentInfo.dgScholarshipList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select * from tbl_scholarship_status where scholar_name LIKE '%" & frmStudentInfo.txtSearch.Text & "%' order by scholar_name asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmStudentInfo.dgScholarshipList.Rows.Add(i, dr.Item("scholar_id").ToString, dr.Item("scholar_name").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+            dgPanelPadding(frmStudentInfo.dgScholarshipList, frmStudentInfo.dgPanel)
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmStudentInfo.dgScholarshipList.Rows.Clear()
+
+        End Try
     End Sub
 
     Public Sub LibraryStudentSchoolList()
-        frmStudentInfo.dgSchoolList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select * from tbl_schools where (schl_code LIKE '%" & frmStudentInfo.txtSearch.Text & "%' or schl_name LIKE '%" & frmStudentInfo.txtSearch.Text & "%') order by schl_name asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmStudentInfo.dgSchoolList.Rows.Add(i, dr.Item("schl_id").ToString, dr.Item("schl_code").ToString, dr.Item("schl_name").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
 
-        dgPanelPadding(frmStudentInfo.dgSchoolList, frmStudentInfo.dgPanel)
+            frmStudentInfo.dgSchoolList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select * from tbl_schools where (schl_code LIKE '%" & frmStudentInfo.txtSearch.Text & "%' or schl_name LIKE '%" & frmStudentInfo.txtSearch.Text & "%') order by schl_name asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmStudentInfo.dgSchoolList.Rows.Add(i, dr.Item("schl_id").ToString, dr.Item("schl_code").ToString, dr.Item("schl_name").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+            dgPanelPadding(frmStudentInfo.dgSchoolList, frmStudentInfo.dgPanel)
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmStudentInfo.dgSchoolList.Rows.Clear()
+
+        End Try
     End Sub
 
     Sub StudentModuleSearch()
@@ -1797,159 +2019,191 @@ Module Records
     End Function
 
     Public Sub CashieringLoadCurrentAccount()
-        frmCashiering.dgCurrentAccount.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "SELECT `Academic Year`, FORMAT(`Assessment`,2) as Assessment, FORMAT(`Institutional Discount`,2) as 'Institutional Discount', FORMAT(`Discounted Assessment`,2) as 'Discounted Assessment', FORMAT(`Other Fees`,2) as 'Other Fees', FORMAT(`Additional Fee (Uniforms, etc.)`,2) as 'Additional Fee (Uniforms, etc.)', FORMAT(`Additional Fee (Subject Fee/Petition)`,2) as 'Additional Fee (Subject Fee/Petition)', FORMAT(`Additional Adjustment`,2) as 'Additional Adjustment', FORMAT(`Less Adjustment`,2) as 'Less Adjustment', FORMAT(`Down Payment`,2) as 'Down Payment', FORMAT(`Total Assessment`,2) as 'Total Assessment', FORMAT(`Total Paid`,2) as 'Total Paid', FORMAT(`Total Balance`,2) as 'Total Balance', FORMAT(`Excess`,2) as 'Excess' FROM `student_assessment_total` WHERE `spab_stud_id` =  '" & frmCashiering.StudentID & "' and `spab_period_id` = " & CInt(frmCashiering.cbAcademicYear.SelectedValue) & ""
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmCashiering.dgCurrentAccount.Rows.Add(i, dr.Item("Academic Year").ToString, dr.Item("Assessment").ToString, dr.Item("Institutional Discount").ToString, dr.Item("Discounted Assessment").ToString, dr.Item("Other Fees").ToString, dr.Item("Additional Fee (Uniforms, etc.)").ToString, dr.Item("Additional Fee (Subject Fee/Petition)").ToString, dr.Item("Additional Adjustment").ToString, dr.Item("Less Adjustment").ToString, dr.Item("Down Payment").ToString, dr.Item("Total Assessment").ToString, dr.Item("Total Paid").ToString, dr.Item("Total Balance").ToString, dr.Item("Excess").ToString)
-        End While
-        dr.Close()
-        cn.Close()
-
         Try
-            Dim dbcommand As String
-            If frmMain.systemModule.Text = "College Module" Then
-                dbcommand = "Select categoryname, description, cfcissmsdb.tbl_assessment_additional.additional_price as Price, (cfcissmsdb.tbl_assessment_additional.additional_qty) as QTY, cfcissmsdb.tbl_assessment_additional.additional_price as Total, '' as 'Additional', '' as 'Additional', '' as 'Additional', '' as 'Additional', '' as 'Additional', '' as 'Additional', '' as 'Additional', '' as 'Additional' from cfcissmsdb.tbl_assessment_additional, cfcissmsdb.tbl_supply_item, cfcissmsdb.tbl_supply_category where cfcissmsdb.tbl_assessment_additional.additional_item_id = cfcissmsdb.tbl_supply_item.barcodeid AND cfcissmsdb.tbl_supply_item.categoryid = cfcissmsdb.tbl_supply_category.catid and cfcissmsdb.tbl_assessment_additional.additional_period_id = " & CInt(frmCashiering.cbAcademicYear.SelectedValue) & " and cfcissmsdb.tbl_assessment_additional.additional_stud_id = '" & frmCashiering.StudentID & "'"
-            ElseIf frmMain.systemModule.Text = "Basic Education Module" Then
-                dbcommand = "Select categoryname, description, cfcissmsdbhighschool.tbl_assessment_additional.additional_price as Price, (cfcissmsdbhighschool.tbl_assessment_additional.additional_qty) as QTY, cfcissmsdbhighschool.tbl_assessment_additional.additional_price as Total, '' as 'Additional', '' as 'Additional', '' as 'Additional', '' as 'Additional', '' as 'Additional', '' as 'Additional', '' as 'Additional', '' as 'Additional' from cfcissmsdbhighschool.tbl_assessment_additional, cfcissmsdb.tbl_supply_item, cfcissmsdb.tbl_supply_category where cfcissmsdbhighschool.tbl_assessment_additional.additional_item_id = cfcissmsdb.tbl_supply_item.barcodeid AND cfcissmsdb.tbl_supply_item.categoryid = cfcissmsdb.tbl_supply_category.catid and cfcissmsdbhighschool.tbl_assessment_additional.additional_period_id = " & CInt(frmCashiering.cbAcademicYear.SelectedValue) & " and cfcissmsdbhighschool.tbl_assessment_additional.additional_stud_id = '" & frmCashiering.StudentID & "'"
-            End If
-            adptr = New MySqlDataAdapter(dbcommand, cn)
-            dt = New DataTable
-            adptr.Fill(dt)
-            frmCashiering.dgadditional.DataSource = dt
-            If frmCashiering.dgadditional.RowCount = 0 Then
-            Else
-                Try
-                    Dim dttt As DataTable = frmCashiering.dgCurrentAccount.DataSource
-                    Dim MyNewRow As DataRow
-                    MyNewRow = dttt.NewRow
-                    MyNewRow("Assessment") = "Additional"
-                    dttt.Rows.Add(MyNewRow)
-                    dttt.AcceptChanges()
-                    dttt.Dispose()
-                Catch ex As Exception
-                End Try
-                Try
-                    Dim dttt As DataTable = frmCashiering.dgCurrentAccount.DataSource
-                    Dim MyNewRow As DataRow
-                    MyNewRow = dttt.NewRow
-                    MyNewRow("Assessment") = "Category"
-                    MyNewRow("Institutional Discount") = "Description"
-                    MyNewRow("Discounted Assessment") = "Price"
-                    MyNewRow("Other Fees") = "Quantity"
-                    MyNewRow("Additional Fee (Uniforms, etc.)") = "Total"
-                    dttt.Rows.Add(MyNewRow)
-                    dttt.AcceptChanges()
-                    dttt.Dispose()
-                Catch ex As Exception
-                End Try
-                For Each row As DataGridViewRow In frmCashiering.dgadditional.Rows
+
+
+            frmCashiering.dgCurrentAccount.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "SELECT `Academic Year`, FORMAT(`Assessment`,2) as Assessment, FORMAT(`Institutional Discount`,2) as 'Institutional Discount', FORMAT(`Discounted Assessment`,2) as 'Discounted Assessment', FORMAT(`Other Fees`,2) as 'Other Fees', FORMAT(`Additional Fee (Uniforms, etc.)`,2) as 'Additional Fee (Uniforms, etc.)', FORMAT(`Additional Fee (Subject Fee/Petition)`,2) as 'Additional Fee (Subject Fee/Petition)', FORMAT(`Additional Adjustment`,2) as 'Additional Adjustment', FORMAT(`Less Adjustment`,2) as 'Less Adjustment', FORMAT(`Down Payment`,2) as 'Down Payment', FORMAT(`Total Assessment`,2) as 'Total Assessment', FORMAT(`Total Paid`,2) as 'Total Paid', FORMAT(`Total Balance`,2) as 'Total Balance', FORMAT(`Excess`,2) as 'Excess' FROM `student_assessment_total` WHERE `spab_stud_id` =  '" & frmCashiering.StudentID & "' and `spab_period_id` = " & CInt(frmCashiering.cbAcademicYear.SelectedValue) & ""
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmCashiering.dgCurrentAccount.Rows.Add(i, dr.Item("Academic Year").ToString, dr.Item("Assessment").ToString, dr.Item("Institutional Discount").ToString, dr.Item("Discounted Assessment").ToString, dr.Item("Other Fees").ToString, dr.Item("Additional Fee (Uniforms, etc.)").ToString, dr.Item("Additional Fee (Subject Fee/Petition)").ToString, dr.Item("Additional Adjustment").ToString, dr.Item("Less Adjustment").ToString, dr.Item("Down Payment").ToString, dr.Item("Total Assessment").ToString, dr.Item("Total Paid").ToString, dr.Item("Total Balance").ToString, dr.Item("Excess").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+            Try
+                Dim dbcommand As String
+                If frmMain.systemModule.Text = "College Module" Then
+                    dbcommand = "Select categoryname, description, cfcissmsdb.tbl_assessment_additional.additional_price as Price, (cfcissmsdb.tbl_assessment_additional.additional_qty) as QTY, cfcissmsdb.tbl_assessment_additional.additional_price as Total, '' as 'Additional', '' as 'Additional', '' as 'Additional', '' as 'Additional', '' as 'Additional', '' as 'Additional', '' as 'Additional', '' as 'Additional' from cfcissmsdb.tbl_assessment_additional, cfcissmsdb.tbl_supply_item, cfcissmsdb.tbl_supply_category where cfcissmsdb.tbl_assessment_additional.additional_item_id = cfcissmsdb.tbl_supply_item.barcodeid AND cfcissmsdb.tbl_supply_item.categoryid = cfcissmsdb.tbl_supply_category.catid and cfcissmsdb.tbl_assessment_additional.additional_period_id = " & CInt(frmCashiering.cbAcademicYear.SelectedValue) & " and cfcissmsdb.tbl_assessment_additional.additional_stud_id = '" & frmCashiering.StudentID & "'"
+                ElseIf frmMain.systemModule.Text = "Basic Education Module" Then
+                    dbcommand = "Select categoryname, description, cfcissmsdbhighschool.tbl_assessment_additional.additional_price as Price, (cfcissmsdbhighschool.tbl_assessment_additional.additional_qty) as QTY, cfcissmsdbhighschool.tbl_assessment_additional.additional_price as Total, '' as 'Additional', '' as 'Additional', '' as 'Additional', '' as 'Additional', '' as 'Additional', '' as 'Additional', '' as 'Additional', '' as 'Additional' from cfcissmsdbhighschool.tbl_assessment_additional, cfcissmsdb.tbl_supply_item, cfcissmsdb.tbl_supply_category where cfcissmsdbhighschool.tbl_assessment_additional.additional_item_id = cfcissmsdb.tbl_supply_item.barcodeid AND cfcissmsdb.tbl_supply_item.categoryid = cfcissmsdb.tbl_supply_category.catid and cfcissmsdbhighschool.tbl_assessment_additional.additional_period_id = " & CInt(frmCashiering.cbAcademicYear.SelectedValue) & " and cfcissmsdbhighschool.tbl_assessment_additional.additional_stud_id = '" & frmCashiering.StudentID & "'"
+                End If
+                adptr = New MySqlDataAdapter(dbcommand, cn)
+                dt = New DataTable
+                adptr.Fill(dt)
+                frmCashiering.dgadditional.DataSource = dt
+                If frmCashiering.dgadditional.RowCount = 0 Then
+                Else
                     Try
                         Dim dttt As DataTable = frmCashiering.dgCurrentAccount.DataSource
                         Dim MyNewRow As DataRow
                         MyNewRow = dttt.NewRow
-                        MyNewRow("Assessment") = row.Cells(0).Value
-                        MyNewRow("Institutional Discount") = row.Cells(1).Value
-                        MyNewRow("Discounted Assessment") = row.Cells(2).Value
-                        MyNewRow("Other Fees") = row.Cells(3).Value
-                        MyNewRow("Additional Fee (Uniforms, etc.)") = row.Cells(4).Value
+                        MyNewRow("Assessment") = "Additional"
                         dttt.Rows.Add(MyNewRow)
                         dttt.AcceptChanges()
                         dttt.Dispose()
                     Catch ex As Exception
                     End Try
-                Next
-                frmCashiering.dgadditional.DataSource = Nothing
-            End If
+                    Try
+                        Dim dttt As DataTable = frmCashiering.dgCurrentAccount.DataSource
+                        Dim MyNewRow As DataRow
+                        MyNewRow = dttt.NewRow
+                        MyNewRow("Assessment") = "Category"
+                        MyNewRow("Institutional Discount") = "Description"
+                        MyNewRow("Discounted Assessment") = "Price"
+                        MyNewRow("Other Fees") = "Quantity"
+                        MyNewRow("Additional Fee (Uniforms, etc.)") = "Total"
+                        dttt.Rows.Add(MyNewRow)
+                        dttt.AcceptChanges()
+                        dttt.Dispose()
+                    Catch ex As Exception
+                    End Try
+                    For Each row As DataGridViewRow In frmCashiering.dgadditional.Rows
+                        Try
+                            Dim dttt As DataTable = frmCashiering.dgCurrentAccount.DataSource
+                            Dim MyNewRow As DataRow
+                            MyNewRow = dttt.NewRow
+                            MyNewRow("Assessment") = row.Cells(0).Value
+                            MyNewRow("Institutional Discount") = row.Cells(1).Value
+                            MyNewRow("Discounted Assessment") = row.Cells(2).Value
+                            MyNewRow("Other Fees") = row.Cells(3).Value
+                            MyNewRow("Additional Fee (Uniforms, etc.)") = row.Cells(4).Value
+                            dttt.Rows.Add(MyNewRow)
+                            dttt.AcceptChanges()
+                            dttt.Dispose()
+                        Catch ex As Exception
+                        End Try
+                    Next
+                    frmCashiering.dgadditional.DataSource = Nothing
+                End If
+            Catch ex As Exception
+            End Try
         Catch ex As Exception
+
         End Try
     End Sub
 
     Public Sub CashieringLoadCurrentAccountPerAcademicYear()
-        frmCashiering.dgAcadAccounts.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "SELECT `Academic Year`, FORMAT(`Assessment`,2) as Assessment, FORMAT(`Institutional Discount`,2) as 'Institutional Discount', FORMAT(`Discounted Assessment`,2) as 'Discounted Assessment', FORMAT(`Other Fees`,2) as 'Other Fees', FORMAT(`Additional Fee (Uniforms, etc.)`,2) as 'Additional Fee (Uniforms, etc.)', FORMAT(`Additional Fee (Subject Fee/Petition)`,2) as 'Additional Fee (Subject Fee/Petition)', FORMAT(`Additional Adjustment`,2) as 'Additional Adjustment', FORMAT(`Less Adjustment`,2) as 'Less Adjustment', FORMAT(`Down Payment`,2) as 'Down Payment', FORMAT(`Total Assessment`,2) as 'Total Assessment', FORMAT(`Total Paid`,2) as 'Total Paid', FORMAT(`Total Balance`,2) as 'Total Balance', FORMAT(`Excess`,2) as 'Excess' FROM `student_assessment_total` WHERE `spab_stud_id` = '" & frmCashiering.StudentID & "'"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmCashiering.dgAcadAccounts.Rows.Add(i, dr.Item("Academic Year").ToString, dr.Item("Assessment").ToString, dr.Item("Institutional Discount").ToString, dr.Item("Discounted Assessment").ToString, dr.Item("Other Fees").ToString, dr.Item("Additional Fee (Uniforms, etc.)").ToString, dr.Item("Additional Fee (Subject Fee/Petition)").ToString, dr.Item("Additional Adjustment").ToString, dr.Item("Less Adjustment").ToString, dr.Item("Down Payment").ToString, dr.Item("Total Assessment").ToString, dr.Item("Total Paid").ToString, dr.Item("Total Balance").ToString, dr.Item("Excess").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
+            frmCashiering.dgAcadAccounts.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "SELECT `Academic Year`, FORMAT(`Assessment`,2) as Assessment, FORMAT(`Institutional Discount`,2) as 'Institutional Discount', FORMAT(`Discounted Assessment`,2) as 'Discounted Assessment', FORMAT(`Other Fees`,2) as 'Other Fees', FORMAT(`Additional Fee (Uniforms, etc.)`,2) as 'Additional Fee (Uniforms, etc.)', FORMAT(`Additional Fee (Subject Fee/Petition)`,2) as 'Additional Fee (Subject Fee/Petition)', FORMAT(`Additional Adjustment`,2) as 'Additional Adjustment', FORMAT(`Less Adjustment`,2) as 'Less Adjustment', FORMAT(`Down Payment`,2) as 'Down Payment', FORMAT(`Total Assessment`,2) as 'Total Assessment', FORMAT(`Total Paid`,2) as 'Total Paid', FORMAT(`Total Balance`,2) as 'Total Balance', FORMAT(`Excess`,2) as 'Excess' FROM `student_assessment_total` WHERE `spab_stud_id` = '" & frmCashiering.StudentID & "'"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmCashiering.dgAcadAccounts.Rows.Add(i, dr.Item("Academic Year").ToString, dr.Item("Assessment").ToString, dr.Item("Institutional Discount").ToString, dr.Item("Discounted Assessment").ToString, dr.Item("Other Fees").ToString, dr.Item("Additional Fee (Uniforms, etc.)").ToString, dr.Item("Additional Fee (Subject Fee/Petition)").ToString, dr.Item("Additional Adjustment").ToString, dr.Item("Less Adjustment").ToString, dr.Item("Down Payment").ToString, dr.Item("Total Assessment").ToString, dr.Item("Total Paid").ToString, dr.Item("Total Balance").ToString, dr.Item("Excess").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmCashiering.dgAcadAccounts.Rows.Clear()
+        End Try
     End Sub
 
     Public Sub CashieringPaymentHistory()
-        frmCashiering.dgPaymentHistory.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "Select (Period) as 'Academic Year', (csh_ornumber) as 'OR Number', Format(csh_total_amount, 2) as 'Amount Total', Format(csh_amount_received,2) as 'Amount Received', Format(csh_amount_change, 2) as 'Amount Change', (accountname) as 'Cashier', DATE_FORMAT(csh_date, '%M %d, %Y') as 'Date', (csh_notes) as 'Notes' from ((tbl_cashiering JOIN tbl_student) JOIN useraccounts) JOIN period where tbl_cashiering.csh_stud_id = tbl_student.s_id_no and tbl_cashiering.csh_cashier_id = useraccounts.useraccountID and tbl_cashiering.csh_period_id = period.period_id and csh_stud_id = '" & frmCashiering.StudentID & "' order by csh_date desc"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmCashiering.dgPaymentHistory.Rows.Add(i, dr.Item("Academic Year").ToString, dr.Item("OR Number").ToString, dr.Item("Amount Total").ToString, dr.Item("Amount Received").ToString, dr.Item("Cashier").ToString, dr.Item("Date").ToString, dr.Item("Notes").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
+            frmCashiering.dgPaymentHistory.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "Select (Period) as 'Academic Year', (csh_ornumber) as 'OR Number', Format(csh_total_amount, 2) as 'Amount Total', Format(csh_amount_received,2) as 'Amount Received', Format(csh_amount_change, 2) as 'Amount Change', (accountname) as 'Cashier', DATE_FORMAT(csh_date, '%M %d, %Y') as 'Date', (csh_notes) as 'Notes' from ((tbl_cashiering JOIN tbl_student) JOIN useraccounts) JOIN period where tbl_cashiering.csh_stud_id = tbl_student.s_id_no and tbl_cashiering.csh_cashier_id = useraccounts.useraccountID and tbl_cashiering.csh_period_id = period.period_id and csh_stud_id = '" & frmCashiering.StudentID & "' order by csh_date desc"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmCashiering.dgPaymentHistory.Rows.Add(i, dr.Item("Academic Year").ToString, dr.Item("OR Number").ToString, dr.Item("Amount Total").ToString, dr.Item("Amount Received").ToString, dr.Item("Cashier").ToString, dr.Item("Date").ToString, dr.Item("Notes").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmCashiering.dgPaymentHistory.Rows.Clear()
+        End Try
     End Sub
 
     Public Sub PaymentMonitoring()
-        frmPaymentMonitoring.dgPayments.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "Select (csh_stud_id) as 'Student ID', CONCAT(s_ln,', ',s_fn,' ',s_mn) as 'Student Name',(csh_ornumber) as 'OR Number', (csh_total_amount) as 'Amount Paid', (csh_amount_received) as 'Amount Received', (csh_amount_change) as 'Amount Change', (accountname) as 'Cashier', DATE_FORMAT( csh_date, '%Y/%m/%d' ) as 'Date', (csh_notes) as 'Notes', (Period) as 'Academic Year', (csh_type) as 'Type', csh_id, csh_period_id, (select pre_cash_id from tbl_pre_cashiering where ornumber = tbl_cashiering.csh_ornumber ORDER BY `Notes` ASC limit 1) as pre_cash_id from tbl_cashiering LEFT JOIN tbl_student ON tbl_cashiering.csh_stud_id = tbl_student.s_id_no LEFT JOIN useraccounts ON tbl_cashiering.csh_cashier_id = useraccounts.useraccountID LEFT JOIN period ON tbl_cashiering.csh_period_id = period.period_id WHERE (csh_stud_id like '% " & frmPaymentMonitoring.txtSearch.Text & " %' or csh_ornumber like '% " & frmPaymentMonitoring.txtSearch.Text & " %' or CONCAT(s_ln,', ',s_fn,' ',s_mn) like '% " & frmPaymentMonitoring.txtSearch.Text & " %') order by csh_id desc limit 200"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmPaymentMonitoring.dgPayments.Rows.Add(i, dr.Item("Academic Year").ToString, dr.Item("Student ID").ToString, dr.Item("Student Name").ToString, dr.Item("OR Number").ToString, dr.Item("Amount Paid").ToString, dr.Item("Amount Received").ToString, dr.Item("Cashier").ToString, dr.Item("Date").ToString, dr.Item("Type").ToString, dr.Item("Notes").ToString, dr.Item("csh_id").ToString, dr.Item("csh_period_id").ToString, dr.Item("pre_cash_id").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
+            frmPaymentMonitoring.dgPayments.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "Select (csh_stud_id) as 'Student ID', CONCAT(s_ln,', ',s_fn,' ',s_mn) as 'Student Name',(csh_ornumber) as 'OR Number', (csh_total_amount) as 'Amount Paid', (csh_amount_received) as 'Amount Received', (csh_amount_change) as 'Amount Change', (accountname) as 'Cashier', DATE_FORMAT( csh_date, '%Y/%m/%d' ) as 'Date', (csh_notes) as 'Notes', (Period) as 'Academic Year', (csh_type) as 'Type', csh_id, csh_period_id, (select pre_cash_id from tbl_pre_cashiering where ornumber = tbl_cashiering.csh_ornumber ORDER BY `Notes` ASC limit 1) as pre_cash_id from tbl_cashiering LEFT JOIN tbl_student ON tbl_cashiering.csh_stud_id = tbl_student.s_id_no LEFT JOIN useraccounts ON tbl_cashiering.csh_cashier_id = useraccounts.useraccountID LEFT JOIN period ON tbl_cashiering.csh_period_id = period.period_id WHERE (csh_stud_id like '% " & frmPaymentMonitoring.txtSearch.Text & " %' or csh_ornumber like '% " & frmPaymentMonitoring.txtSearch.Text & " %' or CONCAT(s_ln,', ',s_fn,' ',s_mn) like '% " & frmPaymentMonitoring.txtSearch.Text & " %') order by csh_id desc limit 200"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmPaymentMonitoring.dgPayments.Rows.Add(i, dr.Item("Academic Year").ToString, dr.Item("Student ID").ToString, dr.Item("Student Name").ToString, dr.Item("OR Number").ToString, dr.Item("Amount Paid").ToString, dr.Item("Amount Received").ToString, dr.Item("Cashier").ToString, dr.Item("Date").ToString, dr.Item("Type").ToString, dr.Item("Notes").ToString, dr.Item("csh_id").ToString, dr.Item("csh_period_id").ToString, dr.Item("pre_cash_id").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmPaymentMonitoring.dgPayments.Rows.Clear()
+        End Try
     End Sub
 
 
     Public Sub LibraryCashieringStudentList()
-        frmCashiering.dgStudentList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        If frmMain.systemModule.Text = "College Module" Then
-            sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course', course_id, course_name from tbl_enrollment_subjects JOIN tbl_student ON tbl_enrollment_subjects.es_student_id = tbl_student.s_id_no JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where tbl_enrollment_subjects.es_period_id = " & CInt(frmCashiering.cbAcademicYear.SelectedValue) & " and (tbl_student.s_ln like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_fn like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_mn like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_id_no like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_yr_lvl like '" & frmEnrollStudent.txtSearch.Text & "%') group by tbl_enrollment_subjects.es_student_id order by tbl_student.s_id_no asc limit 500"
-        Else
-            sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course', course_id, course_name from tbl_student JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where (s_ln like '" & frmCashiering.txtSearch.Text & "%' or s_fn like '" & frmCashiering.txtSearch.Text & "%' or s_mn like '" & frmCashiering.txtSearch.Text & "%' or s_id_no like '" & frmCashiering.txtSearch.Text & "%' or course_code like '" & frmCashiering.txtSearch.Text & "%' or s_yr_lvl like '" & frmCashiering.txtSearch.Text & "%') order by s_id_no asc limit 500"
-        End If
-        cn.Close()
+        Try
+
+            frmCashiering.dgStudentList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            If frmMain.systemModule.Text = "College Module" Then
+                sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course', course_id, course_name from tbl_enrollment_subjects JOIN tbl_student ON tbl_enrollment_subjects.es_student_id = tbl_student.s_id_no JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where tbl_enrollment_subjects.es_period_id = " & CInt(frmCashiering.cbAcademicYear.SelectedValue) & " and (tbl_student.s_ln like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_fn like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_mn like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_id_no like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_yr_lvl like '" & frmEnrollStudent.txtSearch.Text & "%') group by tbl_enrollment_subjects.es_student_id order by tbl_student.s_id_no asc limit 500"
+            Else
+                sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course', course_id, course_name from tbl_student JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where (s_ln like '" & frmCashiering.txtSearch.Text & "%' or s_fn like '" & frmCashiering.txtSearch.Text & "%' or s_mn like '" & frmCashiering.txtSearch.Text & "%' or s_id_no like '" & frmCashiering.txtSearch.Text & "%' or course_code like '" & frmCashiering.txtSearch.Text & "%' or s_yr_lvl like '" & frmCashiering.txtSearch.Text & "%') order by s_id_no asc limit 500"
+            End If
+            cn.Close()
             cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmCashiering.dgStudentList.Rows.Add(i, dr.Item("ID Number").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, dr.Item("Suffix").ToString, dr.Item("Gender").ToString, dr.Item("Year Level").ToString, dr.Item("Course").ToString, dr.Item("course_id").ToString, dr.Item("course_name").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmCashiering.dgStudentList.Rows.Add(i, dr.Item("ID Number").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, dr.Item("Suffix").ToString, dr.Item("Gender").ToString, dr.Item("Year Level").ToString, dr.Item("Course").ToString, dr.Item("course_id").ToString, dr.Item("course_name").ToString)
+            End While
+            dr.Close()
+            cn.Close()
 
-        If frmMain.systemModule.Text = "College Module" Then
-            frmCashiering.dgStudentList.Columns(8).HeaderText = "Course"
-        Else
-            frmCashiering.dgStudentList.Columns(8).HeaderText = "Strand/Grade"
-        End If
+            If frmMain.systemModule.Text = "College Module" Then
+                frmCashiering.dgStudentList.Columns(8).HeaderText = "Course"
+            Else
+                frmCashiering.dgStudentList.Columns(8).HeaderText = "Strand/Grade"
+            End If
 
-        dgPanelPadding(frmCashiering.dgStudentList, frmCashiering.dgPanel)
+            dgPanelPadding(frmCashiering.dgStudentList, frmCashiering.dgPanel)
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmCashiering.dgStudentList.Rows.Clear()
+        End Try
     End Sub
 
     Public Sub PerformCashieringTransaction()
@@ -2087,240 +2341,310 @@ Module Records
     End Sub
 
     Public Sub PaymentMonitoringStudentList()
-        frmPaymentMonitoringUpdate.dgStudentList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course' from tbl_student JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where (s_ln like '%" & frmPaymentMonitoringUpdate.txtSearch.Text & "%' or s_fn like '%" & frmPaymentMonitoringUpdate.txtSearch.Text & "%' or s_mn like '%" & frmPaymentMonitoringUpdate.txtSearch.Text & "%' or s_id_no like '%" & frmPaymentMonitoringUpdate.txtSearch.Text & "%' or course_code like '%" & frmPaymentMonitoringUpdate.txtSearch.Text & "%' or s_yr_lvl like '%" & frmPaymentMonitoringUpdate.txtSearch.Text & "%') order by s_id_no asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmPaymentMonitoringUpdate.dgStudentList.Rows.Add(i, dr.Item("ID Number").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, dr.Item("Suffix").ToString, dr.Item("Gender").ToString, dr.Item("Year Level").ToString, dr.Item("Course").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
+            frmPaymentMonitoringUpdate.dgStudentList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course' from tbl_student JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where (s_ln like '%" & frmPaymentMonitoringUpdate.txtSearch.Text & "%' or s_fn like '%" & frmPaymentMonitoringUpdate.txtSearch.Text & "%' or s_mn like '%" & frmPaymentMonitoringUpdate.txtSearch.Text & "%' or s_id_no like '%" & frmPaymentMonitoringUpdate.txtSearch.Text & "%' or course_code like '%" & frmPaymentMonitoringUpdate.txtSearch.Text & "%' or s_yr_lvl like '%" & frmPaymentMonitoringUpdate.txtSearch.Text & "%') order by s_id_no asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmPaymentMonitoringUpdate.dgStudentList.Rows.Add(i, dr.Item("ID Number").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, dr.Item("Suffix").ToString, dr.Item("Gender").ToString, dr.Item("Year Level").ToString, dr.Item("Course").ToString)
+            End While
+            dr.Close()
+            cn.Close()
 
-        If frmMain.systemModule.Text = "College Module" Then
-            frmPaymentMonitoringUpdate.dgStudentList.Columns(8).HeaderText = "Course"
-        Else
-            frmPaymentMonitoringUpdate.dgStudentList.Columns(8).HeaderText = "Strand/Grade"
-        End If
+            If frmMain.systemModule.Text = "College Module" Then
+                frmPaymentMonitoringUpdate.dgStudentList.Columns(8).HeaderText = "Course"
+            Else
+                frmPaymentMonitoringUpdate.dgStudentList.Columns(8).HeaderText = "Strand/Grade"
+            End If
 
-        dgPanelPadding(frmPaymentMonitoringUpdate.dgStudentList, frmPaymentMonitoringUpdate.dgPanel)
+            dgPanelPadding(frmPaymentMonitoringUpdate.dgStudentList, frmPaymentMonitoringUpdate.dgPanel)
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmPaymentMonitoringUpdate.dgStudentList.Rows.Clear()
+        End Try
     End Sub
 
 
     Public Sub AdjustmentStudentList()
-        frmAdjustments.dgStudentList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course', course_id, course_name, s_course_status from tbl_student JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where (tbl_student.s_ln like '" & frmAdjustments.txtSearch.Text & "%' or tbl_student.s_fn like '" & frmAdjustments.txtSearch.Text & "%' or tbl_student.s_mn like '" & frmAdjustments.txtSearch.Text & "%' or tbl_student.s_id_no like '" & frmAdjustments.txtSearch.Text & "%' or tbl_student.s_yr_lvl like '" & frmAdjustments.txtSearch.Text & "%') order by s_id_no asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmAdjustments.dgStudentList.Rows.Add(i, dr.Item("ID Number").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, dr.Item("Suffix").ToString, dr.Item("Gender").ToString, dr.Item("Year Level").ToString, dr.Item("Course").ToString, dr.Item("course_id").ToString, dr.Item("course_name").ToString, dr.Item("s_course_status").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
+            frmAdjustments.dgStudentList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course', course_id, course_name, s_course_status from tbl_student JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where (tbl_student.s_ln like '" & frmAdjustments.txtSearch.Text & "%' or tbl_student.s_fn like '" & frmAdjustments.txtSearch.Text & "%' or tbl_student.s_mn like '" & frmAdjustments.txtSearch.Text & "%' or tbl_student.s_id_no like '" & frmAdjustments.txtSearch.Text & "%' or tbl_student.s_yr_lvl like '" & frmAdjustments.txtSearch.Text & "%') order by s_id_no asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmAdjustments.dgStudentList.Rows.Add(i, dr.Item("ID Number").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, dr.Item("Suffix").ToString, dr.Item("Gender").ToString, dr.Item("Year Level").ToString, dr.Item("Course").ToString, dr.Item("course_id").ToString, dr.Item("course_name").ToString, dr.Item("s_course_status").ToString)
+            End While
+            dr.Close()
+            cn.Close()
 
-        If frmMain.systemModule.Text = "College Module" Then
-            frmAdjustments.dgStudentList.Columns(8).HeaderText = "Course"
-        Else
-            frmAdjustments.dgStudentList.Columns(8).HeaderText = "Strand/Grade"
-        End If
+            If frmMain.systemModule.Text = "College Module" Then
+                frmAdjustments.dgStudentList.Columns(8).HeaderText = "Course"
+            Else
+                frmAdjustments.dgStudentList.Columns(8).HeaderText = "Strand/Grade"
+            End If
 
-        dgPanelPadding(frmAdjustments.dgStudentList, frmAdjustments.dgPanel)
+            dgPanelPadding(frmAdjustments.dgStudentList, frmAdjustments.dgPanel)
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmAdjustments.dgStudentList.Rows.Clear()
+        End Try
     End Sub
 
     Public Sub AdjustmentCourseList()
-        frmAdjustments.dgCourseList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select course_id, course_code, course_name, course_major, course_status from tbl_course where (course_code LIKE '%" & frmAdjustments.txtSearch.Text & "%' or course_name LIKE '%" & frmAdjustments.txtSearch.Text & "%') order by course_name asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            frmAdjustments.dgCourseList.Rows.Add(dr.Item("course_id").ToString, dr.Item("course_code").ToString, dr.Item("course_name").ToString, dr.Item("course_major").ToString, dr.Item("course_status").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
+            frmAdjustments.dgCourseList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select course_id, course_code, course_name, course_major, course_status from tbl_course where (course_code LIKE '%" & frmAdjustments.txtSearch.Text & "%' or course_name LIKE '%" & frmAdjustments.txtSearch.Text & "%') order by course_name asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                frmAdjustments.dgCourseList.Rows.Add(dr.Item("course_id").ToString, dr.Item("course_code").ToString, dr.Item("course_name").ToString, dr.Item("course_major").ToString, dr.Item("course_status").ToString)
+            End While
+            dr.Close()
+            cn.Close()
 
-        dgPanelPadding(frmAdjustments.dgCourseList, frmAdjustments.dgPanel)
+            dgPanelPadding(frmAdjustments.dgCourseList, frmAdjustments.dgPanel)
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmAdjustments.dgCourseList.Rows.Clear()
+        End Try
     End Sub
 
 #End Region
 #Region "Registrar"
     Public Sub AcknowledgementList()
         With frmReqAck_Inbound
-            .dgAckList.Rows.Clear()
-            Dim sql As String
-            If .CheckBox1.Checked = True Then
-                If .txtSearch.Text = String.Empty Then
-                    sql = "SELECT t1.`ref_id`, t1.`ref_doc_id`, t2.doc_code as 'Docu. Code', t2.doc_description as 'Docu. Description', t1.`ref_no` as 'Reference No.', t1.`ref_student_id` as 'Student ID', StudentFullName as 'Student', t1.`ref_remarks` as 'Remarks', t1.`sender` as 'Sender', t1.`pages`, t1.`attachments`, ifnull(CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name),'') as user, t1.`received_datetime`, t1.forwarded_to, ifnull(t1.received_date,'') as 'Date Received', t1.`rcpt_code` as 'Receipt Code' FROM `tbl_documents_reference` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.received_by = t4.ua_id where received_date between '" & .dtFrom.Text & "' and  '" & .dtTo.Text & "' limit 500"
-                ElseIf .cbFilter.Text = "Document" Then
-                    sql = "SELECT t1.`ref_id`, t1.`ref_doc_id`, t2.doc_code as 'Docu. Code', t2.doc_description as 'Docu. Description', t1.`ref_no` as 'Reference No.', t1.`ref_student_id` as 'Student ID', StudentFullName as 'Student', t1.`ref_remarks` as 'Remarks', t1.`sender` as 'Sender', t1.`pages`, t1.`attachments`, ifnull(CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name),'') as user, t1.`received_datetime`, t1.forwarded_to, ifnull(t1.received_date,'') as 'Date Received', t1.`rcpt_code` as 'Receipt Code' FROM `tbl_documents_reference` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.received_by = t4.ua_id where (t2.doc_code LIKE '%" & .txtSearch.Text & "%' or t2.doc_description LIKE '%" & .txtSearch.Text & "%') and received_date between '" & .dtFrom.Text & "' and  '" & .dtTo.Text & "' limit 500"
-                ElseIf .cbFilter.Text = "Reference Number" Then
-                    sql = "SELECT t1.`ref_id`, t1.`ref_doc_id`, t2.doc_code as 'Docu. Code', t2.doc_description as 'Docu. Description', t1.`ref_no` as 'Reference No.', t1.`ref_student_id` as 'Student ID', StudentFullName as 'Student', t1.`ref_remarks` as 'Remarks', t1.`sender` as 'Sender', t1.`pages`, t1.`attachments`, ifnull(CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name),'') as user, t1.`received_datetime`, t1.forwarded_to, ifnull(t1.received_date,'') as 'Date Received', t1.`rcpt_code` as 'Receipt Code' FROM `tbl_documents_reference` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.received_by = t4.ua_id where t1.`ref_no` LIKE '%" & .txtSearch.Text & "%' and received_date between '" & .dtFrom.Text & "' and  '" & .dtTo.Text & "' limit 500"
-                ElseIf .cbFilter.Text = "Student" Then
-                    sql = "SELECT t1.`ref_id`, t1.`ref_doc_id`, t2.doc_code as 'Docu. Code', t2.doc_description as 'Docu. Description', t1.`ref_no` as 'Reference No.', t1.`ref_student_id` as 'Student ID', StudentFullName as 'Student', t1.`ref_remarks` as 'Remarks', t1.`sender` as 'Sender', t1.`pages`, t1.`attachments`, ifnull(CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name),'') as user, t1.`received_datetime`, t1.forwarded_to, ifnull(t1.received_date,'') as 'Date Received', t1.`rcpt_code` as 'Receipt Code' FROM `tbl_documents_reference` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.received_by = t4.ua_id where (t1.`ref_student_id` LIKE '%" & .txtSearch.Text & "%' or StudentFullName LIKE '%" & .txtSearch.Text & "%') and received_date between '" & .dtFrom.Text & "' and  '" & .dtTo.Text & "' limit 500"
-                ElseIf .cbFilter.Text = "Sender" Then
-                    sql = "SELECT t1.`ref_id`, t1.`ref_doc_id`, t2.doc_code as 'Docu. Code', t2.doc_description as 'Docu. Description', t1.`ref_no` as 'Reference No.', t1.`ref_student_id` as 'Student ID', StudentFullName as 'Student', t1.`ref_remarks` as 'Remarks', t1.`sender` as 'Sender', t1.`pages`, t1.`attachments`, ifnull(CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name),'') as user, t1.`received_datetime`, t1.forwarded_to, ifnull(t1.received_date,'') as 'Date Received', t1.`rcpt_code` as 'Receipt Code' FROM `tbl_documents_reference` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.received_by = t4.ua_id where t1.`sender` LIKE '%" & .txtSearch.Text & "%' and received_date between '" & .dtFrom.Text & "' and  '" & .dtTo.Text & "' limit 500"
+            Try
+                .dgAckList.Rows.Clear()
+                Dim sql As String
+                If .CheckBox1.Checked = True Then
+                    If .txtSearch.Text = String.Empty Then
+                        sql = "SELECT t1.`ref_id`, t1.`ref_doc_id`, t2.doc_code as 'Docu. Code', t2.doc_description as 'Docu. Description', t1.`ref_no` as 'Reference No.', t1.`ref_student_id` as 'Student ID', StudentFullName as 'Student', t1.`ref_remarks` as 'Remarks', t1.`sender` as 'Sender', t1.`pages`, t1.`attachments`, ifnull(CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name),'') as user, t1.`received_datetime`, t1.forwarded_to, ifnull(t1.received_date,'') as 'Date Received', t1.`rcpt_code` as 'Receipt Code' FROM `tbl_documents_reference` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.received_by = t4.ua_id where received_date between '" & .dtFrom.Text & "' and  '" & .dtTo.Text & "' limit 500"
+                    ElseIf .cbFilter.Text = "Document" Then
+                        sql = "SELECT t1.`ref_id`, t1.`ref_doc_id`, t2.doc_code as 'Docu. Code', t2.doc_description as 'Docu. Description', t1.`ref_no` as 'Reference No.', t1.`ref_student_id` as 'Student ID', StudentFullName as 'Student', t1.`ref_remarks` as 'Remarks', t1.`sender` as 'Sender', t1.`pages`, t1.`attachments`, ifnull(CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name),'') as user, t1.`received_datetime`, t1.forwarded_to, ifnull(t1.received_date,'') as 'Date Received', t1.`rcpt_code` as 'Receipt Code' FROM `tbl_documents_reference` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.received_by = t4.ua_id where (t2.doc_code LIKE '%" & .txtSearch.Text & "%' or t2.doc_description LIKE '%" & .txtSearch.Text & "%') and received_date between '" & .dtFrom.Text & "' and  '" & .dtTo.Text & "' limit 500"
+                    ElseIf .cbFilter.Text = "Reference Number" Then
+                        sql = "SELECT t1.`ref_id`, t1.`ref_doc_id`, t2.doc_code as 'Docu. Code', t2.doc_description as 'Docu. Description', t1.`ref_no` as 'Reference No.', t1.`ref_student_id` as 'Student ID', StudentFullName as 'Student', t1.`ref_remarks` as 'Remarks', t1.`sender` as 'Sender', t1.`pages`, t1.`attachments`, ifnull(CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name),'') as user, t1.`received_datetime`, t1.forwarded_to, ifnull(t1.received_date,'') as 'Date Received', t1.`rcpt_code` as 'Receipt Code' FROM `tbl_documents_reference` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.received_by = t4.ua_id where t1.`ref_no` LIKE '%" & .txtSearch.Text & "%' and received_date between '" & .dtFrom.Text & "' and  '" & .dtTo.Text & "' limit 500"
+                    ElseIf .cbFilter.Text = "Student" Then
+                        sql = "SELECT t1.`ref_id`, t1.`ref_doc_id`, t2.doc_code as 'Docu. Code', t2.doc_description as 'Docu. Description', t1.`ref_no` as 'Reference No.', t1.`ref_student_id` as 'Student ID', StudentFullName as 'Student', t1.`ref_remarks` as 'Remarks', t1.`sender` as 'Sender', t1.`pages`, t1.`attachments`, ifnull(CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name),'') as user, t1.`received_datetime`, t1.forwarded_to, ifnull(t1.received_date,'') as 'Date Received', t1.`rcpt_code` as 'Receipt Code' FROM `tbl_documents_reference` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.received_by = t4.ua_id where (t1.`ref_student_id` LIKE '%" & .txtSearch.Text & "%' or StudentFullName LIKE '%" & .txtSearch.Text & "%') and received_date between '" & .dtFrom.Text & "' and  '" & .dtTo.Text & "' limit 500"
+                    ElseIf .cbFilter.Text = "Sender" Then
+                        sql = "SELECT t1.`ref_id`, t1.`ref_doc_id`, t2.doc_code as 'Docu. Code', t2.doc_description as 'Docu. Description', t1.`ref_no` as 'Reference No.', t1.`ref_student_id` as 'Student ID', StudentFullName as 'Student', t1.`ref_remarks` as 'Remarks', t1.`sender` as 'Sender', t1.`pages`, t1.`attachments`, ifnull(CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name),'') as user, t1.`received_datetime`, t1.forwarded_to, ifnull(t1.received_date,'') as 'Date Received', t1.`rcpt_code` as 'Receipt Code' FROM `tbl_documents_reference` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.received_by = t4.ua_id where t1.`sender` LIKE '%" & .txtSearch.Text & "%' and received_date between '" & .dtFrom.Text & "' and  '" & .dtTo.Text & "' limit 500"
+                    End If
+                Else
+                    If .txtSearch.Text = String.Empty Then
+                        sql = "SELECT t1.`ref_id`, t1.`ref_doc_id`, t2.doc_code as 'Docu. Code', t2.doc_description as 'Docu. Description', t1.`ref_no` as 'Reference No.', t1.`ref_student_id` as 'Student ID', StudentFullName as 'Student', t1.`ref_remarks` as 'Remarks', t1.`sender` as 'Sender', t1.`pages`, t1.`attachments`, ifnull(CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name),'') as user, t1.`received_datetime`, t1.forwarded_to, ifnull(t1.received_date,'') as 'Date Received', t1.`rcpt_code` as 'Receipt Code' FROM `tbl_documents_reference` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.received_by = t4.ua_id limit 500"
+                    ElseIf .cbFilter.Text = "Document" Then
+                        sql = "SELECT t1.`ref_id`, t1.`ref_doc_id`, t2.doc_code as 'Docu. Code', t2.doc_description as 'Docu. Description', t1.`ref_no` as 'Reference No.', t1.`ref_student_id` as 'Student ID', StudentFullName as 'Student', t1.`ref_remarks` as 'Remarks', t1.`sender` as 'Sender', t1.`pages`, t1.`attachments`, ifnull(CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name),'') as user, t1.`received_datetime`, t1.forwarded_to, ifnull(t1.received_date,'') as 'Date Received', t1.`rcpt_code` as 'Receipt Code' FROM `tbl_documents_reference` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.received_by = t4.ua_id where (t2.doc_code LIKE '%" & .txtSearch.Text & "%' or t2.doc_description LIKE '%" & .txtSearch.Text & "%') limit 500"
+                    ElseIf .cbFilter.Text = "Reference Number" Then
+                        sql = "SELECT t1.`ref_id`, t1.`ref_doc_id`, t2.doc_code as 'Docu. Code', t2.doc_description as 'Docu. Description', t1.`ref_no` as 'Reference No.', t1.`ref_student_id` as 'Student ID', StudentFullName as 'Student', t1.`ref_remarks` as 'Remarks', t1.`sender` as 'Sender', t1.`pages`, t1.`attachments`, ifnull(CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name),'') as user, t1.`received_datetime`, t1.forwarded_to, ifnull(t1.received_date,'') as 'Date Received', t1.`rcpt_code` as 'Receipt Code' FROM `tbl_documents_reference` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.received_by = t4.ua_id where t1.`ref_no` LIKE '%" & .txtSearch.Text & "%' limit 500"
+                    ElseIf .cbFilter.Text = "Student" Then
+                        sql = "SELECT t1.`ref_id`, t1.`ref_doc_id`, t2.doc_code as 'Docu. Code', t2.doc_description as 'Docu. Description', t1.`ref_no` as 'Reference No.', t1.`ref_student_id` as 'Student ID', StudentFullName as 'Student', t1.`ref_remarks` as 'Remarks', t1.`sender` as 'Sender', t1.`pages`, t1.`attachments`, ifnull(CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name),'') as user, t1.`received_datetime`, t1.forwarded_to, ifnull(t1.received_date,'') as 'Date Received', t1.`rcpt_code` as 'Receipt Code' FROM `tbl_documents_reference` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.received_by = t4.ua_id where (t1.`ref_student_id` LIKE '%" & .txtSearch.Text & "%' or StudentFullName LIKE '%" & .txtSearch.Text & "%') limit 500"
+                    ElseIf .cbFilter.Text = "Sender" Then
+                        sql = "SELECT t1.`ref_id`, t1.`ref_doc_id`, t2.doc_code as 'Docu. Code', t2.doc_description as 'Docu. Description', t1.`ref_no` as 'Reference No.', t1.`ref_student_id` as 'Student ID', StudentFullName as 'Student', t1.`ref_remarks` as 'Remarks', t1.`sender` as 'Sender', t1.`pages`, t1.`attachments`, ifnull(CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name),'') as user, t1.`received_datetime`, t1.forwarded_to, ifnull(t1.received_date,'') as 'Date Received', t1.`rcpt_code` as 'Receipt Code' FROM `tbl_documents_reference` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.received_by = t4.ua_id where t1.`sender` LIKE '%" & .txtSearch.Text & "%' limit 500"
+                    End If
                 End If
-            Else
-                If .txtSearch.Text = String.Empty Then
-                    sql = "SELECT t1.`ref_id`, t1.`ref_doc_id`, t2.doc_code as 'Docu. Code', t2.doc_description as 'Docu. Description', t1.`ref_no` as 'Reference No.', t1.`ref_student_id` as 'Student ID', StudentFullName as 'Student', t1.`ref_remarks` as 'Remarks', t1.`sender` as 'Sender', t1.`pages`, t1.`attachments`, ifnull(CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name),'') as user, t1.`received_datetime`, t1.forwarded_to, ifnull(t1.received_date,'') as 'Date Received', t1.`rcpt_code` as 'Receipt Code' FROM `tbl_documents_reference` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.received_by = t4.ua_id limit 500"
-                ElseIf .cbFilter.Text = "Document" Then
-                    sql = "SELECT t1.`ref_id`, t1.`ref_doc_id`, t2.doc_code as 'Docu. Code', t2.doc_description as 'Docu. Description', t1.`ref_no` as 'Reference No.', t1.`ref_student_id` as 'Student ID', StudentFullName as 'Student', t1.`ref_remarks` as 'Remarks', t1.`sender` as 'Sender', t1.`pages`, t1.`attachments`, ifnull(CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name),'') as user, t1.`received_datetime`, t1.forwarded_to, ifnull(t1.received_date,'') as 'Date Received', t1.`rcpt_code` as 'Receipt Code' FROM `tbl_documents_reference` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.received_by = t4.ua_id where (t2.doc_code LIKE '%" & .txtSearch.Text & "%' or t2.doc_description LIKE '%" & .txtSearch.Text & "%') limit 500"
-                ElseIf .cbFilter.Text = "Reference Number" Then
-                    sql = "SELECT t1.`ref_id`, t1.`ref_doc_id`, t2.doc_code as 'Docu. Code', t2.doc_description as 'Docu. Description', t1.`ref_no` as 'Reference No.', t1.`ref_student_id` as 'Student ID', StudentFullName as 'Student', t1.`ref_remarks` as 'Remarks', t1.`sender` as 'Sender', t1.`pages`, t1.`attachments`, ifnull(CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name),'') as user, t1.`received_datetime`, t1.forwarded_to, ifnull(t1.received_date,'') as 'Date Received', t1.`rcpt_code` as 'Receipt Code' FROM `tbl_documents_reference` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.received_by = t4.ua_id where t1.`ref_no` LIKE '%" & .txtSearch.Text & "%' limit 500"
-                ElseIf .cbFilter.Text = "Student" Then
-                    sql = "SELECT t1.`ref_id`, t1.`ref_doc_id`, t2.doc_code as 'Docu. Code', t2.doc_description as 'Docu. Description', t1.`ref_no` as 'Reference No.', t1.`ref_student_id` as 'Student ID', StudentFullName as 'Student', t1.`ref_remarks` as 'Remarks', t1.`sender` as 'Sender', t1.`pages`, t1.`attachments`, ifnull(CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name),'') as user, t1.`received_datetime`, t1.forwarded_to, ifnull(t1.received_date,'') as 'Date Received', t1.`rcpt_code` as 'Receipt Code' FROM `tbl_documents_reference` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.received_by = t4.ua_id where (t1.`ref_student_id` LIKE '%" & .txtSearch.Text & "%' or StudentFullName LIKE '%" & .txtSearch.Text & "%') limit 500"
-                ElseIf .cbFilter.Text = "Sender" Then
-                    sql = "SELECT t1.`ref_id`, t1.`ref_doc_id`, t2.doc_code as 'Docu. Code', t2.doc_description as 'Docu. Description', t1.`ref_no` as 'Reference No.', t1.`ref_student_id` as 'Student ID', StudentFullName as 'Student', t1.`ref_remarks` as 'Remarks', t1.`sender` as 'Sender', t1.`pages`, t1.`attachments`, ifnull(CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name),'') as user, t1.`received_datetime`, t1.forwarded_to, ifnull(t1.received_date,'') as 'Date Received', t1.`rcpt_code` as 'Receipt Code' FROM `tbl_documents_reference` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.received_by = t4.ua_id where t1.`sender` LIKE '%" & .txtSearch.Text & "%' limit 500"
-                End If
-            End If
-            cn.Close()
-            cn.Open()
-            cm = New MySqlCommand(sql, cn)
-            dr = cm.ExecuteReader
-            While dr.Read
-                .dgAckList.Rows.Add(dr.Item("ref_id").ToString, dr.Item("ref_doc_id").ToString, dr.Item("Docu. Code").ToString, dr.Item("Docu. Description").ToString, dr.Item("Reference No.").ToString, dr.Item("Student ID").ToString, dr.Item("Student").ToString, dr.Item("Remarks").ToString, dr.Item("Sender").ToString, dr.Item("pages").ToString, dr.Item("attachments").ToString, dr.Item("user").ToString, dr.Item("received_datetime").ToString, dr.Item("forwarded_to").ToString, dr.Item("Date Received").ToString, dr.Item("Receipt Code").ToString)
-            End While
-            dr.Close()
-            cn.Close()
-            dgPanelPadding(.dgAckList, .dgPanel)
+                cn.Close()
+                cn.Open()
+                cm = New MySqlCommand(sql, cn)
+                dr = cm.ExecuteReader
+                While dr.Read
+                    .dgAckList.Rows.Add(dr.Item("ref_id").ToString, dr.Item("ref_doc_id").ToString, dr.Item("Docu. Code").ToString, dr.Item("Docu. Description").ToString, dr.Item("Reference No.").ToString, dr.Item("Student ID").ToString, dr.Item("Student").ToString, dr.Item("Remarks").ToString, dr.Item("Sender").ToString, dr.Item("pages").ToString, dr.Item("attachments").ToString, dr.Item("user").ToString, dr.Item("received_datetime").ToString, dr.Item("forwarded_to").ToString, dr.Item("Date Received").ToString, dr.Item("Receipt Code").ToString)
+                End While
+                dr.Close()
+                cn.Close()
+                dgPanelPadding(.dgAckList, .dgPanel)
+
+            Catch ex As Exception
+                dr.Close()
+                cn.Close()
+                .dgAckList.Rows.Clear()
+            End Try
         End With
     End Sub
 
     Public Sub AcknowledgementList2()
         With frmReqAck_Outbound
-            .dgAckList.Rows.Clear()
+            Try
+
+                .dgAckList.Rows.Clear()
+                Dim sql As String
+                If .CheckBox1.Checked = True Then
+                    If .txtSearch.Text = String.Empty Then
+                        sql = "SELECT t1.`ref_code` as 'Code', t2.doc_description as 'Credential', t5.schl_name as 'School', StudentFullName as 'Student', t1.`ref_status` as 'Status', if(t1.`ref_released_date` = '0000-00-00', ' - ',DATE_FORMAT(t1.`ref_released_date`,'%c/%e/%Y')) as 'Release Date', CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name) as 'Created', DATE_FORMAT(t1.`ref_date`,'%c/%e/%Y') as 'Date', t1.`ref_remarks` as 'Remarks' FROM `tbl_documents_reference_out` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.ref_user = t4.ua_id LEFT JOIN tbl_schools t5 ON t1.ref_schoold_id = t5.schl_id where t1.ref_date between '" & .dtFrom.Text & "' and  '" & .dtTo.Text & "' limit 500"
+                    ElseIf .cbFilter.Text = "Credential" Then
+                        sql = "SELECT t1.`ref_code` as 'Code', t2.doc_description as 'Credential', t5.schl_name as 'School', StudentFullName as 'Student', t1.`ref_status` as 'Status', if(t1.`ref_released_date` = '0000-00-00', ' - ',DATE_FORMAT(t1.`ref_released_date`,'%c/%e/%Y')) as 'Release Date', CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name) as 'Created', DATE_FORMAT(t1.`ref_date`,'%c/%e/%Y') as 'Date', t1.`ref_remarks` as 'Remarks' FROM `tbl_documents_reference_out` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.ref_user = t4.ua_id LEFT JOIN tbl_schools t5 ON t1.ref_schoold_id = t5.schl_id where t2.doc_description LIKE '%" & .txtSearch.Text & "%' and t1.ref_date between '" & .dtFrom.Text & "' and  '" & .dtTo.Text & "' limit 500"
+                    ElseIf .cbFilter.Text = "Code" Then
+                        sql = "SELECT t1.`ref_code` as 'Code', t2.doc_description as 'Credential', t5.schl_name as 'School', StudentFullName as 'Student', t1.`ref_status` as 'Status', if(t1.`ref_released_date` = '0000-00-00', ' - ',DATE_FORMAT(t1.`ref_released_date`,'%c/%e/%Y')) as 'Release Date', CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name) as 'Created', DATE_FORMAT(t1.`ref_date`,'%c/%e/%Y') as 'Date', t1.`ref_remarks` as 'Remarks' FROM `tbl_documents_reference_out` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.ref_user = t4.ua_id LEFT JOIN tbl_schools t5 ON t1.ref_schoold_id = t5.schl_id where t1.`ref_code` LIKE '%" & .txtSearch.Text & "%' and t1.ref_date between '" & .dtFrom.Text & "' and  '" & .dtTo.Text & "' limit 500"
+                    ElseIf .cbFilter.Text = "Student" Then
+                        sql = "SELECT t1.`ref_code` as 'Code', t2.doc_description as 'Credential', t5.schl_name as 'School', StudentFullName as 'Student', t1.`ref_status` as 'Status', if(t1.`ref_released_date` = '0000-00-00', ' - ',DATE_FORMAT(t1.`ref_released_date`,'%c/%e/%Y')) as 'Release Date', CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name) as 'Created', DATE_FORMAT(t1.`ref_date`,'%c/%e/%Y') as 'Date', t1.`ref_remarks` as 'Remarks' FROM `tbl_documents_reference_out` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.ref_user = t4.ua_id LEFT JOIN tbl_schools t5 ON t1.ref_schoold_id = t5.schl_id where (t1.`ref_student_id` LIKE '%" & .txtSearch.Text & "%' or StudentFullName LIKE '%" & .txtSearch.Text & "%') and t1.ref_date between '" & .dtFrom.Text & "' and  '" & .dtTo.Text & "' limit 500"
+                    ElseIf .cbFilter.Text = "School" Then
+                        sql = "SELECT t1.`ref_code` as 'Code', t2.doc_description as 'Credential', t5.schl_name as 'School', StudentFullName as 'Student', t1.`ref_status` as 'Status', if(t1.`ref_released_date` = '0000-00-00', ' - ',DATE_FORMAT(t1.`ref_released_date`,'%c/%e/%Y')) as 'Release Date', CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name) as 'Created', DATE_FORMAT(t1.`ref_date`,'%c/%e/%Y') as 'Date', t1.`ref_remarks` as 'Remarks' FROM `tbl_documents_reference_out` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.ref_user = t4.ua_id LEFT JOIN tbl_schools t5 ON t1.ref_schoold_id = t5.schl_id where t5.`schl_name` LIKE '%" & .txtSearch.Text & "%' and t1.ref_date between '" & .dtFrom.Text & "' and  '" & .dtTo.Text & "' limit 500"
+                    End If
+                Else
+                    If .txtSearch.Text = String.Empty Then
+                        sql = "SELECT t1.`ref_code` as 'Code', t2.doc_description as 'Credential', t5.schl_name as 'School', StudentFullName as 'Student', t1.`ref_status` as 'Status', if(t1.`ref_released_date` = '0000-00-00', ' - ',DATE_FORMAT(t1.`ref_released_date`,'%c/%e/%Y')) as 'Release Date', CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name) as 'Created', DATE_FORMAT(t1.`ref_date`,'%c/%e/%Y') as 'Date', t1.`ref_remarks` as 'Remarks' FROM `tbl_documents_reference_out` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.ref_user = t4.ua_id LEFT JOIN tbl_schools t5 ON t1.ref_schoold_id = t5.schl_id limit 500"
+                    ElseIf .cbFilter.Text = "Credential" Then
+                        sql = "SELECT t1.`ref_code` as 'Code', t2.doc_description as 'Credential', t5.schl_name as 'School', StudentFullName as 'Student', t1.`ref_status` as 'Status', if(t1.`ref_released_date` = '0000-00-00', ' - ',DATE_FORMAT(t1.`ref_released_date`,'%c/%e/%Y')) as 'Release Date', CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name) as 'Created', DATE_FORMAT(t1.`ref_date`,'%c/%e/%Y') as 'Date', t1.`ref_remarks` as 'Remarks' FROM `tbl_documents_reference_out` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.ref_user = t4.ua_id LEFT JOIN tbl_schools t5 ON t1.ref_schoold_id = t5.schl_id where t2.doc_description LIKE '%" & .txtSearch.Text & "%' limit 500"
+                    ElseIf .cbFilter.Text = "Code" Then
+                        sql = "SELECT t1.`ref_code` as 'Code', t2.doc_description as 'Credential', t5.schl_name as 'School', StudentFullName as 'Student', t1.`ref_status` as 'Status', if(t1.`ref_released_date` = '0000-00-00', ' - ',DATE_FORMAT(t1.`ref_released_date`,'%c/%e/%Y')) as 'Release Date', CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name) as 'Created', DATE_FORMAT(t1.`ref_date`,'%c/%e/%Y') as 'Date', t1.`ref_remarks` as 'Remarks' FROM `tbl_documents_reference_out` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.ref_user = t4.ua_id LEFT JOIN tbl_schools t5 ON t1.ref_schoold_id = t5.schl_id where t1.`ref_code` LIKE '%" & .txtSearch.Text & "%' limit 500"
+                    ElseIf .cbFilter.Text = "Student" Then
+                        sql = "SELECT t1.`ref_code` as 'Code', t2.doc_description as 'Credential', t5.schl_name as 'School', StudentFullName as 'Student', t1.`ref_status` as 'Status', if(t1.`ref_released_date` = '0000-00-00', ' - ',DATE_FORMAT(t1.`ref_released_date`,'%c/%e/%Y')) as 'Release Date', CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name) as 'Created', DATE_FORMAT(t1.`ref_date`,'%c/%e/%Y') as 'Date', t1.`ref_remarks` as 'Remarks' FROM `tbl_documents_reference_out` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.ref_user = t4.ua_id LEFT JOIN tbl_schools t5 ON t1.ref_schoold_id = t5.schl_id where (t1.`ref_student_id` LIKE '%" & .txtSearch.Text & "%' or StudentFullName LIKE '%" & .txtSearch.Text & "%') limit 500"
+                    ElseIf .cbFilter.Text = "School" Then
+                        sql = "SELECT t1.`ref_code` as 'Code', t2.doc_description as 'Credential', t5.schl_name as 'School', StudentFullName as 'Student', t1.`ref_status` as 'Status', if(t1.`ref_released_date` = '0000-00-00', ' - ',DATE_FORMAT(t1.`ref_released_date`,'%c/%e/%Y')) as 'Release Date', CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name) as 'Created', DATE_FORMAT(t1.`ref_date`,'%c/%e/%Y') as 'Date', t1.`ref_remarks` as 'Remarks' FROM `tbl_documents_reference_out` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.ref_user = t4.ua_id LEFT JOIN tbl_schools t5 ON t1.ref_schoold_id = t5.schl_id where t5.`schl_name` LIKE '%" & .txtSearch.Text & "%' limit 500"
+                    End If
+                End If
+                cn.Close()
+                cn.Open()
+                cm = New MySqlCommand(sql, cn)
+                dr = cm.ExecuteReader
+                While dr.Read
+                    .dgAckList.Rows.Add(dr.Item("Code").ToString, dr.Item("Credential").ToString, dr.Item("School").ToString, dr.Item("Student").ToString, dr.Item("Status").ToString, dr.Item("Release Date").ToString, dr.Item("Created").ToString, dr.Item("Date").ToString, dr.Item("Remarks").ToString)
+                End While
+                dr.Close()
+                cn.Close()
+                dgPanelPadding(.dgAckList, .dgPanel)
+
+                For Each row As DataGridViewRow In .dgAckList.Rows
+                    If row.Cells(3).Value = "Pending" Then
+                        row.DefaultCellStyle.ForeColor = Color.Red
+                        row.DefaultCellStyle.SelectionForeColor = Color.Red
+                    Else
+
+                    End If
+                Next
+
+            Catch ex As Exception
+                dr.Close()
+                cn.Close()
+                .dgAckList.Rows.Clear()
+            End Try
+        End With
+    End Sub
+
+    Public Sub LoadGradingStudentList()
+        Try
+
+            cn.Close()
+            cn.Open()
+            frmStudentGradeEditor.dgStudentList.Rows.Clear()
+            Dim i As Integer
             Dim sql As String
-            If .CheckBox1.Checked = True Then
-                If .txtSearch.Text = String.Empty Then
-                    sql = "SELECT t1.`ref_code` as 'Code', t2.doc_description as 'Credential', t5.schl_name as 'School', StudentFullName as 'Student', t1.`ref_status` as 'Status', if(t1.`ref_released_date` = '0000-00-00', ' - ',DATE_FORMAT(t1.`ref_released_date`,'%c/%e/%Y')) as 'Release Date', CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name) as 'Created', DATE_FORMAT(t1.`ref_date`,'%c/%e/%Y') as 'Date', t1.`ref_remarks` as 'Remarks' FROM `tbl_documents_reference_out` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.ref_user = t4.ua_id LEFT JOIN tbl_schools t5 ON t1.ref_schoold_id = t5.schl_id where t1.ref_date between '" & .dtFrom.Text & "' and  '" & .dtTo.Text & "' limit 500"
-                ElseIf .cbFilter.Text = "Credential" Then
-                    sql = "SELECT t1.`ref_code` as 'Code', t2.doc_description as 'Credential', t5.schl_name as 'School', StudentFullName as 'Student', t1.`ref_status` as 'Status', if(t1.`ref_released_date` = '0000-00-00', ' - ',DATE_FORMAT(t1.`ref_released_date`,'%c/%e/%Y')) as 'Release Date', CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name) as 'Created', DATE_FORMAT(t1.`ref_date`,'%c/%e/%Y') as 'Date', t1.`ref_remarks` as 'Remarks' FROM `tbl_documents_reference_out` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.ref_user = t4.ua_id LEFT JOIN tbl_schools t5 ON t1.ref_schoold_id = t5.schl_id where t2.doc_description LIKE '%" & .txtSearch.Text & "%' and t1.ref_date between '" & .dtFrom.Text & "' and  '" & .dtTo.Text & "' limit 500"
-                ElseIf .cbFilter.Text = "Code" Then
-                    sql = "SELECT t1.`ref_code` as 'Code', t2.doc_description as 'Credential', t5.schl_name as 'School', StudentFullName as 'Student', t1.`ref_status` as 'Status', if(t1.`ref_released_date` = '0000-00-00', ' - ',DATE_FORMAT(t1.`ref_released_date`,'%c/%e/%Y')) as 'Release Date', CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name) as 'Created', DATE_FORMAT(t1.`ref_date`,'%c/%e/%Y') as 'Date', t1.`ref_remarks` as 'Remarks' FROM `tbl_documents_reference_out` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.ref_user = t4.ua_id LEFT JOIN tbl_schools t5 ON t1.ref_schoold_id = t5.schl_id where t1.`ref_code` LIKE '%" & .txtSearch.Text & "%' and t1.ref_date between '" & .dtFrom.Text & "' and  '" & .dtTo.Text & "' limit 500"
-                ElseIf .cbFilter.Text = "Student" Then
-                    sql = "SELECT t1.`ref_code` as 'Code', t2.doc_description as 'Credential', t5.schl_name as 'School', StudentFullName as 'Student', t1.`ref_status` as 'Status', if(t1.`ref_released_date` = '0000-00-00', ' - ',DATE_FORMAT(t1.`ref_released_date`,'%c/%e/%Y')) as 'Release Date', CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name) as 'Created', DATE_FORMAT(t1.`ref_date`,'%c/%e/%Y') as 'Date', t1.`ref_remarks` as 'Remarks' FROM `tbl_documents_reference_out` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.ref_user = t4.ua_id LEFT JOIN tbl_schools t5 ON t1.ref_schoold_id = t5.schl_id where (t1.`ref_student_id` LIKE '%" & .txtSearch.Text & "%' or StudentFullName LIKE '%" & .txtSearch.Text & "%') and t1.ref_date between '" & .dtFrom.Text & "' and  '" & .dtTo.Text & "' limit 500"
-                ElseIf .cbFilter.Text = "School" Then
-                    sql = "SELECT t1.`ref_code` as 'Code', t2.doc_description as 'Credential', t5.schl_name as 'School', StudentFullName as 'Student', t1.`ref_status` as 'Status', if(t1.`ref_released_date` = '0000-00-00', ' - ',DATE_FORMAT(t1.`ref_released_date`,'%c/%e/%Y')) as 'Release Date', CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name) as 'Created', DATE_FORMAT(t1.`ref_date`,'%c/%e/%Y') as 'Date', t1.`ref_remarks` as 'Remarks' FROM `tbl_documents_reference_out` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.ref_user = t4.ua_id LEFT JOIN tbl_schools t5 ON t1.ref_schoold_id = t5.schl_id where t5.`schl_name` LIKE '%" & .txtSearch.Text & "%' and t1.ref_date between '" & .dtFrom.Text & "' and  '" & .dtTo.Text & "' limit 500"
-                End If
-            Else
-                If .txtSearch.Text = String.Empty Then
-                    sql = "SELECT t1.`ref_code` as 'Code', t2.doc_description as 'Credential', t5.schl_name as 'School', StudentFullName as 'Student', t1.`ref_status` as 'Status', if(t1.`ref_released_date` = '0000-00-00', ' - ',DATE_FORMAT(t1.`ref_released_date`,'%c/%e/%Y')) as 'Release Date', CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name) as 'Created', DATE_FORMAT(t1.`ref_date`,'%c/%e/%Y') as 'Date', t1.`ref_remarks` as 'Remarks' FROM `tbl_documents_reference_out` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.ref_user = t4.ua_id LEFT JOIN tbl_schools t5 ON t1.ref_schoold_id = t5.schl_id limit 500"
-                ElseIf .cbFilter.Text = "Credential" Then
-                    sql = "SELECT t1.`ref_code` as 'Code', t2.doc_description as 'Credential', t5.schl_name as 'School', StudentFullName as 'Student', t1.`ref_status` as 'Status', if(t1.`ref_released_date` = '0000-00-00', ' - ',DATE_FORMAT(t1.`ref_released_date`,'%c/%e/%Y')) as 'Release Date', CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name) as 'Created', DATE_FORMAT(t1.`ref_date`,'%c/%e/%Y') as 'Date', t1.`ref_remarks` as 'Remarks' FROM `tbl_documents_reference_out` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.ref_user = t4.ua_id LEFT JOIN tbl_schools t5 ON t1.ref_schoold_id = t5.schl_id where t2.doc_description LIKE '%" & .txtSearch.Text & "%' limit 500"
-                ElseIf .cbFilter.Text = "Code" Then
-                    sql = "SELECT t1.`ref_code` as 'Code', t2.doc_description as 'Credential', t5.schl_name as 'School', StudentFullName as 'Student', t1.`ref_status` as 'Status', if(t1.`ref_released_date` = '0000-00-00', ' - ',DATE_FORMAT(t1.`ref_released_date`,'%c/%e/%Y')) as 'Release Date', CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name) as 'Created', DATE_FORMAT(t1.`ref_date`,'%c/%e/%Y') as 'Date', t1.`ref_remarks` as 'Remarks' FROM `tbl_documents_reference_out` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.ref_user = t4.ua_id LEFT JOIN tbl_schools t5 ON t1.ref_schoold_id = t5.schl_id where t1.`ref_code` LIKE '%" & .txtSearch.Text & "%' limit 500"
-                ElseIf .cbFilter.Text = "Student" Then
-                    sql = "SELECT t1.`ref_code` as 'Code', t2.doc_description as 'Credential', t5.schl_name as 'School', StudentFullName as 'Student', t1.`ref_status` as 'Status', if(t1.`ref_released_date` = '0000-00-00', ' - ',DATE_FORMAT(t1.`ref_released_date`,'%c/%e/%Y')) as 'Release Date', CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name) as 'Created', DATE_FORMAT(t1.`ref_date`,'%c/%e/%Y') as 'Date', t1.`ref_remarks` as 'Remarks' FROM `tbl_documents_reference_out` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.ref_user = t4.ua_id LEFT JOIN tbl_schools t5 ON t1.ref_schoold_id = t5.schl_id where (t1.`ref_student_id` LIKE '%" & .txtSearch.Text & "%' or StudentFullName LIKE '%" & .txtSearch.Text & "%') limit 500"
-                ElseIf .cbFilter.Text = "School" Then
-                    sql = "SELECT t1.`ref_code` as 'Code', t2.doc_description as 'Credential', t5.schl_name as 'School', StudentFullName as 'Student', t1.`ref_status` as 'Status', if(t1.`ref_released_date` = '0000-00-00', ' - ',DATE_FORMAT(t1.`ref_released_date`,'%c/%e/%Y')) as 'Release Date', CONCAT(t4.ua_first_name, ' ', LEFT(t4.ua_middle_name,1), '. ', t4.ua_last_name) as 'Created', DATE_FORMAT(t1.`ref_date`,'%c/%e/%Y') as 'Date', t1.`ref_remarks` as 'Remarks' FROM `tbl_documents_reference_out` t1 JOIN tbl_documents t2 ON t1.ref_doc_id = t2.doc_id LEFT JOIN students t3 ON t1.ref_student_id = t3.StudentID LEFT JOIN tbl_user_account t4 ON t1.ref_user = t4.ua_id LEFT JOIN tbl_schools t5 ON t1.ref_schoold_id = t5.schl_id where t5.`schl_name` LIKE '%" & .txtSearch.Text & "%' limit 500"
-                End If
-            End If
+            sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course', course_id, (course_name) as 'Course Desc', (course_sector) as 'Course Sector' from tbl_student JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where (s_ln like '%" & frmStudentGradeEditor.txtSearch.Text & "%' or s_fn like '%" & frmStudentGradeEditor.txtSearch.Text & "%' or s_mn like '%" & frmStudentGradeEditor.txtSearch.Text & "%' or s_id_no like '%" & frmStudentGradeEditor.txtSearch.Text & "%') order by s_id_no asc limit 250"
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmStudentGradeEditor.dgStudentList.Rows.Add(i, dr.Item("ID Number").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, dr.Item("Suffix").ToString, dr.Item("Gender").ToString, dr.Item("Year Level").ToString, dr.Item("Course").ToString, dr.Item("course_id").ToString, dr.Item("Course Desc").ToString, dr.Item("Course Sector").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmStudentGradeEditor.dgStudentList.Rows.Clear()
+
+        End Try
+    End Sub
+
+    Public Sub LoadGradingSchoolList()
+        Try
+
+            frmStudentGradeEditor.dgSchoolList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select * from tbl_schools where (schl_code LIKE '%" & frmStudentGradeEditor.txtSearch.Text & "%' or schl_name LIKE '%" & frmStudentGradeEditor.txtSearch.Text & "%') order by schl_name asc limit 500"
             cn.Close()
             cn.Open()
             cm = New MySqlCommand(sql, cn)
             dr = cm.ExecuteReader
             While dr.Read
-                .dgAckList.Rows.Add(dr.Item("Code").ToString, dr.Item("Credential").ToString, dr.Item("School").ToString, dr.Item("Student").ToString, dr.Item("Status").ToString, dr.Item("Release Date").ToString, dr.Item("Created").ToString, dr.Item("Date").ToString, dr.Item("Remarks").ToString)
+                i += 1
+                frmStudentGradeEditor.dgSchoolList.Rows.Add(i, dr.Item("schl_id").ToString, dr.Item("schl_code").ToString, dr.Item("schl_name").ToString)
             End While
             dr.Close()
             cn.Close()
-            dgPanelPadding(.dgAckList, .dgPanel)
 
-            For Each row As DataGridViewRow In .dgAckList.Rows
-                If row.Cells(3).Value = "Pending" Then
-                    row.DefaultCellStyle.ForeColor = Color.Red
-                    row.DefaultCellStyle.SelectionForeColor = Color.Red
-                Else
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmStudentGradeEditor.dgSchoolList.Rows.Clear()
 
-                End If
-            Next
-        End With
-    End Sub
-
-    Public Sub LoadGradingStudentList()
-        cn.Close()
-        cn.Open()
-        frmStudentGradeEditor.dgStudentList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course', course_id, (course_name) as 'Course Desc', (course_sector) as 'Course Sector' from tbl_student JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where (s_ln like '%" & frmStudentGradeEditor.txtSearch.Text & "%' or s_fn like '%" & frmStudentGradeEditor.txtSearch.Text & "%' or s_mn like '%" & frmStudentGradeEditor.txtSearch.Text & "%' or s_id_no like '%" & frmStudentGradeEditor.txtSearch.Text & "%') order by s_id_no asc limit 250"
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmStudentGradeEditor.dgStudentList.Rows.Add(i, dr.Item("ID Number").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, dr.Item("Suffix").ToString, dr.Item("Gender").ToString, dr.Item("Year Level").ToString, dr.Item("Course").ToString, dr.Item("course_id").ToString, dr.Item("Course Desc").ToString, dr.Item("Course Sector").ToString)
-        End While
-        dr.Close()
-        cn.Close()
-    End Sub
-
-    Public Sub LoadGradingSchoolList()
-        frmStudentGradeEditor.dgSchoolList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select * from tbl_schools where (schl_code LIKE '%" & frmStudentGradeEditor.txtSearch.Text & "%' or schl_name LIKE '%" & frmStudentGradeEditor.txtSearch.Text & "%') order by schl_name asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmStudentGradeEditor.dgSchoolList.Rows.Add(i, dr.Item("schl_id").ToString, dr.Item("schl_code").ToString, dr.Item("schl_name").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        End Try
     End Sub
 
 
     Public Sub LoadGradeCreditingStudentList()
-        cn.Close()
-        cn.Open()
-        frmCreditGrade.dgStudentList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course', course_id, (course_name) as 'Course Desc', (course_sector) as 'Course Sector' from tbl_student JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where (s_ln like '%" & frmCreditGrade.txtSearch.Text & "%' or s_fn like '%" & frmCreditGrade.txtSearch.Text & "%' or s_mn like '%" & frmCreditGrade.txtSearch.Text & "%' or s_id_no like '%" & frmCreditGrade.txtSearch.Text & "%') order by s_id_no asc limit 250"
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmCreditGrade.dgStudentList.Rows.Add(i, dr.Item("ID Number").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, dr.Item("Suffix").ToString, dr.Item("Gender").ToString, dr.Item("Year Level").ToString, dr.Item("Course").ToString, dr.Item("course_id").ToString, dr.Item("Course Desc").ToString, dr.Item("Course Sector").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
+
+            cn.Close()
+            cn.Open()
+            frmCreditGrade.dgStudentList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course', course_id, (course_name) as 'Course Desc', (course_sector) as 'Course Sector' from tbl_student JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where (s_ln like '%" & frmCreditGrade.txtSearch.Text & "%' or s_fn like '%" & frmCreditGrade.txtSearch.Text & "%' or s_mn like '%" & frmCreditGrade.txtSearch.Text & "%' or s_id_no like '%" & frmCreditGrade.txtSearch.Text & "%') order by s_id_no asc limit 250"
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmCreditGrade.dgStudentList.Rows.Add(i, dr.Item("ID Number").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, dr.Item("Suffix").ToString, dr.Item("Gender").ToString, dr.Item("Year Level").ToString, dr.Item("Course").ToString, dr.Item("course_id").ToString, dr.Item("Course Desc").ToString, dr.Item("Course Sector").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmCreditGrade.dgStudentList.Rows.Clear()
+
+        End Try
     End Sub
 
     Public Sub LoadGradeCreditingSchoolList()
-        frmCreditGrade.dgSchoolList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select * from tbl_schools where (schl_code LIKE '%" & frmCreditGrade.txtSearch.Text & "%' or schl_name LIKE '%" & frmCreditGrade.txtSearch.Text & "%') order by schl_name asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmCreditGrade.dgSchoolList.Rows.Add(i, dr.Item("schl_id").ToString, dr.Item("schl_code").ToString, dr.Item("schl_name").ToString, dr.Item("schl_address").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
+
+            frmCreditGrade.dgSchoolList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select * from tbl_schools where (schl_code LIKE '%" & frmCreditGrade.txtSearch.Text & "%' or schl_name LIKE '%" & frmCreditGrade.txtSearch.Text & "%') order by schl_name asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmCreditGrade.dgSchoolList.Rows.Add(i, dr.Item("schl_id").ToString, dr.Item("schl_code").ToString, dr.Item("schl_name").ToString, dr.Item("schl_address").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmCreditGrade.dgSchoolList.Rows.Clear()
+
+        End Try
     End Sub
 
     Public Sub LoadGradeCreditingCourseList()
-        frmCreditGrade.dgCourseList.Rows.Clear()
+        Try
+
+            frmCreditGrade.dgCourseList.Rows.Clear()
         Dim i As Integer
         Dim sql As String
         sql = "select course_id, course_code, course_name, course_major, course_status from tbl_course where (course_code LIKE '%" & frmCreditGrade.txtSearch.Text & "%' or course_name LIKE '%" & frmCreditGrade.txtSearch.Text & "%') order by course_name asc limit 500"
@@ -2333,64 +2657,96 @@ Module Records
             frmCreditGrade.dgCourseList.Rows.Add(i, dr.Item("course_id").ToString, dr.Item("course_code").ToString, dr.Item("course_name").ToString, dr.Item("course_major").ToString, dr.Item("course_status").ToString)
         End While
         dr.Close()
-        cn.Close()
+            cn.Close()
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmCreditGrade.dgCourseList.Rows.Clear()
+
+        End Try
     End Sub
 
     Public Sub LoadGradeCreditingSubjectList()
-        frmCreditGrade.dgSubjectList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select (b.subject_id) as 'ID', (b.subject_code) as 'Code', (b.subject_description) as 'Description', (b.subject_Type) as 'Type', (b.subject_group) as 'Group', (b.subject_units) as 'Units', CONCAT(a.subject_description,'-',a.subject_code) as 'Prerequisite', (b.subject_active_status) as 'Status' from tbl_subject b LEFT JOIN tbl_subject a ON a.subject_id = b.subject_prerequisite where (b.subject_code LIKE '" & frmCreditGrade.txtSearch.Text & "%' or b.subject_description LIKE '" & frmCreditGrade.txtSearch.Text & "%') order by b.subject_description asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmCreditGrade.dgSubjectList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("Description").ToString, dr.Item("Type").ToString, dr.Item("Group").ToString, dr.Item("Units").ToString, dr.Item("Prerequisite").ToString, dr.Item("Status").ToString)
-        End While
-        dr.Close()
-        cn.Close()
-    End Sub
+        Try
 
+            frmCreditGrade.dgSubjectList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select (b.subject_id) as 'ID', (b.subject_code) as 'Code', (b.subject_description) as 'Description', (b.subject_Type) as 'Type', (b.subject_group) as 'Group', (b.subject_units) as 'Units', CONCAT(a.subject_description,'-',a.subject_code) as 'Prerequisite', (b.subject_active_status) as 'Status' from tbl_subject b LEFT JOIN tbl_subject a ON a.subject_id = b.subject_prerequisite where (b.subject_code LIKE '" & frmCreditGrade.txtSearch.Text & "%' or b.subject_description LIKE '" & frmCreditGrade.txtSearch.Text & "%') order by b.subject_description asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmCreditGrade.dgSubjectList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("Description").ToString, dr.Item("Type").ToString, dr.Item("Group").ToString, dr.Item("Units").ToString, dr.Item("Prerequisite").ToString, dr.Item("Status").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmCreditGrade.dgSubjectList.Rows.Clear()
+        End Try
+    End Sub
 
 
     Public Sub LoadStudentGrades()
-        cn2.Close()
-        cn2.Open()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select subject_id, (subject_code) as 'CODE', (subject_description) as 'DESCRIPTION', (sg_grade) as 'GRADES', (sg_credits) as 'CREDIT', (sg_grade_status) as 'STATUS', (sg_course_id) as 'Course_id', CONCAT(course_code, ' - ', course_name) as 'Course', sg_grade_remarks, schl_name, sg_yearlevel, sg_grade_visibility, sg_id, sg_school_id from tbl_students_grades, tbl_subject, period, tbl_schools, tbl_course where tbl_students_grades.sg_subject_id = tbl_subject.subject_id and tbl_students_grades.sg_period_id = period.period_id and tbl_students_grades.sg_course_id = tbl_course.course_id and tbl_students_grades.sg_school_id = tbl_schools.schl_id and sg_student_id = '" & frmStudentGradeEditor.studentId & "' and sg_period_id = " & CInt(frmStudentGradeEditor.cbAcademicYear.SelectedValue) & " and sg_grade_status NOT IN ('Pending')"
-        cm2 = New MySqlCommand(sql, cn2)
-        dr2 = cm2.ExecuteReader
-        While dr2.Read
-            i += 1
-            frmStudentGradeEditor.dgStudentGrades.Rows.Add(i, dr2.Item("subject_id").ToString, dr2.Item("CODE").ToString, dr2.Item("DESCRIPTION").ToString, dr2.Item("GRADES").ToString, dr2.Item("CREDIT").ToString, dr2.Item("STATUS").ToString, dr2.Item("Course_id").ToString, dr2.Item("Course").ToString, dr2.Item("sg_grade_remarks").ToString, dr2.Item("schl_name").ToString, dr2.Item("sg_yearlevel").ToString, dr2.Item("sg_grade_visibility").ToString, dr2.Item("sg_id").ToString)
-        End While
-        dr2.Close()
-        cn2.Close()
+        Try
+
+            cn2.Close()
+            cn2.Open()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select subject_id, (subject_code) as 'CODE', (subject_description) as 'DESCRIPTION', (sg_grade) as 'GRADES', (sg_credits) as 'CREDIT', (sg_grade_status) as 'STATUS', (sg_course_id) as 'Course_id', CONCAT(course_code, ' - ', course_name) as 'Course', sg_grade_remarks, schl_name, sg_yearlevel, sg_grade_visibility, sg_id, sg_school_id from tbl_students_grades, tbl_subject, period, tbl_schools, tbl_course where tbl_students_grades.sg_subject_id = tbl_subject.subject_id and tbl_students_grades.sg_period_id = period.period_id and tbl_students_grades.sg_course_id = tbl_course.course_id and tbl_students_grades.sg_school_id = tbl_schools.schl_id and sg_student_id = '" & frmStudentGradeEditor.studentId & "' and sg_period_id = " & CInt(frmStudentGradeEditor.cbAcademicYear.SelectedValue) & " and sg_grade_status NOT IN ('Pending')"
+            cm2 = New MySqlCommand(sql, cn2)
+            dr2 = cm2.ExecuteReader
+            While dr2.Read
+                i += 1
+                frmStudentGradeEditor.dgStudentGrades.Rows.Add(i, dr2.Item("subject_id").ToString, dr2.Item("CODE").ToString, dr2.Item("DESCRIPTION").ToString, dr2.Item("GRADES").ToString, dr2.Item("CREDIT").ToString, dr2.Item("STATUS").ToString, dr2.Item("Course_id").ToString, dr2.Item("Course").ToString, dr2.Item("sg_grade_remarks").ToString, dr2.Item("schl_name").ToString, dr2.Item("sg_yearlevel").ToString, dr2.Item("sg_grade_visibility").ToString, dr2.Item("sg_id").ToString)
+            End While
+            dr2.Close()
+            cn2.Close()
+
+        Catch ex As Exception
+            dr2.Close()
+            cn2.Close()
+            frmStudentGradeEditor.dgStudentGrades.Rows.Clear()
+        End Try
     End Sub
 
     Public Sub LoadClassStudentGrades()
-        frmClassGradeEditor.dgStudentList.Rows.Clear()
-        cn2.Close()
-        cn2.Open()
-        Dim i As Integer
-        Dim sql As String
-        sql = "SELECT t1.sg_student_id, CONCAT(t2.s_ln, ', ', t2.s_fn, ' ', t2.s_mn) as Name, `sg_grade_prelim`, `sg_grade_midterm`, `sg_grade_semi`, `sg_grade_final`, `sg_grade_avg`, `sg_grade`, `sg_credits` FROM `tbl_students_grades` t1 JOIN tbl_student t2 on t1.sg_student_id = t2.s_id_no WHERE t1.sg_class_id = " & CInt(frmClassGradeEditor.classID) & " order by t2.s_ln asc, t2.s_fn asc"
-        cm2 = New MySqlCommand(sql, cn2)
-        dr2 = cm2.ExecuteReader
-        While dr2.Read
-            i += 1
-            frmClassGradeEditor.dgStudentList.Rows.Add(i, dr2.Item("sg_student_id").ToString, dr2.Item("Name").ToString, dr2.Item("sg_grade_prelim").ToString, dr2.Item("sg_grade_midterm").ToString, dr2.Item("sg_grade_semi").ToString, dr2.Item("sg_grade_final").ToString, dr2.Item("sg_grade_avg").ToString, dr2.Item("sg_grade").ToString, dr2.Item("sg_credits").ToString)
-        End While
-        dr2.Close()
-        cn2.Close()
+        Try
+
+            frmClassGradeEditor.dgStudentList.Rows.Clear()
+            cn2.Close()
+            cn2.Open()
+            Dim i As Integer
+            Dim sql As String
+            sql = "SELECT t1.sg_student_id, CONCAT(t2.s_ln, ', ', t2.s_fn, ' ', t2.s_mn) as Name, `sg_grade_prelim`, `sg_grade_midterm`, `sg_grade_semi`, `sg_grade_final`, `sg_grade_avg`, `sg_grade`, `sg_credits` FROM `tbl_students_grades` t1 JOIN tbl_student t2 on t1.sg_student_id = t2.s_id_no WHERE t1.sg_class_id = " & CInt(frmClassGradeEditor.classID) & " order by t2.s_ln asc, t2.s_fn asc"
+            cm2 = New MySqlCommand(sql, cn2)
+            dr2 = cm2.ExecuteReader
+            While dr2.Read
+                i += 1
+                frmClassGradeEditor.dgStudentList.Rows.Add(i, dr2.Item("sg_student_id").ToString, dr2.Item("Name").ToString, dr2.Item("sg_grade_prelim").ToString, dr2.Item("sg_grade_midterm").ToString, dr2.Item("sg_grade_semi").ToString, dr2.Item("sg_grade_final").ToString, dr2.Item("sg_grade_avg").ToString, dr2.Item("sg_grade").ToString, dr2.Item("sg_credits").ToString)
+            End While
+            dr2.Close()
+            cn2.Close()
+
+        Catch ex As Exception
+            dr2.Close()
+            cn2.Close()
+            frmClassGradeEditor.dgStudentList.Rows.Clear()
+        End Try
     End Sub
 #End Region
 #Region "Enrollment"
     Public Sub CurriculumList()
-        frmCurriculumList.dgCurrList.Rows.Clear()
+        Try
+
+            frmCurriculumList.dgCurrList.Rows.Clear()
         Dim i As Integer
         Dim sql As String
         sql = "select curriculum_id, (curriculum_code) as 'Curriculum', (course_code) as 'Course', (course_name) as 'CourseDescription', (is_active) as 'Status' from tbl_curriculum JOIN tbl_course JOIN tbl_user_account where tbl_curriculum.prepared_by_id = tbl_user_account.ua_id and tbl_curriculum.curr_course_id = tbl_course.course_id and curriculum_code LIKE '%" & frmMain.txtSearch.Text & "%'"
@@ -2403,94 +2759,135 @@ Module Records
             frmCurriculumList.dgCurrList.Rows.Add(i, dr.Item("curriculum_id").ToString, dr.Item("Curriculum").ToString, dr.Item("Course").ToString, dr.Item("CourseDescription").ToString, dr.Item("Status").ToString)
         End While
         dr.Close()
-        cn.Close()
+            cn.Close()
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmCurriculumList.dgCurrList.Rows.Clear()
+
+        End Try
     End Sub
 
     Public Sub LibraryEnrollmentStudentList()
-        frmEnrollStudent.dgStudentList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course', course_id, course_name, s_course_status, s_status from tbl_pre_cashiering JOIN tbl_student ON tbl_pre_cashiering.student_id = tbl_student.s_id_no JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where tbl_pre_cashiering.period_id = " & CInt(frmEnrollStudent.cbAcad.SelectedValue) & " and (tbl_student.s_ln like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_fn like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_mn like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_id_no like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_yr_lvl like '" & frmEnrollStudent.txtSearch.Text & "%') order by s_id_no asc limit 500"
+        Try
 
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmEnrollStudent.dgStudentList.Rows.Add(i, dr.Item("ID Number").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, dr.Item("Suffix").ToString, dr.Item("Gender").ToString, dr.Item("Year Level").ToString, dr.Item("Course").ToString, dr.Item("course_id").ToString, dr.Item("course_name").ToString, dr.Item("s_course_status").ToString, dr.Item("s_status").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+            frmEnrollStudent.dgStudentList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course', course_id, course_name, s_course_status, s_status from tbl_pre_cashiering JOIN tbl_student ON tbl_pre_cashiering.student_id = tbl_student.s_id_no JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where tbl_pre_cashiering.period_id = " & CInt(frmEnrollStudent.cbAcad.SelectedValue) & " and (tbl_student.s_ln like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_fn like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_mn like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_id_no like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_yr_lvl like '" & frmEnrollStudent.txtSearch.Text & "%') order by s_id_no asc limit 500"
 
-        If frmMain.systemModule.Text = "College Module" Then
-            frmEnrollStudent.dgStudentList.Columns(8).HeaderText = "Course"
-        Else
-            frmEnrollStudent.dgStudentList.Columns(8).HeaderText = "Strand/Grade"
-        End If
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmEnrollStudent.dgStudentList.Rows.Add(i, dr.Item("ID Number").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, dr.Item("Suffix").ToString, dr.Item("Gender").ToString, dr.Item("Year Level").ToString, dr.Item("Course").ToString, dr.Item("course_id").ToString, dr.Item("course_name").ToString, dr.Item("s_course_status").ToString, dr.Item("s_status").ToString)
+            End While
+            dr.Close()
+            cn.Close()
 
-        dgPanelPadding(frmEnrollStudent.dgStudentList, frmEnrollStudent.dgPanel)
+            If frmMain.systemModule.Text = "College Module" Then
+                frmEnrollStudent.dgStudentList.Columns(8).HeaderText = "Course"
+            Else
+                frmEnrollStudent.dgStudentList.Columns(8).HeaderText = "Strand/Grade"
+            End If
+
+            dgPanelPadding(frmEnrollStudent.dgStudentList, frmEnrollStudent.dgPanel)
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmEnrollStudent.dgStudentList.Rows.Clear()
+        End Try
     End Sub
 
     Public Sub EnrollmentSubjectListPerSection()
-        frmEnrollStudent.dgStudentSched.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "SELECT `tbl_class_schedule`.`class_schedule_id` AS `ID`, `tbl_class_block`.`cb_code` as 'Class', `period`.`PERIOD` as 'Period', CONCAT(`tbl_class_block`.`cb_code`, ' - ', `period`.`PERIOD`) AS `Code`, CONCAT(`tbl_subject`.`subject_code`, ' - ', `tbl_subject`.`subject_description` ) AS `Subject`, `tbl_subject`.`subject_units` AS `Units`, if(`tbl_day_schedule`.`ds_code` = 'M T W TH F SAT SUN', 'DAILY', `tbl_day_schedule`.`ds_code`) AS `Day Schedule`, `tbl_class_schedule`.`time_start_schedule` AS `Time Start`, `tbl_class_schedule`.`time_end_schedule` as `Time End`, `tbl_room`.`room_code` AS `Room`, CONCAT( `tbl_employee`.`emp_last_name`, ', ', `tbl_employee`.`emp_first_name`, ' ', `tbl_employee`.`emp_middle_name` ) AS `Instructor`, `tbl_class_schedule`.`population` AS `Population`, period_id, if(tbl_class_schedule.class_status = 'Merged', CONCAT(tbl_class_schedule.is_active,' - ',tbl_class_schedule.class_status), tbl_class_schedule.is_active) as 'Status' FROM (((((`tbl_class_schedule`JOIN `tbl_class_block`)JOIN `tbl_subject`)JOIN `tbl_day_schedule`)JOIN `tbl_room`)JOIN `tbl_employee`)JOIN `period` WHERE `tbl_class_schedule`.`class_block_id` = `tbl_class_block`.`cb_id` AND `tbl_class_schedule`.`cssubject_id` = `tbl_subject`.`subject_id` AND `tbl_class_schedule`.`days_schedule` = `tbl_day_schedule`.`ds_id` AND `tbl_class_schedule`.`csroom_id` = `tbl_room`.`room_id` AND `tbl_class_schedule`.`csemp_id` = `tbl_employee`.`emp_id` and `tbl_class_schedule`.`csperiod_id` = `period`.`period_id` and period_id = " & CInt(frmEnrollStudent.cbAcad.SelectedValue) & " and cb_id = " & CInt(frmEnrollStudent.cbSection.SelectedValue) & ""
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
+        Try
 
-            frmEnrollStudent.dgStudentSched.Rows.Add(dr.Item("ID").ToString, dr.Item("Class").ToString, dr.Item("Code").ToString, dr.Item("Subject").ToString, dr.Item("Units").ToString, dr.Item("Day Schedule").ToString, dr.Item("Time Start").ToString, dr.Item("Time End").ToString, dr.Item("Room").ToString, dr.Item("Instructor").ToString, dr.Item("Population").ToString, "", dr.Item("period_id").ToString, dr.Item("status").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+
+            frmEnrollStudent.dgStudentSched.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "SELECT `tbl_class_schedule`.`class_schedule_id` AS `ID`, `tbl_class_block`.`cb_code` as 'Class', `period`.`PERIOD` as 'Period', CONCAT(`tbl_class_block`.`cb_code`, ' - ', `period`.`PERIOD`) AS `Code`, CONCAT(`tbl_subject`.`subject_code`, ' - ', `tbl_subject`.`subject_description` ) AS `Subject`, `tbl_subject`.`subject_units` AS `Units`, if(`tbl_day_schedule`.`ds_code` = 'M T W TH F SAT SUN', 'DAILY', `tbl_day_schedule`.`ds_code`) AS `Day Schedule`, `tbl_class_schedule`.`time_start_schedule` AS `Time Start`, `tbl_class_schedule`.`time_end_schedule` as `Time End`, `tbl_room`.`room_code` AS `Room`, CONCAT( `tbl_employee`.`emp_last_name`, ', ', `tbl_employee`.`emp_first_name`, ' ', `tbl_employee`.`emp_middle_name` ) AS `Instructor`, `tbl_class_schedule`.`population` AS `Population`, period_id, if(tbl_class_schedule.class_status = 'Merged', CONCAT(tbl_class_schedule.is_active,' - ',tbl_class_schedule.class_status), tbl_class_schedule.is_active) as 'Status' FROM (((((`tbl_class_schedule`JOIN `tbl_class_block`)JOIN `tbl_subject`)JOIN `tbl_day_schedule`)JOIN `tbl_room`)JOIN `tbl_employee`)JOIN `period` WHERE `tbl_class_schedule`.`class_block_id` = `tbl_class_block`.`cb_id` AND `tbl_class_schedule`.`cssubject_id` = `tbl_subject`.`subject_id` AND `tbl_class_schedule`.`days_schedule` = `tbl_day_schedule`.`ds_id` AND `tbl_class_schedule`.`csroom_id` = `tbl_room`.`room_id` AND `tbl_class_schedule`.`csemp_id` = `tbl_employee`.`emp_id` and `tbl_class_schedule`.`csperiod_id` = `period`.`period_id` and period_id = " & CInt(frmEnrollStudent.cbAcad.SelectedValue) & " and cb_id = " & CInt(frmEnrollStudent.cbSection.SelectedValue) & ""
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+
+                frmEnrollStudent.dgStudentSched.Rows.Add(dr.Item("ID").ToString, dr.Item("Class").ToString, dr.Item("Code").ToString, dr.Item("Subject").ToString, dr.Item("Units").ToString, dr.Item("Day Schedule").ToString, dr.Item("Time Start").ToString, dr.Item("Time End").ToString, dr.Item("Room").ToString, dr.Item("Instructor").ToString, dr.Item("Population").ToString, "", dr.Item("period_id").ToString, dr.Item("status").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmEnrollStudent.dgStudentSched.Rows.Clear()
+        End Try
     End Sub
 
     Public Sub LibraryEnrollmentClassSchedList()
-        frmEnrollStudent.dgClassSchedList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnMode.None
-        frmEnrollStudent.dgClassSchedList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "SELECT t1.`class_schedule_id`, t1.`cb_code`, t1.`subject_code`, t1.`subject_description`, t1.`subject_units`, t1.`ds_code`, t1.`time_start_schedule`, t1.`time_end_schedule`, t1.`room_code`, t1.`Instructor`, t1.`population`, t1.`csperiod_id`, t1.`is_active` FROM `classschedulelist` t1 where t1.csperiod_id = " & CInt(frmEnrollStudent.cbAcad.SelectedValue) & " and t1.`is_active` NOT IN ('Inactive') and (t1.cb_code LIKE '%" & frmMain.txtSearch.Text & "%' or t1.subject_code LIKE '%" & frmEnrollStudent.txtSearch.Text & "%' or t1.subject_description LIKE '%" & frmEnrollStudent.txtSearch.Text & "%' or t1.Instructor LIKE '%" & frmEnrollStudent.txtSearch.Text & "%') limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            frmEnrollStudent.dgClassSchedList.Rows.Add(dr.Item("class_schedule_id").ToString, dr.Item("cb_code").ToString, dr.Item("subject_code").ToString, dr.Item("subject_description").ToString, dr.Item("subject_units").ToString, dr.Item("ds_code").ToString, dr.Item("time_start_schedule").ToString, dr.Item("time_end_schedule").ToString, dr.Item("room_code").ToString, dr.Item("Instructor").ToString, dr.Item("population").ToString, "👁", dr.Item("csperiod_id").ToString, dr.Item("is_active").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
 
-        dgPanelPadding(frmEnrollStudent.dgClassSchedList, frmEnrollStudent.dgPanel)
+            frmEnrollStudent.dgClassSchedList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnMode.None
+            frmEnrollStudent.dgClassSchedList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "SELECT t1.`class_schedule_id`, t1.`cb_code`, t1.`subject_code`, t1.`subject_description`, t1.`subject_units`, t1.`ds_code`, t1.`time_start_schedule`, t1.`time_end_schedule`, t1.`room_code`, t1.`Instructor`, t1.`population`, t1.`csperiod_id`, t1.`is_active` FROM `classschedulelist` t1 where t1.csperiod_id = " & CInt(frmEnrollStudent.cbAcad.SelectedValue) & " and t1.`is_active` NOT IN ('Inactive') and (t1.cb_code LIKE '%" & frmMain.txtSearch.Text & "%' or t1.subject_code LIKE '%" & frmEnrollStudent.txtSearch.Text & "%' or t1.subject_description LIKE '%" & frmEnrollStudent.txtSearch.Text & "%' or t1.Instructor LIKE '%" & frmEnrollStudent.txtSearch.Text & "%') limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                frmEnrollStudent.dgClassSchedList.Rows.Add(dr.Item("class_schedule_id").ToString, dr.Item("cb_code").ToString, dr.Item("subject_code").ToString, dr.Item("subject_description").ToString, dr.Item("subject_units").ToString, dr.Item("ds_code").ToString, dr.Item("time_start_schedule").ToString, dr.Item("time_end_schedule").ToString, dr.Item("room_code").ToString, dr.Item("Instructor").ToString, dr.Item("population").ToString, "👁", dr.Item("csperiod_id").ToString, dr.Item("is_active").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+            dgPanelPadding(frmEnrollStudent.dgClassSchedList, frmEnrollStudent.dgPanel)
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmEnrollStudent.dgClassSchedList.Rows.Clear()
+
+        End Try
     End Sub
 
     Public Sub LibraryEnrollmentPermitStudentList()
-        frmEnrollmentPermit.dgStudentList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course', course_id, course_name, s_course_status from tbl_student JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where (tbl_student.s_ln like '" & frmEnrollmentPermit.txtSearch.Text & "%' or tbl_student.s_fn like '" & frmEnrollmentPermit.txtSearch.Text & "%' or tbl_student.s_mn like '" & frmEnrollmentPermit.txtSearch.Text & "%' or tbl_student.s_id_no like '" & frmEnrollmentPermit.txtSearch.Text & "%' or tbl_student.s_yr_lvl like '" & frmEnrollmentPermit.txtSearch.Text & "%') order by s_id_no asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            frmEnrollmentPermit.dgStudentList.Rows.Add(i, dr.Item("ID Number").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, dr.Item("Suffix").ToString, dr.Item("Gender").ToString, dr.Item("Year Level").ToString, dr.Item("Course").ToString, dr.Item("course_id").ToString, dr.Item("course_name").ToString, dr.Item("s_course_status").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
 
-        If frmMain.systemModule.Text = "College Module" Then
-            frmEnrollmentPermit.dgStudentList.Columns(8).HeaderText = "Course"
-        Else
-            frmEnrollmentPermit.dgStudentList.Columns(8).HeaderText = "Strand/Grade"
-        End If
+            frmEnrollmentPermit.dgStudentList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course', course_id, course_name, s_course_status from tbl_student JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where (tbl_student.s_ln like '" & frmEnrollmentPermit.txtSearch.Text & "%' or tbl_student.s_fn like '" & frmEnrollmentPermit.txtSearch.Text & "%' or tbl_student.s_mn like '" & frmEnrollmentPermit.txtSearch.Text & "%' or tbl_student.s_id_no like '" & frmEnrollmentPermit.txtSearch.Text & "%' or tbl_student.s_yr_lvl like '" & frmEnrollmentPermit.txtSearch.Text & "%') order by s_id_no asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                frmEnrollmentPermit.dgStudentList.Rows.Add(i, dr.Item("ID Number").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, dr.Item("Suffix").ToString, dr.Item("Gender").ToString, dr.Item("Year Level").ToString, dr.Item("Course").ToString, dr.Item("course_id").ToString, dr.Item("course_name").ToString, dr.Item("s_course_status").ToString)
+            End While
+            dr.Close()
+            cn.Close()
 
-        dgPanelPadding(frmEnrollmentPermit.dgStudentList, frmEnrollmentPermit.dgPanel)
+            If frmMain.systemModule.Text = "College Module" Then
+                frmEnrollmentPermit.dgStudentList.Columns(8).HeaderText = "Course"
+            Else
+                frmEnrollmentPermit.dgStudentList.Columns(8).HeaderText = "Strand/Grade"
+            End If
+
+            dgPanelPadding(frmEnrollmentPermit.dgStudentList, frmEnrollmentPermit.dgPanel)
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            frmEnrollmentPermit.dgStudentList.Rows.Clear()
+
+        End Try
     End Sub
 
 

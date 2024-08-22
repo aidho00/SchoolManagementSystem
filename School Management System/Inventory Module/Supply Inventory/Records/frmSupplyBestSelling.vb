@@ -30,8 +30,9 @@ Public Class frmSupplyBestSelling
             dr.Close()
             cn.Close()
         Catch ex As Exception
-            MsgBox(ex.Message, vbCritical)
+            dr.Close()
             cn.Close()
+            MsgBox(ex.Message, vbCritical)
         End Try
     End Sub
 

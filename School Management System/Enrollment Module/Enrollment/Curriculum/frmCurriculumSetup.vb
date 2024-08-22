@@ -92,7 +92,9 @@ Public Class frmCurriculumSetup
     End Sub
 
     Sub PreRequisiteCurriculumSubjectList()
-        dgSubjectList.Rows.Clear()
+        Try
+
+            dgSubjectList.Rows.Clear()
 
         Dim i As Integer
         'i += 1
@@ -115,11 +117,20 @@ Public Class frmCurriculumSetup
         End While
         dr.Close()
         cn.Close()
-        dgPanelPadding(dgSubjectList, dgPanel)
+            dgPanelPadding(dgSubjectList, dgPanel)
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            dgSubjectList.Rows.Clear()
+
+        End Try
     End Sub
 
     Sub CurrSubjectList()
-        dgCurriculumSubjects.Rows.Clear()
+        Try
+
+            dgCurriculumSubjects.Rows.Clear()
         Dim sql As String
         sql = "select (subject_id) as 'ID', (subject_code) as 'Code', (subject_description) as 'Description', (subject_Type) as 'Type', (subject_units) as 'Units', `subjectGroup`, `passingGrade`, `subjectIDpreq`, id as recordID from tbl_curriculum_subjects JOIN tbl_subject ON tbl_curriculum_subjects.subjectID = tbl_subject.subject_id where `yearLevel`= '" & cbYearLevel.Text & "' and `semester` = '" & cbSemester.Text & "' and `curriculumID` = " & currID & ""
         cn.Close()
@@ -134,25 +145,32 @@ Public Class frmCurriculumSetup
 
         dgPanelPadding(dgCurriculumSubjects, dgPanel)
 
-        If dgCurriculumSubjects.RowCount = 0 Then
-        Else
-            'Try
-            For Each row As DataGridViewRow In dgCurriculumSubjects.Rows
+            If dgCurriculumSubjects.RowCount = 0 Then
+            Else
+                'Try
+                For Each row As DataGridViewRow In dgCurriculumSubjects.Rows
                     If row.Cells(7).Value.ToString = "0" Then
                     Else
                         cn.Close()
                         cn.Open()
-                    cm = New MySqlCommand("SELECT subject_code from tbl_subject where subject_id = " & row.Cells(7).Value & "", cn)
-                    row.Cells(10).Value = cm.ExecuteScalar
+                        cm = New MySqlCommand("SELECT subject_code from tbl_subject where subject_id = " & row.Cells(7).Value & "", cn)
+                        row.Cells(10).Value = cm.ExecuteScalar
                         cn.Close()
                     End If
                     row.Cells(11).Value = "-"
                 Next
-            'Catch ex As Exception
-            '    cn.Close()
-            '    MsgBox(ex.Message, vbCritical)
-            'End Try
-        End If
+                'Catch ex As Exception
+                '    cn.Close()
+                '    MsgBox(ex.Message, vbCritical)
+                'End Try
+            End If
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            dgCurriculumSubjects.Rows.Clear()
+
+        End Try
     End Sub
 
     Private Sub btnAddSubj_Click(sender As Object, e As EventArgs) Handles btnAddSubj.Click

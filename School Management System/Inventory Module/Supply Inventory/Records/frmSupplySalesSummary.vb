@@ -52,8 +52,10 @@ Public Class frmSupplySalesSummary
             dr.Close()
             cn.Close()
         Catch ex As Exception
-            MsgBox(ex.Message, vbCritical)
+            dr.Close()
             cn.Close()
+            MsgBox(ex.Message, vbCritical)
+
         End Try
     End Sub
 
@@ -72,8 +74,10 @@ Public Class frmSupplySalesSummary
             dr.Close()
             cn.Close()
         Catch ex As Exception
-            MsgBox(ex.Message, vbCritical)
+            dr.Close()
             cn.Close()
+            MsgBox(ex.Message, vbCritical)
+
         End Try
     End Sub
 
@@ -92,8 +96,10 @@ Public Class frmSupplySalesSummary
             dr.Close()
             cn.Close()
         Catch ex As Exception
-            MsgBox(ex.Message, vbCritical)
+            dr.Close()
             cn.Close()
+            MsgBox(ex.Message, vbCritical)
+
         End Try
     End Sub
 
@@ -112,8 +118,10 @@ Public Class frmSupplySalesSummary
             dr.Close()
             cn.Close()
         Catch ex As Exception
-            MsgBox(ex.Message, vbCritical)
+            dr.Close()
             cn.Close()
+            MsgBox(ex.Message, vbCritical)
+
         End Try
     End Sub
 End Class

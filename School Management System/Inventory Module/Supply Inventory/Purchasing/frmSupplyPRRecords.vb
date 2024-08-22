@@ -2,8 +2,9 @@
 
 Public Class frmSupplyPRRecords
     Sub PurchaseRequestList()
+        Try
 
-        dgPRList.Rows.Clear()
+            dgPRList.Rows.Clear()
         Dim i As Integer
         Dim sql As String
         sql = "Select prno, prtotal, status, DATE_FORMAT(prdate, '%m/%d/%Y') as prdate, AccountName, prremarks from tbl_supply_purchaserequest pr JOIN useraccounts ua ON pr.pruser_id = ua.useraccountID where prno LIKE '%" & frmMain.txtSearch.Text & "%'"
@@ -16,7 +17,14 @@ Public Class frmSupplyPRRecords
             dgPRList.Rows.Add(i, dr.Item("prno").ToString, dr.Item("prtotal").ToString, dr.Item("prdate").ToString, dr.Item("status").ToString, dr.Item("AccountName").ToString, dr.Item("prremarks").ToString)
         End While
         dr.Close()
-        cn.Close()
+            cn.Close()
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            dgPRList.Rows.Clear()
+
+        End Try
     End Sub
 
     Private Sub dgPRList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgPRList.CellContentClick

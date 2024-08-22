@@ -37,6 +37,8 @@ Partial Class frmEvaluationGrade
         Me.Label8 = New System.Windows.Forms.Label()
         Me.btnRemove = New System.Windows.Forms.PictureBox()
         Me.btnLinkGrade = New System.Windows.Forms.PictureBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.Panel4.SuspendLayout()
         Me.FlowLayoutPanel2.SuspendLayout()
         Me.systemSign.SuspendLayout()
@@ -177,7 +179,7 @@ Partial Class frmEvaluationGrade
         'btnRemove
         '
         Me.btnRemove.Image = CType(resources.GetObject("btnRemove.Image"), System.Drawing.Image)
-        Me.btnRemove.Location = New System.Drawing.Point(327, 63)
+        Me.btnRemove.Location = New System.Drawing.Point(273, 82)
         Me.btnRemove.Name = "btnRemove"
         Me.btnRemove.Size = New System.Drawing.Size(17, 19)
         Me.btnRemove.TabIndex = 348
@@ -186,11 +188,33 @@ Partial Class frmEvaluationGrade
         'btnLinkGrade
         '
         Me.btnLinkGrade.Image = CType(resources.GetObject("btnLinkGrade.Image"), System.Drawing.Image)
-        Me.btnLinkGrade.Location = New System.Drawing.Point(304, 63)
+        Me.btnLinkGrade.Location = New System.Drawing.Point(273, 57)
         Me.btnLinkGrade.Name = "btnLinkGrade"
         Me.btnLinkGrade.Size = New System.Drawing.Size(17, 19)
         Me.btnLinkGrade.TabIndex = 348
         Me.btnLinkGrade.TabStop = False
+        '
+        'Label2
+        '
+        Me.Label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Century Gothic", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(293, 60)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(23, 13)
+        Me.Label2.TabIndex = 349
+        Me.Label2.Text = "Link"
+        '
+        'Label4
+        '
+        Me.Label4.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Century Gothic", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(293, 85)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(44, 13)
+        Me.Label4.TabIndex = 349
+        Me.Label4.Text = "Remove"
         '
         'frmEvaluationGrade
         '
@@ -198,6 +222,8 @@ Partial Class frmEvaluationGrade
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(352, 219)
         Me.ControlBox = False
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.btnLinkGrade)
         Me.Controls.Add(Me.btnRemove)
         Me.Controls.Add(Me.cbGrade)
@@ -238,4 +264,6 @@ Partial Class frmEvaluationGrade
     Friend WithEvents Label8 As Label
     Friend WithEvents btnRemove As PictureBox
     Friend WithEvents btnLinkGrade As PictureBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label4 As Label
 End Class

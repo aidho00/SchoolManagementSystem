@@ -4,18 +4,24 @@ Public Class frmCashDenomination
 
     Dim CashDenominationCode As String = ""
     Sub LoadRecords()
-        dgCashDenomination.Rows.Clear()
-        Dim sql As String
-        sql = "select (t1.cd_code) as Code, DATE_FORMAT(t1.cd_date, '%Y-%m-%d') AS 'Date', (t2.AccountName) as Cashier from tbl_cash_denomination t1 JOIN useraccounts t2 ON t1.cd_cashier_id = t2.useraccountID where (t1.cd_code LIKE '%" & txtSearch.Text & "%' or t2.AccountName LIKE '%" & txtSearch.Text & "%') order by cd_date desc limit 50"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            dgCashDenomination.Rows.Add(dr.Item("Code").ToString, dr.Item("Date").ToString, dr.Item("Cashier").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
+            dgCashDenomination.Rows.Clear()
+            Dim sql As String
+            sql = "select (t1.cd_code) as Code, DATE_FORMAT(t1.cd_date, '%Y-%m-%d') AS 'Date', (t2.AccountName) as Cashier from tbl_cash_denomination t1 JOIN useraccounts t2 ON t1.cd_cashier_id = t2.useraccountID where (t1.cd_code LIKE '%" & txtSearch.Text & "%' or t2.AccountName LIKE '%" & txtSearch.Text & "%') order by cd_date desc limit 50"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                dgCashDenomination.Rows.Add(dr.Item("Code").ToString, dr.Item("Date").ToString, dr.Item("Cashier").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            dgCashDenomination.Rows.Clear()
+        End Try
     End Sub
 
     Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged

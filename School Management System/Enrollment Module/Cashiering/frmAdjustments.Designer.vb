@@ -1058,8 +1058,8 @@ Partial Class frmAdjustments
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(998, 601)
         Me.ControlBox = False
-        Me.Controls.Add(Me.adjustmentPanel)
         Me.Controls.Add(Me.SearchPanel)
+        Me.Controls.Add(Me.adjustmentPanel)
         Me.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)

@@ -96,13 +96,14 @@
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         Try
+            Dim SubjectDescription As String = txtName.Text.Replace("'", "''")
             If IS_EMPTY(txtCode) = True Then Return
             If IS_EMPTY(txtName) = True Then Return
             If IS_EMPTY(txtUnits) = True Then Return
-            If CHECK_EXISTING("SELECT * FROM tbl_subject WHERE subject_description = '" & txtName.Text.Trim & "' and subject_code = '" & txtCode.Text.Trim & "' and subject_units = " & txtUnits.Text.Trim & " and subject_group = '" & cbGroup.Text & "'") Then Return
+            If CHECK_EXISTING("SELECT * FROM tbl_subject WHERE subject_description = '" & SubjectDescription.Trim & "' and subject_code = '" & txtCode.Text.Trim & "' and subject_units = " & txtUnits.Text.Trim & " and subject_group = '" & cbGroup.Text & "'") Then Return
             If MsgBox("Are you sure you want to save this record?", vbYesNo + vbQuestion) = vbYes Then
                 Try
-                    query("INSERT INTO tbl_subject (subject_code, subject_description, subject_active_status, subject_type, subject_units, subject_charge_units, subject_group, subject_prerequisite) values ('" & txtCode.Text.Trim & "', '" & txtName.Text.Trim & "', '" & cbStatus.Text & "', '" & cbType.Text & "', '" & txtUnits.Text & "', '" & txtCunits.Text & "', '" & cbGroup.Text & "', " & PRSubjectID & ")")
+                    query("INSERT INTO tbl_subject (subject_code, subject_description, subject_active_status, subject_type, subject_units, subject_charge_units, subject_group, subject_prerequisite) values ('" & txtCode.Text.Trim & "', '" & SubjectDescription.Trim & "', '" & cbStatus.Text & "', '" & cbType.Text & "', '" & txtUnits.Text & "', '" & txtCunits.Text & "', '" & cbGroup.Text & "', " & PRSubjectID & ")")
                     UserActivity("Added a new subject '" & txtCode.Text.Trim & " - " & txtName.Text.Trim & "'.", "LIBRARY SUBJECT")
                     frmWait.seconds = 1
                     frmWait.ShowDialog()
@@ -121,13 +122,14 @@
 
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
         Try
+            Dim SubjectDescription As String = txtName.Text.Replace("'", "''")
             If IS_EMPTY(txtCode) = True Then Return
             If IS_EMPTY(txtName) = True Then Return
             If IS_EMPTY(txtUnits) = True Then Return
-            If CHECK_EXISTING("SELECT * FROM tbl_subject WHERE subject_description = '" & txtName.Text.Trim & "' and subject_code = '" & txtCode.Text.Trim & "' and subject_units = " & txtUnits.Text.Trim & " and subject_group = '" & cbGroup.Text & "' and subject_id NOT IN(" & SubjectID & ")") Then Return
+            If CHECK_EXISTING("SELECT * FROM tbl_subject WHERE subject_description = '" & SubjectDescription.Trim & "' and subject_code = '" & txtCode.Text.Trim & "' and subject_units = " & txtUnits.Text.Trim & " and subject_group = '" & cbGroup.Text & "' and subject_id NOT IN(" & SubjectID & ")") Then Return
             If MsgBox("Are you sure you want to update this record?", vbYesNo + vbQuestion) = vbYes Then
                 Try
-                    query("UPDATE tbl_subject SET subject_code='" & txtCode.Text.Trim & "', subject_description='" & txtName.Text.Trim & "', subject_active_status='" & cbStatus.Text & "', subject_type='" & cbType.Text & "', subject_units='" & txtUnits.Text.Trim & "', subject_charge_units='" & txtCunits.Text.Trim & "', subject_group='" & cbGroup.Text & "', subject_prerequisite=" & PRSubjectID & " where subject_id = " & SubjectID & "")
+                    query("UPDATE tbl_subject SET subject_code='" & txtCode.Text.Trim & "', subject_description='" & SubjectDescription.Trim & "', subject_active_status='" & cbStatus.Text & "', subject_type='" & cbType.Text & "', subject_units='" & txtUnits.Text.Trim & "', subject_charge_units='" & txtCunits.Text.Trim & "', subject_group='" & cbGroup.Text & "', subject_prerequisite=" & PRSubjectID & " where subject_id = " & SubjectID & "")
                     UserActivity("Updated subject '" & txtCode.Text.Trim & " - " & txtName.Text.Trim & "' details.", "LIBRARY SUBJECT")
                     frmWait.seconds = 1
                     frmWait.ShowDialog()

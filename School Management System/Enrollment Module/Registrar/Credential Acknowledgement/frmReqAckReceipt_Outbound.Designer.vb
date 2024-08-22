@@ -93,12 +93,6 @@ Partial Class frmReqAckReceipt_Outbound
         Me.txtRemarks = New System.Windows.Forms.TextBox()
         Me.txtSchool = New System.Windows.Forms.TextBox()
         Me.dg_doc_list = New System.Windows.Forms.DataGridView()
-        Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.FlowLayoutPanel2 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.btnCancel = New System.Windows.Forms.Button()
-        Me.btnSave = New System.Windows.Forms.Button()
-        Me.btnUpdate = New System.Windows.Forms.Button()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -110,6 +104,12 @@ Partial Class frmReqAckReceipt_Outbound
         Me.Column14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cbRemove = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.FlowLayoutPanel2 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.btnCancel = New System.Windows.Forms.Button()
+        Me.btnSave = New System.Windows.Forms.Button()
+        Me.btnUpdate = New System.Windows.Forms.Button()
         Me.systemSign.SuspendLayout()
         Me.BasePanel.SuspendLayout()
         Me.SearchPanel.SuspendLayout()
@@ -865,6 +865,88 @@ Partial Class frmReqAckReceipt_Outbound
         Me.dg_doc_list.Size = New System.Drawing.Size(973, 305)
         Me.dg_doc_list.TabIndex = 460
         '
+        'Column1
+        '
+        Me.Column1.HeaderText = "StudentID"
+        Me.Column1.Name = "Column1"
+        Me.Column1.Visible = False
+        '
+        'Column2
+        '
+        Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column2.HeaderText = "Student"
+        Me.Column2.Name = "Column2"
+        Me.Column2.Width = 74
+        '
+        'Column12
+        '
+        Me.Column12.HeaderText = "ID"
+        Me.Column12.Name = "Column12"
+        Me.Column12.Visible = False
+        '
+        'Column10
+        '
+        Me.Column10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column10.HeaderText = "Code"
+        Me.Column10.Name = "Column10"
+        Me.Column10.Visible = False
+        Me.Column10.Width = 64
+        '
+        'Column11
+        '
+        Me.Column11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Column11.HeaderText = "Description"
+        Me.Column11.Name = "Column11"
+        Me.Column11.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Column11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'cmbStatus
+        '
+        Me.cmbStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.cmbStatus.HeaderText = "Status"
+        Me.cmbStatus.Items.AddRange(New Object() {"Pending", "Released"})
+        Me.cmbStatus.Name = "cmbStatus"
+        Me.cmbStatus.Width = 45
+        '
+        'DateColumn
+        '
+        Me.DateColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.DateColumn.HeaderText = "Released"
+        Me.DateColumn.Name = "DateColumn"
+        Me.DateColumn.Width = 81
+        '
+        'Column13
+        '
+        Me.Column13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column13.HeaderText = "Mode"
+        Me.Column13.Items.AddRange(New Object() {"", "Personal", "Hand Carry"})
+        Me.Column13.Name = "Column13"
+        Me.Column13.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Column13.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.Column13.Width = 64
+        '
+        'Column14
+        '
+        Me.Column14.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column14.HeaderText = "Received"
+        Me.Column14.Name = "Column14"
+        Me.Column14.Width = 84
+        '
+        'Column15
+        '
+        Me.Column15.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column15.HeaderText = "Contact"
+        Me.Column15.Name = "Column15"
+        Me.Column15.Width = 77
+        '
+        'cbRemove
+        '
+        Me.cbRemove.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.cbRemove.HeaderText = ""
+        Me.cbRemove.Image = CType(resources.GetObject("cbRemove.Image"), System.Drawing.Image)
+        Me.cbRemove.Name = "cbRemove"
+        Me.cbRemove.Width = 5
+        '
         'Panel3
         '
         Me.Panel3.Controls.Add(Me.FlowLayoutPanel2)
@@ -925,88 +1007,6 @@ Partial Class frmReqAckReceipt_Outbound
         Me.btnUpdate.TabIndex = 1
         Me.btnUpdate.Text = "UPDATE"
         Me.btnUpdate.UseVisualStyleBackColor = True
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "StudentID"
-        Me.Column1.Name = "Column1"
-        Me.Column1.Visible = False
-        '
-        'Column2
-        '
-        Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column2.HeaderText = "Student"
-        Me.Column2.Name = "Column2"
-        Me.Column2.Width = 74
-        '
-        'Column12
-        '
-        Me.Column12.HeaderText = "ID"
-        Me.Column12.Name = "Column12"
-        Me.Column12.Visible = False
-        '
-        'Column10
-        '
-        Me.Column10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column10.HeaderText = "Code"
-        Me.Column10.Name = "Column10"
-        Me.Column10.Visible = False
-        Me.Column10.Width = 62
-        '
-        'Column11
-        '
-        Me.Column11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Column11.HeaderText = "Description"
-        Me.Column11.Name = "Column11"
-        Me.Column11.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Column11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'cmbStatus
-        '
-        Me.cmbStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.cmbStatus.HeaderText = "Status"
-        Me.cmbStatus.Items.AddRange(New Object() {"Pending", "Released"})
-        Me.cmbStatus.Name = "cmbStatus"
-        Me.cmbStatus.Width = 45
-        '
-        'DateColumn
-        '
-        Me.DateColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.DateColumn.HeaderText = "Released"
-        Me.DateColumn.Name = "DateColumn"
-        Me.DateColumn.Width = 81
-        '
-        'Column13
-        '
-        Me.Column13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column13.HeaderText = "Mode"
-        Me.Column13.Items.AddRange(New Object() {"", "Personal", "Hand Carry"})
-        Me.Column13.Name = "Column13"
-        Me.Column13.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Column13.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.Column13.Width = 64
-        '
-        'Column14
-        '
-        Me.Column14.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column14.HeaderText = "Received"
-        Me.Column14.Name = "Column14"
-        Me.Column14.Width = 84
-        '
-        'Column15
-        '
-        Me.Column15.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column15.HeaderText = "Contact"
-        Me.Column15.Name = "Column15"
-        Me.Column15.Width = 77
-        '
-        'cbRemove
-        '
-        Me.cbRemove.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.cbRemove.HeaderText = ""
-        Me.cbRemove.Image = CType(resources.GetObject("cbRemove.Image"), System.Drawing.Image)
-        Me.cbRemove.Name = "cbRemove"
-        Me.cbRemove.Width = 5
         '
         'frmReqAckReceipt_Outbound
         '

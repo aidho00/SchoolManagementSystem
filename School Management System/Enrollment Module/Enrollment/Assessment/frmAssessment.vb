@@ -7,18 +7,26 @@ Public Class frmAssessment
     End Sub
 
     Sub AssessmentCourseList()
-        dgCourseList.Rows.Clear()
-        Dim sql As String
-        sql = "select course_id, course_code, course_name, course_major, course_status from tbl_course where (course_code LIKE '%" & txtSearch.Text & "%' or course_name LIKE '%" & txtSearch.Text & "%') order by course_name asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            dgCourseList.Rows.Add(dr.Item("course_id").ToString, dr.Item("course_code").ToString, dr.Item("course_name").ToString, dr.Item("course_major").ToString, dr.Item("course_status").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
+
+            dgCourseList.Rows.Clear()
+            Dim sql As String
+            sql = "select course_id, course_code, course_name, course_major, course_status from tbl_course where (course_code LIKE '%" & txtSearch.Text & "%' or course_name LIKE '%" & txtSearch.Text & "%') order by course_name asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                dgCourseList.Rows.Add(dr.Item("course_id").ToString, dr.Item("course_code").ToString, dr.Item("course_name").ToString, dr.Item("course_major").ToString, dr.Item("course_status").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            dgCourseList.Rows.Clear()
+        End Try
     End Sub
 
     Sub CourseAssessmentList()

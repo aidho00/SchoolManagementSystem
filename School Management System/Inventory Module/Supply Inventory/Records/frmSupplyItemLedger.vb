@@ -4,7 +4,9 @@ Public Class frmSupplyItemLedger
 
 
     Sub SupplyItemList()
-        dgSupplyItemList.Rows.Clear()
+        Try
+
+            dgSupplyItemList.Rows.Clear()
         Dim i As Integer
         Dim sql As String
         sql = "SELECT (BarcodeID) AS 'Barcode', Description, (CategoryName) AS 'Category', Sizes, (item_price) AS 'Price', tbl_supply_category.catid AS CATID, tbl_supply_sizes.sizeid AS SIZEID, tbl_supply_item.item_open_stock AS OpenStock, tbl_supply_item.item_reorder_point AS ReOrderPoint, tbl_supply_category.categorytype AS SupplyType FROM tbl_supply_item JOIN tbl_supply_category ON tbl_supply_item.CategoryID = tbl_supply_category.catid JOIN tbl_supply_sizes ON tbl_supply_item.sizesid = tbl_supply_sizes.sizeid JOIN tbl_supply_brand ON tbl_supply_item.brandid = tbl_supply_brand.brandid WHERE (BarcodeID LIKE '%" & txtSearch.Text & "%' OR CategoryName LIKE '%" & txtSearch.Text & "%' OR Description LIKE '%" & txtSearch.Text & "%' OR Sizes LIKE '%" & txtSearch.Text & "%' OR brandname LIKE '%" & txtSearch.Text & "%')"
@@ -18,6 +20,13 @@ Public Class frmSupplyItemLedger
         End While
         dr.Close()
         cn.Close()
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            dgSupplyItemList.Rows.Clear()
+
+        End Try
     End Sub
 
     Private Sub btnSearchItem_Click(sender As Object, e As EventArgs) Handles btnSearchItem.Click
@@ -42,20 +51,27 @@ Public Class frmSupplyItemLedger
     End Sub
 
     Sub SupplyLedger()
-        dgLedger.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "Select sl_itembarcode, sl_transaction_type, sl_reference_no, sl_remark, DATE_FORMAT(sl_date, '%m/%d/%Y') as sl_date, sl_stockin_added, sl_stockout_deducted, sl_running_balance from tbl_supply_ledger where sl_itembarcode = '" & lblBarcode.Text & "'"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            dgLedger.Rows.Add(i, dr.Item("sl_transaction_type").ToString, dr.Item("sl_transaction_type").ToString, dr.Item("sl_reference_no").ToString, dr.Item("sl_remark").ToString, dr.Item("sl_date").ToString, dr.Item("sl_stockin_added").ToString, dr.Item("sl_stockout_deducted").ToString, dr.Item("sl_running_balance").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
+            dgLedger.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "Select sl_itembarcode, sl_transaction_type, sl_reference_no, sl_remark, DATE_FORMAT(sl_date, '%m/%d/%Y') as sl_date, sl_stockin_added, sl_stockout_deducted, sl_running_balance from tbl_supply_ledger where sl_itembarcode = '" & lblBarcode.Text & "'"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                dgLedger.Rows.Add(i, dr.Item("sl_transaction_type").ToString, dr.Item("sl_transaction_type").ToString, dr.Item("sl_reference_no").ToString, dr.Item("sl_remark").ToString, dr.Item("sl_date").ToString, dr.Item("sl_stockin_added").ToString, dr.Item("sl_stockout_deducted").ToString, dr.Item("sl_running_balance").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+        Catch ex As exception
+            dr.Close()
+            cn.Close()
+            dgLedger.Rows.Clear()
+        End Try
     End Sub
 
     Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged

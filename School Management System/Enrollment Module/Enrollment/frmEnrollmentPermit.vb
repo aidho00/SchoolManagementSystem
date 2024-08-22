@@ -112,4 +112,8 @@ Public Class frmEnrollmentPermit
         SetFormIcon(Me)
         ApplyHoverEffectToControls(Me)
     End Sub
+
+    Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
+        LibraryEnrollmentPermitStudentList()
+    End Sub
 End Class

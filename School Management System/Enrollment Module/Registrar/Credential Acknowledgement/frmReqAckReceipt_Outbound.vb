@@ -64,18 +64,26 @@ Public Class frmReqAckReceipt_Outbound
     End Sub
 
     Sub docs_list()
-        dg_doc_list.Rows.Clear()
-        Dim sql As String
-        sql = "select (doc_id) as 'ID', (doc_code) as 'Docu Code', (doc_description) as 'Docu Description' from tbl_documents order by doc_description"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            frmStudentGradeEditor.dgSchoolList.Rows.Add("", dr.Item("ID").ToString, dr.Item("Docu Code").ToString, dr.Item("Docu Description").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
+
+
+            dg_doc_list.Rows.Clear()
+            Dim sql As String
+            sql = "select (doc_id) as 'ID', (doc_code) as 'Docu Code', (doc_description) as 'Docu Description' from tbl_documents order by doc_description"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                frmStudentGradeEditor.dgSchoolList.Rows.Add("", dr.Item("ID").ToString, dr.Item("Docu Code").ToString, dr.Item("Docu Description").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            dg_doc_list.Rows.Clear()
+        End Try
     End Sub
 
     Private Sub btnSearchStudent_Click(sender As Object, e As EventArgs) Handles btnSearchStudent.Click
@@ -89,33 +97,44 @@ Public Class frmReqAckReceipt_Outbound
     End Sub
 
     Public Sub AckStudentList()
-        dgStudentList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course', course_id, course_name, s_course_status from tbl_student JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where (tbl_student.s_ln like '" & txtSearch.Text & "%' or tbl_student.s_fn like '" & txtSearch.Text & "%' or tbl_student.s_mn like '" & txtSearch.Text & "%' or tbl_student.s_id_no like '" & txtSearch.Text & "%' or tbl_student.s_yr_lvl like '" & txtSearch.Text & "%') order by s_id_no asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            dgStudentList.Rows.Add(i, dr.Item("ID Number").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, dr.Item("Suffix").ToString, dr.Item("Gender").ToString, dr.Item("Year Level").ToString, dr.Item("Course").ToString, dr.Item("course_id").ToString, dr.Item("course_name").ToString, dr.Item("s_course_status").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
 
-        If frmMain.systemModule.Text = "College Module" Then
-            dgStudentList.Columns(8).HeaderText = "Course"
-        Else
-            dgStudentList.Columns(8).HeaderText = "Strand/Grade"
-        End If
+            dgStudentList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course', course_id, course_name, s_course_status from tbl_student JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where (tbl_student.s_ln like '" & txtSearch.Text & "%' or tbl_student.s_fn like '" & txtSearch.Text & "%' or tbl_student.s_mn like '" & txtSearch.Text & "%' or tbl_student.s_id_no like '" & txtSearch.Text & "%' or tbl_student.s_yr_lvl like '" & txtSearch.Text & "%') order by s_id_no asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                dgStudentList.Rows.Add(i, dr.Item("ID Number").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, dr.Item("Suffix").ToString, dr.Item("Gender").ToString, dr.Item("Year Level").ToString, dr.Item("Course").ToString, dr.Item("course_id").ToString, dr.Item("course_name").ToString, dr.Item("s_course_status").ToString)
+            End While
+            dr.Close()
+            cn.Close()
 
-        dgPanelPadding(dgStudentList, dgPanel)
+            If frmMain.systemModule.Text = "College Module" Then
+                dgStudentList.Columns(8).HeaderText = "Course"
+            Else
+                dgStudentList.Columns(8).HeaderText = "Strand/Grade"
+            End If
+
+            dgPanelPadding(dgStudentList, dgPanel)
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            dgStudentList.Rows.Clear()
+
+        End Try
     End Sub
 
     Public Sub AckSchoolList()
-        dgSchoolList.Rows.Clear()
-        Dim sql As String
+        Try
+
+            dgSchoolList.Rows.Clear()
+            Dim sql As String
         sql = "select (schl_id) as 'ID', (schl_code) as 'Code', (schl_name) as 'School Name', (schl_address) as 'School Address' from tbl_schools where (schl_code LIKE '%" & txtSearch.Text & "%' or schl_name LIKE '%" & txtSearch.Text & "%') order by schl_name asc limit 500"
         cn.Close()
         cn.Open()
@@ -126,6 +145,13 @@ Public Class frmReqAckReceipt_Outbound
         End While
         dr.Close()
         cn.Close()
+
+        Catch ex As Exception
+        dr.Close()
+            cn.Close()
+            dgSchoolList.Rows.Clear()
+
+        End Try
     End Sub
 
     Private Sub btnSearchSchool_Click(sender As Object, e As EventArgs) Handles btnSearchSchool.Click
@@ -239,18 +265,27 @@ Public Class frmReqAckReceipt_Outbound
     End Sub
 
     Public Sub AckDocumentList()
-        dgDocuList.Rows.Clear()
-        Dim sql As String
-        sql = "select (doc_id) as 'ID', (doc_code) as 'Docu Code', (doc_description) as 'Docu Description', doc_type from tbl_documents where (doc_code like '%" & txtSearch.Text & "%' or doc_description like '%" & txtSearch.Text & "%') order by doc_description"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            dgDocuList.Rows.Add(dr.Item("ID").ToString, dr.Item("Docu Code").ToString, dr.Item("Docu Description").ToString, dr.Item("doc_type").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
+
+
+            dgDocuList.Rows.Clear()
+            Dim sql As String
+            sql = "select (doc_id) as 'ID', (doc_code) as 'Docu Code', (doc_description) as 'Docu Description', doc_type from tbl_documents where (doc_code like '%" & txtSearch.Text & "%' or doc_description like '%" & txtSearch.Text & "%') order by doc_description"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                dgDocuList.Rows.Add(dr.Item("ID").ToString, dr.Item("Docu Code").ToString, dr.Item("Docu Description").ToString, dr.Item("doc_type").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            dgDocuList.Rows.Clear()
+
+        End Try
     End Sub
 
     Private Sub dg_doc_list_CellEnter(sender As Object, e As DataGridViewCellEventArgs) Handles dg_doc_list.CellEnter

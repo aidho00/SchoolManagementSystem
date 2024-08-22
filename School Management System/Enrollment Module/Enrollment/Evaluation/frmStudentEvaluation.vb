@@ -136,6 +136,7 @@ Public Class frmStudentEvaluation
         Catch ex As Exception
             dr.Close()
             cn.Close()
+            dgStudentCurrList.Rows.Clear()
             MsgBox(ex.Message)
         End Try
     End Sub
@@ -154,28 +155,37 @@ Public Class frmStudentEvaluation
     End Sub
 
     Public Sub CurriculumStudentList()
-        dgStudentList.Rows.Clear()
-        Dim i As Integer
-        Dim sql As String
-        sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course', course_id, course_name, s_course_status from tbl_student JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where (tbl_student.s_ln like '" & txtSearch.Text & "%' or tbl_student.s_fn like '" & txtSearch.Text & "%' or tbl_student.s_mn like '" & txtSearch.Text & "%' or tbl_student.s_id_no like '" & txtSearch.Text & "%' or tbl_student.s_yr_lvl like '" & txtSearch.Text & "%') order by s_id_no asc limit 500"
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            i += 1
-            dgStudentList.Rows.Add(i, dr.Item("ID Number").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, dr.Item("Suffix").ToString, dr.Item("Gender").ToString, dr.Item("Year Level").ToString, dr.Item("Course").ToString, dr.Item("course_id").ToString, dr.Item("course_name").ToString, dr.Item("s_course_status").ToString)
-        End While
-        dr.Close()
-        cn.Close()
+        Try
 
-        If frmMain.systemModule.Text = "College Module" Then
-            dgStudentList.Columns(8).HeaderText = "Course"
-        Else
-            dgStudentList.Columns(8).HeaderText = "Strand/Grade"
-        End If
+            dgStudentList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course', course_id, course_name, s_course_status from tbl_student JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where (tbl_student.s_ln like '" & txtSearch.Text & "%' or tbl_student.s_fn like '" & txtSearch.Text & "%' or tbl_student.s_mn like '" & txtSearch.Text & "%' or tbl_student.s_id_no like '" & txtSearch.Text & "%' or tbl_student.s_yr_lvl like '" & txtSearch.Text & "%') order by s_id_no asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                dgStudentList.Rows.Add(i, dr.Item("ID Number").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, dr.Item("Suffix").ToString, dr.Item("Gender").ToString, dr.Item("Year Level").ToString, dr.Item("Course").ToString, dr.Item("course_id").ToString, dr.Item("course_name").ToString, dr.Item("s_course_status").ToString)
+            End While
+            dr.Close()
+            cn.Close()
 
-        dgPanelPadding(dgStudentList, dgPanel)
+            If frmMain.systemModule.Text = "College Module" Then
+                dgStudentList.Columns(8).HeaderText = "Course"
+            Else
+                dgStudentList.Columns(8).HeaderText = "Strand/Grade"
+            End If
+
+            dgPanelPadding(dgStudentList, dgPanel)
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            dgStudentList.Rows.Clear()
+
+        End Try
     End Sub
 
     Private Sub btnSearchStudent_Click(sender As Object, e As EventArgs) Handles btnSearchStudent.Click
@@ -228,7 +238,9 @@ Public Class frmStudentEvaluation
     End Sub
 
     Sub StudentCurriculumList()
-        dgCurrList.Rows.Clear()
+        Try
+
+            dgCurrList.Rows.Clear()
         Dim i As Integer
         Dim sql As String
         sql = "select curriculum_id, (curriculum_code) as 'Curriculum', (course_code) as 'Course', (course_name) as 'CourseDescription', (is_active) as 'Status' from tbl_curriculum JOIN tbl_course JOIN tbl_user_account where tbl_curriculum.prepared_by_id = tbl_user_account.ua_id and tbl_curriculum.curr_course_id = tbl_course.course_id and curriculum_code LIKE '%" & txtSearch.Text & "%'"
@@ -241,7 +253,14 @@ Public Class frmStudentEvaluation
             dgCurrList.Rows.Add(i, dr.Item("curriculum_id").ToString, dr.Item("Curriculum").ToString, dr.Item("Course").ToString, dr.Item("CourseDescription").ToString, dr.Item("Status").ToString)
         End While
         dr.Close()
-        cn.Close()
+            cn.Close()
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            dgCurrList.Rows.Clear()
+
+        End Try
     End Sub
 
     Private Sub AutoSizeDataGridView(ByVal DTG As Object)
@@ -1096,7 +1115,9 @@ Public Class frmStudentEvaluation
     End Sub
 
     Public Sub StudentGradeList()
-        dgGradeList.Rows.Clear()
+        Try
+
+            dgGradeList.Rows.Clear()
         Dim sql As String
         sql = "select tbl_students_grades.sg_id as 'ID', (schl_name) as 'SCHOOL', concat(period_name,'-',period_semester) as 'ACADEMIC YEAR', (subject_code) as 'CODE', (subject_description) as 'DESCRIPTION', if(sg_grade REGEXP '^-?[0-9]+$' >  0 and sg_grade < 6 and sg_school_id = '0' , ROUND(sg_grade,1), sg_grade)  as 'GRADES', sg_grade_status as 'STATUS' from tbl_students_grades, tbl_subject, tbl_period, tbl_schools, tbl_course where tbl_students_grades.sg_subject_id = tbl_subject.subject_id and tbl_students_grades.sg_period_id = tbl_period.period_id and tbl_students_grades.sg_course_id = tbl_course.course_id and tbl_students_grades.sg_school_id = tbl_schools.schl_id and sg_student_id = '" & StudentID & "' and sg_grade_visibility NOT IN (1) and sg_grade_status NOT IN ('Pending') and (subject_code LIKE '%" & txtSearch.Text & "%' or subject_description LIKE '%" & txtSearch.Text & "%') and period_semester NOT IN ('Review') order by period_name, period_semester, subject_code asc"
         cn.Close()
@@ -1113,20 +1134,27 @@ Public Class frmStudentEvaluation
 
         Dim seenValues As New HashSet(Of String)()
         Dim seenValues2 As New HashSet(Of String)()
-        For i As Integer = 0 To dgGradeList.Rows.Count - 1
-            Dim currentValue As String = dgGradeList.Rows(i).Cells(1).Value.ToString()
-            Dim currentValue2 As String = dgGradeList.Rows(i).Cells(2).Value.ToString()
-            If seenValues.Contains(currentValue) Then
-                dgGradeList.Rows(i).Cells(1).Style.ForeColor = Color.White
-            Else
-                seenValues.Add(currentValue)
-            End If
-            If seenValues2.Contains(currentValue2) Then
-                dgGradeList.Rows(i).Cells(2).Style.ForeColor = Color.White
-            Else
-                seenValues2.Add(currentValue2)
-            End If
-        Next
+            For i As Integer = 0 To dgGradeList.Rows.Count - 1
+                Dim currentValue As String = dgGradeList.Rows(i).Cells(1).Value.ToString()
+                Dim currentValue2 As String = dgGradeList.Rows(i).Cells(2).Value.ToString()
+                If seenValues.Contains(currentValue) Then
+                    dgGradeList.Rows(i).Cells(1).Style.ForeColor = Color.White
+                Else
+                    seenValues.Add(currentValue)
+                End If
+                If seenValues2.Contains(currentValue2) Then
+                    dgGradeList.Rows(i).Cells(2).Style.ForeColor = Color.White
+                Else
+                    seenValues2.Add(currentValue2)
+                End If
+            Next
+
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            dgGradeList.Rows.Clear()
+
+        End Try
     End Sub
 
     Private Sub DataGridView_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs)

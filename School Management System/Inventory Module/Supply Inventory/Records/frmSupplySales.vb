@@ -25,8 +25,10 @@ Public Class frmSupplySales
 
             lblTotal.Text = "REQUESTS - SALES: " & Format(_total, "₱ #,##0.00")
         Catch ex As Exception
-            MsgBox(ex.Message, vbCritical)
+            dr.Close()
             cn.Close()
+            MsgBox(ex.Message, vbCritical)
+
         End Try
     End Sub
 

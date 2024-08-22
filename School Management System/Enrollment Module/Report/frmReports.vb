@@ -1136,7 +1136,7 @@ Public Class frmReports
                     Dim tor_major As String = ""
                     cn.Close()
                     cn.Open()
-                    cm = New MySqlCommand("SELECT s_id_no, CONCAT(s_ln, ', ', s_fn, ' ', s_mn) AS 'sname', s_dob, CONCAT(s_address,', BRGY.',refbrgy.brgyDesc,', ',refcitymun.citymunDesc,', ',refprovince.provDesc) as Address, s_pob, s_guardian_name, s_guardian_address, s_nationality, s_begin_date, s_ent_cred, ifNULL(DATE_FORMAT(STR_TO_DATE(s_grad_date,'%M %d %Y'), '%M %Y'),' ') as lastattendance, DATE_FORMAT(STR_TO_DATE(s_grad_date,'%M %d %Y'), '%M %d, %Y') as grad_date, s_so_no, IF( s_p_school_id = '', ' ', t3.schl_name) AS 'Elementary', IF( s_p_school_id = '', ' ', s_p_school_ya) as 'Elementary School Year', IF( s_sh_school_id = '', ' ', t5.schl_name) AS 'Junior High', IF( s_sh_school_id = '', ' ', s_s_school_ya) as 'Junior High School Year', IF( s_s_school_id = '', ' ', t4.schl_name) AS 'Senior High', IF( s_s_school_id = '', ' ', s_sh_school_ya) as 'Senior High School Year', course_code, course_name, s_nstp_no, IF( s_c_school_id = '', ' ', t6.schl_name) AS 'College', IF( s_c_school_id = '', ' ', s_c_school_ya) as 'College School Year', s_acad_awards, course_major FROM tbl_student t1 LEFT JOIN tbl_course t2 ON t1.s_course_id = t2.course_id LEFT JOIN tbl_schools t3 ON t1.s_p_school_id = t3.schl_id LEFT JOIN tbl_schools t4 ON t1.s_sh_school_id = t4.schl_id LEFT JOIN tbl_schools t5 ON t1.s_s_school_id = t5.schl_id LEFT JOIN tbl_schools t6 ON t1.s_c_school_id = t6.schl_id LEFT JOIN refprovince ON  t1.s_address_prov = refprovince.provCode LEFT JOIN refcitymun ON t1.s_address_citymun = refcitymun.citymunCode LEFT JOIN refbrgy ON t1.s_address_brgy = refbrgy.brgyCode WHERE t1.s_id_no = '" & studentId & "'", cn)
+                    cm = New MySqlCommand("SELECT s_id_no, CONCAT(s_ln, ', ', s_fn, ' ', s_mn) AS 'sname', s_dob, CONCAT(s_address,', BRGY.',refbrgy.brgyDesc,', ',refcitymun.citymunDesc,', ',refprovince.provDesc) as Address, s_pob, s_guardian_name, s_guardian_address, s_nationality, s_begin_date, s_ent_cred, DATE_FORMAT(COALESCE(STR_TO_DATE(s_grad_date, '%m/%d/%Y'),STR_TO_DATE(s_grad_date, '%M %d, %Y'),STR_TO_DATE(s_grad_date, '%M %d %Y')),'%M %Y') as lastattendance, DATE_FORMAT(COALESCE(STR_TO_DATE(s_grad_date, '%m/%d/%Y'),STR_TO_DATE(s_grad_date, '%M %d, %Y'),STR_TO_DATE(s_grad_date, '%M %d %Y')),'%M %d, %Y') as grad_date, s_so_no, IF( s_p_school_id = '', ' ', t3.schl_name) AS 'Elementary', IF( s_p_school_id = '', ' ', s_p_school_ya) as 'Elementary School Year', IF( s_sh_school_id = '', ' ', t5.schl_name) AS 'Junior High', IF( s_sh_school_id = '', ' ', s_s_school_ya) as 'Junior High School Year', IF( s_s_school_id = '', ' ', t4.schl_name) AS 'Senior High', IF( s_s_school_id = '', ' ', s_sh_school_ya) as 'Senior High School Year', course_code, course_name, s_nstp_no, IF( s_c_school_id = '', ' ', t6.schl_name) AS 'College', IF( s_c_school_id = '', ' ', s_c_school_ya) as 'College School Year', s_acad_awards, course_major FROM tbl_student t1 LEFT JOIN tbl_course t2 ON t1.s_course_id = t2.course_id LEFT JOIN tbl_schools t3 ON t1.s_p_school_id = t3.schl_id LEFT JOIN tbl_schools t4 ON t1.s_sh_school_id = t4.schl_id LEFT JOIN tbl_schools t5 ON t1.s_s_school_id = t5.schl_id LEFT JOIN tbl_schools t6 ON t1.s_c_school_id = t6.schl_id LEFT JOIN refprovince ON  t1.s_address_prov = refprovince.provCode LEFT JOIN refcitymun ON t1.s_address_citymun = refcitymun.citymunCode LEFT JOIN refbrgy ON t1.s_address_brgy = refbrgy.brgyCode WHERE t1.s_id_no = '" & studentId & "'", cn)
                     dr = cm.ExecuteReader
                     dr.Read()
                     If dr.HasRows Then
@@ -1149,8 +1149,8 @@ Public Class frmReports
                         tor_nationality = dr.Item("s_nationality").ToString
                         tor_entrance_date = dr.Item("s_begin_date").ToString
                         tor_entrance_credential = dr.Item("s_ent_cred").ToString
-                        tor_lastyearattendance = dr.Item("lastattendance").ToString
-                        tor_date_graduation = dr.Item("grad_date").ToString
+                        tor_lastyearattendance = dr.Item("lastattendance").ToString.ToUpper
+                        tor_date_graduation = dr.Item("grad_date").ToString.ToUpper
                         tor_so_no = dr.Item("s_so_no").ToString
                         tor_elementary_school = dr.Item("Elementary").ToString
                         tor_eschool_year = dr.Item("Elementary School Year").ToString
@@ -1185,7 +1185,7 @@ Public Class frmReports
                     cn.Close()
                     Try
                         cn.Open()
-                        cm = New MySqlCommand("select sp_profile_photo from tbl_student_photos where sp_student_id = @1", cn)
+                        cm = New MySqlCommand("select sp_profile_photo from cfcissmsdb.tbl_student_photos where sp_student_id = @1", cn)
                         With cm
                             .Parameters.AddWithValue("@1", studentId)
                         End With
@@ -1300,7 +1300,7 @@ Public Class frmReports
                             rptdoc.SetParameterValue("dategrad", " ")
                         End If
 
-                        rptdoc.SetParameterValue("tor_lastyearattendance", tor_date_graduation)
+                        rptdoc.SetParameterValue("tor_lastyearattendance", tor_lastyearattendance)
 
                         rptdoc.SetParameterValue("honors", honors)
 
@@ -1365,7 +1365,7 @@ Public Class frmReports
                     Dim tor_major As String = ""
                     cn.Close()
                     cn.Open()
-                    cm = New MySqlCommand("SELECT s_id_no, CONCAT(s_ln, ', ', s_fn, ' ', s_mn) AS 'sname', s_dob, CONCAT(s_address,', BRGY.',refbrgy.brgyDesc,', ',refcitymun.citymunDesc,', ',refprovince.provDesc) as Address, s_pob, s_guardian_name, s_guardian_address, s_nationality, s_begin_date, s_ent_cred, ifNULL(DATE_FORMAT(STR_TO_DATE(s_grad_date,'%M %d %Y'), '%M %Y'),' ') as lastattendance, DATE_FORMAT(STR_TO_DATE(s_grad_date,'%M %d %Y'), '%M %d, %Y') as grad_date, s_so_no, IF( s_p_school_id = '', ' ', t3.schl_name) AS 'Elementary', IF( s_p_school_id = '', ' ', s_p_school_ya) as 'Elementary School Year', IF( s_sh_school_id = '', ' ', t5.schl_name) AS 'Junior High', IF( s_sh_school_id = '', ' ', s_s_school_ya) as 'Junior High School Year', IF( s_s_school_id = '', ' ', t4.schl_name) AS 'Senior High', IF( s_s_school_id = '', ' ', s_sh_school_ya) as 'Senior High School Year', course_code, course_name, s_nstp_no, IF( s_c_school_id = '', ' ', t6.schl_name) AS 'College', IF( s_c_school_id = '', ' ', s_c_school_ya) as 'College School Year', s_acad_awards, course_major FROM tbl_student t1 LEFT JOIN tbl_course t2 ON t1.s_course_id = t2.course_id LEFT JOIN tbl_schools t3 ON t1.s_p_school_id = t3.schl_id LEFT JOIN tbl_schools t4 ON t1.s_sh_school_id = t4.schl_id LEFT JOIN tbl_schools t5 ON t1.s_s_school_id = t5.schl_id LEFT JOIN tbl_schools t6 ON t1.s_c_school_id = t6.schl_id LEFT JOIN refprovince ON  t1.s_address_prov = refprovince.provCode LEFT JOIN refcitymun ON t1.s_address_citymun = refcitymun.citymunCode LEFT JOIN refbrgy ON t1.s_address_brgy = refbrgy.brgyCode WHERE t1.s_id_no = '" & studentId & "'", cn)
+                    cm = New MySqlCommand("SELECT s_id_no, CONCAT(s_ln, ', ', s_fn, ' ', s_mn) AS 'sname', s_dob, CONCAT(s_address,', BRGY.',refbrgy.brgyDesc,', ',refcitymun.citymunDesc,', ',refprovince.provDesc) as Address, s_pob, s_guardian_name, s_guardian_address, s_nationality, s_begin_date, s_ent_cred, DATE_FORMAT(COALESCE(STR_TO_DATE(s_grad_date, '%m/%d/%Y'),STR_TO_DATE(s_grad_date, '%M %d, %Y'),STR_TO_DATE(s_grad_date, '%M %d %Y')),'%M %Y') as lastattendance, DATE_FORMAT(COALESCE(STR_TO_DATE(s_grad_date, '%m/%d/%Y'),STR_TO_DATE(s_grad_date, '%M %d, %Y'),STR_TO_DATE(s_grad_date, '%M %d %Y')),'%M %d, %Y') as grad_date, s_so_no, IF( s_p_school_id = '', ' ', t3.schl_name) AS 'Elementary', IF( s_p_school_id = '', ' ', s_p_school_ya) as 'Elementary School Year', IF( s_sh_school_id = '', ' ', t5.schl_name) AS 'Junior High', IF( s_sh_school_id = '', ' ', s_s_school_ya) as 'Junior High School Year', IF( s_s_school_id = '', ' ', t4.schl_name) AS 'Senior High', IF( s_s_school_id = '', ' ', s_sh_school_ya) as 'Senior High School Year', course_code, course_name, s_nstp_no, IF( s_c_school_id = '', ' ', t6.schl_name) AS 'College', IF( s_c_school_id = '', ' ', s_c_school_ya) as 'College School Year', s_acad_awards, course_major FROM tbl_student t1 LEFT JOIN tbl_course t2 ON t1.s_course_id = t2.course_id LEFT JOIN tbl_schools t3 ON t1.s_p_school_id = t3.schl_id LEFT JOIN tbl_schools t4 ON t1.s_sh_school_id = t4.schl_id LEFT JOIN tbl_schools t5 ON t1.s_s_school_id = t5.schl_id LEFT JOIN tbl_schools t6 ON t1.s_c_school_id = t6.schl_id LEFT JOIN refprovince ON  t1.s_address_prov = refprovince.provCode LEFT JOIN refcitymun ON t1.s_address_citymun = refcitymun.citymunCode LEFT JOIN refbrgy ON t1.s_address_brgy = refbrgy.brgyCode WHERE t1.s_id_no = '" & studentId & "'", cn)
                     dr = cm.ExecuteReader
                     dr.Read()
                     If dr.HasRows Then
@@ -1378,8 +1378,8 @@ Public Class frmReports
                         tor_nationality = dr.Item("s_nationality").ToString
                         tor_entrance_date = dr.Item("s_begin_date").ToString
                         tor_entrance_credential = dr.Item("s_ent_cred").ToString
-                        tor_lastyearattendance = dr.Item("lastattendance").ToString
-                        tor_date_graduation = dr.Item("grad_date").ToString
+                        tor_lastyearattendance = dr.Item("lastattendance").ToString.ToUpper
+                        tor_date_graduation = dr.Item("grad_date").ToString.ToUpper
                         tor_so_no = dr.Item("s_so_no").ToString
                         tor_elementary_school = dr.Item("Elementary").ToString
                         tor_eschool_year = dr.Item("Elementary School Year").ToString
@@ -1412,35 +1412,6 @@ Public Class frmReports
                     cm = New MySqlCommand("select FORMAT(ROUND(AVG(sg_grade),1),1) as 'GRADES' from tbl_students_grades where sg_student_id = '" & studentId & "' and sg_school_id = '0' and sg_grade NOT IN('') and sg_grade_visibility NOT IN (1) and sg_grade_status NOT IN ('Pending')", cn)
                     avg = cm.ExecuteScalar
                     cn.Close()
-                    'Try
-                    '    cn.Open()
-                    '    cm = New MySqlCommand("select sp_profile_photo from tbl_student_photos where sp_student_id = @1", cn)
-                    '    With cm
-                    '        .Parameters.AddWithValue("@1", studentId)
-                    '    End With
-                    '    dr = cm.ExecuteReader
-                    '    While dr.Read
-                    '        Dim len As Long = dr.GetBytes(0, 0, Nothing, 0, 0)
-                    '        Dim array(CInt(len)) As Byte
-                    '        dr.GetBytes(0, 0, array, 0, CInt(len))
-                    '        Dim ms As New MemoryStream(array)
-                    '        Dim bitmap As New System.Drawing.Bitmap(ms)
-                    '        studentpicture.Image = bitmap
-                    '    End While
-                    '    dr.Close()
-                    '    cn.Close()
-                    'Catch ex As Exception
-                    '    cn.Close()
-                    '    studentpicture.Image = dummySpicture.Image
-                    'End Try
-
-                    'Dim sPath As String = IO.Path.Combine("" & Application.StartupPath() & "\STUDENTPHOTOS")
-                    'If Not IO.Directory.Exists(sPath) Then
-                    '    IO.Directory.CreateDirectory(sPath)
-                    '    studentpicture.Image.Save("" & Application.StartupPath() & "\STUDENTPHOTOS\" & studentId & ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg)
-                    'Else
-                    '    studentpicture.Image.Save("" & Application.StartupPath() & "\STUDENTPHOTOS\" & studentId & ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg)
-                    'End If
 
                     dt.Columns.Clear()
                     dt.Rows.Clear()
@@ -1480,11 +1451,8 @@ Public Class frmReports
                     rptdoc.SetParameterValue("tor_nationality", tor_nationality)
                     rptdoc.SetParameterValue("tor_entrance_date", Format(Convert.ToDateTime(tor_entrance_date), "MMMM d, yyyy").ToUpper)
                     rptdoc.SetParameterValue("tor_entrance_credential", tor_entrance_credential)
-                    If cbGradDate.Checked = True Then
-                        rptdoc.SetParameterValue("tor_date_graduation", tor_date_graduation)
-                    Else
-                        rptdoc.SetParameterValue("tor_date_graduation", " ")
-                    End If
+                    rptdoc.SetParameterValue("tor_date_graduation", tor_date_graduation)
+
                     rptdoc.SetParameterValue("tor_so_no", tor_so_no)
                     rptdoc.SetParameterValue("tor_elementary_school", tor_elementary_school)
                     rptdoc.SetParameterValue("tor_eschool_year", tor_eschool_year)
@@ -1528,7 +1496,7 @@ Public Class frmReports
                     'Else
                     '    rptdoc.SetParameterValue("dategrad", " ")
                     'End If
-                    rptdoc.SetParameterValue("tor_lastyearattendance", tor_date_graduation)
+                    rptdoc.SetParameterValue("tor_lastyearattendance", tor_lastyearattendance)
                     rptdoc.SetParameterValue("honors", honors)
                     rptdoc.SetParameterValue("tor_major", tor_major)
 

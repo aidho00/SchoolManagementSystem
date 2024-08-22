@@ -12,33 +12,18 @@ Public Class frmPaymentMonitoring
     End Sub
 
     Sub LoadRecords()
-        dgPayments.Rows.Clear()
-        Dim sql As String
-        If cbFilter.Text = "OR Number" Then
-            sql = "Select (csh_stud_id) as 'Student ID', StudentFullName as 'Student Name',(csh_ornumber) as 'OR Number', (csh_total_amount) as 'Amount Paid', (csh_amount_received) as 'Amount Received', (csh_amount_change) as 'Amount Change', (accountname) as 'Cashier', DATE_FORMAT( csh_date, '%Y/%m/%d' ) as 'Date', (csh_notes) as 'Notes', (Period) as 'Academic Year', (csh_type) as 'Type', csh_id, csh_period_id, IFNULL(IF(csh_notes LIKE '%Down payment%', (select pre_cash_id from tbl_pre_cashiering where period_id = tbl_cashiering.csh_period_id and student_id = tbl_cashiering.csh_stud_id limit 1),0),0) as pre_cash_id from tbl_cashiering LEFT JOIN students ON tbl_cashiering.csh_stud_id = students.StudentID LEFT JOIN useraccounts ON tbl_cashiering.csh_cashier_id = useraccounts.useraccountID LEFT JOIN period ON tbl_cashiering.csh_period_id = period.period_id WHERE csh_ornumber like '%" & txtSearch.Text & "%' order by csh_id desc limit 50"
-        ElseIf cbFilter.Text = "Student ID" Then
-            sql = "Select (csh_stud_id) as 'Student ID', StudentFullName as 'Student Name',(csh_ornumber) as 'OR Number', (csh_total_amount) as 'Amount Paid', (csh_amount_received) as 'Amount Received', (csh_amount_change) as 'Amount Change', (accountname) as 'Cashier', DATE_FORMAT( csh_date, '%Y/%m/%d' ) as 'Date', (csh_notes) as 'Notes', (Period) as 'Academic Year', (csh_type) as 'Type', csh_id, csh_period_id, IFNULL(IF(csh_notes LIKE '%Down payment%', (select pre_cash_id from tbl_pre_cashiering where period_id = tbl_cashiering.csh_period_id and student_id = tbl_cashiering.csh_stud_id limit 1),0),0) as pre_cash_id from tbl_cashiering LEFT JOIN students ON tbl_cashiering.csh_stud_id = students.StudentID LEFT JOIN useraccounts ON tbl_cashiering.csh_cashier_id = useraccounts.useraccountID LEFT JOIN period ON tbl_cashiering.csh_period_id = period.period_id WHERE csh_stud_id like '%" & txtSearch.Text & "%' order by csh_id desc limit 50"
-        ElseIf cbFilter.Text = "Cashier" Then
-            sql = "Select (csh_stud_id) as 'Student ID', StudentFullName as 'Student Name',(csh_ornumber) as 'OR Number', (csh_total_amount) as 'Amount Paid', (csh_amount_received) as 'Amount Received', (csh_amount_change) as 'Amount Change', (accountname) as 'Cashier', DATE_FORMAT( csh_date, '%Y/%m/%d' ) as 'Date', (csh_notes) as 'Notes', (Period) as 'Academic Year', (csh_type) as 'Type', csh_id, csh_period_id, IFNULL(IF(csh_notes LIKE '%Down payment%', (select pre_cash_id from tbl_pre_cashiering where period_id = tbl_cashiering.csh_period_id and student_id = tbl_cashiering.csh_stud_id limit 1),0),0) as pre_cash_id from tbl_cashiering LEFT JOIN students ON tbl_cashiering.csh_stud_id = students.StudentID LEFT JOIN useraccounts ON tbl_cashiering.csh_cashier_id = useraccounts.useraccountID LEFT JOIN period ON tbl_cashiering.csh_period_id = period.period_id WHERE accountname like '%" & txtSearch.Text & "%' order by csh_id desc limit 50"
-        ElseIf txtSearch.Text = String.Empty Then
-            sql = "Select (csh_stud_id) as 'Student ID', StudentFullName as 'Student Name',(csh_ornumber) as 'OR Number', (csh_total_amount) as 'Amount Paid', (csh_amount_received) as 'Amount Received', (csh_amount_change) as 'Amount Change', (accountname) as 'Cashier', DATE_FORMAT( csh_date, '%Y/%m/%d' ) as 'Date', (csh_notes) as 'Notes', (Period) as 'Academic Year', (csh_type) as 'Type', csh_id, csh_period_id, IFNULL(IF(csh_notes LIKE '%Down payment%', (select pre_cash_id from tbl_pre_cashiering where period_id = tbl_cashiering.csh_period_id and student_id = tbl_cashiering.csh_stud_id limit 1),0),0) as pre_cash_id from tbl_cashiering LEFT JOIN students ON tbl_cashiering.csh_stud_id = students.StudentID LEFT JOIN useraccounts ON tbl_cashiering.csh_cashier_id = useraccounts.useraccountID LEFT JOIN period ON tbl_cashiering.csh_period_id = period.period_id order by csh_id desc limit 50"
-        End If
-        cn.Close()
-        cn.Open()
-        cm = New MySqlCommand(sql, cn)
-        dr = cm.ExecuteReader
-        While dr.Read
-            dgPayments.Rows.Add(dr.Item("Academic Year").ToString, dr.Item("Student ID").ToString, dr.Item("Student Name").ToString, dr.Item("OR Number").ToString, dr.Item("Amount Paid").ToString, dr.Item("Amount Received").ToString, dr.Item("Cashier").ToString, dr.Item("Date").ToString, dr.Item("Type").ToString, dr.Item("Notes").ToString, dr.Item("csh_id").ToString, dr.Item("csh_period_id").ToString, dr.Item("pre_cash_id").ToString)
-        End While
-        dr.Close()
-        cn.Close()
-    End Sub
-
-    Private Sub dtFrom_ValueChanged(sender As Object, e As EventArgs) Handles dtFrom.ValueChanged, dtTo.ValueChanged
-        If cbFilter.Text = "Date" Then
+        Try
             dgPayments.Rows.Clear()
             Dim sql As String
-            sql = "Select (csh_stud_id) As 'Student ID', CONCAT(s_ln,', ',s_fn,' ',s_mn) as 'Student Name',(csh_ornumber) as 'OR Number', (csh_total_amount) as 'Amount Paid', (csh_amount_received) as 'Amount Received', (csh_amount_change) as 'Amount Change', (accountname) as 'Cashier', DATE_FORMAT(csh_date, '%Y/%m/%d' ) as 'Date', (csh_notes) as 'Notes', (Period) as 'Academic Year', (csh_type) as 'Type', csh_id, csh_period_id, ifNULL((select pre_cash_id from tbl_pre_cashiering where ornumber = tbl_cashiering.csh_ornumber limit 1),0) as pre_cash_id from tbl_cashiering LEFT JOIN tbl_student ON tbl_cashiering.csh_stud_id = tbl_student.s_id_no LEFT JOIN useraccounts ON tbl_cashiering.csh_cashier_id = useraccounts.useraccountID LEFT JOIN period ON tbl_cashiering.csh_period_id = period.period_id WHERE csh_date between '" & dtFrom.Text & "' and '" & dtTo.Text & "' order by csh_id desc"
+            If cbFilter.Text = "OR Number" Then
+                sql = "Select (csh_stud_id) as 'Student ID', StudentFullName as 'Student Name',(csh_ornumber) as 'OR Number', (csh_total_amount) as 'Amount Paid', (csh_amount_received) as 'Amount Received', (csh_amount_change) as 'Amount Change', (accountname) as 'Cashier', DATE_FORMAT( csh_date, '%Y/%m/%d' ) as 'Date', (csh_notes) as 'Notes', (Period) as 'Academic Year', (csh_type) as 'Type', csh_id, csh_period_id, IFNULL(IF(csh_notes LIKE '%Down payment%', (select pre_cash_id from tbl_pre_cashiering where period_id = tbl_cashiering.csh_period_id and student_id = tbl_cashiering.csh_stud_id limit 1),0),0) as pre_cash_id from tbl_cashiering LEFT JOIN students ON tbl_cashiering.csh_stud_id = students.StudentID LEFT JOIN useraccounts ON tbl_cashiering.csh_cashier_id = useraccounts.useraccountID LEFT JOIN period ON tbl_cashiering.csh_period_id = period.period_id WHERE csh_ornumber like '%" & txtSearch.Text & "%' order by csh_id desc limit 50"
+            ElseIf cbFilter.Text = "Student ID" Then
+                sql = "Select (csh_stud_id) as 'Student ID', StudentFullName as 'Student Name',(csh_ornumber) as 'OR Number', (csh_total_amount) as 'Amount Paid', (csh_amount_received) as 'Amount Received', (csh_amount_change) as 'Amount Change', (accountname) as 'Cashier', DATE_FORMAT( csh_date, '%Y/%m/%d' ) as 'Date', (csh_notes) as 'Notes', (Period) as 'Academic Year', (csh_type) as 'Type', csh_id, csh_period_id, IFNULL(IF(csh_notes LIKE '%Down payment%', (select pre_cash_id from tbl_pre_cashiering where period_id = tbl_cashiering.csh_period_id and student_id = tbl_cashiering.csh_stud_id limit 1),0),0) as pre_cash_id from tbl_cashiering LEFT JOIN students ON tbl_cashiering.csh_stud_id = students.StudentID LEFT JOIN useraccounts ON tbl_cashiering.csh_cashier_id = useraccounts.useraccountID LEFT JOIN period ON tbl_cashiering.csh_period_id = period.period_id WHERE csh_stud_id like '%" & txtSearch.Text & "%' order by csh_id desc limit 50"
+            ElseIf cbFilter.Text = "Cashier" Then
+                sql = "Select (csh_stud_id) as 'Student ID', StudentFullName as 'Student Name',(csh_ornumber) as 'OR Number', (csh_total_amount) as 'Amount Paid', (csh_amount_received) as 'Amount Received', (csh_amount_change) as 'Amount Change', (accountname) as 'Cashier', DATE_FORMAT( csh_date, '%Y/%m/%d' ) as 'Date', (csh_notes) as 'Notes', (Period) as 'Academic Year', (csh_type) as 'Type', csh_id, csh_period_id, IFNULL(IF(csh_notes LIKE '%Down payment%', (select pre_cash_id from tbl_pre_cashiering where period_id = tbl_cashiering.csh_period_id and student_id = tbl_cashiering.csh_stud_id limit 1),0),0) as pre_cash_id from tbl_cashiering LEFT JOIN students ON tbl_cashiering.csh_stud_id = students.StudentID LEFT JOIN useraccounts ON tbl_cashiering.csh_cashier_id = useraccounts.useraccountID LEFT JOIN period ON tbl_cashiering.csh_period_id = period.period_id WHERE accountname like '%" & txtSearch.Text & "%' order by csh_id desc limit 50"
+            ElseIf txtSearch.Text = String.Empty Then
+                sql = "Select (csh_stud_id) as 'Student ID', StudentFullName as 'Student Name',(csh_ornumber) as 'OR Number', (csh_total_amount) as 'Amount Paid', (csh_amount_received) as 'Amount Received', (csh_amount_change) as 'Amount Change', (accountname) as 'Cashier', DATE_FORMAT( csh_date, '%Y/%m/%d' ) as 'Date', (csh_notes) as 'Notes', (Period) as 'Academic Year', (csh_type) as 'Type', csh_id, csh_period_id, IFNULL(IF(csh_notes LIKE '%Down payment%', (select pre_cash_id from tbl_pre_cashiering where period_id = tbl_cashiering.csh_period_id and student_id = tbl_cashiering.csh_stud_id limit 1),0),0) as pre_cash_id from tbl_cashiering LEFT JOIN students ON tbl_cashiering.csh_stud_id = students.StudentID LEFT JOIN useraccounts ON tbl_cashiering.csh_cashier_id = useraccounts.useraccountID LEFT JOIN period ON tbl_cashiering.csh_period_id = period.period_id order by csh_id desc limit 50"
+            End If
             cn.Close()
             cn.Open()
             cm = New MySqlCommand(sql, cn)
@@ -48,6 +33,33 @@ Public Class frmPaymentMonitoring
             End While
             dr.Close()
             cn.Close()
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            dgPayments.Rows.Clear()
+        End Try
+    End Sub
+
+    Private Sub dtFrom_ValueChanged(sender As Object, e As EventArgs) Handles dtFrom.ValueChanged, dtTo.ValueChanged
+        If cbFilter.Text = "Date" Then
+            Try
+
+                dgPayments.Rows.Clear()
+                Dim sql As String
+                sql = "Select (csh_stud_id) As 'Student ID', CONCAT(s_ln,', ',s_fn,' ',s_mn) as 'Student Name',(csh_ornumber) as 'OR Number', (csh_total_amount) as 'Amount Paid', (csh_amount_received) as 'Amount Received', (csh_amount_change) as 'Amount Change', (accountname) as 'Cashier', DATE_FORMAT(csh_date, '%Y/%m/%d' ) as 'Date', (csh_notes) as 'Notes', (Period) as 'Academic Year', (csh_type) as 'Type', csh_id, csh_period_id, ifNULL((select pre_cash_id from tbl_pre_cashiering where ornumber = tbl_cashiering.csh_ornumber limit 1),0) as pre_cash_id from tbl_cashiering LEFT JOIN tbl_student ON tbl_cashiering.csh_stud_id = tbl_student.s_id_no LEFT JOIN useraccounts ON tbl_cashiering.csh_cashier_id = useraccounts.useraccountID LEFT JOIN period ON tbl_cashiering.csh_period_id = period.period_id WHERE csh_date between '" & dtFrom.Text & "' and '" & dtTo.Text & "' order by csh_id desc"
+                cn.Close()
+                cn.Open()
+                cm = New MySqlCommand(sql, cn)
+                dr = cm.ExecuteReader
+                While dr.Read
+                    dgPayments.Rows.Add(dr.Item("Academic Year").ToString, dr.Item("Student ID").ToString, dr.Item("Student Name").ToString, dr.Item("OR Number").ToString, dr.Item("Amount Paid").ToString, dr.Item("Amount Received").ToString, dr.Item("Cashier").ToString, dr.Item("Date").ToString, dr.Item("Type").ToString, dr.Item("Notes").ToString, dr.Item("csh_id").ToString, dr.Item("csh_period_id").ToString, dr.Item("pre_cash_id").ToString)
+                End While
+                dr.Close()
+                cn.Close()
+
+            Catch ex As Exception
+
+            End Try
         Else
         End If
     End Sub

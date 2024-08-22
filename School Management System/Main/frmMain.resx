@@ -393,18 +393,6 @@
         EI3+D1ilnPKI8NKrAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="btnSupply.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEsSURBVDhPtdOx
-        SwJxFMDxgwTHhkBng7amghYHF7HFiqCQcAhEosBBEByUjtYgoqW5CBqKhKChob8gESedAoeEaIpoaamu
-        77vf++XBQRnoFz6gz3uPjHLGlud5CewiraPhYiGJK3xAekQWc4jqY+H4cBH3sDWxiQLaMqBn1DChayYG
-        89jADs6wAnnwCbZXHCCNvK6aGKxDekAJS7jDF3ooI4MbnV3qqomBPWB7wT4WsIUOgv15wBacy9e5RQv/
-        OvCJKrZxChczumpi8NuBQ1z47wb1MaXr/oE1fxxODqyalz9dowtX1/0DMTRg/3hsciBnXnp1HKMI+Von
-        uj6I4TSO8AZJDizjHfJj70GWpaKuhePDSVSQgvzy8pAjtnNE9PHhYiEO+Z+Y1dEocpxvRwQ2eFPuTCMA
-        AAAASUVORK5CYII=
-</value>
-  </data>
   <data name="btnDatabase.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -415,6 +403,18 @@
         Ch94wg304US5apP/1P9+gyVcQ69uVnxDvYseDwvaOIVeZBGbOMCh7WMLOlPPGdoen3qFL7zjzZSrNhmp
         K3ST2lzR9XhYUILuljXUu+7xJCjkUYWe7Av0s9Uoyp+hM/UsJFNR9AvRTj9iTWbJOwAAAABJRU5ErkJg
         gg==
+</value>
+  </data>
+  <data name="btnSupply.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEsSURBVDhPtdOx
+        SwJxFMDxgwTHhkBng7amghYHF7HFiqCQcAhEosBBEByUjtYgoqW5CBqKhKChob8gESedAoeEaIpoaamu
+        77vf++XBQRnoFz6gz3uPjHLGlud5CewiraPhYiGJK3xAekQWc4jqY+H4cBH3sDWxiQLaMqBn1DChayYG
+        89jADs6wAnnwCbZXHCCNvK6aGKxDekAJS7jDF3ooI4MbnV3qqomBPWB7wT4WsIUOgv15wBacy9e5RQv/
+        OvCJKrZxChczumpi8NuBQ1z47wb1MaXr/oE1fxxODqyalz9dowtX1/0DMTRg/3hsciBnXnp1HKMI+Von
+        uj6I4TSO8AZJDizjHfJj70GWpaKuhePDSVSQgvzy8pAjtnNE9PHhYiEO+Z+Y1dEocpxvRwQ2eFPuTCMA
+        AAAASUVORK5CYII=
 </value>
   </data>
   <data name="btnRegistrar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

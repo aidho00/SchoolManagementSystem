@@ -1,6 +1,7 @@
 ﻿Imports System.Windows.Forms
 Imports MySql.Data.MySqlClient
 Imports System.IO
+Imports System.ComponentModel
 
 Public Class frmMain
 
@@ -66,6 +67,23 @@ Public Class frmMain
         cn.Open()
         cm = New MySqlCommand("Select ifnull(sum(csh_total_amount),0) from tbl_cashiering where csh_date = CURDATE() and csh_ornumber REGEXP '^[0-9]'", cn)
         lblTotalCollected.Text = Format(CDbl(cm.ExecuteScalar), "#,##0.00")
+        cn.Close()
+
+        cn.Open()
+        cm = New MySqlCommand("SELECT COUNT(*) as Items from tbl_supply_item where item_status IN ('Active','Available')", cn)
+        lblTotalItems.Text = CInt(cm.ExecuteScalar)
+        cn.Close()
+
+        cn.Open()
+        cm = New MySqlCommand("Select * from tbl_supply_item JOIN tbl_supply_category ON tbl_supply_item.CategoryID = tbl_supply_category.catid JOIN tbl_supply_sizes ON tbl_supply_item.sizesid = tbl_supply_sizes.sizeid JOIN tbl_supply_inventory ON tbl_supply_item.barcodeid = tbl_supply_inventory.itembarcode JOIN tbl_supply_brand ON tbl_supply_item.brandid = tbl_supply_brand.brandid where tbl_supply_inventory.Spare <= tbl_supply_item.item_reorder_point", cn)
+        dr = cm.ExecuteReader
+        dr.Read()
+        If dr.HasRows Then
+            PanelSupplyWarning.Visible = True
+        Else
+            PanelSupplyWarning.Visible = False
+        End If
+        dr.Close()
         cn.Close()
     End Sub
 
@@ -1640,6 +1658,9 @@ Public Class frmMain
                     .btnSave.Visible = False
                     .btnUpdate.Visible = True
                     .txtUsername.Enabled = False
+                    .slide4.Visible = False
+                    .employeePanel.AutoScroll = False
+                    .cbAccountType.Enabled = False
                     .SystemModules()
                     .ShowDialog()
                 End With
@@ -1994,6 +2015,18 @@ Public Class frmMain
         CreateOverAllEnrolledBarGraphPerSemester()
         GraphSelectedCourse = ""
         GraphSelectedYear = ""
+    End Sub
+
+    Private Sub User_Photo_Validating(sender As Object, e As CancelEventArgs) Handles User_Photo.Validating
+
+    End Sub
+
+    Private Sub btnCloseSupplyWarning_Click(sender As Object, e As EventArgs) Handles btnCloseSupplyWarning.Click
+        PanelSupplyWarning.Visible = False
+    End Sub
+
+    Private Sub lblTotalItems_Click(sender As Object, e As EventArgs) Handles lblTotalItems.Click
+        btnStockLevel.PerformClick()
     End Sub
 End Class
 

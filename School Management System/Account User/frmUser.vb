@@ -208,6 +208,27 @@ Public Class frmUser
             frmWait.ShowDialog()
             UserActivity("Updated a user account " & txtFirstName.Text.Trim & " " & txtMiddleName.Text.Trim & " " & txtLastName.Text.Trim & ". Username: " & txtUsername.Text & "", "USER ACCOUNT")
             MsgBox("User account has been successfully updated.", vbInformation, "")
+
+            Try
+                cn.Close()
+                cn.Open()
+                cm = New MySqlCommand("select * from tbl_user_account where ua_id = " & AccountUserID & "", cn)
+                dr = cm.ExecuteReader
+                dr.Read()
+                If dr.HasRows Then
+                    str_name = dr.Item("ua_first_name").ToString & " " & dr.Item("ua_middle_name").ToString & " " & dr.Item("ua_last_name").ToString
+                    str_role = dr.Item("ua_account_type").ToString
+                Else
+                End If
+                dr.Close()
+                cn.Close()
+                frmMain.lblUser.Text = str_user
+                frmMain.lblRole.Text = str_role
+                frmMain.User_Name.Text = str_name
+            Catch ex As Exception
+                dr.Close()
+                cn.Close()
+            End Try
         End If
     End Sub
 
@@ -243,5 +264,9 @@ Public Class frmUser
     Private Sub btnCapture_Click(sender As Object, e As EventArgs) Handles btnCapture.Click
         frmCamera.Show()
         frmCamera.lblCameraSubject.Text = "User"
+    End Sub
+
+    Private Sub dgUserModules_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgUserModules.CellContentClick
+
     End Sub
 End Class

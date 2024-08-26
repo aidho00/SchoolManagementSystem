@@ -47,6 +47,10 @@ Public Class frmUserList
                     .btnSave.Visible = False
                     .btnUpdate.Visible = True
                     .txtUsername.Enabled = False
+
+                    .slide4.Visible = True
+                    .employeePanel.AutoScroll = True
+                    .cbAccountType.Enabled = True
                     .SystemModules()
                     .ShowDialog()
                 End With

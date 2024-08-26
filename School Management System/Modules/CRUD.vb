@@ -733,12 +733,12 @@ Module CRUD
         Dim NewStockLevel As Integer = 0
         cn.Close()
         cn.Open()
-        cm = New MySqlCommand("SELECT Spare as PERIOD from tbl_supply_inventory where itembarcode = '" & BarcodeID & "'", cn)
+        cm = New MySqlCommand("SELECT Spare from tbl_supply_inventory where itembarcode = '" & BarcodeID & "'", cn)
         CurrentStockLevel = CInt(cm.ExecuteScalar)
         cn.Close()
 
         NewStockLevel = CurrentStockLevel + StockIn
-        NewStockLevel = CurrentStockLevel - StockOut
+        NewStockLevel = NewStockLevel - StockOut
 
         query("INSERT INTO `tbl_supply_ledger`(`sl_itembarcode`, `sl_stockin_added`, `sl_stockout_deducted`, `sl_remark`, `sl_running_balance`, `sl_transaction_type`, `sl_reference_no`) VALUES ('" & BarcodeID & "'," & StockIn & "," & StockOut & ",'" & Remarks & "'," & NewStockLevel & ",'" & TransactionType & "','" & TransactionCode & "')")
         query("UPDATE `tbl_supply_inventory` SET `Spare`=" & NewStockLevel & " WHERE `itembarcode` = '" & BarcodeID & "'")

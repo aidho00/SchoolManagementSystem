@@ -7,8 +7,8 @@ Public Class frmSupplyPRRecords
             dgPRList.Rows.Clear()
         Dim i As Integer
         Dim sql As String
-        sql = "Select prno, prtotal, status, DATE_FORMAT(prdate, '%m/%d/%Y') as prdate, AccountName, prremarks from tbl_supply_purchaserequest pr JOIN useraccounts ua ON pr.pruser_id = ua.useraccountID where prno LIKE '%" & frmMain.txtSearch.Text & "%'"
-        cn.Close()
+            sql = "Select prno, prtotal, status, DATE_FORMAT(prdate, '%Y/%m/%d') as prdate, AccountName, prremarks from tbl_supply_purchaserequest pr JOIN useraccounts ua ON pr.pruser_id = ua.useraccountID where prno LIKE '%" & frmMain.txtSearch.Text & "%' order by status desc"
+            cn.Close()
         cn.Open()
         cm = New MySqlCommand(sql, cn)
         dr = cm.ExecuteReader
@@ -46,8 +46,8 @@ Public Class frmSupplyPRRecords
             For Each dr As DataGridViewRow In dg_report.Rows
                 dt.Rows.Add(dr.Cells(0).Value, dr.Cells(1).Value, dr.Cells(2).Value, dr.Cells(3).Value, dr.Cells(5).Value, dr.Cells(4).Value, dr.Cells(6).Value)
             Next
-            Dim iDate As String = dgPRList.CurrentRow.Cells(3).Value
-            Dim oDate As DateTime = Convert.ToDateTime(iDate)
+            'Dim iDate As String = dgPRList.CurrentRow.Cells(3).Value
+            'Dim oDate As DateTime = Convert.ToDateTime(iDate)
             Dim rptdoc As CrystalDecisions.CrystalReports.Engine.ReportDocument
             Dim drr As DialogResult
             drr = MessageBox.Show("Do you want to use the price specified in the inventory for this item in the Purchase Request?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question)

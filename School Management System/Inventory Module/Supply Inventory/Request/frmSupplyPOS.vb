@@ -423,7 +423,7 @@ Public Class frmSupplyPOS
             If lblLocation.Text = "STUDENT" Then
                 sql = "Select barcodeid, description, (categoryname) as category, item_price from tbl_supply_item t1 JOIN tbl_supply_category t2 ON t1.categoryid = t2.catID where t2.categorytype  = 'School Consumable' and CONCAT(t1.description,t2.categoryname) like '%" & txtSearch.Text & "%'"
             Else
-                sql = "Select barcodeid, description, (categoryname) as category, item_price from tbl_supply_item t1 JOIN tbl_supply_category t2 ON t1.categoryid = t2.catID where t2.categorytype  = 'Office Supply' and CONCAT(t1.description,t2.categoryname) like '%" & txtSearch.Text & "%'"
+                sql = "Select barcodeid, description, (categoryname) as category, item_price from tbl_supply_item t1 JOIN tbl_supply_category t2 ON t1.categoryid = t2.catID where CONCAT(t1.description,t2.categoryname) like '%" & txtSearch.Text & "%' order by t2.categorytype asc"
             End If
             cm = New MySqlCommand(sql, cn)
             dr = cm.ExecuteReader()

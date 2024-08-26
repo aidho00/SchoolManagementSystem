@@ -66,7 +66,7 @@ Public Class frmSupplyPurchaseOrder
             dgPRList.Rows.Clear()
             Dim i As Integer
             Dim sql As String
-            sql = "Select prno, prtotal, status, DATE_FORMAT(prdate, '%m/%d/%Y') as prdate, AccountName, prremarks from tbl_supply_purchaserequest pr JOIN useraccounts ua ON pr.pruser_id = ua.useraccountID where prno LIKE '%" & frmMain.txtSearch.Text & "%'"
+            sql = "Select prno, prtotal, status, DATE_FORMAT(prdate, '%m/%d/%Y') as prdate, AccountName, prremarks from tbl_supply_purchaserequest pr JOIN useraccounts ua ON pr.pruser_id = ua.useraccountID where prno LIKE '%" & frmMain.txtSearch.Text & "%' and status NOT IN ('Close')"
             cn.Close()
             cn.Open()
             cm = New MySqlCommand(sql, cn)
@@ -152,6 +152,8 @@ Public Class frmSupplyPurchaseOrder
             For Each row As DataGridViewRow In dgPOitemList.Rows
                 query("INSERT INTO `tbl_supply_purchaseorder_items`(`pono`, `itemid`, `itemqty`, `itemprice`, `itemtotal`) VALUES ('" & PONo & "','" & row.Cells(0).Value & "'," & CInt(row.Cells(5).Value) & "," & CInt(row.Cells(4).Value) & "," & CDec(row.Cells(6).Value) & ")")
             Next
+            query("UPDATE `tbl_supply_purchaserequest` SET `status` = 'Close' where `prno` = '" & lblPRno.Text & "'")
+
             frmSupplyPORecords.PurchaseOrderList()
             MsgBox("Purchase Order sucessfully created.", vbInformation)
             PurchaseOrderRPT(PONo)

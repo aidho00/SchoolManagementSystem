@@ -207,7 +207,7 @@ Public Class frmLogin
     Private Sub cmbAcad_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbAcad.SelectedIndexChanged
         cbModule.Text = cmbAcad.Text
         If cbModule.Text = "College Management System" Then
-            SystemDataBase.Text = "cfcissmsdb"
+            SystemDataBase.Text = "cfcissmsdb2"
         ElseIf cbModule.Text = "Basic Education Management System" Then
             SystemDataBase.Text = "cfcissmsdbhighschool"
         End If

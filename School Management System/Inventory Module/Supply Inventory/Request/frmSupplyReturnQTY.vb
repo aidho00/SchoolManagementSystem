@@ -98,7 +98,7 @@ Public Class frmSupplyReturnQTY
                     Else
                     End If
 
-                    StockLedger(frmSupplyReturn.dgCart.CurrentRow.Cells(0).Value, CInt(txtQty.Text), 0, "Supply Requested Item Return", "Stock Return", "REQUEST ID: " & frmSupplyRecords.cbRequests.Text & "")
+                    StockLedger(frmSupplyReturn.dgCart.CurrentRow.Cells(0).Value, CInt(txtQty.Text), 0, "Supply Requested Item Return", "Stock Return", "Request ID: " & frmSupplyRecords.cbRequests.Text & "")
 
                     MsgBox("Item(s) has been successfully returned!", vbInformation)
 

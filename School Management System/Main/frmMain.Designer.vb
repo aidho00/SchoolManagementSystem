@@ -37,6 +37,12 @@ Partial Class frmMain
         Me.lblUser = New System.Windows.Forms.Label()
         Me.User_Photo = New System.Windows.Forms.PictureBox()
         Me.PanelMenu = New System.Windows.Forms.Panel()
+        Me.databasePanel = New System.Windows.Forms.Panel()
+        Me.btnUserAccounts = New System.Windows.Forms.Button()
+        Me.cbUserLogs = New System.Windows.Forms.Button()
+        Me.btnDBrestore = New System.Windows.Forms.Button()
+        Me.btnDBbackup = New System.Windows.Forms.Button()
+        Me.btnDatabase = New System.Windows.Forms.Button()
         Me.supplyPanel = New System.Windows.Forms.Panel()
         Me.PanelRecords = New System.Windows.Forms.Panel()
         Me.btnSupplySales = New System.Windows.Forms.Button()
@@ -184,7 +190,7 @@ Partial Class frmMain
         Me.PictureBox12 = New System.Windows.Forms.PictureBox()
         Me.Label38 = New System.Windows.Forms.Label()
         Me.Label39 = New System.Windows.Forms.Label()
-        Me.dashBoardPanel_Payments = New System.Windows.Forms.Panel()
+        Me.dashBoardPanel_Supply = New System.Windows.Forms.Panel()
         Me.Panel17 = New System.Windows.Forms.Panel()
         Me.Panel18 = New System.Windows.Forms.Panel()
         Me.Label22 = New System.Windows.Forms.Label()
@@ -196,15 +202,15 @@ Partial Class frmMain
         Me.Label25 = New System.Windows.Forms.Label()
         Me.GroupBox7 = New System.Windows.Forms.GroupBox()
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
-        Me.Label26 = New System.Windows.Forms.Label()
-        Me.Label27 = New System.Windows.Forms.Label()
+        Me.lblTotalItems = New System.Windows.Forms.Label()
+        Me.lblitems = New System.Windows.Forms.Label()
         Me.Panel20 = New System.Windows.Forms.Panel()
         Me.Label28 = New System.Windows.Forms.Label()
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
         Me.PictureBox9 = New System.Windows.Forms.PictureBox()
         Me.Label29 = New System.Windows.Forms.Label()
         Me.Label30 = New System.Windows.Forms.Label()
-        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.dashBoardPanel_Payments = New System.Windows.Forms.Panel()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Panel8 = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -258,18 +264,13 @@ Partial Class frmMain
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.PictureBox13 = New System.Windows.Forms.PictureBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.databasePanel = New System.Windows.Forms.Panel()
-        Me.btnUserAccounts = New System.Windows.Forms.Button()
-        Me.cbUserLogs = New System.Windows.Forms.Button()
-        Me.btnDBrestore = New System.Windows.Forms.Button()
-        Me.btnDBbackup = New System.Windows.Forms.Button()
-        Me.btnDatabase = New System.Windows.Forms.Button()
+        Me.btnCloseSupplyWarning = New System.Windows.Forms.Label()
         Me.systemSign.SuspendLayout()
         CType(Me.schoolLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ComboBoxMenu.SuspendLayout()
         CType(Me.User_Photo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelMenu.SuspendLayout()
+        Me.databasePanel.SuspendLayout()
         Me.supplyPanel.SuspendLayout()
         Me.PanelRecords.SuspendLayout()
         Me.panelInventory.SuspendLayout()
@@ -308,14 +309,14 @@ Partial Class frmMain
         CType(Me.PictureBox11, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel25.SuspendLayout()
         CType(Me.PictureBox12, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.dashBoardPanel_Payments.SuspendLayout()
+        Me.dashBoardPanel_Supply.SuspendLayout()
         Me.Panel18.SuspendLayout()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel19.SuspendLayout()
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel20.SuspendLayout()
         CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel1.SuspendLayout()
+        Me.dashBoardPanel_Payments.SuspendLayout()
         Me.Panel8.SuspendLayout()
         CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel9.SuspendLayout()
@@ -338,7 +339,6 @@ Partial Class frmMain
         Me.PanelSupplyWarning.SuspendLayout()
         Me.warning.SuspendLayout()
         CType(Me.PictureBox13, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.databasePanel.SuspendLayout()
         Me.SuspendLayout()
         '
         'systemSign
@@ -499,6 +499,133 @@ Partial Class frmMain
         Me.PanelMenu.Name = "PanelMenu"
         Me.PanelMenu.Size = New System.Drawing.Size(240, 682)
         Me.PanelMenu.TabIndex = 22
+        '
+        'databasePanel
+        '
+        Me.databasePanel.AutoSize = True
+        Me.databasePanel.Controls.Add(Me.btnUserAccounts)
+        Me.databasePanel.Controls.Add(Me.cbUserLogs)
+        Me.databasePanel.Controls.Add(Me.btnDBrestore)
+        Me.databasePanel.Controls.Add(Me.btnDBbackup)
+        Me.databasePanel.Dock = System.Windows.Forms.DockStyle.Top
+        Me.databasePanel.Location = New System.Drawing.Point(0, 2070)
+        Me.databasePanel.Name = "databasePanel"
+        Me.databasePanel.Padding = New System.Windows.Forms.Padding(24, 0, 0, 0)
+        Me.databasePanel.Size = New System.Drawing.Size(221, 96)
+        Me.databasePanel.TabIndex = 56
+        Me.databasePanel.Visible = False
+        '
+        'btnUserAccounts
+        '
+        Me.btnUserAccounts.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnUserAccounts.Cursor = System.Windows.Forms.Cursors.Default
+        Me.btnUserAccounts.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnUserAccounts.FlatAppearance.BorderSize = 0
+        Me.btnUserAccounts.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnUserAccounts.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnUserAccounts.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnUserAccounts.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnUserAccounts.ForeColor = System.Drawing.Color.White
+        Me.btnUserAccounts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnUserAccounts.Location = New System.Drawing.Point(24, 72)
+        Me.btnUserAccounts.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnUserAccounts.Name = "btnUserAccounts"
+        Me.btnUserAccounts.Size = New System.Drawing.Size(197, 24)
+        Me.btnUserAccounts.TabIndex = 31
+        Me.btnUserAccounts.Text = "User Accounts"
+        Me.btnUserAccounts.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnUserAccounts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnUserAccounts.UseVisualStyleBackColor = False
+        '
+        'cbUserLogs
+        '
+        Me.cbUserLogs.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.cbUserLogs.Cursor = System.Windows.Forms.Cursors.Default
+        Me.cbUserLogs.Dock = System.Windows.Forms.DockStyle.Top
+        Me.cbUserLogs.FlatAppearance.BorderSize = 0
+        Me.cbUserLogs.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.cbUserLogs.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.cbUserLogs.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbUserLogs.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbUserLogs.ForeColor = System.Drawing.Color.White
+        Me.cbUserLogs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cbUserLogs.Location = New System.Drawing.Point(24, 48)
+        Me.cbUserLogs.Margin = New System.Windows.Forms.Padding(0)
+        Me.cbUserLogs.Name = "cbUserLogs"
+        Me.cbUserLogs.Size = New System.Drawing.Size(197, 24)
+        Me.cbUserLogs.TabIndex = 30
+        Me.cbUserLogs.Text = "User Logs"
+        Me.cbUserLogs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cbUserLogs.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.cbUserLogs.UseVisualStyleBackColor = False
+        '
+        'btnDBrestore
+        '
+        Me.btnDBrestore.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnDBrestore.Cursor = System.Windows.Forms.Cursors.Default
+        Me.btnDBrestore.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnDBrestore.Enabled = False
+        Me.btnDBrestore.FlatAppearance.BorderSize = 0
+        Me.btnDBrestore.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnDBrestore.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnDBrestore.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDBrestore.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDBrestore.ForeColor = System.Drawing.Color.White
+        Me.btnDBrestore.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnDBrestore.Location = New System.Drawing.Point(24, 24)
+        Me.btnDBrestore.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnDBrestore.Name = "btnDBrestore"
+        Me.btnDBrestore.Size = New System.Drawing.Size(197, 24)
+        Me.btnDBrestore.TabIndex = 29
+        Me.btnDBrestore.Text = "Restore"
+        Me.btnDBrestore.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnDBrestore.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnDBrestore.UseVisualStyleBackColor = False
+        '
+        'btnDBbackup
+        '
+        Me.btnDBbackup.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnDBbackup.Cursor = System.Windows.Forms.Cursors.Default
+        Me.btnDBbackup.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnDBbackup.Enabled = False
+        Me.btnDBbackup.FlatAppearance.BorderSize = 0
+        Me.btnDBbackup.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnDBbackup.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnDBbackup.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDBbackup.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDBbackup.ForeColor = System.Drawing.Color.White
+        Me.btnDBbackup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnDBbackup.Location = New System.Drawing.Point(24, 0)
+        Me.btnDBbackup.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnDBbackup.Name = "btnDBbackup"
+        Me.btnDBbackup.Size = New System.Drawing.Size(197, 24)
+        Me.btnDBbackup.TabIndex = 23
+        Me.btnDBbackup.Text = "Backup"
+        Me.btnDBbackup.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnDBbackup.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnDBbackup.UseVisualStyleBackColor = False
+        '
+        'btnDatabase
+        '
+        Me.btnDatabase.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnDatabase.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnDatabase.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnDatabase.FlatAppearance.BorderSize = 0
+        Me.btnDatabase.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnDatabase.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnDatabase.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDatabase.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDatabase.ForeColor = System.Drawing.Color.White
+        Me.btnDatabase.Image = CType(resources.GetObject("btnDatabase.Image"), System.Drawing.Image)
+        Me.btnDatabase.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnDatabase.Location = New System.Drawing.Point(0, 2039)
+        Me.btnDatabase.Name = "btnDatabase"
+        Me.btnDatabase.Size = New System.Drawing.Size(221, 31)
+        Me.btnDatabase.TabIndex = 55
+        Me.btnDatabase.Text = "  Database"
+        Me.btnDatabase.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnDatabase.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnDatabase.UseVisualStyleBackColor = False
         '
         'supplyPanel
         '
@@ -2912,8 +3039,8 @@ Partial Class frmMain
         'dashboard
         '
         Me.dashboard.Controls.Add(Me.Panel21)
+        Me.dashboard.Controls.Add(Me.dashBoardPanel_Supply)
         Me.dashboard.Controls.Add(Me.dashBoardPanel_Payments)
-        Me.dashboard.Controls.Add(Me.Panel1)
         Me.dashboard.Controls.Add(Me.dashBoardPanel_Enrollment)
         Me.dashboard.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dashboard.Location = New System.Drawing.Point(0, 0)
@@ -3138,19 +3265,18 @@ Partial Class frmMain
         Me.Label39.Text = "-"
         Me.Label39.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'dashBoardPanel_Payments
+        'dashBoardPanel_Supply
         '
-        Me.dashBoardPanel_Payments.BackColor = System.Drawing.Color.White
-        Me.dashBoardPanel_Payments.Controls.Add(Me.Panel17)
-        Me.dashBoardPanel_Payments.Controls.Add(Me.Panel18)
-        Me.dashBoardPanel_Payments.Controls.Add(Me.Panel19)
-        Me.dashBoardPanel_Payments.Controls.Add(Me.Panel20)
-        Me.dashBoardPanel_Payments.Dock = System.Windows.Forms.DockStyle.Top
-        Me.dashBoardPanel_Payments.Location = New System.Drawing.Point(0, 250)
-        Me.dashBoardPanel_Payments.Name = "dashBoardPanel_Payments"
-        Me.dashBoardPanel_Payments.Size = New System.Drawing.Size(998, 125)
-        Me.dashBoardPanel_Payments.TabIndex = 29
-        Me.dashBoardPanel_Payments.Visible = False
+        Me.dashBoardPanel_Supply.BackColor = System.Drawing.Color.White
+        Me.dashBoardPanel_Supply.Controls.Add(Me.Panel17)
+        Me.dashBoardPanel_Supply.Controls.Add(Me.Panel18)
+        Me.dashBoardPanel_Supply.Controls.Add(Me.Panel19)
+        Me.dashBoardPanel_Supply.Controls.Add(Me.Panel20)
+        Me.dashBoardPanel_Supply.Dock = System.Windows.Forms.DockStyle.Top
+        Me.dashBoardPanel_Supply.Location = New System.Drawing.Point(0, 250)
+        Me.dashBoardPanel_Supply.Name = "dashBoardPanel_Supply"
+        Me.dashBoardPanel_Supply.Size = New System.Drawing.Size(998, 125)
+        Me.dashBoardPanel_Supply.TabIndex = 29
         '
         'Panel17
         '
@@ -3186,6 +3312,7 @@ Partial Class frmMain
         Me.Label22.TabIndex = 17
         Me.Label22.Text = "-"
         Me.Label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label22.Visible = False
         '
         'GroupBox6
         '
@@ -3194,6 +3321,7 @@ Partial Class frmMain
         Me.GroupBox6.Size = New System.Drawing.Size(2, 95)
         Me.GroupBox6.TabIndex = 16
         Me.GroupBox6.TabStop = False
+        Me.GroupBox6.Visible = False
         '
         'PictureBox7
         '
@@ -3204,6 +3332,7 @@ Partial Class frmMain
         Me.PictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox7.TabIndex = 15
         Me.PictureBox7.TabStop = False
+        Me.PictureBox7.Visible = False
         '
         'Label23
         '
@@ -3215,6 +3344,7 @@ Partial Class frmMain
         Me.Label23.TabIndex = 14
         Me.Label23.Text = "0"
         Me.Label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label23.Visible = False
         '
         'Label24
         '
@@ -3226,6 +3356,7 @@ Partial Class frmMain
         Me.Label24.TabIndex = 13
         Me.Label24.Text = "-"
         Me.Label24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label24.Visible = False
         '
         'Panel19
         '
@@ -3233,8 +3364,8 @@ Partial Class frmMain
         Me.Panel19.Controls.Add(Me.Label25)
         Me.Panel19.Controls.Add(Me.GroupBox7)
         Me.Panel19.Controls.Add(Me.PictureBox8)
-        Me.Panel19.Controls.Add(Me.Label26)
-        Me.Panel19.Controls.Add(Me.Label27)
+        Me.Panel19.Controls.Add(Me.lblTotalItems)
+        Me.Panel19.Controls.Add(Me.lblitems)
         Me.Panel19.Location = New System.Drawing.Point(3, 12)
         Me.Panel19.Name = "Panel19"
         Me.Panel19.Size = New System.Drawing.Size(216, 101)
@@ -3248,7 +3379,7 @@ Partial Class frmMain
         Me.Label25.Name = "Label25"
         Me.Label25.Size = New System.Drawing.Size(150, 33)
         Me.Label25.TabIndex = 17
-        Me.Label25.Text = "-"
+        Me.Label25.Text = "Total number of items available."
         Me.Label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'GroupBox7
@@ -3269,27 +3400,28 @@ Partial Class frmMain
         Me.PictureBox8.TabIndex = 15
         Me.PictureBox8.TabStop = False
         '
-        'Label26
+        'lblTotalItems
         '
-        Me.Label26.Font = New System.Drawing.Font("Century Gothic", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label26.ForeColor = System.Drawing.Color.White
-        Me.Label26.Location = New System.Drawing.Point(57, 1)
-        Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(142, 41)
-        Me.Label26.TabIndex = 14
-        Me.Label26.Text = "0"
-        Me.Label26.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.lblTotalItems.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.lblTotalItems.Font = New System.Drawing.Font("Century Gothic", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotalItems.ForeColor = System.Drawing.Color.White
+        Me.lblTotalItems.Location = New System.Drawing.Point(57, 1)
+        Me.lblTotalItems.Name = "lblTotalItems"
+        Me.lblTotalItems.Size = New System.Drawing.Size(142, 41)
+        Me.lblTotalItems.TabIndex = 14
+        Me.lblTotalItems.Text = "0"
+        Me.lblTotalItems.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'Label27
+        'lblitems
         '
-        Me.Label27.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label27.ForeColor = System.Drawing.Color.White
-        Me.Label27.Location = New System.Drawing.Point(62, 36)
-        Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(121, 24)
-        Me.Label27.TabIndex = 13
-        Me.Label27.Text = "-"
-        Me.Label27.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.lblitems.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblitems.ForeColor = System.Drawing.Color.White
+        Me.lblitems.Location = New System.Drawing.Point(62, 36)
+        Me.lblitems.Name = "lblitems"
+        Me.lblitems.Size = New System.Drawing.Size(121, 24)
+        Me.lblitems.TabIndex = 13
+        Me.lblitems.Text = "ITEMS"
+        Me.lblitems.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Panel20
         '
@@ -3314,6 +3446,7 @@ Partial Class frmMain
         Me.Label28.TabIndex = 12
         Me.Label28.Text = "-"
         Me.Label28.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label28.Visible = False
         '
         'GroupBox8
         '
@@ -3322,6 +3455,7 @@ Partial Class frmMain
         Me.GroupBox8.Size = New System.Drawing.Size(2, 95)
         Me.GroupBox8.TabIndex = 10
         Me.GroupBox8.TabStop = False
+        Me.GroupBox8.Visible = False
         '
         'PictureBox9
         '
@@ -3332,6 +3466,7 @@ Partial Class frmMain
         Me.PictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox9.TabIndex = 4
         Me.PictureBox9.TabStop = False
+        Me.PictureBox9.Visible = False
         '
         'Label29
         '
@@ -3343,6 +3478,7 @@ Partial Class frmMain
         Me.Label29.TabIndex = 3
         Me.Label29.Text = "0"
         Me.Label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label29.Visible = False
         '
         'Label30
         '
@@ -3354,18 +3490,19 @@ Partial Class frmMain
         Me.Label30.TabIndex = 2
         Me.Label30.Text = "-"
         Me.Label30.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label30.Visible = False
         '
-        'Panel1
+        'dashBoardPanel_Payments
         '
-        Me.Panel1.BackColor = System.Drawing.Color.White
-        Me.Panel1.Controls.Add(Me.Panel5)
-        Me.Panel1.Controls.Add(Me.Panel8)
-        Me.Panel1.Controls.Add(Me.Panel9)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel1.Location = New System.Drawing.Point(0, 125)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(998, 125)
-        Me.Panel1.TabIndex = 28
+        Me.dashBoardPanel_Payments.BackColor = System.Drawing.Color.White
+        Me.dashBoardPanel_Payments.Controls.Add(Me.Panel5)
+        Me.dashBoardPanel_Payments.Controls.Add(Me.Panel8)
+        Me.dashBoardPanel_Payments.Controls.Add(Me.Panel9)
+        Me.dashBoardPanel_Payments.Dock = System.Windows.Forms.DockStyle.Top
+        Me.dashBoardPanel_Payments.Location = New System.Drawing.Point(0, 125)
+        Me.dashBoardPanel_Payments.Name = "dashBoardPanel_Payments"
+        Me.dashBoardPanel_Payments.Size = New System.Drawing.Size(998, 125)
+        Me.dashBoardPanel_Payments.TabIndex = 28
         '
         'Panel5
         '
@@ -3892,7 +4029,7 @@ Partial Class frmMain
         Me.PanelSupplyWarning.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PanelSupplyWarning.BackColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(84, Byte), Integer), CType(CType(96, Byte), Integer))
         Me.PanelSupplyWarning.Controls.Add(Me.warning)
-        Me.PanelSupplyWarning.Controls.Add(Me.Label7)
+        Me.PanelSupplyWarning.Controls.Add(Me.btnCloseSupplyWarning)
         Me.PanelSupplyWarning.Location = New System.Drawing.Point(774, 564)
         Me.PanelSupplyWarning.Name = "PanelSupplyWarning"
         Me.PanelSupplyWarning.Size = New System.Drawing.Size(484, 101)
@@ -3910,7 +4047,6 @@ Partial Class frmMain
         Me.warning.Name = "warning"
         Me.warning.Size = New System.Drawing.Size(432, 95)
         Me.warning.TabIndex = 424
-        Me.warning.Visible = False
         '
         'Label12
         '
@@ -3930,9 +4066,9 @@ Partial Class frmMain
         Me.Label16.ForeColor = System.Drawing.Color.White
         Me.Label16.Location = New System.Drawing.Point(112, 53)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(207, 21)
+        Me.Label16.Size = New System.Drawing.Size(285, 21)
         Me.Label16.TabIndex = 7
-        Me.Label16.Text = "Supply Item Out of Stock!"
+        Me.Label16.Text = "Item at reorder point. Reorder now!"
         '
         'PictureBox13
         '
@@ -3945,146 +4081,19 @@ Partial Class frmMain
         Me.PictureBox13.TabIndex = 0
         Me.PictureBox13.TabStop = False
         '
-        'Label7
+        'btnCloseSupplyWarning
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label7.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Label7.Font = New System.Drawing.Font("Corbel", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.ForeColor = System.Drawing.Color.White
-        Me.Label7.Location = New System.Drawing.Point(462, 0)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(22, 23)
-        Me.Label7.TabIndex = 17
-        Me.Label7.Text = "✕"
-        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'databasePanel
-        '
-        Me.databasePanel.AutoSize = True
-        Me.databasePanel.Controls.Add(Me.btnUserAccounts)
-        Me.databasePanel.Controls.Add(Me.cbUserLogs)
-        Me.databasePanel.Controls.Add(Me.btnDBrestore)
-        Me.databasePanel.Controls.Add(Me.btnDBbackup)
-        Me.databasePanel.Dock = System.Windows.Forms.DockStyle.Top
-        Me.databasePanel.Location = New System.Drawing.Point(0, 2070)
-        Me.databasePanel.Name = "databasePanel"
-        Me.databasePanel.Padding = New System.Windows.Forms.Padding(24, 0, 0, 0)
-        Me.databasePanel.Size = New System.Drawing.Size(221, 96)
-        Me.databasePanel.TabIndex = 56
-        Me.databasePanel.Visible = False
-        '
-        'btnUserAccounts
-        '
-        Me.btnUserAccounts.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnUserAccounts.Cursor = System.Windows.Forms.Cursors.Default
-        Me.btnUserAccounts.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnUserAccounts.FlatAppearance.BorderSize = 0
-        Me.btnUserAccounts.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnUserAccounts.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnUserAccounts.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnUserAccounts.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnUserAccounts.ForeColor = System.Drawing.Color.White
-        Me.btnUserAccounts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnUserAccounts.Location = New System.Drawing.Point(24, 72)
-        Me.btnUserAccounts.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnUserAccounts.Name = "btnUserAccounts"
-        Me.btnUserAccounts.Size = New System.Drawing.Size(197, 24)
-        Me.btnUserAccounts.TabIndex = 31
-        Me.btnUserAccounts.Text = "User Accounts"
-        Me.btnUserAccounts.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnUserAccounts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnUserAccounts.UseVisualStyleBackColor = False
-        '
-        'cbUserLogs
-        '
-        Me.cbUserLogs.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.cbUserLogs.Cursor = System.Windows.Forms.Cursors.Default
-        Me.cbUserLogs.Dock = System.Windows.Forms.DockStyle.Top
-        Me.cbUserLogs.FlatAppearance.BorderSize = 0
-        Me.cbUserLogs.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.cbUserLogs.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.cbUserLogs.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cbUserLogs.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbUserLogs.ForeColor = System.Drawing.Color.White
-        Me.cbUserLogs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cbUserLogs.Location = New System.Drawing.Point(24, 48)
-        Me.cbUserLogs.Margin = New System.Windows.Forms.Padding(0)
-        Me.cbUserLogs.Name = "cbUserLogs"
-        Me.cbUserLogs.Size = New System.Drawing.Size(197, 24)
-        Me.cbUserLogs.TabIndex = 30
-        Me.cbUserLogs.Text = "User Logs"
-        Me.cbUserLogs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cbUserLogs.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.cbUserLogs.UseVisualStyleBackColor = False
-        '
-        'btnDBrestore
-        '
-        Me.btnDBrestore.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnDBrestore.Cursor = System.Windows.Forms.Cursors.Default
-        Me.btnDBrestore.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnDBrestore.Enabled = False
-        Me.btnDBrestore.FlatAppearance.BorderSize = 0
-        Me.btnDBrestore.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnDBrestore.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnDBrestore.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnDBrestore.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDBrestore.ForeColor = System.Drawing.Color.White
-        Me.btnDBrestore.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDBrestore.Location = New System.Drawing.Point(24, 24)
-        Me.btnDBrestore.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnDBrestore.Name = "btnDBrestore"
-        Me.btnDBrestore.Size = New System.Drawing.Size(197, 24)
-        Me.btnDBrestore.TabIndex = 29
-        Me.btnDBrestore.Text = "Restore"
-        Me.btnDBrestore.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDBrestore.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnDBrestore.UseVisualStyleBackColor = False
-        '
-        'btnDBbackup
-        '
-        Me.btnDBbackup.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnDBbackup.Cursor = System.Windows.Forms.Cursors.Default
-        Me.btnDBbackup.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnDBbackup.Enabled = False
-        Me.btnDBbackup.FlatAppearance.BorderSize = 0
-        Me.btnDBbackup.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnDBbackup.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnDBbackup.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnDBbackup.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDBbackup.ForeColor = System.Drawing.Color.White
-        Me.btnDBbackup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDBbackup.Location = New System.Drawing.Point(24, 0)
-        Me.btnDBbackup.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnDBbackup.Name = "btnDBbackup"
-        Me.btnDBbackup.Size = New System.Drawing.Size(197, 24)
-        Me.btnDBbackup.TabIndex = 23
-        Me.btnDBbackup.Text = "Backup"
-        Me.btnDBbackup.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDBbackup.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnDBbackup.UseVisualStyleBackColor = False
-        '
-        'btnDatabase
-        '
-        Me.btnDatabase.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnDatabase.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnDatabase.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnDatabase.FlatAppearance.BorderSize = 0
-        Me.btnDatabase.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnDatabase.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnDatabase.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnDatabase.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDatabase.ForeColor = System.Drawing.Color.White
-        Me.btnDatabase.Image = CType(resources.GetObject("btnDatabase.Image"), System.Drawing.Image)
-        Me.btnDatabase.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDatabase.Location = New System.Drawing.Point(0, 2039)
-        Me.btnDatabase.Name = "btnDatabase"
-        Me.btnDatabase.Size = New System.Drawing.Size(221, 31)
-        Me.btnDatabase.TabIndex = 55
-        Me.btnDatabase.Text = "  Database"
-        Me.btnDatabase.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDatabase.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnDatabase.UseVisualStyleBackColor = False
+        Me.btnCloseSupplyWarning.AutoSize = True
+        Me.btnCloseSupplyWarning.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnCloseSupplyWarning.Dock = System.Windows.Forms.DockStyle.Right
+        Me.btnCloseSupplyWarning.Font = New System.Drawing.Font("Corbel", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCloseSupplyWarning.ForeColor = System.Drawing.Color.White
+        Me.btnCloseSupplyWarning.Location = New System.Drawing.Point(462, 0)
+        Me.btnCloseSupplyWarning.Name = "btnCloseSupplyWarning"
+        Me.btnCloseSupplyWarning.Size = New System.Drawing.Size(22, 23)
+        Me.btnCloseSupplyWarning.TabIndex = 17
+        Me.btnCloseSupplyWarning.Text = "✕"
+        Me.btnCloseSupplyWarning.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'frmMain
         '
@@ -4107,6 +4116,7 @@ Partial Class frmMain
         CType(Me.User_Photo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelMenu.ResumeLayout(False)
         Me.PanelMenu.PerformLayout()
+        Me.databasePanel.ResumeLayout(False)
         Me.supplyPanel.ResumeLayout(False)
         Me.supplyPanel.PerformLayout()
         Me.PanelRecords.ResumeLayout(False)
@@ -4151,14 +4161,14 @@ Partial Class frmMain
         CType(Me.PictureBox11, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel25.ResumeLayout(False)
         CType(Me.PictureBox12, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.dashBoardPanel_Payments.ResumeLayout(False)
+        Me.dashBoardPanel_Supply.ResumeLayout(False)
         Me.Panel18.ResumeLayout(False)
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel19.ResumeLayout(False)
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel20.ResumeLayout(False)
         CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel1.ResumeLayout(False)
+        Me.dashBoardPanel_Payments.ResumeLayout(False)
         Me.Panel8.ResumeLayout(False)
         CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel9.ResumeLayout(False)
@@ -4183,7 +4193,6 @@ Partial Class frmMain
         Me.warning.ResumeLayout(False)
         Me.warning.PerformLayout()
         CType(Me.PictureBox13, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.databasePanel.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -4326,7 +4335,7 @@ Partial Class frmMain
     Friend WithEvents PictureBox12 As PictureBox
     Friend WithEvents Label38 As Label
     Friend WithEvents Label39 As Label
-    Friend WithEvents dashBoardPanel_Payments As Panel
+    Friend WithEvents dashBoardPanel_Supply As Panel
     Friend WithEvents Panel17 As Panel
     Friend WithEvents Panel18 As Panel
     Friend WithEvents Label22 As Label
@@ -4338,15 +4347,15 @@ Partial Class frmMain
     Friend WithEvents Label25 As Label
     Friend WithEvents GroupBox7 As GroupBox
     Friend WithEvents PictureBox8 As PictureBox
-    Friend WithEvents Label26 As Label
-    Friend WithEvents Label27 As Label
+    Friend WithEvents lblTotalItems As Label
+    Friend WithEvents lblitems As Label
     Friend WithEvents Panel20 As Panel
     Friend WithEvents Label28 As Label
     Friend WithEvents GroupBox8 As GroupBox
     Friend WithEvents PictureBox9 As PictureBox
     Friend WithEvents Label29 As Label
     Friend WithEvents Label30 As Label
-    Friend WithEvents Panel1 As Panel
+    Friend WithEvents dashBoardPanel_Payments As Panel
     Friend WithEvents Panel5 As Panel
     Friend WithEvents Panel8 As Panel
     Friend WithEvents Label2 As Label
@@ -4415,7 +4424,7 @@ Partial Class frmMain
     Friend WithEvents btnItemRequest As Button
     Friend WithEvents btnSupply As Button
     Friend WithEvents PanelSupplyWarning As Panel
-    Friend WithEvents Label7 As Label
+    Friend WithEvents btnCloseSupplyWarning As Label
     Friend WithEvents cmbSupplyType As ToolStripComboBox
     Friend WithEvents btnStockRecount As Button
     Friend WithEvents warning As Panel

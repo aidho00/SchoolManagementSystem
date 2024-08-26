@@ -174,6 +174,9 @@ Module Records
                     .btnSave.Visible = True
                     .btnUpdate.Visible = False
                     .txtUsername.Enabled = True
+                    .slide4.Visible = True
+                    .employeePanel.AutoScroll = True
+                    .cbAccountType.Enabled = True
                     .SystemModules()
                     .ShowDialog()
                 End With

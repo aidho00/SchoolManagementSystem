@@ -13,7 +13,7 @@ Public Class frmSupplySales
             dgSales.Rows.Clear()
             Dim i As Integer
             cn.Open()
-            cm = New MySqlCommand("select c.dno, c.dstatus, c.dtransno, c.dbarcode, p.description, '' as categoryname, '' as sizes, c.dprice, round(c.dqty) as dqty, c.ditem_price, c.ddate as 'transDate', u.AccountName as 'cashier' from tbl_supply_deployed as c inner join tbl_supply_item as p on c.dbarcode = p.barcodeid LEFT join useraccounts u on c.druser_id = u.useraccountID where c.dstatus = 'APPROVED' and c.ddate between '" & sdate1 & "' and '" & sdate2 & "'", cn)
+            cm = New MySqlCommand("select c.dno, c.dstatus, c.dtransno, c.dbarcode, p.description, '' as categoryname, '' as sizes, c.dprice, round(c.dqty) as dqty, c.ditem_price, c.ddate as 'transDate', u.AccountName as 'cashier' from cfcissmsdb_supply.tbl_supply_deployed as c inner join cfcissmsdb_supply.tbl_supply_item as p on c.dbarcode = p.barcodeid LEFT join useraccounts u on c.druser_id = u.useraccountID where c.dstatus = 'APPROVED' and c.ddate between '" & sdate1 & "' and '" & sdate2 & "'", cn)
             dr = cm.ExecuteReader
             While dr.Read
                 i += 1

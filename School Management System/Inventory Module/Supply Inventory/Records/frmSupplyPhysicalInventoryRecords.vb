@@ -7,8 +7,8 @@ Public Class frmSupplyPhysicalInventoryRecords
             dgPhysicalInventoryList.Rows.Clear()
         Dim i As Integer
         Dim sql As String
-        sql = "SELECT `pino` as 'RecountNo' , DATE_FORMAT(`pidate`, '%m/%d/%Y') as 'RecountDate'FROM `tbl_supply_physicalinventory` where pino LIKE '%" & txtSearch.Text & "%' GROUP BY `pino` ORDER by `pidate` desc"
-        cn.Close()
+            sql = "SELECT `pino` as 'RecountNo' , DATE_FORMAT(`pidate`, '%m/%d/%Y') as 'RecountDate'FROM cfcissmsdb_supply.`tbl_supply_physicalinventory` where pino LIKE '%" & txtSearch.Text & "%' GROUP BY `pino` ORDER by `pidate` desc"
+            cn.Close()
         cn.Open()
         cm = New MySqlCommand(sql, cn)
         dr = cm.ExecuteReader

@@ -9,8 +9,8 @@
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         If IS_EMPTY(txtDesc) = True Then Return
-        If CHECK_EXISTING("SELECT * FROM tbl_supply_location WHERE locationname = '" & txtDesc.Text & "'") = True Then Return
-        query("INSERT INTO `tbl_supply_location`(locationname) VALUES ('" & txtDesc.Text & "')")
+        If CHECK_EXISTING("SELECT * FROM cfcissmsdb_supply.tbl_supply_location WHERE locationname = '" & txtDesc.Text & "'") = True Then Return
+        query("INSERT INTO cfcissmsdb_supply.`tbl_supply_location`(locationname) VALUES ('" & txtDesc.Text & "')")
         UserActivity("Added a new supply requester " & txtDesc.Text.Trim & "", "SUPPLY REQUESTER LOCATION ENTRY")
         frmWait.seconds = 1
         frmWait.ShowDialog()

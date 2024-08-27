@@ -16,7 +16,7 @@ Public Class frmSupplyReturnQTY
                 If x = 0 Then
                     cn.Close()
                     cn.Open()
-                    cm = New MySqlCommand("Update tbl_supply_deployed set dqty = @1, qty_returned = @2, dstatus = 'CANCELLED', ditem_price = dprice * @1 where dbarcode = @3 and dtransno = @4", cn)
+                    cm = New MySqlCommand("Update cfcissmsdb_supply.tbl_supply_deployed set dqty = @1, qty_returned = @2, dstatus = 'CANCELLED', ditem_price = dprice * @1 where dbarcode = @3 and dtransno = @4", cn)
                     With cm
                         .Parameters.AddWithValue("@1", x)
                         .Parameters.AddWithValue("@2", CInt(txtQty.Text))
@@ -28,7 +28,7 @@ Public Class frmSupplyReturnQTY
                     cn.Close()
 
                     cn.Open()
-                    cm = New MySqlCommand("update tbl_supply_inventory set spare = spare + @1, deployed = deployed - @2 where itembarcode = @3", cn)
+                    cm = New MySqlCommand("update cfcissmsdb_supply.tbl_supply_inventory set spare = spare + @1, deployed = deployed - @2 where itembarcode = @3", cn)
                     With cm
                         .Parameters.AddWithValue("@1", CInt(txtQty.Text))
                         .Parameters.AddWithValue("@2", x)
@@ -62,7 +62,7 @@ Public Class frmSupplyReturnQTY
                 Else
                     cn.Close()
                     cn.Open()
-                    cm = New MySqlCommand("Update tbl_supply_deployed set dqty = @1, qty_returned = @2, ditem_price = dprice * @1 where dbarcode = @3 and dtransno = @4", cn)
+                    cm = New MySqlCommand("Update cfcissmsdb_supply.tbl_supply_deployed set dqty = @1, qty_returned = @2, ditem_price = dprice * @1 where dbarcode = @3 and dtransno = @4", cn)
                     With cm
                         .Parameters.AddWithValue("@1", x)
                         .Parameters.AddWithValue("@2", CInt(txtQty.Text))
@@ -74,7 +74,7 @@ Public Class frmSupplyReturnQTY
                     cn.Close()
 
                     cn.Open()
-                    cm = New MySqlCommand("update tbl_supply_inventory set spare = spare + @1, deployed = deployed - @2 where itembarcode = @3", cn)
+                    cm = New MySqlCommand("update cfcissmsdb_supply.tbl_supply_inventory set spare = spare + @1, deployed = deployed - @2 where itembarcode = @3", cn)
                     With cm
                         .Parameters.AddWithValue("@1", CInt(txtQty.Text))
                         .Parameters.AddWithValue("@2", x)
@@ -86,7 +86,7 @@ Public Class frmSupplyReturnQTY
 
                     If frmSupplyRecords.txtboxlocation.Text = "STUDENT" Then
                         cn.Open()
-                        cm = New MySqlCommand("update tbl_assessment_additional set additional_qty = @3, additional_amount = additional_price * @3  where additional_item_id = @1 and additional_transno = @2", cn)
+                        cm = New MySqlCommand("update cfcissmsdb_supply.tbl_assessment_additional set additional_qty = @3, additional_amount = additional_price * @3  where additional_item_id = @1 and additional_transno = @2", cn)
                         With cm
                             .Parameters.AddWithValue("@1", frmSupplyReturn.dgCart.CurrentRow.Cells(0).Value)
                             .Parameters.AddWithValue("@2", frmSupplyRecords.cbRequests.Text)

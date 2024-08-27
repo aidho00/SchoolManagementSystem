@@ -34,13 +34,13 @@ Public Class frmSupplyPhysicalInventory
         Dim yearid As String = YearToday
         cn.Close()
         cn.Open()
-        cm = New MySqlCommand("SELECT pino FROM tbl_supply_physicalinventory WHERE pino like 'STKRC" & yearid.Remove(0, 2) & "%'", cn)
+        cm = New MySqlCommand("SELECT pino FROM cfcissmsdb_supply.tbl_supply_physicalinventory WHERE pino like 'STKRC" & yearid.Remove(0, 2) & "%'", cn)
         dr = cm.ExecuteReader()
         If dr.HasRows Then
             dr.Close()
             cn.Close()
             cn.Open()
-            cm = New MySqlCommand("SELECT MAX(pino) as ID from tbl_supply_physicalinventory", cn)
+            cm = New MySqlCommand("SELECT MAX(pino) as ID from cfcissmsdb_supply.tbl_supply_physicalinventory", cn)
             Dim lastCode As String = cm.ExecuteScalar
             cn.Close()
             lastCode = lastCode.Remove(0, 7)
@@ -59,7 +59,7 @@ Public Class frmSupplyPhysicalInventory
             dgSupplyItemList.Rows.Clear()
             Dim i As Integer
             Dim sql As String
-            sql = "Select (BarcodeID) as 'Item ID', Description, (CategoryName) as 'Category', Sizes, (tbl_supply_inventory.Spare) as 'Stock' from tbl_supply_item JOIN tbl_supply_category ON tbl_supply_item.CategoryID = tbl_supply_category.catid JOIN tbl_supply_sizes ON tbl_supply_item.sizesid = tbl_supply_sizes.sizeid JOIN tbl_supply_inventory ON tbl_supply_item.barcodeid = tbl_supply_inventory.itembarcode JOIN tbl_supply_brand ON tbl_supply_item.brandid = tbl_supply_brand.brandid where item_status = 'Available' order by Description asc"
+            sql = "Select (BarcodeID) as 'Item ID', Description, (CategoryName) as 'Category', Sizes, (cfcissmsdb_supply.tbl_supply_inventory.Spare) as 'Stock' from cfcissmsdb_supply.tbl_supply_item JOIN cfcissmsdb_supply.tbl_supply_category ON cfcissmsdb_supply.tbl_supply_item.CategoryID = cfcissmsdb_supply.tbl_supply_category.catid JOIN cfcissmsdb_supply.tbl_supply_sizes ON cfcissmsdb_supply.tbl_supply_item.sizesid = cfcissmsdb_supply.tbl_supply_sizes.sizeid JOIN cfcissmsdb_supply.tbl_supply_inventory ON cfcissmsdb_supply.tbl_supply_item.barcodeid = cfcissmsdb_supply.tbl_supply_inventory.itembarcode JOIN cfcissmsdb_supply.tbl_supply_brand ON cfcissmsdb_supply.tbl_supply_item.brandid = cfcissmsdb_supply.tbl_supply_brand.brandid where item_status = 'Available' order by Description asc"
             cn.Close()
             cn.Open()
             cm = New MySqlCommand(sql, cn)
@@ -100,6 +100,8 @@ Public Class frmSupplyPhysicalInventory
                 query("INSERT INTO tbl_supply_physicalinventory (pino, item_barcode, currspare, sparephysicalcount, spareadjustment, userid) VALUES ('" & transno & "', '" & row.Cells(1).Value & "', " & CInt(row.Cells(5).Value) & ", " & CInt(row.Cells(6).Value) & ", '" & CInt(row.Cells(7).Value) & "', " & str_userid & ")")
                 StockLedgerPhysicalRecount(row.Cells(1).Value, 0, 0, "Physical count adjustment.", "Supply Item Stock Adjustment", "Physical Count No." & transno & "", CInt(row.Cells(6).Value))
             Next
+            UserActivity("Recounted supply items. Recount No." & transno & "", "SUPPLY PHYSICAL INVENTORY")
+
             frmSupplyPhysicalInventoryRecords.PhysicalCountRecords()
             MsgBox("The recount was successfully recorded.", vbInformation, "")
         End If

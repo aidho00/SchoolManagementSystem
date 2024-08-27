@@ -567,7 +567,7 @@ Partial Class frmUser
         'txtPassword
         '
         Me.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtPassword.Location = New System.Drawing.Point(152, 293)
+        Me.txtPassword.Location = New System.Drawing.Point(152, 313)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.Size = New System.Drawing.Size(298, 21)
         Me.txtPassword.TabIndex = 102
@@ -576,7 +576,7 @@ Partial Class frmUser
         'CheckBox1
         '
         Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(152, 315)
+        Me.CheckBox1.Location = New System.Drawing.Point(152, 335)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(111, 20)
         Me.CheckBox1.TabIndex = 405
@@ -597,7 +597,7 @@ Partial Class frmUser
         Me.Dummypicture.BackColor = System.Drawing.Color.Transparent
         Me.Dummypicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Dummypicture.Image = CType(resources.GetObject("Dummypicture.Image"), System.Drawing.Image)
-        Me.Dummypicture.Location = New System.Drawing.Point(731, 278)
+        Me.Dummypicture.Location = New System.Drawing.Point(731, 298)
         Me.Dummypicture.Name = "Dummypicture"
         Me.Dummypicture.Size = New System.Drawing.Size(22, 23)
         Me.Dummypicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -609,7 +609,7 @@ Partial Class frmUser
         '
         Me.btnCapture.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnCapture.Font = New System.Drawing.Font("Century Gothic", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCapture.Location = New System.Drawing.Point(466, 298)
+        Me.btnCapture.Location = New System.Drawing.Point(466, 318)
         Me.btnCapture.Name = "btnCapture"
         Me.btnCapture.Size = New System.Drawing.Size(56, 19)
         Me.btnCapture.TabIndex = 115
@@ -620,7 +620,7 @@ Partial Class frmUser
         '
         Me.btnUpload.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnUpload.Font = New System.Drawing.Font("Century Gothic", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnUpload.Location = New System.Drawing.Point(467, 276)
+        Me.btnUpload.Location = New System.Drawing.Point(467, 296)
         Me.btnUpload.Name = "btnUpload"
         Me.btnUpload.Size = New System.Drawing.Size(56, 17)
         Me.btnUpload.TabIndex = 115
@@ -631,8 +631,8 @@ Partial Class frmUser
         '
         Me.cbAccountType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbAccountType.FormattingEnabled = True
-        Me.cbAccountType.Items.AddRange(New Object() {"None", "Supply", "Cashier", "Department", "Registrar", "Academic Coordinator", "Administrator"})
-        Me.cbAccountType.Location = New System.Drawing.Point(152, 236)
+        Me.cbAccountType.Items.AddRange(New Object() {"None", "Supply In-charge", "Cashier", "Department", "Registrar", "Academic Coordinator", "Administrator"})
+        Me.cbAccountType.Location = New System.Drawing.Point(152, 256)
         Me.cbAccountType.Name = "cbAccountType"
         Me.cbAccountType.Size = New System.Drawing.Size(298, 24)
         Me.cbAccountType.TabIndex = 111
@@ -640,7 +640,7 @@ Partial Class frmUser
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(31, 239)
+        Me.Label8.Location = New System.Drawing.Point(31, 259)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(83, 16)
         Me.Label8.TabIndex = 105
@@ -649,7 +649,7 @@ Partial Class frmUser
         'sdsda
         '
         Me.sdsda.AutoSize = True
-        Me.sdsda.Location = New System.Drawing.Point(30, 268)
+        Me.sdsda.Location = New System.Drawing.Point(30, 288)
         Me.sdsda.Name = "sdsda"
         Me.sdsda.Size = New System.Drawing.Size(62, 16)
         Me.sdsda.TabIndex = 107
@@ -658,7 +658,7 @@ Partial Class frmUser
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(30, 125)
+        Me.Label10.Location = New System.Drawing.Point(30, 145)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(75, 16)
         Me.Label10.TabIndex = 108
@@ -667,7 +667,7 @@ Partial Class frmUser
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(30, 295)
+        Me.Label16.Location = New System.Drawing.Point(30, 315)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(59, 16)
         Me.Label16.TabIndex = 109
@@ -676,7 +676,7 @@ Partial Class frmUser
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(31, 152)
+        Me.Label14.Location = New System.Drawing.Point(31, 172)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(49, 16)
         Me.Label14.TabIndex = 109
@@ -685,7 +685,7 @@ Partial Class frmUser
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(31, 98)
+        Me.Label12.Location = New System.Drawing.Point(31, 118)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(65, 16)
         Me.Label12.TabIndex = 109
@@ -694,7 +694,7 @@ Partial Class frmUser
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(31, 45)
+        Me.Label7.Location = New System.Drawing.Point(31, 65)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(62, 16)
         Me.Label7.TabIndex = 110
@@ -703,7 +703,7 @@ Partial Class frmUser
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(30, 71)
+        Me.Label13.Location = New System.Drawing.Point(30, 91)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(82, 16)
         Me.Label13.TabIndex = 110
@@ -712,7 +712,7 @@ Partial Class frmUser
         'txtUsername
         '
         Me.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtUsername.Location = New System.Drawing.Point(152, 266)
+        Me.txtUsername.Location = New System.Drawing.Point(152, 286)
         Me.txtUsername.Name = "txtUsername"
         Me.txtUsername.Size = New System.Drawing.Size(298, 21)
         Me.txtUsername.TabIndex = 100
@@ -721,7 +721,7 @@ Partial Class frmUser
         '
         Me.txtContact.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtContact.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtContact.Location = New System.Drawing.Point(152, 123)
+        Me.txtContact.Location = New System.Drawing.Point(152, 143)
         Me.txtContact.Name = "txtContact"
         Me.txtContact.Size = New System.Drawing.Size(298, 21)
         Me.txtContact.TabIndex = 101
@@ -729,7 +729,7 @@ Partial Class frmUser
         'txtAddress
         '
         Me.txtAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtAddress.Location = New System.Drawing.Point(152, 150)
+        Me.txtAddress.Location = New System.Drawing.Point(152, 170)
         Me.txtAddress.Multiline = True
         Me.txtAddress.Name = "txtAddress"
         Me.txtAddress.Size = New System.Drawing.Size(298, 69)
@@ -738,7 +738,7 @@ Partial Class frmUser
         'txtLastName
         '
         Me.txtLastName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtLastName.Location = New System.Drawing.Point(152, 96)
+        Me.txtLastName.Location = New System.Drawing.Point(152, 116)
         Me.txtLastName.Name = "txtLastName"
         Me.txtLastName.Size = New System.Drawing.Size(298, 21)
         Me.txtLastName.TabIndex = 102
@@ -746,7 +746,7 @@ Partial Class frmUser
         'txtFirstName
         '
         Me.txtFirstName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtFirstName.Location = New System.Drawing.Point(152, 42)
+        Me.txtFirstName.Location = New System.Drawing.Point(152, 62)
         Me.txtFirstName.Name = "txtFirstName"
         Me.txtFirstName.Size = New System.Drawing.Size(298, 21)
         Me.txtFirstName.TabIndex = 103
@@ -754,7 +754,7 @@ Partial Class frmUser
         'txtMiddleName
         '
         Me.txtMiddleName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtMiddleName.Location = New System.Drawing.Point(152, 69)
+        Me.txtMiddleName.Location = New System.Drawing.Point(152, 89)
         Me.txtMiddleName.Name = "txtMiddleName"
         Me.txtMiddleName.Size = New System.Drawing.Size(298, 21)
         Me.txtMiddleName.TabIndex = 103
@@ -774,7 +774,7 @@ Partial Class frmUser
         '
         Me.photoSignature.Cursor = System.Windows.Forms.Cursors.Hand
         Me.photoSignature.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.photoSignature.Location = New System.Drawing.Point(526, 43)
+        Me.photoSignature.Location = New System.Drawing.Point(526, 63)
         Me.photoSignature.Name = "photoSignature"
         Me.photoSignature.Size = New System.Drawing.Size(62, 21)
         Me.photoSignature.TabIndex = 116
@@ -785,7 +785,7 @@ Partial Class frmUser
         '
         Me.userPhoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.userPhoto.Image = CType(resources.GetObject("userPhoto.Image"), System.Drawing.Image)
-        Me.userPhoto.Location = New System.Drawing.Point(529, 71)
+        Me.userPhoto.Location = New System.Drawing.Point(529, 91)
         Me.userPhoto.Name = "userPhoto"
         Me.userPhoto.Size = New System.Drawing.Size(235, 243)
         Me.userPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -795,7 +795,7 @@ Partial Class frmUser
         'Panels
         '
         Me.Panels.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.Panels.Location = New System.Drawing.Point(-58, 6692)
+        Me.Panels.Location = New System.Drawing.Point(-67, 7098)
         Me.Panels.Name = "Panels"
         Me.Panels.Size = New System.Drawing.Size(656, 429)
         Me.Panels.TabIndex = 103

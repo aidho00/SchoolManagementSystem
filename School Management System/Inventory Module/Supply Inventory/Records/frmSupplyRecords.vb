@@ -11,13 +11,13 @@ Public Class frmSupplyRecords
         ApplyHoverEffectToControls(Me)
         'dtFrom.Value = Now.ToString("yyyy-MM-dd")
         'dtTo.Value = Now.ToString("yyyy-MM-dd")
-        fillCombo("SELECT Locationname, locationnumber from tbl_supply_location", txtboxlocation, "tbl_supply_location", "Locationname", "locationnumber")
+        fillCombo("SELECT Locationname, locationnumber from cfcissmsdb_supply.tbl_supply_location", txtboxlocation, "tbl_supply_location", "Locationname", "locationnumber")
 
         'inventoryshow()
         txtboxlocation.SelectedIndex = 0
 
         Try
-            fillCombo("select distinct(dtransno) as ID, dstatus from tbl_supply_deployed where drdate between '" & dtFrom.Text & "' and '" & dtTo.Text & "' and dlocation = " & CInt(txtboxlocation.SelectedValue) & " order by dstatus asc", cbRequests, "tbl_supply_deployed", "ID", "dstatus")
+            fillCombo("select distinct(dtransno) as ID, dstatus from cfcissmsdb_supply.tbl_supply_deployed where drdate between '" & dtFrom.Text & "' and '" & dtTo.Text & "' and dlocation = " & CInt(txtboxlocation.SelectedValue) & " order by dstatus asc", cbRequests, "tbl_supply_deployed", "ID", "dstatus")
             cbRequests.SelectedIndex = 0
             lbl_status.Text = cbRequests.SelectedValue
         Catch ex As Exception
@@ -82,11 +82,11 @@ Public Class frmSupplyRecords
             Dim dt As DataTable
 
             If ComboBox1.Text = "Both College - High School" Then
-                load_datagrid("SELECT t1.additional_stud_id as 'Student ID', CONCAT(t2.s_ln,', ', t2.s_fn,' ', t2.s_mn) as 'Student Name', t4.categoryname as 'Item', t3.description as 'Description', t1.additional_qty as 'QTY', t1.additional_price as 'Price', t1.additional_amount as 'Amount', DATE_FORMAT(t1.additional_date_added, '%m-%d-%Y') as 'Date Added' from tbl_assessment_additional t1 JOIN tbl_student t2 ON t1.additional_stud_id = t2.s_id_no JOIN tbl_supply_item t3 ON t1.additional_item_id = t3.barcodeid LEFT JOIN tbl_supply_category t4 ON t3.categoryid = t4.catID where t1.additional_date_added between '" & sdate1 & "' and '" & sdate2 & "' UNION ALL SELECT t1.additional_stud_id as 'Student ID', CONCAT(t2.s_ln,', ', t2.s_fn,' ', t2.s_mn, ' - ', t2.s_yr_lvl) as 'Student Name', t4.categoryname as 'Item', t3.description as 'Description', t1.additional_qty as 'QTY', t1.additional_price as 'Price', t1.additional_amount as 'Amount', DATE_FORMAT(t1.additional_date_added, '%m-%d-%Y') as 'Date Added' from cfcissmsdbhighschool.tbl_assessment_additional t1 JOIN cfcissmsdbhighschool.tbl_student t2 ON t1.additional_stud_id = t2.s_id_no JOIN tbl_supply_item t3 ON t1.additional_item_id = t3.barcodeid LEFT JOIN tbl_supply_category t4 ON t3.categoryid = t4.catID where t1.additional_date_added between '" & sdate1 & "' and '" & sdate2 & "'", dgdeployrecords)
+                load_datagrid("SELECT t1.additional_stud_id as 'Student ID', CONCAT(t2.s_ln,', ', t2.s_fn,' ', t2.s_mn) as 'Student Name', t4.categoryname as 'Item', t3.description as 'Description', t1.additional_qty as 'QTY', t1.additional_price as 'Price', t1.additional_amount as 'Amount', DATE_FORMAT(t1.additional_date_added, '%m-%d-%Y') as 'Date Added' from tbl_assessment_additional t1 JOIN tbl_student t2 ON t1.additional_stud_id = t2.s_id_no JOIN cfcissmsdb_supply.tbl_supply_item t3 ON t1.additional_item_id = t3.barcodeid LEFT JOIN cfcissmsdb_supply.tbl_supply_category t4 ON t3.categoryid = t4.catID where t1.additional_date_added between '" & sdate1 & "' and '" & sdate2 & "' UNION ALL SELECT t1.additional_stud_id as 'Student ID', CONCAT(t2.s_ln,', ', t2.s_fn,' ', t2.s_mn, ' - ', t2.s_yr_lvl) as 'Student Name', t4.categoryname as 'Item', t3.description as 'Description', t1.additional_qty as 'QTY', t1.additional_price as 'Price', t1.additional_amount as 'Amount', DATE_FORMAT(t1.additional_date_added, '%m-%d-%Y') as 'Date Added' from cfcissmsdbhighschool.tbl_assessment_additional t1 JOIN cfcissmsdbhighschool.tbl_student t2 ON t1.additional_stud_id = t2.s_id_no JOIN cfcissmsdb_supply.tbl_supply_item t3 ON t1.additional_item_id = t3.barcodeid LEFT JOIN cfcissmsdb_supply.tbl_supply_category t4 ON t3.categoryid = t4.catID where t1.additional_date_added between '" & sdate1 & "' and '" & sdate2 & "'", dgdeployrecords)
             ElseIf ComboBox1.Text = "College" Then
-                load_datagrid("SELECT t1.additional_stud_id as 'Student ID', CONCAT(t2.s_ln,', ', t2.s_fn,' ', t2.s_mn) as 'Student Name', t4.categoryname as 'Item', t3.description as 'Description', t1.additional_qty as 'QTY', t1.additional_price as 'Price', t1.additional_amount as 'Amount', DATE_FORMAT(t1.additional_date_added, '%m-%d-%Y') as 'Date Added' from tbl_assessment_additional t1 JOIN tbl_student t2 ON t1.additional_stud_id = t2.s_id_no JOIN tbl_supply_item t3 ON t1.additional_item_id = t3.barcodeid LEFT JOIN tbl_supply_category t4 ON t3.categoryid = t4.catID where t1.additional_date_added between '" & sdate1 & "' and '" & sdate2 & "'", dgdeployrecords)
+                load_datagrid("SELECT t1.additional_stud_id as 'Student ID', CONCAT(t2.s_ln,', ', t2.s_fn,' ', t2.s_mn) as 'Student Name', t4.categoryname as 'Item', t3.description as 'Description', t1.additional_qty as 'QTY', t1.additional_price as 'Price', t1.additional_amount as 'Amount', DATE_FORMAT(t1.additional_date_added, '%m-%d-%Y') as 'Date Added' from tbl_assessment_additional t1 JOIN tbl_student t2 ON t1.additional_stud_id = t2.s_id_no JOIN cfcissmsdb_supply.tbl_supply_item t3 ON t1.additional_item_id = t3.barcodeid LEFT JOIN cfcissmsdb_supply.tbl_supply_category t4 ON t3.categoryid = t4.catID where t1.additional_date_added between '" & sdate1 & "' and '" & sdate2 & "'", dgdeployrecords)
             ElseIf ComboBox1.Text = "High School" Then
-                load_datagrid("SELECT t1.additional_stud_id as 'Student ID', CONCAT(t2.s_ln,', ', t2.s_fn,' ', t2.s_mn, ' - ', t2.s_yr_lvl) as 'Student Name', t4.categoryname as 'Item', t3.description as 'Description', t1.additional_qty as 'QTY', t1.additional_price as 'Price', t1.additional_amount as 'Amount', DATE_FORMAT(t1.additional_date_added, '%m-%d-%Y') as 'Date Added' from cfcissmsdbhighschool.tbl_assessment_additional t1 JOIN cfcissmsdbhighschool.tbl_student t2 ON t1.additional_stud_id = t2.s_id_no JOIN tbl_supply_item t3 ON t1.additional_item_id = t3.barcodeid LEFT JOIN tbl_supply_category t4 ON t3.categoryid = t4.catID where t1.additional_date_added between '" & sdate1 & "' and '" & sdate2 & "'", dgdeployrecords)
+                load_datagrid("SELECT t1.additional_stud_id as 'Student ID', CONCAT(t2.s_ln,', ', t2.s_fn,' ', t2.s_mn, ' - ', t2.s_yr_lvl) as 'Student Name', t4.categoryname as 'Item', t3.description as 'Description', t1.additional_qty as 'QTY', t1.additional_price as 'Price', t1.additional_amount as 'Amount', DATE_FORMAT(t1.additional_date_added, '%m-%d-%Y') as 'Date Added' from cfcissmsdbhighschool.tbl_assessment_additional t1 JOIN cfcissmsdbhighschool.tbl_student t2 ON t1.additional_stud_id = t2.s_id_no JOIN cfcissmsdb_supply.tbl_supply_item t3 ON t1.additional_item_id = t3.barcodeid LEFT JOIN cfcissmsdb_supply.tbl_supply_category t4 ON t3.categoryid = t4.catID where t1.additional_date_added between '" & sdate1 & "' and '" & sdate2 & "'", dgdeployrecords)
             End If
 
 
@@ -111,7 +111,7 @@ Public Class frmSupplyRecords
             If cb_as.Checked = True Then
                 'Try
                 lblReportRequestID.Text = "-"
-                load_datagrid("Select dtransno, (barcodeid) as `Item ID`, Description, (categoryname) as Item, (Sizes) as Size, (dprice) as Price, (dqty) as QTY, (qty_requested) as RQTY, ditem_price as 'Total', (ddate) as Date from tbl_supply_deployed, tbl_supply_item, tbl_supply_category, tbl_supply_location, tbl_supply_sizes where tbl_supply_deployed.dbarcode = tbl_supply_item.barcodeid AND tbl_supply_item.categoryid = tbl_supply_category.catid and tbl_supply_deployed.dlocation = tbl_supply_location.locationnumber and tbl_supply_sizes.sizeid = tbl_supply_item.sizesid and dlocation = " & x & " and ddate between '" & sdate1 & "' and '" & sdate2 & "' and dstatus = 'APPROVED' order by Description", dgdeployrecords)
+                load_datagrid("Select dtransno, (barcodeid) as `Item ID`, Description, (categoryname) as Item, (Sizes) as Size, (dprice) as Price, (dqty) as QTY, (qty_requested) as RQTY, ditem_price as 'Total', (ddate) as Date from cfcissmsdb_supply.tbl_supply_deployed, cfcissmsdb_supply.tbl_supply_item, cfcissmsdb_supply.tbl_supply_category, cfcissmsdb_supply.tbl_supply_location, cfcissmsdb_supply.tbl_supply_sizes where cfcissmsdb_supply.tbl_supply_deployed.dbarcode = cfcissmsdb_supply.tbl_supply_item.barcodeid AND cfcissmsdb_supply.tbl_supply_item.categoryid = cfcissmsdb_supply.tbl_supply_category.catid and cfcissmsdb_supply.tbl_supply_deployed.dlocation = cfcissmsdb_supply.tbl_supply_location.locationnumber and cfcissmsdb_supply.tbl_supply_sizes.sizeid = cfcissmsdb_supply.tbl_supply_item.sizesid and dlocation = " & x & " and ddate between '" & sdate1 & "' and '" & sdate2 & "' and dstatus = 'APPROVED' order by Description", dgdeployrecords)
 
                 dgdeployrecords.Columns(0).Visible = False
                 dgdeployrecords.Columns(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
@@ -136,7 +136,7 @@ Public Class frmSupplyRecords
             ElseIf cb_aps.Checked = True Then
                 'Try
                 lblReportRequestID.Text = "-"
-                load_datagrid("Select dtransno, (barcodeid) as `Item ID`, Description, (categoryname) as Item, (Sizes) as Size, (item_price) as Price, SUM(dqty) as QTY,  SUM(qty_requested) as RQTY,  SUM(ditem_price) as 'Total', (ddate) as Date, locationname as Location from tbl_supply_deployed, tbl_supply_item, tbl_supply_category, tbl_supply_location, tbl_supply_sizes where tbl_supply_deployed.dbarcode = tbl_supply_item.barcodeid AND tbl_supply_item.categoryid = tbl_supply_category.catid and tbl_supply_deployed.dlocation = tbl_supply_location.locationnumber and tbl_supply_sizes.sizeid = tbl_supply_item.sizesid and ddate between '" & sdate1 & "' and '" & sdate2 & "' and dstatus = 'APPROVED' group by barcodeid, dlocation order by Description", dgdeployrecords)
+                load_datagrid("Select dtransno, (barcodeid) as `Item ID`, Description, (categoryname) as Item, (Sizes) as Size, (item_price) as Price, SUM(dqty) as QTY,  SUM(qty_requested) as RQTY,  SUM(ditem_price) as 'Total', (ddate) as Date, locationname as Location from cfcissmsdb_supply.tbl_supply_deployed, cfcissmsdb_supply.tbl_supply_item, cfcissmsdb_supply.tbl_supply_category, cfcissmsdb_supply.tbl_supply_location, cfcissmsdb_supply.tbl_supply_sizes where cfcissmsdb_supply.tbl_supply_deployed.dbarcode = cfcissmsdb_supply.tbl_supply_item.barcodeid AND cfcissmsdb_supply.tbl_supply_item.categoryid = cfcissmsdb_supply.tbl_supply_category.catid and cfcissmsdb_supply.tbl_supply_deployed.dlocation = cfcissmsdb_supply.tbl_supply_location.locationnumber and cfcissmsdb_supply.tbl_supply_sizes.sizeid = cfcissmsdb_supply.tbl_supply_item.sizesid and ddate between '" & sdate1 & "' and '" & sdate2 & "' and dstatus = 'APPROVED' group by barcodeid, dlocation order by Description", dgdeployrecords)
 
 
                 dgdeployrecords.Columns(0).Visible = False
@@ -163,7 +163,7 @@ Public Class frmSupplyRecords
                 lblReportRequestID.Text = cbRequests.Text
 
 
-                load_datagrid("Select (barcodeid) as 'Item ID', Description, (categoryname) as Category, (Sizes) as Size, (dqty) as QTY, (qty_requested) as RQTY, (item_price) as 'Price', ditem_price as 'Sub-Total', (ddate) as Date, (dstatus) as Status from tbl_supply_deployed, tbl_supply_item, tbl_supply_category, tbl_supply_location, tbl_supply_sizes where tbl_supply_deployed.dbarcode = tbl_supply_item.barcodeid AND tbl_supply_item.categoryid = tbl_supply_category.catid and tbl_supply_deployed.dlocation = tbl_supply_location.locationnumber and tbl_supply_sizes.sizeid = tbl_supply_item.sizesid AND dtransno = '" & cbRequests.Text & "'", dgdeployrecords)
+                load_datagrid("Select (barcodeid) as 'Item ID', Description, (categoryname) as Category, (Sizes) as Size, (dqty) as QTY, (qty_requested) as RQTY, (item_price) as 'Price', ditem_price as 'Sub-Total', (ddate) as Date, (dstatus) as Status from cfcissmsdb_supply.tbl_supply_deployed, cfcissmsdb_supply.tbl_supply_item, cfcissmsdb_supply.tbl_supply_category, cfcissmsdb_supply.tbl_supply_location, cfcissmsdb_supply.tbl_supply_sizes where cfcissmsdb_supply.tbl_supply_deployed.dbarcode = cfcissmsdb_supply.tbl_supply_item.barcodeid AND cfcissmsdb_supply.tbl_supply_item.categoryid = cfcissmsdb_supply.tbl_supply_category.catid and cfcissmsdb_supply.tbl_supply_deployed.dlocation = cfcissmsdb_supply.tbl_supply_location.locationnumber and cfcissmsdb_supply.tbl_supply_sizes.sizeid = cfcissmsdb_supply.tbl_supply_item.sizesid AND dtransno = '" & cbRequests.Text & "'", dgdeployrecords)
 
                 dgdeployrecords.Columns(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
                 dgdeployrecords.Columns(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
@@ -383,7 +383,7 @@ Public Class frmSupplyRecords
 
         Dim sdate1 As String = dtFrom.Value.ToString("yyyy-MM-dd")
         Dim sdate2 As String = dtTo.Value.ToString("yyyy-MM-dd")
-        fillCombo("select distinct(dtransno) as ID, dstatus from tbl_supply_deployed where drdate between '" & dtFrom.Text & "' and '" & dtTo.Text & "' and dlocation = " & CInt(txtboxlocation.SelectedValue) & " order by dstudentid desc", cbRequests, "tbl_supply_deployed", "ID", "dstatus")
+        fillCombo("select distinct(dtransno) as ID, dstatus from cfcissmsdb_supply.tbl_supply_deployed where drdate between '" & dtFrom.Text & "' and '" & dtTo.Text & "' and dlocation = " & CInt(txtboxlocation.SelectedValue) & " order by dstudentid desc", cbRequests, "tbl_supply_deployed", "ID", "dstatus")
     End Sub
 
     Private Sub cbRequests_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbRequests.SelectedIndexChanged, cbRequests.TextChanged
@@ -401,7 +401,7 @@ Public Class frmSupplyRecords
         Try
             cn.Close()
             cn.Open()
-            cm = New MySqlCommand("select distinct(dtransno) as ID, dstatus, t2.StudentID, t2.StudentFullName from tbl_supply_deployed t1 JOIN students t2 ON right(t1.dstudentid,7) =	t2.StudentID where t1.dtransno = '" & cbRequests.Text & "'", cn)
+            cm = New MySqlCommand("select distinct(dtransno) as ID, dstatus, t2.StudentID, t2.StudentFullName from cfcissmsdb_supply.tbl_supply_deployed t1 JOIN students t2 ON t1.dstudentid =	t2.StudentID where t1.dtransno = '" & cbRequests.Text & "'", cn)
             dr = cm.ExecuteReader
             dr.Read()
             If dr.HasRows Then
@@ -446,7 +446,7 @@ Public Class frmSupplyRecords
 
     Private Sub txtboxlocation_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txtboxlocation.SelectedIndexChanged
         Try
-            fillCombo("select distinct(dtransno) as ID, dstatus from tbl_supply_deployed where drdate between '" & dtFrom.Text & "' and '" & dtTo.Text & "' and dlocation = " & CInt(txtboxlocation.SelectedValue) & " order by dstatus asc", cbRequests, "tbl_supply_deployed", "ID", "dstatus")
+            fillCombo("select distinct(dtransno) as ID, dstatus from cfcissmsdb_supply.tbl_supply_deployed where drdate between '" & dtFrom.Text & "' and '" & dtTo.Text & "' and dlocation = " & CInt(txtboxlocation.SelectedValue) & " order by dstatus asc", cbRequests, "tbl_supply_deployed", "ID", "dstatus")
             cbRequests.SelectedIndex = 0
             lbl_status.Text = cbRequests.SelectedValue
         Catch ex As Exception

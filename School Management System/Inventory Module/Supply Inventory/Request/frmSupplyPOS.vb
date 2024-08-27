@@ -32,7 +32,7 @@ Public Class frmSupplyPOS
             End If
         ElseIf e.KeyCode = Keys.Escape Then
             If MsgBox("Are you sure you want to exit?", vbYesNo + vbQuestion) = vbYes Then
-                query("Update tbl_supply_location set status = 'False' where locationname = '" & lblLocation.Text & "'")
+                query("Update cfcissmsdb_supply.tbl_supply_location set status = 'False' where locationname = '" & lblLocation.Text & "'")
                 lblLocationNumber.Text = "0"
                 txtItemID.Clear()
                 lblTotal.Text = "0.00"
@@ -100,7 +100,7 @@ Public Class frmSupplyPOS
                 dgCart.Rows.Clear()
                 cn.Close()
                 cn.Open()
-                cm = New MySqlCommand("Select barcodeid, description, tbl_supply_deployed.dprice As Price, (dqty) As QTY, qty_requested As RQTY, tbl_supply_deployed.ditem_price As Total from tbl_supply_deployed, tbl_supply_item, tbl_supply_category where tbl_supply_deployed.dbarcode = tbl_supply_item.barcodeid And tbl_supply_item.categoryid = tbl_supply_category.catid And tbl_supply_deployed.dstatus = 'PENDING' and tbl_supply_deployed.dlocation = @1", cn)
+                cm = New MySqlCommand("Select barcodeid, description, cfcissmsdb_supply.tbl_supply_deployed.dprice As Price, (dqty) As QTY, qty_requested As RQTY, cfcissmsdb_supply.tbl_supply_deployed.ditem_price As Total from cfcissmsdb_supply.tbl_supply_deployed, cfcissmsdb_supply.tbl_supply_item, cfcissmsdb_supply.tbl_supply_category where cfcissmsdb_supply.tbl_supply_deployed.dbarcode = cfcissmsdb_supply.tbl_supply_item.barcodeid And cfcissmsdb_supply.tbl_supply_item.categoryid = cfcissmsdb_supply.tbl_supply_category.catid And cfcissmsdb_supply.tbl_supply_deployed.dstatus = 'PENDING' and cfcissmsdb_supply.tbl_supply_deployed.dlocation = @1", cn)
                 cm.Parameters.AddWithValue("@1", lblLocationNumber.Text)
                 dr = cm.ExecuteReader()
                 While dr.Read
@@ -126,13 +126,13 @@ Public Class frmSupplyPOS
         Dim yearid As String = YearToday
         cn.Close()
         cn.Open()
-        cm = New MySqlCommand("SELECT dtransno FROM tbl_supply_deployed WHERE dtransno like 'SI-RQST" & yearid & "%'", cn)
+        cm = New MySqlCommand("SELECT dtransno FROM cfcissmsdb_supply.tbl_supply_deployed WHERE dtransno like 'SI-RQST" & yearid & "%'", cn)
         dr = cm.ExecuteReader()
         If dr.HasRows Then
             dr.Close()
             cn.Close()
             cn.Open()
-            cm = New MySqlCommand("SELECT MAX(dtransno) as ID from tbl_supply_deployed", cn)
+            cm = New MySqlCommand("SELECT MAX(dtransno) as ID from cfcissmsdb_supply.tbl_supply_deployed", cn)
             Dim lastCode As String = cm.ExecuteScalar
             cn.Close()
             lastCode = lastCode.Remove(0, 11)
@@ -164,7 +164,7 @@ Public Class frmSupplyPOS
                         End If
                     Else
                         cn.Open()
-                        cm = New MySqlCommand("Update tbl_supply_deployed set dstatus = 'CANCELLED' where dbarcode = @1 and dlocation = @2 and dstatus = 'PENDING'", cn)
+                        cm = New MySqlCommand("Update cfcissmsdb_supply.tbl_supply_deployed set dstatus = 'CANCELLED' where dbarcode = @1 and dlocation = @2 and dstatus = 'PENDING'", cn)
                         With cm
                             .Parameters.AddWithValue("@1", dgCart.Rows(e.RowIndex).Cells(0).Value)
                             .Parameters.AddWithValue("@2", lblLocationNumber.Text)
@@ -243,7 +243,7 @@ Public Class frmSupplyPOS
                         cn.Close()
 
                         cn.Open()
-                        cm = New MySqlCommand("insert into tbl_supply_deployed (dbarcode, dqty, dlocation, drdate, dprice, ditem_price, qty_requested,dstudentid, druser_id, dperiodid, dtransno, dstatus) values (@1,@2,@3,CURDATE(),@5,@6,@7,@8,@9,@10,@11,'APPROVED')", cn)
+                        cm = New MySqlCommand("insert into cfcissmsdb_supply.tbl_supply_deployed (dbarcode, dqty, dlocation, drdate, dprice, ditem_price, qty_requested,dstudentid, druser_id, dperiodid, dtransno, dstatus) values (@1,@2,@3,CURDATE(),@5,@6,@7,@8,@9,@10,@11,'APPROVED')", cn)
                         With cm
                             .Parameters.AddWithValue("@1", row.Cells(0).Value)
                             .Parameters.AddWithValue("@2", CInt(row.Cells(3).Value))
@@ -311,7 +311,7 @@ Public Class frmSupplyPOS
                     lblTransno.Text = GetTransno()
 
                     For Each row As DataGridViewRow In dgCart.Rows
-                        query("Update tbl_supply_deployed set dtransno = '" & lblTransno.Text & "' , dstatus = 'APPROVED', druser_id = '" & str_userid & "', drdate = CURDATE() where dlocation = '" & lblLocationNumber.Text & "' and dbarcode = '" & row.Cells(0).Value & "' and dstatus = 'PENDING'")
+                        query("Update cfcissmsdb_supply.tbl_supply_deployed set dtransno = '" & lblTransno.Text & "' , dstatus = 'APPROVED', druser_id = '" & str_userid & "', drdate = CURDATE() where dlocation = '" & lblLocationNumber.Text & "' and dbarcode = '" & row.Cells(0).Value & "' and dstatus = 'PENDING'")
                         StockLedger(row.Cells(0).Value, 0, CInt(row.Cells(3).Value), "Issued to " & lblLocation.Text & ".", "Office Item Release", "Item Release No." & lblTransno.Text & "")
                     Next
 
@@ -378,7 +378,7 @@ Public Class frmSupplyPOS
                     txtItemID.Clear()
                 Else
                     cn.Open()
-                    cm = New MySqlCommand("select Description,(Spare) as SQTY, item_price from tbl_supply_inventory, tbl_supply_item, tbl_supply_category where tbl_supply_inventory.itembarcode = tbl_supply_item.barcodeid AND tbl_supply_item.categoryid = tbl_supply_category.catid AND barcodeid = '" & txtItemID.Text & "'", cn)
+                    cm = New MySqlCommand("select Description,(Spare) as SQTY, item_price from cfcissmsdb_supply.tbl_supply_inventory, cfcissmsdb_supply.tbl_supply_item, cfcissmsdb_supply.tbl_supply_category where cfcissmsdb_supply.tbl_supply_inventory.itembarcode = cfcissmsdb_supply.tbl_supply_item.barcodeid AND cfcissmsdb_supply.tbl_supply_item.categoryid = cfcissmsdb_supply.tbl_supply_category.catid AND barcodeid = '" & txtItemID.Text & "'", cn)
                     dr = cm.ExecuteReader
                     dr.Read()
                     If dr.HasRows Then
@@ -421,9 +421,9 @@ Public Class frmSupplyPOS
             cn.Open()
             Dim sql As String = ""
             If lblLocation.Text = "STUDENT" Then
-                sql = "Select barcodeid, description, (categoryname) as category, item_price from tbl_supply_item t1 JOIN tbl_supply_category t2 ON t1.categoryid = t2.catID where t2.categorytype  = 'School Consumable' and CONCAT(t1.description,t2.categoryname) like '%" & txtSearch.Text & "%'"
+                sql = "Select barcodeid, description, (categoryname) as category, item_price from cfcissmsdb_supply.tbl_supply_item t1 JOIN cfcissmsdb_supply.tbl_supply_category t2 ON t1.categoryid = t2.catID where t2.categorytype  = 'School Consumable' and CONCAT(t1.description,t2.categoryname) like '%" & txtSearch.Text & "%'"
             Else
-                sql = "Select barcodeid, description, (categoryname) as category, item_price from tbl_supply_item t1 JOIN tbl_supply_category t2 ON t1.categoryid = t2.catID where CONCAT(t1.description,t2.categoryname) like '%" & txtSearch.Text & "%' order by t2.categorytype asc"
+                sql = "Select barcodeid, description, (categoryname) as category, item_price from cfcissmsdb_supply.tbl_supply_item t1 JOIN cfcissmsdb_supply.tbl_supply_category t2 ON t1.categoryid = t2.catID where CONCAT(t1.description,t2.categoryname) like '%" & txtSearch.Text & "%' order by t2.categorytype asc"
             End If
             cm = New MySqlCommand(sql, cn)
             dr = cm.ExecuteReader()
@@ -501,7 +501,7 @@ Public Class frmSupplyPOS
         If MsgBox("Are you sure you want to exit?", vbYesNo + vbQuestion) = vbYes Then
             cn.Close()
             cn.Open()
-            cm = New MySqlCommand("Update tbl_supply_location set status = 'False' where locationname = '" & lblLocation.Text & "'", cn)
+            cm = New MySqlCommand("Update cfcissmsdb_supply.tbl_supply_location set status = 'False' where locationname = '" & lblLocation.Text & "'", cn)
             cm.ExecuteNonQuery()
             cn.Close()
 

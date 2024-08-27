@@ -70,12 +70,12 @@ Public Class frmMain
         cn.Close()
 
         cn.Open()
-        cm = New MySqlCommand("SELECT COUNT(*) as Items from tbl_supply_item where item_status IN ('Active','Available')", cn)
+        cm = New MySqlCommand("SELECT COUNT(*) as Items from cfcissmsdb_supply.tbl_supply_item where item_status IN ('Active','Available')", cn)
         lblTotalItems.Text = CInt(cm.ExecuteScalar)
         cn.Close()
 
         cn.Open()
-        cm = New MySqlCommand("Select * from tbl_supply_item JOIN tbl_supply_category ON tbl_supply_item.CategoryID = tbl_supply_category.catid JOIN tbl_supply_sizes ON tbl_supply_item.sizesid = tbl_supply_sizes.sizeid JOIN tbl_supply_inventory ON tbl_supply_item.barcodeid = tbl_supply_inventory.itembarcode JOIN tbl_supply_brand ON tbl_supply_item.brandid = tbl_supply_brand.brandid where tbl_supply_inventory.Spare <= tbl_supply_item.item_reorder_point", cn)
+        cm = New MySqlCommand("Select * from cfcissmsdb_supply.tbl_supply_item JOIN cfcissmsdb_supply.tbl_supply_category ON cfcissmsdb_supply.tbl_supply_item.CategoryID = cfcissmsdb_supply.tbl_supply_category.catid JOIN cfcissmsdb_supply.tbl_supply_sizes ON cfcissmsdb_supply.tbl_supply_item.sizesid = cfcissmsdb_supply.tbl_supply_sizes.sizeid JOIN cfcissmsdb_supply.tbl_supply_inventory ON cfcissmsdb_supply.tbl_supply_item.barcodeid = cfcissmsdb_supply.tbl_supply_inventory.itembarcode JOIN cfcissmsdb_supply.tbl_supply_brand ON tbl_supply_item.brandid = cfcissmsdb_supply.tbl_supply_brand.brandid where cfcissmsdb_supply.tbl_supply_inventory.Spare <= cfcissmsdb_supply.tbl_supply_item.item_reorder_point", cn)
         dr = cm.ExecuteReader
         dr.Read()
         If dr.HasRows Then
@@ -163,6 +163,36 @@ Public Class frmMain
         Timer1.Start()
         ApplyHoverEffectToControls(Me)
         loadDashboard()
+
+
+
+
+
+        If str_role = "Supply In-charge" Then
+            btnEnrollment.Visible = False
+            btnLibrary.Visible = False
+            btnCashiering.Visible = False
+            btnReports.Visible = False
+            btnRegistrar.Visible = False
+            btnDatabase.Visible = False
+            btnSupply.Visible = True
+
+            dashBoardPanel_Enrollment.Visible = False
+            dashBoardPanel_Payments.Visible = False
+            dashBoardPanel_Supply.Visible = True
+        Else
+            btnEnrollment.Visible = True
+            btnLibrary.Visible = True
+            btnCashiering.Visible = True
+            btnReports.Visible = True
+            btnRegistrar.Visible = True
+            btnDatabase.Visible = True
+            btnSupply.Visible = True
+
+            dashBoardPanel_Enrollment.Visible = True
+            dashBoardPanel_Payments.Visible = True
+            dashBoardPanel_Supply.Visible = True
+        End If
     End Sub
 
     Private Sub HideSubbuttons()
@@ -186,13 +216,25 @@ Public Class frmMain
 
     Private Sub ShowMainButtons()
         'Buttons
-        btnEnrollment.Visible = True
-        btnLibrary.Visible = True
-        btnCashiering.Visible = True
-        btnReports.Visible = True
-        btnRegistrar.Visible = True
-        btnDatabase.Visible = True
-        btnSupply.Visible = True
+
+        If str_role = "Supply In-charge" Then
+            btnEnrollment.Visible = False
+            btnLibrary.Visible = False
+            btnCashiering.Visible = False
+            btnReports.Visible = False
+            btnRegistrar.Visible = False
+            btnDatabase.Visible = False
+            btnSupply.Visible = True
+        Else
+            btnEnrollment.Visible = True
+            btnLibrary.Visible = True
+            btnCashiering.Visible = True
+            btnReports.Visible = True
+            btnRegistrar.Visible = True
+            btnDatabase.Visible = True
+            btnSupply.Visible = True
+        End If
+
     End Sub
 
     Private Sub ShowSubButtons(submenuPanel As Panel, btn As Button)
@@ -2026,6 +2068,10 @@ Public Class frmMain
     End Sub
 
     Private Sub lblTotalItems_Click(sender As Object, e As EventArgs) Handles lblTotalItems.Click
+        btnStockLevel.PerformClick()
+    End Sub
+
+    Private Sub PictureBox13_Click(sender As Object, e As EventArgs) Handles PictureBox13.Click
         btnStockLevel.PerformClick()
     End Sub
 End Class

@@ -36,13 +36,13 @@ Public Class frmSupplyPurchaseRequest
         Dim yearid As String = YearToday
         cn.Close()
         cn.Open()
-        cm = New MySqlCommand("SELECT prno FROM tbl_supply_purchaserequest WHERE prno like 'PR" & yearid & "%'", cn)
+        cm = New MySqlCommand("SELECT prno FROM cfcissmsdb_supply.tbl_supply_purchaserequest WHERE prno like 'PR" & yearid & "%'", cn)
         dr = cm.ExecuteReader()
         If dr.HasRows Then
             dr.Close()
             cn.Close()
             cn.Open()
-            cm = New MySqlCommand("SELECT MAX(prno) as ID from tbl_supply_purchaserequest", cn)
+            cm = New MySqlCommand("SELECT MAX(prno) as ID from cfcissmsdb_supply.tbl_supply_purchaserequest", cn)
             Dim lastCode As String = cm.ExecuteScalar
             cn.Close()
             lastCode = lastCode.Remove(0, 6)
@@ -67,10 +67,12 @@ Public Class frmSupplyPurchaseRequest
             End If
             If IS_EMPTY(txtRemarks) = True Then Return
             Dim PRNo As String = GetTransno()
-            query("INSERT INTO `tbl_supply_purchaserequest`(`prno`, `prtotal`, `prremarks`, `pruser_id`) VALUES ('" & PRNo & "'," & CDec(lblTotal.Text) & ",'" & txtRemarks.Text & "', " & str_userid & ")")
+            query("INSERT INTO cfcissmsdb_supply.`tbl_supply_purchaserequest`(`prno`, `prtotal`, `prremarks`, `pruser_id`) VALUES ('" & PRNo & "'," & CDec(lblTotal.Text) & ",'" & txtRemarks.Text & "', " & str_userid & ")")
             For Each row As DataGridViewRow In dgPRitemList.Rows
-                query("INSERT INTO `tbl_supply_purchaserequest_items`(`prno`, `itemid`, `itemqty`, `itemprice`, `itemtotal`) VALUES ('" & PRNo & "','" & row.Cells(0).Value & "'," & CInt(row.Cells(5).Value) & "," & CInt(row.Cells(4).Value) & "," & CDec(row.Cells(6).Value) & ")")
+                query("INSERT INTO cfcissmsdb_supply.`tbl_supply_purchaserequest_items`(`prno`, `itemid`, `itemqty`, `itemprice`, `itemtotal`) VALUES ('" & PRNo & "','" & row.Cells(0).Value & "'," & CInt(row.Cells(5).Value) & "," & CInt(row.Cells(4).Value) & "," & CDec(row.Cells(6).Value) & ")")
             Next
+            UserActivity("Created a purchase request. Request No." & PRNo & ", Total: " & lblTotal.Text & "", "SUPPLY PURCHASE REQUEST")
+
             frmSupplyPRRecords.PurchaseRequestList()
             MsgBox("Purchase Request sucessfully created.", vbInformation)
             PurchaseRequestRPT(PRNo)
@@ -127,8 +129,8 @@ Public Class frmSupplyPurchaseRequest
             dgSupplyItemList.Rows.Clear()
         Dim i As Integer
         Dim sql As String
-        sql = "Select (BarcodeID) as 'Item ID', Description, (CategoryName) as 'Category', Sizes, item_price, (tbl_supply_inventory.Spare) as 'Stock' from tbl_supply_item JOIN tbl_supply_category ON tbl_supply_item.CategoryID = tbl_supply_category.catid JOIN tbl_supply_sizes ON tbl_supply_item.sizesid = tbl_supply_sizes.sizeid JOIN tbl_supply_inventory ON tbl_supply_item.barcodeid = tbl_supply_inventory.itembarcode JOIN tbl_supply_brand ON tbl_supply_item.brandid = tbl_supply_brand.brandid where tbl_supply_item.item_status = 'Available' and (BarcodeID LIKE '%" & txtSearch.Text & "%' or CategoryName LIKE '%" & txtSearch.Text & "%' or Description LIKE '%" & txtSearch.Text & "%' or Sizes LIKE '%" & txtSearch.Text & "%' or brandname LIKE '%" & txtSearch.Text & "%') order by tbl_supply_inventory.Spare asc"
-        cn.Close()
+            sql = "Select (BarcodeID) as 'Item ID', Description, (CategoryName) as 'Category', Sizes, item_price, (tbl_supply_inventory.Spare) as 'Stock' from cfcissmsdb_supply.tbl_supply_item JOIN cfcissmsdb_supply.tbl_supply_category ON cfcissmsdb_supply.tbl_supply_item.CategoryID = cfcissmsdb_supply.tbl_supply_category.catid JOIN cfcissmsdb_supply.tbl_supply_sizes ON cfcissmsdb_supply.tbl_supply_item.sizesid = cfcissmsdb_supply.tbl_supply_sizes.sizeid JOIN cfcissmsdb_supply.tbl_supply_inventory ON cfcissmsdb_supply.tbl_supply_item.barcodeid = cfcissmsdb_supply.tbl_supply_inventory.itembarcode JOIN cfcissmsdb_supply.tbl_supply_brand ON cfcissmsdb_supply.tbl_supply_item.brandid = cfcissmsdb_supply.tbl_supply_brand.brandid where cfcissmsdb_supply.tbl_supply_item.item_status = 'Available' and (BarcodeID LIKE '%" & txtSearch.Text & "%' or CategoryName LIKE '%" & txtSearch.Text & "%' or Description LIKE '%" & txtSearch.Text & "%' or Sizes LIKE '%" & txtSearch.Text & "%' or brandname LIKE '%" & txtSearch.Text & "%') order by cfcissmsdb_supply.tbl_supply_inventory.Spare asc"
+            cn.Close()
         cn.Open()
         cm = New MySqlCommand(sql, cn)
         dr = cm.ExecuteReader

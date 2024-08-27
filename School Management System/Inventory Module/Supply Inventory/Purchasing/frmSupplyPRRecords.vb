@@ -7,7 +7,7 @@ Public Class frmSupplyPRRecords
             dgPRList.Rows.Clear()
         Dim i As Integer
         Dim sql As String
-            sql = "Select prno, prtotal, status, DATE_FORMAT(prdate, '%Y/%m/%d') as prdate, AccountName, prremarks from tbl_supply_purchaserequest pr JOIN useraccounts ua ON pr.pruser_id = ua.useraccountID where prno LIKE '%" & frmMain.txtSearch.Text & "%' order by status desc"
+            sql = "Select prno, prtotal, status, DATE_FORMAT(prdate, '%Y/%m/%d') as prdate, AccountName, prremarks from cfcissmsdb_supply.tbl_supply_purchaserequest pr JOIN useraccounts ua ON pr.pruser_id = ua.useraccountID where prno LIKE '%" & frmMain.txtSearch.Text & "%' order by status desc"
             cn.Close()
         cn.Open()
         cm = New MySqlCommand(sql, cn)
@@ -32,7 +32,7 @@ Public Class frmSupplyPRRecords
         If colname = "colView" Then
             'Try
             frmReportViewer.Show()
-            load_datagrid("SELECT t1.`itemid`,t2.description, '','', t1.`itemqty`,t1.itemprice,t1.itemtotal FROM `tbl_supply_purchaserequest_items` t1 JOIN tbl_supply_item t2 ON t1.itemid = t2.barcodeid WHERE `prno` = '" & dgPRList.CurrentRow.Cells(1).Value & "'", dg_report)
+            load_datagrid("SELECT t1.`itemid`,t2.description, '','', t1.`itemqty`,t1.itemprice,t1.itemtotal FROM cfcissmsdb_supply.`tbl_supply_purchaserequest_items` t1 JOIN cfcissmsdb_supply.tbl_supply_item t2 ON t1.itemid = t2.barcodeid WHERE `prno` = '" & dgPRList.CurrentRow.Cells(1).Value & "'", dg_report)
             Dim dt As New DataTable
             With dt
                 .Columns.Add("barcodeid")

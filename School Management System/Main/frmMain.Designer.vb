@@ -675,7 +675,7 @@ Partial Class frmMain
         Me.btnSupplySales.Name = "btnSupplySales"
         Me.btnSupplySales.Size = New System.Drawing.Size(182, 24)
         Me.btnSupplySales.TabIndex = 38
-        Me.btnSupplySales.Text = "Sales"
+        Me.btnSupplySales.Text = "Sales (Requests)"
         Me.btnSupplySales.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnSupplySales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnSupplySales.UseVisualStyleBackColor = False
@@ -4073,6 +4073,7 @@ Partial Class frmMain
         'PictureBox13
         '
         Me.PictureBox13.BackColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(84, Byte), Integer), CType(CType(96, Byte), Integer))
+        Me.PictureBox13.Cursor = System.Windows.Forms.Cursors.Hand
         Me.PictureBox13.Image = CType(resources.GetObject("PictureBox13.Image"), System.Drawing.Image)
         Me.PictureBox13.Location = New System.Drawing.Point(-35, -32)
         Me.PictureBox13.Name = "PictureBox13"

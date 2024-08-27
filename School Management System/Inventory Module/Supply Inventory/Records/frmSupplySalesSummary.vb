@@ -9,7 +9,7 @@ Public Class frmSupplySalesSummary
     Sub loadDate()
         Try
             cn.Open()
-            cm = New MySqlCommand("select IFNULL(min(ddate),CURDATE()) as ddate from tbl_supply_deployed", cn)
+            cm = New MySqlCommand("select IFNULL(min(ddate),CURDATE()) as ddate from cfcissmsdb_supply.tbl_supply_deployed", cn)
             dr = cm.ExecuteReader
             While dr.Read
                 dtFrom.Value = dr.Item("ddate")
@@ -44,7 +44,7 @@ Public Class frmSupplySalesSummary
             Dim sdate2 As String = dtTo.Value.ToString("yyyy-MM-dd")
             dgYearlySales.Rows.Clear()
             cn.Open()
-            cm = New MySqlCommand("select year(ddate) as year, sum(ditem_price) as total from tbl_supply_deployed where dstatus = 'APPROVED' and ddate between '" & sdate1 & "' and '" & sdate2 & "' group by year(ddate) order by year(ddate) desc", cn)
+            cm = New MySqlCommand("select year(ddate) as year, sum(ditem_price) as total from cfcissmsdb_supply.tbl_supply_deployed where dstatus = 'APPROVED' and ddate between '" & sdate1 & "' and '" & sdate2 & "' group by year(ddate) order by year(ddate) desc", cn)
             dr = cm.ExecuteReader
             While dr.Read
                 dgYearlySales.Rows.Add(dr.Item("year").ToString, Format(CDbl(dr.Item("total").ToString), "#,##0.00"))
@@ -66,7 +66,7 @@ Public Class frmSupplySalesSummary
             Dim sdate2 As String = dtTo.Value.ToString("yyyy-MM-dd")
             dgQuarterlySales.Rows.Clear()
             cn.Open()
-            cm = New MySqlCommand("select year(ddate) as year, quarter(ddate) as quarter, sum(ditem_price) as total from tbl_supply_deployed where dstatus = 'APPROVED' and ddate between '" & sdate1 & "' and '" & sdate2 & "' group by year(ddate), quarter(ddate) order by year(ddate) desc, quarter(ddate) desc", cn)
+            cm = New MySqlCommand("select year(ddate) as year, quarter(ddate) as quarter, sum(ditem_price) as total from cfcissmsdb_supply.tbl_supply_deployed where dstatus = 'APPROVED' and ddate between '" & sdate1 & "' and '" & sdate2 & "' group by year(ddate), quarter(ddate) order by year(ddate) desc, quarter(ddate) desc", cn)
             dr = cm.ExecuteReader
             While dr.Read
                 dgQuarterlySales.Rows.Add(dr.Item("year").ToString, dr.Item("quarter").ToString, Format(CDbl(dr.Item("total").ToString), "#,##0.00"))
@@ -88,7 +88,7 @@ Public Class frmSupplySalesSummary
             Dim sdate2 As String = dtTo.Value.ToString("yyyy-MM-dd")
             dgMonthlySales.Rows.Clear()
             cn.Open()
-            cm = New MySqlCommand("select year(ddate) as year, DATE_FORMAT(ddate,'%M') as month, sum(ditem_price) as total from tbl_supply_deployed where dstatus = 'APPROVED' and ddate between '" & sdate1 & "' and '" & sdate2 & "' group by year(ddate), DATE_FORMAT(ddate,'%M') order by year(ddate) desc, DATE_FORMAT(ddate,'%M') desc", cn)
+            cm = New MySqlCommand("select year(ddate) as year, DATE_FORMAT(ddate,'%M') as month, sum(ditem_price) as total from cfcissmsdb_supply.tbl_supply_deployed where dstatus = 'APPROVED' and ddate between '" & sdate1 & "' and '" & sdate2 & "' group by year(ddate), DATE_FORMAT(ddate,'%M') order by year(ddate) desc, DATE_FORMAT(ddate,'%M') desc", cn)
             dr = cm.ExecuteReader
             While dr.Read
                 dgMonthlySales.Rows.Add(dr.Item("year").ToString, dr.Item("month").ToString, Format(CDbl(dr.Item("total").ToString), "#,##0.00"))
@@ -110,7 +110,7 @@ Public Class frmSupplySalesSummary
             Dim sdate2 As String = dtTo.Value.ToString("yyyy-MM-dd")
             dgDailySales.Rows.Clear()
             cn.Open()
-            cm = New MySqlCommand("select year(ddate) as year, DATE_FORMAT(ddate,'%M') as month, DATE_FORMAT(ddate,'%d') as days, sum(ditem_price) as total from tbl_supply_deployed where dstatus = 'APPROVED' and ddate between '" & sdate1 & "' and '" & sdate2 & "' group by year(ddate), DATE_FORMAT(ddate,'%M'), DATE_FORMAT(ddate,'%d') order by year(ddate) desc, DATE_FORMAT(ddate,'%M') desc, DATE_FORMAT(ddate,'%d')", cn)
+            cm = New MySqlCommand("select year(ddate) as year, DATE_FORMAT(ddate,'%M') as month, DATE_FORMAT(ddate,'%d') as days, sum(ditem_price) as total from cfcissmsdb_supply.tbl_supply_deployed where dstatus = 'APPROVED' and ddate between '" & sdate1 & "' and '" & sdate2 & "' group by year(ddate), DATE_FORMAT(ddate,'%M'), DATE_FORMAT(ddate,'%d') order by year(ddate) desc, DATE_FORMAT(ddate,'%M') desc, DATE_FORMAT(ddate,'%d')", cn)
             dr = cm.ExecuteReader
             While dr.Read
                 dgDailySales.Rows.Add(dr.Item("year").ToString, dr.Item("month").ToString, dr.Item("days").ToString, Format(CDbl(dr.Item("total").ToString), "#,##0.00"))

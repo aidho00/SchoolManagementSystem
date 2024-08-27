@@ -64,9 +64,9 @@ Public Class frmSupplyItemAdd
             cn.Open()
             Dim sql As String
             If cbSupplyType.Text = "Office Supply" Then
-                sql = "SELECT barcodeid FROM tbl_supply_item WHERE barcodeid like 'SI-OFCSP" & yearid & "%'"
+                sql = "SELECT barcodeid FROM cfcissmsdb_supply.tbl_supply_item WHERE barcodeid like 'SI-OFCSP" & yearid & "%'"
             ElseIf cbSupplyType.Text = "School Consumable" Then
-                sql = "SELECT barcodeid FROM tbl_supply_item WHERE barcodeid like 'SI-SCHCS" & yearid & "%'"
+                sql = "SELECT barcodeid FROM cfcissmsdb_supply.tbl_supply_item WHERE barcodeid like 'SI-SCHCS" & yearid & "%'"
             End If
             cm = New MySqlCommand(sql, cn)
             dr = cm.ExecuteReader()
@@ -76,9 +76,9 @@ Public Class frmSupplyItemAdd
                 cn.Open()
                 Dim sql2 As String
                 If cbSupplyType.Text = "Office Supply" Then
-                    sql2 = "SELECT MAX(barcodeid) as Barcode from tbl_supply_item WHERE barcodeid like 'SI-OFCSP%'"
+                    sql2 = "SELECT MAX(barcodeid) as Barcode from cfcissmsdb_supply.tbl_supply_item WHERE barcodeid like 'SI-OFCSP%'"
                 ElseIf cbSupplyType.Text = "School Consumable" Then
-                    sql2 = "SELECT MAX(barcodeid) as Barcode from tbl_supply_item WHERE barcodeid like 'SI-SCHCS%'"
+                    sql2 = "SELECT MAX(barcodeid) as Barcode from cfcissmsdb_supply.tbl_supply_item WHERE barcodeid like 'SI-SCHCS%'"
                 End If
 
                 cm = New MySqlCommand(sql2, cn)
@@ -130,7 +130,7 @@ Public Class frmSupplyItemAdd
     Sub SupplyCategoryList()
         dgSupplyCategory.Rows.Clear()
         Dim sql As String
-        sql = "select (catid) as 'ID', (categoryname) as 'Desc' from tbl_supply_category where categoryname like '%" & txtSearch.Text & "%' and categorytype = '" & cbSupplyType.Text & "'"
+        sql = "select (catid) as 'ID', (categoryname) as 'Desc' from cfcissmsdb_supply.tbl_supply_category where categoryname like '%" & txtSearch.Text & "%' and categorytype = '" & cbSupplyType.Text & "'"
         cn.Close()
         cn.Open()
         cm = New MySqlCommand(sql, cn)
@@ -145,7 +145,7 @@ Public Class frmSupplyItemAdd
     Sub SupplyBrandList()
         dgSupplyBrand.Rows.Clear()
         Dim sql As String
-        sql = "select (brandid) as 'ID', (brandname) as 'Desc' from tbl_supply_brand where brandname like '%" & txtSearch.Text & "%' and catid = " & CategoryID & ""
+        sql = "select (brandid) as 'ID', (brandname) as 'Desc' from cfcissmsdb_supply.tbl_supply_brand where brandname like '%" & txtSearch.Text & "%' and catid = " & CategoryID & ""
         cn.Close()
         cn.Open()
         cm = New MySqlCommand(sql, cn)
@@ -171,7 +171,7 @@ Public Class frmSupplyItemAdd
     Sub SupplyCategorySizeList()
         dgSupplySize.Rows.Clear()
         Dim sql As String
-        sql = "select (sizeid) as 'ID', (sizes) as 'Desc' from tbl_supply_sizes where sizes like '%" & txtSearch.Text & "%' and category_id = " & CategoryID & ""
+        sql = "select (sizeid) as 'ID', (sizes) as 'Desc' from cfcissmsdb_supply.tbl_supply_sizes where sizes like '%" & txtSearch.Text & "%' and category_id = " & CategoryID & ""
         cn.Close()
         cn.Open()
         cm = New MySqlCommand(sql, cn)
@@ -237,10 +237,10 @@ Public Class frmSupplyItemAdd
         If IS_EMPTY(txtOpeningStock) = True Then Return
         If IS_EMPTY(txtReOrderPoint) = True Then Return
         If IS_EMPTY(txtPrice) = True Then Return
-        If CHECK_EXISTING("SELECT * FROM tbl_supply_item WHERE brandid = " & BrandID & " and categoryid = " & CategoryID & " and sizesid = " & SizeID & "") = True Then Return
+        If CHECK_EXISTING("SELECT * FROM cfcissmsdb_supply.tbl_supply_item WHERE brandid = " & BrandID & " and categoryid = " & CategoryID & " and sizesid = " & SizeID & "") = True Then Return
         AutoBarCode()
-        query("INSERT INTO `tbl_supply_item`(`barcodeid`, `description`, `categoryid`, `brandid`, `sizesid`, `item_price`, `item_status`, `item_open_stock`, `item_reorder_point`) VALUES ('" & barcodeID.Text & "', '" & txtSupplyDesc.Text & "', " & CategoryID & ",  " & BrandID & ", " & SizeID & ", " & CDec(txtPrice.Text) & ", '" & cbSupplyStatus.Text & "', " & CInt(txtOpeningStock.Text) & " , " & CInt(txtReOrderPoint.Text) & ")")
-        query("INSERT INTO `tbl_supply_inventory`(`itembarcode`, `Spare`, `Deployed`, `Defect`) VALUES ('" & barcodeID.Text & "', " & CInt(txtOpeningStock.Text) & ", 0, 0)")
+        query("INSERT INTO cfcissmsdb_supply.`tbl_supply_item`(`barcodeid`, `description`, `categoryid`, `brandid`, `sizesid`, `item_price`, `item_status`, `item_open_stock`, `item_reorder_point`) VALUES ('" & barcodeID.Text & "', '" & txtSupplyDesc.Text & "', " & CategoryID & ",  " & BrandID & ", " & SizeID & ", " & CDec(txtPrice.Text) & ", '" & cbSupplyStatus.Text & "', " & CInt(txtOpeningStock.Text) & " , " & CInt(txtReOrderPoint.Text) & ")")
+        query("INSERT INTO cfcissmsdb_supply.`tbl_supply_inventory`(`itembarcode`, `Spare`, `Deployed`, `Defect`) VALUES ('" & barcodeID.Text & "', " & CInt(txtOpeningStock.Text) & ", 0, 0)")
 
         'Stock Ledger
         StockLedger(barcodeID.Text, CInt(txtOpeningStock.Text), 0, "Opening Stock", "Opening Stock", "-")
@@ -265,8 +265,8 @@ Public Class frmSupplyItemAdd
         If IS_EMPTY(txtOpeningStock) = True Then Return
         If IS_EMPTY(txtReOrderPoint) = True Then Return
         If IS_EMPTY(txtPrice) = True Then Return
-        If CHECK_EXISTING("SELECT * FROM tbl_supply_item WHERE brandid = " & BrandID & " and categoryid = " & CategoryID & " and brandid = " & BrandID & " and sizesid = " & SizeID & " and barcodeid NOT IN ('" & barcodeID.Text & "')") = True Then Return
-        query("UPDATE `tbl_supply_item` set `description` = '" & txtSupplyDesc.Text & "', `item_price` = " & CDec(txtPrice.Text) & ", `item_status` = '" & cbSupplyStatus.Text & "', `item_reorder_point` = " & CInt(txtReOrderPoint.Text) & " WHERE barcodeid = '" & barcodeID.Text & "'")
+        If CHECK_EXISTING("SELECT * FROM cfcissmsdb_supply.tbl_supply_item WHERE brandid = " & BrandID & " and categoryid = " & CategoryID & " and brandid = " & BrandID & " and sizesid = " & SizeID & " and barcodeid NOT IN ('" & barcodeID.Text & "')") = True Then Return
+        query("UPDATE cfcissmsdb_supply.`tbl_supply_item` set `description` = '" & txtSupplyDesc.Text & "', `item_price` = " & CDec(txtPrice.Text) & ", `item_status` = '" & cbSupplyStatus.Text & "', `item_reorder_point` = " & CInt(txtReOrderPoint.Text) & " WHERE barcodeid = '" & barcodeID.Text & "'")
         UserActivity("Updated a(n) " & cbSupplyType.Text & " item " & txtSupplyDesc.Text.Trim & " - " & cbSupplyCategory.Text.Trim & " " & cbSupplySize.Text.Trim & ". Barcode: " & barcodeID.Text & "", "SUPPLY ITEM UPDATE")
         frmWait.seconds = 1
         frmWait.ShowDialog()

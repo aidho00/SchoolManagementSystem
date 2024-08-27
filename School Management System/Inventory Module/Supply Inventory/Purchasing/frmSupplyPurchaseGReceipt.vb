@@ -79,7 +79,7 @@ Public Class frmSupplyPurchaseGReceipt
         Dim remaining As Integer = 0
         cn.Close()
         cn.Open()
-        cm = New MySqlCommand("SELECT (`itemqty` - `receivedqty`) as 'Remaining' FROM `tbl_supply_purchaseorder_items` WHERE itemid = '" & dgGRitemList.CurrentRow.Cells(0).Value & "' and pono = '" & lblPOno.Text & "'", cn)
+        cm = New MySqlCommand("SELECT (`itemqty` - `receivedqty`) as 'Remaining' FROM cfcissmsdb_supply.`tbl_supply_purchaseorder_items` WHERE itemid = '" & dgGRitemList.CurrentRow.Cells(0).Value & "' and pono = '" & lblPOno.Text & "'", cn)
         remaining = CInt(cm.ExecuteScalar)
         cn.Close()
 
@@ -115,13 +115,13 @@ Public Class frmSupplyPurchaseGReceipt
         Dim yearid As String = YearToday
         cn.Close()
         cn.Open()
-        cm = New MySqlCommand("SELECT grno FROM tbl_supply_goodsreceipts WHERE grno like 'GR" & yearid & "%'", cn)
+        cm = New MySqlCommand("SELECT grno FROM cfcissmsdb_supply.tbl_supply_goodsreceipts WHERE grno like 'GR" & yearid & "%'", cn)
         dr = cm.ExecuteReader()
         If dr.HasRows Then
             dr.Close()
             cn.Close()
             cn.Open()
-            cm = New MySqlCommand("SELECT MAX(grno) as ID from tbl_supply_goodsreceipts", cn)
+            cm = New MySqlCommand("SELECT MAX(grno) as ID from cfcissmsdb_supply.tbl_supply_goodsreceipts", cn)
             Dim lastCode As String = cm.ExecuteScalar
             cn.Close()
             lastCode = lastCode.Remove(0, 6)
@@ -141,7 +141,7 @@ Public Class frmSupplyPurchaseGReceipt
             dgPOList.Rows.Clear()
             Dim i As Integer
             Dim sql As String
-            sql = "Select pono, prno, pototal, po.status, DATE_FORMAT(podate, '%m/%d/%Y') as podate, AccountName, poremarks from tbl_supply_purchaseorder po JOIN useraccounts ua ON po.pouser_id = ua.useraccountID where pono LIKE '%" & frmMain.txtSearch.Text & "%' and status NOT IN ('Close')"
+            sql = "Select pono, prno, pototal, po.status, DATE_FORMAT(podate, '%m/%d/%Y') as podate, AccountName, poremarks from cfcissmsdb_supply.tbl_supply_purchaseorder po JOIN useraccounts ua ON po.pouser_id = ua.useraccountID where pono LIKE '%" & frmMain.txtSearch.Text & "%' and status NOT IN ('Close')"
             cn.Close()
             cn.Open()
             cm = New MySqlCommand(sql, cn)
@@ -166,7 +166,7 @@ Public Class frmSupplyPurchaseGReceipt
 
             dgGRitemList.Rows.Clear()
             Dim sql As String
-            sql = "SELECT t1.`itemid`,t2.description, '' as cat,'' as size, t1.`receivedqty`,t1.itemprice,t1.itemtotal,  t1.`itemqty` FROM `tbl_supply_purchaseorder_items` t1 JOIN tbl_supply_item t2 ON t1.itemid = t2.barcodeid WHERE `pono` = '" & dgPOList.CurrentRow.Cells(1).Value & "' and receivedqty < itemqty"
+            sql = "SELECT t1.`itemid`,t2.description, '' as cat,'' as size, t1.`receivedqty`,t1.itemprice,t1.itemtotal,  t1.`itemqty` FROM cfcissmsdb_supply.`tbl_supply_purchaseorder_items` t1 JOIN cfcissmsdb_supply.tbl_supply_item t2 ON t1.itemid = t2.barcodeid WHERE `pono` = '" & dgPOList.CurrentRow.Cells(1).Value & "' and receivedqty < itemqty"
             cn.Close()
             cn.Open()
             cm = New MySqlCommand(sql, cn)
@@ -212,33 +212,33 @@ Public Class frmSupplyPurchaseGReceipt
             If IS_EMPTY(txtInvoices) = True Then Return
             If IS_EMPTY(txtRemarks) = True Then Return
             Dim GRNo As String = GetTransno()
-            query("INSERT INTO `tbl_supply_goodsreceipts`(`grno`, `pono`, `grtotal`, `grremarks`, `gruser_id`, grinvoice) VALUES ('" & GRNo & "', '" & lblPOno.Text & "'," & CDec(lblTotal.Text) & ",'" & txtRemarks.Text & "', " & str_userid & ", '" & txtInvoices.Text & "')")
+            query("INSERT INTO cfcissmsdb_supply.`tbl_supply_goodsreceipts`(`grno`, `pono`, `grtotal`, `grremarks`, `gruser_id`, grinvoice) VALUES ('" & GRNo & "', '" & lblPOno.Text & "'," & CDec(lblTotal.Text) & ",'" & txtRemarks.Text & "', " & str_userid & ", '" & txtInvoices.Text & "')")
 
             Dim isCompleted As Integer = 0
             For Each row As DataGridViewRow In dgGRitemList.Rows
                 Dim itemStatus = If(CInt(row.Cells(5).Value) = CInt(row.Cells(7).Value), "Full", "Partial")
-                query("INSERT INTO `tbl_supply_goodsreceipts_items`(`grno`, `itemid`, `itemqty`, `itemprice`, `itemtotal`) VALUES ('" & GRNo & "','" & row.Cells(0).Value & "'," & CInt(row.Cells(5).Value) & "," & CInt(row.Cells(4).Value) & "," & CDec(row.Cells(6).Value) & ")")
+                query("INSERT INTO cfcissmsdb_supply.`tbl_supply_goodsreceipts_items`(`grno`, `itemid`, `itemqty`, `itemprice`, `itemtotal`) VALUES ('" & GRNo & "','" & row.Cells(0).Value & "'," & CInt(row.Cells(5).Value) & "," & CInt(row.Cells(4).Value) & "," & CDec(row.Cells(6).Value) & ")")
                 If itemStatus = "Full" Then
                     isCompleted = isCompleted + 1
                 Else
                 End If
-                query("UPDATE tbl_supply_purchaseorder_items SET receivedqty = receivedqty + " & CInt(row.Cells(5).Value) & " WHERE itemid = '" & row.Cells(0).Value & "' and pono = '" & lblPOno.Text & "'")
+                query("UPDATE cfcissmsdb_supply.tbl_supply_purchaseorder_items SET receivedqty = receivedqty + " & CInt(row.Cells(5).Value) & " WHERE itemid = '" & row.Cells(0).Value & "' and pono = '" & lblPOno.Text & "'")
 
                 StockLedger(row.Cells(0).Value, CInt(row.Cells(5).Value), 0, "Receipt of goods against purchase order.", "PO Goods Receipt/Received", "Goods Receipt ID: " & GRNo & "")
             Next
 
             If isCompleted = CInt(dgGRitemList.Rows.Count) Then
-                query("UPDATE tbl_supply_goodsreceipts SET status = 'Full' WHERE grno = '" & GRNo & "'")
+                query("UPDATE cfcissmsdb_supply.tbl_supply_goodsreceipts SET status = 'Full' WHERE grno = '" & GRNo & "'")
             Else
-                query("UPDATE tbl_supply_goodsreceipts SET status = 'Partial' WHERE grno = '" & GRNo & "'")
+                query("UPDATE cfcissmsdb_supply.tbl_supply_goodsreceipts SET status = 'Partial' WHERE grno = '" & GRNo & "'")
             End If
 
             Dim orderQty As Integer = 0
                 Dim grQty As Integer = 0
                 cn.Close()
                 cn.Open()
-                cm = New MySqlCommand("select SUM(itemqty) as ortotal, SUM(receivedqty) as grtotal from tbl_supply_purchaseorder_items where pono = '" & lblPOno.Text & "'", cn)
-                dr = cm.ExecuteReader
+            cm = New MySqlCommand("select SUM(itemqty) as ortotal, SUM(receivedqty) as grtotal from cfcissmsdb_supply.tbl_supply_purchaseorder_items where pono = '" & lblPOno.Text & "'", cn)
+            dr = cm.ExecuteReader
                 dr.Read()
                 If dr.HasRows Then
                     orderQty = CInt(dr.Item("ortotal").ToString)
@@ -247,12 +247,13 @@ Public Class frmSupplyPurchaseGReceipt
                 End If
                 dr.Close()
                 cn.Close()
-                If grQty >= orderQty Then
-                    query("UPDATE tbl_supply_purchaseorder SET status = 'Close' WHERE pono = '" & lblPOno.Text & "'")
-                Else
-                End If
+            If grQty >= orderQty Then
+                query("UPDATE cfcissmsdb_supply.tbl_supply_purchaseorder SET status = 'Close' WHERE pono = '" & lblPOno.Text & "'")
+            Else
+            End If
+            UserActivity("Created a goods receipt. GReceipt No." & GRNo & ", Order No. " & lblPOno.Text & ", Total: " & lblTotal.Text & "", "SUPPLY GOODS RECEIPT")
 
-                frmSupplyGRRecords.GoodsReceiptList()
+            frmSupplyGRRecords.GoodsReceiptList()
                 MsgBox("Goods Receipt sucessfully created.", vbInformation)
                 GoodsReceiptRPT(GRNo)
                 Me.Close()

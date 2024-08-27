@@ -35,13 +35,13 @@ Public Class frmSupplyPurchaseOrder
         Dim yearid As String = YearToday
         cn.Close()
         cn.Open()
-        cm = New MySqlCommand("SELECT pono FROM tbl_supply_purchaseorder WHERE pono like 'PO" & yearid & "%'", cn)
+        cm = New MySqlCommand("SELECT pono FROM cfcissmsdb_supply.tbl_supply_purchaseorder WHERE pono like 'PO" & yearid & "%'", cn)
         dr = cm.ExecuteReader()
         If dr.HasRows Then
             dr.Close()
             cn.Close()
             cn.Open()
-            cm = New MySqlCommand("SELECT MAX(pono) as ID from tbl_supply_purchaseorder", cn)
+            cm = New MySqlCommand("SELECT MAX(pono) as ID from cfcissmsdb_supply.tbl_supply_purchaseorder", cn)
             Dim lastCode As String = cm.ExecuteScalar
             cn.Close()
             lastCode = lastCode.Remove(0, 6)
@@ -66,7 +66,7 @@ Public Class frmSupplyPurchaseOrder
             dgPRList.Rows.Clear()
             Dim i As Integer
             Dim sql As String
-            sql = "Select prno, prtotal, status, DATE_FORMAT(prdate, '%m/%d/%Y') as prdate, AccountName, prremarks from tbl_supply_purchaserequest pr JOIN useraccounts ua ON pr.pruser_id = ua.useraccountID where prno LIKE '%" & frmMain.txtSearch.Text & "%' and status NOT IN ('Close')"
+            sql = "Select prno, prtotal, status, DATE_FORMAT(prdate, '%m/%d/%Y') as prdate, AccountName, prremarks from cfcissmsdb_supply.tbl_supply_purchaserequest pr JOIN useraccounts ua ON pr.pruser_id = ua.useraccountID where prno LIKE '%" & frmMain.txtSearch.Text & "%' and status NOT IN ('Close')"
             cn.Close()
             cn.Open()
             cm = New MySqlCommand(sql, cn)
@@ -91,8 +91,8 @@ Public Class frmSupplyPurchaseOrder
 
             dgPOitemList.Rows.Clear()
         Dim sql As String
-        sql = "SELECT t1.`itemid`,t2.description, '' as cat,'' as size, t1.`itemqty`,t1.itemprice,t1.itemtotal FROM `tbl_supply_purchaserequest_items` t1 JOIN tbl_supply_item t2 ON t1.itemid = t2.barcodeid WHERE `prno` = '" & dgPRList.CurrentRow.Cells(1).Value & "'"
-        cn.Close()
+            sql = "SELECT t1.`itemid`,t2.description, '' as cat,'' as size, t1.`itemqty`,t1.itemprice,t1.itemtotal FROM cfcissmsdb_supply.`tbl_supply_purchaserequest_items` t1 JOIN cfcissmsdb_supply.tbl_supply_item t2 ON t1.itemid = t2.barcodeid WHERE `prno` = '" & dgPRList.CurrentRow.Cells(1).Value & "'"
+            cn.Close()
         cn.Open()
         cm = New MySqlCommand(sql, cn)
         dr = cm.ExecuteReader
@@ -148,11 +148,12 @@ Public Class frmSupplyPurchaseOrder
             End If
             If IS_EMPTY(txtRemarks) = True Then Return
             Dim PONo As String = GetTransno()
-            query("INSERT INTO `tbl_supply_purchaseorder`(`pono`, `prno`, `pototal`, `poremarks`, `pouser_id`) VALUES ('" & PONo & "', '" & lblPRno.Text & "'," & CDec(lblTotal.Text) & ",'" & txtRemarks.Text & "', " & str_userid & ")")
+            query("INSERT INTO cfcissmsdb_supply.`tbl_supply_purchaseorder`(`pono`, `prno`, `pototal`, `poremarks`, `pouser_id`) VALUES ('" & PONo & "', '" & lblPRno.Text & "'," & CDec(lblTotal.Text) & ",'" & txtRemarks.Text & "', " & str_userid & ")")
             For Each row As DataGridViewRow In dgPOitemList.Rows
-                query("INSERT INTO `tbl_supply_purchaseorder_items`(`pono`, `itemid`, `itemqty`, `itemprice`, `itemtotal`) VALUES ('" & PONo & "','" & row.Cells(0).Value & "'," & CInt(row.Cells(5).Value) & "," & CInt(row.Cells(4).Value) & "," & CDec(row.Cells(6).Value) & ")")
+                query("INSERT INTO cfcissmsdb_supply.`tbl_supply_purchaseorder_items`(`pono`, `itemid`, `itemqty`, `itemprice`, `itemtotal`) VALUES ('" & PONo & "','" & row.Cells(0).Value & "'," & CInt(row.Cells(5).Value) & "," & CInt(row.Cells(4).Value) & "," & CDec(row.Cells(6).Value) & ")")
             Next
-            query("UPDATE `tbl_supply_purchaserequest` SET `status` = 'Close' where `prno` = '" & lblPRno.Text & "'")
+            query("UPDATE cfcissmsdb_supply.`tbl_supply_purchaserequest` SET `status` = 'Close' where `prno` = '" & lblPRno.Text & "'")
+            UserActivity("Created a purchase order. Order No." & PONo & ", Request No. " & lblPRno.Text & ", Total: " & lblTotal.Text & "", "SUPPLY PURCHASE ORDER")
 
             frmSupplyPORecords.PurchaseOrderList()
             MsgBox("Purchase Order sucessfully created.", vbInformation)

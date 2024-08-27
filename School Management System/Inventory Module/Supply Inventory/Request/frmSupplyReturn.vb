@@ -14,13 +14,13 @@ Public Class frmSupplyReturn
                 Dim y As Integer
                 cn.Close()
                 cn.Open()
-                cm = New MySqlCommand("SELECT spare from tbl_supply_inventory where itembarcode = '" & dgCart.CurrentRow.Cells(0).Value & "'", cn)
+                cm = New MySqlCommand("SELECT spare from cfcissmsdb_supply.tbl_supply_inventory where itembarcode = '" & dgCart.CurrentRow.Cells(0).Value & "'", cn)
                 x = cm.ExecuteScalar
                 cn.Close()
 
                 y = row.Cells(4).Value
 
-                Using cmd As New MySqlCommand("update tbl_supply_inventory set spare = spare + @1, deployed = deployed - @1 where itembarcode = @2", cn)
+                Using cmd As New MySqlCommand("update cfcissmsdb_supply.tbl_supply_inventory set spare = spare + @1, deployed = deployed - @1 where itembarcode = @2", cn)
                     cmd.Parameters.AddWithValue("@1", row.Cells(4).Value)
                     cmd.Parameters.AddWithValue("@2", row.Cells(0).Value)
                     cmd.ExecuteNonQuery()
@@ -40,7 +40,7 @@ Public Class frmSupplyReturn
                 '    cmd.ExecuteNonQuery()
                 '    cmd.Dispose()
                 'End Using
-                Using cmd As New MySqlCommand("update tbl_supply_deployed set dstatus = 'RETURNED' where dstudentid = @1", cn)
+                Using cmd As New MySqlCommand("update cfcissmsdb_supply.tbl_supply_deployed set dstatus = 'RETURNED' where dstudentid = @1", cn)
                     cmd.Parameters.AddWithValue("@1", frmSupplyRecords.cbRequests.Text)
                     cmd.ExecuteNonQuery()
                     cmd.Dispose()
@@ -66,7 +66,7 @@ Public Class frmSupplyReturn
         dgCart.Rows.Clear()
         cn.Close()
         cn.Open()
-        cm = New MySqlCommand("Select barcodeid, description, tbl_supply_deployed.dprice as Price, (dqty) as QTY, qty_requested as RQST, qty_returned as RTRN, tbl_supply_deployed.ditem_price as Total, dstudentid from tbl_supply_deployed, tbl_supply_item, tbl_supply_category where tbl_supply_deployed.dbarcode = tbl_supply_item.barcodeid AND tbl_supply_item.categoryid = tbl_supply_category.catid and tbl_supply_deployed.dstatus = 'APPROVED' and tbl_supply_deployed.dtransno = '" & frmSupplyRecords.cbRequests.Text & "'", cn)
+        cm = New MySqlCommand("Select barcodeid, description, tbl_supply_deployed.dprice as Price, (dqty) as QTY, qty_requested as RQST, qty_returned as RTRN, cfcissmsdb_supply.tbl_supply_deployed.ditem_price as Total, dstudentid from cfcissmsdb_supply.tbl_supply_deployed, cfcissmsdb_supply.tbl_supply_item, cfcissmsdb_supply.tbl_supply_category where cfcissmsdb_supply.tbl_supply_deployed.dbarcode = cfcissmsdb_supply.tbl_supply_item.barcodeid AND cfcissmsdb_supply.tbl_supply_item.categoryid = cfcissmsdb_supply.tbl_supply_category.catid and cfcissmsdb_supply.tbl_supply_deployed.dstatus = 'APPROVED' and cfcissmsdb_supply.tbl_supply_deployed.dtransno = '" & frmSupplyRecords.cbRequests.Text & "'", cn)
         dr = cm.ExecuteReader()
         While dr.Read
             _total += CDbl(dr.Item("Total").ToString)

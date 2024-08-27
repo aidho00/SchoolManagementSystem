@@ -70,7 +70,7 @@ Public Class frmSupplyPOSQty
                     Dim itemcount As Integer = 0
 
                     cn.Open()
-                    cm = New MySqlCommand("select count(*) as count from tbl_supply_deployed where dlocation = @1 and dbarcode = @2 and dstatus = 'PENDING'", cn)
+                    cm = New MySqlCommand("select count(*) as count from cfcissmsdb_supply.tbl_supply_deployed where dlocation = @1 and dbarcode = @2 and dstatus = 'PENDING'", cn)
                     With cm
                         .Parameters.AddWithValue("@1", frmSupplyPOS.lblLocationNumber.Text)
                         .Parameters.AddWithValue("@2", frmSupplyPOS.txtItemID.Text)
@@ -85,7 +85,7 @@ Public Class frmSupplyPOSQty
                     If itemcount = 0 Then
 
                         cn.Open()
-                        cm = New MySqlCommand("insert into tbl_supply_deployed (dbarcode, dqty, dlocation, ddate, dprice, ditem_price, qty_requested,dstudentid, duser_id) values (@1,@2,@3,CURDATE(),@5,@6,@7,@8,@9)", cn)
+                        cm = New MySqlCommand("insert into cfcissmsdb_supply.tbl_supply_deployed (dbarcode, dqty, dlocation, ddate, dprice, ditem_price, qty_requested,dstudentid, duser_id) values (@1,@2,@3,CURDATE(),@5,@6,@7,@8,@9)", cn)
                         With cm
                             .Parameters.AddWithValue("@1", frmSupplyPOS.txtItemID.Text)
                             .Parameters.AddWithValue("@2", CInt(txtQty.Text))
@@ -131,7 +131,7 @@ Public Class frmSupplyPOSQty
 
                         If isFound = False Then
                             cn.Open()
-                            cm = New MySqlCommand("update tbl_supply_deployed set ddate = CURDATE(), dqty = dqty+@1, qty_requested = qty_requested+@4, ditem_price = dprice * dqty where dlocation = @2 and dbarcode = @3 and dstatus = 'PENDING'", cn)
+                            cm = New MySqlCommand("update cfcissmsdb_supply.tbl_supply_deployed set ddate = CURDATE(), dqty = dqty+@1, qty_requested = qty_requested+@4, ditem_price = dprice * dqty where dlocation = @2 and dbarcode = @3 and dstatus = 'PENDING'", cn)
                             With cm
                                 .Parameters.AddWithValue("@1", CInt(txtQty.Text))
                                 .Parameters.AddWithValue("@2", frmSupplyPOS.lblLocationNumber.Text)

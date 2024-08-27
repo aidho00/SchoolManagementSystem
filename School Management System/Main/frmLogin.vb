@@ -102,7 +102,7 @@ Public Class frmLogin
             cn.Close()
             If found = True Then
 
-                If str_role = "Administrator" Or str_role = "Registrar" Then
+                If str_role = "Administrator" Or str_role = "Registrar" Or str_role = "Supply In-charge" Then
 
                     If cmbAcad.Text = "College Management System" Then
                         frmMain.systemModule.Text = "College Module"
@@ -207,7 +207,7 @@ Public Class frmLogin
     Private Sub cmbAcad_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbAcad.SelectedIndexChanged
         cbModule.Text = cmbAcad.Text
         If cbModule.Text = "College Management System" Then
-            SystemDataBase.Text = "cfcissmsdb2"
+            SystemDataBase.Text = "cfcissmsdb"
         ElseIf cbModule.Text = "Basic Education Management System" Then
             SystemDataBase.Text = "cfcissmsdbhighschool"
         End If

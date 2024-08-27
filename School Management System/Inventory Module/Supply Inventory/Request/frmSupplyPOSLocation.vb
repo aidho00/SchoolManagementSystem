@@ -16,7 +16,7 @@ Public Class frmSupplyPOSLocation
             tablePanel.Controls.Clear()
             cn.Close()
             cn.Open()
-            cm = New MySqlCommand("Select * from vwlocationbill2 where location like '%" & ToolStripTextBox1.Text & "%'", cn)
+            cm = New MySqlCommand("Select * from cfcissmsdb_supply.vwlocationbill2 where location like '%" & ToolStripTextBox1.Text & "%'", cn)
             dr = cm.ExecuteReader
             While dr.Read
                 btnTable = New Button
@@ -72,7 +72,7 @@ Public Class frmSupplyPOSLocation
             Dim locationname As String
             cn.Close()
             cn.Open()
-            cm = New MySqlCommand("Select locationname from tbl_supply_location where locationnumber = " & location & "", cn)
+            cm = New MySqlCommand("Select locationname from cfcissmsdb_supply.tbl_supply_location where locationnumber = " & location & "", cn)
             dr = cm.ExecuteReader
             While dr.Read
                 locationname = dr.Item("locationname").ToString

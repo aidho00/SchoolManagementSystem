@@ -5,8 +5,8 @@
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         If IS_EMPTY(txtDesc) = True Then Return
-        If CHECK_EXISTING("SELECT * FROM tbl_supply_brand WHERE brandname = '" & txtDesc.Text & "' and catid = " & frmSupplyItemAdd.CategoryID & "") = True Then Return
-        query("INSERT INTO `tbl_supply_brand` (brandname, catid) VALUES ('" & txtDesc.Text & "',  " & frmSupplyItemAdd.CategoryID & ")")
+        If CHECK_EXISTING("SELECT * FROM cfcissmsdb_supply.tbl_supply_brand WHERE brandname = '" & txtDesc.Text & "' and catid = " & frmSupplyItemAdd.CategoryID & "") = True Then Return
+        query("INSERT INTO cfcissmsdb_supply.`tbl_supply_brand` (brandname, catid) VALUES ('" & txtDesc.Text & "',  " & frmSupplyItemAdd.CategoryID & ")")
         UserActivity("Added a(n) " & frmSupplyItemAdd.cbSupplyType.Text & " category " & frmSupplyItemAdd.cbSupplyCategory.Text & " brand " & txtDesc.Text & "", "SUPPLY ITEM BRAND ENTRY")
         frmWait.seconds = 1
         frmWait.ShowDialog()

@@ -41,6 +41,8 @@ Module Records
                 LibraryAcadList()
             Case "List Of Class Schedules"
                 LibraryClassSchedList()
+            Case "Setup Class Schedules"
+                LibraryClassSchedList()
             Case "List Of Courses"
                 LibraryCourseList()
             Case "List Of Day Schedules"

@@ -102,9 +102,9 @@ Public Class frmLogin
             cn.Close()
             If found = True Then
 
-                If str_role = "Administrator" Or str_role = "Registrar" Or str_role = "Supply In-charge" Then
+                'If str_role = "Administrator" Or str_role = "Registrar" Or str_role = "Supply In-charge" Then
 
-                    If cmbAcad.Text = "College Management System" Then
+                If cmbAcad.Text = "College Management System" Then
                         frmMain.systemModule.Text = "College Module"
                         frmMain.btnGrading.Visible = True
                         frmMain.btnTOR.Visible = True
@@ -149,11 +149,11 @@ Public Class frmLogin
                     frmMain.Show()
                     MsgBox("Welcome " & str_name & "!", vbInformation)
                     Me.Hide()
-                Else
-                    MsgBox("Access denied! Only Administrator or Registrar accounts are authorized.", vbExclamation)
-                End If
+                    'Else
+                    '    MsgBox("Access denied! Only Administrator or Registrar accounts are authorized.", vbExclamation)
+                    'End If
 
-            Else
+                Else
                 MsgBox("Invalid username or password!", vbExclamation)
             End If
         Catch ex As Exception

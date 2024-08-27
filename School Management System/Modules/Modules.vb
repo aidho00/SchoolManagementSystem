@@ -454,4 +454,35 @@ Module Modules
 
         End Try
     End Sub
+
+    Sub AccessArea(userID As Integer, areaName As String, accessObject As Object)
+        cn.Close()
+        cn.Open()
+        cm = New MySqlCommand("SELECT (uaa_area_id) as 'ID', (area_name) as 'Description' from tbl_system_areas, tbl_user_account_areas where tbl_system_areas.area_id = tbl_user_account_areas.uaa_area_id and uaa_area_user_id = '" & userID & "' and area_name = '" & areaName & "' and area_status = 'OPEN'", cn)
+        dr = cm.ExecuteReader
+        dr.Read()
+        If dr.HasRows Then
+            accessObject.Visible = True
+        Else
+            accessObject.Visible = False
+        End If
+        dr.Close()
+        cn.Close()
+    End Sub
+
+    Public Function CheckVisibleObjectInPanel(panelObject As Panel)
+        Dim hasVisibleControl As Boolean = False
+        For Each ctrl As Control In panelObject.Controls
+            If ctrl.Visible Then
+                hasVisibleControl = True
+                Exit For
+            End If
+        Next
+        If hasVisibleControl Then
+            hasVisibleControl = True
+        Else
+            hasVisibleControl = False
+        End If
+        Return hasVisibleControl
+    End Function
 End Module

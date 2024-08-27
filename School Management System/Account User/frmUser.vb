@@ -19,12 +19,27 @@ Public Class frmUser
 
     Private Sub dgUserModules_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgUserModules.CellClick
         Select Case dgUserModules.CurrentRow.Cells(1).Value.ToString
-            Case "Registry"
+            Case "Information Registry"
                 HideAllDGInPanelExcept(dgRegistryArea)
                 SystemModule_Areas(dgRegistryArea)
             Case "Enrollment"
                 HideAllDGInPanelExcept(dgEnrollmentArea)
                 SystemModule_Areas(dgEnrollmentArea)
+            Case "Cashiering"
+                HideAllDGInPanelExcept(dgCashieringArea)
+                SystemModule_Areas(dgCashieringArea)
+            Case "Reports"
+                HideAllDGInPanelExcept(dgReportsArea)
+                SystemModule_Areas(dgReportsArea)
+            Case "Registrar"
+                HideAllDGInPanelExcept(dgRegistrarArea)
+                SystemModule_Areas(dgRegistrarArea)
+            Case "Supply"
+                HideAllDGInPanelExcept(dgSupplyArea)
+                SystemModule_Areas(dgSupplyArea)
+            Case "Database"
+                HideAllDGInPanelExcept(dgDatabaseArea)
+                SystemModule_Areas(dgDatabaseArea)
         End Select
     End Sub
 
@@ -34,25 +49,66 @@ Public Class frmUser
                 CheckUncheck(dgRegistryArea)
             Case "Enrollment"
                 CheckUncheck(dgEnrollmentArea)
+            Case "Cashiering"
+                CheckUncheck(dgCashieringArea)
+            Case "Reports"
+                CheckUncheck(dgReportsArea)
+            Case "Registrar"
+                CheckUncheck(dgRegistrarArea)
+            Case "Supply"
+                CheckUncheck(dgSupplyArea)
+            Case "Database"
+                CheckUncheck(dgDatabaseArea)
         End Select
     End Sub
 
     Sub InsertGrantedAreas()
         For Each row As DataGridViewRow In dgUserModules.Rows
             If row.Cells(2).Value = True Then
-                query("insert into tbl_user_account_areas(uaa_area_user_id, uaa_area_id)values(" & AccountUserID & ", " & row.Cells(0).Value & ")")
+                query("insert into tbl_user_account_areas2(uaa_area_user_id, uaa_area_id)values(" & AccountUserID & ", " & row.Cells(0).Value & ")")
             Else
             End If
         Next
         For Each row As DataGridViewRow In dgRegistryArea.Rows
             If row.Cells(2).Value = True Then
-                query("insert into tbl_user_account_areas(uaa_area_user_id, uaa_area_id)values(" & AccountUserID & ", " & row.Cells(0).Value & ")")
+                query("insert into tbl_user_account_areas2(uaa_area_user_id, uaa_area_id)values(" & AccountUserID & ", " & row.Cells(0).Value & ")")
             Else
             End If
         Next
         For Each row As DataGridViewRow In dgEnrollmentArea.Rows
             If row.Cells(2).Value = True Then
-                query("insert into tbl_user_account_areas(uaa_area_user_id, uaa_area_id)values(" & AccountUserID & ", " & row.Cells(0).Value & ")")
+                query("insert into tbl_user_account_areas2(uaa_area_user_id, uaa_area_id)values(" & AccountUserID & ", " & row.Cells(0).Value & ")")
+            Else
+            End If
+        Next
+
+        For Each row As DataGridViewRow In dgCashieringArea.Rows
+            If row.Cells(2).Value = True Then
+                query("insert into tbl_user_account_areas2(uaa_area_user_id, uaa_area_id)values(" & AccountUserID & ", " & row.Cells(0).Value & ")")
+            Else
+            End If
+        Next
+        For Each row As DataGridViewRow In dgReportsArea.Rows
+            If row.Cells(2).Value = True Then
+                query("insert into tbl_user_account_areas2(uaa_area_user_id, uaa_area_id)values(" & AccountUserID & ", " & row.Cells(0).Value & ")")
+            Else
+            End If
+        Next
+        For Each row As DataGridViewRow In dgRegistrarArea.Rows
+            If row.Cells(2).Value = True Then
+                query("insert into tbl_user_account_areas2(uaa_area_user_id, uaa_area_id)values(" & AccountUserID & ", " & row.Cells(0).Value & ")")
+            Else
+            End If
+        Next
+        For Each row As DataGridViewRow In dgSupplyArea.Rows
+            If row.Cells(2).Value = True Then
+                query("insert into tbl_user_account_areas2(uaa_area_user_id, uaa_area_id)values(" & AccountUserID & ", " & row.Cells(0).Value & ")")
+            Else
+            End If
+        Next
+        For Each row As DataGridViewRow In dgDatabaseArea.Rows
+            If row.Cells(2).Value = True Then
+                query("insert into tbl_user_account_areas2(uaa_area_user_id, uaa_area_id)values(" & AccountUserID & ", " & row.Cells(0).Value & ")")
             Else
             End If
         Next
@@ -61,7 +117,7 @@ Public Class frmUser
     Sub SystemModules()
         dgUserModules.Rows.Clear()
         Dim sql As String
-        sql = "SELECT `area_id` as ID, `area_name` as Area FROM `tbl_system_areas` where `area_name` NOT LIKE '%-%'"
+        sql = "SELECT `area_id` as ID, `area_name` as Area FROM `tbl_system_areas2` where `area_name` NOT LIKE '%-%'"
         cn.Close()
         cn.Open()
         cm = New MySqlCommand(sql, cn)
@@ -74,7 +130,7 @@ Public Class frmUser
         For Each row As DataGridViewRow In dgUserModules.Rows
             cn.Close()
             cn.Open()
-            cm = New MySqlCommand("select * from tbl_user_account_areas where uaa_area_id = " & row.Cells(0).Value & " and uaa_area_user_id = " & AccountUserID & "", cn)
+            cm = New MySqlCommand("select * from tbl_user_account_areas2 where uaa_area_id = " & row.Cells(0).Value & " and uaa_area_user_id = " & AccountUserID & "", cn)
             dr = cm.ExecuteReader
             dr.Read()
             If dr.HasRows Then
@@ -92,7 +148,7 @@ Public Class frmUser
         Else
             dg.Rows.Clear()
             Dim sql As String
-            sql = "SELECT `area_id` as ID, SUBSTR(`area_name`," & CInt(dgUserModules.CurrentRow.Cells(1).Value.ToString.Length) + 3 & ") as Area FROM `tbl_system_areas` where `area_name` LIKE '%" & dgUserModules.CurrentRow.Cells(1).Value & " -%'"
+            sql = "SELECT `area_id` as ID, SUBSTR(`area_name`," & CInt(dgUserModules.CurrentRow.Cells(1).Value.ToString.Length) + 3 & ") as Area FROM `tbl_system_areas2` where `area_name` LIKE '%" & dgUserModules.CurrentRow.Cells(1).Value & " -%'"
             cn.Close()
             cn.Open()
             cm = New MySqlCommand(sql, cn)
@@ -105,7 +161,7 @@ Public Class frmUser
             For Each row As DataGridViewRow In dg.Rows
                 cn.Close()
                 cn.Open()
-                cm = New MySqlCommand("select * from tbl_user_account_areas where uaa_area_id = " & row.Cells(0).Value & " and uaa_area_user_id = " & AccountUserID & "", cn)
+                cm = New MySqlCommand("select * from tbl_user_account_areas2 where uaa_area_id = " & row.Cells(0).Value & " and uaa_area_user_id = " & AccountUserID & "", cn)
                 dr = cm.ExecuteReader
                 dr.Read()
                 If dr.HasRows Then
@@ -154,7 +210,7 @@ Public Class frmUser
             cm.ExecuteNonQuery()
             cn.Close()
             UserActivity("Added a user account " & txtFirstName.Text.Trim & " " & txtMiddleName.Text.Trim & " " & txtLastName.Text.Trim & ". Username: " & txtUsername.Text & "", "USER ACCOUNT")
-            query("delete from tbl_user_account_areas WHERE uaa_area_user_id = " & AccountUserID & "")
+            query("delete from tbl_user_account_areas2 WHERE uaa_area_user_id = " & AccountUserID & "")
             InsertGrantedAreas()
             frmWait.seconds = 1
             frmWait.ShowDialog()
@@ -202,7 +258,7 @@ Public Class frmUser
             cm.Parameters.AddWithValue("@image", arrImage)
             cm.ExecuteNonQuery()
             cn.Close()
-            query("delete from tbl_user_account_areas WHERE uaa_area_user_id = " & AccountUserID & "")
+            query("delete from tbl_user_account_areas2 WHERE uaa_area_user_id = " & AccountUserID & "")
             InsertGrantedAreas()
             frmWait.seconds = 1
             frmWait.ShowDialog()

@@ -142,6 +142,234 @@ Public Class frmMain
         End Try
     End Sub
 
+
+    Sub UserAccountsAccessAreas()
+        btnLibrary.Visible = True
+        btnAcamedicYearList.Visible = True
+        btnStudentList.Visible = True
+        btnCourseList.Visible = True
+        btnClassSectionList.Visible = True
+        btnSchoolList.Visible = True
+        btnRoomList.Visible = True
+        btnDaySchedList.Visible = True
+        btnSubjectList.Visible = True
+        btnEmployeeList.Visible = True
+        btnClassSchedList.Visible = True
+        btnEnrollment.Visible = True
+        btnSevaluation.Visible = True
+        btnEnroll.Visible = True
+        btnAddDrop.Visible = True
+        btnEnrollEditor.Visible = True
+        btnAssessment.Visible = True
+        btnDiscount.Visible = True
+        btnCurSetup.Visible = True
+        btnClassSched.Visible = True
+        btnEnrollPermit.Visible = True
+        btnESetup.Visible = True
+        btnAssessmentSetup.Visible = True
+        btnCashiering.Visible = True
+        btnCashieringPayment.Visible = True
+        btnPreCashieringPayment.Visible = True
+        btnPaymentMonitoring.Visible = True
+        btnChequeMonitoring.Visible = True
+        btnAccountAdjustment.Visible = True
+        btnCashDenomination.Visible = True
+        btnReports.Visible = True
+        btnEnrollmentForm.Visible = True
+        btnClassMasterList.Visible = True
+        btnEnrolled.Visible = True
+        btnSubjectLoad.Visible = True
+        btnAPS.Visible = True
+        btnSOA.Visible = True
+        btnTOR.Visible = True
+        btnRegistrar.Visible = True
+        btnClassGradeEditor.Visible = True
+        btnStudentGradeEditor.Visible = True
+        btnGradeCrediting.Visible = True
+        btnUploadPortal.Visible = True
+        btnTOR2.Visible = True
+        btnOTR.Visible = True
+        btnForm9.Visible = True
+        btnEnrollList.Visible = True
+        btnPromoList.Visible = True
+        btnNSTP.Visible = True
+        btnCredReq.Visible = True
+        btnAck.Visible = True
+        btnAck2.Visible = True
+        btnTransmittal.Visible = True
+        btnGradesUploaded.Visible = True
+        btnGrading.Visible = True
+        btnCredentials.Visible = True
+        btnMonitoring.Visible = True
+        btnSupply.Visible = True
+        btnItemRequest.Visible = True
+        btnItems.Visible = True
+        btnPR.Visible = True
+        btnPO.Visible = True
+        btnPRD.Visible = True
+        btnStockRecount.Visible = True
+        btnStockLevel.Visible = True
+        btnRequests.Visible = True
+        btnItemLedger.Visible = True
+        btnBestRequested.Visible = True
+        btnSupplySales.Visible = True
+        btnPurchasing.Visible = True
+        btnSupplyRecords.Visible = True
+        btnDatabase.Visible = True
+
+        dashBoardPanel_Enrollment.Visible = True
+        dashBoardPanel_Payments.Visible = True
+        dashBoardPanel_Supply.Visible = True
+
+
+        If str_role = "Administrator" Then
+
+        Else
+#Region "Information Registry"
+            AccessArea(str_userid, "Information Registry", btnLibrary)
+            AccessArea(str_userid, "Information Registry - Academic Year", btnAcamedicYearList)
+            AccessArea(str_userid, "Information Registry - Student", btnStudentList)
+            AccessArea(str_userid, "Information Registry - Course", btnCourseList)
+            AccessArea(str_userid, "Information Registry - Class Section", btnClassSectionList)
+            AccessArea(str_userid, "Information Registry - School", btnSchoolList)
+            AccessArea(str_userid, "Information Registry - Room", btnRoomList)
+            AccessArea(str_userid, "Information Registry - Day Schedule", btnDaySchedList)
+            AccessArea(str_userid, "Information Registry - Subject", btnSubjectList)
+            AccessArea(str_userid, "Information Registry - Employee", btnEmployeeList)
+            AccessArea(str_userid, "Information Registry - Class Schedule", btnClassSchedList)
+#End Region
+
+#Region "Enrollment"
+            AccessArea(str_userid, "Enrollment", btnEnrollment)
+            AccessArea(str_userid, "Enrollment - Student Evaluation", btnSevaluation)
+            AccessArea(str_userid, "Enrollment - Enroll Class Schedule", btnEnroll)
+            AccessArea(str_userid, "Enrollment - Update Class Schedule", btnAddDrop)
+            AccessArea(str_userid, "Enrollment - Withdraw Enrollment", btnEnrollEditor)
+            AccessArea(str_userid, "Enrollment - Setup Assessment Fee", btnAssessment)
+            AccessArea(str_userid, "Enrollment - Setup Discount Fee", btnDiscount)
+            AccessArea(str_userid, "Enrollment - Setup Curriculum", btnCurSetup)
+            AccessArea(str_userid, "Enrollment - Setup Class Schedule", btnClassSched)
+            AccessArea(str_userid, "Enrollment - Bypass Balance Check", btnEnrollPermit)
+            If CheckVisibleObjectInPanel(PanelEnrollmentSetup) = True Then
+                btnESetup.Visible = True
+                PanelEnrollmentSetup.Visible = True
+            Else
+                btnESetup.Visible = False
+                PanelEnrollmentSetup.Visible = False
+            End If
+            If CheckVisibleObjectInPanel(PanelAssessment) = True Then
+                btnAssessmentSetup.Visible = True
+                PanelAssessment.Visible = True
+            Else
+                btnAssessmentSetup.Visible = False
+                PanelAssessment.Visible = False
+            End If
+#End Region
+
+#Region "Cashiering"
+            AccessArea(str_userid, "Cashiering", btnCashiering)
+            AccessArea(str_userid, "Cashiering - Payment", btnCashieringPayment)
+            AccessArea(str_userid, "Cashiering - Down Payment", btnPreCashieringPayment)
+            AccessArea(str_userid, "Cashiering - Payment Monitoring", btnPaymentMonitoring)
+            AccessArea(str_userid, "Cashiering - Cheque Monitoring", btnChequeMonitoring)
+            AccessArea(str_userid, "Cashiering - Account Adjustment", btnAccountAdjustment)
+            AccessArea(str_userid, "Cashiering - Cash Denomination", btnCashDenomination)
+#End Region
+
+#Region "Reports"
+            AccessArea(str_userid, "Reports", btnReports)
+            AccessArea(str_userid, "Reports - Certificate Of Registration", btnEnrollmentForm)
+            AccessArea(str_userid, "Reports - Class Masterlist", btnClassMasterList)
+            AccessArea(str_userid, "Reports - Enrolled Student", btnEnrolled)
+            AccessArea(str_userid, "Reports - Instructors Load", btnSubjectLoad)
+            AccessArea(str_userid, "Reports - Academic Performance", btnAPS)
+            AccessArea(str_userid, "Reports - Statement Of Account", btnSOA)
+            AccessArea(str_userid, "Reports - Transcript Of Records", btnTOR)
+#End Region
+
+#Region "Reports"
+            AccessArea(str_userid, "Registrar", btnRegistrar)
+            AccessArea(str_userid, "Registrar - Class Grade Editor", btnClassGradeEditor)
+            AccessArea(str_userid, "Registrar - Student Grade Editor", btnStudentGradeEditor)
+            AccessArea(str_userid, "Registrar - Student Grade Crediting", btnGradeCrediting)
+            AccessArea(str_userid, "Registrar - Upload Portal Grades", btnUploadPortal)
+            AccessArea(str_userid, "Registrar - Transcript Of Records", btnTOR2)
+            AccessArea(str_userid, "Registrar - Official Transcript Of Records", btnOTR)
+            AccessArea(str_userid, "Registrar - Form 9", btnForm9)
+            AccessArea(str_userid, "Registrar - Enrollment List", btnEnrollList)
+            AccessArea(str_userid, "Registrar - Promotional List", btnPromoList)
+            AccessArea(str_userid, "Registrar - NSTP", btnNSTP)
+            AccessArea(str_userid, "Registrar - Generate Credentials", btnCredReq)
+            AccessArea(str_userid, "Registrar - Credentials Received", btnAck)
+            AccessArea(str_userid, "Registrar - Credentials Released", btnAck2)
+            AccessArea(str_userid, "Registrar - Credentials Transmittal Attachment", btnTransmittal)
+            AccessArea(str_userid, "Registrar - Grades Uploaded Monitoring", btnGradesUploaded)
+            If CheckVisibleObjectInPanel(gradingPanel) = True Then
+                btnGrading.Visible = True
+                gradingPanel.Visible = True
+            Else
+                btnGrading.Visible = False
+                gradingPanel.Visible = False
+            End If
+            If CheckVisibleObjectInPanel(PanelCredReq) = True Then
+                btnCredentials.Visible = True
+                PanelCredReq.Visible = True
+            Else
+                btnCredentials.Visible = False
+                PanelCredReq.Visible = False
+            End If
+            If CheckVisibleObjectInPanel(PanelMonitoring) = True Then
+                btnMonitoring.Visible = True
+                PanelMonitoring.Visible = True
+            Else
+                btnMonitoring.Visible = False
+                PanelMonitoring.Visible = False
+            End If
+#End Region
+
+#Region "Supply"
+            AccessArea(str_userid, "Supply", btnSupply)
+            AccessArea(str_userid, "Supply - Create Request", btnItemRequest)
+            AccessArea(str_userid, "Supply - Item Entry", btnItems)
+            AccessArea(str_userid, "Supply - Purchase Request", btnPR)
+            AccessArea(str_userid, "Supply - Purchase Order", btnPO)
+            AccessArea(str_userid, "Supply - Goods Receipt", btnPRD)
+            AccessArea(str_userid, "Supply - Inventory Stock Recount", btnStockRecount)
+            AccessArea(str_userid, "Supply - Inventory Stock Level", btnStockLevel)
+            AccessArea(str_userid, "Supply - Item Requests Records", btnRequests)
+            AccessArea(str_userid, "Supply - Item Ledger", btnItemLedger)
+            AccessArea(str_userid, "Supply - Item Best Requested", btnBestRequested)
+            AccessArea(str_userid, "Supply - Sales", btnSupplySales)
+            If CheckVisibleObjectInPanel(PanelPurchasing) = True Then
+                btnPurchasing.Visible = True
+                PanelPurchasing.Visible = True
+            Else
+                btnPurchasing.Visible = False
+                PanelPurchasing.Visible = False
+            End If
+            If CheckVisibleObjectInPanel(PanelRecords) = True Then
+                btnSupplyRecords.Visible = True
+                PanelPurchasing.Visible = True
+            Else
+                btnSupplyRecords.Visible = False
+                PanelPurchasing.Visible = False
+            End If
+#End Region
+
+#Region "Dashboard"
+            AccessArea(str_userid, "Dashboard - Enrollment", dashBoardPanel_Enrollment)
+            AccessArea(str_userid, "Dashboard - Payment", dashBoardPanel_Payments)
+            AccessArea(str_userid, "Dashboard - Supply", dashBoardPanel_Supply)
+#End Region
+
+            btnDatabase.Visible = False
+        End If
+    End Sub
+
+
+
+
+
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles Me.Load
         SetFormIcon(Me)
 
@@ -164,35 +392,7 @@ Public Class frmMain
         ApplyHoverEffectToControls(Me)
         loadDashboard()
 
-
-
-
-
-        If str_role = "Supply In-charge" Then
-            btnEnrollment.Visible = False
-            btnLibrary.Visible = False
-            btnCashiering.Visible = False
-            btnReports.Visible = False
-            btnRegistrar.Visible = False
-            btnDatabase.Visible = False
-            btnSupply.Visible = True
-
-            dashBoardPanel_Enrollment.Visible = False
-            dashBoardPanel_Payments.Visible = False
-            dashBoardPanel_Supply.Visible = True
-        Else
-            btnEnrollment.Visible = True
-            btnLibrary.Visible = True
-            btnCashiering.Visible = True
-            btnReports.Visible = True
-            btnRegistrar.Visible = True
-            btnDatabase.Visible = True
-            btnSupply.Visible = True
-
-            dashBoardPanel_Enrollment.Visible = True
-            dashBoardPanel_Payments.Visible = True
-            dashBoardPanel_Supply.Visible = True
-        End If
+        UserAccountsAccessAreas()
     End Sub
 
     Private Sub HideSubbuttons()
@@ -215,17 +415,8 @@ Public Class frmMain
     End Sub
 
     Private Sub ShowMainButtons()
-        'Buttons
 
-        If str_role = "Supply In-charge" Then
-            btnEnrollment.Visible = False
-            btnLibrary.Visible = False
-            btnCashiering.Visible = False
-            btnReports.Visible = False
-            btnRegistrar.Visible = False
-            btnDatabase.Visible = False
-            btnSupply.Visible = True
-        Else
+        If str_role = "Administrator" Then
             btnEnrollment.Visible = True
             btnLibrary.Visible = True
             btnCashiering.Visible = True
@@ -233,8 +424,15 @@ Public Class frmMain
             btnRegistrar.Visible = True
             btnDatabase.Visible = True
             btnSupply.Visible = True
+        Else
+            AccessArea(str_userid, "Information Registry", btnLibrary)
+            AccessArea(str_userid, "Supply", btnSupply)
+            AccessArea(str_userid, "Registrar", btnRegistrar)
+            AccessArea(str_userid, "Reports", btnReports)
+            AccessArea(str_userid, "Cashiering", btnCashiering)
+            AccessArea(str_userid, "Enrollment", btnEnrollment)
+            btnDatabase.Visible = False
         End If
-
     End Sub
 
     Private Sub ShowSubButtons(submenuPanel As Panel, btn As Button)
@@ -256,7 +454,12 @@ Public Class frmMain
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        Date_Time()
+        Try
+            Date_Time()
+        Catch ex As Exception
+            Timer1.Stop()
+        End Try
+
         Timer1.Stop()
     End Sub
 
@@ -2068,11 +2271,23 @@ Public Class frmMain
     End Sub
 
     Private Sub lblTotalItems_Click(sender As Object, e As EventArgs) Handles lblTotalItems.Click
-        btnStockLevel.PerformClick()
+        If Application.OpenForms.OfType(Of frmSupplyStockLevel)().Any() Then
+        Else
+            frmSupplyStockLevel.SupplyItemStockLevel()
+        End If
+        OpenForm(frmSupplyStockLevel, "Supply Items Stock Level")
+        HideAllFormsInPanelExcept(frmSupplyStockLevel)
+        controlsPanel.Visible = True
     End Sub
 
     Private Sub PictureBox13_Click(sender As Object, e As EventArgs) Handles PictureBox13.Click
-        btnStockLevel.PerformClick()
+        If Application.OpenForms.OfType(Of frmSupplyStockLevel)().Any() Then
+        Else
+            frmSupplyStockLevel.SupplyItemStockLevel()
+        End If
+        OpenForm(frmSupplyStockLevel, "Supply Items Stock Level")
+        HideAllFormsInPanelExcept(frmSupplyStockLevel)
+        controlsPanel.Visible = True
     End Sub
 End Class
 

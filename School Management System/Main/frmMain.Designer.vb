@@ -581,6 +581,7 @@ Partial Class frmMain
         Me.btnDBrestore.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnDBrestore.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnDBrestore.UseVisualStyleBackColor = False
+        Me.btnDBrestore.Visible = False
         '
         'btnDBbackup
         '
@@ -604,6 +605,7 @@ Partial Class frmMain
         Me.btnDBbackup.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnDBbackup.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnDBbackup.UseVisualStyleBackColor = False
+        Me.btnDBbackup.Visible = False
         '
         'btnDatabase
         '

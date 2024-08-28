@@ -415,7 +415,7 @@ Public Class frmMain
     End Sub
 
     Private Sub ShowMainButtons()
-
+        'UserAccountsAccessAreas
         If str_role = "Administrator" Then
             btnEnrollment.Visible = True
             btnLibrary.Visible = True
@@ -867,7 +867,7 @@ Public Class frmMain
     End Sub
 
     Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
-        If MsgBox("Are you sure you want To logout?", vbYesNo + vbQuestion) = vbYes Then
+        If MsgBox("Are you sure you want to logout?", vbYesNo + vbQuestion) = vbYes Then
             UserActivity("Logged-out.", "LOGOUT")
             Me.Close()
             frmLogin.Show()
@@ -1906,7 +1906,7 @@ Public Class frmMain
                     .slide4.Visible = False
                     .employeePanel.AutoScroll = False
                     .cbAccountType.Enabled = False
-                    .SystemModules()
+                    '.SystemModules()
                     .ShowDialog()
                 End With
             End If

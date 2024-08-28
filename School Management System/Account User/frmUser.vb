@@ -19,33 +19,36 @@ Public Class frmUser
 
     Private Sub dgUserModules_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgUserModules.CellClick
         Select Case dgUserModules.CurrentRow.Cells(1).Value.ToString
-            Case "Information Registry"
-                HideAllDGInPanelExcept(dgRegistryArea)
-                SystemModule_Areas(dgRegistryArea)
             Case "Enrollment"
                 HideAllDGInPanelExcept(dgEnrollmentArea)
-                SystemModule_Areas(dgEnrollmentArea)
+                SystemModule_Areas(dgEnrollmentArea, dgUserModules.CurrentRow.Cells(1).Value)
             Case "Cashiering"
                 HideAllDGInPanelExcept(dgCashieringArea)
-                SystemModule_Areas(dgCashieringArea)
+                SystemModule_Areas(dgCashieringArea, dgUserModules.CurrentRow.Cells(1).Value)
             Case "Reports"
                 HideAllDGInPanelExcept(dgReportsArea)
-                SystemModule_Areas(dgReportsArea)
+                SystemModule_Areas(dgReportsArea, dgUserModules.CurrentRow.Cells(1).Value)
             Case "Registrar"
                 HideAllDGInPanelExcept(dgRegistrarArea)
-                SystemModule_Areas(dgRegistrarArea)
+                SystemModule_Areas(dgRegistrarArea, dgUserModules.CurrentRow.Cells(1).Value)
             Case "Supply"
                 HideAllDGInPanelExcept(dgSupplyArea)
-                SystemModule_Areas(dgSupplyArea)
+                SystemModule_Areas(dgSupplyArea, dgUserModules.CurrentRow.Cells(1).Value)
             Case "Database"
                 HideAllDGInPanelExcept(dgDatabaseArea)
-                SystemModule_Areas(dgDatabaseArea)
+                SystemModule_Areas(dgDatabaseArea, dgUserModules.CurrentRow.Cells(1).Value)
+            Case "Dashboard"
+                HideAllDGInPanelExcept(dgDashboardArea)
+                SystemModule_Areas(dgDashboardArea, dgUserModules.CurrentRow.Cells(1).Value)
+            Case "Information Registry"
+                HideAllDGInPanelExcept(dgRegistryArea)
+                SystemModule_Areas(dgRegistryArea, dgUserModules.CurrentRow.Cells(1).Value)
         End Select
     End Sub
 
     Private Sub cbGrantAll_CheckedChanged(sender As Object, e As EventArgs) Handles cbGrantAllAreas.CheckedChanged
         Select Case dgUserModules.CurrentRow.Cells(1).Value.ToString
-            Case "Registry"
+            Case "Information Registry"
                 CheckUncheck(dgRegistryArea)
             Case "Enrollment"
                 CheckUncheck(dgEnrollmentArea)
@@ -59,6 +62,8 @@ Public Class frmUser
                 CheckUncheck(dgSupplyArea)
             Case "Database"
                 CheckUncheck(dgDatabaseArea)
+            Case "Dashboard"
+                CheckUncheck(dgDashboardArea)
         End Select
     End Sub
 
@@ -112,6 +117,12 @@ Public Class frmUser
             Else
             End If
         Next
+        For Each row As DataGridViewRow In dgDashboardArea.Rows
+            If row.Cells(2).Value = True Then
+                query("insert into tbl_user_account_areas2(uaa_area_user_id, uaa_area_id)values(" & AccountUserID & ", " & row.Cells(0).Value & ")")
+            Else
+            End If
+        Next
     End Sub
 
     Sub SystemModules()
@@ -140,15 +151,45 @@ Public Class frmUser
             End If
             dr.Close()
             cn.Close()
+
+            Select Case row.Cells(1).Value.ToString
+                Case "Enrollment"
+                    HideAllDGInPanelExcept(dgEnrollmentArea)
+                    SystemModule_Areas(dgEnrollmentArea, row.Cells(1).Value)
+                Case "Cashiering"
+                    HideAllDGInPanelExcept(dgCashieringArea)
+                    SystemModule_Areas(dgCashieringArea, row.Cells(1).Value)
+                Case "Reports"
+                    HideAllDGInPanelExcept(dgReportsArea)
+                    SystemModule_Areas(dgReportsArea, row.Cells(1).Value)
+                Case "Registrar"
+                    HideAllDGInPanelExcept(dgRegistrarArea)
+                    SystemModule_Areas(dgRegistrarArea, row.Cells(1).Value)
+                Case "Supply"
+                    HideAllDGInPanelExcept(dgSupplyArea)
+                    SystemModule_Areas(dgSupplyArea, row.Cells(1).Value)
+                Case "Database"
+                    HideAllDGInPanelExcept(dgDatabaseArea)
+                    SystemModule_Areas(dgDatabaseArea, row.Cells(1).Value)
+                Case "Dashboard"
+                    HideAllDGInPanelExcept(dgDashboardArea)
+                    SystemModule_Areas(dgDashboardArea, row.Cells(1).Value)
+                Case "Information Registry"
+                    HideAllDGInPanelExcept(dgRegistryArea)
+                    SystemModule_Areas(dgRegistryArea, row.Cells(1).Value)
+            End Select
+
         Next
+        dgRegistryArea.BringToFront()
+        dgRegistryArea.Visible = True
     End Sub
 
-    Sub SystemModule_Areas(dg As DataGridView)
-        If dg.Rows.Count > 0 Then
+    Sub SystemModule_Areas(dg As DataGridView, areaName As String)
+        If dg.Rows.Count = 0 Then
         Else
             dg.Rows.Clear()
             Dim sql As String
-            sql = "SELECT `area_id` as ID, SUBSTR(`area_name`," & CInt(dgUserModules.CurrentRow.Cells(1).Value.ToString.Length) + 3 & ") as Area FROM `tbl_system_areas2` where `area_name` LIKE '%" & dgUserModules.CurrentRow.Cells(1).Value & " -%'"
+            sql = "SELECT `area_id` as ID, SUBSTR(`area_name`," & CInt(areaName.ToString.Length) + 3 & ") as Area FROM `tbl_system_areas2` where `area_name` LIKE '%" & areaName & " -%'"
             cn.Close()
             cn.Open()
             cm = New MySqlCommand(sql, cn)
@@ -323,6 +364,10 @@ Public Class frmUser
     End Sub
 
     Private Sub dgUserModules_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgUserModules.CellContentClick
+
+    End Sub
+
+    Private Sub dgUserModules_SelectionChanged(sender As Object, e As EventArgs) Handles dgUserModules.SelectionChanged
 
     End Sub
 End Class

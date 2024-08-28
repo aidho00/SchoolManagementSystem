@@ -458,7 +458,7 @@ Module Modules
     Sub AccessArea(userID As Integer, areaName As String, accessObject As Object)
         cn.Close()
         cn.Open()
-        cm = New MySqlCommand("SELECT (uaa_area_id) as 'ID', (area_name) as 'Description' from tbl_system_areas, tbl_user_account_areas where tbl_system_areas.area_id = tbl_user_account_areas.uaa_area_id and uaa_area_user_id = '" & userID & "' and area_name = '" & areaName & "' and area_status = 'OPEN'", cn)
+        cm = New MySqlCommand("SELECT (uaa_area_id) as 'ID', (area_name) as 'Description' from tbl_system_areas2, tbl_user_account_areas2 where tbl_system_areas2.area_id = tbl_user_account_areas2.uaa_area_id and uaa_area_user_id = " & userID & " and area_name = '" & areaName & "' and area_status = 'OPEN'", cn)
         dr = cm.ExecuteReader
         dr.Read()
         If dr.HasRows Then

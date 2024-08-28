@@ -2,6 +2,7 @@
 Imports MySql.Data.MySqlClient
 Imports System.IO
 Imports System.ComponentModel
+Imports System.Windows.Forms.DataVisualization.Charting
 
 Public Class frmMain
 
@@ -226,144 +227,106 @@ Public Class frmMain
 
         Else
 #Region "Information Registry"
-            AccessArea(str_userid, "Information Registry", btnLibrary)
-            AccessArea(str_userid, "Information Registry - Academic Year", btnAcamedicYearList)
-            AccessArea(str_userid, "Information Registry - Student", btnStudentList)
-            AccessArea(str_userid, "Information Registry - Course", btnCourseList)
-            AccessArea(str_userid, "Information Registry - Class Section", btnClassSectionList)
-            AccessArea(str_userid, "Information Registry - School", btnSchoolList)
-            AccessArea(str_userid, "Information Registry - Room", btnRoomList)
-            AccessArea(str_userid, "Information Registry - Day Schedule", btnDaySchedList)
-            AccessArea(str_userid, "Information Registry - Subject", btnSubjectList)
-            AccessArea(str_userid, "Information Registry - Employee", btnEmployeeList)
-            AccessArea(str_userid, "Information Registry - Class Schedule", btnClassSchedList)
+            AccessArea("Information Registry", btnLibrary)
+            AccessArea("Information Registry - Academic Year", btnAcamedicYearList)
+            AccessArea("Information Registry - Student", btnStudentList)
+            AccessArea("Information Registry - Course", btnCourseList)
+            AccessArea("Information Registry - Class Section", btnClassSectionList)
+            AccessArea("Information Registry - School", btnSchoolList)
+            AccessArea("Information Registry - Room", btnRoomList)
+            AccessArea("Information Registry - Day Schedule", btnDaySchedList)
+            AccessArea("Information Registry - Subject", btnSubjectList)
+            AccessArea("Information Registry - Employee", btnEmployeeList)
+            AccessArea("Information Registry - Class Schedule", btnClassSchedList)
 #End Region
 
 #Region "Enrollment"
-            AccessArea(str_userid, "Enrollment", btnEnrollment)
-            AccessArea(str_userid, "Enrollment - Student Evaluation", btnSevaluation)
-            AccessArea(str_userid, "Enrollment - Enroll Class Schedule", btnEnroll)
-            AccessArea(str_userid, "Enrollment - Update Class Schedule", btnAddDrop)
-            AccessArea(str_userid, "Enrollment - Withdraw Enrollment", btnEnrollEditor)
-            AccessArea(str_userid, "Enrollment - Setup Assessment Fee", btnAssessment)
-            AccessArea(str_userid, "Enrollment - Setup Discount Fee", btnDiscount)
-            AccessArea(str_userid, "Enrollment - Setup Curriculum", btnCurSetup)
-            AccessArea(str_userid, "Enrollment - Setup Class Schedule", btnClassSched)
-            AccessArea(str_userid, "Enrollment - Bypass Balance Check", btnEnrollPermit)
-            If CheckVisibleObjectInPanel(PanelEnrollmentSetup) = True Then
-                btnESetup.Visible = True
-                PanelEnrollmentSetup.Visible = True
-            Else
-                btnESetup.Visible = False
-                PanelEnrollmentSetup.Visible = False
-            End If
-            If CheckVisibleObjectInPanel(PanelAssessment) = True Then
-                btnAssessmentSetup.Visible = True
-                PanelAssessment.Visible = True
-            Else
-                btnAssessmentSetup.Visible = False
-                PanelAssessment.Visible = False
-            End If
+            AccessArea("Enrollment", btnEnrollment)
+            AccessArea("Enrollment - Student Evaluation", btnSevaluation)
+            AccessArea("Enrollment - Enroll Class Schedule", btnEnroll)
+            AccessArea("Enrollment - Update Class Schedule", btnAddDrop)
+            AccessArea("Enrollment - Withdraw Enrollment", btnEnrollEditor)
+            AccessArea("Enrollment - Setup Assessment Fee", btnAssessment)
+            AccessArea("Enrollment - Setup Discount Fee", btnDiscount)
+            AccessArea("Enrollment - Setup Curriculum", btnCurSetup)
+            AccessArea("Enrollment - Setup Class Schedule", btnClassSched)
+            AccessArea("Enrollment - Bypass Balance Check", btnEnrollPermit)
+            AccessArea2("'Enrollment - Setup Curriculum', 'Enrollment - Setup Curriculum', 'Enrollment - Setup Assessment Fee', 'Enrollment - Setup Assessment Fee'", btnESetup)
+            AccessArea2("'Enrollment - Setup Assessment Fee', 'Enrollment - Setup Assessment Fee'", btnAssessmentSetup)
+
 #End Region
 
 #Region "Cashiering"
-            AccessArea(str_userid, "Cashiering", btnCashiering)
-            AccessArea(str_userid, "Cashiering - Payment", btnCashieringPayment)
-            AccessArea(str_userid, "Cashiering - Down Payment", btnPreCashieringPayment)
-            AccessArea(str_userid, "Cashiering - Payment Monitoring", btnPaymentMonitoring)
-            AccessArea(str_userid, "Cashiering - Cheque Monitoring", btnChequeMonitoring)
-            AccessArea(str_userid, "Cashiering - Account Adjustment", btnAccountAdjustment)
-            AccessArea(str_userid, "Cashiering - Cash Denomination", btnCashDenomination)
+            AccessArea("Cashiering", btnCashiering)
+            AccessArea("Cashiering - Payment", btnCashieringPayment)
+            AccessArea("Cashiering - Down Payment", btnPreCashieringPayment)
+            AccessArea("Cashiering - Payment Monitoring", btnPaymentMonitoring)
+            AccessArea("Cashiering - Cheque Monitoring", btnChequeMonitoring)
+            AccessArea("Cashiering - Account Adjustment", btnAccountAdjustment)
+            AccessArea("Cashiering - Cash Denomination", btnCashDenomination)
 #End Region
 
 #Region "Reports"
-            AccessArea(str_userid, "Reports", btnReports)
-            AccessArea(str_userid, "Reports - Certificate Of Registration", btnEnrollmentForm)
-            AccessArea(str_userid, "Reports - Class Masterlist", btnClassMasterList)
-            AccessArea(str_userid, "Reports - Enrolled Student", btnEnrolled)
-            AccessArea(str_userid, "Reports - Instructors Load", btnSubjectLoad)
-            AccessArea(str_userid, "Reports - Academic Performance", btnAPS)
-            AccessArea(str_userid, "Reports - Statement Of Account", btnSOA)
-            AccessArea(str_userid, "Reports - Transcript Of Records", btnTOR)
+            AccessArea("Reports", btnReports)
+            AccessArea("Reports - Certificate Of Registration", btnEnrollmentForm)
+            AccessArea("Reports - Class Masterlist", btnClassMasterList)
+            AccessArea("Reports - Enrolled Student", btnEnrolled)
+            AccessArea("Reports - Instructors Load", btnSubjectLoad)
+            AccessArea("Reports - Academic Performance", btnAPS)
+            AccessArea("Reports - Statement Of Account", btnSOA)
+            AccessArea("Reports - Transcript Of Records", btnTOR)
 #End Region
 
 #Region "Reports"
-            AccessArea(str_userid, "Registrar", btnRegistrar)
-            AccessArea(str_userid, "Registrar - Class Grade Editor", btnClassGradeEditor)
-            AccessArea(str_userid, "Registrar - Student Grade Editor", btnStudentGradeEditor)
-            AccessArea(str_userid, "Registrar - Student Grade Crediting", btnGradeCrediting)
-            AccessArea(str_userid, "Registrar - Upload Portal Grades", btnUploadPortal)
-            AccessArea(str_userid, "Registrar - Transcript Of Records", btnTOR2)
-            AccessArea(str_userid, "Registrar - Official Transcript Of Records", btnOTR)
-            AccessArea(str_userid, "Registrar - Form 9", btnForm9)
-            AccessArea(str_userid, "Registrar - Enrollment List", btnEnrollList)
-            AccessArea(str_userid, "Registrar - Promotional List", btnPromoList)
-            AccessArea(str_userid, "Registrar - NSTP", btnNSTP)
-            AccessArea(str_userid, "Registrar - Generate Credentials", btnCredReq)
-            AccessArea(str_userid, "Registrar - Credentials Received", btnAck)
-            AccessArea(str_userid, "Registrar - Credentials Released", btnAck2)
-            AccessArea(str_userid, "Registrar - Credentials Transmittal Attachment", btnTransmittal)
-            AccessArea(str_userid, "Registrar - Grades Uploaded Monitoring", btnGradesUploaded)
-            If CheckVisibleObjectInPanel(gradingPanel) = True Then
-                btnGrading.Visible = True
-                gradingPanel.Visible = True
-            Else
-                btnGrading.Visible = False
-                gradingPanel.Visible = False
-            End If
-            If CheckVisibleObjectInPanel(PanelCredReq) = True Then
-                btnCredentials.Visible = True
-                PanelCredReq.Visible = True
-            Else
-                btnCredentials.Visible = False
-                PanelCredReq.Visible = False
-            End If
-            If CheckVisibleObjectInPanel(PanelMonitoring) = True Then
-                btnMonitoring.Visible = True
-                PanelMonitoring.Visible = True
-            Else
-                btnMonitoring.Visible = False
-                PanelMonitoring.Visible = False
-            End If
+            AccessArea("Registrar", btnRegistrar)
+            AccessArea("Registrar - Class Grade Editor", btnClassGradeEditor)
+            AccessArea("Registrar - Student Grade Editor", btnStudentGradeEditor)
+            AccessArea("Registrar - Student Grade Crediting", btnGradeCrediting)
+            AccessArea("Registrar - Upload Portal Grades", btnUploadPortal)
+            AccessArea("Registrar - Transcript Of Records", btnTOR2)
+            AccessArea("Registrar - Official Transcript Of Records", btnOTR)
+            AccessArea("Registrar - Form 9", btnForm9)
+            AccessArea("Registrar - Enrollment List", btnEnrollList)
+            AccessArea("Registrar - Promotional List", btnPromoList)
+            AccessArea("Registrar - NSTP", btnNSTP)
+            AccessArea("Registrar - Generate Credentials", btnCredReq)
+            AccessArea("Registrar - Credentials Received", btnAck)
+            AccessArea("Registrar - Credentials Released", btnAck2)
+            AccessArea("Registrar - Credentials Transmittal Attachment", btnTransmittal)
+            AccessArea("Registrar - Grades Uploaded Monitoring", btnGradesUploaded)
+            AccessArea2("'Registrar - Class Grade Editor', 'Registrar - Student Grade Editor', 'Registrar - Student Grade Crediting', 'Registrar - Upload Portal Grades'", btnGrading)
+            AccessArea2("'Registrar - Generate Credentials', 'Registrar - Credentials Received', 'Registrar - Credentials Released', 'Registrar - Credentials Transmittal Attachment'", btnCredentials)
+            AccessArea2("'Registrar - Grades Uploaded Monitoring'", btnMonitoring)
+
 #End Region
 
 #Region "Supply"
-            AccessArea(str_userid, "Supply", btnSupply)
-            AccessArea(str_userid, "Supply - Create Request", btnItemRequest)
-            AccessArea(str_userid, "Supply - Item Entry", btnItems)
-            AccessArea(str_userid, "Supply - Purchase Request", btnPR)
-            AccessArea(str_userid, "Supply - Purchase Order", btnPO)
-            AccessArea(str_userid, "Supply - Goods Receipt", btnPRD)
-            AccessArea(str_userid, "Supply - Inventory Stock Recount", btnStockRecount)
-            AccessArea(str_userid, "Supply - Inventory Stock Level", btnStockLevel)
-            AccessArea(str_userid, "Supply - Item Requests Records", btnRequests)
-            AccessArea(str_userid, "Supply - Item Ledger", btnItemLedger)
-            AccessArea(str_userid, "Supply - Item Best Requested", btnBestRequested)
-            AccessArea(str_userid, "Supply - Sales", btnSupplySales)
-            If CheckVisibleObjectInPanel(PanelPurchasing) = True Then
-                btnPurchasing.Visible = True
-                PanelPurchasing.Visible = True
-            Else
-                btnPurchasing.Visible = False
-                PanelPurchasing.Visible = False
-            End If
-            If CheckVisibleObjectInPanel(PanelRecords) = True Then
-                btnSupplyRecords.Visible = True
-                PanelPurchasing.Visible = True
-            Else
-                btnSupplyRecords.Visible = False
-                PanelPurchasing.Visible = False
-            End If
+            AccessArea("Supply", btnSupply)
+            AccessArea("Supply - Create Request", btnItemRequest)
+            AccessArea("Supply - Item Entry", btnItems)
+            AccessArea("Supply - Purchase Request", btnPR)
+            AccessArea("Supply - Purchase Order", btnPO)
+            AccessArea("Supply - Goods Receipt", btnPRD)
+            AccessArea("Supply - Inventory Stock Recount", btnStockRecount)
+            AccessArea("Supply - Inventory Stock Level", btnStockLevel)
+            AccessArea("Supply - Item Requests Records", btnRequests)
+            AccessArea("Supply - Item Ledger", btnItemLedger)
+            AccessArea("Supply - Item Best Requested", btnBestRequested)
+            AccessArea("Supply - Sales", btnSupplySales)
+            AccessArea2("'Supply - Purchase Request', 'Supply - Purchase Order', 'Supply - Goods Receipt'", btnPurchasing)
+            AccessArea2("'Supply - Sales', 'Supply - Item Best Requested', 'Supply - Item Ledger', 'Supply - Requests Records'", btnSupplyRecords)
+
 #End Region
 
 #Region "Dashboard"
-            AccessArea(str_userid, "Dashboard - Enrollment", dashBoardPanel_Enrollment)
-            AccessArea(str_userid, "Dashboard - Payment", dashBoardPanel_Payments)
-            AccessArea(str_userid, "Dashboard - Supply", dashBoardPanel_Supply)
+            AccessArea("Dashboard - Enrollment", dashBoardPanel_Enrollment)
+            AccessArea("Dashboard - Payment", dashBoardPanel_Payments)
+            AccessArea("Dashboard - Supply", dashBoardPanel_Supply)
 #End Region
 
             btnDatabase.Visible = False
         End If
+
     End Sub
 
 
@@ -393,6 +356,7 @@ Public Class frmMain
         loadDashboard()
 
         UserAccountsAccessAreas()
+
     End Sub
 
     Private Sub HideSubbuttons()
@@ -425,12 +389,12 @@ Public Class frmMain
             btnDatabase.Visible = True
             btnSupply.Visible = True
         Else
-            AccessArea(str_userid, "Information Registry", btnLibrary)
-            AccessArea(str_userid, "Supply", btnSupply)
-            AccessArea(str_userid, "Registrar", btnRegistrar)
-            AccessArea(str_userid, "Reports", btnReports)
-            AccessArea(str_userid, "Cashiering", btnCashiering)
-            AccessArea(str_userid, "Enrollment", btnEnrollment)
+            AccessArea("Information Registry", btnLibrary)
+            AccessArea("Supply", btnSupply)
+            AccessArea("Registrar", btnRegistrar)
+            AccessArea("Reports", btnReports)
+            AccessArea("Cashiering", btnCashiering)
+            AccessArea("Enrollment", btnEnrollment)
             btnDatabase.Visible = False
         End If
     End Sub
@@ -438,6 +402,7 @@ Public Class frmMain
     Private Sub ShowSubButtons(submenuPanel As Panel, btn As Button)
         If submenuPanel.Visible = False Then
             HideSubbuttons()
+            'ShowMainButtons()
             submenuPanel.Visible = True
             btn.Visible = True
         Else
@@ -1497,7 +1462,7 @@ Public Class frmMain
 
     Private Sub btnEnrolledBreakdown2_Click(sender As Object, e As EventArgs) Handles btnEnrolledBreakdown2.Click
         dashboard.Visible = False
-        lblDashboardDetailsTitle.Text = "Enrolled Students Academic Year " & lblAcadYear.Text & " - " & lblSemester.Text & ""
+        lblDashboardDetailsTitle.Text = "Enrolled Students Academic Year " & lblAcadYear.Text & "-" & lblSemester.Text & ""
         PanelEnrollmentDetails.BringToFront()
         AcademicYearID2 = activeAcademicYear
         CreateOverAllEnrolledBarGraph(AcademicYearID2)
@@ -1515,8 +1480,9 @@ Public Class frmMain
     End Sub
 
     Private Sub lblTotalCollected_Click(sender As Object, e As EventArgs) Handles lblTotalCollected.Click
+        LoadTrendGraph()
         dashboard.Visible = False
-        lblDashboardDetailsTitle.Text = "Payments Collected Today"
+        lblDashboardDetailsTitle.Text = "Payments Collected"
         PanelPaymentDetails.BringToFront()
     End Sub
 
@@ -1538,7 +1504,7 @@ Public Class frmMain
         Dim rotatedLabel As RotatedLabel = CType(valueLabel.Tag, RotatedLabel)
 
         If rotatedLabel IsNot Nothing Then
-            lblDashboardDetailsTitle.Text = "Enrolled Students Academic Year " & lblAcadYear.Text & " - " & lblSemester.Text & " ( " & rotatedLabel.Text & ")"
+            lblDashboardDetailsTitle.Text = "Enrolled Students Academic Year " & GraphSelectedAcademicYear & " ( " & rotatedLabel.Text & " )"
             CreateYearLevelAllEnrolledBarGraph(rotatedLabel.Text)
             GraphSelectedCourse = rotatedLabel.Text
         End If
@@ -1547,7 +1513,7 @@ Public Class frmMain
     ' Event handler for rotatedLabel click
     Private Sub RotatedLabel_Click(sender As Object, e As EventArgs)
         Dim rotatedLabel As RotatedLabel = CType(sender, RotatedLabel)
-        lblDashboardDetailsTitle.Text = "Enrolled Students Academic Year " & lblAcadYear.Text & " - " & lblSemester.Text & " ( " & rotatedLabel.Text & ")"
+        lblDashboardDetailsTitle.Text = "Enrolled Students Academic Year " & GraphSelectedAcademicYear & " ( " & rotatedLabel.Text & " )"
         CreateYearLevelAllEnrolledBarGraph(rotatedLabel.Text)
     End Sub
 
@@ -1635,13 +1601,15 @@ Public Class frmMain
                 ' Not enough space, place label inside the bar panel
                 rotatedLabel.Location = New Point(barPanel.Location.X + barWidth / 2 - rotatedLabel.Width / 2, barPanel.Location.Y + 30) ' Adjust this value to set the label at the top
                 rotatedLabel.BackColor = Color.FromArgb(15, 101, 208)
-                rotatedLabel.ForeColor = Color.White
+                rotatedLabel.ForeColor = Color.Black
             End If
             EnrollmentBarGraph.Controls.Add(rotatedLabel)
             rotatedLabel.BringToFront()
             valueLabel.Tag = rotatedLabel
             AddHandler rotatedLabel.Click, AddressOf RotatedLabel_Click
         Next
+        GraphSelectedAcademicYear = lblAcadYear.Text & "-" & lblSemester.Text
+
     End Sub
 
 
@@ -1761,7 +1729,7 @@ Public Class frmMain
                 ' Not enough space, place label inside the bar panel
                 rotatedLabel.Location = New Point(barPanel.Location.X + barWidth / 2 - rotatedLabel.Width / 2, barPanel.Location.Y + 30) ' Adjust this value to set the label at the top
                 rotatedLabel.BackColor = Color.FromArgb(15, 101, 208)
-                rotatedLabel.ForeColor = Color.White
+                rotatedLabel.ForeColor = Color.Black
             End If
             EnrollmentBarGraph.Controls.Add(rotatedLabel)
             rotatedLabel.BringToFront()
@@ -2113,7 +2081,7 @@ Public Class frmMain
             Dim barHeight As Integer = If(CInt(Convert.ToInt32(row.Field(Of Long)("Students"))) >= 100, CInt((Convert.ToInt32(row.Field(Of Long)("Students")) / maxValue) * panelHeight), 40)
             barPanel.Width = barWidth
             barPanel.Height = barHeight
-            barPanel.BackColor = Color.FromArgb(15, 101, 208)
+            barPanel.BackColor = Color.FromArgb(222, 154, 9)
             barPanel.Location = New Point(barSpacing + (barWidth + barSpacing) * dt.Rows.IndexOf(row), panelHeight - barHeight)
             EnrollmentBarGraph.Controls.Add(barPanel)
 
@@ -2150,8 +2118,8 @@ Public Class frmMain
             Else
                 ' Not enough space, place label inside the bar panel
                 rotatedLabel.Location = New Point(barPanel.Location.X + barWidth / 2 - rotatedLabel.Width / 2, barPanel.Location.Y + 30) ' Adjust this value to set the label at the top
-                rotatedLabel.BackColor = Color.FromArgb(15, 101, 208)
-                rotatedLabel.ForeColor = Color.White
+                rotatedLabel.BackColor = Color.FromArgb(222, 154, 9)
+                rotatedLabel.ForeColor = Color.Black
             End If
             EnrollmentBarGraph.Controls.Add(rotatedLabel)
             rotatedLabel.BringToFront()
@@ -2288,6 +2256,149 @@ Public Class frmMain
         OpenForm(frmSupplyStockLevel, "Supply Items Stock Level")
         HideAllFormsInPanelExcept(frmSupplyStockLevel)
         controlsPanel.Visible = True
+    End Sub
+
+
+
+    Private Sub LoadTrendGraph()
+
+        ' SQL Query
+        Dim query As String = "SELECT DATE(csh_date) AS `Date`, IFNULL(SUM(csh_total_amount), 0) AS `TotalAmount` " &
+                          "FROM tbl_cashiering " &
+                          "WHERE csh_date BETWEEN DATE_SUB(CURDATE(), INTERVAL 30 DAY) AND CURDATE() " &
+                          "AND csh_ornumber REGEXP '^[0-9]' " &
+                          "GROUP BY DATE(csh_date)"
+
+        ' Database connection
+        Dim trendData As New DataTable()
+        Dim command As New MySqlCommand(query, cn)
+        Dim adapter As New MySqlDataAdapter(command)
+        adapter.Fill(trendData)
+
+        ' Create a Chart control
+        Dim chartTrend As New Chart()
+        chartTrend.Name = "chartTrend"
+        chartTrend.Dock = DockStyle.Fill
+        chartTrend.BackColor = Color.White
+        chartTrend.BorderlineDashStyle = ChartDashStyle.Solid
+        chartTrend.BorderlineColor = Color.White
+
+        ' Create and style a ChartArea
+        Dim chartArea As New ChartArea("ChartArea1")
+        chartArea.BackColor = Color.White
+        chartArea.BorderColor = Color.White
+
+        ' Axis X Styling
+        chartArea.AxisX.LabelStyle.ForeColor = Color.Black
+        chartArea.AxisX.LabelStyle.Font = New Font("Century Gothic", 8, FontStyle.Regular)
+        chartArea.AxisX.LineColor = Color.LightGray
+        chartArea.AxisX.MajorGrid.LineColor = Color.White
+        chartArea.AxisX.LabelStyle.Format = "MMM dd, yyyy"
+
+        ' Axis Y Styling
+        chartArea.AxisY.LabelStyle.ForeColor = Color.Black
+        chartArea.AxisY.LabelStyle.Font = New Font("Century Gothic", 8, FontStyle.Regular)
+        chartArea.AxisY.LineColor = Color.LightGray
+        chartArea.AxisY.MajorGrid.LineColor = Color.White
+        chartArea.AxisY.LabelStyle.Format = "n2"
+
+        ' Adjust the X-axis to show all dates
+        chartArea.AxisX.IntervalType = DateTimeIntervalType.Days
+        chartArea.AxisX.Interval = 1 ' Display every day on the X-axis
+        chartArea.AxisX.LabelStyle.Angle = 45 ' Optional: Rotate labels for better readability
+
+
+        chartTrend.ChartAreas.Add(chartArea)
+
+        ' Plotting data to the chart
+        chartTrend.Series.Clear()
+        Dim series As New Series("TotalAmount")
+        series.ChartType = SeriesChartType.Line
+        series.Color = Color.FromArgb(15, 101, 208)
+        series.BorderWidth = 5
+        series.MarkerStyle = MarkerStyle.Circle
+        series.MarkerSize = 10
+        series.MarkerColor = Color.FromArgb(15, 101, 208)
+        series.MarkerBorderColor = Color.White
+        series.IsValueShownAsLabel = True
+        series.LabelForeColor = Color.Black
+        series.LabelFormat = "n2"
+
+        Dim totalSum As Decimal = 0
+        ' Find the last date in the data
+        Dim lastDate As DateTime = trendData.AsEnumerable().Max(Function(row) Convert.ToDateTime(row("Date")))
+
+        ' Plot points and highlight the marker for the last date
+        For Each row As DataRow In trendData.Rows
+            Dim pointDate As DateTime = Convert.ToDateTime(row("Date"))
+            Dim amount As Decimal = Convert.ToDecimal(row("TotalAmount"))
+            totalSum += amount ' Calculate total sum
+            Dim index As Integer = series.Points.AddXY(pointDate, amount)
+
+            ' Access the DataPoint object and set the marker color to red for the last date
+            Dim point As DataPoint = series.Points(index)
+            If pointDate = lastDate Then
+                point.Color = Color.Red
+                point.MarkerColor = Color.Red
+                'point.Label = $"{point.YValues(0):n2} (Current)" ' Custom label for the last date
+            Else
+                'point.Label = $"{point.YValues(0):n2}"
+            End If
+        Next
+
+
+        chartTrend.Series.Add(series)
+
+        ' Style the Legend
+        Dim legend As New Legend()
+        legend.Enabled = False  ' This hides the legend
+        chartTrend.Legends.Add(legend)
+
+        ' Add a Title
+        Dim title As New Title("Total Payments Trend - Last 30 Days (" & $"{totalSum:n2}" & ")", Docking.Top, New Font("Century Gothic", 14, FontStyle.Bold), Color.Black)
+        chartTrend.Titles.Add(title)
+
+        ' Add the Chart to the Panel
+        PanelPaymentDetails.Controls.Clear()
+        PanelPaymentDetails.Controls.Add(chartTrend)
+
+        AddHandler chartTrend.MouseClick, AddressOf ChartTrend_MouseClick
+        AddHandler chartTrend.MouseMove, AddressOf ChartTrend_MouseMove
+    End Sub
+
+
+    Private Sub ChartTrend_MouseClick(sender As Object, e As MouseEventArgs)
+        ' Check if the click is on the chart
+        Dim chart As Chart = CType(sender, Chart)
+        Dim result As HitTestResult = chart.HitTest(e.X, e.Y)
+
+        If result.ChartElementType = ChartElementType.DataPoint Then
+            Dim point As DataPoint = CType(result.Object, DataPoint)
+            Dim xValue As DateTime = DateTime.FromOADate(point.XValue)
+            Dim yValue As Object = point.YValues(0)
+
+            ' Format the date and value
+            Dim formattedDate As String = xValue.ToString("MMM dd, yyyy")
+            Dim formattedAmount As String = Format(CDec(yValue.ToString), "#,##0.00") ' Currency format
+
+            ' Show formatted information about the clicked point
+            MsgBox($"Clearer View{Environment.NewLine}{Environment.NewLine}Date: {formattedDate}{Environment.NewLine}Amount: {formattedAmount}", vbInformation)
+        End If
+    End Sub
+
+
+    Private Sub ChartTrend_MouseMove(sender As Object, e As MouseEventArgs)
+        ' Check if the mouse is over a data point
+        Dim chart As Chart = CType(sender, Chart)
+        Dim result As HitTestResult = chart.HitTest(e.X, e.Y)
+
+        If result.ChartElementType = ChartElementType.DataPoint Then
+            ' Change cursor to hand
+            chart.Cursor = Cursors.Hand
+        Else
+            ' Reset cursor to default
+            chart.Cursor = Cursors.Default
+        End If
     End Sub
 End Class
 

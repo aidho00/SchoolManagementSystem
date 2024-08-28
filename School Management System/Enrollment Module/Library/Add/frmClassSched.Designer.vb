@@ -47,19 +47,11 @@ Partial Class frmClassSched
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.SearchPanel = New System.Windows.Forms.Panel()
         Me.dgPanel = New System.Windows.Forms.Panel()
-        Me.dgSubjectList = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn23 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn24 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn25 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dgCurList = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn64 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn65 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn66 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn67 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewImageColumn1 = New System.Windows.Forms.DataGridViewImageColumn()
         Me.dgSectionList = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn60 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn61 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -96,6 +88,13 @@ Partial Class frmClassSched
         Me.DataGridViewTextBoxColumn32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn33 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn34 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgSubjectList = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn23 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn24 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn25 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.txtSearch = New System.Windows.Forms.TextBox()
@@ -155,6 +154,12 @@ Partial Class frmClassSched
         Me.Label43 = New System.Windows.Forms.Label()
         Me.txtAmount = New System.Windows.Forms.TextBox()
         Me.txtEnrolled = New System.Windows.Forms.TextBox()
+        Me.cbInstructor = New System.Windows.Forms.TextBox()
+        Me.cbDaySched = New System.Windows.Forms.TextBox()
+        Me.cbroom = New System.Windows.Forms.TextBox()
+        Me.cbSubject = New System.Windows.Forms.TextBox()
+        Me.cbSection = New System.Windows.Forms.TextBox()
+        Me.cbCur = New System.Windows.Forms.TextBox()
         Me.txtPopulation = New System.Windows.Forms.TextBox()
         Me.start_time = New System.Windows.Forms.DateTimePicker()
         Me.end_time = New System.Windows.Forms.DateTimePicker()
@@ -179,29 +184,23 @@ Partial Class frmClassSched
         Me.Label44 = New System.Windows.Forms.Label()
         Me.cbAcademicYear = New System.Windows.Forms.ComboBox()
         Me.Label13 = New System.Windows.Forms.Label()
-        Me.cbInstructor = New System.Windows.Forms.ComboBox()
         Me.Label12 = New System.Windows.Forms.Label()
-        Me.cbDaySched = New System.Windows.Forms.ComboBox()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.cbRoom = New System.Windows.Forms.ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.cbSubject = New System.Windows.Forms.ComboBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.cbCur = New System.Windows.Forms.ComboBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.cbSection = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.systemSign.SuspendLayout()
         Me.SearchPanel.SuspendLayout()
         Me.dgPanel.SuspendLayout()
-        CType(Me.dgSubjectList, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgCurList, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgSectionList, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgRoomList, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgEmployeeList, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgDaySchedList, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgAcadList, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgSubjectList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel6.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.Panel5.SuspendLayout()
@@ -280,107 +279,19 @@ Partial Class frmClassSched
         '
         'dgPanel
         '
-        Me.dgPanel.Controls.Add(Me.dgSubjectList)
         Me.dgPanel.Controls.Add(Me.dgCurList)
         Me.dgPanel.Controls.Add(Me.dgSectionList)
         Me.dgPanel.Controls.Add(Me.dgRoomList)
         Me.dgPanel.Controls.Add(Me.dgEmployeeList)
         Me.dgPanel.Controls.Add(Me.dgDaySchedList)
         Me.dgPanel.Controls.Add(Me.dgAcadList)
+        Me.dgPanel.Controls.Add(Me.dgSubjectList)
         Me.dgPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgPanel.Location = New System.Drawing.Point(0, 36)
         Me.dgPanel.Name = "dgPanel"
         Me.dgPanel.Padding = New System.Windows.Forms.Padding(7, 0, 0, 0)
         Me.dgPanel.Size = New System.Drawing.Size(828, 383)
         Me.dgPanel.TabIndex = 102
-        '
-        'dgSubjectList
-        '
-        Me.dgSubjectList.AllowUserToAddRows = False
-        Me.dgSubjectList.AllowUserToDeleteRows = False
-        Me.dgSubjectList.BackgroundColor = System.Drawing.Color.White
-        Me.dgSubjectList.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dgSubjectList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.dgSubjectList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgSubjectList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.dgSubjectList.ColumnHeadersHeight = 40
-        Me.dgSubjectList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgSubjectList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn19, Me.DataGridViewTextBoxColumn20, Me.DataGridViewTextBoxColumn22, Me.DataGridViewTextBoxColumn23, Me.DataGridViewTextBoxColumn24, Me.DataGridViewTextBoxColumn25})
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgSubjectList.DefaultCellStyle = DataGridViewCellStyle2
-        Me.dgSubjectList.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgSubjectList.EnableHeadersVisualStyles = False
-        Me.dgSubjectList.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.dgSubjectList.Location = New System.Drawing.Point(7, 0)
-        Me.dgSubjectList.Name = "dgSubjectList"
-        Me.dgSubjectList.ReadOnly = True
-        Me.dgSubjectList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        Me.dgSubjectList.RowHeadersVisible = False
-        Me.dgSubjectList.RowTemplate.Height = 26
-        Me.dgSubjectList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgSubjectList.Size = New System.Drawing.Size(821, 383)
-        Me.dgSubjectList.TabIndex = 86
-        '
-        'DataGridViewTextBoxColumn19
-        '
-        Me.DataGridViewTextBoxColumn19.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.DataGridViewTextBoxColumn19.HeaderText = "#"
-        Me.DataGridViewTextBoxColumn19.Name = "DataGridViewTextBoxColumn19"
-        Me.DataGridViewTextBoxColumn19.ReadOnly = True
-        Me.DataGridViewTextBoxColumn19.Width = 39
-        '
-        'DataGridViewTextBoxColumn20
-        '
-        Me.DataGridViewTextBoxColumn20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.DataGridViewTextBoxColumn20.HeaderText = "ID"
-        Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
-        Me.DataGridViewTextBoxColumn20.ReadOnly = True
-        Me.DataGridViewTextBoxColumn20.Visible = False
-        Me.DataGridViewTextBoxColumn20.Width = 44
-        '
-        'DataGridViewTextBoxColumn22
-        '
-        Me.DataGridViewTextBoxColumn22.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn22.HeaderText = "Subject Code/Description"
-        Me.DataGridViewTextBoxColumn22.Name = "DataGridViewTextBoxColumn22"
-        Me.DataGridViewTextBoxColumn22.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn23
-        '
-        Me.DataGridViewTextBoxColumn23.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.DataGridViewTextBoxColumn23.HeaderText = "Type"
-        Me.DataGridViewTextBoxColumn23.Name = "DataGridViewTextBoxColumn23"
-        Me.DataGridViewTextBoxColumn23.ReadOnly = True
-        Me.DataGridViewTextBoxColumn23.Width = 57
-        '
-        'DataGridViewTextBoxColumn24
-        '
-        Me.DataGridViewTextBoxColumn24.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.DataGridViewTextBoxColumn24.HeaderText = "Group"
-        Me.DataGridViewTextBoxColumn24.Name = "DataGridViewTextBoxColumn24"
-        Me.DataGridViewTextBoxColumn24.ReadOnly = True
-        Me.DataGridViewTextBoxColumn24.Width = 66
-        '
-        'DataGridViewTextBoxColumn25
-        '
-        Me.DataGridViewTextBoxColumn25.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.DataGridViewTextBoxColumn25.HeaderText = "Units"
-        Me.DataGridViewTextBoxColumn25.Name = "DataGridViewTextBoxColumn25"
-        Me.DataGridViewTextBoxColumn25.ReadOnly = True
-        Me.DataGridViewTextBoxColumn25.Width = 56
         '
         'dgCurList
         '
@@ -390,25 +301,25 @@ Partial Class frmClassSched
         Me.dgCurList.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgCurList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgCurList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgCurList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgCurList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgCurList.ColumnHeadersHeight = 41
         Me.dgCurList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgCurList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn64, Me.DataGridViewTextBoxColumn65, Me.DataGridViewTextBoxColumn66, Me.DataGridViewTextBoxColumn67, Me.DataGridViewImageColumn1})
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgCurList.DefaultCellStyle = DataGridViewCellStyle4
+        Me.dgCurList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn64, Me.DataGridViewTextBoxColumn65, Me.DataGridViewTextBoxColumn66, Me.DataGridViewTextBoxColumn67})
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgCurList.DefaultCellStyle = DataGridViewCellStyle2
         Me.dgCurList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgCurList.EnableHeadersVisualStyles = False
         Me.dgCurList.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
@@ -453,15 +364,6 @@ Partial Class frmClassSched
         Me.DataGridViewTextBoxColumn67.Name = "DataGridViewTextBoxColumn67"
         Me.DataGridViewTextBoxColumn67.ReadOnly = True
         '
-        'DataGridViewImageColumn1
-        '
-        Me.DataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.DataGridViewImageColumn1.HeaderText = ""
-        Me.DataGridViewImageColumn1.Image = CType(resources.GetObject("DataGridViewImageColumn1.Image"), System.Drawing.Image)
-        Me.DataGridViewImageColumn1.Name = "DataGridViewImageColumn1"
-        Me.DataGridViewImageColumn1.ReadOnly = True
-        Me.DataGridViewImageColumn1.Width = 5
-        '
         'dgSectionList
         '
         Me.dgSectionList.AllowUserToAddRows = False
@@ -470,25 +372,25 @@ Partial Class frmClassSched
         Me.dgSectionList.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgSectionList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgSectionList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgSectionList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgSectionList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.dgSectionList.ColumnHeadersHeight = 41
         Me.dgSectionList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgSectionList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn60, Me.DataGridViewTextBoxColumn61, Me.DataGridViewTextBoxColumn62, Me.DataGridViewTextBoxColumn63, Me.colUpdate})
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgSectionList.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgSectionList.DefaultCellStyle = DataGridViewCellStyle4
         Me.dgSectionList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgSectionList.EnableHeadersVisualStyles = False
         Me.dgSectionList.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
@@ -550,25 +452,25 @@ Partial Class frmClassSched
         Me.dgRoomList.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgRoomList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgRoomList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgRoomList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgRoomList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.dgRoomList.ColumnHeadersHeight = 41
         Me.dgRoomList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgRoomList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn54, Me.DataGridViewTextBoxColumn55, Me.DataGridViewTextBoxColumn56, Me.DataGridViewTextBoxColumn57, Me.DataGridViewTextBoxColumn58, Me.DataGridViewTextBoxColumn59})
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgRoomList.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgRoomList.DefaultCellStyle = DataGridViewCellStyle6
         Me.dgRoomList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgRoomList.EnableHeadersVisualStyles = False
         Me.dgRoomList.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
@@ -637,25 +539,25 @@ Partial Class frmClassSched
         Me.dgEmployeeList.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgEmployeeList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgEmployeeList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle9.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgEmployeeList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgEmployeeList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.dgEmployeeList.ColumnHeadersHeight = 41
         Me.dgEmployeeList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgEmployeeList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn45, Me.DataGridViewTextBoxColumn46, Me.DataGridViewTextBoxColumn47, Me.DataGridViewTextBoxColumn48, Me.DataGridViewTextBoxColumn49, Me.DataGridViewTextBoxColumn50, Me.DataGridViewTextBoxColumn51, Me.DataGridViewTextBoxColumn52, Me.DataGridViewTextBoxColumn53})
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgEmployeeList.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgEmployeeList.DefaultCellStyle = DataGridViewCellStyle8
         Me.dgEmployeeList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgEmployeeList.EnableHeadersVisualStyles = False
         Me.dgEmployeeList.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
@@ -748,25 +650,25 @@ Partial Class frmClassSched
         Me.dgDaySchedList.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgDaySchedList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgDaySchedList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle11.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgDaySchedList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgDaySchedList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
         Me.dgDaySchedList.ColumnHeadersHeight = 40
         Me.dgDaySchedList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgDaySchedList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn41, Me.DataGridViewTextBoxColumn42, Me.DataGridViewTextBoxColumn43, Me.DataGridViewTextBoxColumn44})
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgDaySchedList.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgDaySchedList.DefaultCellStyle = DataGridViewCellStyle10
         Me.dgDaySchedList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgDaySchedList.EnableHeadersVisualStyles = False
         Me.dgDaySchedList.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
@@ -818,25 +720,25 @@ Partial Class frmClassSched
         Me.dgAcadList.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgAcadList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgAcadList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle13.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle13.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgAcadList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgAcadList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
         Me.dgAcadList.ColumnHeadersHeight = 40
         Me.dgAcadList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgAcadList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn28, Me.DataGridViewTextBoxColumn29, Me.DataGridViewTextBoxColumn30, Me.DataGridViewTextBoxColumn31, Me.DataGridViewTextBoxColumn32, Me.DataGridViewTextBoxColumn33, Me.DataGridViewTextBoxColumn34})
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgAcadList.DefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgAcadList.DefaultCellStyle = DataGridViewCellStyle12
         Me.dgAcadList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgAcadList.EnableHeadersVisualStyles = False
         Me.dgAcadList.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
@@ -904,6 +806,94 @@ Partial Class frmClassSched
         Me.DataGridViewTextBoxColumn34.Name = "DataGridViewTextBoxColumn34"
         Me.DataGridViewTextBoxColumn34.ReadOnly = True
         Me.DataGridViewTextBoxColumn34.Width = 64
+        '
+        'dgSubjectList
+        '
+        Me.dgSubjectList.AllowUserToAddRows = False
+        Me.dgSubjectList.AllowUserToDeleteRows = False
+        Me.dgSubjectList.BackgroundColor = System.Drawing.Color.White
+        Me.dgSubjectList.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgSubjectList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.dgSubjectList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle13.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgSubjectList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle13
+        Me.dgSubjectList.ColumnHeadersHeight = 40
+        Me.dgSubjectList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.dgSubjectList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn19, Me.DataGridViewTextBoxColumn20, Me.DataGridViewTextBoxColumn22, Me.DataGridViewTextBoxColumn23, Me.DataGridViewTextBoxColumn24, Me.DataGridViewTextBoxColumn25})
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgSubjectList.DefaultCellStyle = DataGridViewCellStyle14
+        Me.dgSubjectList.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgSubjectList.EnableHeadersVisualStyles = False
+        Me.dgSubjectList.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.dgSubjectList.Location = New System.Drawing.Point(7, 0)
+        Me.dgSubjectList.Name = "dgSubjectList"
+        Me.dgSubjectList.ReadOnly = True
+        Me.dgSubjectList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.dgSubjectList.RowHeadersVisible = False
+        Me.dgSubjectList.RowTemplate.Height = 26
+        Me.dgSubjectList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgSubjectList.Size = New System.Drawing.Size(821, 383)
+        Me.dgSubjectList.TabIndex = 86
+        '
+        'DataGridViewTextBoxColumn19
+        '
+        Me.DataGridViewTextBoxColumn19.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.DataGridViewTextBoxColumn19.HeaderText = "#"
+        Me.DataGridViewTextBoxColumn19.Name = "DataGridViewTextBoxColumn19"
+        Me.DataGridViewTextBoxColumn19.ReadOnly = True
+        Me.DataGridViewTextBoxColumn19.Width = 39
+        '
+        'DataGridViewTextBoxColumn20
+        '
+        Me.DataGridViewTextBoxColumn20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.DataGridViewTextBoxColumn20.HeaderText = "ID"
+        Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
+        Me.DataGridViewTextBoxColumn20.ReadOnly = True
+        Me.DataGridViewTextBoxColumn20.Visible = False
+        Me.DataGridViewTextBoxColumn20.Width = 44
+        '
+        'DataGridViewTextBoxColumn22
+        '
+        Me.DataGridViewTextBoxColumn22.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn22.HeaderText = "Subject Code/Description"
+        Me.DataGridViewTextBoxColumn22.Name = "DataGridViewTextBoxColumn22"
+        Me.DataGridViewTextBoxColumn22.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn23
+        '
+        Me.DataGridViewTextBoxColumn23.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.DataGridViewTextBoxColumn23.HeaderText = "Type"
+        Me.DataGridViewTextBoxColumn23.Name = "DataGridViewTextBoxColumn23"
+        Me.DataGridViewTextBoxColumn23.ReadOnly = True
+        Me.DataGridViewTextBoxColumn23.Width = 57
+        '
+        'DataGridViewTextBoxColumn24
+        '
+        Me.DataGridViewTextBoxColumn24.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.DataGridViewTextBoxColumn24.HeaderText = "Group"
+        Me.DataGridViewTextBoxColumn24.Name = "DataGridViewTextBoxColumn24"
+        Me.DataGridViewTextBoxColumn24.ReadOnly = True
+        Me.DataGridViewTextBoxColumn24.Width = 66
+        '
+        'DataGridViewTextBoxColumn25
+        '
+        Me.DataGridViewTextBoxColumn25.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.DataGridViewTextBoxColumn25.HeaderText = "Units"
+        Me.DataGridViewTextBoxColumn25.Name = "DataGridViewTextBoxColumn25"
+        Me.DataGridViewTextBoxColumn25.ReadOnly = True
+        Me.DataGridViewTextBoxColumn25.Width = 56
         '
         'Panel6
         '
@@ -1458,6 +1448,12 @@ Partial Class frmClassSched
         Me.slide2.Controls.Add(Me.Label43)
         Me.slide2.Controls.Add(Me.txtAmount)
         Me.slide2.Controls.Add(Me.txtEnrolled)
+        Me.slide2.Controls.Add(Me.cbInstructor)
+        Me.slide2.Controls.Add(Me.cbDaySched)
+        Me.slide2.Controls.Add(Me.cbroom)
+        Me.slide2.Controls.Add(Me.cbSubject)
+        Me.slide2.Controls.Add(Me.cbSection)
+        Me.slide2.Controls.Add(Me.cbCur)
         Me.slide2.Controls.Add(Me.txtPopulation)
         Me.slide2.Controls.Add(Me.start_time)
         Me.slide2.Controls.Add(Me.end_time)
@@ -1482,17 +1478,11 @@ Partial Class frmClassSched
         Me.slide2.Controls.Add(Me.Label44)
         Me.slide2.Controls.Add(Me.cbAcademicYear)
         Me.slide2.Controls.Add(Me.Label13)
-        Me.slide2.Controls.Add(Me.cbInstructor)
         Me.slide2.Controls.Add(Me.Label12)
-        Me.slide2.Controls.Add(Me.cbDaySched)
         Me.slide2.Controls.Add(Me.Label8)
-        Me.slide2.Controls.Add(Me.cbRoom)
         Me.slide2.Controls.Add(Me.Label6)
-        Me.slide2.Controls.Add(Me.cbSubject)
         Me.slide2.Controls.Add(Me.Label5)
-        Me.slide2.Controls.Add(Me.cbCur)
         Me.slide2.Controls.Add(Me.Label4)
-        Me.slide2.Controls.Add(Me.cbSection)
         Me.slide2.Controls.Add(Me.Label7)
         Me.slide2.Controls.Add(Me.Label11)
         Me.slide2.Dock = System.Windows.Forms.DockStyle.Top
@@ -1562,6 +1552,60 @@ Partial Class frmClassSched
         Me.txtEnrolled.TabIndex = 188
         Me.txtEnrolled.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
+        'cbInstructor
+        '
+        Me.cbInstructor.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.cbInstructor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.cbInstructor.Location = New System.Drawing.Point(188, 260)
+        Me.cbInstructor.Name = "cbInstructor"
+        Me.cbInstructor.Size = New System.Drawing.Size(508, 21)
+        Me.cbInstructor.TabIndex = 188
+        '
+        'cbDaySched
+        '
+        Me.cbDaySched.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.cbDaySched.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.cbDaySched.Location = New System.Drawing.Point(189, 192)
+        Me.cbDaySched.Name = "cbDaySched"
+        Me.cbDaySched.Size = New System.Drawing.Size(508, 21)
+        Me.cbDaySched.TabIndex = 188
+        '
+        'cbroom
+        '
+        Me.cbroom.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.cbroom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.cbroom.Location = New System.Drawing.Point(189, 165)
+        Me.cbroom.Name = "cbroom"
+        Me.cbroom.Size = New System.Drawing.Size(508, 21)
+        Me.cbroom.TabIndex = 188
+        '
+        'cbSubject
+        '
+        Me.cbSubject.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.cbSubject.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.cbSubject.Location = New System.Drawing.Point(189, 138)
+        Me.cbSubject.Name = "cbSubject"
+        Me.cbSubject.Size = New System.Drawing.Size(508, 21)
+        Me.cbSubject.TabIndex = 188
+        '
+        'cbSection
+        '
+        Me.cbSection.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.cbSection.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.cbSection.Location = New System.Drawing.Point(189, 111)
+        Me.cbSection.Name = "cbSection"
+        Me.cbSection.Size = New System.Drawing.Size(508, 21)
+        Me.cbSection.TabIndex = 188
+        '
+        'cbCur
+        '
+        Me.cbCur.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.cbCur.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.cbCur.Location = New System.Drawing.Point(189, 84)
+        Me.cbCur.Name = "cbCur"
+        Me.cbCur.Size = New System.Drawing.Size(508, 21)
+        Me.cbCur.TabIndex = 188
+        '
         'txtPopulation
         '
         Me.txtPopulation.Anchor = System.Windows.Forms.AnchorStyles.Bottom
@@ -1577,7 +1621,7 @@ Partial Class frmClassSched
         Me.start_time.CustomFormat = "yyyy/MM/dd"
         Me.start_time.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.start_time.Format = System.Windows.Forms.DateTimePickerFormat.Time
-        Me.start_time.Location = New System.Drawing.Point(189, 230)
+        Me.start_time.Location = New System.Drawing.Point(189, 226)
         Me.start_time.Name = "start_time"
         Me.start_time.Size = New System.Drawing.Size(233, 22)
         Me.start_time.TabIndex = 187
@@ -1588,7 +1632,7 @@ Partial Class frmClassSched
         Me.end_time.CustomFormat = "yyyy/MM/dd"
         Me.end_time.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.end_time.Format = System.Windows.Forms.DateTimePickerFormat.Time
-        Me.end_time.Location = New System.Drawing.Point(464, 230)
+        Me.end_time.Location = New System.Drawing.Point(464, 226)
         Me.end_time.Name = "end_time"
         Me.end_time.Size = New System.Drawing.Size(233, 22)
         Me.end_time.TabIndex = 186
@@ -1611,7 +1655,7 @@ Partial Class frmClassSched
         Me.btnSearchInstructor.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.btnSearchInstructor.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnSearchInstructor.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSearchInstructor.Location = New System.Drawing.Point(702, 258)
+        Me.btnSearchInstructor.Location = New System.Drawing.Point(702, 259)
         Me.btnSearchInstructor.Name = "btnSearchInstructor"
         Me.btnSearchInstructor.Size = New System.Drawing.Size(25, 21)
         Me.btnSearchInstructor.TabIndex = 115
@@ -1623,7 +1667,7 @@ Partial Class frmClassSched
         Me.btnSearchDaySched.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.btnSearchDaySched.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnSearchDaySched.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSearchDaySched.Location = New System.Drawing.Point(703, 201)
+        Me.btnSearchDaySched.Location = New System.Drawing.Point(702, 191)
         Me.btnSearchDaySched.Name = "btnSearchDaySched"
         Me.btnSearchDaySched.Size = New System.Drawing.Size(25, 21)
         Me.btnSearchDaySched.TabIndex = 115
@@ -1635,7 +1679,7 @@ Partial Class frmClassSched
         Me.btnSearchRoom.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.btnSearchRoom.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnSearchRoom.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSearchRoom.Location = New System.Drawing.Point(703, 170)
+        Me.btnSearchRoom.Location = New System.Drawing.Point(702, 164)
         Me.btnSearchRoom.Name = "btnSearchRoom"
         Me.btnSearchRoom.Size = New System.Drawing.Size(25, 21)
         Me.btnSearchRoom.TabIndex = 115
@@ -1647,7 +1691,7 @@ Partial Class frmClassSched
         Me.btnSearchSubject.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.btnSearchSubject.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnSearchSubject.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSearchSubject.Location = New System.Drawing.Point(702, 140)
+        Me.btnSearchSubject.Location = New System.Drawing.Point(702, 137)
         Me.btnSearchSubject.Name = "btnSearchSubject"
         Me.btnSearchSubject.Size = New System.Drawing.Size(25, 21)
         Me.btnSearchSubject.TabIndex = 115
@@ -1659,7 +1703,7 @@ Partial Class frmClassSched
         Me.btnSearchCur.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.btnSearchCur.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnSearchCur.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSearchCur.Location = New System.Drawing.Point(702, 110)
+        Me.btnSearchCur.Location = New System.Drawing.Point(702, 82)
         Me.btnSearchCur.Name = "btnSearchCur"
         Me.btnSearchCur.Size = New System.Drawing.Size(25, 21)
         Me.btnSearchCur.TabIndex = 115
@@ -1671,7 +1715,7 @@ Partial Class frmClassSched
         Me.btnSearchSection.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.btnSearchSection.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnSearchSection.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSearchSection.Location = New System.Drawing.Point(702, 79)
+        Me.btnSearchSection.Location = New System.Drawing.Point(702, 111)
         Me.btnSearchSection.Name = "btnSearchSection"
         Me.btnSearchSection.Size = New System.Drawing.Size(25, 21)
         Me.btnSearchSection.TabIndex = 115
@@ -1682,7 +1726,7 @@ Partial Class frmClassSched
         '
         Me.Label10.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(437, 233)
+        Me.Label10.Location = New System.Drawing.Point(437, 229)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(12, 16)
         Me.Label10.TabIndex = 110
@@ -1692,7 +1736,7 @@ Partial Class frmClassSched
         '
         Me.Label9.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(81, 233)
+        Me.Label9.Location = New System.Drawing.Point(81, 229)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(86, 16)
         Me.Label9.TabIndex = 110
@@ -1701,6 +1745,7 @@ Partial Class frmClassSched
         'cbStatus
         '
         Me.cbStatus.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbStatus.FormattingEnabled = True
         Me.cbStatus.Items.AddRange(New Object() {"Active", "Inactive"})
         Me.cbStatus.Location = New System.Drawing.Point(529, 376)
@@ -1805,6 +1850,7 @@ Partial Class frmClassSched
         'cbAcademicYear
         '
         Me.cbAcademicYear.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.cbAcademicYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbAcademicYear.FormattingEnabled = True
         Me.cbAcademicYear.Location = New System.Drawing.Point(189, 288)
         Me.cbAcademicYear.Name = "cbAcademicYear"
@@ -1821,15 +1867,6 @@ Partial Class frmClassSched
         Me.Label13.TabIndex = 110
         Me.Label13.Text = "Academic Year"
         '
-        'cbInstructor
-        '
-        Me.cbInstructor.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.cbInstructor.FormattingEnabled = True
-        Me.cbInstructor.Location = New System.Drawing.Point(189, 258)
-        Me.cbInstructor.Name = "cbInstructor"
-        Me.cbInstructor.Size = New System.Drawing.Size(508, 24)
-        Me.cbInstructor.TabIndex = 111
-        '
         'Label12
         '
         Me.Label12.Anchor = System.Windows.Forms.AnchorStyles.Bottom
@@ -1840,97 +1877,51 @@ Partial Class frmClassSched
         Me.Label12.TabIndex = 110
         Me.Label12.Text = "Instructor"
         '
-        'cbDaySched
-        '
-        Me.cbDaySched.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.cbDaySched.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbDaySched.FormattingEnabled = True
-        Me.cbDaySched.Location = New System.Drawing.Point(189, 200)
-        Me.cbDaySched.Name = "cbDaySched"
-        Me.cbDaySched.Size = New System.Drawing.Size(508, 24)
-        Me.cbDaySched.TabIndex = 111
-        '
         'Label8
         '
         Me.Label8.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(81, 203)
+        Me.Label8.Location = New System.Drawing.Point(81, 194)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(84, 16)
         Me.Label8.TabIndex = 110
         Me.Label8.Text = "Day Schedule"
         '
-        'cbRoom
-        '
-        Me.cbRoom.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.cbRoom.FormattingEnabled = True
-        Me.cbRoom.Location = New System.Drawing.Point(189, 170)
-        Me.cbRoom.Name = "cbRoom"
-        Me.cbRoom.Size = New System.Drawing.Size(508, 24)
-        Me.cbRoom.TabIndex = 111
-        '
         'Label6
         '
         Me.Label6.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(81, 173)
+        Me.Label6.Location = New System.Drawing.Point(81, 167)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(39, 16)
         Me.Label6.TabIndex = 110
         Me.Label6.Text = "Room"
         '
-        'cbSubject
-        '
-        Me.cbSubject.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.cbSubject.FormattingEnabled = True
-        Me.cbSubject.Location = New System.Drawing.Point(189, 140)
-        Me.cbSubject.Name = "cbSubject"
-        Me.cbSubject.Size = New System.Drawing.Size(508, 24)
-        Me.cbSubject.TabIndex = 111
-        '
         'Label5
         '
         Me.Label5.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(81, 143)
+        Me.Label5.Location = New System.Drawing.Point(81, 140)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(49, 16)
         Me.Label5.TabIndex = 110
         Me.Label5.Text = "Subject"
         '
-        'cbCur
-        '
-        Me.cbCur.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.cbCur.FormattingEnabled = True
-        Me.cbCur.Location = New System.Drawing.Point(189, 110)
-        Me.cbCur.Name = "cbCur"
-        Me.cbCur.Size = New System.Drawing.Size(508, 24)
-        Me.cbCur.TabIndex = 111
-        '
         'Label4
         '
         Me.Label4.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(81, 113)
+        Me.Label4.Location = New System.Drawing.Point(81, 83)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(65, 16)
         Me.Label4.TabIndex = 110
         Me.Label4.Text = "Curriculum"
         '
-        'cbSection
-        '
-        Me.cbSection.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.cbSection.FormattingEnabled = True
-        Me.cbSection.Location = New System.Drawing.Point(189, 80)
-        Me.cbSection.Name = "cbSection"
-        Me.cbSection.Size = New System.Drawing.Size(508, 24)
-        Me.cbSection.TabIndex = 111
-        '
         'Label7
         '
         Me.Label7.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(81, 83)
+        Me.Label7.Location = New System.Drawing.Point(82, 112)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(48, 16)
         Me.Label7.TabIndex = 110
@@ -1968,13 +1959,13 @@ Partial Class frmClassSched
         Me.systemSign.ResumeLayout(False)
         Me.SearchPanel.ResumeLayout(False)
         Me.dgPanel.ResumeLayout(False)
-        CType(Me.dgSubjectList, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgCurList, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgSectionList, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgRoomList, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgEmployeeList, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgDaySchedList, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgAcadList, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgSubjectList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel6.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
@@ -2007,11 +1998,6 @@ Partial Class frmClassSched
     Friend WithEvents DataGridViewTextBoxColumn24 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn25 As DataGridViewTextBoxColumn
     Friend WithEvents dgCurList As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn64 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn65 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn66 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn67 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewImageColumn1 As DataGridViewImageColumn
     Friend WithEvents dgSectionList As DataGridView
     Friend WithEvents DataGridViewTextBoxColumn60 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn61 As DataGridViewTextBoxColumn
@@ -2131,17 +2117,21 @@ Partial Class frmClassSched
     Friend WithEvents Label44 As Label
     Friend WithEvents cbAcademicYear As ComboBox
     Friend WithEvents Label13 As Label
-    Friend WithEvents cbInstructor As ComboBox
     Friend WithEvents Label12 As Label
-    Friend WithEvents cbDaySched As ComboBox
     Friend WithEvents Label8 As Label
-    Friend WithEvents cbRoom As ComboBox
     Friend WithEvents Label6 As Label
-    Friend WithEvents cbSubject As ComboBox
     Friend WithEvents Label5 As Label
-    Friend WithEvents cbCur As ComboBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents cbSection As ComboBox
     Friend WithEvents Label7 As Label
     Friend WithEvents Label11 As Label
+    Friend WithEvents DataGridViewTextBoxColumn64 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn65 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn66 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn67 As DataGridViewTextBoxColumn
+    Friend WithEvents cbInstructor As TextBox
+    Friend WithEvents cbDaySched As TextBox
+    Friend WithEvents cbroom As TextBox
+    Friend WithEvents cbSubject As TextBox
+    Friend WithEvents cbSection As TextBox
+    Friend WithEvents cbCur As TextBox
 End Class

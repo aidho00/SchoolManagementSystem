@@ -1,4 +1,6 @@
-﻿Public Class frmClassSched
+﻿Imports MySql.Data.MySqlClient
+
+Public Class frmClassSched
 
     Dim slidePanels As New List(Of Panel)()
 
@@ -17,8 +19,9 @@
 
     Dim classLoadStatus As Double = 0
 
+    Dim SectionYearLevel As String
 
-
+    Dim CurrCourseID As Integer = 0
 #Region "Drag Form"
 
     Public MoveForm As Boolean
@@ -106,15 +109,24 @@
     End Sub
 
 
-    Private Sub cbCur_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbCur.SelectedIndexChanged
-        Dim curID As Integer = 0
-        Try
-            curID = CInt(cbCur.SelectedValue)
-        Catch ex As Exception
-            curID = 0
-        End Try
-        fillCombo("select Subject, Subject_ID from subjectspercurriculum where curr_ID = " & curID & "", cbSubject, "subjectspercurriculum", "Subject", "Subject_ID")
-    End Sub
+    'Private Sub cbCur_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbCur.SelectedIndexChanged
+    '    Dim curID As Integer = 0
+    '    Try
+    '        curID = CInt(cbCur.SelectedValue)
+    '    Catch ex As Exception
+    '        curID = 0
+    '    End Try
+
+    '    cn.Close()
+    '    cn.Open()
+    '    cm = New MySqlCommand("SELECT curr_course_id from tbl_curriculum where curriculum_id = " & curID & "", cn)
+    '    CurrCourseID = CInt(cm.ExecuteScalar)
+    '    cn.Close()
+    '    fillCombo("SELECT cb_code, cb_id FROM tbl_class_block where cb_course_id = " & CurrCourseID & " order by cb_code", cbSection, "tbl_class_block", "cb_code", "cb_id")
+
+    '    fillCombo("SELECT t1.subjectID 'SubjectID', CONCAT(t2.subject_code, ' - ', t2.subject_description) as Subject, t1.subjectGroup as 'Group', t2.subject_type as 'Type', t2.subject_units as 'Units' FROM tbl_curriculum_subjects t1 JOIN tbl_subject t2 ON t1.subjectID = t2.subject_id where t1.curriculumID = " & curID & " and t1.yearLevel = '" & SectionYearLevel & "'", cbSubject, "tbl_curriculum_subjects", "Subject", "SubjectID")
+
+    'End Sub
 
     Private Sub CbPetition_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CbPetition.SelectedIndexChanged
         If CbPetition.Text = "Yes" Then
@@ -214,7 +226,7 @@
     Private Sub cbCur_TextChanged(sender As Object, e As EventArgs) Handles cbCur.TextChanged
         If cbCur.Text = String.Empty Then
             cbSubject.Text = String.Empty
-            cbSubject.DataSource = Nothing
+            cbSection.Text = String.Empty
         End If
     End Sub
 
@@ -242,7 +254,7 @@
                 toNormalForm()
             Case "Search Room"
                 ClassRoomID = dgRoomList.CurrentRow.Cells(1).Value
-                cbRoom.Text = dgRoomList.CurrentRow.Cells(2).Value
+                cbroom.Text = dgRoomList.CurrentRow.Cells(2).Value
                 toNormalForm()
             Case "Search Academic Year"
                 ClassAcadID = dgAcadList.CurrentRow.Cells(1).Value
@@ -259,15 +271,15 @@
                 MsgBox("Warning: Invalid Academic Year.", vbExclamation)
                 Return
             End If
-            If ClassSubjectID = 0 Or cbSubject.SelectedValue Is Nothing Then
+            If ClassSubjectID = 0 Then
                 MsgBox("Warning: Invalid Subject.", vbExclamation)
                 Return
             End If
-            If ClassDaySchedID = 0 Or cbDaySched.SelectedValue Is Nothing Then
+            If ClassDaySchedID = 0 Then
                 MsgBox("Warning: Invalid Day Schedule.", vbExclamation)
                 Return
             End If
-            If ClassSectionID = 0 Or cbSection.SelectedValue Is Nothing Then
+            If ClassSectionID = 0 Then
                 MsgBox("Warning: Invalid Section.", vbExclamation)
                 Return
             End If
@@ -284,7 +296,7 @@
 
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
         'Try
-        If ClassAcadID = 0 Then
+        If ClassAcadID = 0 Or cbAcademicYear.SelectedValue Is Nothing Then
             MsgBox("Warning: Invalid Academic Year.", vbExclamation)
             Return
         End If
@@ -313,19 +325,19 @@
 
     Private Sub btnOverrideUpdate_Click(sender As Object, e As EventArgs) Handles btnOverrideUpdate.Click
         Try
-            If ClassAcadID = 0 Or cbAcademicYear.SelectedValue = Nothing Then
+            If ClassAcadID = 0 Then
                 MsgBox("Warning: Invalid Academic Year.", vbExclamation)
                 Return
             End If
-            If ClassSubjectID = 0 Or cbSubject.SelectedValue = Nothing Then
+            If ClassSubjectID = 0 Then
                 MsgBox("Warning: Invalid Subject.", vbExclamation)
                 Return
             End If
-            If ClassDaySchedID = 0 Or cbDaySched.SelectedValue = Nothing Then
+            If ClassDaySchedID = 0 Then
                 MsgBox("Warning: Invalid Day Schedule.", vbExclamation)
                 Return
             End If
-            If ClassSectionID = 0 Or cbSection.SelectedValue = Nothing Then
+            If ClassSectionID = 0 Then
                 MsgBox("Warning: Invalid Section.", vbExclamation)
                 Return
             End If
@@ -339,4 +351,27 @@
             MsgBox(ex.Message, vbCritical, "")
         End Try
     End Sub
+
+    Private Sub cbCur_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cbCur.KeyPress
+        e.Handled = True
+    End Sub
+
+    'Private Sub cbSection_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbSection.SelectedIndexChanged
+    '    Try
+    '        cn.Close()
+    '        cn.Open()
+    '        cm = New MySqlCommand("SELECT cb_year_level from tbl_class_block where cb_id = " & CInt(cbSection.SelectedValue) & "", cn)
+    '        SectionYearLevel = cm.ExecuteScalar
+    '        cn.Close()
+    '        Dim curID As Integer = 0
+    '        Try
+    '            curID = CInt(cbCur.SelectedValue)
+    '        Catch ex As Exception
+    '            curID = 0
+    '        End Try
+    '        fillCombo("SELECT t1.subjectID 'SubjectID', CONCAT(t2.subject_code, ' - ', t2.subject_description) as Subject, t1.subjectGroup as 'Group', t2.subject_type as 'Type', t2.subject_units as 'Units' FROM tbl_curriculum_subjects t1 JOIN tbl_subject t2 ON t1.subjectID = t2.subject_id where t1.curriculumID = " & curID & " and t1.yearLevel = '" & SectionYearLevel & "'", cbSubject, "tbl_curriculum_subjects", "Subject", "SubjectID")
+    '    Catch ex As Exception
+
+    '    End Try
+    'End Sub
 End Class

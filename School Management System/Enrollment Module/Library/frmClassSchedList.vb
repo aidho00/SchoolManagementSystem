@@ -21,11 +21,10 @@ Public Class frmClassSchedList
     Public Sub LoadComboBoxData()
         With frmClassSched
             fillCombo("SELECT CONCAT(period_name,'-',period_semester) as 'PERIOD', period_id FROM  tbl_period order by `period_name` desc, `period_status` asc, `period_semester` desc", .cbAcademicYear, "tbl_period", "PERIOD", "period_id")
-            fillCombo("SELECT cb_code, cb_id FROM tbl_class_block order by cb_code", .cbSection, "tbl_class_block", "cb_code", "cb_id")
-            fillCombo("select CONCAT(emp_last_name,', ',emp_first_name,' ',emp_middle_name) as 'Instructor', emp_id from tbl_employee where is_active = 'Active' order by emp_last_name asc", .cbInstructor, "tbl_employee", "Instructor", "emp_id")
-            fillCombo("select (curriculum_code) as 'curriculum', curriculum_id from tbl_curriculum order by curriculum", .cbCur, "tbl_curriculum", "curriculum", "curriculum_id")
-            fillCombo("SELECT CONCAT(room_code,'  -  ',room_description) as 'Room', room_id FROM tbl_room order by room_code", .cbRoom, "tbl_room", "Room", "room_id")
-            fillCombo("SELECT ds_code, ds_id FROM tbl_day_schedule order by ds_code", .cbDaySched, "tbl_day_schedule", "ds_code", "ds_id")
+            'fillCombo("select CONCAT(emp_last_name,', ',emp_first_name,' ',emp_middle_name) as 'Instructor', emp_id from tbl_employee where is_active = 'Active' order by emp_last_name asc", .cbInstructor, "tbl_employee", "Instructor", "emp_id")
+            'fillCombo("select (curriculum_code) as 'curriculum', curriculum_id from tbl_curriculum order by curriculum", .cbCur, "tbl_curriculum", "curriculum", "curriculum_id")
+            'fillCombo("SELECT CONCAT(room_code,'  -  ',room_description) as 'Room', room_id FROM tbl_room order by room_code", .cbroom, "tbl_room", "Room", "room_id")
+            'fillCombo("SELECT ds_code, ds_id FROM tbl_day_schedule order by ds_code", .cbDaySched, "tbl_day_schedule", "ds_code", "ds_id")
             'fillCombo("select Subject, Subject_ID from subjectspercurriculum where curr_ID = " & CInt(.cbCur.SelectedValue) & "", .cbSubject, "subjectspercurriculum", "Subject", "Subject_ID")
         End With
     End Sub
@@ -43,7 +42,7 @@ Public Class frmClassSchedList
             cn.Close()
             cn.Open()
             cm = New MySqlCommand("select room from rooms where room_id = " & .ClassRoomID & "", cn)
-            .cbRoom.Text = cm.ExecuteScalar
+            .cbroom.Text = cm.ExecuteScalar
             cn.Close()
             cn.Open()
             cm = New MySqlCommand("select ds_code from tbl_day_schedule where ds_id = " & .ClassDaySchedID & "", cn)
@@ -86,11 +85,11 @@ Public Class frmClassSchedList
             dr.Read()
             If dr.HasRows Then
                 With frmClassSched
-                    .btnPrev.Visible = True
-                    .btnNext.Visible = True
-                    .slide1.Visible = False
-                    .slide2.Visible = True
-                    .slide3.Visible = False
+                    '.btnPrev.Visible = True
+                    '.btnNext.Visible = True
+                    '.slide1.Visible = False
+                    '.slide2.Visible = True
+                    '.slide3.Visible = False
                     '.currentSlideIndex = 0
 
 
@@ -136,7 +135,7 @@ Public Class frmClassSchedList
                     LoadDataComboBoxes()
                     .btnSave.Visible = False
                     .btnUpdate.Visible = True
-                    .ClickNext()
+                    '.ClickNext()
                     .ShowDialog()
                 End With
             Else

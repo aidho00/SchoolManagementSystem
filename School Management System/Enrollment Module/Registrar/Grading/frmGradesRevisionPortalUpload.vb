@@ -106,7 +106,7 @@ Public Class frmGradesRevisionPortalUpload
                     Try
                         cn.Close()
                         cn.Open()
-                        cm = New MySqlCommand("SELECT sg_grade as Name from tbl_students_grades where sg_student_id = '" & row.Cells(1).Value & "'", cn)
+                        cm = New MySqlCommand("SELECT sg_grade as Grade from tbl_students_grades where sg_student_id = '" & row.Cells(1).Value & "' and sg_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and sg_class_id = " & CInt(row.Cells(0).Value) & "", cn)
                         curGrade = cm.ExecuteScalar
                         cn.Close()
                     Catch ex As Exception
@@ -245,7 +245,9 @@ Public Class frmGradesRevisionPortalUpload
             End If
             dr2.Close()
             cn2.Close()
-            query2("UPDATE tbl_students_grades set sg_grade = '" & row.Cells(7).Value & "', sg_credits = if('" & row.Cells(7).Value & "' = 'D' or '" & row.Cells(7).Value & "' = 5,0,'" & credits & "'), sg_grade_addedby = " & str_userid & ", sg_grade_dateadded = CURDATE() where sg_student_id = '" & row.Cells(4).Value & "' and sg_period_id = " & CInt(row.Cells(2).Value) & " and sg_class_id = " & CInt(row.Cells(1).Value) & "' and sg_grade_status = 'Enrolled'")
+            query2("UPDATE tbl_students_grades set sg_prev_grade = sg_grade, sg_grade = '" & row.Cells(7).Value & "', sg_credits = if('" & row.Cells(7).Value & "' = 'D' or '" & row.Cells(7).Value & "' = 5,0,'" & credits & "'), sg_prev_grade_addedby = sg_grade_addedby, sg_grade_addedby = " & str_userid & ", sg_prev_grade_addedby = sg_grade_dateadded, sg_grade_dateadded = CURDATE() where sg_student_id = '" & row.Cells(4).Value & "' and sg_period_id = " & CInt(row.Cells(2).Value) & " and sg_class_id = " & CInt(row.Cells(1).Value) & " and sg_grade_status = 'Enrolled'")
+            UserActivity("Revised student " & row.Cells(5).Value & " with ID Number " & row.Cells(4).Value & " grade to " & row.Cells(7).Value & " from " & row.Cells(6).Value & " on subject " & row.Cells(3).Value & " having credit of " & credits & ".", "GRADES UPLOAD")
+
         End If
     End Sub
 

@@ -2,6 +2,11 @@
 Imports System.ComponentModel
 
 Public Class frmGradesPortalUpload
+    Private Sub btnReviseGrade_Click(sender As Object, e As EventArgs) Handles btnReviseGrade.Click
+        fillCombo("Select CONCAT(period_name,'-',period_semester) as 'PERIOD', period_id FROM tbl_class_schedule t1 JOIN tbl_period t2 ON t1.csperiod_id = t2.period_id group by t1.csperiod_id order by `period_name` desc, `period_status` ASC, `period_semester` desc", frmGradesRevisionPortalUpload.cbAcademicYear, "tbl_period", "PERIOD", "period_id")
+        frmGradesRevisionPortalUpload.Show()
+        Me.Close()
+    End Sub
     Dim strPath As String
 
 #Region "Drag Form"
@@ -258,7 +263,9 @@ Public Class frmGradesPortalUpload
             End If
             dr2.Close()
             cn2.Close()
-            query2("UPDATE tbl_students_grades set sg_grade_prelim='" & row.Cells(6).Value & "', sg_grade_midterm='" & row.Cells(7).Value & "', sg_grade_semi='" & row.Cells(8).Value & "', sg_grade_final='" & row.Cells(9).Value & "', sg_grade_avg='" & row.Cells(10).Value & "', sg_grade = '" & row.Cells(11).Value & "', sg_credits = if('" & row.Cells(11).Value & "' = 'D' or '" & row.Cells(11).Value & "' = 5,0,'" & credits & "'), sg_grade_addedby = " & str_userid & ", sg_grade_dateadded = CURDATE() where sg_student_id = '" & row.Cells(4).Value & "' and sg_period_id = " & CInt(row.Cells(2).Value) & "' and sg_class_id = " & CInt(row.Cells(1).Value) & " and sg_grade_status = 'Enrolled'")
+            query2("UPDATE tbl_students_grades set sg_grade_prelim='" & row.Cells(6).Value & "', sg_grade_midterm='" & row.Cells(7).Value & "', sg_grade_semi='" & row.Cells(8).Value & "', sg_grade_final='" & row.Cells(9).Value & "', sg_grade_avg='" & row.Cells(10).Value & "', sg_grade = '" & row.Cells(11).Value & "', sg_credits = if('" & row.Cells(11).Value & "' = 'D' or '" & row.Cells(11).Value & "' = 5,0,'" & credits & "'), sg_grade_addedby = " & str_userid & ", sg_grade_dateadded = CURDATE() where sg_student_id = '" & row.Cells(4).Value & "' and sg_period_id = " & CInt(row.Cells(2).Value) & " and sg_class_id = " & CInt(row.Cells(1).Value) & " and sg_grade_status = 'Enrolled'")
+            UserActivity("Upload student " & row.Cells(5).Value & " with ID Number " & row.Cells(4).Value & " grade of " & row.Cells(11).Value & " on subject " & row.Cells(3).Value & " having credit of " & credits & ".", "GRADES UPLOAD")
+
         End If
     End Sub
 

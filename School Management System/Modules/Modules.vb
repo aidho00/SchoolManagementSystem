@@ -455,10 +455,10 @@ Module Modules
         End Try
     End Sub
 
-    Sub AccessArea(userID As Integer, areaName As String, accessObject As Object)
+    Sub AccessArea(areaName As String, accessObject As Object)
         cn.Close()
         cn.Open()
-        cm = New MySqlCommand("SELECT (uaa_area_id) as 'ID', (area_name) as 'Description' from tbl_system_areas2, tbl_user_account_areas2 where tbl_system_areas2.area_id = tbl_user_account_areas2.uaa_area_id and uaa_area_user_id = " & userID & " and area_name = '" & areaName & "' and area_status = 'OPEN'", cn)
+        cm = New MySqlCommand("SELECT (uaa_area_id) as 'ID', (area_name) as 'Description' from tbl_system_areas2, tbl_user_account_areas2 where tbl_system_areas2.area_id = tbl_user_account_areas2.uaa_area_id and uaa_area_user_id = " & str_userid & " and area_name = '" & areaName & "' and area_status = 'OPEN'", cn)
         dr = cm.ExecuteReader
         dr.Read()
         If dr.HasRows Then
@@ -470,19 +470,28 @@ Module Modules
         cn.Close()
     End Sub
 
-    Public Function CheckVisibleObjectInPanel(panelObject As Panel)
-        Dim hasVisibleControl As Boolean = False
+    Sub AccessArea2(areaName As String, accessObject As Object)
+        cn.Close()
+        cn.Open()
+        cm = New MySqlCommand("SELECT (uaa_area_id) as 'ID', (area_name) as 'Description' from tbl_system_areas2, tbl_user_account_areas2 where tbl_system_areas2.area_id = tbl_user_account_areas2.uaa_area_id and uaa_area_user_id = " & str_userid & " and area_status = 'OPEN' and area_name IN (" & areaName & ")", cn)
+        dr = cm.ExecuteReader
+        dr.Read()
+        If dr.HasRows Then
+            accessObject.Visible = True
+        Else
+            accessObject.Visible = False
+        End If
+        dr.Close()
+        cn.Close()
+    End Sub
+
+    Public Function CheckVisibleObjectInPanel(panelObject As Panel) As Integer
+        Dim visibleControlCount As Integer = 0
         For Each ctrl As Control In panelObject.Controls
             If ctrl.Visible Then
-                hasVisibleControl = True
-                Exit For
+                visibleControlCount += 1
             End If
         Next
-        If hasVisibleControl Then
-            hasVisibleControl = True
-        Else
-            hasVisibleControl = False
-        End If
-        Return hasVisibleControl
+        Return visibleControlCount
     End Function
 End Module

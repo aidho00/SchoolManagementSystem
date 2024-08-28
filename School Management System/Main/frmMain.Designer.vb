@@ -24,6 +24,9 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.systemSign = New System.Windows.Forms.Panel()
         Me.systemModule = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
@@ -249,6 +252,7 @@ Partial Class frmMain
         Me.EnrollmentSubGraph = New System.Windows.Forms.Panel()
         Me.EnrollmentBarGraph = New System.Windows.Forms.Panel()
         Me.PanelPaymentDetails = New System.Windows.Forms.Panel()
+        Me.chartTrend = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.Panel16 = New System.Windows.Forms.Panel()
         Me.lblDashboardDetailsTitle = New System.Windows.Forms.Label()
         Me.btnCloseDashboardDetails = New System.Windows.Forms.Label()
@@ -330,6 +334,8 @@ Partial Class frmMain
         Me.PanelDetails.SuspendLayout()
         Me.DDbasePanel.SuspendLayout()
         Me.PanelEnrollmentDetails.SuspendLayout()
+        Me.PanelPaymentDetails.SuspendLayout()
+        CType(Me.chartTrend, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel16.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel26.SuspendLayout()
@@ -3631,6 +3637,7 @@ Partial Class frmMain
         '
         'lblTotalCollected
         '
+        Me.lblTotalCollected.Cursor = System.Windows.Forms.Cursors.Hand
         Me.lblTotalCollected.Font = New System.Drawing.Font("Century Gothic", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTotalCollected.ForeColor = System.Drawing.Color.White
         Me.lblTotalCollected.Location = New System.Drawing.Point(56, 1)
@@ -3888,33 +3895,52 @@ Partial Class frmMain
         Me.PanelEnrollmentDetails.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelEnrollmentDetails.Location = New System.Drawing.Point(0, 0)
         Me.PanelEnrollmentDetails.Name = "PanelEnrollmentDetails"
+        Me.PanelEnrollmentDetails.Padding = New System.Windows.Forms.Padding(10, 0, 10, 0)
         Me.PanelEnrollmentDetails.Size = New System.Drawing.Size(998, 489)
         Me.PanelEnrollmentDetails.TabIndex = 0
         '
         'EnrollmentSubGraph
         '
         Me.EnrollmentSubGraph.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.EnrollmentSubGraph.Location = New System.Drawing.Point(0, 0)
+        Me.EnrollmentSubGraph.Location = New System.Drawing.Point(10, 0)
         Me.EnrollmentSubGraph.Name = "EnrollmentSubGraph"
-        Me.EnrollmentSubGraph.Size = New System.Drawing.Size(998, 489)
+        Me.EnrollmentSubGraph.Size = New System.Drawing.Size(978, 489)
         Me.EnrollmentSubGraph.TabIndex = 1
         Me.EnrollmentSubGraph.Visible = False
         '
         'EnrollmentBarGraph
         '
         Me.EnrollmentBarGraph.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.EnrollmentBarGraph.Location = New System.Drawing.Point(0, 0)
+        Me.EnrollmentBarGraph.Location = New System.Drawing.Point(10, 0)
         Me.EnrollmentBarGraph.Name = "EnrollmentBarGraph"
-        Me.EnrollmentBarGraph.Size = New System.Drawing.Size(998, 489)
+        Me.EnrollmentBarGraph.Size = New System.Drawing.Size(978, 489)
         Me.EnrollmentBarGraph.TabIndex = 0
         '
         'PanelPaymentDetails
         '
+        Me.PanelPaymentDetails.Controls.Add(Me.chartTrend)
         Me.PanelPaymentDetails.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelPaymentDetails.Location = New System.Drawing.Point(0, 0)
         Me.PanelPaymentDetails.Name = "PanelPaymentDetails"
         Me.PanelPaymentDetails.Size = New System.Drawing.Size(998, 489)
         Me.PanelPaymentDetails.TabIndex = 1
+        '
+        'chartTrend
+        '
+        ChartArea1.Name = "ChartArea1"
+        Me.chartTrend.ChartAreas.Add(ChartArea1)
+        Me.chartTrend.Dock = System.Windows.Forms.DockStyle.Fill
+        Legend1.Name = "Legend1"
+        Me.chartTrend.Legends.Add(Legend1)
+        Me.chartTrend.Location = New System.Drawing.Point(0, 0)
+        Me.chartTrend.Name = "chartTrend"
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Me.chartTrend.Series.Add(Series1)
+        Me.chartTrend.Size = New System.Drawing.Size(998, 489)
+        Me.chartTrend.TabIndex = 1
+        Me.chartTrend.Text = "Chart1"
         '
         'Panel16
         '
@@ -4185,6 +4211,8 @@ Partial Class frmMain
         Me.PanelDetails.ResumeLayout(False)
         Me.DDbasePanel.ResumeLayout(False)
         Me.PanelEnrollmentDetails.ResumeLayout(False)
+        Me.PanelPaymentDetails.ResumeLayout(False)
+        CType(Me.chartTrend, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel16.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
         Me.Panel26.ResumeLayout(False)
@@ -4442,4 +4470,5 @@ Partial Class frmMain
     Friend WithEvents btnDBrestore As Button
     Friend WithEvents btnDBbackup As Button
     Friend WithEvents btnDatabase As Button
+    Friend WithEvents chartTrend As DataVisualization.Charting.Chart
 End Class

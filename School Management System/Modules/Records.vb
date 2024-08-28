@@ -101,11 +101,11 @@ Module Records
                 With frmClassSched
                     frmClassSchedList.LoadComboBoxData()
                     ResetControls(frmClassSched)
-                    .btnPrev.Visible = True
-                    .btnNext.Visible = True
-                    .slide1.Visible = False
-                    .slide2.Visible = True
-                    .slide3.Visible = False
+                    '.btnPrev.Visible = True
+                    '.btnNext.Visible = True
+                    '.slide1.Visible = False
+                    '.slide2.Visible = True
+                    '.slide3.Visible = False
                     .ShowDialog()
                 End With
             Case "List Of Courses"
@@ -697,11 +697,17 @@ Module Records
 
     Public Sub LibraryClassSectionList()
         Try
+            Dim CurrCourseID As Integer = 0
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand("SELECT curr_course_id from tbl_curriculum where curriculum_id = " & CInt(frmClassSched.ClassCurID) & "", cn)
+            CurrCourseID = CInt(cm.ExecuteScalar)
+            cn.Close()
 
             frmClassSched.dgSectionList.Rows.Clear()
             Dim i As Integer
             Dim sql As String
-            sql = "select (cb_id) as 'ID', (cb_code) as 'Code', (cb_description) as 'Description' from tbl_class_block where (cb_code LIKE '%" & frmClassSched.txtSearch.Text & "%' or cb_description LIKE '%" & frmClassSched.txtSearch.Text & "%') order by cb_description asc limit 500"
+            sql = "select (cb_id) as 'ID', (cb_code) as 'Code', (cb_description) as 'Description' from tbl_class_block where cb_course_id = " & CurrCourseID & " and (cb_code LIKE '%" & frmClassSched.txtSearch.Text & "%' or cb_description LIKE '%" & frmClassSched.txtSearch.Text & "%') order by cb_description asc limit 500"
             cn.Close()
             cn.Open()
             cm = New MySqlCommand(sql, cn)
@@ -858,34 +864,39 @@ Module Records
 
     Public Sub LibraryClassSubjectList()
         Try
-
+            Dim SectionYearLevel As String
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand("SELECT cb_year_level from tbl_class_block where cb_id = " & CInt(frmClassSched.ClassSectionID) & "", cn)
+            SectionYearLevel = cm.ExecuteScalar
+            cn.Close()
 
             frmClassSched.dgSubjectList.Rows.Clear()
             Dim curID As Integer = 0
             Try
-                curID = CInt(frmClassSched.cbCur.SelectedValue)
+                curID = CInt(frmClassSched.ClassCurID)
             Catch ex As Exception
                 curID = 0
             End Try
             Dim i As Integer
             Dim sql As String
-            sql = "select Subject_ID, Subject, `Group` as SubGroup, Type, Units from subjectspercurriculum where Curr_ID = " & curID & " and Subject LIKE '%" & frmClassSched.txtSearch.Text & "%' order by Subject asc limit 500"
-            cn.Close()
+        sql = "SELECT t1.subjectID 'SubjectID', CONCAT(t2.subject_code, ' - ', t2.subject_description) as Subject, t1.subjectGroup as 'Group', t2.subject_type as 'Type', t2.subject_units as 'Units' FROM tbl_curriculum_subjects t1 JOIN tbl_subject t2 ON t1.subjectID = t2.subject_id where t1.curriculumID = " & curID & " and t1.yearLevel = '" & SectionYearLevel & "' and CONCAT(t2.subject_code, ' - ', t2.subject_description) LIKE '%" & frmClassSched.txtSearch.Text & "%' order by CONCAT(t2.subject_code, ' - ', t2.subject_description) asc limit 500"
+        cn.Close()
             cn.Open()
             cm = New MySqlCommand(sql, cn)
             dr = cm.ExecuteReader
             While dr.Read
                 i += 1
-                frmClassSched.dgSubjectList.Rows.Add(i, dr.Item("Subject_ID").ToString, dr.Item("Subject").ToString, dr.Item("SubGroup").ToString, dr.Item("Type").ToString, dr.Item("Units").ToString)
-            End While
+            frmClassSched.dgSubjectList.Rows.Add(i, dr.Item("SubjectID").ToString, dr.Item("Subject").ToString, dr.Item("SubGroup").ToString, dr.Item("Type").ToString, dr.Item("Units").ToString)
+        End While
             dr.Close()
             cn.Close()
 
             dgPanelPadding(frmClassSched.dgSubjectList, frmClassSched.dgPanel)
         Catch ex As Exception
-            dr.Close()
-            cn.Close()
-            frmClassSched.dgSubjectList.Rows.Clear()
+        dr.Close()
+        cn.Close()
+        frmClassSched.dgSubjectList.Rows.Clear()
         End Try
     End Sub
     Public Sub AddSubjectSchedule()
@@ -964,7 +975,7 @@ Module Records
 
                     cn.Open()
                     cn.Close()
-                    cm = New MySqlCommand("SELECT * FROM tbl_class_schedule WHERE csperiod_id = " & CInt(.cbAcademicYear.SelectedValue) & " and csemp_id = " & CInt(.cbInstructor.SelectedValue.Text) & " and (STR_TO_DATE('" & subjectTimeStart & "','%h:%i:%s %p') < STR_TO_DATE('" & row.Cells(7).Value & "','%h:%i:%s %p') AND STR_TO_DATE('" & subjectTimeEnd & "','%h:%i:%s %p') > STR_TO_DATE('" & row.Cells(6).Value & "','%h:%i:%s %p'))", cn)
+                    cm = New MySqlCommand("SELECT * FROM tbl_class_schedule WHERE csperiod_id = " & CInt(.cbAcademicYear.SelectedValue) & " and csemp_id = " & CInt(.ClassInstructorID) & " and (STR_TO_DATE('" & subjectTimeStart & "','%h:%i:%s %p') < STR_TO_DATE('" & row.Cells(7).Value & "','%h:%i:%s %p') AND STR_TO_DATE('" & subjectTimeEnd & "','%h:%i:%s %p') > STR_TO_DATE('" & row.Cells(6).Value & "','%h:%i:%s %p'))", cn)
                     Dim sdr3 As MySqlDataReader = cm.ExecuteReader()
 
                     'If .cbSubject.Text.Contains("PE 1") Or .cbSubject.Text.Contains("PE 2") Or .cbSubject.Text.Contains("PE 3") Or .cbSubject.Text.Contains("PE 4") Or .cbSubject.Text.Contains("NSTP") Then
@@ -984,7 +995,7 @@ Module Records
                         sdr3.Dispose()
                         isFound_ins = False
                         isFound_ins2 = False
-                    ElseIf .cbInstructor.Text = String.Empty Or .cbInstructor.SelectedValue = "0" Or .cbInstructor.SelectedValue = 0 Then
+                    ElseIf .cbInstructor.Text = String.Empty Or .ClassInstructorID = 0 Then
                         isFound_ins = False
                         isFound_ins2 = False
                         sdr3.Dispose()
@@ -1022,14 +1033,14 @@ Module Records
                     str = "INSERT INTO tbl_class_schedule (class_schedule_code, class_schedule_curriculum, cssubject_id, days_schedule, time_start_schedule, time_end_schedule, class_block_id, csroom_id, csemp_id, population, csperiod_id, is_active, date_created, exam_link, cs_is_petition, cs_amount, subject_load_status, class_adviser, passing_grade, class_status, skipconflictcheck) values (@class_schedule_code, @class_schedule_curriculum, @cssubject_id, @days_schedule, @time_start_schedule, @time_end_schedule, @class_block_id, @csroom_id, @csemp_id, @population, @csperiod_id, @is_active, @date_created, @exam_link, @is_petition, @amount, @subject_load_status, @class_adviser, @passing_grade, @class_status, @skipconflictcheck)"
                     cm = New MySqlCommand(str, cn)
                     cm.Parameters.AddWithValue("@class_schedule_code", classCode)
-                    cm.Parameters.AddWithValue("@class_schedule_curriculum", CInt(.cbCur.SelectedValue))
-                    cm.Parameters.AddWithValue("@cssubject_id", CInt(.cbSubject.SelectedValue))
-                    cm.Parameters.AddWithValue("@days_schedule", CInt(.cbDaySched.SelectedValue))
+                    cm.Parameters.AddWithValue("@class_schedule_curriculum", CInt(.ClassCurID))
+                    cm.Parameters.AddWithValue("@cssubject_id", CInt(.ClassSubjectID))
+                    cm.Parameters.AddWithValue("@days_schedule", CInt(.ClassDaySchedID))
                     cm.Parameters.AddWithValue("@time_start_schedule", .start_time.Text.ToUpper)
                     cm.Parameters.AddWithValue("@time_end_schedule", .end_time.Text.ToUpper)
-                    cm.Parameters.AddWithValue("@class_block_id", CInt(.cbSection.SelectedValue))
-                    cm.Parameters.AddWithValue("@csroom_id", CInt(.cbRoom.SelectedValue))
-                    cm.Parameters.AddWithValue("@csemp_id", CInt(.cbInstructor.SelectedValue))
+                    cm.Parameters.AddWithValue("@class_block_id", CInt(.ClassSectionID))
+                    cm.Parameters.AddWithValue("@csroom_id", CInt(.ClassRoomID))
+                    cm.Parameters.AddWithValue("@csemp_id", CInt(.ClassInstructorID))
                     cm.Parameters.AddWithValue("@population", .txtPopulation.Text)
                     cm.Parameters.AddWithValue("@csperiod_id", CInt(.cbAcademicYear.SelectedValue))
                     cm.Parameters.AddWithValue("@is_active", .cbStatus.Text)
@@ -1153,7 +1164,7 @@ Module Records
 
                 cn.Open()
                 cn.Close()
-                cm = New MySqlCommand("SELECT * FROM tbl_class_schedule WHERE csperiod_id = " & CInt(.cbAcademicYear.SelectedValue) & " and csemp_id = " & CInt(.cbInstructor.SelectedValue.Text) & " and (STR_TO_DATE('" & subjectTimeStart & "','%h:%i:%s %p') < STR_TO_DATE('" & row.Cells(7).Value & "','%h:%i:%s %p') AND STR_TO_DATE('" & subjectTimeEnd & "','%h:%i:%s %p') > STR_TO_DATE('" & row.Cells(6).Value & "','%h:%i:%s %p'))", cn)
+                cm = New MySqlCommand("SELECT * FROM tbl_class_schedule WHERE csperiod_id = " & CInt(.cbAcademicYear.SelectedValue) & " and csemp_id = " & CInt(.ClassInstructorID) & " and (STR_TO_DATE('" & subjectTimeStart & "','%h:%i:%s %p') < STR_TO_DATE('" & row.Cells(7).Value & "','%h:%i:%s %p') AND STR_TO_DATE('" & subjectTimeEnd & "','%h:%i:%s %p') > STR_TO_DATE('" & row.Cells(6).Value & "','%h:%i:%s %p'))", cn)
                 Dim sdr3 As MySqlDataReader = cm.ExecuteReader()
 
                 'If .cbSubject.Text.Contains("PE 1") Or .cbSubject.Text.Contains("PE 2") Or .cbSubject.Text.Contains("PE 3") Or .cbSubject.Text.Contains("PE 4") Or .cbSubject.Text.Contains("NSTP") Then
@@ -1172,7 +1183,7 @@ Module Records
                     sdr3.Dispose()
                     isFound_ins = False
                     isFound_ins2 = False
-                ElseIf .cbInstructor.Text = String.Empty Or .cbInstructor.SelectedValue = "0" Or .cbInstructor.SelectedValue = 0 Then
+                ElseIf .cbInstructor.Text = String.Empty Or .ClassInstructorID = 0 Then
                     isFound_ins = False
                     isFound_ins2 = False
                     sdr3.Dispose()
@@ -1214,14 +1225,14 @@ Module Records
                     update_subjectschedule_Cmd.Transaction = update_subjectschedule_transaction
                     update_subjectschedule_Cmd.CommandText = "UPDATE tbl_class_schedule SET class_schedule_code=@class_schedule_code, class_schedule_curriculum=@class_schedule_curriculum, cssubject_id=@cssubject_id, days_schedule=@days_schedule, time_start_schedule=@time_start_schedule, time_end_schedule=@time_end_schedule, class_block_id=@class_block_id, csroom_id=@csroom_id, csemp_id=@csemp_id, population=@population, csperiod_id=@csperiod_id, is_active=@is_active, exam_link=@exam_link, cs_is_petition=@is_petition, cs_amount=@amount, subject_load_status=@load_status, class_adviser=@class_adviser, passing_grade=@passing_grade, class_status=@class_status, skipconflictcheck=@skipconflictcheck where class_schedule_id = " & .ClassID & ""
                     update_subjectschedule_Cmd.Parameters.AddWithValue("@class_schedule_code", classCode)
-                    update_subjectschedule_Cmd.Parameters.AddWithValue("@class_schedule_curriculum", CInt(.cbCur.SelectedValue))
-                    update_subjectschedule_Cmd.Parameters.AddWithValue("@cssubject_id", CInt(.cbSubject.SelectedValue))
-                    update_subjectschedule_Cmd.Parameters.AddWithValue("@days_schedule", CInt(.cbDaySched.SelectedValue))
+                    update_subjectschedule_Cmd.Parameters.AddWithValue("@class_schedule_curriculum", CInt(.ClassCurID))
+                    update_subjectschedule_Cmd.Parameters.AddWithValue("@cssubject_id", CInt(.ClassSubjectID))
+                    update_subjectschedule_Cmd.Parameters.AddWithValue("@days_schedule", CInt(.ClassDaySchedID))
                     update_subjectschedule_Cmd.Parameters.AddWithValue("@time_start_schedule", .start_time.Text.ToUpper)
                     update_subjectschedule_Cmd.Parameters.AddWithValue("@time_end_schedule", .end_time.Text.ToUpper)
-                    update_subjectschedule_Cmd.Parameters.AddWithValue("@class_block_id", CInt(.cbSection.SelectedValue))
-                    update_subjectschedule_Cmd.Parameters.AddWithValue("@csroom_id", CInt(.cbRoom.SelectedValue))
-                    update_subjectschedule_Cmd.Parameters.AddWithValue("@csemp_id", CInt(.cbInstructor.SelectedValue))
+                    update_subjectschedule_Cmd.Parameters.AddWithValue("@class_block_id", CInt(.ClassSectionID))
+                    update_subjectschedule_Cmd.Parameters.AddWithValue("@csroom_id", CInt(.ClassRoomID))
+                    update_subjectschedule_Cmd.Parameters.AddWithValue("@csemp_id", CInt(.ClassInstructorID))
                     update_subjectschedule_Cmd.Parameters.AddWithValue("@population", .txtPopulation.Text)
                     update_subjectschedule_Cmd.Parameters.AddWithValue("@csperiod_id", CInt(.cbAcademicYear.SelectedValue))
                     update_subjectschedule_Cmd.Parameters.AddWithValue("@is_active", CInt(.cbStatus.SelectedValue))
@@ -1255,12 +1266,12 @@ Module Records
                     update_subjectschedule_Cmd.ExecuteNonQuery()
                 End Using
 
-                If .ClassPreviousSubjectID = CInt(.cbSubject.SelectedValue) Then
+                If .ClassPreviousSubjectID = CInt(.ClassSubjectID) Then
                 Else
                     Using update_studentgrades_Cmd As MySqlCommand = cn.CreateCommand()
                         update_studentgrades_Cmd.Transaction = update_subjectschedule_transaction
                         update_studentgrades_Cmd.CommandText = "Update tbl_students_grades set sg_subject_id = @1 where sg_class_id = @2 and sg_period_id = @3"
-                        update_studentgrades_Cmd.Parameters.AddWithValue("@1", CInt(.cbSubject.SelectedValue))
+                        update_studentgrades_Cmd.Parameters.AddWithValue("@1", CInt(.ClassSubjectID))
                         update_studentgrades_Cmd.Parameters.AddWithValue("@2", .ClassID)
                         update_studentgrades_Cmd.Parameters.AddWithValue("@3", CInt(.cbAcademicYear.SelectedValue))
                         update_studentgrades_Cmd.ExecuteNonQuery()
@@ -1270,7 +1281,7 @@ Module Records
                 update_subjectschedule_transaction.Commit()
                 frmWait.seconds = 1
                 frmWait.ShowDialog()
-                cm = New MySqlCommand("SELECT * FROM tbl_class_schedule WHERE csperiod_id = " & CInt(.cbAcademicYear.SelectedValue) & " and class_schedule_id = " & .ClassID & " and cssubject_id = " & CInt(.cbSubject.SelectedValue) & "", cn)
+                cm = New MySqlCommand("SELECT * FROM tbl_class_schedule WHERE csperiod_id = " & CInt(.cbAcademicYear.SelectedValue) & " and class_schedule_id = " & .ClassID & " and cssubject_id = " & CInt(.ClassSubjectID) & "", cn)
                 Dim sdr As MySqlDataReader = cm.ExecuteReader()
                 If (sdr.Read() = True) Then
                     sdr.Dispose()
@@ -1309,7 +1320,7 @@ Module Records
             frmClassSchedList.dgClassSchedList.Rows.Clear()
             Dim i As Integer
             Dim sql As String
-            sql = "SELECT `tbl_class_schedule`.`class_schedule_id` AS `ID`, `tbl_class_block`.`cb_code` as 'Class', `period`.`PERIOD` as 'Period', CONCAT(`tbl_class_block`.`cb_code`, ' - ', `period`.`PERIOD`) AS `Code`, CONCAT(`tbl_subject`.`subject_code`, ' - ', `tbl_subject`.`subject_description` ) AS `Subject`, `tbl_subject`.`subject_units` AS `Units`, if(`tbl_day_schedule`.`ds_code` = 'M T W TH F SAT SUN', 'DAILY', `tbl_day_schedule`.`ds_code`) AS `Day Schedule`, `tbl_class_schedule`.`time_start_schedule` AS `Time Start`, `tbl_class_schedule`.`time_end_schedule` as `Time End`, `tbl_room`.`room_code` AS `Room`, CONCAT( `tbl_employee`.`emp_last_name`, ', ', `tbl_employee`.`emp_first_name`, ' ', `tbl_employee`.`emp_middle_name` ) AS `Instructor`, `tbl_class_schedule`.`population` AS `Population`, period_id, if(tbl_class_schedule.class_status = 'Merged', CONCAT(tbl_class_schedule.is_active,' - ',tbl_class_schedule.class_status), tbl_class_schedule.is_active) as 'Status' FROM (((((`tbl_class_schedule`JOIN `tbl_class_block`)JOIN `tbl_subject`)JOIN `tbl_day_schedule`)JOIN `tbl_room`)JOIN `tbl_employee`)JOIN `period` WHERE `tbl_class_schedule`.`class_block_id` = `tbl_class_block`.`cb_id` AND `tbl_class_schedule`.`cssubject_id` = `tbl_subject`.`subject_id` AND `tbl_class_schedule`.`days_schedule` = `tbl_day_schedule`.`ds_id` AND `tbl_class_schedule`.`csroom_id` = `tbl_room`.`room_id` AND `tbl_class_schedule`.`csemp_id` = `tbl_employee`.`emp_id` and `tbl_class_schedule`.`csperiod_id` = `period`.`period_id` and period_id = " & acadID & " and cb_id = " & CInt(frmClassSched.cbSection.SelectedValue) & " and `tbl_class_schedule`.`class_schedule_id` NOT IN (" & frmClassSched.ClassID & ") group by `class_schedule_id` limit 500"
+            sql = "SELECT `tbl_class_schedule`.`class_schedule_id` AS `ID`, `tbl_class_block`.`cb_code` as 'Class', `period`.`PERIOD` as 'Period', CONCAT(`tbl_class_block`.`cb_code`, ' - ', `period`.`PERIOD`) AS `Code`, CONCAT(`tbl_subject`.`subject_code`, ' - ', `tbl_subject`.`subject_description` ) AS `Subject`, `tbl_subject`.`subject_units` AS `Units`, if(`tbl_day_schedule`.`ds_code` = 'M T W TH F SAT SUN', 'DAILY', `tbl_day_schedule`.`ds_code`) AS `Day Schedule`, `tbl_class_schedule`.`time_start_schedule` AS `Time Start`, `tbl_class_schedule`.`time_end_schedule` as `Time End`, `tbl_room`.`room_code` AS `Room`, CONCAT( `tbl_employee`.`emp_last_name`, ', ', `tbl_employee`.`emp_first_name`, ' ', `tbl_employee`.`emp_middle_name` ) AS `Instructor`, `tbl_class_schedule`.`population` AS `Population`, period_id, if(tbl_class_schedule.class_status = 'Merged', CONCAT(tbl_class_schedule.is_active,' - ',tbl_class_schedule.class_status), tbl_class_schedule.is_active) as 'Status' FROM (((((`tbl_class_schedule`JOIN `tbl_class_block`)JOIN `tbl_subject`)JOIN `tbl_day_schedule`)JOIN `tbl_room`)JOIN `tbl_employee`)JOIN `period` WHERE `tbl_class_schedule`.`class_block_id` = `tbl_class_block`.`cb_id` AND `tbl_class_schedule`.`cssubject_id` = `tbl_subject`.`subject_id` AND `tbl_class_schedule`.`days_schedule` = `tbl_day_schedule`.`ds_id` AND `tbl_class_schedule`.`csroom_id` = `tbl_room`.`room_id` AND `tbl_class_schedule`.`csemp_id` = `tbl_employee`.`emp_id` and `tbl_class_schedule`.`csperiod_id` = `period`.`period_id` and period_id = " & acadID & " and cb_id = " & CInt(frmClassSched.ClassSectionID) & " and `tbl_class_schedule`.`class_schedule_id` NOT IN (" & frmClassSched.ClassID & ") group by `class_schedule_id` limit 500"
             cn.Close()
             cn.Open()
             cm = New MySqlCommand(sql, cn)
@@ -1330,12 +1341,10 @@ Module Records
 
     Public Sub SubjectListPerInstructor()
         Try
-
-
             frmClassSchedList.dgClassSchedList.Rows.Clear()
             Dim i As Integer
             Dim sql As String
-            sql = "SELECT `tbl_class_schedule`.`class_schedule_id` AS `ID`, `tbl_class_block`.`cb_code` as 'Class', `period`.`PERIOD` as 'Period', CONCAT(`tbl_class_block`.`cb_code`, ' - ', `period`.`PERIOD`) AS `Code`, CONCAT(`tbl_subject`.`subject_code`, ' - ', `tbl_subject`.`subject_description` ) AS `Subject`, `tbl_subject`.`subject_units` AS `Units`, if(`tbl_day_schedule`.`ds_code` = 'M T W TH F SAT SUN', 'DAILY', `tbl_day_schedule`.`ds_code`) AS `Day Schedule`, `tbl_class_schedule`.`time_start_schedule` AS `Time Start`, `tbl_class_schedule`.`time_end_schedule` as `Time End`, `tbl_room`.`room_code` AS `Room`, CONCAT( `tbl_employee`.`emp_last_name`, ', ', `tbl_employee`.`emp_first_name`, ' ', `tbl_employee`.`emp_middle_name` ) AS `Instructor`, `tbl_class_schedule`.`population` AS `Population`, period_id, if(tbl_class_schedule.class_status = 'Merged', CONCAT(tbl_class_schedule.is_active,' - ',tbl_class_schedule.class_status), tbl_class_schedule.is_active) as 'Status' FROM (((((`tbl_class_schedule`JOIN `tbl_class_block`)JOIN `tbl_subject`)JOIN `tbl_day_schedule`)JOIN `tbl_room`)JOIN `tbl_employee`)JOIN `period` WHERE `tbl_class_schedule`.`class_block_id` = `tbl_class_block`.`cb_id` AND `tbl_class_schedule`.`cssubject_id` = `tbl_subject`.`subject_id` AND `tbl_class_schedule`.`days_schedule` = `tbl_day_schedule`.`ds_id` AND `tbl_class_schedule`.`csroom_id` = `tbl_room`.`room_id` AND `tbl_class_schedule`.`csemp_id` = `tbl_employee`.`emp_id` and `tbl_class_schedule`.`csperiod_id` = `period`.`period_id` and period_id = " & acadID & " and csemp_id = " & CInt(frmClassSched.cbInstructor.SelectedValue) & " and `tbl_class_schedule`.`class_schedule_id` NOT IN (" & frmClassSched.ClassID & ") group by `class_schedule_id` limit 500"
+            sql = "SELECT `tbl_class_schedule`.`class_schedule_id` AS `ID`, `tbl_class_block`.`cb_code` as 'Class', `period`.`PERIOD` as 'Period', CONCAT(`tbl_class_block`.`cb_code`, ' - ', `period`.`PERIOD`) AS `Code`, CONCAT(`tbl_subject`.`subject_code`, ' - ', `tbl_subject`.`subject_description` ) AS `Subject`, `tbl_subject`.`subject_units` AS `Units`, if(`tbl_day_schedule`.`ds_code` = 'M T W TH F SAT SUN', 'DAILY', `tbl_day_schedule`.`ds_code`) AS `Day Schedule`, `tbl_class_schedule`.`time_start_schedule` AS `Time Start`, `tbl_class_schedule`.`time_end_schedule` as `Time End`, `tbl_room`.`room_code` AS `Room`, CONCAT( `tbl_employee`.`emp_last_name`, ', ', `tbl_employee`.`emp_first_name`, ' ', `tbl_employee`.`emp_middle_name` ) AS `Instructor`, `tbl_class_schedule`.`population` AS `Population`, period_id, if(tbl_class_schedule.class_status = 'Merged', CONCAT(tbl_class_schedule.is_active,' - ',tbl_class_schedule.class_status), tbl_class_schedule.is_active) as 'Status' FROM (((((`tbl_class_schedule`JOIN `tbl_class_block`)JOIN `tbl_subject`)JOIN `tbl_day_schedule`)JOIN `tbl_room`)JOIN `tbl_employee`)JOIN `period` WHERE `tbl_class_schedule`.`class_block_id` = `tbl_class_block`.`cb_id` AND `tbl_class_schedule`.`cssubject_id` = `tbl_subject`.`subject_id` AND `tbl_class_schedule`.`days_schedule` = `tbl_day_schedule`.`ds_id` AND `tbl_class_schedule`.`csroom_id` = `tbl_room`.`room_id` AND `tbl_class_schedule`.`csemp_id` = `tbl_employee`.`emp_id` and `tbl_class_schedule`.`csperiod_id` = `period`.`period_id` and period_id = " & acadID & " and csemp_id = " & CInt(frmClassSched.ClassInstructorID) & " and `tbl_class_schedule`.`class_schedule_id` NOT IN (" & frmClassSched.ClassID & ") group by `class_schedule_id` limit 500"
             cn.Close()
             cn.Open()
             cm = New MySqlCommand(sql, cn)
@@ -1350,7 +1359,6 @@ Module Records
             dr.Close()
             cn.Close()
             frmClassSchedList.dgClassSchedList.Rows.Clear()
-
         End Try
     End Sub
 

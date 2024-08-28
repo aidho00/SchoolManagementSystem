@@ -21,28 +21,28 @@ Public Class frmUser
         Select Case dgUserModules.CurrentRow.Cells(1).Value.ToString
             Case "Enrollment"
                 HideAllDGInPanelExcept(dgEnrollmentArea)
-                SystemModule_Areas(dgEnrollmentArea, dgUserModules.CurrentRow.Cells(1).Value)
+                'SystemModule_Areas(dgEnrollmentArea, dgUserModules.CurrentRow.Cells(1).Value)
             Case "Cashiering"
                 HideAllDGInPanelExcept(dgCashieringArea)
-                SystemModule_Areas(dgCashieringArea, dgUserModules.CurrentRow.Cells(1).Value)
+                'SystemModule_Areas(dgCashieringArea, dgUserModules.CurrentRow.Cells(1).Value)
             Case "Reports"
                 HideAllDGInPanelExcept(dgReportsArea)
-                SystemModule_Areas(dgReportsArea, dgUserModules.CurrentRow.Cells(1).Value)
+                'SystemModule_Areas(dgReportsArea, dgUserModules.CurrentRow.Cells(1).Value)
             Case "Registrar"
                 HideAllDGInPanelExcept(dgRegistrarArea)
-                SystemModule_Areas(dgRegistrarArea, dgUserModules.CurrentRow.Cells(1).Value)
+                'SystemModule_Areas(dgRegistrarArea, dgUserModules.CurrentRow.Cells(1).Value)
             Case "Supply"
                 HideAllDGInPanelExcept(dgSupplyArea)
-                SystemModule_Areas(dgSupplyArea, dgUserModules.CurrentRow.Cells(1).Value)
+                'SystemModule_Areas(dgSupplyArea, dgUserModules.CurrentRow.Cells(1).Value)
             Case "Database"
                 HideAllDGInPanelExcept(dgDatabaseArea)
-                SystemModule_Areas(dgDatabaseArea, dgUserModules.CurrentRow.Cells(1).Value)
+                'SystemModule_Areas(dgDatabaseArea, dgUserModules.CurrentRow.Cells(1).Value)
             Case "Dashboard"
                 HideAllDGInPanelExcept(dgDashboardArea)
-                SystemModule_Areas(dgDashboardArea, dgUserModules.CurrentRow.Cells(1).Value)
+                'SystemModule_Areas(dgDashboardArea, dgUserModules.CurrentRow.Cells(1).Value)
             Case "Information Registry"
                 HideAllDGInPanelExcept(dgRegistryArea)
-                SystemModule_Areas(dgRegistryArea, dgUserModules.CurrentRow.Cells(1).Value)
+                'SystemModule_Areas(dgRegistryArea, dgUserModules.CurrentRow.Cells(1).Value)
         End Select
     End Sub
 
@@ -185,9 +185,9 @@ Public Class frmUser
     End Sub
 
     Sub SystemModule_Areas(dg As DataGridView, areaName As String)
-        If dg.Rows.Count = 0 Then
-        Else
-            dg.Rows.Clear()
+        'If dg.Rows.Count = 0 Then
+        'Else
+        dg.Rows.Clear()
             Dim sql As String
             sql = "SELECT `area_id` as ID, SUBSTR(`area_name`," & CInt(areaName.ToString.Length) + 3 & ") as Area FROM `tbl_system_areas2` where `area_name` LIKE '%" & areaName & " -%'"
             cn.Close()
@@ -213,7 +213,7 @@ Public Class frmUser
                 dr.Close()
                 cn.Close()
             Next
-        End If
+        'End If
         Try
             Dim allChecked As Boolean = True
             For Each row As DataGridViewRow In dg.Rows
@@ -246,7 +246,7 @@ Public Class frmUser
             Dim arrImage() As Byte = mstream.GetBuffer
             cn.Close()
             cn.Open()
-            cm = New MySqlCommand("Insert into tbl_user_account(ua_first_name, ua_middle_name, ua_last_name, ua_address, ua_contact, ua_account_type, ua_registered_by_id, ua_user_name, ua_password, ua_photo)values('" & txtFirstName.Text & "'," & txtMiddleName.Text & "'," & txtLastName.Text & "','" & txtLastName.Text & "', '" & txtAddress.Text & "', '" & txtContact.Text & "', '" & cbAccountType.Text & "', " & str_userid & ", '" & txtUsername.Text & "', '" & txtPassword.Text & "', @image)", cn)
+            cm = New MySqlCommand("Insert into tbl_user_account(ua_first_name, ua_middle_name, ua_last_name, ua_address, ua_contact, ua_account_type, ua_registered_by_id, ua_user_name, ua_password, ua_photo)values('" & txtFirstName.Text & "','" & txtMiddleName.Text & "','" & txtLastName.Text & "', '" & txtAddress.Text & "', '" & txtContact.Text & "', '" & cbAccountType.Text & "', " & str_userid & ", '" & txtUsername.Text & "', '" & txtPassword.Text & "', @image)", cn)
             cm.Parameters.AddWithValue("@image", arrImage)
             cm.ExecuteNonQuery()
             cn.Close()
@@ -306,26 +306,30 @@ Public Class frmUser
             UserActivity("Updated a user account " & txtFirstName.Text.Trim & " " & txtMiddleName.Text.Trim & " " & txtLastName.Text.Trim & ". Username: " & txtUsername.Text & "", "USER ACCOUNT")
             MsgBox("User account has been successfully updated.", vbInformation, "")
 
-            Try
-                cn.Close()
-                cn.Open()
-                cm = New MySqlCommand("select * from tbl_user_account where ua_id = " & AccountUserID & "", cn)
-                dr = cm.ExecuteReader
-                dr.Read()
-                If dr.HasRows Then
-                    str_name = dr.Item("ua_first_name").ToString & " " & dr.Item("ua_middle_name").ToString & " " & dr.Item("ua_last_name").ToString
-                    str_role = dr.Item("ua_account_type").ToString
-                Else
-                End If
-                dr.Close()
-                cn.Close()
-                frmMain.lblUser.Text = str_user
-                frmMain.lblRole.Text = str_role
-                frmMain.User_Name.Text = str_name
-            Catch ex As Exception
-                dr.Close()
-                cn.Close()
-            End Try
+            If str_role = "Administrator" Then
+            Else
+                Try
+                    cn.Close()
+                    cn.Open()
+                    cm = New MySqlCommand("select * from tbl_user_account where ua_id = " & AccountUserID & "", cn)
+                    dr = cm.ExecuteReader
+                    dr.Read()
+                    If dr.HasRows Then
+                        str_name = dr.Item("ua_first_name").ToString & " " & dr.Item("ua_middle_name").ToString & " " & dr.Item("ua_last_name").ToString
+                        str_role = dr.Item("ua_account_type").ToString
+                    Else
+                    End If
+                    dr.Close()
+                    cn.Close()
+                    frmMain.lblUser.Text = str_user
+                    'frmMain.lblRole.Text = str_role
+                    frmMain.User_Name.Text = str_name
+                Catch ex As Exception
+                    dr.Close()
+                    cn.Close()
+                End Try
+            End If
+
         End If
     End Sub
 
@@ -350,6 +354,53 @@ Public Class frmUser
             dgEnrollmentArea.CurrentRow.Cells(2).Value = True
         Else
             dgEnrollmentArea.CurrentRow.Cells(2).Value = False
+        End If
+    End Sub
+
+    Private Sub dgDatabaseArea_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgDatabaseArea.CellClick
+        If dgDatabaseArea.CurrentRow.Cells(2).Value = False Then
+            dgDatabaseArea.CurrentRow.Cells(2).Value = True
+        Else
+            dgDatabaseArea.CurrentRow.Cells(2).Value = False
+        End If
+    End Sub
+
+    Private Sub dgCashieringArea_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgCashieringArea.CellClick
+        If dgCashieringArea.CurrentRow.Cells(2).Value = False Then
+            dgCashieringArea.CurrentRow.Cells(2).Value = True
+        Else
+            dgCashieringArea.CurrentRow.Cells(2).Value = False
+        End If
+    End Sub
+    Private Sub dgSupplyArea_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgSupplyArea.CellClick
+        If dgSupplyArea.CurrentRow.Cells(2).Value = False Then
+            dgSupplyArea.CurrentRow.Cells(2).Value = True
+        Else
+            dgSupplyArea.CurrentRow.Cells(2).Value = False
+        End If
+    End Sub
+    Private Sub dgReportsArea_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgReportsArea.CellClick
+        If dgReportsArea.CurrentRow.Cells(2).Value = False Then
+            dgReportsArea.CurrentRow.Cells(2).Value = True
+        Else
+            dgReportsArea.CurrentRow.Cells(2).Value = False
+        End If
+    End Sub
+    Private Sub dgRegistrarArea_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgRegistrarArea.CellClick
+        If dgRegistrarArea.CurrentRow.Cells(2).Value = False Then
+            dgRegistrarArea.CurrentRow.Cells(2).Value = True
+        Else
+            dgRegistrarArea.CurrentRow.Cells(2).Value = False
+        End If
+    End Sub
+
+
+
+    Private Sub dgDashboardArea_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgDashboardArea.CellClick
+        If dgDashboardArea.CurrentRow.Cells(2).Value = False Then
+            dgDashboardArea.CurrentRow.Cells(2).Value = True
+        Else
+            dgDashboardArea.CurrentRow.Cells(2).Value = False
         End If
     End Sub
 

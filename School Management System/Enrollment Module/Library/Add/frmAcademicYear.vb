@@ -87,7 +87,7 @@
                             query("INSERT INTO tbl_period (period_start_year, period_end_year, period_name, period_semester, period_date_created, period_status,period_enrollment_status,period_enrollment_ad_status,period_balance_check,period_enrollment_startdate,period_enrollment_enddate) values ('" & txtStart.Text.Trim & "', '" & txtEnd.Text.Trim & "', '" & txtStart.Text.Trim & "-" & txtEnd.Text.Trim & "', '" & cbSemester.Text.Trim & "', NOW(), '" & cbStatus.Text.Trim & "', '" & cbEnroll.Text.Trim & "', '" & cbAD.Text.Trim & "', '" & cbBalance.Text.Trim & "', '" & dtStart.Text & "', '" & dtEnd.Text & "')")
                         End If
                     End If
-                    'UserActivity("Added a new academic year '" & txtStart.Text.Trim & "-" & txtEnd.Text.Trim & " " & cbSemester.Text & "'.")
+                    UserActivity("Added a new academic year '" & txtStart.Text.Trim & "-" & txtEnd.Text.Trim & " " & cbSemester.Text & "'.", "LIBRARY ACADEMIC YEAR")
                     frmWait.seconds = 1
                     frmWait.ShowDialog()
                     MsgBox("New academic year has been successfully saved.", vbInformation, "")

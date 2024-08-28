@@ -1,37 +1,11 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports System.ComponentModel
 
-Public Class frmGradesPortalUpload
+Public Class frmGradesRevisionPortalUpload
+
     Dim strPath As String
 
-#Region "Drag Form"
-
-    Public MoveForm As Boolean
-    Public MoveForm_MousePosition As Point
-    Public Sub MoveForm_MouseDown(sender As Object, e As MouseEventArgs) Handles systemSign.MouseDown  ' Add more handles here (Example: PictureBox1.MouseDown)
-        If e.Button = MouseButtons.Left Then
-            MoveForm = True
-            Me.Cursor = Cursors.Default
-            MoveForm_MousePosition = e.Location
-        End If
-    End Sub
-
-    Public Sub MoveForm_MouseMove(sender As Object, e As MouseEventArgs) Handles systemSign.MouseMove  ' Add more handles here (Example: PictureBox1.MouseMove)
-        If MoveForm Then
-            Me.Location = Me.Location + (e.Location - MoveForm_MousePosition)
-        End If
-    End Sub
-
-    Public Sub MoveForm_MouseUp(sender As Object, e As MouseEventArgs) Handles systemSign.MouseUp  ' Add more handles here (Example: PictureBox1.MouseUp)
-        If e.Button = MouseButtons.Left Then
-            MoveForm = False
-            Me.Cursor = Cursors.Default
-        End If
-    End Sub
-
-#End Region
-
-    Private Sub frmGradesPortalUpload_Load(sender As Object, e As EventArgs) Handles Me.Load
+    Private Sub frmGradesRevisionPortalUpload_Load(sender As Object, e As EventArgs) Handles Me.Load
         ApplyHoverEffectToControls(Me)
     End Sub
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
@@ -73,12 +47,12 @@ Public Class frmGradesPortalUpload
 
                     Dim grade As String
                     Try
-                        Dim finalgrade = row.Cells(7).Value.ToString
+                        Dim finalgrade = row.Cells(5).Value.ToString
 
-                        If row.Cells(7).Value Is DBNull.Value Then
+                        If row.Cells(5).Value Is DBNull.Value Then
                             grade = ""
                         ElseIf finalgrade = "D" Then
-                            grade = row.Cells(7).Value
+                            grade = row.Cells(5).Value
                         ElseIf finalgrade >= 94 Then
                             grade = "1.1"
                         ElseIf finalgrade = 93 Then
@@ -127,8 +101,20 @@ Public Class frmGradesPortalUpload
                     Catch ex As Exception
                         grade = ""
                     End Try
+
+                    Dim curGrade As String = ""
+                    Try
+                        cn.Close()
+                        cn.Open()
+                        cm = New MySqlCommand("SELECT sg_grade as Name from tbl_students_grades where sg_student_id = '" & row.Cells(1).Value & "'", cn)
+                        curGrade = cm.ExecuteScalar
+                        cn.Close()
+                    Catch ex As Exception
+                        curGrade = ""
+                    End Try
+
                     i += 1
-                    dgStudentList.Rows.Add(i, row.Cells(0).Value.ToString, row.Cells(2).Value.ToString, row.Cells(10).Value.ToString, row.Cells(1).Value.ToString, "", row.Cells(3).Value.ToString, row.Cells(4).Value.ToString, row.Cells(5).Value.ToString, row.Cells(6).Value.ToString, row.Cells(7).Value.ToString, grade)
+                    dgStudentList.Rows.Add(i, row.Cells(0).Value.ToString, row.Cells(4).Value.ToString, row.Cells(8).Value.ToString, row.Cells(1).Value.ToString, "", curGrade, grade)
                     'dgStudentList.Rows.Add(i, row.Cells(0).Value.ToString, CInt(cbAcademicYear.SelectedValue), row.Cells(7).Value.ToString, row.Cells(1).Value.ToString, "-", "", "", "", "", row.Cells(10).Value.ToString, grade)
                 Next
                 MsgBox("Number of imported rows: " & dgStudentList.RowCount & ".", vbInformation)
@@ -159,6 +145,7 @@ Public Class frmGradesPortalUpload
         End Try
         dgDummyList.DataSource = Nothing
     End Sub
+
 
     Private Sub StudentNamesStartUpdateProcess()
         If Not BackgroundWorker2.IsBusy Then
@@ -217,7 +204,7 @@ Public Class frmGradesPortalUpload
 
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        If MsgBox("Are you sure you want to upload these grades?", vbYesNo + vbQuestion) = vbYes Then
+        If MsgBox("Are you sure you want to upload these revised grades?", vbYesNo + vbQuestion) = vbYes Then
             dgStudentList.AllowUserToDeleteRows = False
             btnImport.Enabled = False
             btnSave.Enabled = False
@@ -248,7 +235,7 @@ Public Class frmGradesPortalUpload
             Dim credits As String
             cn2.Close()
             cn2.Open()
-            cm2 = New MySqlCommand("SELECT t1.cssubject_id, t2.subject_units from tbl_class_schedule t1 JOIN tbl_subject t2 ON t1.cssubject_id = t2.subject_id where class_schedule_id = " & CInt(row.Cells(1).Value) & "", cn2)
+            cm2 = New MySqlCommand("SELECT t1.cssubject_id, t2.subject_units from tbl_class_schedule t1 JOIN tbl_subject t2 ON t1.cssubject_id = t2.subject_id where class_schedule_id = '" & row.Cells(1).Value & "'", cn2)
             dr2 = cm2.ExecuteReader
             dr2.Read()
             If dr2.HasRows Then
@@ -258,7 +245,7 @@ Public Class frmGradesPortalUpload
             End If
             dr2.Close()
             cn2.Close()
-            query2("UPDATE tbl_students_grades set sg_grade_prelim='" & row.Cells(6).Value & "', sg_grade_midterm='" & row.Cells(7).Value & "', sg_grade_semi='" & row.Cells(8).Value & "', sg_grade_final='" & row.Cells(9).Value & "', sg_grade_avg='" & row.Cells(10).Value & "', sg_grade = '" & row.Cells(11).Value & "', sg_credits = if('" & row.Cells(11).Value & "' = 'D' or '" & row.Cells(11).Value & "' = 5,0,'" & credits & "'), sg_grade_addedby = " & str_userid & ", sg_grade_dateadded = CURDATE() where sg_student_id = '" & row.Cells(4).Value & "' and sg_period_id = " & CInt(row.Cells(2).Value) & "' and sg_class_id = " & CInt(row.Cells(1).Value) & " and sg_grade_status = 'Enrolled'")
+            query2("UPDATE tbl_students_grades set sg_grade = '" & row.Cells(7).Value & "', sg_credits = if('" & row.Cells(7).Value & "' = 'D' or '" & row.Cells(7).Value & "' = 5,0,'" & credits & "'), sg_grade_addedby = " & str_userid & ", sg_grade_dateadded = CURDATE() where sg_student_id = '" & row.Cells(4).Value & "' and sg_period_id = " & CInt(row.Cells(2).Value) & " and sg_class_id = " & CInt(row.Cells(1).Value) & "' and sg_grade_status = 'Enrolled'")
         End If
     End Sub
 

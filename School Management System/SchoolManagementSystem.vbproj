@@ -406,6 +406,12 @@
     <Compile Include="Enrollment Module\Registrar\Grading\frmGradesPortalUpload.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Enrollment Module\Registrar\Grading\frmGradesRevisionPortalUpload.Designer.vb">
+      <DependentUpon>frmGradesRevisionPortalUpload.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Enrollment Module\Registrar\Grading\frmGradesRevisionPortalUpload.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Enrollment Module\Registrar\Grading\frmGradingChanges.Designer.vb">
       <DependentUpon>frmGradingChanges.vb</DependentUpon>
     </Compile>
@@ -1843,6 +1849,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Enrollment Module\Registrar\Grading\frmGradesPortalUpload.resx">
       <DependentUpon>frmGradesPortalUpload.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Enrollment Module\Registrar\Grading\frmGradesRevisionPortalUpload.resx">
+      <DependentUpon>frmGradesRevisionPortalUpload.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Enrollment Module\Registrar\Grading\frmGradingChanges.resx">
       <DependentUpon>frmGradingChanges.vb</DependentUpon>

@@ -97,13 +97,14 @@ Public Class frmSupplyPhysicalInventory
         Else
             Dim transno As String = GetTransno()
             For Each row As DataGridViewRow In dgSupplyItemList.Rows
-                query("INSERT INTO tbl_supply_physicalinventory (pino, item_barcode, currspare, sparephysicalcount, spareadjustment, userid) VALUES ('" & transno & "', '" & row.Cells(1).Value & "', " & CInt(row.Cells(5).Value) & ", " & CInt(row.Cells(6).Value) & ", '" & CInt(row.Cells(7).Value) & "', " & str_userid & ")")
+                query("INSERT INTO cfcissmsdb_supply.tbl_supply_physicalinventory (pino, item_barcode, currspare, sparephysicalcount, spareadjustment, userid) VALUES ('" & transno & "', '" & row.Cells(1).Value & "', " & CInt(row.Cells(5).Value) & ", " & CInt(row.Cells(6).Value) & ", '" & CInt(row.Cells(7).Value) & "', " & str_userid & ")")
                 StockLedgerPhysicalRecount(row.Cells(1).Value, 0, 0, "Physical count adjustment.", "Supply Item Stock Adjustment", "Physical Count No." & transno & "", CInt(row.Cells(6).Value))
             Next
             UserActivity("Recounted supply items. Recount No." & transno & "", "SUPPLY PHYSICAL INVENTORY")
 
             frmSupplyPhysicalInventoryRecords.PhysicalCountRecords()
             MsgBox("The recount was successfully recorded.", vbInformation, "")
+            Me.Close()
         End If
     End Sub
 

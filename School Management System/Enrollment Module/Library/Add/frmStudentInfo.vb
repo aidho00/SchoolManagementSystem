@@ -281,28 +281,28 @@
                 toNormalForm()
             Case "Search Course"
                 CourseID = dgCourseList.CurrentRow.Cells(1).Value
-                cbCourse.Text = dgReligionList.CurrentRow.Cells(2).Value
-                txtCourse.Text = dgReligionList.CurrentRow.Cells(3).Value
+                cbCourse.Text = dgCourseList.CurrentRow.Cells(2).Value
+                txtCourse.Text = dgCourseList.CurrentRow.Cells(3).Value
                 toNormalForm()
             Case "Search Scholarship"
                 ScholarshipID = dgScholarshipList.CurrentRow.Cells(1).Value
-                cbScholarship.Text = dgDisabilityList.CurrentRow.Cells(2).Value
+                cbScholarship.Text = dgScholarshipList.CurrentRow.Cells(2).Value
                 toNormalForm()
             Case "Search Last School Attended"
                 LastSchoolID = dgSchoolList.CurrentRow.Cells(1).Value
-                txtLastSchool.Text = dgDisabilityList.CurrentRow.Cells(3).Value
+                txtLastSchool.Text = dgSchoolList.CurrentRow.Cells(3).Value
                 toNormalForm()
             Case "Search Transferred School"
                 TransferredSchoolID = dgSchoolList.CurrentRow.Cells(1).Value
-                txtSchoolTransferred.Text = dgDisabilityList.CurrentRow.Cells(3).Value
+                txtSchoolTransferred.Text = dgSchoolList.CurrentRow.Cells(3).Value
                 toNormalForm()
             Case "Search Primary School"
                 PrimaryID = dgSchoolList.CurrentRow.Cells(1).Value
-                txtPrimary.Text = dgDisabilityList.CurrentRow.Cells(3).Value
+                txtPrimary.Text = dgSchoolList.CurrentRow.Cells(3).Value
                 toNormalForm()
             Case "Search Junior High School"
                 JuniorHighID = dgSchoolList.CurrentRow.Cells(1).Value
-                txtJuniorHigh.Text = dgDisabilityList.CurrentRow.Cells(3).Value
+                txtJuniorHigh.Text = dgSchoolList.CurrentRow.Cells(3).Value
                 toNormalForm()
             Case "Search Senior High School"
                 SeniorHighID = dgSchoolList.CurrentRow.Cells(1).Value
@@ -310,15 +310,15 @@
                 toNormalForm()
             Case "Search College School"
                 CollegeID = dgSchoolList.CurrentRow.Cells(1).Value
-                txtCollege.Text = dgDisabilityList.CurrentRow.Cells(3).Value
+                txtCollege.Text = dgSchoolList.CurrentRow.Cells(3).Value
                 toNormalForm()
             Case "Search Masters School"
                 MastersID = dgSchoolList.CurrentRow.Cells(1).Value
-                txtMasters.Text = dgDisabilityList.CurrentRow.Cells(3).Value
+                txtMasters.Text = dgSchoolList.CurrentRow.Cells(3).Value
                 toNormalForm()
             Case "Search Doctorate School"
                 DoctorateID = dgSchoolList.CurrentRow.Cells(1).Value
-                txtDoctorate.Text = dgDisabilityList.CurrentRow.Cells(3).Value
+                txtDoctorate.Text = dgSchoolList.CurrentRow.Cells(3).Value
                 toNormalForm()
         End Select
     End Sub

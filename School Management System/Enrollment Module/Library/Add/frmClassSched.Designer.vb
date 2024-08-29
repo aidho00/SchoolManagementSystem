@@ -271,9 +271,9 @@ Partial Class frmClassSched
         Me.SearchPanel.Controls.Add(Me.Panel7)
         Me.SearchPanel.Controls.Add(Me.Panel5)
         Me.SearchPanel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SearchPanel.Location = New System.Drawing.Point(0, 49)
+        Me.SearchPanel.Location = New System.Drawing.Point(0, 0)
         Me.SearchPanel.Name = "SearchPanel"
-        Me.SearchPanel.Size = New System.Drawing.Size(828, 469)
+        Me.SearchPanel.Size = New System.Drawing.Size(828, 557)
         Me.SearchPanel.TabIndex = 96
         Me.SearchPanel.Visible = False
         '
@@ -290,7 +290,7 @@ Partial Class frmClassSched
         Me.dgPanel.Location = New System.Drawing.Point(0, 36)
         Me.dgPanel.Name = "dgPanel"
         Me.dgPanel.Padding = New System.Windows.Forms.Padding(7, 0, 0, 0)
-        Me.dgPanel.Size = New System.Drawing.Size(828, 383)
+        Me.dgPanel.Size = New System.Drawing.Size(828, 471)
         Me.dgPanel.TabIndex = 102
         '
         'dgCurList
@@ -330,7 +330,7 @@ Partial Class frmClassSched
         Me.dgCurList.RowHeadersVisible = False
         Me.dgCurList.RowTemplate.Height = 26
         Me.dgCurList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgCurList.Size = New System.Drawing.Size(821, 383)
+        Me.dgCurList.Size = New System.Drawing.Size(821, 471)
         Me.dgCurList.TabIndex = 93
         '
         'DataGridViewTextBoxColumn64
@@ -401,7 +401,7 @@ Partial Class frmClassSched
         Me.dgSectionList.RowHeadersVisible = False
         Me.dgSectionList.RowTemplate.Height = 26
         Me.dgSectionList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgSectionList.Size = New System.Drawing.Size(821, 383)
+        Me.dgSectionList.Size = New System.Drawing.Size(821, 471)
         Me.dgSectionList.TabIndex = 92
         '
         'DataGridViewTextBoxColumn60
@@ -481,7 +481,7 @@ Partial Class frmClassSched
         Me.dgRoomList.RowHeadersVisible = False
         Me.dgRoomList.RowTemplate.Height = 26
         Me.dgRoomList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgRoomList.Size = New System.Drawing.Size(821, 383)
+        Me.dgRoomList.Size = New System.Drawing.Size(821, 471)
         Me.dgRoomList.TabIndex = 91
         '
         'DataGridViewTextBoxColumn54
@@ -568,7 +568,7 @@ Partial Class frmClassSched
         Me.dgEmployeeList.RowHeadersVisible = False
         Me.dgEmployeeList.RowTemplate.Height = 26
         Me.dgEmployeeList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgEmployeeList.Size = New System.Drawing.Size(821, 383)
+        Me.dgEmployeeList.Size = New System.Drawing.Size(821, 471)
         Me.dgEmployeeList.TabIndex = 90
         '
         'DataGridViewTextBoxColumn45
@@ -679,7 +679,7 @@ Partial Class frmClassSched
         Me.dgDaySchedList.RowHeadersVisible = False
         Me.dgDaySchedList.RowTemplate.Height = 26
         Me.dgDaySchedList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgDaySchedList.Size = New System.Drawing.Size(821, 383)
+        Me.dgDaySchedList.Size = New System.Drawing.Size(821, 471)
         Me.dgDaySchedList.TabIndex = 89
         '
         'DataGridViewTextBoxColumn41
@@ -749,7 +749,7 @@ Partial Class frmClassSched
         Me.dgAcadList.RowHeadersVisible = False
         Me.dgAcadList.RowTemplate.Height = 26
         Me.dgAcadList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgAcadList.Size = New System.Drawing.Size(821, 383)
+        Me.dgAcadList.Size = New System.Drawing.Size(821, 471)
         Me.dgAcadList.TabIndex = 87
         '
         'DataGridViewTextBoxColumn28
@@ -844,7 +844,7 @@ Partial Class frmClassSched
         Me.dgSubjectList.RowHeadersVisible = False
         Me.dgSubjectList.RowTemplate.Height = 26
         Me.dgSubjectList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgSubjectList.Size = New System.Drawing.Size(821, 383)
+        Me.dgSubjectList.Size = New System.Drawing.Size(821, 471)
         Me.dgSubjectList.TabIndex = 86
         '
         'DataGridViewTextBoxColumn19
@@ -952,7 +952,7 @@ Partial Class frmClassSched
         '
         Me.Panel5.Controls.Add(Me.btnSelect)
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel5.Location = New System.Drawing.Point(0, 419)
+        Me.Panel5.Location = New System.Drawing.Point(0, 507)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Padding = New System.Windows.Forms.Padding(8)
         Me.Panel5.Size = New System.Drawing.Size(828, 50)
@@ -1945,11 +1945,11 @@ Partial Class frmClassSched
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(828, 557)
         Me.ControlBox = False
-        Me.Controls.Add(Me.SearchPanel)
         Me.Controls.Add(Me.classSchedPanel)
         Me.Controls.Add(Me.Panel8)
         Me.Controls.Add(Me.systemSign)
         Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.SearchPanel)
         Me.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)

@@ -24,6 +24,34 @@ Public Class frmAdjustments
             cn.Close()
             StudentAssessmentID = 0
         End Try
+        If StudentAssessmentID = 0 Then
+            lblAssessmentStatus.Text = "Invalid Assessment."
+            lblAssessmentStatus.ForeColor = Color.Red
+        Else
+            lblAssessmentStatus.Text = "Valid Assessment."
+            lblAssessmentStatus.ForeColor = Color.Green
+        End If
+        Try
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand("SELECT af_id, af_subtotal_amount, af_other_fee FROM tbl_assessment_fee where af_id = " & StudentAssessmentID & "", cn)
+            dr = cm.ExecuteReader
+            dr.Read()
+            If dr.HasRows Then
+                txtAssessmentAmount.Text = Format(CDec(dr.Item("af_subtotal_amount").ToString), "#,##0.00")
+                txtOtherFees.Text = Format(CDec(dr.Item("af_other_fee").ToString), "#,##0.00")
+                txtAssessmentTotal.Text = Format(CDec(dr.Item("af_subtotal_amount").ToString) + CDec(dr.Item("af_other_fee").ToString), "#,##0.00")
+            Else
+            End If
+            dr.Close()
+            cn.Close()
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            txtAssessmentAmount.Text = "0.00"
+            txtOtherFees.Text = "0.00"
+            txtAssessmentTotal.Text = "0.00"
+        End Try
     End Sub
 
     Private Sub btnSearchStudent_Click(sender As Object, e As EventArgs) Handles btnSearchStudent.Click
@@ -110,11 +138,15 @@ Public Class frmAdjustments
         dr = MessageBox.Show("Are you sure you want to update this student adjustment?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If dr = DialogResult.No Then
         Else
-            query("UPDATE tbl_student_paid_account_breakdown SET spab_ass_id= " & StudentAssessmentID & " where spab_stud_id = '" & StudentID & "' and spab_period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
-            query("UPDATE tbl_pre_cashiering SET ps_ass_id = " & StudentAssessmentID & " where student_id = '" & StudentID & "' and period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
-            query("UPDATE tbl_assessment_institutional_discount SET aid_assessment_id = " & StudentAssessmentID & " where aid_student_id = '" & StudentID & "' and aid_period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
-            UserActivity("Changed student " & StudentID & " " & StudentName & " account assessment in Academic Year " & cbAcademicYear.Text & ".", "STUDENT ACCOUNT ADJUSTMENT")
-            MsgBox("Student account assessment successfully changed.", vbInformation)
+            If StudentAssessmentID = 0 Then
+                MsgBox("No assessment selected. Please select an assessment to proceed with setup.", vbCritical)
+            Else
+                query("UPDATE tbl_student_paid_account_breakdown SET spab_ass_id= " & StudentAssessmentID & " where spab_stud_id = '" & StudentID & "' and spab_period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
+                query("UPDATE tbl_pre_cashiering SET ps_ass_id = " & StudentAssessmentID & " where student_id = '" & StudentID & "' and period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
+                query("UPDATE tbl_assessment_institutional_discount SET aid_assessment_id = " & StudentAssessmentID & " where aid_student_id = '" & StudentID & "' and aid_period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
+                UserActivity("Changed student " & StudentID & " " & StudentName & " account assessment in Academic Year " & cbAcademicYear.Text & ".", "STUDENT ACCOUNT ADJUSTMENT")
+                MsgBox("Student account assessment successfully changed.", vbInformation)
+            End If
         End If
     End Sub
 

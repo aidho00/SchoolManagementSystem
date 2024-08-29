@@ -280,6 +280,8 @@ Module Modules
                     Else
                         'CType(ctrl, PictureBox).Image = Nothing
                     End If
+                ElseIf TypeOf ctrl Is Datagridview Then
+                    CType(ctrl, DataGridView).Rows.Clear()
                 ElseIf TypeOf ctrl Is CrystalReportViewer Then
                     CType(ctrl, CrystalReportViewer).ReportSource = Nothing
                     ElseIf TypeOf ctrl Is Panel OrElse TypeOf ctrl Is GroupBox Then

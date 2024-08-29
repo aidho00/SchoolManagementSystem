@@ -211,7 +211,7 @@ Partial Class frmMain
         Me.Label28 = New System.Windows.Forms.Label()
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
         Me.PictureBox9 = New System.Windows.Forms.PictureBox()
-        Me.Label29 = New System.Windows.Forms.Label()
+        Me.lblPendingSupplyRequest = New System.Windows.Forms.Label()
         Me.Label30 = New System.Windows.Forms.Label()
         Me.dashBoardPanel_Payments = New System.Windows.Forms.Panel()
         Me.Panel5 = New System.Windows.Forms.Panel()
@@ -3437,7 +3437,7 @@ Partial Class frmMain
         Me.Panel20.Controls.Add(Me.Label28)
         Me.Panel20.Controls.Add(Me.GroupBox8)
         Me.Panel20.Controls.Add(Me.PictureBox9)
-        Me.Panel20.Controls.Add(Me.Label29)
+        Me.Panel20.Controls.Add(Me.lblPendingSupplyRequest)
         Me.Panel20.Controls.Add(Me.Label30)
         Me.Panel20.Location = New System.Drawing.Point(264, 12)
         Me.Panel20.Name = "Panel20"
@@ -3452,9 +3452,8 @@ Partial Class frmMain
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(150, 33)
         Me.Label28.TabIndex = 12
-        Me.Label28.Text = "-"
+        Me.Label28.Text = "Total number of requesters with unsettled requests."
         Me.Label28.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label28.Visible = False
         '
         'GroupBox8
         '
@@ -3463,7 +3462,6 @@ Partial Class frmMain
         Me.GroupBox8.Size = New System.Drawing.Size(2, 95)
         Me.GroupBox8.TabIndex = 10
         Me.GroupBox8.TabStop = False
-        Me.GroupBox8.Visible = False
         '
         'PictureBox9
         '
@@ -3474,19 +3472,17 @@ Partial Class frmMain
         Me.PictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox9.TabIndex = 4
         Me.PictureBox9.TabStop = False
-        Me.PictureBox9.Visible = False
         '
-        'Label29
+        'lblPendingSupplyRequest
         '
-        Me.Label29.Font = New System.Drawing.Font("Century Gothic", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label29.ForeColor = System.Drawing.Color.White
-        Me.Label29.Location = New System.Drawing.Point(56, 1)
-        Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(142, 41)
-        Me.Label29.TabIndex = 3
-        Me.Label29.Text = "0"
-        Me.Label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label29.Visible = False
+        Me.lblPendingSupplyRequest.Font = New System.Drawing.Font("Century Gothic", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPendingSupplyRequest.ForeColor = System.Drawing.Color.White
+        Me.lblPendingSupplyRequest.Location = New System.Drawing.Point(56, 1)
+        Me.lblPendingSupplyRequest.Name = "lblPendingSupplyRequest"
+        Me.lblPendingSupplyRequest.Size = New System.Drawing.Size(142, 41)
+        Me.lblPendingSupplyRequest.TabIndex = 3
+        Me.lblPendingSupplyRequest.Text = "0"
+        Me.lblPendingSupplyRequest.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Label30
         '
@@ -3494,11 +3490,10 @@ Partial Class frmMain
         Me.Label30.ForeColor = System.Drawing.Color.White
         Me.Label30.Location = New System.Drawing.Point(61, 36)
         Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(121, 24)
+        Me.Label30.Size = New System.Drawing.Size(149, 24)
         Me.Label30.TabIndex = 2
-        Me.Label30.Text = "-"
+        Me.Label30.Text = "PENDING REQUEST(S)"
         Me.Label30.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label30.Visible = False
         '
         'dashBoardPanel_Payments
         '
@@ -4103,9 +4098,9 @@ Partial Class frmMain
         Me.PictureBox13.BackColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(84, Byte), Integer), CType(CType(96, Byte), Integer))
         Me.PictureBox13.Cursor = System.Windows.Forms.Cursors.Hand
         Me.PictureBox13.Image = CType(resources.GetObject("PictureBox13.Image"), System.Drawing.Image)
-        Me.PictureBox13.Location = New System.Drawing.Point(-35, -32)
+        Me.PictureBox13.Location = New System.Drawing.Point(-21, -20)
         Me.PictureBox13.Name = "PictureBox13"
-        Me.PictureBox13.Size = New System.Drawing.Size(188, 159)
+        Me.PictureBox13.Size = New System.Drawing.Size(153, 134)
         Me.PictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox13.TabIndex = 0
         Me.PictureBox13.TabStop = False
@@ -4384,7 +4379,7 @@ Partial Class frmMain
     Friend WithEvents Label28 As Label
     Friend WithEvents GroupBox8 As GroupBox
     Friend WithEvents PictureBox9 As PictureBox
-    Friend WithEvents Label29 As Label
+    Friend WithEvents lblPendingSupplyRequest As Label
     Friend WithEvents Label30 As Label
     Friend WithEvents dashBoardPanel_Payments As Panel
     Friend WithEvents Panel5 As Panel

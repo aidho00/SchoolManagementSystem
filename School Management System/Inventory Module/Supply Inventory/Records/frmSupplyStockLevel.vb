@@ -14,7 +14,7 @@ Public Class frmSupplyStockLevel
             dr = cm.ExecuteReader
             While dr.Read
                 i += 1
-                dgSupplyItemList.Rows.Add(i, dr.Item("Item ID").ToString, dr.Item("Description").ToString, dr.Item("Category").ToString, dr.Item("Sizes").ToString, dr.Item("Stock").ToString, dr.Item("RPoint").ToString)
+                dgSupplyItemList.Rows.Add(i, dr.Item("Item ID").ToString, dr.Item("Description").ToString, dr.Item("Category").ToString, dr.Item("Sizes").ToString, dr.Item("RPoint").ToString, dr.Item("Stock").ToString)
             End While
             dr.Close()
             cn.Close()
@@ -29,7 +29,7 @@ Public Class frmSupplyStockLevel
         Try
             For Each row As DataGridViewRow In dgSupplyItemList.Rows
                 Dim cellValue As Integer = CInt(row.Cells(0).Value)
-                If CInt(row.Cells(5).Value) <= CInt(row.Cells(6).Value) Then
+                If CInt(row.Cells(6).Value) <= CInt(row.Cells(5).Value) Then
                     row.DefaultCellStyle.BackColor = Color.FromArgb(255, 192, 192)
                     row.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 192, 192)
                     row.DefaultCellStyle.SelectionForeColor = Color.Black

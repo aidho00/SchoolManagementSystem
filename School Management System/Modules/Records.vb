@@ -1920,10 +1920,10 @@ Module Records
                     rptdoc.SetParameterValue("sname", frmCashiering.StudentName)
                     rptdoc.SetParameterValue("sid", frmCashiering.StudentID)
                     rptdoc.SetParameterValue("scourse_yrlvl", studentGradeLevel & " - " & studentGradeLevelCourseCode)
-                    rptdoc.SetParameterValue("prelim_date", Format(Convert.ToDateTime(prelim_date), "MM/d/yyyy"))
-                    rptdoc.SetParameterValue("midterm_date", Format(Convert.ToDateTime(midterm_date), "MM/d/yyyy"))
-                    rptdoc.SetParameterValue("semifinal_date", Format(Convert.ToDateTime(semifinal_date), "MM/d/yyyy"))
-                    rptdoc.SetParameterValue("final_date", Format(Convert.ToDateTime(final_date), "MM/d/yyyy"))
+                    rptdoc.SetParameterValue("prelim_date", Format(Convert.ToDateTime(prelim_date), "MMM yyyy"))
+                    rptdoc.SetParameterValue("midterm_date", Format(Convert.ToDateTime(midterm_date), "MMM yyyy"))
+                    rptdoc.SetParameterValue("semifinal_date", Format(Convert.ToDateTime(semifinal_date), "MMM yyyy"))
+                    rptdoc.SetParameterValue("final_date", Format(Convert.ToDateTime(final_date), "MMM yyyy"))
                     rptdoc.SetParameterValue("prelim_balance", Format(balance_prelim, "n2"))
                     rptdoc.SetParameterValue("midterm_balance", Format(balance_midterm, "n2"))
                     rptdoc.SetParameterValue("semifinal_balance", Format(balance_semifinal, "n2"))
@@ -2033,8 +2033,6 @@ Module Records
 
     Public Sub CashieringLoadCurrentAccount()
         Try
-
-
             frmCashiering.dgCurrentAccount.Rows.Clear()
             Dim i As Integer
             Dim sql As String
@@ -2788,7 +2786,12 @@ Module Records
             frmEnrollStudent.dgStudentList.Rows.Clear()
             Dim i As Integer
             Dim sql As String
-            sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course', course_id, course_name, s_course_status, s_status from tbl_pre_cashiering JOIN tbl_student ON tbl_pre_cashiering.student_id = tbl_student.s_id_no JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where tbl_pre_cashiering.period_id = " & CInt(frmEnrollStudent.cbAcad.SelectedValue) & " and (tbl_student.s_ln like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_fn like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_mn like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_id_no like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_yr_lvl like '" & frmEnrollStudent.txtSearch.Text & "%') order by s_id_no asc limit 500"
+
+            If frmMain.formTitle.Text = "Enroll Class Schedule" Then
+                sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course', course_id, course_name, s_course_status, s_status from tbl_pre_cashiering JOIN tbl_student ON tbl_pre_cashiering.student_id = tbl_student.s_id_no JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where tbl_pre_cashiering.period_id = " & CInt(frmEnrollStudent.cbAcad.SelectedValue) & " and tbl_pre_cashiering.student_id NOT IN (SELECT `estudent_id` FROM `tbl_enrollment` WHERE `eperiod_id` = " & CInt(frmEnrollStudent.cbAcad.SelectedValue) & ") and (tbl_student.s_ln like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_fn like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_mn like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_id_no like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_yr_lvl like '" & frmEnrollStudent.txtSearch.Text & "%') order by s_id_no asc limit 500"
+            ElseIf frmMain.formTitle.Text = "Update Class Schedule" Then
+                sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course', course_id, course_name, s_course_status, s_status from tbl_enrollment JOIN tbl_student ON tbl_enrollment.estudent_id = tbl_student.s_id_no JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where tbl_enrollment.eperiod_id = " & CInt(frmEnrollStudent.cbAcad.SelectedValue) & " and (tbl_student.s_ln like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_fn like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_mn like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_id_no like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_yr_lvl like '" & frmEnrollStudent.txtSearch.Text & "%') order by s_id_no asc limit 500"
+            End If
 
             cn.Close()
             cn.Open()

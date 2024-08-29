@@ -11,7 +11,6 @@ Public Class frmSupplyRecords
         ApplyHoverEffectToControls(Me)
         'dtFrom.Value = Now.ToString("yyyy-MM-dd")
         'dtTo.Value = Now.ToString("yyyy-MM-dd")
-        fillCombo("SELECT Locationname, locationnumber from cfcissmsdb_supply.tbl_supply_location", txtboxlocation, "tbl_supply_location", "Locationname", "locationnumber")
 
         'inventoryshow()
         txtboxlocation.SelectedIndex = 0

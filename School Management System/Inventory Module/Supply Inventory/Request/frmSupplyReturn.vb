@@ -1,6 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class frmSupplyReturn
-    Private Sub btn_cancel_Click(sender As Object, e As EventArgs) Handles btn_returnall.Click
+    Private Sub btn_returnall_Click(sender As Object, e As EventArgs) Handles btn_returnall.Click
         Dim dr As DialogResult
         dr = MessageBox.Show("When returning items be sure that only the items to be returned are in the list. Do this by deleting the items that are not included using the delete key on the keyboard after the item row is selected." & Environment.NewLine & "Are you sure you want to return items on this request?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If dr = DialogResult.No Then

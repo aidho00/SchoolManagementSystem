@@ -1,7 +1,40 @@
 ﻿Imports MySql.Data.MySqlClient
 
 Public Class frmSection
+    Dim CourseID As Integer = 0
     Public Shared SectionID As Integer = 0
+    Private Sub btnSearchCourse_Click(sender As Object, e As EventArgs) Handles btnSearchCourse.Click
+        frmTitle.Text = "Search Course"
+        SearchPanel.Visible = True
+        SectionCourseList()
+        HideAllDatagridViewInPanelExcept(dgPanel, dgCourseList)
+    End Sub
+
+    Sub SectionCourseList()
+        Try
+            dgCourseList.Rows.Clear()
+            Dim i As Integer
+            Dim sql As String
+            sql = "select course_id, course_code, course_name, course_major, course_status from tbl_course where (course_code LIKE '%" & txtSearch.Text & "%' or course_name LIKE '%" & txtSearch.Text & "%') order by course_name asc limit 500"
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand(sql, cn)
+            dr = cm.ExecuteReader
+            While dr.Read
+                i += 1
+                dgCourseList.Rows.Add(i, dr.Item("course_id").ToString, dr.Item("course_code").ToString, dr.Item("course_name").ToString, dr.Item("course_major").ToString, dr.Item("course_status").ToString)
+            End While
+            dr.Close()
+            cn.Close()
+
+            dgPanelPadding(dgCourseList, dgPanel)
+        Catch ex As Exception
+            dr.Close()
+            cn.Close()
+            dgCourseList.Rows.Clear()
+        End Try
+    End Sub
+
     Private Sub frmSection_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SetFormIcon(Me)
         ApplyHoverEffectToControls(Me)
@@ -79,5 +112,17 @@ Public Class frmSection
 
     Private Sub cbCourse_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbCourse.SelectedIndexChanged, cbAdviser.SelectedIndexChanged
         txtCourse.Text = ComboCourseName(cbCourse)
+    End Sub
+
+    Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
+        SectionCourseList()
+    End Sub
+
+    Private Sub btnSelect_Click(sender As Object, e As EventArgs) Handles btnSelect.Click
+        CourseID = dgCourseList.CurrentRow.Cells(1).Value
+        cbCourse.Text = dgCourseList.CurrentRow.Cells(2).Value
+        txtCourse.Text = dgCourseList.CurrentRow.Cells(3).Value
+        SearchPanel.Visible = False
+        txtSearch.Text = ""
     End Sub
 End Class

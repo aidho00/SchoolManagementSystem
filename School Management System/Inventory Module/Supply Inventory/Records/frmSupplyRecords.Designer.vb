@@ -22,19 +22,27 @@ Partial Class frmSupplyRecords
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle46 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle47 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle48 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle49 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle50 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle51 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle52 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle53 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle54 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.studentInfoPanel = New System.Windows.Forms.FlowLayoutPanel()
+        Me.btn_return = New System.Windows.Forms.Button()
+        Me.Panel13 = New System.Windows.Forms.Panel()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.lblStudentID = New System.Windows.Forms.Label()
+        Me.Panel12 = New System.Windows.Forms.Panel()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.lblStudentName = New System.Windows.Forms.Label()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Panel10 = New System.Windows.Forms.Panel()
         Me.cb_aps = New System.Windows.Forms.CheckBox()
@@ -74,16 +82,9 @@ Partial Class frmSupplyRecords
         Me.lblReportRequestID = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.lblTotal = New System.Windows.Forms.Label()
-        Me.studentInfoPanel = New System.Windows.Forms.FlowLayoutPanel()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.lblStudentID = New System.Windows.Forms.Label()
-        Me.Panel12 = New System.Windows.Forms.Panel()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.lblStudentName = New System.Windows.Forms.Label()
-        Me.btn_return = New System.Windows.Forms.Button()
-        Me.Panel13 = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
         Me.Panel6.SuspendLayout()
+        Me.studentInfoPanel.SuspendLayout()
         Me.FlowLayoutPanel1.SuspendLayout()
         Me.Panel10.SuspendLayout()
         Me.Panel11.SuspendLayout()
@@ -94,7 +95,6 @@ Partial Class frmSupplyRecords
         CType(Me.dgdeployrecords, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
         Me.Panel7.SuspendLayout()
-        Me.studentInfoPanel.SuspendLayout()
         Me.SuspendLayout()
         '
         'PrintDialog1
@@ -116,6 +116,7 @@ Partial Class frmSupplyRecords
         '
         Me.Panel6.BackColor = System.Drawing.Color.White
         Me.Panel6.Controls.Add(Me.studentInfoPanel)
+        Me.Panel6.Controls.Add(Me.btn_return)
         Me.Panel6.Controls.Add(Me.FlowLayoutPanel1)
         Me.Panel6.Controls.Add(Me.Panel9)
         Me.Panel6.Controls.Add(Me.cb_all)
@@ -140,6 +141,94 @@ Partial Class frmSupplyRecords
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Size = New System.Drawing.Size(235, 737)
         Me.Panel6.TabIndex = 433
+        '
+        'studentInfoPanel
+        '
+        Me.studentInfoPanel.Controls.Add(Me.Panel13)
+        Me.studentInfoPanel.Controls.Add(Me.Label6)
+        Me.studentInfoPanel.Controls.Add(Me.lblStudentID)
+        Me.studentInfoPanel.Controls.Add(Me.Panel12)
+        Me.studentInfoPanel.Controls.Add(Me.Label9)
+        Me.studentInfoPanel.Controls.Add(Me.lblStudentName)
+        Me.studentInfoPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
+        Me.studentInfoPanel.Location = New System.Drawing.Point(10, 248)
+        Me.studentInfoPanel.Name = "studentInfoPanel"
+        Me.studentInfoPanel.Size = New System.Drawing.Size(218, 116)
+        Me.studentInfoPanel.TabIndex = 474
+        '
+        'btn_return
+        '
+        Me.btn_return.BackColor = System.Drawing.Color.White
+        Me.btn_return.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_return.ForeColor = System.Drawing.Color.Black
+        Me.btn_return.Location = New System.Drawing.Point(13, 214)
+        Me.btn_return.Name = "btn_return"
+        Me.btn_return.Size = New System.Drawing.Size(212, 29)
+        Me.btn_return.TabIndex = 432
+        Me.btn_return.Text = "RETURN"
+        Me.btn_return.UseVisualStyleBackColor = True
+        Me.btn_return.Visible = False
+        '
+        'Panel13
+        '
+        Me.Panel13.Location = New System.Drawing.Point(3, 3)
+        Me.Panel13.Name = "Panel13"
+        Me.Panel13.Size = New System.Drawing.Size(19, 1)
+        Me.Panel13.TabIndex = 433
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.BackColor = System.Drawing.Color.White
+        Me.Label6.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.ForeColor = System.Drawing.Color.Black
+        Me.Label6.Location = New System.Drawing.Point(3, 7)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(68, 16)
+        Me.Label6.TabIndex = 4
+        Me.Label6.Text = "Student ID:"
+        '
+        'lblStudentID
+        '
+        Me.lblStudentID.AutoSize = True
+        Me.lblStudentID.BackColor = System.Drawing.Color.White
+        Me.lblStudentID.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblStudentID.ForeColor = System.Drawing.Color.Black
+        Me.lblStudentID.Location = New System.Drawing.Point(3, 23)
+        Me.lblStudentID.Name = "lblStudentID"
+        Me.lblStudentID.Size = New System.Drawing.Size(12, 16)
+        Me.lblStudentID.TabIndex = 5
+        Me.lblStudentID.Text = "-"
+        '
+        'Panel12
+        '
+        Me.Panel12.Location = New System.Drawing.Point(3, 42)
+        Me.Panel12.Name = "Panel12"
+        Me.Panel12.Size = New System.Drawing.Size(19, 1)
+        Me.Panel12.TabIndex = 6
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.BackColor = System.Drawing.Color.White
+        Me.Label9.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.ForeColor = System.Drawing.Color.Black
+        Me.Label9.Location = New System.Drawing.Point(3, 46)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(44, 16)
+        Me.Label9.TabIndex = 7
+        Me.Label9.Text = "Name:"
+        '
+        'lblStudentName
+        '
+        Me.lblStudentName.BackColor = System.Drawing.Color.White
+        Me.lblStudentName.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblStudentName.ForeColor = System.Drawing.Color.Black
+        Me.lblStudentName.Location = New System.Drawing.Point(3, 62)
+        Me.lblStudentName.Name = "lblStudentName"
+        Me.lblStudentName.Size = New System.Drawing.Size(211, 46)
+        Me.lblStudentName.TabIndex = 8
+        Me.lblStudentName.Text = "-"
         '
         'FlowLayoutPanel1
         '
@@ -432,29 +521,29 @@ Partial Class frmSupplyRecords
         '
         Me.dgprintall.AllowUserToAddRows = False
         Me.dgprintall.AllowUserToDeleteRows = False
-        DataGridViewCellStyle46.BackColor = System.Drawing.Color.White
-        Me.dgprintall.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle46
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        Me.dgprintall.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dgprintall.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgprintall.BackgroundColor = System.Drawing.Color.White
         Me.dgprintall.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle47.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
-        DataGridViewCellStyle47.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle47.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle47.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle47.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle47.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgprintall.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle47
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgprintall.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgprintall.ColumnHeadersHeight = 30
         Me.dgprintall.Cursor = System.Windows.Forms.Cursors.Hand
-        DataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle48.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle48.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle48.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle48.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle48.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgprintall.DefaultCellStyle = DataGridViewCellStyle48
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgprintall.DefaultCellStyle = DataGridViewCellStyle3
         Me.dgprintall.EnableHeadersVisualStyles = False
         Me.dgprintall.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
         Me.dgprintall.Location = New System.Drawing.Point(243, 642)
@@ -462,21 +551,21 @@ Partial Class frmSupplyRecords
         Me.dgprintall.Name = "dgprintall"
         Me.dgprintall.ReadOnly = True
         Me.dgprintall.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle49.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
-        DataGridViewCellStyle49.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle49.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle49.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
-        DataGridViewCellStyle49.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle49.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgprintall.RowHeadersDefaultCellStyle = DataGridViewCellStyle49
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgprintall.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.dgprintall.RowHeadersWidth = 25
         Me.dgprintall.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle50.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle50.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle50.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        DataGridViewCellStyle50.SelectionForeColor = System.Drawing.Color.White
-        Me.dgprintall.RowsDefaultCellStyle = DataGridViewCellStyle50
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White
+        Me.dgprintall.RowsDefaultCellStyle = DataGridViewCellStyle5
         Me.dgprintall.RowTemplate.Height = 20
         Me.dgprintall.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.dgprintall.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
@@ -552,21 +641,21 @@ Partial Class frmSupplyRecords
         '
         Me.dgdeployrecords.AllowUserToAddRows = False
         Me.dgdeployrecords.AllowUserToDeleteRows = False
-        DataGridViewCellStyle51.BackColor = System.Drawing.Color.White
-        Me.dgdeployrecords.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle51
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.White
+        Me.dgdeployrecords.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle6
         Me.dgdeployrecords.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.dgdeployrecords.BackgroundColor = System.Drawing.Color.White
         Me.dgdeployrecords.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgdeployrecords.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgdeployrecords.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle52.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle52.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle52.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle52.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle52.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle52.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgdeployrecords.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle52
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgdeployrecords.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.dgdeployrecords.ColumnHeadersHeight = 40
         Me.dgdeployrecords.Cursor = System.Windows.Forms.Cursors.Hand
         Me.dgdeployrecords.Dock = System.Windows.Forms.DockStyle.Fill
@@ -577,22 +666,22 @@ Partial Class frmSupplyRecords
         Me.dgdeployrecords.Name = "dgdeployrecords"
         Me.dgdeployrecords.ReadOnly = True
         Me.dgdeployrecords.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle53.BackColor = System.Drawing.Color.Gray
-        DataGridViewCellStyle53.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle53.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle53.SelectionBackColor = System.Drawing.Color.DimGray
-        DataGridViewCellStyle53.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle53.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgdeployrecords.RowHeadersDefaultCellStyle = DataGridViewCellStyle53
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.Gray
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.DimGray
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgdeployrecords.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
         Me.dgdeployrecords.RowHeadersVisible = False
         Me.dgdeployrecords.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle54.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle54.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle54.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle54.SelectionBackColor = System.Drawing.Color.Silver
-        DataGridViewCellStyle54.SelectionForeColor = System.Drawing.Color.Black
-        Me.dgdeployrecords.RowsDefaultCellStyle = DataGridViewCellStyle54
+        DataGridViewCellStyle9.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Silver
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black
+        Me.dgdeployrecords.RowsDefaultCellStyle = DataGridViewCellStyle9
         Me.dgdeployrecords.RowTemplate.Height = 26
         Me.dgdeployrecords.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.dgdeployrecords.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
@@ -681,95 +770,6 @@ Partial Class frmSupplyRecords
         Me.lblTotal.Text = "0.00"
         Me.lblTotal.TextAlign = System.Drawing.ContentAlignment.BottomRight
         '
-        'studentInfoPanel
-        '
-        Me.studentInfoPanel.Controls.Add(Me.btn_return)
-        Me.studentInfoPanel.Controls.Add(Me.Panel13)
-        Me.studentInfoPanel.Controls.Add(Me.Label6)
-        Me.studentInfoPanel.Controls.Add(Me.lblStudentID)
-        Me.studentInfoPanel.Controls.Add(Me.Panel12)
-        Me.studentInfoPanel.Controls.Add(Me.Label9)
-        Me.studentInfoPanel.Controls.Add(Me.lblStudentName)
-        Me.studentInfoPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
-        Me.studentInfoPanel.Location = New System.Drawing.Point(9, 216)
-        Me.studentInfoPanel.Name = "studentInfoPanel"
-        Me.studentInfoPanel.Size = New System.Drawing.Size(218, 178)
-        Me.studentInfoPanel.TabIndex = 474
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.BackColor = System.Drawing.Color.White
-        Me.Label6.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.ForeColor = System.Drawing.Color.Black
-        Me.Label6.Location = New System.Drawing.Point(3, 42)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(68, 16)
-        Me.Label6.TabIndex = 4
-        Me.Label6.Text = "Student ID:"
-        '
-        'lblStudentID
-        '
-        Me.lblStudentID.AutoSize = True
-        Me.lblStudentID.BackColor = System.Drawing.Color.White
-        Me.lblStudentID.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblStudentID.ForeColor = System.Drawing.Color.Black
-        Me.lblStudentID.Location = New System.Drawing.Point(3, 58)
-        Me.lblStudentID.Name = "lblStudentID"
-        Me.lblStudentID.Size = New System.Drawing.Size(12, 16)
-        Me.lblStudentID.TabIndex = 5
-        Me.lblStudentID.Text = "-"
-        '
-        'Panel12
-        '
-        Me.Panel12.Location = New System.Drawing.Point(3, 77)
-        Me.Panel12.Name = "Panel12"
-        Me.Panel12.Size = New System.Drawing.Size(19, 1)
-        Me.Panel12.TabIndex = 6
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.BackColor = System.Drawing.Color.White
-        Me.Label9.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.ForeColor = System.Drawing.Color.Black
-        Me.Label9.Location = New System.Drawing.Point(3, 81)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(44, 16)
-        Me.Label9.TabIndex = 7
-        Me.Label9.Text = "Name:"
-        '
-        'lblStudentName
-        '
-        Me.lblStudentName.BackColor = System.Drawing.Color.White
-        Me.lblStudentName.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblStudentName.ForeColor = System.Drawing.Color.Black
-        Me.lblStudentName.Location = New System.Drawing.Point(3, 97)
-        Me.lblStudentName.Name = "lblStudentName"
-        Me.lblStudentName.Size = New System.Drawing.Size(211, 63)
-        Me.lblStudentName.TabIndex = 8
-        Me.lblStudentName.Text = "-"
-        '
-        'btn_return
-        '
-        Me.btn_return.BackColor = System.Drawing.Color.White
-        Me.btn_return.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_return.ForeColor = System.Drawing.Color.Black
-        Me.btn_return.Location = New System.Drawing.Point(3, 3)
-        Me.btn_return.Name = "btn_return"
-        Me.btn_return.Size = New System.Drawing.Size(212, 29)
-        Me.btn_return.TabIndex = 432
-        Me.btn_return.Text = "RETURN"
-        Me.btn_return.UseVisualStyleBackColor = True
-        Me.btn_return.Visible = False
-        '
-        'Panel13
-        '
-        Me.Panel13.Location = New System.Drawing.Point(3, 38)
-        Me.Panel13.Name = "Panel13"
-        Me.Panel13.Size = New System.Drawing.Size(19, 1)
-        Me.Panel13.TabIndex = 433
-        '
         'frmSupplyRecords
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
@@ -787,6 +787,8 @@ Partial Class frmSupplyRecords
         Me.Panel1.ResumeLayout(False)
         Me.Panel6.ResumeLayout(False)
         Me.Panel6.PerformLayout()
+        Me.studentInfoPanel.ResumeLayout(False)
+        Me.studentInfoPanel.PerformLayout()
         Me.FlowLayoutPanel1.ResumeLayout(False)
         Me.Panel10.ResumeLayout(False)
         Me.Panel10.PerformLayout()
@@ -800,8 +802,6 @@ Partial Class frmSupplyRecords
         CType(Me.dgdeployrecords, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel3.ResumeLayout(False)
         Me.Panel7.ResumeLayout(False)
-        Me.studentInfoPanel.ResumeLayout(False)
-        Me.studentInfoPanel.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub

@@ -194,17 +194,21 @@ Public Class frmSupplyItemAdd
     End Sub
 
     Private Sub btnSelect_Click(sender As Object, e As EventArgs) Handles btnSelect.Click
-        If frmTitle.Text = "Search Category" Then
-            CategoryID = dgSupplyCategory.CurrentRow.Cells(0).Value
-            cbSupplyCategory.Text = dgSupplyCategory.CurrentRow.Cells(1).Value
-        ElseIf frmTitle.Text = "Search Size" Then
-            SizeID = dgSupplySize.CurrentRow.Cells(0).Value
-            cbSupplySize.Text = dgSupplySize.CurrentRow.Cells(1).Value
-        ElseIf frmTitle.Text = "Search Brand" Then
-            BrandID = dgSupplyBrand.CurrentRow.Cells(0).Value
-            cbSupplyBrand.Text = dgSupplyBrand.CurrentRow.Cells(1).Value
-        End If
-        SearchPanel.Visible = False
+        Try
+            If frmTitle.Text = "Search Category" Then
+                CategoryID = dgSupplyCategory.CurrentRow.Cells(0).Value
+                cbSupplyCategory.Text = dgSupplyCategory.CurrentRow.Cells(1).Value
+            ElseIf frmTitle.Text = "Search Size" Then
+                SizeID = dgSupplySize.CurrentRow.Cells(0).Value
+                cbSupplySize.Text = dgSupplySize.CurrentRow.Cells(1).Value
+            ElseIf frmTitle.Text = "Search Brand" Then
+                BrandID = dgSupplyBrand.CurrentRow.Cells(0).Value
+                cbSupplyBrand.Text = dgSupplyBrand.CurrentRow.Cells(1).Value
+            End If
+            SearchPanel.Visible = False
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click

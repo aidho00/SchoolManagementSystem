@@ -86,6 +86,12 @@ Public Class frmMain
         End If
         dr.Close()
         cn.Close()
+
+        cn.Open()
+        cm = New MySqlCommand("SELECT COUNT(DISTINCT `dlocation`) as CountPending FROM cfcissmsdb_supply.`tbl_supply_deployed` WHERE `dstatus` = 'PENDING'", cn)
+        lblPendingSupplyRequest.Text = CInt(cm.ExecuteScalar)
+        cn.Close()
+
     End Sub
 
 
@@ -1414,6 +1420,7 @@ Public Class frmMain
     End Sub
 
     Private Sub btnDiscount_Click(sender As Object, e As EventArgs) Handles btnDiscount.Click
+        ResetControls(frmDiscount)
         frmDiscount.ShowDialog()
     End Sub
 
@@ -1925,6 +1932,8 @@ Public Class frmMain
     End Sub
 
     Private Sub btnRequests_Click(sender As Object, e As EventArgs) Handles btnRequests.Click
+        fillCombo("SELECT Locationname, locationnumber from cfcissmsdb_supply.tbl_supply_location", frmSupplyRecords.txtboxlocation, "tbl_supply_location", "Locationname", "locationnumber")
+
         OpenForm(frmSupplyRecords, "Supply Requests Record")
         HideAllFormsInPanelExcept(frmSupplyRecords)
         controlsPanel.Visible = False
@@ -1964,6 +1973,7 @@ Public Class frmMain
     End Sub
 
     Private Sub btnItemLedger_Click(sender As Object, e As EventArgs) Handles btnItemLedger.Click
+        ResetControls(frmSupplyItemLedger)
         OpenForm(frmSupplyItemLedger, "Supply Item Ledger")
         HideAllFormsInPanelExcept(frmSupplyItemLedger)
         controlsPanel.Visible = False
@@ -2003,6 +2013,7 @@ Public Class frmMain
     End Sub
 
     Private Sub btnStockRecount_Click(sender As Object, e As EventArgs) Handles btnStockRecount.Click
+        ResetControls(frmSupplyPhysicalInventoryRecords)
         frmSupplyPhysicalInventoryRecords.PhysicalCountRecords()
         OpenForm(frmSupplyPhysicalInventoryRecords, "Supply Items Stock Recount Records")
         HideAllFormsInPanelExcept(frmSupplyPhysicalInventoryRecords)

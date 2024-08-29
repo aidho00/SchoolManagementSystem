@@ -149,7 +149,8 @@ Public Class frmDiscount
 
     Private Sub btnSaveChangeAssessment_Click(sender As Object, e As EventArgs) Handles btnSaveInstitutionalDiscount.Click
         If MsgBox("Are you sure you want to save this grade to the curriculum subject?", vbYesNo + vbQuestion) = vbYes Then
-
+            cn.Close()
+            cn.Open()
             cm = New MySqlCommand("SELECT * FROM tbl_assessment_institutional_discount where aid_student_id = '" & txtStudentID.Text & "' and aid_period_id = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
             Dim sdr2 As MySqlDataReader = cm.ExecuteReader()
             If (sdr2.Read() = True) Then
@@ -161,6 +162,8 @@ Public Class frmDiscount
                 UserActivity("Added student " & txtStudentID.Text & " " & txtStudentName.Text & " institutional discount in Academic Year " & cbAcademicYear.Text & ".", "STUDENT DISCOUNT")
                 MsgBox("Successfully update student institutional discount.", vbInformation)
             End If
+            sdr2.Close()
+            cn.Close()
         Else
 
         End If
@@ -198,5 +201,12 @@ Public Class frmDiscount
                 MsgBox("Successfully cancelled student discount.", vbInformation)
             End If
         End If
+    End Sub
+
+    Private Sub btnDiscountBulk_Click(sender As Object, e As EventArgs) Handles btnDiscountBulk.Click
+        ResetControls(frmSetupInstitutionalDiscount)
+        frmSetupInstitutionalDiscount.txtPercentage.Text = "0.0000000000000000"
+        frmSetupInstitutionalDiscount.lblCourse.Text = ""
+        frmSetupInstitutionalDiscount.ShowDialog()
     End Sub
 End Class

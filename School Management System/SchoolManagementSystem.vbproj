@@ -293,6 +293,12 @@
     <Compile Include="Enrollment Module\Enrollment\Assessment\frmParticularAmountAdd.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Enrollment Module\Enrollment\Assessment\frmSetupInstitutionalDiscount.Designer.vb">
+      <DependentUpon>frmSetupInstitutionalDiscount.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Enrollment Module\Enrollment\Assessment\frmSetupInstitutionalDiscount.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Enrollment Module\Enrollment\Curriculum\frmCurriculum.Designer.vb">
       <DependentUpon>frmCurriculum.vb</DependentUpon>
     </Compile>
@@ -1793,6 +1799,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Enrollment Module\Enrollment\Assessment\frmParticularAmountAdd.resx">
       <DependentUpon>frmParticularAmountAdd.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Enrollment Module\Enrollment\Assessment\frmSetupInstitutionalDiscount.resx">
+      <DependentUpon>frmSetupInstitutionalDiscount.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Enrollment Module\Enrollment\Curriculum\frmCurriculum.resx">
       <DependentUpon>frmCurriculum.vb</DependentUpon>

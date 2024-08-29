@@ -27,16 +27,16 @@ Public Class frmSupplyReturnQTY
                     End With
                     cn.Close()
 
-                    cn.Open()
-                    cm = New MySqlCommand("update cfcissmsdb_supply.tbl_supply_inventory set spare = spare + @1, deployed = deployed - @2 where itembarcode = @3", cn)
-                    With cm
-                        .Parameters.AddWithValue("@1", CInt(txtQty.Text))
-                        .Parameters.AddWithValue("@2", x)
-                        .Parameters.AddWithValue("@3", frmSupplyReturn.dgCart.CurrentRow.Cells(0).Value)
-                        .ExecuteNonQuery()
-                        .Dispose()
-                    End With
-                    cn.Close()
+                    'cn.Open()
+                    'cm = New MySqlCommand("update cfcissmsdb_supply.tbl_supply_inventory set spare = spare + @1, deployed = deployed - @2 where itembarcode = @3", cn)
+                    'With cm
+                    '    .Parameters.AddWithValue("@1", CInt(txtQty.Text))
+                    '    .Parameters.AddWithValue("@2", x)
+                    '    .Parameters.AddWithValue("@3", frmSupplyReturn.dgCart.CurrentRow.Cells(0).Value)
+                    '    .ExecuteNonQuery()
+                    '    .Dispose()
+                    'End With
+                    'cn.Close()
 
                     If frmSupplyRecords.txtboxlocation.Text = "STUDENT" Then
                         cn.Open()
@@ -51,7 +51,7 @@ Public Class frmSupplyReturnQTY
                     Else
                     End If
 
-                    StockLedger(frmSupplyReturn.dgCart.CurrentRow.Cells(0).Value, CInt(txtQty.Text), 0, "Supply Request Item Return", "Stock Return", "REQUEST ID: " & frmSupplyRecords.cbRequests.Text)
+                    StockLedger(frmSupplyReturn.dgCart.CurrentRow.Cells(0).Value, CInt(txtQty.Text), 0, "Supply Request Item Return. Request cancelled.", "Stock Return", "REQUEST ID: " & frmSupplyRecords.cbRequests.Text)
 
                     MsgBox("Item(s) has been successfully returned!", vbInformation)
 
@@ -73,16 +73,16 @@ Public Class frmSupplyReturnQTY
                     End With
                     cn.Close()
 
-                    cn.Open()
-                    cm = New MySqlCommand("update cfcissmsdb_supply.tbl_supply_inventory set spare = spare + @1, deployed = deployed - @2 where itembarcode = @3", cn)
-                    With cm
-                        .Parameters.AddWithValue("@1", CInt(txtQty.Text))
-                        .Parameters.AddWithValue("@2", x)
-                        .Parameters.AddWithValue("@3", frmSupplyReturn.dgCart.CurrentRow.Cells(0).Value)
-                        .ExecuteNonQuery()
-                        .Dispose()
-                    End With
-                    cn.Close()
+                    'cn.Open()
+                    'cm = New MySqlCommand("update cfcissmsdb_supply.tbl_supply_inventory set spare = spare + @1, deployed = deployed - @2 where itembarcode = @3", cn)
+                    'With cm
+                    '    .Parameters.AddWithValue("@1", CInt(txtQty.Text))
+                    '    .Parameters.AddWithValue("@2", x)
+                    '    .Parameters.AddWithValue("@3", frmSupplyReturn.dgCart.CurrentRow.Cells(0).Value)
+                    '    .ExecuteNonQuery()
+                    '    .Dispose()
+                    'End With
+                    'cn.Close()
 
                     If frmSupplyRecords.txtboxlocation.Text = "STUDENT" Then
                         cn.Open()

@@ -356,6 +356,10 @@ Public Class frmClassSched
         e.Handled = True
     End Sub
 
+    Private Sub dgSection_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgSection.CellContentClick
+
+    End Sub
+
     'Private Sub cbSection_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbSection.SelectedIndexChanged
     '    Try
     '        cn.Close()

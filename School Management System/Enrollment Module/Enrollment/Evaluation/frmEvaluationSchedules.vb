@@ -90,9 +90,7 @@ Public Class frmEvaluationSchedules
             Next
 
             If PRFound = True Then
-
                 AddSubjectToList()
-
             Else
                 MsgBox("The student have not yet completed the prerequisite for this subject. The student need to complete " & PRSubject & " before enrolling in this subject.", vbCritical)
             End If
@@ -101,68 +99,97 @@ Public Class frmEvaluationSchedules
     End Sub
 
     Sub AddSubjectToList()
-        Dim population As Integer = 0
-        Dim enrolled As Integer = 0
         cn.Close()
         cn.Open()
-        cm = New MySqlCommand("SELECT population from tbl_class_schedule where class_schedule_id = " & CInt(dgClassSchedList.CurrentRow.Cells(0).Value) & "", cn)
-        population = cm.ExecuteScalar
-        cn.Close()
-        enrolled = CountEnrolled(CInt(dgClassSchedList.CurrentRow.Cells(0).Value))
+        Dim sql As String
+        sql = "SELECT period_enrollment_status FROM tbl_period where period_id  = " & CInt(frmEvaluationSubjects.cbAcademicYear.SelectedValue) & " and period_enrollment_status = 'CLOSE'"
 
-        If enrolled >= population Then
-            MessageBox.Show("Subject ''" & dgClassSchedList.CurrentRow.Cells(1).Value & " - " & dgClassSchedList.CurrentRow.Cells(2).Value & "'' enrolled population is already full.", "", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        cm = New MySqlCommand(sql, cn)
+        dr = cm.ExecuteReader
+        dr.Read()
+        If dr.HasRows Then
+            dr.Close()
+            cn.Close()
+            MsgBox("Enrollment for Academic Year " & frmEvaluationSubjects.cbAcademicYear.Text & " is close. Please contact Registrar to gain access.", vbExclamation)
         Else
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand("SELECT * FROM tbl_students_grades WHERE sg_student_id = '" & frmStudentEvaluation.StudentID & "' and sg_period_id = " & CInt(frmEvaluationSubjects.cbAcademicYear.SelectedValue) & "", cn)
+            dr = cm.ExecuteReader
+            dr.Read()
+            If dr.HasRows Then
+                dr.Close()
+                cn.Close()
+                MsgBox("Student " & frmStudentEvaluation.StudentName & " with ID Number " & frmStudentEvaluation.StudentID & " already has grades or is enrolled for this Academic Year.'", vbCritical)
+            Else
 
-            Dim isFound As Boolean = False
+                dr.Close()
+                cn.Close()
+                Dim population As Integer = 0
+                Dim enrolled As Integer = 0
+                cn.Close()
+                cn.Open()
+                cm = New MySqlCommand("SELECT population from tbl_class_schedule where class_schedule_id = " & CInt(dgClassSchedList.CurrentRow.Cells(0).Value) & "", cn)
+                population = cm.ExecuteScalar
+                cn.Close()
+                enrolled = CountEnrolled(CInt(dgClassSchedList.CurrentRow.Cells(0).Value))
 
-            Dim selectedClassID As Integer
-            Dim selectedDay As String
-            Dim selectedStartTime As String
-            Dim selectedEndTime As String
+                If enrolled >= population Then
+                    MessageBox.Show("Subject ''" & dgClassSchedList.CurrentRow.Cells(1).Value & " - " & dgClassSchedList.CurrentRow.Cells(2).Value & "'' enrolled population is already full.", "", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Else
 
-            selectedClassID = CInt(dgClassSchedList.CurrentRow.Cells(0).Value)
-            selectedDay = dgClassSchedList.CurrentRow.Cells(5).Value.ToString
-            selectedStartTime = dgClassSchedList.CurrentRow.Cells(6).Value.ToString
-            selectedEndTime = dgClassSchedList.CurrentRow.Cells(7).Value.ToString
+                    Dim isFound As Boolean = False
 
-            Dim selectedStartTimeSpan As TimeSpan = ParseTime(selectedStartTime)
-            Dim selectedEndTimeSpan As TimeSpan = ParseTime(selectedEndTime)
+                    Dim selectedClassID As Integer
+                    Dim selectedDay As String
+                    Dim selectedStartTime As String
+                    Dim selectedEndTime As String
 
-            Dim selectedDaysArray As New List(Of String)(selectedDay.Split(New Char() {" "c}, StringSplitOptions.RemoveEmptyEntries))
+                    selectedClassID = CInt(dgClassSchedList.CurrentRow.Cells(0).Value)
+                    selectedDay = dgClassSchedList.CurrentRow.Cells(5).Value.ToString
+                    selectedStartTime = dgClassSchedList.CurrentRow.Cells(6).Value.ToString
+                    selectedEndTime = dgClassSchedList.CurrentRow.Cells(7).Value.ToString
 
-            For Each row As DataGridViewRow In frmEvaluationSubjects.dgClassSchedList.Rows
-                Dim classSubject As String = row.Cells(2).Value.ToString & " - " & row.Cells(3).Value.ToString
-                Dim classID As Integer = CInt(row.Cells(0).Value)
-                Dim day As String = row.Cells(5).Value.ToString()
-                Dim startTime As String = row.Cells(6).Value.ToString()
-                Dim endTime As String = row.Cells(7).Value.ToString()
+                    Dim selectedStartTimeSpan As TimeSpan = ParseTime(selectedStartTime)
+                    Dim selectedEndTimeSpan As TimeSpan = ParseTime(selectedEndTime)
 
-                Dim startTimeSpan As TimeSpan = ParseTime(startTime)
-                Dim endTimeSpan As TimeSpan = ParseTime(endTime)
+                    Dim selectedDaysArray As New List(Of String)(selectedDay.Split(New Char() {" "c}, StringSplitOptions.RemoveEmptyEntries))
 
-                Dim daysArray As New List(Of String)(day.Split(New Char() {" "c}, StringSplitOptions.RemoveEmptyEntries))
+                    For Each row As DataGridViewRow In frmEvaluationSubjects.dgClassSchedList.Rows
+                        Dim classSubject As String = row.Cells(2).Value.ToString & " - " & row.Cells(3).Value.ToString
+                        Dim classID As Integer = CInt(row.Cells(0).Value)
+                        Dim day As String = row.Cells(5).Value.ToString()
+                        Dim startTime As String = row.Cells(6).Value.ToString()
+                        Dim endTime As String = row.Cells(7).Value.ToString()
 
-                If classID = selectedClassID Then
-                    isFound = True
-                    MsgBox("Same Class Schedule Exist. Conflict found with Class: " & classSubject & " on Day(s): " & day & " between Starting Time: " & startTime & " and End Time: " & endTime, vbCritical)
-                    Exit For
-                ElseIf classID <> selectedClassID Then
-                    Dim DaysIntersect = selectedDaysArray.Intersect(daysArray).Count() > 0
-                    If DaysIntersect = True AndAlso ((selectedStartTimeSpan < endTimeSpan AndAlso selectedEndTimeSpan > startTimeSpan) OrElse (startTimeSpan < selectedEndTimeSpan AndAlso endTimeSpan > selectedStartTimeSpan)) Then
-                        isFound = True
-                        MsgBox("Conflict found with Class: " & classSubject & " on Day(s): " & day & " between Starting Time: " & startTime & " and End Time: " & endTime, vbCritical)
-                        Exit For
+                        Dim startTimeSpan As TimeSpan = ParseTime(startTime)
+                        Dim endTimeSpan As TimeSpan = ParseTime(endTime)
+
+                        Dim daysArray As New List(Of String)(day.Split(New Char() {" "c}, StringSplitOptions.RemoveEmptyEntries))
+
+                        If classID = selectedClassID Then
+                            isFound = True
+                            MsgBox("Same Class Schedule Exist. Conflict found with Class: " & classSubject & " on Day(s): " & day & " between Starting Time: " & startTime & " and End Time: " & endTime, vbCritical)
+                            Exit For
+                        ElseIf classID <> selectedClassID Then
+                            Dim DaysIntersect = selectedDaysArray.Intersect(daysArray).Count() > 0
+                            If DaysIntersect = True AndAlso ((selectedStartTimeSpan < endTimeSpan AndAlso selectedEndTimeSpan > startTimeSpan) OrElse (startTimeSpan < selectedEndTimeSpan AndAlso endTimeSpan > selectedStartTimeSpan)) Then
+                                isFound = True
+                                MsgBox("Conflict found with Class: " & classSubject & " on Day(s): " & day & " between Starting Time: " & startTime & " and End Time: " & endTime, vbCritical)
+                                Exit For
+                            End If
+                        End If
+                    Next
+
+                    If isFound = True Then
+                    Else
+                        With dgClassSchedList
+                            frmEvaluationSubjects.dgClassSchedList.Rows.Add(.CurrentRow.Cells(0).Value, .CurrentRow.Cells(1).Value, .CurrentRow.Cells(2).Value, .CurrentRow.Cells(3).Value, .CurrentRow.Cells(4).Value, .CurrentRow.Cells(5).Value, .CurrentRow.Cells(6).Value, .CurrentRow.Cells(7).Value, .CurrentRow.Cells(8).Value, .CurrentRow.Cells(9).Value, .CurrentRow.Cells(10).Value, .CurrentRow.Cells(11).Value, .CurrentRow.Cells(12).Value)
+                        End With
+                        MsgBox("The student is eligible to enroll in this subject. The subject schedule have been added to the list for enrollment.", vbInformation)
                     End If
                 End If
-            Next
 
-            If isFound = True Then
-            Else
-                With dgClassSchedList
-                    frmEvaluationSubjects.dgClassSchedList.Rows.Add(.CurrentRow.Cells(0).Value, .CurrentRow.Cells(1).Value, .CurrentRow.Cells(2).Value, .CurrentRow.Cells(3).Value, .CurrentRow.Cells(4).Value, .CurrentRow.Cells(5).Value, .CurrentRow.Cells(6).Value, .CurrentRow.Cells(7).Value, .CurrentRow.Cells(8).Value, .CurrentRow.Cells(9).Value, .CurrentRow.Cells(10).Value, .CurrentRow.Cells(11).Value, .CurrentRow.Cells(12).Value)
-                End With
-                MsgBox("The student is eligible to enroll in this subject. The subject schedule have been added to the list for enrollment.", vbInformation)
             End If
         End If
     End Sub

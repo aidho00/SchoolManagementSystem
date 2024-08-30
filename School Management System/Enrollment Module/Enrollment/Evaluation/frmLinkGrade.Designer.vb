@@ -81,7 +81,7 @@ Partial Class frmLinkGrade
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(449, 27)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Confirm Link Grade"
+        Me.Label1.Text = "Setup Grade Link"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Panel1
@@ -109,15 +109,15 @@ Partial Class frmLinkGrade
         Me.FlowLayoutPanel2.Controls.Add(Me.btnLink)
         Me.FlowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Right
         Me.FlowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft
-        Me.FlowLayoutPanel2.Location = New System.Drawing.Point(217, 0)
+        Me.FlowLayoutPanel2.Location = New System.Drawing.Point(502, 0)
         Me.FlowLayoutPanel2.Name = "FlowLayoutPanel2"
-        Me.FlowLayoutPanel2.Size = New System.Drawing.Size(415, 39)
+        Me.FlowLayoutPanel2.Size = New System.Drawing.Size(130, 39)
         Me.FlowLayoutPanel2.TabIndex = 2
         '
         'btnLink
         '
         Me.btnLink.FlatAppearance.BorderSize = 0
-        Me.btnLink.Location = New System.Drawing.Point(316, 3)
+        Me.btnLink.Location = New System.Drawing.Point(31, 3)
         Me.btnLink.Name = "btnLink"
         Me.btnLink.Size = New System.Drawing.Size(96, 34)
         Me.btnLink.TabIndex = 2

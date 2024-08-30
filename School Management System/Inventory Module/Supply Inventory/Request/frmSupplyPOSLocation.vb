@@ -27,7 +27,7 @@ Public Class frmSupplyPOSLocation
                     btnTable.BackColor = Color.FromArgb(30, 39, 46)
                     btnTable.ForeColor = Color.White
                 Else
-                    btnTable.Text = dr.Item("location").ToString & " - ₱ " & dr.Item("bill").ToString
+                    btnTable.Text = dr.Item("location").ToString & $"{Environment.NewLine}₱ " & dr.Item("bill").ToString
                     btnTable.BackColor = Color.FromArgb(252, 92, 101)
                     btnTable.ForeColor = Color.Black
                 End If
@@ -52,50 +52,54 @@ Public Class frmSupplyPOSLocation
         End Try
     End Sub
 
+
     Sub GetTable_Click(sender As Object, e As EventArgs)
-        Try
+        Dim isOpen As Boolean = Application.OpenForms.OfType(Of frmSupplyPOS)().Any()
+        If isOpen = True Then
+            Try
+                frmSupplyPOS.lblLocationNumber.Text = "0"
+                frmSupplyPOS.txtItemID.Clear()
+                frmSupplyPOS.lblTotal.Text = "0.00"
+                frmSupplyPOS.lblLocation.Text = ""
+                frmSupplyPOS.lblTransno.Text = ""
+                frmSupplyPOS.dgCart.Rows.Clear()
 
-            frmSupplyPOS.lblLocationNumber.Text = "0"
-            frmSupplyPOS.txtItemID.Clear()
-            frmSupplyPOS.lblTotal.Text = "0.00"
-            frmSupplyPOS.lblLocation.Text = ""
-            frmSupplyPOS.lblTransno.Text = ""
-            frmSupplyPOS.dgCart.Rows.Clear()
+                frmSupplyPOS.stud_gender.Text = ""
+                frmSupplyPOS.stud_id.Text = ""
+                frmSupplyPOS.stud_name.Text = ""
+                frmSupplyPOS.stud_yrcourse.Text = ""
+                frmSupplyPOS.cmb_period.DataSource = Nothing
 
-            frmSupplyPOS.stud_gender.Text = ""
-            frmSupplyPOS.stud_id.Text = ""
-            frmSupplyPOS.stud_name.Text = ""
-            frmSupplyPOS.stud_yrcourse.Text = ""
-            frmSupplyPOS.cmb_period.DataSource = Nothing
+                Dim location As String = sender.tag.ToString
+                Dim locationname As String
+                cn.Close()
+                cn.Open()
+                cm = New MySqlCommand("Select locationname from cfcissmsdb_supply.tbl_supply_location where locationnumber = " & location & "", cn)
+                dr = cm.ExecuteReader
+                While dr.Read
+                    locationname = dr.Item("locationname").ToString
+                End While
+                cn.Close()
 
-            Dim location As String = sender.tag.ToString
-            Dim locationname As String
-            cn.Close()
-            cn.Open()
-            cm = New MySqlCommand("Select locationname from cfcissmsdb_supply.tbl_supply_location where locationnumber = " & location & "", cn)
-            dr = cm.ExecuteReader
-            While dr.Read
-                locationname = dr.Item("locationname").ToString
-            End While
-            cn.Close()
-
-            If frmSupplyPOS.lblLocation.Text = "STUDENT" Then
-                With frmSupplyPOS
-                    .lblLocationNumber.Text = location
-                    .lblLocation.Text = locationname
-                End With
-            Else
-                With frmSupplyPOS
-                    .lblLocationNumber.Text = location
-                    .lblLocation.Text = locationname
-                    .loadCart()
-                End With
-            End If
-            Me.Close()
-        Catch ex As Exception
-            cn.Close()
-            MsgBox(ex.Message, vbCritical)
-        End Try
+                If frmSupplyPOS.lblLocation.Text = "STUDENT" Then
+                    With frmSupplyPOS
+                        .lblLocationNumber.Text = location
+                        .lblLocation.Text = locationname
+                    End With
+                Else
+                    With frmSupplyPOS
+                        .lblLocationNumber.Text = location
+                        .lblLocation.Text = locationname
+                        .loadCart()
+                    End With
+                End If
+                Me.Close()
+            Catch ex As Exception
+                cn.Close()
+                MsgBox(ex.Message, vbCritical)
+            End Try
+        Else
+        End If
     End Sub
 
     Private Sub frmSelectTable_Load(sender As Object, e As EventArgs) Handles MyBase.Load

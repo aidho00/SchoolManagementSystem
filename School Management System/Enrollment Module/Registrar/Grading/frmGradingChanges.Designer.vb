@@ -84,7 +84,7 @@ Partial Class frmGradingChanges
         '
         'Label3
         '
-        Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(33, 115)
         Me.Label3.Name = "Label3"
@@ -94,7 +94,7 @@ Partial Class frmGradingChanges
         '
         'Label2
         '
-        Me.Label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.Label2.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(33, 73)
         Me.Label2.Name = "Label2"
@@ -104,6 +104,7 @@ Partial Class frmGradingChanges
         '
         'cbGrade
         '
+        Me.cbGrade.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.cbGrade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbGrade.FormattingEnabled = True
         Me.cbGrade.Items.AddRange(New Object() {"1.1", "1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.8", "1.9", "2.0", "2.1", "2.2", "2.3", "2.4", "2.5", "2.6", "2.7", "2.8", "2.9", "3.0", "5.0", "D", "W"})
@@ -114,6 +115,7 @@ Partial Class frmGradingChanges
         '
         'cbCredit
         '
+        Me.cbCredit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.cbCredit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbCredit.FormattingEnabled = True
         Me.cbCredit.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"})

@@ -841,7 +841,10 @@ Public Class frmStudentEvaluation
 
             LoadCurriculum()
 
-            frmEvaluationSubjects.Show()
+            'frmEvaluationSubjects.Show()
+            'frmEvaluationSubjects.Hide()
+            OpenFormEvaluation(frmEvaluationSubjects)
+            btnSubjects.Visible = True
             fillCombo("SELECT CONCAT(period_name,'-',period_semester) as 'PERIOD', period_id FROM  tbl_period where period_enrollment_status = 'OPEN' order by  `period_name` desc, `period_semester` desc, `period_status` asc", frmEvaluationSubjects.cbAcademicYear, "tbl_period", "PERIOD", "period_id")
 
 
@@ -858,6 +861,19 @@ Public Class frmStudentEvaluation
             cn.Close()
         End If
     End Sub
+
+    Sub OpenFormEvaluation(frm As Form)
+        If frm.IsHandleCreated Then
+            frm.BringToFront()
+        Else
+            frm.TopLevel = False
+            frmMain.Controls.Add(frm)
+            frm.BringToFront()
+            frm.Show()
+            centerForm(frm)
+        End If
+    End Sub
+
 
     Sub LoadCurriculum()
 
@@ -955,8 +971,8 @@ Public Class frmStudentEvaluation
                 dr = cm.ExecuteReader
                 dr.Read()
                 If dr.HasRows Then
-                    row.Cells(10).Value = dr.Item("Grade").ToString
-                    If row.Cells(10).Value.ToString = "D" Or row.Cells(10).Value.ToString = "W" Then
+                    row.Cells(10).Value = dr.Item("Grade").ToString.Trim
+                    If row.Cells(10).Value.ToString = "D" Or row.Cells(10).Value.ToString = "W" Or row.Cells(10).Value.ToString = "" Then
                         row.Cells(11).Value = "0"
                         row.Cells(14).Value = imageFromPictureBox6
                         row.DefaultCellStyle.ForeColor = Color.Red
@@ -1006,8 +1022,8 @@ Public Class frmStudentEvaluation
                         dr = cm.ExecuteReader
                         dr.Read()
                         If dr.HasRows Then
-                            row.Cells(10).Value = dr.Item("Grade").ToString
-                            If row.Cells(10).Value.ToString = "D" Or row.Cells(10).Value.ToString = "W" Or row.Cells(10).Value.ToString = "5.0" Then
+                            row.Cells(10).Value = dr.Item("Grade").ToString.Trim
+                            If row.Cells(10).Value.ToString = "D" Or row.Cells(10).Value.ToString = "W" Or row.Cells(10).Value.ToString = "5.0" Or row.Cells(10).Value.ToString = "" Then
                                 row.Cells(11).Value = "0"
                                 row.Cells(14).Value = imageFromPictureBox6
                                 row.DefaultCellStyle.ForeColor = Color.Red
@@ -1059,8 +1075,8 @@ Public Class frmStudentEvaluation
                         dr = cm.ExecuteReader
                         dr.Read()
                         If dr.HasRows Then
-                            row.Cells(10).Value = dr.Item("Grade").ToString
-                            If row.Cells(10).Value.ToString = "D" Or row.Cells(10).Value.ToString = "W" Or row.Cells(10).Value.ToString = "5.0" Then
+                            row.Cells(10).Value = dr.Item("Grade").ToString.Trim
+                            If row.Cells(10).Value.ToString = "D" Or row.Cells(10).Value.ToString = "W" Or row.Cells(10).Value.ToString = "5.0" Or row.Cells(10).Value.ToString = "" Then
                                 row.Cells(11).Value = "0"
                                 row.Cells(14).Value = imageFromPictureBox6
                                 row.DefaultCellStyle.ForeColor = Color.Red
@@ -1119,8 +1135,8 @@ Public Class frmStudentEvaluation
 
             dgGradeList.Rows.Clear()
         Dim sql As String
-        sql = "select tbl_students_grades.sg_id as 'ID', (schl_name) as 'SCHOOL', concat(period_name,'-',period_semester) as 'ACADEMIC YEAR', (subject_code) as 'CODE', (subject_description) as 'DESCRIPTION', if(sg_grade REGEXP '^-?[0-9]+$' >  0 and sg_grade < 6 and sg_school_id = '0' , ROUND(sg_grade,1), sg_grade)  as 'GRADES', sg_grade_status as 'STATUS' from tbl_students_grades, tbl_subject, tbl_period, tbl_schools, tbl_course where tbl_students_grades.sg_subject_id = tbl_subject.subject_id and tbl_students_grades.sg_period_id = tbl_period.period_id and tbl_students_grades.sg_course_id = tbl_course.course_id and tbl_students_grades.sg_school_id = tbl_schools.schl_id and sg_student_id = '" & StudentID & "' and sg_grade_visibility NOT IN (1) and sg_grade_status NOT IN ('Pending') and (subject_code LIKE '%" & txtSearch.Text & "%' or subject_description LIKE '%" & txtSearch.Text & "%') and period_semester NOT IN ('Review') order by period_name, period_semester, subject_code asc"
-        cn.Close()
+            sql = "select tbl_students_grades.sg_id as 'ID', (schl_name) as 'SCHOOL', concat(period_name,'-',period_semester) as 'ACADEMIC YEAR', (subject_code) as 'CODE', (subject_description) as 'DESCRIPTION', if(sg_grade REGEXP '^-?[0-9]+$' >  0 and sg_grade < 6 and sg_school_id = '0' , ROUND(sg_grade,1), sg_grade)  as 'GRADES', sg_grade_status as 'STATUS' from tbl_students_grades, tbl_subject, tbl_period, tbl_schools, tbl_course where tbl_students_grades.sg_subject_id = tbl_subject.subject_id and tbl_students_grades.sg_period_id = tbl_period.period_id and tbl_students_grades.sg_course_id = tbl_course.course_id and tbl_students_grades.sg_school_id = tbl_schools.schl_id and sg_student_id = '" & StudentID & "' and sg_grade_visibility NOT IN (1) and sg_grade_status NOT IN ('Pending', 'Enrolled') and (subject_code LIKE '%" & txtSearch.Text & "%' or subject_description LIKE '%" & txtSearch.Text & "%') and period_semester NOT IN ('Review') order by period_name, period_semester, subject_code asc"
+            cn.Close()
         cn.Open()
         cm = New MySqlCommand(sql, cn)
         dr = cm.ExecuteReader
@@ -1257,7 +1273,6 @@ Public Class frmStudentEvaluation
                     cm = New MySqlCommand(sql, cn)
                     dr = cm.ExecuteReader
                     While dr.Read
-
                         frmEvaluationSchedules.dgClassSchedList.Rows.Add(dr.Item("class_schedule_id").ToString, dr.Item("cb_code").ToString, dr.Item("subject_code").ToString, dr.Item("subject_description").ToString, dr.Item("subject_units").ToString, dr.Item("ds_code").ToString, dr.Item("time_start_schedule").ToString, dr.Item("time_end_schedule").ToString, dr.Item("room_code").ToString, dr.Item("Instructor").ToString, dr.Item("population").ToString, "👁", dr.Item("csperiod_id").ToString)
                     End While
                     dr.Close()
@@ -1276,8 +1291,10 @@ Public Class frmStudentEvaluation
         frmEvaluationSubjects.Close()
     End Sub
 
-    Private Sub Label46_Click(sender As Object, e As EventArgs) Handles btnSubjects.Click
-        frmEvaluationSubjects.Show()
-        fillCombo("SELECT CONCAT(period_name,'-',period_semester) as 'PERIOD', period_id FROM  tbl_period where period_enrollment_status = 'OPEN' order by  `period_name` desc, `period_semester` desc, `period_status` asc", frmEvaluationSubjects.cbAcademicYear, "tbl_period", "PERIOD", "period_id")
+    Private Sub btnSubjects_Click(sender As Object, e As EventArgs) Handles btnSubjects.Click
+        OpenFormEvaluation(frmEvaluationSubjects)
+        ''frmEvaluationSubjects.Show()
+        ''fillCombo("SELECT CONCAT(period_name,'-',period_semester) as 'PERIOD', period_id FROM  tbl_period where period_enrollment_status = 'OPEN' order by  `period_name` desc, `period_semester` desc, `period_status` asc", frmEvaluationSubjects.cbAcademicYear, "tbl_period", "PERIOD", "period_id")
     End Sub
+
 End Class

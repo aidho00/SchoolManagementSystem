@@ -92,6 +92,16 @@ Public Class frmMain
         lblPendingSupplyRequest.Text = CInt(cm.ExecuteScalar)
         cn.Close()
 
+        cn.Open()
+        cm = New MySqlCommand("SELECT ifnull(SUM(`dqty`),0) as TotalQTY FROM cfcissmsdb_supply.`tbl_supply_deployed` WHERE `dstatus` = 'APPROVED' and `drdate` = CURDATE()", cn)
+        lblTotalNumberDeployed.Text = CInt(cm.ExecuteScalar)
+        cn.Close()
+
+        cn.Open()
+        cm = New MySqlCommand("SELECT ifnull(SUM(`ditem_price`),0) as TotalAmount FROM cfcissmsdb_supply.`tbl_supply_deployed` WHERE `dstatus` = 'APPROVED' and `drdate` = CURDATE()", cn)
+        lblSupplySales.Text = Format(CDec(cm.ExecuteScalar), "#,##0.00")
+        cn.Close()
+
     End Sub
 
 
@@ -1487,7 +1497,7 @@ Public Class frmMain
     End Sub
 
     Private Sub lblTotalCollected_Click(sender As Object, e As EventArgs) Handles lblTotalCollected.Click
-        LoadTrendGraph()
+        LoadPaymentsCollectedTrendGraph()
         dashboard.Visible = False
         lblDashboardDetailsTitle.Text = "Payments Collected"
         PanelPaymentDetails.BringToFront()
@@ -2271,7 +2281,7 @@ Public Class frmMain
 
 
 
-    Private Sub LoadTrendGraph()
+    Private Sub LoadPaymentsCollectedTrendGraph()
 
         ' SQL Query
         Dim query As String = "SELECT DATE(csh_date) AS `Date`, IFNULL(SUM(csh_total_amount), 0) AS `TotalAmount` " &
@@ -2392,8 +2402,12 @@ Public Class frmMain
             Dim formattedDate As String = xValue.ToString("MMM dd, yyyy")
             Dim formattedAmount As String = Format(CDec(yValue.ToString), "#,##0.00") ' Currency format
 
-            ' Show formatted information about the clicked point
-            MsgBox($"Clearer View{Environment.NewLine}{Environment.NewLine}Date: {formattedDate}{Environment.NewLine}Amount: {formattedAmount}", vbInformation)
+            frmPaymentCollectedPerCashier.lblDate.Text = formattedDate
+            frmPaymentCollectedPerCashier.LoadPayments(xValue.ToString("yyyy/MM/dd"))
+            frmPaymentCollectedPerCashier.lblTotal.Text = "Total: " & Format(CDec(GetColumnSum(frmPaymentCollectedPerCashier.dgPayments, 1)), "#,##0.00")
+            frmPaymentCollectedPerCashier.ShowDialog()
+
+            'PaymentsCollectedBarGraphPerCashierHorizontal(xValue.ToString("yyyy/MM/dd"))
         End If
     End Sub
 
@@ -2411,6 +2425,162 @@ Public Class frmMain
             chart.Cursor = Cursors.Default
         End If
     End Sub
+
+    Private Sub lblSupplySales_Click(sender As Object, e As EventArgs) Handles lblSupplySales.Click
+        LoadSupplySalesTrendGraph()
+        dashboard.Visible = False
+        lblDashboardDetailsTitle.Text = "Supply Requests Sales"
+        PanelPaymentDetails.BringToFront()
+    End Sub
+
+    Private Sub LoadSupplySalesTrendGraph()
+
+        ' SQL Query
+        Dim query As String = "SELECT `drdate` as 'RDate', SUM(`ditem_price`) as TotalAmount FROM cfcissmsdb_supply.`tbl_supply_deployed` WHERE `dstatus` = 'APPROVED' group by `drdate`"
+
+        ' Database connection
+        Dim trendData As New DataTable()
+        Dim command As New MySqlCommand(query, cn)
+        Dim adapter As New MySqlDataAdapter(command)
+        adapter.Fill(trendData)
+
+        ' Create a Chart control
+        Dim chartTrend As New Chart()
+        chartTrend.Name = "chartTrend"
+        chartTrend.Dock = DockStyle.Fill
+        chartTrend.BackColor = Color.White
+        chartTrend.BorderlineDashStyle = ChartDashStyle.Solid
+        chartTrend.BorderlineColor = Color.White
+
+        ' Create and style a ChartArea
+        Dim chartArea As New ChartArea("ChartArea1")
+        chartArea.BackColor = Color.White
+        chartArea.BorderColor = Color.White
+
+        ' Axis X Styling
+        chartArea.AxisX.LabelStyle.ForeColor = Color.Black
+        chartArea.AxisX.LabelStyle.Font = New Font("Century Gothic", 8, FontStyle.Regular)
+        chartArea.AxisX.LineColor = Color.LightGray
+        chartArea.AxisX.MajorGrid.LineColor = Color.White
+        chartArea.AxisX.LabelStyle.Format = "MMM dd, yyyy"
+
+        ' Axis Y Styling
+        chartArea.AxisY.LabelStyle.ForeColor = Color.Black
+        chartArea.AxisY.LabelStyle.Font = New Font("Century Gothic", 8, FontStyle.Regular)
+        chartArea.AxisY.LineColor = Color.LightGray
+        chartArea.AxisY.MajorGrid.LineColor = Color.White
+        chartArea.AxisY.LabelStyle.Format = "n2"
+
+        ' Adjust the X-axis to show all dates
+        chartArea.AxisX.IntervalType = DateTimeIntervalType.Days
+        chartArea.AxisX.Interval = 1 ' Display every day on the X-axis
+        chartArea.AxisX.LabelStyle.Angle = 45 ' Optional: Rotate labels for better readability
+
+
+        chartTrend.ChartAreas.Add(chartArea)
+
+        ' Plotting data to the chart
+        chartTrend.Series.Clear()
+        Dim series As New Series("TotalAmount")
+        series.ChartType = SeriesChartType.Line
+        series.Color = Color.FromArgb(15, 101, 208)
+        series.BorderWidth = 5
+        series.MarkerStyle = MarkerStyle.Circle
+        series.MarkerSize = 10
+        series.MarkerColor = Color.FromArgb(15, 101, 208)
+        series.MarkerBorderColor = Color.White
+        series.IsValueShownAsLabel = True
+        series.LabelForeColor = Color.Black
+        series.LabelFormat = "n2"
+
+        Dim totalSum As Decimal = 0
+        ' Find the last date in the data
+        Dim lastDate As DateTime = trendData.AsEnumerable().Max(Function(row) Convert.ToDateTime(row("RDate")))
+
+        ' Plot points and highlight the marker for the last date
+        For Each row As DataRow In trendData.Rows
+            Dim pointDate As DateTime = Convert.ToDateTime(row("RDate"))
+            Dim amount As Decimal = Convert.ToDecimal(row("TotalAmount"))
+            totalSum += amount ' Calculate total sum
+            Dim index As Integer = series.Points.AddXY(pointDate, amount)
+
+            '' Access the DataPoint object and set the marker color to red for the last date
+            'Dim point As DataPoint = series.Points(index)
+            'If pointDate = lastDate Then
+            '    point.Color = Color.Red
+            '    point.MarkerColor = Color.Red
+            '    'point.Label = $"{point.YValues(0):n2} (Current)" ' Custom label for the last date
+            'Else
+            '    'point.Label = $"{point.YValues(0):n2}"
+            'End If
+        Next
+
+
+        chartTrend.Series.Add(series)
+
+        ' Style the Legend
+        Dim legend As New Legend()
+        legend.Enabled = False  ' This hides the legend
+        chartTrend.Legends.Add(legend)
+
+        ' Add a Title
+        Dim title As New Title("Total Supply Sales Trend - Last 30 Days (" & $"{totalSum:n2}" & ")", Docking.Top, New Font("Century Gothic", 14, FontStyle.Bold), Color.Black)
+        chartTrend.Titles.Add(title)
+
+        ' Add the Chart to the Panel
+        PanelPaymentDetails.Controls.Clear()
+        PanelPaymentDetails.Controls.Add(chartTrend)
+
+        AddHandler chartTrend.MouseClick, AddressOf SupplyChartTrend_MouseClick
+        AddHandler chartTrend.MouseMove, AddressOf SupplyChartTrend_MouseMove
+    End Sub
+
+
+    Private Sub SupplyChartTrend_MouseClick(sender As Object, e As MouseEventArgs)
+        ' Check if the click is on the chart
+        Dim chart As Chart = CType(sender, Chart)
+        Dim result As HitTestResult = chart.HitTest(e.X, e.Y)
+
+        If result.ChartElementType = ChartElementType.DataPoint Then
+            Dim point As DataPoint = CType(result.Object, DataPoint)
+            Dim xValue As DateTime = DateTime.FromOADate(point.XValue)
+            Dim yValue As Object = point.YValues(0)
+
+            ' Format the date and value
+            Dim formattedDate As String = xValue.ToString("MMM dd, yyyy")
+            Dim formattedAmount As String = Format(CDec(yValue.ToString), "#,##0.00") ' Currency format
+
+            ' Show formatted information about the clicked point
+            MsgBox($"Clearer View{Environment.NewLine}{Environment.NewLine}Date: {formattedDate}{Environment.NewLine}Amount: {formattedAmount}", vbInformation)
+        End If
+    End Sub
+
+
+    Private Sub SupplyChartTrend_MouseMove(sender As Object, e As MouseEventArgs)
+        ' Check if the mouse is over a data point
+        Dim chart As Chart = CType(sender, Chart)
+        Dim result As HitTestResult = chart.HitTest(e.X, e.Y)
+
+        If result.ChartElementType = ChartElementType.DataPoint Then
+            ' Change cursor to hand
+            chart.Cursor = Cursors.Hand
+        Else
+            ' Reset cursor to default
+            chart.Cursor = Cursors.Default
+        End If
+    End Sub
+
+    Private Sub lblPendingSupplyRequest_Click(sender As Object, e As EventArgs) Handles lblPendingSupplyRequest.Click
+        With frmSupplyPOSLocation
+            .ToolStripLabel2.Text = "List of Supply Requesters"
+            .ToolStripLabel1.Visible = False
+            .ToolStripTextBox1.Visible = False
+            .ToolStripButton3.Visible = False
+            .loadTable()
+            .ShowDialog()
+        End With
+    End Sub
+
 End Class
 
 Public Class RotatedLabel

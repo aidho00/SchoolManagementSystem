@@ -2,6 +2,9 @@
 
 Public Class frmClassGradeEditor
     Public classID As Integer
+    Public SubjectID As Integer
+    Public SubjectUnits As Integer
+
 
     Private Sub btnSearchClass_Click(sender As Object, e As EventArgs) Handles btnSearchClass.Click
         SearchPanel.Visible = True
@@ -12,7 +15,9 @@ Public Class frmClassGradeEditor
     End Sub
 
     Private Sub btnSelect_Click(sender As Object, e As EventArgs) Handles btnSelect.Click
-        classID = dgClassSchedList.CurrentRow.Cells(1).Value
+        classID = CInt(dgClassSchedList.CurrentRow.Cells(1).Value)
+        SubjectID = CInt(dgClassSchedList.CurrentRow.Cells(15).Value)
+        SubjectUnits = CInt(dgClassSchedList.CurrentRow.Cells(5).Value)
         txtClass.Text = dgClassSchedList.CurrentRow.Cells(2).Value & " | " & dgClassSchedList.CurrentRow.Cells(3).Value & " | " & dgClassSchedList.CurrentRow.Cells(4).Value & " | " & dgClassSchedList.CurrentRow.Cells(6).Value & " - " & dgClassSchedList.CurrentRow.Cells(7).Value & " - " & dgClassSchedList.CurrentRow.Cells(8).Value & " | " & dgClassSchedList.CurrentRow.Cells(10).Value
         SearchPanel.Visible = False
         LoadClassStudentGrades()
@@ -30,6 +35,9 @@ Public Class frmClassGradeEditor
         If colname = "colEdit" Then
             frmGradingChanges.cbGrade.Text = dgStudentList.CurrentRow.Cells(8).Value
             frmGradingChanges.cbCredit.Text = dgStudentList.CurrentRow.Cells(9).Value
+            frmGradingChanges.GradingChangeSubjectID = SubjectID
+            frmGradingChanges.GradingChangeSubjectUnit = SubjectUnits
+            frmGradingChanges.GradingChangeStudentID = dgStudentList.CurrentRow.Cells(1).Value
             frmGradingChanges.ShowDialog()
         End If
     End Sub

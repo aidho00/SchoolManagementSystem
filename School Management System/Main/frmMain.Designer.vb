@@ -195,12 +195,17 @@ Partial Class frmMain
         Me.Label39 = New System.Windows.Forms.Label()
         Me.dashBoardPanel_Supply = New System.Windows.Forms.Panel()
         Me.Panel17 = New System.Windows.Forms.Panel()
-        Me.Panel18 = New System.Windows.Forms.Panel()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.PictureBox7 = New System.Windows.Forms.PictureBox()
-        Me.Label23 = New System.Windows.Forms.Label()
+        Me.lblTotalNumberDeployed = New System.Windows.Forms.Label()
         Me.Label24 = New System.Windows.Forms.Label()
+        Me.Panel18 = New System.Windows.Forms.Panel()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.lblSupplySales = New System.Windows.Forms.Label()
+        Me.GroupBox12 = New System.Windows.Forms.GroupBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.PictureBox14 = New System.Windows.Forms.PictureBox()
         Me.Panel19 = New System.Windows.Forms.Panel()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.GroupBox7 = New System.Windows.Forms.GroupBox()
@@ -229,11 +234,12 @@ Partial Class frmMain
         Me.Label13 = New System.Windows.Forms.Label()
         Me.dashBoardPanel_Enrollment = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.lblAcadYear = New System.Windows.Forms.Label()
-        Me.lblSemester = New System.Windows.Forms.Label()
         Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.lblAcadYear = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.lblSemester = New System.Windows.Forms.Label()
+        Me.PictureBox15 = New System.Windows.Forms.PictureBox()
         Me.Panel10 = New System.Windows.Forms.Panel()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -314,8 +320,10 @@ Partial Class frmMain
         Me.Panel25.SuspendLayout()
         CType(Me.PictureBox12, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.dashBoardPanel_Supply.SuspendLayout()
-        Me.Panel18.SuspendLayout()
+        Me.Panel17.SuspendLayout()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel18.SuspendLayout()
+        CType(Me.PictureBox14, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel19.SuspendLayout()
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel20.SuspendLayout()
@@ -326,7 +334,8 @@ Partial Class frmMain
         Me.Panel9.SuspendLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.dashBoardPanel_Enrollment.SuspendLayout()
-        Me.Panel2.SuspendLayout()
+        Me.Panel6.SuspendLayout()
+        CType(Me.PictureBox15, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel10.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel4.SuspendLayout()
@@ -3290,81 +3299,140 @@ Partial Class frmMain
         '
         Me.Panel17.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel17.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.Panel17.Controls.Add(Me.Label22)
+        Me.Panel17.Controls.Add(Me.GroupBox6)
+        Me.Panel17.Controls.Add(Me.PictureBox7)
+        Me.Panel17.Controls.Add(Me.lblTotalNumberDeployed)
+        Me.Panel17.Controls.Add(Me.Label24)
         Me.Panel17.Location = New System.Drawing.Point(782, 12)
         Me.Panel17.Name = "Panel17"
         Me.Panel17.Size = New System.Drawing.Size(213, 101)
         Me.Panel17.TabIndex = 2
+        '
+        'Label22
+        '
+        Me.Label22.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label22.ForeColor = System.Drawing.Color.White
+        Me.Label22.Location = New System.Drawing.Point(59, 63)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(150, 33)
+        Me.Label22.TabIndex = 22
+        Me.Label22.Text = "Total items distributed to offices and students."
+        Me.Label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'GroupBox6
+        '
+        Me.GroupBox6.Location = New System.Drawing.Point(47, 1)
+        Me.GroupBox6.Name = "GroupBox6"
+        Me.GroupBox6.Size = New System.Drawing.Size(2, 95)
+        Me.GroupBox6.TabIndex = 21
+        Me.GroupBox6.TabStop = False
+        '
+        'PictureBox7
+        '
+        Me.PictureBox7.Image = CType(resources.GetObject("PictureBox7.Image"), System.Drawing.Image)
+        Me.PictureBox7.Location = New System.Drawing.Point(9, 36)
+        Me.PictureBox7.Name = "PictureBox7"
+        Me.PictureBox7.Size = New System.Drawing.Size(30, 30)
+        Me.PictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox7.TabIndex = 20
+        Me.PictureBox7.TabStop = False
+        '
+        'lblTotalNumberDeployed
+        '
+        Me.lblTotalNumberDeployed.Font = New System.Drawing.Font("Century Gothic", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotalNumberDeployed.ForeColor = System.Drawing.Color.White
+        Me.lblTotalNumberDeployed.Location = New System.Drawing.Point(55, 1)
+        Me.lblTotalNumberDeployed.Name = "lblTotalNumberDeployed"
+        Me.lblTotalNumberDeployed.Size = New System.Drawing.Size(142, 41)
+        Me.lblTotalNumberDeployed.TabIndex = 19
+        Me.lblTotalNumberDeployed.Text = "0"
+        Me.lblTotalNumberDeployed.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label24
+        '
+        Me.Label24.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label24.ForeColor = System.Drawing.Color.White
+        Me.Label24.Location = New System.Drawing.Point(60, 36)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(149, 24)
+        Me.Label24.TabIndex = 18
+        Me.Label24.Text = "ITEMS RELEASED TODAY"
+        Me.Label24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Panel18
         '
         Me.Panel18.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel18.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.Panel18.Controls.Add(Me.Label22)
-        Me.Panel18.Controls.Add(Me.GroupBox6)
-        Me.Panel18.Controls.Add(Me.PictureBox7)
-        Me.Panel18.Controls.Add(Me.Label23)
-        Me.Panel18.Controls.Add(Me.Label24)
+        Me.Panel18.Controls.Add(Me.Label7)
+        Me.Panel18.Controls.Add(Me.lblSupplySales)
+        Me.Panel18.Controls.Add(Me.GroupBox12)
+        Me.Panel18.Controls.Add(Me.Label17)
+        Me.Panel18.Controls.Add(Me.PictureBox14)
         Me.Panel18.Location = New System.Drawing.Point(524, 12)
         Me.Panel18.Name = "Panel18"
         Me.Panel18.Size = New System.Drawing.Size(214, 101)
         Me.Panel18.TabIndex = 3
         '
-        'Label22
+        'Label7
         '
-        Me.Label22.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label22.ForeColor = System.Drawing.Color.White
-        Me.Label22.Location = New System.Drawing.Point(60, 63)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(150, 33)
-        Me.Label22.TabIndex = 17
-        Me.Label22.Text = "-"
-        Me.Label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label22.Visible = False
+        Me.Label7.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label7.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.ForeColor = System.Drawing.Color.White
+        Me.Label7.Location = New System.Drawing.Point(60, 63)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(150, 33)
+        Me.Label7.TabIndex = 27
+        Me.Label7.Text = "Total sales from settled/approved supply requests accross all offices and student" &
+    "s."
+        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'GroupBox6
+        'lblSupplySales
         '
-        Me.GroupBox6.Location = New System.Drawing.Point(48, 1)
-        Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(2, 95)
-        Me.GroupBox6.TabIndex = 16
-        Me.GroupBox6.TabStop = False
-        Me.GroupBox6.Visible = False
+        Me.lblSupplySales.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblSupplySales.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.lblSupplySales.Font = New System.Drawing.Font("Century Gothic", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSupplySales.ForeColor = System.Drawing.Color.White
+        Me.lblSupplySales.Location = New System.Drawing.Point(56, 1)
+        Me.lblSupplySales.Name = "lblSupplySales"
+        Me.lblSupplySales.Size = New System.Drawing.Size(154, 41)
+        Me.lblSupplySales.TabIndex = 24
+        Me.lblSupplySales.Text = "0.00"
+        Me.lblSupplySales.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'PictureBox7
+        'GroupBox12
         '
-        Me.PictureBox7.Image = CType(resources.GetObject("PictureBox7.Image"), System.Drawing.Image)
-        Me.PictureBox7.Location = New System.Drawing.Point(10, 36)
-        Me.PictureBox7.Name = "PictureBox7"
-        Me.PictureBox7.Size = New System.Drawing.Size(30, 30)
-        Me.PictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox7.TabIndex = 15
-        Me.PictureBox7.TabStop = False
-        Me.PictureBox7.Visible = False
+        Me.GroupBox12.Location = New System.Drawing.Point(48, 1)
+        Me.GroupBox12.Name = "GroupBox12"
+        Me.GroupBox12.Size = New System.Drawing.Size(2, 95)
+        Me.GroupBox12.TabIndex = 26
+        Me.GroupBox12.TabStop = False
         '
-        'Label23
+        'Label17
         '
-        Me.Label23.Font = New System.Drawing.Font("Century Gothic", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label23.ForeColor = System.Drawing.Color.White
-        Me.Label23.Location = New System.Drawing.Point(56, 1)
-        Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(142, 41)
-        Me.Label23.TabIndex = 14
-        Me.Label23.Text = "0"
-        Me.Label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label23.Visible = False
+        Me.Label17.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label17.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.ForeColor = System.Drawing.Color.White
+        Me.Label17.Location = New System.Drawing.Point(61, 36)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(149, 24)
+        Me.Label17.TabIndex = 23
+        Me.Label17.Text = "SUPPLY SALES TODAY"
+        Me.Label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'Label24
+        'PictureBox14
         '
-        Me.Label24.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label24.ForeColor = System.Drawing.Color.White
-        Me.Label24.Location = New System.Drawing.Point(61, 36)
-        Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(121, 24)
-        Me.Label24.TabIndex = 13
-        Me.Label24.Text = "-"
-        Me.Label24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label24.Visible = False
+        Me.PictureBox14.Image = CType(resources.GetObject("PictureBox14.Image"), System.Drawing.Image)
+        Me.PictureBox14.Location = New System.Drawing.Point(10, 36)
+        Me.PictureBox14.Name = "PictureBox14"
+        Me.PictureBox14.Size = New System.Drawing.Size(30, 30)
+        Me.PictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox14.TabIndex = 25
+        Me.PictureBox14.TabStop = False
         '
         'Panel19
         '
@@ -3670,69 +3738,84 @@ Partial Class frmMain
         '
         Me.Panel2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.Panel2.Controls.Add(Me.GroupBox4)
-        Me.Panel2.Controls.Add(Me.Label8)
-        Me.Panel2.Controls.Add(Me.lblAcadYear)
-        Me.Panel2.Controls.Add(Me.lblSemester)
         Me.Panel2.Location = New System.Drawing.Point(782, 12)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(213, 101)
         Me.Panel2.TabIndex = 2
-        '
-        'GroupBox4
-        '
-        Me.GroupBox4.Location = New System.Drawing.Point(40, 1)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(2, 95)
-        Me.GroupBox4.TabIndex = 13
-        Me.GroupBox4.TabStop = False
-        '
-        'Label8
-        '
-        Me.Label8.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.ForeColor = System.Drawing.Color.White
-        Me.Label8.Location = New System.Drawing.Point(47, 63)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(150, 33)
-        Me.Label8.TabIndex = 12
-        Me.Label8.Text = "Current Active" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Academic Year - Semester"
-        Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'lblAcadYear
-        '
-        Me.lblAcadYear.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lblAcadYear.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.lblAcadYear.Font = New System.Drawing.Font("Century Gothic", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAcadYear.ForeColor = System.Drawing.Color.White
-        Me.lblAcadYear.Location = New System.Drawing.Point(43, 2)
-        Me.lblAcadYear.Name = "lblAcadYear"
-        Me.lblAcadYear.Size = New System.Drawing.Size(179, 39)
-        Me.lblAcadYear.TabIndex = 8
-        Me.lblAcadYear.Text = "0000-0000"
-        Me.lblAcadYear.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'lblSemester
-        '
-        Me.lblSemester.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lblSemester.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.lblSemester.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSemester.ForeColor = System.Drawing.Color.White
-        Me.lblSemester.Location = New System.Drawing.Point(47, 36)
-        Me.lblSemester.Name = "lblSemester"
-        Me.lblSemester.Size = New System.Drawing.Size(121, 24)
-        Me.lblSemester.TabIndex = 6
-        Me.lblSemester.Text = "SEMESTER"
-        Me.lblSemester.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Panel6
         '
         Me.Panel6.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel6.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.Panel6.Controls.Add(Me.lblAcadYear)
+        Me.Panel6.Controls.Add(Me.Label8)
+        Me.Panel6.Controls.Add(Me.GroupBox4)
+        Me.Panel6.Controls.Add(Me.lblSemester)
+        Me.Panel6.Controls.Add(Me.PictureBox15)
         Me.Panel6.Location = New System.Drawing.Point(524, 12)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Size = New System.Drawing.Size(214, 101)
         Me.Panel6.TabIndex = 3
+        '
+        'lblAcadYear
+        '
+        Me.lblAcadYear.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblAcadYear.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.lblAcadYear.Font = New System.Drawing.Font("Century Gothic", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAcadYear.ForeColor = System.Drawing.Color.White
+        Me.lblAcadYear.Location = New System.Drawing.Point(56, 2)
+        Me.lblAcadYear.Name = "lblAcadYear"
+        Me.lblAcadYear.Size = New System.Drawing.Size(175, 39)
+        Me.lblAcadYear.TabIndex = 8
+        Me.lblAcadYear.Text = "0000-0000"
+        Me.lblAcadYear.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label8
+        '
+        Me.Label8.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label8.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.ForeColor = System.Drawing.Color.White
+        Me.Label8.Location = New System.Drawing.Point(63, 63)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(150, 33)
+        Me.Label8.TabIndex = 12
+        Me.Label8.Text = "Current Active" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Academic Year - Semester"
+        Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Location = New System.Drawing.Point(48, 1)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(2, 95)
+        Me.GroupBox4.TabIndex = 21
+        Me.GroupBox4.TabStop = False
+        '
+        'lblSemester
+        '
+        Me.lblSemester.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblSemester.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.lblSemester.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSemester.ForeColor = System.Drawing.Color.White
+        Me.lblSemester.Location = New System.Drawing.Point(63, 36)
+        Me.lblSemester.Name = "lblSemester"
+        Me.lblSemester.Size = New System.Drawing.Size(121, 24)
+        Me.lblSemester.TabIndex = 6
+        Me.lblSemester.Text = "SEMESTER"
+        Me.lblSemester.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'PictureBox15
+        '
+        Me.PictureBox15.Image = CType(resources.GetObject("PictureBox15.Image"), System.Drawing.Image)
+        Me.PictureBox15.Location = New System.Drawing.Point(10, 36)
+        Me.PictureBox15.Name = "PictureBox15"
+        Me.PictureBox15.Size = New System.Drawing.Size(30, 30)
+        Me.PictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox15.TabIndex = 20
+        Me.PictureBox15.TabStop = False
         '
         'Panel10
         '
@@ -4053,9 +4136,9 @@ Partial Class frmMain
         Me.PanelSupplyWarning.BackColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(84, Byte), Integer), CType(CType(96, Byte), Integer))
         Me.PanelSupplyWarning.Controls.Add(Me.warning)
         Me.PanelSupplyWarning.Controls.Add(Me.btnCloseSupplyWarning)
-        Me.PanelSupplyWarning.Location = New System.Drawing.Point(774, 564)
+        Me.PanelSupplyWarning.Location = New System.Drawing.Point(784, 564)
         Me.PanelSupplyWarning.Name = "PanelSupplyWarning"
-        Me.PanelSupplyWarning.Size = New System.Drawing.Size(484, 101)
+        Me.PanelSupplyWarning.Size = New System.Drawing.Size(474, 101)
         Me.PanelSupplyWarning.TabIndex = 25
         Me.PanelSupplyWarning.Visible = False
         '
@@ -4112,7 +4195,7 @@ Partial Class frmMain
         Me.btnCloseSupplyWarning.Dock = System.Windows.Forms.DockStyle.Right
         Me.btnCloseSupplyWarning.Font = New System.Drawing.Font("Corbel", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCloseSupplyWarning.ForeColor = System.Drawing.Color.White
-        Me.btnCloseSupplyWarning.Location = New System.Drawing.Point(462, 0)
+        Me.btnCloseSupplyWarning.Location = New System.Drawing.Point(452, 0)
         Me.btnCloseSupplyWarning.Name = "btnCloseSupplyWarning"
         Me.btnCloseSupplyWarning.Size = New System.Drawing.Size(22, 23)
         Me.btnCloseSupplyWarning.TabIndex = 17
@@ -4186,8 +4269,10 @@ Partial Class frmMain
         Me.Panel25.ResumeLayout(False)
         CType(Me.PictureBox12, System.ComponentModel.ISupportInitialize).EndInit()
         Me.dashBoardPanel_Supply.ResumeLayout(False)
-        Me.Panel18.ResumeLayout(False)
+        Me.Panel17.ResumeLayout(False)
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel18.ResumeLayout(False)
+        CType(Me.PictureBox14, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel19.ResumeLayout(False)
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel20.ResumeLayout(False)
@@ -4198,7 +4283,8 @@ Partial Class frmMain
         Me.Panel9.ResumeLayout(False)
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.dashBoardPanel_Enrollment.ResumeLayout(False)
-        Me.Panel2.ResumeLayout(False)
+        Me.Panel6.ResumeLayout(False)
+        CType(Me.PictureBox15, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel10.ResumeLayout(False)
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel4.ResumeLayout(False)
@@ -4364,11 +4450,6 @@ Partial Class frmMain
     Friend WithEvents dashBoardPanel_Supply As Panel
     Friend WithEvents Panel17 As Panel
     Friend WithEvents Panel18 As Panel
-    Friend WithEvents Label22 As Label
-    Friend WithEvents GroupBox6 As GroupBox
-    Friend WithEvents PictureBox7 As PictureBox
-    Friend WithEvents Label23 As Label
-    Friend WithEvents Label24 As Label
     Friend WithEvents Panel19 As Panel
     Friend WithEvents Label25 As Label
     Friend WithEvents GroupBox7 As GroupBox
@@ -4457,7 +4538,6 @@ Partial Class frmMain
     Friend WithEvents Label12 As Label
     Friend WithEvents Label16 As Label
     Friend WithEvents PictureBox13 As PictureBox
-    Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents btnStockLevel As Button
     Friend WithEvents databasePanel As Panel
     Friend WithEvents btnUserAccounts As Button
@@ -4466,4 +4546,16 @@ Partial Class frmMain
     Friend WithEvents btnDBbackup As Button
     Friend WithEvents btnDatabase As Button
     Friend WithEvents chartTrend As DataVisualization.Charting.Chart
+    Friend WithEvents Label22 As Label
+    Friend WithEvents GroupBox6 As GroupBox
+    Friend WithEvents PictureBox7 As PictureBox
+    Friend WithEvents lblTotalNumberDeployed As Label
+    Friend WithEvents Label24 As Label
+    Friend WithEvents Label7 As Label
+    Friend WithEvents lblSupplySales As Label
+    Friend WithEvents GroupBox12 As GroupBox
+    Friend WithEvents Label17 As Label
+    Friend WithEvents PictureBox14 As PictureBox
+    Friend WithEvents GroupBox4 As GroupBox
+    Friend WithEvents PictureBox15 As PictureBox
 End Class

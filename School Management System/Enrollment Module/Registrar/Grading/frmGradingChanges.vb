@@ -2,6 +2,9 @@
 
 Public Class frmGradingChanges
 
+    Public GradingChangeStudentID As String = ""
+    Public GradingChangeSubjectID As Integer = 0
+    Public GradingChangeSubjectUnit As Integer = 0
 #Region "Drag Form"
 
     Public MoveForm As Boolean
@@ -43,24 +46,35 @@ Public Class frmGradingChanges
     End Sub
 
     Private Sub cbGrade_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbGrade.SelectedIndexChanged
+        Dim CurrID As Integer
+        Dim GradeCutOff As String
+        cn.Close()
+        cn.Open()
+        cm = New MySqlCommand("select sc_curr_id from tbl_students_curriculum where sc_student_id = '" & GradingChangeStudentID & "' and sc_status = 'Ongoing'", cn)
+        dr = cm.ExecuteReader
+        dr.Read()
+        If dr.HasRows Then
+            dr.Close()
+            cn.Close()
+            CurrID = str_userid = CInt(dr.Item("sc_curr_id").ToString)
+
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand("SELECT passingGrade from tbl_curriculum_subjects where curriculumID = " & CurrID & " and subjectID = " & GradingChangeSubjectID & "", cn)
+            GradeCutOff = cm.ExecuteScalar
+            cn.Close()
+        Else
+            dr.Close()
+            cn.Close()
+        End If
+
         If cbGrade.Text = "D" Or cbGrade.Text = "W" Or cbGrade.Text = "5.0" Then
             cbCredit.Text = "0"
         Else
-
-            'cn.Close()
-            'cn.Open()
-            'cm = New MySqlCommand("select * from tbl_students_curriculum where sc_student_id = '" & frmStudentGradeEditor.studentId & "' and sc_status = 'On Hold'", cn)
-            'dr = cm.ExecuteReader
-            'dr.Read()
-            'If dr.HasRows Then
-
-            'Else
-            'End If
-            'dr.Close()
-            'cn.Close()
-
-            If CDbl(cbGrade.Text) <= 3 Then
-                cbCredit.Text = frmStudentGradeEditor.dgStudentGrades.CurrentRow.Cells(5).Value
+            If CDbl(cbGrade.Text) <= CDbl(GradeCutOff) Then
+                cbCredit.Text = GradingChangeSubjectUnit
+            Else
+                cbCredit.Text = "0"
             End If
         End If
     End Sub

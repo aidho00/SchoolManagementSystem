@@ -22,13 +22,30 @@ Partial Class frmSection
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnClose = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.systemSign = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.BasePanel = New System.Windows.Forms.Panel()
+        Me.SearchPanel = New System.Windows.Forms.Panel()
+        Me.SearchBasePanel = New System.Windows.Forms.Panel()
+        Me.dgPanel = New System.Windows.Forms.Panel()
+        Me.dgCourseList = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.txtSearch = New System.Windows.Forms.TextBox()
+        Me.frmTitle = New System.Windows.Forms.Label()
+        Me.Panel10 = New System.Windows.Forms.Panel()
+        Me.btnSelect = New System.Windows.Forms.Button()
+        Me.btnCancelSearch = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.btnSearchCourse = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
@@ -50,28 +67,8 @@ Partial Class frmSection
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtName = New System.Windows.Forms.TextBox()
         Me.txtCode = New System.Windows.Forms.TextBox()
-        Me.SearchPanel = New System.Windows.Forms.Panel()
-        Me.SearchBasePanel = New System.Windows.Forms.Panel()
-        Me.dgPanel = New System.Windows.Forms.Panel()
-        Me.dgCourseList = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Panel7 = New System.Windows.Forms.Panel()
-        Me.Panel8 = New System.Windows.Forms.Panel()
-        Me.txtSearch = New System.Windows.Forms.TextBox()
-        Me.frmTitle = New System.Windows.Forms.Label()
-        Me.Panel10 = New System.Windows.Forms.Panel()
-        Me.btnSelect = New System.Windows.Forms.Button()
-        Me.btnCancelSearch = New System.Windows.Forms.Button()
         Me.systemSign.SuspendLayout()
         Me.BasePanel.SuspendLayout()
-        Me.Panel2.SuspendLayout()
-        Me.Panel3.SuspendLayout()
-        Me.FlowLayoutPanel1.SuspendLayout()
         Me.SearchPanel.SuspendLayout()
         Me.SearchBasePanel.SuspendLayout()
         Me.dgPanel.SuspendLayout()
@@ -79,6 +76,9 @@ Partial Class frmSection
         Me.Panel7.SuspendLayout()
         Me.Panel8.SuspendLayout()
         Me.Panel10.SuspendLayout()
+        Me.Panel2.SuspendLayout()
+        Me.Panel3.SuspendLayout()
+        Me.FlowLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnClose
@@ -139,6 +139,204 @@ Partial Class frmSection
         Me.BasePanel.Name = "BasePanel"
         Me.BasePanel.Size = New System.Drawing.Size(828, 430)
         Me.BasePanel.TabIndex = 13
+        '
+        'SearchPanel
+        '
+        Me.SearchPanel.Controls.Add(Me.SearchBasePanel)
+        Me.SearchPanel.Controls.Add(Me.Panel10)
+        Me.SearchPanel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SearchPanel.Location = New System.Drawing.Point(0, 0)
+        Me.SearchPanel.Name = "SearchPanel"
+        Me.SearchPanel.Size = New System.Drawing.Size(828, 430)
+        Me.SearchPanel.TabIndex = 171
+        Me.SearchPanel.Visible = False
+        '
+        'SearchBasePanel
+        '
+        Me.SearchBasePanel.Controls.Add(Me.dgPanel)
+        Me.SearchBasePanel.Controls.Add(Me.Panel7)
+        Me.SearchBasePanel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SearchBasePanel.Location = New System.Drawing.Point(0, 0)
+        Me.SearchBasePanel.Name = "SearchBasePanel"
+        Me.SearchBasePanel.Size = New System.Drawing.Size(828, 380)
+        Me.SearchBasePanel.TabIndex = 101
+        '
+        'dgPanel
+        '
+        Me.dgPanel.Controls.Add(Me.dgCourseList)
+        Me.dgPanel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgPanel.Location = New System.Drawing.Point(0, 35)
+        Me.dgPanel.Name = "dgPanel"
+        Me.dgPanel.Padding = New System.Windows.Forms.Padding(7, 0, 0, 0)
+        Me.dgPanel.Size = New System.Drawing.Size(828, 345)
+        Me.dgPanel.TabIndex = 104
+        '
+        'dgCourseList
+        '
+        Me.dgCourseList.AllowUserToAddRows = False
+        Me.dgCourseList.AllowUserToDeleteRows = False
+        Me.dgCourseList.BackgroundColor = System.Drawing.Color.White
+        Me.dgCourseList.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgCourseList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.dgCourseList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgCourseList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.dgCourseList.ColumnHeadersHeight = 40
+        Me.dgCourseList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.dgCourseList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10, Me.Column1, Me.Column3})
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgCourseList.DefaultCellStyle = DataGridViewCellStyle2
+        Me.dgCourseList.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgCourseList.EnableHeadersVisualStyles = False
+        Me.dgCourseList.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.dgCourseList.Location = New System.Drawing.Point(7, 0)
+        Me.dgCourseList.Name = "dgCourseList"
+        Me.dgCourseList.ReadOnly = True
+        Me.dgCourseList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.dgCourseList.RowHeadersVisible = False
+        Me.dgCourseList.RowTemplate.Height = 26
+        Me.dgCourseList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgCourseList.Size = New System.Drawing.Size(821, 345)
+        Me.dgCourseList.TabIndex = 93
+        Me.dgCourseList.Visible = False
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.DataGridViewTextBoxColumn3.HeaderText = "#"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        Me.DataGridViewTextBoxColumn3.Width = 39
+        '
+        'DataGridViewTextBoxColumn8
+        '
+        Me.DataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.DataGridViewTextBoxColumn8.HeaderText = "ID"
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        Me.DataGridViewTextBoxColumn8.ReadOnly = True
+        Me.DataGridViewTextBoxColumn8.Visible = False
+        Me.DataGridViewTextBoxColumn8.Width = 44
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        Me.DataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.DataGridViewTextBoxColumn9.HeaderText = "Code"
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        Me.DataGridViewTextBoxColumn9.ReadOnly = True
+        Me.DataGridViewTextBoxColumn9.Width = 62
+        '
+        'DataGridViewTextBoxColumn10
+        '
+        Me.DataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn10.HeaderText = "Description"
+        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
+        Me.DataGridViewTextBoxColumn10.ReadOnly = True
+        '
+        'Column1
+        '
+        Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column1.HeaderText = "Major"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Width = 62
+        '
+        'Column3
+        '
+        Me.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column3.HeaderText = "Status"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        Me.Column3.Visible = False
+        Me.Column3.Width = 66
+        '
+        'Panel7
+        '
+        Me.Panel7.BackColor = System.Drawing.Color.White
+        Me.Panel7.Controls.Add(Me.Panel8)
+        Me.Panel7.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel7.Location = New System.Drawing.Point(0, 0)
+        Me.Panel7.Name = "Panel7"
+        Me.Panel7.Padding = New System.Windows.Forms.Padding(3)
+        Me.Panel7.Size = New System.Drawing.Size(828, 35)
+        Me.Panel7.TabIndex = 103
+        '
+        'Panel8
+        '
+        Me.Panel8.Controls.Add(Me.txtSearch)
+        Me.Panel8.Controls.Add(Me.frmTitle)
+        Me.Panel8.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel8.Location = New System.Drawing.Point(3, 3)
+        Me.Panel8.Name = "Panel8"
+        Me.Panel8.Size = New System.Drawing.Size(822, 29)
+        Me.Panel8.TabIndex = 11
+        '
+        'txtSearch
+        '
+        Me.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txtSearch.Dock = System.Windows.Forms.DockStyle.Left
+        Me.txtSearch.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSearch.Location = New System.Drawing.Point(110, 0)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(297, 27)
+        Me.txtSearch.TabIndex = 355
+        '
+        'frmTitle
+        '
+        Me.frmTitle.Dock = System.Windows.Forms.DockStyle.Left
+        Me.frmTitle.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.frmTitle.ForeColor = System.Drawing.Color.Black
+        Me.frmTitle.Location = New System.Drawing.Point(0, 0)
+        Me.frmTitle.Name = "frmTitle"
+        Me.frmTitle.Size = New System.Drawing.Size(110, 29)
+        Me.frmTitle.TabIndex = 354
+        Me.frmTitle.Text = " Search Course"
+        Me.frmTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Panel10
+        '
+        Me.Panel10.Controls.Add(Me.btnSelect)
+        Me.Panel10.Controls.Add(Me.btnCancelSearch)
+        Me.Panel10.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel10.Location = New System.Drawing.Point(0, 380)
+        Me.Panel10.Name = "Panel10"
+        Me.Panel10.Padding = New System.Windows.Forms.Padding(8)
+        Me.Panel10.Size = New System.Drawing.Size(828, 50)
+        Me.Panel10.TabIndex = 0
+        '
+        'btnSelect
+        '
+        Me.btnSelect.Dock = System.Windows.Forms.DockStyle.Right
+        Me.btnSelect.FlatAppearance.BorderSize = 0
+        Me.btnSelect.Location = New System.Drawing.Point(628, 8)
+        Me.btnSelect.Name = "btnSelect"
+        Me.btnSelect.Size = New System.Drawing.Size(96, 34)
+        Me.btnSelect.TabIndex = 5
+        Me.btnSelect.Text = "SELECT"
+        Me.btnSelect.UseVisualStyleBackColor = True
+        '
+        'btnCancelSearch
+        '
+        Me.btnCancelSearch.Dock = System.Windows.Forms.DockStyle.Right
+        Me.btnCancelSearch.FlatAppearance.BorderSize = 0
+        Me.btnCancelSearch.Location = New System.Drawing.Point(724, 8)
+        Me.btnCancelSearch.Name = "btnCancelSearch"
+        Me.btnCancelSearch.Size = New System.Drawing.Size(96, 34)
+        Me.btnCancelSearch.TabIndex = 4
+        Me.btnCancelSearch.Text = "CANCEL"
+        Me.btnCancelSearch.UseVisualStyleBackColor = True
         '
         'Panel2
         '
@@ -365,204 +563,6 @@ Partial Class frmSection
         Me.txtCode.Size = New System.Drawing.Size(539, 21)
         Me.txtCode.TabIndex = 80
         '
-        'SearchPanel
-        '
-        Me.SearchPanel.Controls.Add(Me.SearchBasePanel)
-        Me.SearchPanel.Controls.Add(Me.Panel10)
-        Me.SearchPanel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SearchPanel.Location = New System.Drawing.Point(0, 0)
-        Me.SearchPanel.Name = "SearchPanel"
-        Me.SearchPanel.Size = New System.Drawing.Size(828, 430)
-        Me.SearchPanel.TabIndex = 171
-        Me.SearchPanel.Visible = False
-        '
-        'SearchBasePanel
-        '
-        Me.SearchBasePanel.Controls.Add(Me.dgPanel)
-        Me.SearchBasePanel.Controls.Add(Me.Panel7)
-        Me.SearchBasePanel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SearchBasePanel.Location = New System.Drawing.Point(0, 0)
-        Me.SearchBasePanel.Name = "SearchBasePanel"
-        Me.SearchBasePanel.Size = New System.Drawing.Size(828, 380)
-        Me.SearchBasePanel.TabIndex = 101
-        '
-        'dgPanel
-        '
-        Me.dgPanel.Controls.Add(Me.dgCourseList)
-        Me.dgPanel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgPanel.Location = New System.Drawing.Point(0, 35)
-        Me.dgPanel.Name = "dgPanel"
-        Me.dgPanel.Padding = New System.Windows.Forms.Padding(7, 0, 0, 0)
-        Me.dgPanel.Size = New System.Drawing.Size(828, 345)
-        Me.dgPanel.TabIndex = 104
-        '
-        'dgCourseList
-        '
-        Me.dgCourseList.AllowUserToAddRows = False
-        Me.dgCourseList.AllowUserToDeleteRows = False
-        Me.dgCourseList.BackgroundColor = System.Drawing.Color.White
-        Me.dgCourseList.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dgCourseList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.dgCourseList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgCourseList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
-        Me.dgCourseList.ColumnHeadersHeight = 40
-        Me.dgCourseList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgCourseList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10, Me.Column1, Me.Column3})
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgCourseList.DefaultCellStyle = DataGridViewCellStyle6
-        Me.dgCourseList.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgCourseList.EnableHeadersVisualStyles = False
-        Me.dgCourseList.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.dgCourseList.Location = New System.Drawing.Point(7, 0)
-        Me.dgCourseList.Name = "dgCourseList"
-        Me.dgCourseList.ReadOnly = True
-        Me.dgCourseList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        Me.dgCourseList.RowHeadersVisible = False
-        Me.dgCourseList.RowTemplate.Height = 26
-        Me.dgCourseList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgCourseList.Size = New System.Drawing.Size(821, 345)
-        Me.dgCourseList.TabIndex = 93
-        Me.dgCourseList.Visible = False
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.DataGridViewTextBoxColumn3.HeaderText = "#"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = True
-        Me.DataGridViewTextBoxColumn3.Width = 39
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.DataGridViewTextBoxColumn8.HeaderText = "ID"
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        Me.DataGridViewTextBoxColumn8.ReadOnly = True
-        Me.DataGridViewTextBoxColumn8.Visible = False
-        Me.DataGridViewTextBoxColumn8.Width = 44
-        '
-        'DataGridViewTextBoxColumn9
-        '
-        Me.DataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.DataGridViewTextBoxColumn9.HeaderText = "Code"
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        Me.DataGridViewTextBoxColumn9.ReadOnly = True
-        Me.DataGridViewTextBoxColumn9.Width = 62
-        '
-        'DataGridViewTextBoxColumn10
-        '
-        Me.DataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn10.HeaderText = "Description"
-        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
-        Me.DataGridViewTextBoxColumn10.ReadOnly = True
-        '
-        'Column1
-        '
-        Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column1.HeaderText = "Major"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.Width = 62
-        '
-        'Column3
-        '
-        Me.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column3.HeaderText = "Status"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        Me.Column3.Visible = False
-        Me.Column3.Width = 66
-        '
-        'Panel7
-        '
-        Me.Panel7.BackColor = System.Drawing.Color.White
-        Me.Panel7.Controls.Add(Me.Panel8)
-        Me.Panel7.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel7.Location = New System.Drawing.Point(0, 0)
-        Me.Panel7.Name = "Panel7"
-        Me.Panel7.Padding = New System.Windows.Forms.Padding(3)
-        Me.Panel7.Size = New System.Drawing.Size(828, 35)
-        Me.Panel7.TabIndex = 103
-        '
-        'Panel8
-        '
-        Me.Panel8.Controls.Add(Me.txtSearch)
-        Me.Panel8.Controls.Add(Me.frmTitle)
-        Me.Panel8.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel8.Location = New System.Drawing.Point(3, 3)
-        Me.Panel8.Name = "Panel8"
-        Me.Panel8.Size = New System.Drawing.Size(822, 29)
-        Me.Panel8.TabIndex = 11
-        '
-        'txtSearch
-        '
-        Me.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtSearch.Dock = System.Windows.Forms.DockStyle.Left
-        Me.txtSearch.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSearch.Location = New System.Drawing.Point(110, 0)
-        Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(297, 27)
-        Me.txtSearch.TabIndex = 355
-        '
-        'frmTitle
-        '
-        Me.frmTitle.Dock = System.Windows.Forms.DockStyle.Left
-        Me.frmTitle.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.frmTitle.ForeColor = System.Drawing.Color.Black
-        Me.frmTitle.Location = New System.Drawing.Point(0, 0)
-        Me.frmTitle.Name = "frmTitle"
-        Me.frmTitle.Size = New System.Drawing.Size(110, 29)
-        Me.frmTitle.TabIndex = 354
-        Me.frmTitle.Text = " Search Course"
-        Me.frmTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'Panel10
-        '
-        Me.Panel10.Controls.Add(Me.btnSelect)
-        Me.Panel10.Controls.Add(Me.btnCancelSearch)
-        Me.Panel10.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel10.Location = New System.Drawing.Point(0, 380)
-        Me.Panel10.Name = "Panel10"
-        Me.Panel10.Padding = New System.Windows.Forms.Padding(8)
-        Me.Panel10.Size = New System.Drawing.Size(828, 50)
-        Me.Panel10.TabIndex = 0
-        '
-        'btnSelect
-        '
-        Me.btnSelect.Dock = System.Windows.Forms.DockStyle.Right
-        Me.btnSelect.FlatAppearance.BorderSize = 0
-        Me.btnSelect.Location = New System.Drawing.Point(628, 8)
-        Me.btnSelect.Name = "btnSelect"
-        Me.btnSelect.Size = New System.Drawing.Size(96, 34)
-        Me.btnSelect.TabIndex = 5
-        Me.btnSelect.Text = "SELECT"
-        Me.btnSelect.UseVisualStyleBackColor = True
-        '
-        'btnCancelSearch
-        '
-        Me.btnCancelSearch.Dock = System.Windows.Forms.DockStyle.Right
-        Me.btnCancelSearch.FlatAppearance.BorderSize = 0
-        Me.btnCancelSearch.Location = New System.Drawing.Point(724, 8)
-        Me.btnCancelSearch.Name = "btnCancelSearch"
-        Me.btnCancelSearch.Size = New System.Drawing.Size(96, 34)
-        Me.btnCancelSearch.TabIndex = 4
-        Me.btnCancelSearch.Text = "CANCEL"
-        Me.btnCancelSearch.UseVisualStyleBackColor = True
-        '
         'frmSection
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
@@ -581,10 +581,6 @@ Partial Class frmSection
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.systemSign.ResumeLayout(False)
         Me.BasePanel.ResumeLayout(False)
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
-        Me.Panel3.ResumeLayout(False)
-        Me.FlowLayoutPanel1.ResumeLayout(False)
         Me.SearchPanel.ResumeLayout(False)
         Me.SearchBasePanel.ResumeLayout(False)
         Me.dgPanel.ResumeLayout(False)
@@ -593,6 +589,10 @@ Partial Class frmSection
         Me.Panel8.ResumeLayout(False)
         Me.Panel8.PerformLayout()
         Me.Panel10.ResumeLayout(False)
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
+        Me.Panel3.ResumeLayout(False)
+        Me.FlowLayoutPanel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub

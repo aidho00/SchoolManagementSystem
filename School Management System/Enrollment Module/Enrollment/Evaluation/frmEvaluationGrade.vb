@@ -44,6 +44,7 @@ Public Class frmEvaluationGrade
         frmStudentEvaluation.StudentGradeList()
         frmStudentEvaluation.dgGradeList.BringToFront()
         frmStudentEvaluation.txtSearch.Select()
+        Me.Close()
     End Sub
 
     Private Sub btnRemove_Click(sender As Object, e As EventArgs) Handles btnRemove.Click

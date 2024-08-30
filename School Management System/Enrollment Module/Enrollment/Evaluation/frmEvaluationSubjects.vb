@@ -3,36 +3,36 @@
 Public Class frmEvaluationSubjects
 
 
-#Region "Drag Form"
+    '#Region "Drag Form"
 
-    Public MoveForm As Boolean
-    Public MoveForm_MousePosition As Point
-    Public Sub MoveForm_MouseDown(sender As Object, e As MouseEventArgs) Handles systemSign.MouseDown, Panel1.MouseDown  ' Add more handles here (Example: PictureBox1.MouseDown)
-        If e.Button = MouseButtons.Left Then
-            MoveForm = True
-            Me.Cursor = Cursors.Default
-            MoveForm_MousePosition = e.Location
-        End If
-    End Sub
+    '    Public MoveForm As Boolean
+    '    Public MoveForm_MousePosition As Point
+    '    Public Sub MoveForm_MouseDown(sender As Object, e As MouseEventArgs) Handles systemSign.MouseDown, Panel1.MouseDown  ' Add more handles here (Example: PictureBox1.MouseDown)
+    '        If e.Button = MouseButtons.Left Then
+    '            MoveForm = True
+    '            Me.Cursor = Cursors.Default
+    '            MoveForm_MousePosition = e.Location
+    '        End If
+    '    End Sub
 
-    Public Sub MoveForm_MouseMove(sender As Object, e As MouseEventArgs) Handles systemSign.MouseMove, Panel1.MouseMove  ' Add more handles here (Example: PictureBox1.MouseMove)
-        If MoveForm Then
-            Me.Location = Me.Location + (e.Location - MoveForm_MousePosition)
-        End If
-    End Sub
+    '    Public Sub MoveForm_MouseMove(sender As Object, e As MouseEventArgs) Handles systemSign.MouseMove, Panel1.MouseMove  ' Add more handles here (Example: PictureBox1.MouseMove)
+    '        If MoveForm Then
+    '            Me.Location = Me.Location + (e.Location - MoveForm_MousePosition)
+    '        End If
+    '    End Sub
 
-    Public Sub MoveForm_MouseUp(sender As Object, e As MouseEventArgs) Handles systemSign.MouseUp, Panel1.MouseUp   ' Add more handles here (Example: PictureBox1.MouseUp)
-        If e.Button = MouseButtons.Left Then
-            MoveForm = False
-            Me.Cursor = Cursors.Default
-        End If
-    End Sub
+    '    Public Sub MoveForm_MouseUp(sender As Object, e As MouseEventArgs) Handles systemSign.MouseUp, Panel1.MouseUp   ' Add more handles here (Example: PictureBox1.MouseUp)
+    '        If e.Button = MouseButtons.Left Then
+    '            MoveForm = False
+    '            Me.Cursor = Cursors.Default
+    '        End If
+    '    End Sub
 
-#End Region
+    '#End Region
 
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
-
+        Me.Hide()
     End Sub
 
     Private Sub btnMinimize_Click(sender As Object, e As EventArgs) Handles btnMinimize.Click
@@ -63,24 +63,43 @@ Public Class frmEvaluationSubjects
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        If MsgBox("Are you sure you want to save this subject schedules for student " & frmStudentEvaluation.txtStudent.Text & " enrollment in academic year " & cbAcademicYear.Text & "?", vbYesNo + vbQuestion) = vbYes Then
-            If dgClassSchedList.RowCount = 0 Then
-                MsgBox("There are no added subject schedules to save.", vbCritical)
-            Else
-                For Each row As DataGridViewRow In dgClassSchedList.Rows
-                    query("INSERT INTO `tbl_enrollment_subjects`(`es_student_id`, `es_class_schedule_id`, `es_period_id`, `es_userid`) VALUES ('" & frmStudentEvaluation.StudentID & "', " & row.Cells(0).Value & ", " & CInt(cbAcademicYear.SelectedValue) & ", " & str_userid & ")")
-                Next
-                UserActivity("Saved subject schedules for student " & frmStudentEvaluation.txtStudent.Text & " enrollment in academic year " & cbAcademicYear.Text & ".", "STUDENT EVALUATION")
+        If frmStudentEvaluation.txtStudent.Text = String.Empty Then
+        Else
 
-                query("UPDATE tbl_students_curriculum SET `sc_total_units` = " & CInt(frmStudentEvaluation.dgStudentCurrList.CurrentRow.Cells(6).Value) & ", `sc_status` = '" & If(CInt(frmStudentEvaluation.dgStudentCurrList.CurrentRow.Cells(5).Value) >= CInt(frmStudentEvaluation.dgStudentCurrList.CurrentRow.Cells(6).Value), "Completed", "Ongoing") & "' WHERE sc_student_id = '" & frmStudentEvaluation.StudentID & "' and scg_curr_id = " & frmStudentEvaluation.currid & "")
-                UserActivity("Updated student " & frmStudentEvaluation.txtStudent.Text & " curriculum " & frmStudentEvaluation.txtCurr.Text & " record. " & frmStudentEvaluation.dgStudentCurrList.CurrentRow.Cells(5).Value & " units earned out of " & frmStudentEvaluation.dgStudentCurrList.CurrentRow.Cells(6).Value & ".", "STUDENT EVALUATION")
-                Dim imageFromPictureBox As Image = frmStudentEvaluation.pic2.Image
-                frmStudentEvaluation.dgStudentCurrList.CurrentRow.Cells(9).Value = imageFromPictureBox
+            If MsgBox("Are you sure you want to save this subject schedules for student " & frmStudentEvaluation.txtStudent.Text & " enrollment in academic year " & cbAcademicYear.Text & "?", vbYesNo + vbQuestion) = vbYes Then
+                If dgClassSchedList.RowCount = 0 Then
+                    MsgBox("There are no added subject schedules to save.", vbCritical)
+                Else
+                    cn.Close()
+                    cn.Open()
+                    cm = New MySqlCommand("SELECT * FROM tbl_students_grades WHERE sg_student_id = '" & frmStudentEvaluation.StudentID & "' and sg_period_id = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
+                    dr = cm.ExecuteReader
+                    dr.Read()
+                    If dr.HasRows Then
+                        dr.Close()
+                        cn.Close()
+                        MsgBox("Student " & frmStudentEvaluation.StudentName & " with ID Number " & frmStudentEvaluation.StudentID & " already has grades or is enrolled for this Academic Year.'", vbCritical)
+                    Else
+                        dr.Close()
+                        cn.Close()
 
-                MsgBox("Successfully saved subject schedules for enrollment.", vbInformation)
-                evaluationSubjects()
-                Me.Close()
+                        For Each row As DataGridViewRow In dgClassSchedList.Rows
+                            query("INSERT INTO `tbl_enrollment_subjects`(`es_student_id`, `es_class_schedule_id`, `es_period_id`, `es_userid`) VALUES ('" & frmStudentEvaluation.StudentID & "', " & row.Cells(0).Value & ", " & CInt(cbAcademicYear.SelectedValue) & ", " & str_userid & ")")
+                        Next
+                        UserActivity("Saved subject schedules for student " & frmStudentEvaluation.txtStudent.Text & " enrollment in academic year " & cbAcademicYear.Text & ".", "STUDENT EVALUATION")
+
+                        query("UPDATE tbl_students_curriculum SET `sc_total_units` = " & CInt(frmStudentEvaluation.dgStudentCurrList.CurrentRow.Cells(6).Value) & ", `sc_status` = '" & If(CInt(frmStudentEvaluation.dgStudentCurrList.CurrentRow.Cells(5).Value) >= CInt(frmStudentEvaluation.dgStudentCurrList.CurrentRow.Cells(6).Value), "Completed", "Ongoing") & "' WHERE sc_student_id = '" & frmStudentEvaluation.StudentID & "' and scg_curr_id = " & frmStudentEvaluation.currid & "")
+                        UserActivity("Updated student " & frmStudentEvaluation.txtStudent.Text & " curriculum " & frmStudentEvaluation.txtCurr.Text & " record. " & frmStudentEvaluation.dgStudentCurrList.CurrentRow.Cells(5).Value & " units earned out of " & frmStudentEvaluation.dgStudentCurrList.CurrentRow.Cells(6).Value & ".", "STUDENT EVALUATION")
+                        Dim imageFromPictureBox As Image = frmStudentEvaluation.pic2.Image
+                        frmStudentEvaluation.dgStudentCurrList.CurrentRow.Cells(9).Value = imageFromPictureBox
+
+                        MsgBox("Successfully saved subject schedules for enrollment.", vbInformation)
+                        evaluationSubjects()
+                        Me.Close()
+                    End If
+                End If
             End If
+
         End If
     End Sub
 

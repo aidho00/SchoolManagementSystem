@@ -9,7 +9,6 @@ Public Class frmEnrollmentEditor
 
     Private Sub YearLevelStudentGradeLevel()
         Try
-
             'cn.Open()
             'cm = New MySqlCommand("SELECT sg_course_id FROM `tbl_students_grades` t1 JOIN tbl_course t2 ON t1.sg_course_id = t2.course_id WHERE `sg_student_id` = '" & studentId & "' and `sg_period_id` = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
             'studentCourseId = cm.ExecuteScalar
@@ -94,8 +93,6 @@ Public Class frmEnrollmentEditor
                     Catch ex As Exception
 
                     End Try
-
-
 
 
                     dg_list.DataSource = Nothing

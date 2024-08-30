@@ -51,6 +51,10 @@ Public Class frmSupplyPOS
 
     Private Sub btnNewOrder_Click(sender As Object, e As EventArgs) Handles btnNewOrder.Click
         With frmSupplyPOSLocation
+            .ToolStripLabel2.Text = "Select Requester"
+            .ToolStripLabel1.Visible = True
+            .ToolStripTextBox1.Visible = True
+            .ToolStripButton3.Visible = True
             .loadTable()
             .ShowDialog()
         End With

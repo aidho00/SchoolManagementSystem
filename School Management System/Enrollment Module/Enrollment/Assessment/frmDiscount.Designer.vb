@@ -22,53 +22,21 @@ Partial Class frmDiscount
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmDiscount))
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.systemSign = New System.Windows.Forms.Panel()
         Me.btnClose = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.BasePanel = New System.Windows.Forms.Panel()
-        Me.BPanel = New System.Windows.Forms.Panel()
-        Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Panel9 = New System.Windows.Forms.Panel()
-        Me.dgDiscounts = New System.Windows.Forms.DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colRemove = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.Panel5 = New System.Windows.Forms.Panel()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.lblTotal = New System.Windows.Forms.Label()
-        Me.btnAddDiscount = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.btnSaveInstitutionalDiscount = New System.Windows.Forms.Button()
-        Me.txtPercentage = New System.Windows.Forms.TextBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Panel16 = New System.Windows.Forms.Panel()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Panel8 = New System.Windows.Forms.Panel()
-        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.btnDiscountBulk = New System.Windows.Forms.Label()
-        Me.FlowLayoutPanel3 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.Panel7 = New System.Windows.Forms.Panel()
-        Me.btnSearchStudent = New System.Windows.Forms.Label()
-        Me.txtYearLevelCourse = New System.Windows.Forms.Label()
-        Me.txtStudentName = New System.Windows.Forms.Label()
-        Me.txtStudentID = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.cbAcademicYear = New System.Windows.Forms.ComboBox()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.SearchPanel = New System.Windows.Forms.Panel()
         Me.dgPanel = New System.Windows.Forms.Panel()
         Me.dgStudentList = New System.Windows.Forms.DataGridView()
@@ -92,10 +60,49 @@ Partial Class frmDiscount
         Me.Panel14 = New System.Windows.Forms.Panel()
         Me.dgadditional = New System.Windows.Forms.DataGridView()
         Me.btnSelect = New System.Windows.Forms.Button()
-        Me.Panel10 = New System.Windows.Forms.Panel()
+        Me.BPanel = New System.Windows.Forms.Panel()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Panel9 = New System.Windows.Forms.Panel()
+        Me.dgDiscounts = New System.Windows.Forms.DataGridView()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colRemove = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.lblTotal = New System.Windows.Forms.Label()
+        Me.btnAddDiscount = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel11 = New System.Windows.Forms.Panel()
+        Me.btnSaveInstitutionalDiscount = New System.Windows.Forms.Button()
+        Me.txtPercentage = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Panel16 = New System.Windows.Forms.Panel()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.btnDiscountBulk = New System.Windows.Forms.Label()
+        Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.FlowLayoutPanel3 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.Panel10 = New System.Windows.Forms.Panel()
+        Me.btnSearchStudent = New System.Windows.Forms.Label()
+        Me.txtYearLevelCourse = New System.Windows.Forms.Label()
+        Me.txtStudentName = New System.Windows.Forms.Label()
+        Me.txtStudentID = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.cbAcademicYear = New System.Windows.Forms.ComboBox()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.systemSign.SuspendLayout()
         Me.BasePanel.SuspendLayout()
+        Me.SearchPanel.SuspendLayout()
+        Me.dgPanel.SuspendLayout()
+        CType(Me.dgStudentList, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel6.SuspendLayout()
+        Me.Panel12.SuspendLayout()
+        Me.Panel14.SuspendLayout()
+        CType(Me.dgadditional, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BPanel.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel9.SuspendLayout()
@@ -106,13 +113,6 @@ Partial Class frmDiscount
         Me.Panel8.SuspendLayout()
         Me.FlowLayoutPanel3.SuspendLayout()
         Me.Panel7.SuspendLayout()
-        Me.SearchPanel.SuspendLayout()
-        Me.dgPanel.SuspendLayout()
-        CType(Me.dgStudentList, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel6.SuspendLayout()
-        Me.Panel12.SuspendLayout()
-        Me.Panel14.SuspendLayout()
-        CType(Me.dgadditional, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'systemSign
@@ -174,353 +174,6 @@ Partial Class frmDiscount
         Me.BasePanel.Size = New System.Drawing.Size(670, 474)
         Me.BasePanel.TabIndex = 27
         '
-        'BPanel
-        '
-        Me.BPanel.Controls.Add(Me.Panel3)
-        Me.BPanel.Controls.Add(Me.Panel2)
-        Me.BPanel.Controls.Add(Me.FlowLayoutPanel3)
-        Me.BPanel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.BPanel.Location = New System.Drawing.Point(0, 0)
-        Me.BPanel.Name = "BPanel"
-        Me.BPanel.Padding = New System.Windows.Forms.Padding(10, 0, 10, 0)
-        Me.BPanel.Size = New System.Drawing.Size(670, 474)
-        Me.BPanel.TabIndex = 28
-        '
-        'Panel3
-        '
-        Me.Panel3.Controls.Add(Me.Panel9)
-        Me.Panel3.Controls.Add(Me.Panel5)
-        Me.Panel3.Controls.Add(Me.Panel4)
-        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel3.Location = New System.Drawing.Point(10, 290)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Padding = New System.Windows.Forms.Padding(0, 10, 0, 0)
-        Me.Panel3.Size = New System.Drawing.Size(650, 184)
-        Me.Panel3.TabIndex = 35
-        '
-        'Panel9
-        '
-        Me.Panel9.Controls.Add(Me.dgDiscounts)
-        Me.Panel9.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel9.Location = New System.Drawing.Point(0, 29)
-        Me.Panel9.Name = "Panel9"
-        Me.Panel9.Padding = New System.Windows.Forms.Padding(10, 0, 10, 0)
-        Me.Panel9.Size = New System.Drawing.Size(650, 136)
-        Me.Panel9.TabIndex = 126
-        '
-        'dgDiscounts
-        '
-        Me.dgDiscounts.AllowUserToAddRows = False
-        Me.dgDiscounts.AllowUserToDeleteRows = False
-        Me.dgDiscounts.BackgroundColor = System.Drawing.Color.White
-        Me.dgDiscounts.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dgDiscounts.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.dgDiscounts.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle10.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgDiscounts.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle10
-        Me.dgDiscounts.ColumnHeadersHeight = 40
-        Me.dgDiscounts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgDiscounts.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.colRemove})
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgDiscounts.DefaultCellStyle = DataGridViewCellStyle11
-        Me.dgDiscounts.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgDiscounts.EnableHeadersVisualStyles = False
-        Me.dgDiscounts.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.dgDiscounts.Location = New System.Drawing.Point(10, 0)
-        Me.dgDiscounts.Name = "dgDiscounts"
-        Me.dgDiscounts.ReadOnly = True
-        Me.dgDiscounts.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        Me.dgDiscounts.RowHeadersVisible = False
-        Me.dgDiscounts.RowTemplate.Height = 26
-        Me.dgDiscounts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgDiscounts.Size = New System.Drawing.Size(630, 136)
-        Me.dgDiscounts.TabIndex = 127
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "ID"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.Visible = False
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Description/Remarks"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Amount"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.ReadOnly = True
-        Me.DataGridViewTextBoxColumn6.Width = 73
-        '
-        'colRemove
-        '
-        Me.colRemove.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.colRemove.HeaderText = ""
-        Me.colRemove.Image = CType(resources.GetObject("colRemove.Image"), System.Drawing.Image)
-        Me.colRemove.Name = "colRemove"
-        Me.colRemove.ReadOnly = True
-        Me.colRemove.Width = 5
-        '
-        'Panel5
-        '
-        Me.Panel5.Controls.Add(Me.Label8)
-        Me.Panel5.Controls.Add(Me.lblTotal)
-        Me.Panel5.Controls.Add(Me.btnAddDiscount)
-        Me.Panel5.Controls.Add(Me.Label5)
-        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel5.Location = New System.Drawing.Point(0, 10)
-        Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(650, 19)
-        Me.Panel5.TabIndex = 125
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Label8.Location = New System.Drawing.Point(577, 0)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(40, 16)
-        Me.Label8.TabIndex = 125
-        Me.Label8.Text = "Total: "
-        '
-        'lblTotal
-        '
-        Me.lblTotal.AutoSize = True
-        Me.lblTotal.Dock = System.Windows.Forms.DockStyle.Right
-        Me.lblTotal.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotal.Location = New System.Drawing.Point(617, 0)
-        Me.lblTotal.Name = "lblTotal"
-        Me.lblTotal.Size = New System.Drawing.Size(33, 16)
-        Me.lblTotal.TabIndex = 124
-        Me.lblTotal.Text = "0.00"
-        '
-        'btnAddDiscount
-        '
-        Me.btnAddDiscount.AutoSize = True
-        Me.btnAddDiscount.Dock = System.Windows.Forms.DockStyle.Left
-        Me.btnAddDiscount.Location = New System.Drawing.Point(339, 0)
-        Me.btnAddDiscount.Name = "btnAddDiscount"
-        Me.btnAddDiscount.Size = New System.Drawing.Size(46, 16)
-        Me.btnAddDiscount.TabIndex = 123
-        Me.btnAddDiscount.Text = "[ ADD ]"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label5.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(0, 0)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(339, 15)
-        Me.Label5.TabIndex = 122
-        Me.Label5.Text = "Other Discounts (Amount deductions from Scholarships, etc.)   "
-        '
-        'Panel4
-        '
-        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel4.Location = New System.Drawing.Point(0, 165)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(650, 19)
-        Me.Panel4.TabIndex = 124
-        '
-        'Panel2
-        '
-        Me.Panel2.Controls.Add(Me.Panel11)
-        Me.Panel2.Controls.Add(Me.btnSaveInstitutionalDiscount)
-        Me.Panel2.Controls.Add(Me.txtPercentage)
-        Me.Panel2.Controls.Add(Me.Label6)
-        Me.Panel2.Controls.Add(Me.Panel16)
-        Me.Panel2.Controls.Add(Me.Panel8)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(10, 168)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(650, 122)
-        Me.Panel2.TabIndex = 33
-        '
-        'btnSaveInstitutionalDiscount
-        '
-        Me.btnSaveInstitutionalDiscount.FlatAppearance.BorderSize = 0
-        Me.btnSaveInstitutionalDiscount.Location = New System.Drawing.Point(389, 52)
-        Me.btnSaveInstitutionalDiscount.Name = "btnSaveInstitutionalDiscount"
-        Me.btnSaveInstitutionalDiscount.Size = New System.Drawing.Size(96, 34)
-        Me.btnSaveInstitutionalDiscount.TabIndex = 2
-        Me.btnSaveInstitutionalDiscount.Text = "SAVE"
-        Me.btnSaveInstitutionalDiscount.UseVisualStyleBackColor = True
-        '
-        'txtPercentage
-        '
-        Me.txtPercentage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtPercentage.Location = New System.Drawing.Point(15, 59)
-        Me.txtPercentage.Name = "txtPercentage"
-        Me.txtPercentage.Size = New System.Drawing.Size(357, 21)
-        Me.txtPercentage.TabIndex = 125
-        Me.txtPercentage.Text = "0.0000000000000000"
-        Me.txtPercentage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(12, 38)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(72, 16)
-        Me.Label6.TabIndex = 124
-        Me.Label6.Text = "Percentage"
-        '
-        'Panel16
-        '
-        Me.Panel16.Controls.Add(Me.Label3)
-        Me.Panel16.Controls.Add(Me.btnDiscountBulk)
-        Me.Panel16.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel16.Location = New System.Drawing.Point(0, 0)
-        Me.Panel16.Name = "Panel16"
-        Me.Panel16.Size = New System.Drawing.Size(650, 35)
-        Me.Panel16.TabIndex = 123
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(0, 12)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(117, 15)
-        Me.Label3.TabIndex = 122
-        Me.Label3.Text = "Institutional Discount"
-        '
-        'Panel8
-        '
-        Me.Panel8.Controls.Add(Me.FlowLayoutPanel1)
-        Me.Panel8.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel8.Location = New System.Drawing.Point(0, 103)
-        Me.Panel8.Name = "Panel8"
-        Me.Panel8.Size = New System.Drawing.Size(650, 19)
-        Me.Panel8.TabIndex = 117
-        '
-        'FlowLayoutPanel1
-        '
-        Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.FlowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft
-        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 0)
-        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(650, 19)
-        Me.FlowLayoutPanel1.TabIndex = 1
-        '
-        'btnDiscountBulk
-        '
-        Me.btnDiscountBulk.AutoSize = True
-        Me.btnDiscountBulk.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnDiscountBulk.Location = New System.Drawing.Point(295, 12)
-        Me.btnDiscountBulk.Name = "btnDiscountBulk"
-        Me.btnDiscountBulk.Size = New System.Drawing.Size(84, 16)
-        Me.btnDiscountBulk.TabIndex = 114
-        Me.btnDiscountBulk.Text = "[ BULK SETUP ]"
-        '
-        'FlowLayoutPanel3
-        '
-        Me.FlowLayoutPanel3.Controls.Add(Me.Panel7)
-        Me.FlowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top
-        Me.FlowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
-        Me.FlowLayoutPanel3.Location = New System.Drawing.Point(10, 0)
-        Me.FlowLayoutPanel3.Name = "FlowLayoutPanel3"
-        Me.FlowLayoutPanel3.Size = New System.Drawing.Size(650, 168)
-        Me.FlowLayoutPanel3.TabIndex = 32
-        '
-        'Panel7
-        '
-        Me.Panel7.Controls.Add(Me.Panel10)
-        Me.Panel7.Controls.Add(Me.btnSearchStudent)
-        Me.Panel7.Controls.Add(Me.txtYearLevelCourse)
-        Me.Panel7.Controls.Add(Me.txtStudentName)
-        Me.Panel7.Controls.Add(Me.txtStudentID)
-        Me.Panel7.Controls.Add(Me.Label7)
-        Me.Panel7.Controls.Add(Me.cbAcademicYear)
-        Me.Panel7.Controls.Add(Me.Label2)
-        Me.Panel7.Location = New System.Drawing.Point(3, 3)
-        Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(644, 159)
-        Me.Panel7.TabIndex = 0
-        '
-        'btnSearchStudent
-        '
-        Me.btnSearchStudent.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnSearchStudent.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSearchStudent.Location = New System.Drawing.Point(57, 12)
-        Me.btnSearchStudent.Name = "btnSearchStudent"
-        Me.btnSearchStudent.Size = New System.Drawing.Size(25, 21)
-        Me.btnSearchStudent.TabIndex = 170
-        Me.btnSearchStudent.Text = "🔍"
-        Me.btnSearchStudent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'txtYearLevelCourse
-        '
-        Me.txtYearLevelCourse.Location = New System.Drawing.Point(123, 69)
-        Me.txtYearLevelCourse.Name = "txtYearLevelCourse"
-        Me.txtYearLevelCourse.Size = New System.Drawing.Size(532, 36)
-        Me.txtYearLevelCourse.TabIndex = 166
-        Me.txtYearLevelCourse.Text = "Year Level - Course"
-        '
-        'txtStudentName
-        '
-        Me.txtStudentName.AutoSize = True
-        Me.txtStudentName.Location = New System.Drawing.Point(123, 43)
-        Me.txtStudentName.Name = "txtStudentName"
-        Me.txtStudentName.Size = New System.Drawing.Size(41, 16)
-        Me.txtStudentName.TabIndex = 167
-        Me.txtStudentName.Text = "Name"
-        '
-        'txtStudentID
-        '
-        Me.txtStudentID.AutoSize = True
-        Me.txtStudentID.Location = New System.Drawing.Point(123, 17)
-        Me.txtStudentID.Name = "txtStudentID"
-        Me.txtStudentID.Size = New System.Drawing.Size(19, 16)
-        Me.txtStudentID.TabIndex = 168
-        Me.txtStudentID.Text = "ID"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(9, 17)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(54, 16)
-        Me.Label7.TabIndex = 169
-        Me.Label7.Text = "Student "
-        '
-        'cbAcademicYear
-        '
-        Me.cbAcademicYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbAcademicYear.FormattingEnabled = True
-        Me.cbAcademicYear.Location = New System.Drawing.Point(119, 115)
-        Me.cbAcademicYear.Name = "cbAcademicYear"
-        Me.cbAcademicYear.Size = New System.Drawing.Size(250, 24)
-        Me.cbAcademicYear.TabIndex = 115
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(9, 118)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(92, 16)
-        Me.Label2.TabIndex = 114
-        Me.Label2.Text = "Academic Year"
-        '
         'SearchPanel
         '
         Me.SearchPanel.Controls.Add(Me.dgPanel)
@@ -552,25 +205,25 @@ Partial Class frmDiscount
         Me.dgStudentList.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgStudentList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgStudentList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle12.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgStudentList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgStudentList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgStudentList.ColumnHeadersHeight = 40
         Me.dgStudentList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgStudentList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn24, Me.DataGridViewTextBoxColumn25, Me.DataGridViewTextBoxColumn26, Me.DataGridViewTextBoxColumn27, Me.DataGridViewTextBoxColumn28, Me.DataGridViewTextBoxColumn29, Me.DataGridViewTextBoxColumn30, Me.DataGridViewTextBoxColumn31, Me.DataGridViewTextBoxColumn32, Me.Column16, Me.Column17, Me.colUpdate})
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle13.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgStudentList.DefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgStudentList.DefaultCellStyle = DataGridViewCellStyle2
         Me.dgStudentList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgStudentList.EnableHeadersVisualStyles = False
         Me.dgStudentList.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
@@ -744,51 +397,51 @@ Partial Class frmDiscount
         'dgadditional
         '
         Me.dgadditional.AllowUserToAddRows = False
-        DataGridViewCellStyle14.BackColor = System.Drawing.Color.White
-        Me.dgadditional.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
+        Me.dgadditional.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
         Me.dgadditional.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgadditional.BackgroundColor = System.Drawing.Color.White
         Me.dgadditional.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgadditional.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle15.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgadditional.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgadditional.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.dgadditional.ColumnHeadersHeight = 30
         Me.dgadditional.Cursor = System.Windows.Forms.Cursors.Hand
-        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle16.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgadditional.DefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgadditional.DefaultCellStyle = DataGridViewCellStyle5
         Me.dgadditional.EnableHeadersVisualStyles = False
         Me.dgadditional.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
         Me.dgadditional.Location = New System.Drawing.Point(3, 6)
         Me.dgadditional.Name = "dgadditional"
         Me.dgadditional.ReadOnly = True
         Me.dgadditional.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
-        DataGridViewCellStyle17.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle17.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
-        DataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgadditional.RowHeadersDefaultCellStyle = DataGridViewCellStyle17
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgadditional.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.dgadditional.RowHeadersWidth = 25
         Me.dgadditional.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle18.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle18.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.White
-        Me.dgadditional.RowsDefaultCellStyle = DataGridViewCellStyle18
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White
+        Me.dgadditional.RowsDefaultCellStyle = DataGridViewCellStyle7
         Me.dgadditional.RowTemplate.Height = 20
         Me.dgadditional.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.dgadditional.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
@@ -807,14 +460,186 @@ Partial Class frmDiscount
         Me.btnSelect.Text = "SELECT"
         Me.btnSelect.UseVisualStyleBackColor = True
         '
-        'Panel10
+        'BPanel
         '
-        Me.Panel10.BackColor = System.Drawing.Color.Black
-        Me.Panel10.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel10.Location = New System.Drawing.Point(0, 158)
-        Me.Panel10.Name = "Panel10"
-        Me.Panel10.Size = New System.Drawing.Size(644, 1)
-        Me.Panel10.TabIndex = 171
+        Me.BPanel.Controls.Add(Me.Panel3)
+        Me.BPanel.Controls.Add(Me.Panel2)
+        Me.BPanel.Controls.Add(Me.FlowLayoutPanel3)
+        Me.BPanel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.BPanel.Location = New System.Drawing.Point(0, 0)
+        Me.BPanel.Name = "BPanel"
+        Me.BPanel.Padding = New System.Windows.Forms.Padding(10, 0, 10, 0)
+        Me.BPanel.Size = New System.Drawing.Size(670, 474)
+        Me.BPanel.TabIndex = 28
+        '
+        'Panel3
+        '
+        Me.Panel3.Controls.Add(Me.Panel9)
+        Me.Panel3.Controls.Add(Me.Panel5)
+        Me.Panel3.Controls.Add(Me.Panel4)
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel3.Location = New System.Drawing.Point(10, 290)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Padding = New System.Windows.Forms.Padding(0, 10, 0, 0)
+        Me.Panel3.Size = New System.Drawing.Size(650, 184)
+        Me.Panel3.TabIndex = 35
+        '
+        'Panel9
+        '
+        Me.Panel9.Controls.Add(Me.dgDiscounts)
+        Me.Panel9.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel9.Location = New System.Drawing.Point(0, 29)
+        Me.Panel9.Name = "Panel9"
+        Me.Panel9.Padding = New System.Windows.Forms.Padding(10, 0, 10, 0)
+        Me.Panel9.Size = New System.Drawing.Size(650, 142)
+        Me.Panel9.TabIndex = 126
+        '
+        'dgDiscounts
+        '
+        Me.dgDiscounts.AllowUserToAddRows = False
+        Me.dgDiscounts.AllowUserToDeleteRows = False
+        Me.dgDiscounts.BackgroundColor = System.Drawing.Color.White
+        Me.dgDiscounts.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgDiscounts.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.dgDiscounts.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgDiscounts.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
+        Me.dgDiscounts.ColumnHeadersHeight = 40
+        Me.dgDiscounts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.dgDiscounts.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.colRemove})
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgDiscounts.DefaultCellStyle = DataGridViewCellStyle9
+        Me.dgDiscounts.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgDiscounts.EnableHeadersVisualStyles = False
+        Me.dgDiscounts.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.dgDiscounts.Location = New System.Drawing.Point(10, 0)
+        Me.dgDiscounts.Name = "dgDiscounts"
+        Me.dgDiscounts.ReadOnly = True
+        Me.dgDiscounts.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.dgDiscounts.RowHeadersVisible = False
+        Me.dgDiscounts.RowTemplate.Height = 26
+        Me.dgDiscounts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgDiscounts.Size = New System.Drawing.Size(630, 142)
+        Me.dgDiscounts.TabIndex = 127
+        '
+        'Column1
+        '
+        Me.Column1.HeaderText = "ID"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Visible = False
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Description/Remarks"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.DataGridViewTextBoxColumn6.HeaderText = "Amount"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.ReadOnly = True
+        Me.DataGridViewTextBoxColumn6.Width = 73
+        '
+        'colRemove
+        '
+        Me.colRemove.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.colRemove.HeaderText = ""
+        Me.colRemove.Image = CType(resources.GetObject("colRemove.Image"), System.Drawing.Image)
+        Me.colRemove.Name = "colRemove"
+        Me.colRemove.ReadOnly = True
+        Me.colRemove.Width = 5
+        '
+        'Panel5
+        '
+        Me.Panel5.Controls.Add(Me.Label8)
+        Me.Panel5.Controls.Add(Me.lblTotal)
+        Me.Panel5.Controls.Add(Me.btnAddDiscount)
+        Me.Panel5.Controls.Add(Me.Label5)
+        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel5.Location = New System.Drawing.Point(0, 10)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(650, 19)
+        Me.Panel5.TabIndex = 125
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Label8.Location = New System.Drawing.Point(577, 0)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(40, 16)
+        Me.Label8.TabIndex = 125
+        Me.Label8.Text = "Total: "
+        '
+        'lblTotal
+        '
+        Me.lblTotal.AutoSize = True
+        Me.lblTotal.Dock = System.Windows.Forms.DockStyle.Right
+        Me.lblTotal.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotal.Location = New System.Drawing.Point(617, 0)
+        Me.lblTotal.Name = "lblTotal"
+        Me.lblTotal.Size = New System.Drawing.Size(33, 16)
+        Me.lblTotal.TabIndex = 124
+        Me.lblTotal.Text = "0.00"
+        '
+        'btnAddDiscount
+        '
+        Me.btnAddDiscount.AutoSize = True
+        Me.btnAddDiscount.Dock = System.Windows.Forms.DockStyle.Left
+        Me.btnAddDiscount.Location = New System.Drawing.Point(339, 0)
+        Me.btnAddDiscount.Name = "btnAddDiscount"
+        Me.btnAddDiscount.Size = New System.Drawing.Size(46, 16)
+        Me.btnAddDiscount.TabIndex = 123
+        Me.btnAddDiscount.Text = "[ ADD ]"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Label5.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(0, 0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(339, 15)
+        Me.Label5.TabIndex = 122
+        Me.Label5.Text = "Other Discounts (Amount deductions from Scholarships, etc.)   "
+        '
+        'Panel4
+        '
+        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel4.Location = New System.Drawing.Point(0, 171)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(650, 13)
+        Me.Panel4.TabIndex = 124
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.Panel11)
+        Me.Panel2.Controls.Add(Me.btnSaveInstitutionalDiscount)
+        Me.Panel2.Controls.Add(Me.txtPercentage)
+        Me.Panel2.Controls.Add(Me.Label6)
+        Me.Panel2.Controls.Add(Me.Panel16)
+        Me.Panel2.Controls.Add(Me.Panel8)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel2.Location = New System.Drawing.Point(10, 168)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(650, 122)
+        Me.Panel2.TabIndex = 33
         '
         'Panel11
         '
@@ -824,6 +649,181 @@ Partial Class frmDiscount
         Me.Panel11.Name = "Panel11"
         Me.Panel11.Size = New System.Drawing.Size(650, 1)
         Me.Panel11.TabIndex = 172
+        '
+        'btnSaveInstitutionalDiscount
+        '
+        Me.btnSaveInstitutionalDiscount.FlatAppearance.BorderSize = 0
+        Me.btnSaveInstitutionalDiscount.Location = New System.Drawing.Point(389, 52)
+        Me.btnSaveInstitutionalDiscount.Name = "btnSaveInstitutionalDiscount"
+        Me.btnSaveInstitutionalDiscount.Size = New System.Drawing.Size(96, 34)
+        Me.btnSaveInstitutionalDiscount.TabIndex = 2
+        Me.btnSaveInstitutionalDiscount.Text = "SAVE"
+        Me.btnSaveInstitutionalDiscount.UseVisualStyleBackColor = True
+        '
+        'txtPercentage
+        '
+        Me.txtPercentage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtPercentage.Location = New System.Drawing.Point(15, 59)
+        Me.txtPercentage.Name = "txtPercentage"
+        Me.txtPercentage.Size = New System.Drawing.Size(357, 21)
+        Me.txtPercentage.TabIndex = 125
+        Me.txtPercentage.Text = "0.0000000000000000"
+        Me.txtPercentage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(12, 38)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(72, 16)
+        Me.Label6.TabIndex = 124
+        Me.Label6.Text = "Percentage"
+        '
+        'Panel16
+        '
+        Me.Panel16.Controls.Add(Me.Label3)
+        Me.Panel16.Controls.Add(Me.btnDiscountBulk)
+        Me.Panel16.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel16.Location = New System.Drawing.Point(0, 0)
+        Me.Panel16.Name = "Panel16"
+        Me.Panel16.Size = New System.Drawing.Size(650, 35)
+        Me.Panel16.TabIndex = 123
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(0, 12)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(117, 15)
+        Me.Label3.TabIndex = 122
+        Me.Label3.Text = "Institutional Discount"
+        '
+        'btnDiscountBulk
+        '
+        Me.btnDiscountBulk.AutoSize = True
+        Me.btnDiscountBulk.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnDiscountBulk.Location = New System.Drawing.Point(119, 11)
+        Me.btnDiscountBulk.Name = "btnDiscountBulk"
+        Me.btnDiscountBulk.Size = New System.Drawing.Size(84, 16)
+        Me.btnDiscountBulk.TabIndex = 114
+        Me.btnDiscountBulk.Text = "[ BULK SETUP ]"
+        '
+        'Panel8
+        '
+        Me.Panel8.Controls.Add(Me.FlowLayoutPanel1)
+        Me.Panel8.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel8.Location = New System.Drawing.Point(0, 103)
+        Me.Panel8.Name = "Panel8"
+        Me.Panel8.Size = New System.Drawing.Size(650, 19)
+        Me.Panel8.TabIndex = 117
+        '
+        'FlowLayoutPanel1
+        '
+        Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.FlowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft
+        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 0)
+        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(650, 19)
+        Me.FlowLayoutPanel1.TabIndex = 1
+        '
+        'FlowLayoutPanel3
+        '
+        Me.FlowLayoutPanel3.Controls.Add(Me.Panel7)
+        Me.FlowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top
+        Me.FlowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
+        Me.FlowLayoutPanel3.Location = New System.Drawing.Point(10, 0)
+        Me.FlowLayoutPanel3.Name = "FlowLayoutPanel3"
+        Me.FlowLayoutPanel3.Size = New System.Drawing.Size(650, 168)
+        Me.FlowLayoutPanel3.TabIndex = 32
+        '
+        'Panel7
+        '
+        Me.Panel7.Controls.Add(Me.Panel10)
+        Me.Panel7.Controls.Add(Me.btnSearchStudent)
+        Me.Panel7.Controls.Add(Me.txtYearLevelCourse)
+        Me.Panel7.Controls.Add(Me.txtStudentName)
+        Me.Panel7.Controls.Add(Me.txtStudentID)
+        Me.Panel7.Controls.Add(Me.Label7)
+        Me.Panel7.Controls.Add(Me.cbAcademicYear)
+        Me.Panel7.Controls.Add(Me.Label2)
+        Me.Panel7.Location = New System.Drawing.Point(3, 3)
+        Me.Panel7.Name = "Panel7"
+        Me.Panel7.Size = New System.Drawing.Size(644, 159)
+        Me.Panel7.TabIndex = 0
+        '
+        'Panel10
+        '
+        Me.Panel10.BackColor = System.Drawing.Color.Black
+        Me.Panel10.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel10.Location = New System.Drawing.Point(0, 158)
+        Me.Panel10.Name = "Panel10"
+        Me.Panel10.Size = New System.Drawing.Size(644, 1)
+        Me.Panel10.TabIndex = 171
+        '
+        'btnSearchStudent
+        '
+        Me.btnSearchStudent.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnSearchStudent.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSearchStudent.Location = New System.Drawing.Point(57, 12)
+        Me.btnSearchStudent.Name = "btnSearchStudent"
+        Me.btnSearchStudent.Size = New System.Drawing.Size(25, 21)
+        Me.btnSearchStudent.TabIndex = 170
+        Me.btnSearchStudent.Text = "🔍"
+        Me.btnSearchStudent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'txtYearLevelCourse
+        '
+        Me.txtYearLevelCourse.Location = New System.Drawing.Point(123, 69)
+        Me.txtYearLevelCourse.Name = "txtYearLevelCourse"
+        Me.txtYearLevelCourse.Size = New System.Drawing.Size(514, 36)
+        Me.txtYearLevelCourse.TabIndex = 166
+        Me.txtYearLevelCourse.Text = "Year Level - Course"
+        '
+        'txtStudentName
+        '
+        Me.txtStudentName.AutoSize = True
+        Me.txtStudentName.Location = New System.Drawing.Point(123, 43)
+        Me.txtStudentName.Name = "txtStudentName"
+        Me.txtStudentName.Size = New System.Drawing.Size(41, 16)
+        Me.txtStudentName.TabIndex = 167
+        Me.txtStudentName.Text = "Name"
+        '
+        'txtStudentID
+        '
+        Me.txtStudentID.AutoSize = True
+        Me.txtStudentID.Location = New System.Drawing.Point(123, 17)
+        Me.txtStudentID.Name = "txtStudentID"
+        Me.txtStudentID.Size = New System.Drawing.Size(19, 16)
+        Me.txtStudentID.TabIndex = 168
+        Me.txtStudentID.Text = "ID"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(9, 17)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(54, 16)
+        Me.Label7.TabIndex = 169
+        Me.Label7.Text = "Student "
+        '
+        'cbAcademicYear
+        '
+        Me.cbAcademicYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbAcademicYear.FormattingEnabled = True
+        Me.cbAcademicYear.Location = New System.Drawing.Point(119, 115)
+        Me.cbAcademicYear.Name = "cbAcademicYear"
+        Me.cbAcademicYear.Size = New System.Drawing.Size(250, 24)
+        Me.cbAcademicYear.TabIndex = 115
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(9, 118)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(92, 16)
+        Me.Label2.TabIndex = 114
+        Me.Label2.Text = "Academic Year"
         '
         'frmDiscount
         '
@@ -842,6 +842,14 @@ Partial Class frmDiscount
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.systemSign.ResumeLayout(False)
         Me.BasePanel.ResumeLayout(False)
+        Me.SearchPanel.ResumeLayout(False)
+        Me.dgPanel.ResumeLayout(False)
+        CType(Me.dgStudentList, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel6.ResumeLayout(False)
+        Me.Panel12.ResumeLayout(False)
+        Me.Panel12.PerformLayout()
+        Me.Panel14.ResumeLayout(False)
+        CType(Me.dgadditional, System.ComponentModel.ISupportInitialize).EndInit()
         Me.BPanel.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
         Me.Panel9.ResumeLayout(False)
@@ -856,14 +864,6 @@ Partial Class frmDiscount
         Me.FlowLayoutPanel3.ResumeLayout(False)
         Me.Panel7.ResumeLayout(False)
         Me.Panel7.PerformLayout()
-        Me.SearchPanel.ResumeLayout(False)
-        Me.dgPanel.ResumeLayout(False)
-        CType(Me.dgStudentList, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel6.ResumeLayout(False)
-        Me.Panel12.ResumeLayout(False)
-        Me.Panel12.PerformLayout()
-        Me.Panel14.ResumeLayout(False)
-        CType(Me.dgadditional, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

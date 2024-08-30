@@ -3493,9 +3493,9 @@ Partial Class frmStudentEvaluation
         Me.btnSubjects.AutoSize = True
         Me.btnSubjects.Location = New System.Drawing.Point(131, 0)
         Me.btnSubjects.Name = "btnSubjects"
-        Me.btnSubjects.Size = New System.Drawing.Size(74, 16)
+        Me.btnSubjects.Size = New System.Drawing.Size(125, 16)
         Me.btnSubjects.TabIndex = 143
-        Me.btnSubjects.Text = "[ SUBJECTS ]"
+        Me.btnSubjects.Text = "[ ENROLLMENT CART ]"
         Me.btnSubjects.Visible = False
         '
         'btnSearchCurr
@@ -4268,8 +4268,8 @@ Partial Class frmStudentEvaluation
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(998, 601)
         Me.ControlBox = False
-        Me.Controls.Add(Me.SearchPanel)
         Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.SearchPanel)
         Me.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)

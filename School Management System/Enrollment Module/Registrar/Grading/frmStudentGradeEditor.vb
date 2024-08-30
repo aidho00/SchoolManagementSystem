@@ -69,7 +69,6 @@ Public Class frmStudentGradeEditor
             dr.Close()
             cn.Close()
             dgStudentList.Rows.Clear()
-
         End Try
     End Sub
 
@@ -108,13 +107,13 @@ Public Class frmStudentGradeEditor
                 studentFName = dgStudentList.CurrentRow.Cells(3).Value
                 studentMName = dgStudentList.CurrentRow.Cells(4).Value
                 studentEXTName = dgStudentList.CurrentRow.Cells(5).Value
-
+                studentGender = dgStudentList.CurrentRow.Cells(6).Value
                 studentYearLevel = dgStudentList.CurrentRow.Cells(7).Value
                 studentCourse = dgStudentList.CurrentRow.Cells(8).Value
+
                 studentCourseId = dgStudentList.CurrentRow.Cells(9).Value
                 studentCourseDesc = dgStudentList.CurrentRow.Cells(10).Value
                 studentCourseSector = dgStudentList.CurrentRow.Cells(11).Value
-                studentGender = dgStudentList.CurrentRow.Cells(6).Value
 
                 LoadData()
                 'YearLevelStudentGradeLevel()
@@ -124,7 +123,7 @@ Public Class frmStudentGradeEditor
 
             Case "Search School"
                 schoolID = dgSchoolList.CurrentRow.Cells(1).Value
-                txtSchool = dgSchoolList.CurrentRow.Cells(3).Value
+                txtSchool.Text = dgSchoolList.CurrentRow.Cells(3).Value
         End Select
         SearchPanel.Visible = False
         dgStudentList.Rows.Clear()
@@ -386,6 +385,9 @@ Public Class frmStudentGradeEditor
         If colname = "colUpdate" Then
             frmGradingChanges.cbGrade.Text = dgStudentGrades.CurrentRow.Cells(4).Value
             frmGradingChanges.cbCredit.Text = dgStudentGrades.CurrentRow.Cells(5).Value
+            frmGradingChanges.GradingChangeSubjectID = dgStudentGrades.CurrentRow.Cells(1).Value
+            frmGradingChanges.GradingChangeSubjectUnit = dgStudentGrades.CurrentRow.Cells(15).Value
+            frmGradingChanges.GradingChangeStudentID = studentId
             frmGradingChanges.ShowDialog()
         ElseIf colname = "colRemove" Then
             'Try

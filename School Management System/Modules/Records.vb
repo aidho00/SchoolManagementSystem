@@ -603,14 +603,14 @@ Module Records
             frmClassGradeEditor.dgClassSchedList.Rows.Clear()
             Dim i As Integer
             Dim sql As String
-            sql = "SELECT t1.`class_schedule_id`, t1.`cb_code`, t1.`subject_code`, t1.`subject_description`, t1.`subject_units`, t1.`ds_code`, t1.`time_start_schedule`, t1.`time_end_schedule`, t1.`room_code`, t1.`Instructor`, t1.`population`, t1.`csperiod_id`, t1.`is_active` FROM `classschedulelist` t1 where t1.csperiod_id = " & CInt(frmClassGradeEditor.cbAcademicYear.SelectedValue) & " and (t1.cb_code LIKE '%" & frmClassGradeEditor.txtSearch.Text & "%' or t1.subject_code LIKE '%" & frmClassGradeEditor.txtSearch.Text & "%' or t1.subject_description LIKE '%" & frmClassGradeEditor.txtSearch.Text & "%' or t1.Instructor LIKE '%" & frmClassGradeEditor.txtSearch.Text & "%') limit 500"
+            sql = "SELECT t1.`class_schedule_id`, t1.`cb_code`, t1.`subject_code`, t1.`subject_description`, t1.`subject_units`, t1.`ds_code`, t1.`time_start_schedule`, t1.`time_end_schedule`, t1.`room_code`, t1.`Instructor`, t1.`population`, t1.`csperiod_id`, t1.`is_active`, t1.subject_id FROM `classschedulelist` t1 where t1.csperiod_id = " & CInt(frmClassGradeEditor.cbAcademicYear.SelectedValue) & " and (t1.cb_code LIKE '%" & frmClassGradeEditor.txtSearch.Text & "%' or t1.subject_code LIKE '%" & frmClassGradeEditor.txtSearch.Text & "%' or t1.subject_description LIKE '%" & frmClassGradeEditor.txtSearch.Text & "%' or t1.Instructor LIKE '%" & frmClassGradeEditor.txtSearch.Text & "%') limit 500"
             cn.Close()
             cn.Open()
             cm = New MySqlCommand(sql, cn)
             dr = cm.ExecuteReader
             While dr.Read
                 i += 1
-                frmClassGradeEditor.dgClassSchedList.Rows.Add(i, dr.Item("class_schedule_id").ToString, dr.Item("cb_code").ToString, dr.Item("subject_code").ToString, dr.Item("subject_description").ToString, dr.Item("subject_units").ToString, dr.Item("ds_code").ToString, dr.Item("time_start_schedule").ToString, dr.Item("time_end_schedule").ToString, dr.Item("room_code").ToString, dr.Item("Instructor").ToString, dr.Item("population").ToString, "👁", dr.Item("csperiod_id").ToString, dr.Item("is_active").ToString)
+                frmClassGradeEditor.dgClassSchedList.Rows.Add(i, dr.Item("class_schedule_id").ToString, dr.Item("cb_code").ToString, dr.Item("subject_code").ToString, dr.Item("subject_description").ToString, dr.Item("subject_units").ToString, dr.Item("ds_code").ToString, dr.Item("time_start_schedule").ToString, dr.Item("time_end_schedule").ToString, dr.Item("room_code").ToString, dr.Item("Instructor").ToString, dr.Item("population").ToString, "👁", dr.Item("csperiod_id").ToString, dr.Item("is_active").ToString, dr.Item("subject_id").ToString)
             End While
             dr.Close()
             cn.Close()
@@ -2186,8 +2186,8 @@ Module Records
             frmCashiering.dgStudentList.Rows.Clear()
             Dim i As Integer
             Dim sql As String
-            If frmMain.systemModule.Text = "College Module" Then
-                sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course', course_id, course_name from tbl_enrollment_subjects JOIN tbl_student ON tbl_enrollment_subjects.es_student_id = tbl_student.s_id_no JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where tbl_enrollment_subjects.es_period_id = " & CInt(frmCashiering.cbAcademicYear.SelectedValue) & " and (tbl_student.s_ln like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_fn like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_mn like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_id_no like '" & frmEnrollStudent.txtSearch.Text & "%' or tbl_student.s_yr_lvl like '" & frmEnrollStudent.txtSearch.Text & "%') group by tbl_enrollment_subjects.es_student_id order by tbl_student.s_id_no asc limit 500"
+            If frmMain.formTitle.Text = "Pre-Cashiering" Then
+                sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course', course_id, course_name from tbl_enrollment_subjects JOIN tbl_student ON tbl_enrollment_subjects.es_student_id = tbl_student.s_id_no JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where tbl_enrollment_subjects.es_period_id = " & CInt(frmCashiering.cbAcademicYear.SelectedValue) & " and tbl_enrollment_subjects.es_student_id NOT IN (SELECT `estudent_id` FROM `tbl_enrollment` WHERE `eperiod_id` = " & CInt(frmCashiering.cbAcademicYear.SelectedValue) & ") and (tbl_student.s_ln like '" & frmCashiering.txtSearch.Text & "%' or tbl_student.s_fn like '" & frmCashiering.txtSearch.Text & "%' or tbl_student.s_mn like '" & frmCashiering.txtSearch.Text & "%' or tbl_student.s_id_no like '" & frmCashiering.txtSearch.Text & "%' or tbl_student.s_yr_lvl like '" & frmCashiering.txtSearch.Text & "%') group by tbl_enrollment_subjects.es_student_id order by tbl_student.s_id_no asc limit 500"
             Else
                 sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course', course_id, course_name from tbl_student JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where (s_ln like '" & frmCashiering.txtSearch.Text & "%' or s_fn like '" & frmCashiering.txtSearch.Text & "%' or s_mn like '" & frmCashiering.txtSearch.Text & "%' or s_id_no like '" & frmCashiering.txtSearch.Text & "%' or course_code like '" & frmCashiering.txtSearch.Text & "%' or s_yr_lvl like '" & frmCashiering.txtSearch.Text & "%') order by s_id_no asc limit 500"
             End If
@@ -2551,26 +2551,27 @@ Module Records
     Public Sub LoadGradingStudentList()
         Try
 
-            cn.Close()
-            cn.Open()
             frmStudentGradeEditor.dgStudentList.Rows.Clear()
             Dim i As Integer
             Dim sql As String
-            sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course', course_id, (course_name) as 'Course Desc', (course_sector) as 'Course Sector' from tbl_student JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where (s_ln like '%" & frmStudentGradeEditor.txtSearch.Text & "%' or s_fn like '%" & frmStudentGradeEditor.txtSearch.Text & "%' or s_mn like '%" & frmStudentGradeEditor.txtSearch.Text & "%' or s_id_no like '%" & frmStudentGradeEditor.txtSearch.Text & "%') order by s_id_no asc limit 250"
+            sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course', course_id, course_name, course_sector from tbl_student JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where (s_ln like '%" & frmStudentGradeEditor.txtSearch.Text & "%' or s_fn like '%" & frmStudentGradeEditor.txtSearch.Text & "%' or s_mn like '%" & frmStudentGradeEditor.txtSearch.Text & "%' or s_id_no like '%" & frmStudentGradeEditor.txtSearch.Text & "%' or course_code like '%" & frmStudentGradeEditor.txtSearch.Text & "%' or s_yr_lvl like '%" & frmStudentGradeEditor.txtSearch.Text & "%') order by s_id_no asc limit 500"
+            cn.Close()
+            cn.Open()
             cm = New MySqlCommand(sql, cn)
             dr = cm.ExecuteReader
             While dr.Read
                 i += 1
-                frmStudentGradeEditor.dgStudentList.Rows.Add(i, dr.Item("ID Number").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, dr.Item("Suffix").ToString, dr.Item("Gender").ToString, dr.Item("Year Level").ToString, dr.Item("Course").ToString, dr.Item("course_id").ToString, dr.Item("Course Desc").ToString, dr.Item("Course Sector").ToString)
+                frmStudentGradeEditor.dgStudentList.Rows.Add(i, dr.Item("ID Number").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, dr.Item("Suffix").ToString, dr.Item("Gender").ToString, dr.Item("Year Level").ToString, dr.Item("Course").ToString, dr.Item("course_id").ToString, dr.Item("course_name").ToString, dr.Item("course_sector").ToString)
             End While
             dr.Close()
             cn.Close()
+
+            dgPanelPadding(frmStudentGradeEditor.dgStudentList, frmStudentGradeEditor.dgPanel)
 
         Catch ex As Exception
             dr.Close()
             cn.Close()
             frmStudentGradeEditor.dgStudentList.Rows.Clear()
-
         End Try
     End Sub
 
@@ -2711,12 +2712,12 @@ Module Records
             cn2.Open()
             Dim i As Integer
             Dim sql As String
-            sql = "select subject_id, (subject_code) as 'CODE', (subject_description) as 'DESCRIPTION', (sg_grade) as 'GRADES', (sg_credits) as 'CREDIT', (sg_grade_status) as 'STATUS', (sg_course_id) as 'Course_id', CONCAT(course_code, ' - ', course_name) as 'Course', sg_grade_remarks, schl_name, sg_yearlevel, sg_grade_visibility, sg_id, sg_school_id from tbl_students_grades, tbl_subject, period, tbl_schools, tbl_course where tbl_students_grades.sg_subject_id = tbl_subject.subject_id and tbl_students_grades.sg_period_id = period.period_id and tbl_students_grades.sg_course_id = tbl_course.course_id and tbl_students_grades.sg_school_id = tbl_schools.schl_id and sg_student_id = '" & frmStudentGradeEditor.studentId & "' and sg_period_id = " & CInt(frmStudentGradeEditor.cbAcademicYear.SelectedValue) & " and sg_grade_status NOT IN ('Pending')"
+            sql = "select subject_id, (subject_code) as 'CODE', (subject_description) as 'DESCRIPTION', (sg_grade) as 'GRADES', (sg_credits) as 'CREDIT', (sg_grade_status) as 'STATUS', (sg_course_id) as 'Course_id', CONCAT(course_code, ' - ', course_name) as 'Course', sg_grade_remarks, schl_name, sg_yearlevel, sg_grade_visibility, sg_id, sg_school_id, subject_units from tbl_students_grades, tbl_subject, period, tbl_schools, tbl_course where tbl_students_grades.sg_subject_id = tbl_subject.subject_id and tbl_students_grades.sg_period_id = period.period_id and tbl_students_grades.sg_course_id = tbl_course.course_id and tbl_students_grades.sg_school_id = tbl_schools.schl_id and sg_student_id = '" & frmStudentGradeEditor.studentId & "' and sg_period_id = " & CInt(frmStudentGradeEditor.cbAcademicYear.SelectedValue) & " and sg_grade_status NOT IN ('Pending')"
             cm2 = New MySqlCommand(sql, cn2)
             dr2 = cm2.ExecuteReader
             While dr2.Read
                 i += 1
-                frmStudentGradeEditor.dgStudentGrades.Rows.Add(i, dr2.Item("subject_id").ToString, dr2.Item("CODE").ToString, dr2.Item("DESCRIPTION").ToString, dr2.Item("GRADES").ToString, dr2.Item("CREDIT").ToString, dr2.Item("STATUS").ToString, dr2.Item("Course_id").ToString, dr2.Item("Course").ToString, dr2.Item("sg_grade_remarks").ToString, dr2.Item("schl_name").ToString, dr2.Item("sg_yearlevel").ToString, dr2.Item("sg_grade_visibility").ToString, dr2.Item("sg_id").ToString)
+                frmStudentGradeEditor.dgStudentGrades.Rows.Add(i, dr2.Item("subject_id").ToString, dr2.Item("CODE").ToString, dr2.Item("DESCRIPTION").ToString, dr2.Item("GRADES").ToString, dr2.Item("CREDIT").ToString, dr2.Item("STATUS").ToString, dr2.Item("Course_id").ToString, dr2.Item("Course").ToString, dr2.Item("sg_grade_remarks").ToString, dr2.Item("schl_name").ToString, dr2.Item("sg_yearlevel").ToString, dr2.Item("sg_grade_visibility").ToString, dr2.Item("sg_id").ToString, dr2.Item("subject_units").ToString)
             End While
             dr2.Close()
             cn2.Close()

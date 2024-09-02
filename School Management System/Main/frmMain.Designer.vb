@@ -41,9 +41,9 @@ Partial Class frmMain
         Me.User_Photo = New System.Windows.Forms.PictureBox()
         Me.PanelMenu = New System.Windows.Forms.Panel()
         Me.databasePanel = New System.Windows.Forms.Panel()
-        Me.btnExportDatabaseTables = New System.Windows.Forms.Button()
         Me.btnUserAccounts = New System.Windows.Forms.Button()
         Me.cbUserLogs = New System.Windows.Forms.Button()
+        Me.btnExportDatabaseTables = New System.Windows.Forms.Button()
         Me.btnDBrestore = New System.Windows.Forms.Button()
         Me.btnDBbackup = New System.Windows.Forms.Button()
         Me.btnDatabase = New System.Windows.Forms.Button()
@@ -525,9 +525,9 @@ Partial Class frmMain
         'databasePanel
         '
         Me.databasePanel.AutoSize = True
-        Me.databasePanel.Controls.Add(Me.btnExportDatabaseTables)
         Me.databasePanel.Controls.Add(Me.btnUserAccounts)
         Me.databasePanel.Controls.Add(Me.cbUserLogs)
+        Me.databasePanel.Controls.Add(Me.btnExportDatabaseTables)
         Me.databasePanel.Controls.Add(Me.btnDBrestore)
         Me.databasePanel.Controls.Add(Me.btnDBbackup)
         Me.databasePanel.Dock = System.Windows.Forms.DockStyle.Top
@@ -537,30 +537,6 @@ Partial Class frmMain
         Me.databasePanel.Size = New System.Drawing.Size(221, 120)
         Me.databasePanel.TabIndex = 56
         Me.databasePanel.Visible = False
-        '
-        'btnExportDatabaseTables
-        '
-        Me.btnExportDatabaseTables.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnExportDatabaseTables.Cursor = System.Windows.Forms.Cursors.Default
-        Me.btnExportDatabaseTables.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnExportDatabaseTables.Enabled = False
-        Me.btnExportDatabaseTables.FlatAppearance.BorderSize = 0
-        Me.btnExportDatabaseTables.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnExportDatabaseTables.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.btnExportDatabaseTables.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnExportDatabaseTables.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnExportDatabaseTables.ForeColor = System.Drawing.Color.White
-        Me.btnExportDatabaseTables.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnExportDatabaseTables.Location = New System.Drawing.Point(24, 96)
-        Me.btnExportDatabaseTables.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnExportDatabaseTables.Name = "btnExportDatabaseTables"
-        Me.btnExportDatabaseTables.Size = New System.Drawing.Size(197, 24)
-        Me.btnExportDatabaseTables.TabIndex = 32
-        Me.btnExportDatabaseTables.Text = "Export Database Table"
-        Me.btnExportDatabaseTables.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnExportDatabaseTables.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnExportDatabaseTables.UseVisualStyleBackColor = False
-        Me.btnExportDatabaseTables.Visible = False
         '
         'btnUserAccounts
         '
@@ -574,11 +550,11 @@ Partial Class frmMain
         Me.btnUserAccounts.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnUserAccounts.ForeColor = System.Drawing.Color.White
         Me.btnUserAccounts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnUserAccounts.Location = New System.Drawing.Point(24, 72)
+        Me.btnUserAccounts.Location = New System.Drawing.Point(24, 96)
         Me.btnUserAccounts.Margin = New System.Windows.Forms.Padding(0)
         Me.btnUserAccounts.Name = "btnUserAccounts"
         Me.btnUserAccounts.Size = New System.Drawing.Size(197, 24)
-        Me.btnUserAccounts.TabIndex = 31
+        Me.btnUserAccounts.TabIndex = 34
         Me.btnUserAccounts.Text = "User Accounts"
         Me.btnUserAccounts.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnUserAccounts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -596,15 +572,37 @@ Partial Class frmMain
         Me.cbUserLogs.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbUserLogs.ForeColor = System.Drawing.Color.White
         Me.cbUserLogs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cbUserLogs.Location = New System.Drawing.Point(24, 48)
+        Me.cbUserLogs.Location = New System.Drawing.Point(24, 72)
         Me.cbUserLogs.Margin = New System.Windows.Forms.Padding(0)
         Me.cbUserLogs.Name = "cbUserLogs"
         Me.cbUserLogs.Size = New System.Drawing.Size(197, 24)
-        Me.cbUserLogs.TabIndex = 30
+        Me.cbUserLogs.TabIndex = 33
         Me.cbUserLogs.Text = "User Logs"
         Me.cbUserLogs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cbUserLogs.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.cbUserLogs.UseVisualStyleBackColor = False
+        '
+        'btnExportDatabaseTables
+        '
+        Me.btnExportDatabaseTables.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnExportDatabaseTables.Cursor = System.Windows.Forms.Cursors.Default
+        Me.btnExportDatabaseTables.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnExportDatabaseTables.FlatAppearance.BorderSize = 0
+        Me.btnExportDatabaseTables.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnExportDatabaseTables.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnExportDatabaseTables.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnExportDatabaseTables.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExportDatabaseTables.ForeColor = System.Drawing.Color.White
+        Me.btnExportDatabaseTables.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnExportDatabaseTables.Location = New System.Drawing.Point(24, 48)
+        Me.btnExportDatabaseTables.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnExportDatabaseTables.Name = "btnExportDatabaseTables"
+        Me.btnExportDatabaseTables.Size = New System.Drawing.Size(197, 24)
+        Me.btnExportDatabaseTables.TabIndex = 32
+        Me.btnExportDatabaseTables.Text = "Export Database Table"
+        Me.btnExportDatabaseTables.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnExportDatabaseTables.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnExportDatabaseTables.UseVisualStyleBackColor = False
         '
         'btnDBrestore
         '
@@ -628,7 +626,6 @@ Partial Class frmMain
         Me.btnDBrestore.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnDBrestore.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnDBrestore.UseVisualStyleBackColor = False
-        Me.btnDBrestore.Visible = False
         '
         'btnDBbackup
         '
@@ -652,7 +649,6 @@ Partial Class frmMain
         Me.btnDBbackup.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnDBbackup.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnDBbackup.UseVisualStyleBackColor = False
-        Me.btnDBbackup.Visible = False
         '
         'btnDatabase
         '
@@ -4217,7 +4213,7 @@ Partial Class frmMain
         Me.PanelSupplyWarning.BackColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(84, Byte), Integer), CType(CType(96, Byte), Integer))
         Me.PanelSupplyWarning.Controls.Add(Me.warning)
         Me.PanelSupplyWarning.Controls.Add(Me.btnCloseSupplyWarning)
-        Me.PanelSupplyWarning.Location = New System.Drawing.Point(784, 564)
+        Me.PanelSupplyWarning.Location = New System.Drawing.Point(783, 564)
         Me.PanelSupplyWarning.Name = "PanelSupplyWarning"
         Me.PanelSupplyWarning.Size = New System.Drawing.Size(474, 101)
         Me.PanelSupplyWarning.TabIndex = 25
@@ -4623,8 +4619,6 @@ Partial Class frmMain
     Friend WithEvents PictureBox13 As PictureBox
     Friend WithEvents btnStockLevel As Button
     Friend WithEvents databasePanel As Panel
-    Friend WithEvents btnUserAccounts As Button
-    Friend WithEvents cbUserLogs As Button
     Friend WithEvents btnDBrestore As Button
     Friend WithEvents btnDBbackup As Button
     Friend WithEvents btnDatabase As Button
@@ -4647,4 +4641,6 @@ Partial Class frmMain
     Friend WithEvents Label15 As Label
     Friend WithEvents lblTime As Label
     Friend WithEvents btnExportDatabaseTables As Button
+    Friend WithEvents btnUserAccounts As Button
+    Friend WithEvents cbUserLogs As Button
 End Class

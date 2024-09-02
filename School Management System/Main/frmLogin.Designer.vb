@@ -51,6 +51,7 @@ Partial Class frmLogin
         Me.btnModule = New System.Windows.Forms.Label()
         Me.ModuleMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.cmbAcad = New System.Windows.Forms.ToolStripComboBox()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.PanelLogo.SuspendLayout()
@@ -140,11 +141,12 @@ Partial Class frmLogin
         '
         'Panel2
         '
+        Me.Panel2.Controls.Add(Me.applicationVersion)
         Me.Panel2.Controls.Add(Me.Panel1)
         Me.Panel2.Controls.Add(Me.txtUsername)
         Me.Panel2.Controls.Add(Me.txtPassword)
         Me.Panel2.Controls.Add(Me.lblConnection)
-        Me.Panel2.Controls.Add(Me.applicationVersion)
+        Me.Panel2.Controls.Add(Me.Label6)
         Me.Panel2.Controls.Add(Me.SystemDataBase)
         Me.Panel2.Controls.Add(Me.cbModule)
         Me.Panel2.Controls.Add(Me.btnCheckConnection)
@@ -327,9 +329,9 @@ Partial Class frmLogin
         Me.applicationVersion.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.applicationVersion.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.applicationVersion.ForeColor = System.Drawing.Color.Black
-        Me.applicationVersion.Location = New System.Drawing.Point(34, 31)
+        Me.applicationVersion.Location = New System.Drawing.Point(79, 31)
         Me.applicationVersion.Name = "applicationVersion"
-        Me.applicationVersion.Size = New System.Drawing.Size(145, 16)
+        Me.applicationVersion.Size = New System.Drawing.Size(159, 16)
         Me.applicationVersion.TabIndex = 8
         Me.applicationVersion.Text = "Version"
         Me.applicationVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -404,6 +406,18 @@ Partial Class frmLogin
         Me.cmbAcad.Name = "cmbAcad"
         Me.cmbAcad.Size = New System.Drawing.Size(180, 25)
         '
+        'Label6
+        '
+        Me.Label6.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Label6.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.ForeColor = System.Drawing.Color.Black
+        Me.Label6.Location = New System.Drawing.Point(35, 31)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(60, 16)
+        Me.Label6.TabIndex = 8
+        Me.Label6.Text = "Build 2 -"
+        Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'frmLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
@@ -457,4 +471,5 @@ Partial Class frmLogin
     Friend WithEvents Label3 As Label
     Friend WithEvents btnClose As Label
     Friend WithEvents btnConnect As Button
+    Friend WithEvents Label6 As Label
 End Class

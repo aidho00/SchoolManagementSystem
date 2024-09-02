@@ -146,7 +146,7 @@ Public Class frmPaymentMonitoring
                     Try
                         Using cancelling_Cmd As MySqlCommand = cn.CreateCommand()
                             cancelling_Cmd.Transaction = cancelling_transaction
-                            cancelling_Cmd.CommandText = "INSERT INTO tbl_cancelled_cashiering (`ccsh_ornumber`, `ccsh_period_id`, `ccsh_stud_id`, `ccsh_total_amount`, `ccsh_amount_received`, `ccsh_amount_change`, `amount_balance`, `ccsh_type`, `ccsh_date`, `ccsh_notes`, `ccsh_cashier_id`, `ccsh_status`, `ccsh_date_cancelled`, `ccsh_cancelled_by`) SELECT `csh_ornumber`, `csh_period_id`, `csh_stud_id`, `csh_total_amount`, `csh_amount_received`, `csh_amount_change`, `amount_balance`, `csh_type`, `csh_date`, `csh_notes`, `csh_cashier_id`, `csh_status`, CURDATE(), '" & str_userid & "' FROM tbl_cashiering where csh_id = " & PaymentCashieringID & ""
+                            cancelling_Cmd.CommandText = "INSERT INTO tbl_cancelled_cashiering (`ccsh_ornumber`, `ccsh_period_id`, `ccsh_stud_id`, `ccsh_total_amount`, `ccsh_amount_received`, `ccsh_amount_change`, `amount_balance`, `ccsh_type`, `ccsh_date`, `ccsh_notes`, `ccsh_cashier_id`, `ccsh_status`, `ccsh_date_cancelled`, `ccsh_cancelled_by`, `reason`) SELECT `csh_ornumber`, `csh_period_id`, `csh_stud_id`, `csh_total_amount`, `csh_amount_received`, `csh_amount_change`, `amount_balance`, `csh_type`, `csh_date`, `csh_notes`, `csh_cashier_id`, `csh_status`, CURDATE(), '" & str_userid & "', '" & txtReason.Text & "' FROM tbl_cashiering where csh_id = " & PaymentCashieringID & ""
                             cancelling_Cmd.ExecuteNonQuery()
                         End Using
 

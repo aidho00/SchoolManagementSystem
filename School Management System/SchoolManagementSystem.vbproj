@@ -533,6 +533,12 @@
     <Compile Include="Enrollment Module\Library\Add\frmRoom.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Enrollment Module\Report\CrystalReports\StatementOfAccount7.vb">
+      <DependentUpon>StatementOfAccount7.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Inventory Module\Supply Inventory\Item\frmSupplyBrandAdd.Designer.vb">
       <DependentUpon>frmSupplyBrandAdd.vb</DependentUpon>
     </Compile>
@@ -1937,6 +1943,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Enrollment Module\Library\Add\frmRoom.resx">
       <DependentUpon>frmRoom.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Enrollment Module\Report\CrystalReports\StatementOfAccount7.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>StatementOfAccount7.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory Module\Supply Inventory\Item\frmSupplyBrandAdd.resx">
       <DependentUpon>frmSupplyBrandAdd.vb</DependentUpon>

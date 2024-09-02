@@ -1558,7 +1558,7 @@ Public Class frmMain
         Dim dt As DataTable = GetDataOverAll(acadid)
 
         If dt.Rows.Count = 0 Then
-            MessageBox.Show("No data available to display the bar graph.")
+            MessageBox.Show("No data available to display the graph.")
             Return
         End If
 
@@ -2080,7 +2080,7 @@ Public Class frmMain
         Dim dt As DataTable = GetDataOverAllPerSemester()
 
         If dt.Rows.Count = 0 Then
-            MessageBox.Show("No data available to display the bar graph.")
+            MessageBox.Show("No data available to display the graph.")
             Return
         End If
 
@@ -2173,7 +2173,7 @@ Public Class frmMain
         Dim dt As DataTable = GetDataOverAll2(acadYear)
 
         If dt.Rows.Count = 0 Then
-            MessageBox.Show("No data available to display the bar graph.")
+            MessageBox.Show("No data available to display the graph.")
             Return
         End If
 
@@ -2581,10 +2581,17 @@ Public Class frmMain
         End With
     End Sub
 
-    Private Sub lblDate_Click(sender As Object, e As EventArgs) Handles lblDate.Click
-
+    Private Sub btnExportDatabaseTables_Click(sender As Object, e As EventArgs) Handles btnExportDatabaseTables.Click
+        fillCombo("SELECT CONCAT(period_name,'-',period_semester) as 'PERIOD', period_id FROM  tbl_period where (period_enrollment_status = 'OPEN' or period_status = 'Active') order by  `period_name` desc, `period_semester` desc, `period_status` asc", frmExportDBTable.cbAcademicYear, "tbl_period", "PERIOD", "period_id")
+        frmExportDBTable.ShowDialog()
     End Sub
 End Class
+
+
+
+
+
+
 
 Public Class RotatedLabel
     Inherits Control

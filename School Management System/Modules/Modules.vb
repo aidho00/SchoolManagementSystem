@@ -310,6 +310,7 @@ Module Modules
             If buttonControl.Image IsNot Nothing Then
                 AddHandler control.MouseHover, Sub(sender As Object, e As EventArgs)
                                                    control.ForeColor = Color.White
+                                                   control.Cursor = Cursors.Hand
                                                End Sub
 
                 AddHandler control.MouseLeave, Sub(sender As Object, e As EventArgs)
@@ -318,6 +319,7 @@ Module Modules
             ElseIf buttonControl.Text = "SAVE" Or buttonControl.Text = "UPDATE" Or buttonControl.Text = "SELECT" Or buttonControl.Text = "IMPORT" Or buttonControl.Text = "UPLOAD" Or buttonControl.Text = "GENERATE" Or buttonControl.Text = "PRINT" Or buttonControl.Text = "PRINTER SETUP" Or buttonControl.Text = "ADD" Or buttonControl.Text = "ASSIGN" Or buttonControl.Text = "START CAMERA" Or buttonControl.Text = "COPY" Or buttonControl.Text = "CAPTURE" Or buttonControl.Text = "BROWSE" Or buttonControl.Text = "LINK" Or buttonControl.Text = "REMOVE PRE-REQUISITE" Or buttonControl.Text = "ADD SUBJECT" Or buttonControl.Text = "RETURN" Or buttonControl.Text = "PRINT PREVIEW" Then
                 AddHandler control.MouseHover, Sub(sender As Object, e As EventArgs)
                                                    control.ForeColor = Color.FromArgb(15, 101, 208)
+                                                   control.Cursor = Cursors.Hand
                                                End Sub
 
                 AddHandler control.MouseLeave, Sub(sender As Object, e As EventArgs)
@@ -330,6 +332,7 @@ Module Modules
             ElseIf buttonControl.Text = "LOGIN" Then
                 AddHandler control.MouseHover, Sub(sender As Object, e As EventArgs)
                                                    control.ForeColor = Color.White
+                                                   control.Cursor = Cursors.Hand
                                                End Sub
 
                 AddHandler control.MouseLeave, Sub(sender As Object, e As EventArgs)
@@ -338,6 +341,7 @@ Module Modules
             ElseIf buttonControl.Text = "EXIT" Then
                 AddHandler control.MouseHover, Sub(sender As Object, e As EventArgs)
                                                    control.ForeColor = Color.White
+                                                   control.Cursor = Cursors.Hand
                                                End Sub
 
                 AddHandler control.MouseLeave, Sub(sender As Object, e As EventArgs)
@@ -347,6 +351,7 @@ Module Modules
                 Dim btncolor As Color = buttonControl.ForeColor
                 AddHandler control.MouseHover, Sub(sender As Object, e As EventArgs)
                                                    control.ForeColor = Color.Red
+                                                   control.Cursor = Cursors.Hand
                                                End Sub
 
                 AddHandler control.MouseLeave, Sub(sender As Object, e As EventArgs)
@@ -355,6 +360,7 @@ Module Modules
             Else
                 AddHandler control.MouseHover, Sub(sender As Object, e As EventArgs)
                                                    control.ForeColor = Color.FromArgb(15, 101, 208)
+                                                   control.Cursor = Cursors.Hand
                                                End Sub
 
                 AddHandler control.MouseLeave, Sub(sender As Object, e As EventArgs)
@@ -368,6 +374,7 @@ Module Modules
                 Dim lblcolor As Color = labelControl.ForeColor
                 AddHandler labelControl.MouseHover, Sub(sender As Object, e As EventArgs)
                                                         labelControl.ForeColor = Color.Red
+                                                        labelControl.Cursor = Cursors.Hand
                                                     End Sub
 
                 AddHandler labelControl.MouseLeave, Sub(sender As Object, e As EventArgs)
@@ -376,7 +383,7 @@ Module Modules
             ElseIf labelControl.Text = "[ ADD ]" Or labelControl.Text = "[ CAPTURE ]" Or labelControl.Text = "[ UPLOAD ]" Or labelControl.Text = "🔍" Or labelControl.Text = "[ View SOA ]" Or labelControl.Text = "[ View Entry ]" Or labelControl.Text = "[ PRINT ]" Or labelControl.Text = "[ FETCH ]" Or labelControl.Text = "[ FETCH SCHEDULE ]" Or labelControl.Text = "[ SET ]" Or labelControl.Text = "[ ASSIGN ]" Or labelControl.Text = "[ SUBJECTS ]" Or labelControl.Text = "[ Generate Supply Item List ]" Or labelControl.Text = "[ BULK SETUP ]" Then
                 AddHandler labelControl.MouseHover, Sub(sender As Object, e As EventArgs)
                                                         labelControl.ForeColor = Color.FromArgb(15, 101, 208)
-
+                                                        labelControl.Cursor = Cursors.Hand
                                                     End Sub
 
                 AddHandler labelControl.MouseLeave, Sub(sender As Object, e As EventArgs)
@@ -385,7 +392,7 @@ Module Modules
             ElseIf labelControl.Text = "[ CLEAR ]" Then
                 AddHandler labelControl.MouseHover, Sub(sender As Object, e As EventArgs)
                                                         labelControl.ForeColor = Color.Red
-
+                                                        labelControl.Cursor = Cursors.Hand
                                                     End Sub
 
                 AddHandler labelControl.MouseLeave, Sub(sender As Object, e As EventArgs)
@@ -394,7 +401,7 @@ Module Modules
             ElseIf labelControl.Text = "⭾" Or labelControl.Text = "↻" Then
                 AddHandler labelControl.MouseHover, Sub(sender As Object, e As EventArgs)
                                                         labelControl.ForeColor = Color.FromArgb(15, 101, 208)
-
+                                                        labelControl.Cursor = Cursors.Hand
                                                     End Sub
 
                 AddHandler labelControl.MouseLeave, Sub(sender As Object, e As EventArgs)
@@ -403,7 +410,7 @@ Module Modules
             ElseIf labelControl.Text = "  ▼  " Or labelControl.Text = "﹤" Or labelControl.Text = "﹥" Or labelControl.Text = " 🗘 " Or labelControl.Text = "﹤﹤" Or labelControl.Text = "﹥﹥" Then
                 AddHandler labelControl.MouseHover, Sub(sender As Object, e As EventArgs)
                                                         labelControl.ForeColor = Color.FromArgb(15, 101, 208)
-
+                                                        labelControl.Cursor = Cursors.Hand
                                                     End Sub
 
                 AddHandler labelControl.MouseLeave, Sub(sender As Object, e As EventArgs)

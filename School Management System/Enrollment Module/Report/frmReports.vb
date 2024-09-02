@@ -53,6 +53,8 @@ Public Class frmReports
     Dim SchoolName As String = ""
     Dim SchoolAddress As String = ""
 
+    Dim ReportGenerated As Boolean = False
+
     Private Sub cbAcademicYear_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cbAcademicYear.KeyPress, cbAcadCoor.KeyPress, cbPresident.KeyPress, cbRegistrar.KeyPress, cbFontSizeCourse.KeyPress, cbFontSizeStudentName.KeyPress
         e.Handled = True
     End Sub
@@ -288,7 +290,7 @@ Public Class frmReports
     End Sub
 
     Private Sub btnGenerate_Click(sender As Object, e As EventArgs) Handles btnGenerate.Click
-        Dim ReportGenerated As Boolean = False
+
 
         If frmMain.formTitle.Text = "Generate Certificate Of Registration" Then
             If studentId = String.Empty Then
@@ -798,309 +800,21 @@ Public Class frmReports
                 MsgBox("Please select Academic Year.", vbCritical)
                 cbAcademicYear.Select()
             Else
-                Try
-                    cn.Close()
-                    cn.Open()
-                    cm = New MySqlCommand("SELECT * from tbl_enrollment where estudent_id = '" & studentId & "' and eperiod_id = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
-                    dr = cm.ExecuteReader
-                    dr.Read()
-                    If dr.HasRows Then
-                        NextBtn()
-                        dr.Close()
-                        cn.Close()
-                        Dim assessment As Decimal
-                        Dim institutionaldiscount As Decimal
-                        Dim downpayment As Decimal
-                        Dim additionaladjustment As Decimal
-                        Dim lessadjustment As Decimal
-                        Dim totalassessment As Decimal
-                        Dim balance As Decimal
-                        Dim totalpaid As Decimal
-                        Dim otherfees As Decimal
-                        Dim prelim_date As String
-                        Dim midterm_date As String
-                        Dim semifinal_date As String
-                        Dim final_date As String
-                        Dim assessmentid As Integer
-                        Dim oldaccount As Decimal
-                        Dim lackingcredentials As String
-                        Dim scholarname As String
-                        Dim petition As Decimal
-                        Dim petition_no As Integer
-                        Dim additional_fees As Decimal
-                        Dim non_petition_no As Integer
-                        Dim prcnt As Decimal
-                        Dim discount As Decimal
-
-                        cn.Open()
-                        cm = New MySqlCommand("SELECT `Additional Fee (Subject Fee/Petition)` FROM `student_assessment_total` WHERE `spab_stud_id` =  '" & studentId & "' and `spab_period_id` = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
-                        petition = CDec(cm.ExecuteScalar)
-                        cn.Close()
-                        cn.Open()
-                        cm = New MySqlCommand("SELECT COUNT(class_schedule_id) as 'ClassSchedule_ID' from tbl_students_grades JOIN tbl_class_schedule ON tbl_students_grades.sg_class_id = tbl_class_schedule.class_schedule_id and tbl_students_grades.sg_period_id = tbl_class_schedule.csperiod_id WHERE cs_is_petition = 'Yes' and `sg_student_id` =  '" & studentId & "' and `sg_period_id` = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
-                        petition_no = CInt(cm.ExecuteScalar)
-                        cn.Close()
-                        cn.Open()
-                        cm = New MySqlCommand("SELECT COUNT(class_schedule_id) as 'ClassSchedule_ID' from tbl_students_grades JOIN tbl_class_schedule ON tbl_students_grades.sg_class_id = tbl_class_schedule.class_schedule_id and tbl_students_grades.sg_period_id = tbl_class_schedule.csperiod_id WHERE cs_amount > 0 and cs_is_petition NOT IN ('Yes') and `sg_student_id` =  '" & studentId & "' and `sg_period_id` = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
-                        non_petition_no = CInt(cm.ExecuteScalar)
-                        cn.Close()
-                        cn.Close()
-                        cn.Open()
-                        cm = New MySqlCommand("SELECT `Academic Year`, `Assessment`, `Institutional Discount`, `Discounted Assessment`, `Other Fees`, `Additional Fee (Uniforms, etc.)`, `Additional Fee (Subject Fee/Petition)`, `Additional Adjustment`, `Less Adjustment`, `Down Payment`, `Total Assessment`, (`Total Paid` + `Down Payment`) as `Paid`, `Total Balance`, `Excess`, spab_ass_id, `Discount` FROM `student_assessment_total` WHERE `spab_stud_id` =  '" & studentId & "' and `spab_period_id` = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
-                        dr = cm.ExecuteReader
-                        dr.Read()
-                        If dr.HasRows Then
-                            assessment = CDec(dr.Item("Assessment").ToString)
-                            institutionaldiscount = CDec(dr.Item("Institutional Discount").ToString)
-                            downpayment = CDec(dr.Item("Down Payment").ToString)
-                            additionaladjustment = CDec(dr.Item("Additional Adjustment").ToString)
-                            lessadjustment = CDec(dr.Item("Less Adjustment").ToString)
-                            totalassessment = CDec(dr.Item("Total Assessment").ToString)
-                            balance = CDec(dr.Item("Total Balance").ToString)
-                            totalpaid = CDec(dr.Item("Paid").ToString)
-                            otherfees = CDec(dr.Item("Other Fees").ToString)
-                            assessmentid = CInt(dr.Item("spab_ass_id").ToString)
-                            additional_fees = CDec(dr.Item("Additional Fee (Uniforms, etc.)").ToString)
-                            discount = CDec(dr.Item("discount").ToString)
-                        End If
-                        dr.Close()
-                        cn.Close()
-                        cn.Open()
-                        cm = New MySqlCommand("SELECT (SELECT DISTINCT afb_breakdown_period_date FROM tbl_assessment_fee_breakdown WHERE afb_period_id = " & CInt(cbAcademicYear.SelectedValue) & " AND afb_breakdown_period = 'PRELIM' AND afb_breakdown_period_date IS NOT NULL) AS PRELIM, (SELECT DISTINCT afb_breakdown_period_date FROM tbl_assessment_fee_breakdown WHERE afb_period_id = " & CInt(cbAcademicYear.SelectedValue) & " AND afb_breakdown_period = 'MID-TERM' AND afb_breakdown_period_date IS NOT NULL) AS MIDTERM, (SELECT DISTINCT afb_breakdown_period_date FROM tbl_assessment_fee_breakdown WHERE afb_period_id = " & CInt(cbAcademicYear.SelectedValue) & " AND afb_breakdown_period = 'SEMI-FINAL' AND afb_breakdown_period_date IS NOT NULL) AS 'SEMI-FINAL', (SELECT DISTINCT afb_breakdown_period_date FROM tbl_assessment_fee_breakdown WHERE afb_period_id = " & CInt(cbAcademicYear.SelectedValue) & " AND afb_breakdown_period = 'FINAL' AND afb_breakdown_period_date IS NOT NULL) AS FINAL;", cn)
-                        dr = cm.ExecuteReader
-                        dr.Read()
-                        If dr.HasRows Then
-                            prelim_date = dr.Item("PRELIM").ToString
-                            midterm_date = dr.Item("MIDTERM").ToString
-                            semifinal_date = dr.Item("SEMI-FINAL").ToString
-                            final_date = dr.Item("FINAL").ToString
-                        End If
-                        dr.Close()
-                        cn.Close()
-                        cn.Open()
-                        cm = New MySqlCommand("SELECT ifNULL(SUM(`Total Balance`),0) - ifNULL(SUM(`Excess`),0) as 'OldAccount' FROM `student_assessment_total` WHERE `spab_stud_id` = '" & studentId & "' and `spab_period_id` NOT IN(" & CInt(cbAcademicYear.SelectedValue) & ")", cn)
-                        oldaccount = CDec(cm.ExecuteScalar)
-                        cn.Close()
-                        cn.Open()
-                        cm = New MySqlCommand("SELECT s_notes from tbl_student JOIN tbl_scholarship_status where tbl_student.s_scholarship = tbl_scholarship_status.scholar_id and s_id_no = '" & studentId & "'", cn)
-                        lackingcredentials = cm.ExecuteScalar
-                        cn.Close()
-                        cn.Open()
-                        cm = New MySqlCommand("SELECT scholar_name from tbl_student JOIN tbl_scholarship_status where tbl_student.s_scholarship = tbl_scholarship_status.scholar_id and s_id_no = '" & studentId & "'", cn)
-                        scholarname = cm.ExecuteScalar
-                        cn.Close()
-                        cn.Open()
-                        cm = New MySqlCommand("SELECT ROUND(aid_percentage, 2) from tbl_assessment_institutional_discount where aid_student_id = '" & studentId & "' and aid_period_id = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
-                        prcnt = CDec(cm.ExecuteScalar)
-                        cn.Close()
-                        Dim prelimpercent As Decimal
-                        Dim midtermpercent As Decimal
-                        Dim semipercent As Decimal
-                        Dim finalpercent As Decimal
-
-                        cn.Open()
-                        cm = New MySqlCommand("SELECT af_prelim_percentage, af_midterm_percentage, af_semifinal_percentage, af_final_percentage from tbl_assessment_fee where af_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and af_id = " & assessmentid & "", cn)
-                        dr = cm.ExecuteReader
-                        dr.Read()
-                        If dr.HasRows Then
-                            prelimpercent = dr.Item("af_prelim_percentage").ToString
-                            midtermpercent = dr.Item("af_midterm_percentage").ToString
-                            semipercent = dr.Item("af_semifinal_percentage").ToString
-                            finalpercent = dr.Item("af_final_percentage").ToString
-                        End If
-                        dr.Close()
-                        cn.Close()
-                        Dim totalaccountpaid As Decimal
-                        cn.Open()
-                        cm = New MySqlCommand("SELECT `Total Paid` as 'TotalPaid' FROM `student_assessment_total` WHERE `spab_stud_id` = '" & studentId & "' and `spab_period_id` = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
-                        totalaccountpaid = CDec(cm.ExecuteScalar)
-                        cn.Close()
-
-                        Dim totalcurrentassessment As Decimal
-                        Dim totalcurrent_assessment As Decimal
-                        Dim totalcurrent_balance As Decimal
-                        Dim total_assessment As Decimal
-                        Dim a As Decimal
-                        Dim b As Decimal
-                        Dim c As Decimal
-                        Dim d As Decimal
-                        Dim f As Decimal
-                        Dim g As Decimal
-                        Dim h As Decimal
-                        a = oldaccount
-                        b = assessment
-                        c = additionaladjustment
-                        d = balance
-                        f = totalassessment
-                        g = institutionaldiscount
-                        h = downpayment
-                        totalcurrent_assessment = b + c
-                        totalcurrent_balance = d
-                        total_assessment = f
-                        totalcurrentassessment = a + b + otherfees - g
-                        totalcurrent_assessment = (totalassessment + oldaccount) - h
-
-                        Dim total_prelim As Decimal
-                        Dim total_midterm As Decimal
-                        Dim total_semifinal As Decimal
-                        Dim total_final As Decimal
-                        Dim withdownpayment As Decimal
-                        Dim totalwithdownpayment As Decimal
-                        If downpayment >= 2000 Then
-                            total_prelim = totalcurrent_assessment * prelimpercent
-                            total_midterm = totalcurrent_assessment * midtermpercent
-                            total_semifinal = totalcurrent_assessment * semipercent
-                            total_final = totalcurrent_assessment * finalpercent
-                        ElseIf downpayment < 2000 Then
-                            withdownpayment = totalcurrent_assessment - 2000 + downpayment
-                            totalwithdownpayment = 2000 - downpayment
-                            total_prelim = (withdownpayment * prelimpercent) + totalwithdownpayment
-                            total_midterm = withdownpayment * midtermpercent
-                            total_semifinal = withdownpayment * semipercent
-                            total_final = withdownpayment * finalpercent
-                        End If
-
-                        Dim balance_prelim As Decimal
-                        Dim balance_midterm As Decimal
-                        Dim balance_semifinal As Decimal
-                        Dim balance_final As Decimal
-
-                        If totalaccountpaid > total_prelim Then
-                            Dim subtractprelim As Decimal
-                            subtractprelim = totalaccountpaid - total_prelim
-                            If subtractprelim > total_midterm Then
-                                Dim subtractmidterm As Decimal
-                                subtractmidterm = subtractprelim - total_midterm
-                                If subtractmidterm > total_semifinal Then
-                                    Dim subtractsemi As Decimal
-                                    subtractsemi = subtractmidterm - total_semifinal
-                                    If subtractsemi > total_final Then
-                                        Dim subtractfinal As Decimal
-                                        subtractfinal = subtractsemi - total_final
-                                        If subtractfinal <= total_final Then
-                                            balance_prelim = "0.00"
-                                            balance_midterm = "0.00"
-                                            balance_semifinal = "0.00"
-                                            balance_final = "0.00"
-                                        End If
-                                    Else
-                                        balance_prelim = "0.00"
-                                        balance_midterm = "0.00"
-                                        balance_semifinal = "0.00"
-                                        balance_final = total_final - subtractsemi
-                                    End If
-                                Else
-                                    balance_prelim = "0.00"
-                                    balance_midterm = "0.00"
-                                    balance_semifinal = total_semifinal - subtractmidterm
-                                    balance_final = total_final
-                                End If
-                            Else
-                                balance_prelim = "0.00"
-                                balance_midterm = total_midterm - subtractprelim
-                                balance_semifinal = total_semifinal
-                                balance_final = total_final
-                            End If
+                If frmMain.systemModule.Text = "College Module" Then
+                    If str_role = "Administrator" Or str_role = "Cashier" Then
+                        Dim dr As DialogResult
+                        dr = MessageBox.Show("Do you want to print SOA for scholarship purpose?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)
+                        If dr = DialogResult.No Then
+                            PrintSOA()
                         Else
-                            balance_prelim = total_prelim - totalaccountpaid
-                            balance_midterm = total_midterm
-                            balance_semifinal = total_semifinal
-                            balance_final = total_final
+                            PrintSOAScholar()
                         End If
-
-                        If frmMain.systemModule.Text = "College Module" Then
-                            cn.Open()
-                            Dim courseId As Integer = 0
-                            cm = New MySqlCommand("SELECT `sg_course_id` FROM `tbl_students_grades` WHERE `sg_student_id` = '" & studentId & "' and `sg_period_id` = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
-                            courseId = cm.ExecuteScalar
-                            cn.Close()
-                            cn.Open()
-
-                            Dim dtable As DataTable
-                            Dim sql As String
-                            If studentGradeLevel.Contains("1st Year") Then
-                                sql = "SELECT (ofsp_particular_id) as 'ID', (ap_particular_code) as 'Code', (ap_particular_name) as 'Particular', (ofsp_amount) as 'Amount' from tbl_assessment_ofs_particulars JOIN tbl_assessment_particulars where tbl_assessment_ofs_particulars.ofsp_particular_id = tbl_assessment_particulars.ap_id and ofsp_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and ofsp_course_id = " & courseId & " and ofsp_year_level = '1st Year' and ofsp_gender ='" & studentGender & "'"
-                            Else
-                                sql = "SELECT (ofsp_particular_id) as 'ID', (ap_particular_code) as 'Code', (ap_particular_name) as 'Particular', (ofsp_amount) as 'Amount' from tbl_assessment_ofs_particulars JOIN tbl_assessment_particulars where tbl_assessment_ofs_particulars.ofsp_particular_id = tbl_assessment_particulars.ap_id and ofsp_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and ofsp_course_id = " & courseId & " and ofsp_year_level = LEFT('" & studentGradeLevel & "', 8) and ofsp_gender ='Both'"
-                            End If
-                            Dim dbcommand As New MySqlCommand(sql, cn)
-                            Dim adt As New MySqlDataAdapter
-                            adt.SelectCommand = dbcommand
-                            dtable = New DataTable
-                            adt.Fill(dtable)
-                            dg_report2.DataSource = dtable
-                            adt.Dispose()
-                            dbcommand.Dispose()
-                            cn.Close()
-
-                            dt2.Columns.Clear()
-                            dt2.Rows.Clear()
-                            With dt2
-                                .Columns.Add("name")
-                                .Columns.Add("amount")
-                            End With
-
-                            For Each dr As DataGridViewRow In dg_report2.Rows
-                                dt2.Rows.Add(dr.Cells(2).Value, dr.Cells(3).Value)
-                            Next
-                        End If
-
-                        Dim rptdoc As CrystalDecisions.CrystalReports.Engine.ReportDocument
-                        If frmMain.systemModule.Text = "College Module" Then
-                            rptdoc = New StatementOfAccount6
-                            rptdoc.Subreports(0).SetDataSource(dt2)
-                        Else
-                            rptdoc = New StatementOfAccount4
-                        End If
-                        rptdoc.SetParameterValue("sname", studentName)
-                        rptdoc.SetParameterValue("sid", studentId)
-                        rptdoc.SetParameterValue("scourse_yrlvl", studentGradeLevel & " - " & studentCourse)
-                        rptdoc.SetParameterValue("prelim_date", Format(Convert.ToDateTime(prelim_date), "MMM yyyy"))
-                        rptdoc.SetParameterValue("midterm_date", Format(Convert.ToDateTime(midterm_date), "MMM yyyy"))
-                        rptdoc.SetParameterValue("semifinal_date", Format(Convert.ToDateTime(semifinal_date), "MMM yyyy"))
-                        rptdoc.SetParameterValue("final_date", Format(Convert.ToDateTime(final_date), "MMM yyyy"))
-                        rptdoc.SetParameterValue("prelim_balance", Format(balance_prelim, "n2"))
-                        rptdoc.SetParameterValue("midterm_balance", Format(balance_midterm, "n2"))
-                        rptdoc.SetParameterValue("semifinal_balance", Format(balance_semifinal, "n2"))
-                        rptdoc.SetParameterValue("final_balance", Format(balance_final, "n2"))
-                        rptdoc.SetParameterValue("otherdiscount", Format(discount, "n2"))
-                        rptdoc.SetParameterValue("oldaccounts", Format(oldaccount, "n2"))
-                        rptdoc.SetParameterValue("addadjustment", Format(additionaladjustment, "n2"))
-                        rptdoc.SetParameterValue("lessadjustment", Format(lessadjustment, "n2"))
-                        rptdoc.SetParameterValue("downpayment", Format(downpayment, "n2"))
-                        rptdoc.SetParameterValue("institutionaldiscount", Format(institutionaldiscount, "n2"))
-                        rptdoc.SetParameterValue("totalcurrentassessment", Format(totalcurrentassessment, "n2"))
-                        rptdoc.SetParameterValue("currentbalance", Format(((totalassessment + oldaccount) - totalaccountpaid) - downpayment, "n2"))
-                        rptdoc.SetParameterValue("president_admin", cbPresident.Text)
-                        rptdoc.SetParameterValue("prepared_by", str_name)
-                        rptdoc.SetParameterValue("currentassessment", Format(assessment, "n2"))
-                        rptdoc.SetParameterValue("payments", Format(totalaccountpaid, "n2"))
-                        rptdoc.SetParameterValue("currentperiod", cbAcademicYear.Text)
-                        rptdoc.SetParameterValue("lackingcredentials", lackingcredentials)
-                        rptdoc.SetParameterValue("otherfee", Format(otherfees, "n2"))
-                        rptdoc.SetParameterValue("scholarship", scholarname)
-                        rptdoc.SetParameterValue("discountpercent", Math.Round(prcnt * 100, 0) & "%")
-
-                        If petition > 0 Then
-                            rptdoc.SetParameterValue("petitiontitle", "Add: Subject Fee: Regular -" & non_petition_no & " / Petition - " & petition_no & "")
-                            rptdoc.SetParameterValue("petition_amount", Format(petition, "n2"))
-                        Else
-                            rptdoc.SetParameterValue("petitiontitle", " ")
-                            rptdoc.SetParameterValue("petition_amount", " ")
-                        End If
-
-                        rptdoc.SetParameterValue("additional_amount", Format(additional_fees, "n2"))
-                        rptdoc.SetParameterValue("date_generated", Format(Convert.ToDateTime(DateToday), "MMMM d, yyyy"))
-                        ReportViewer.ReportSource = rptdoc
-                        dg_report2.DataSource = Nothing
-                        ReportViewer.Select()
-                        ReportGenerated = True
+                    Else
+                        PrintSOA()
                     End If
-                Catch ex As Exception
-                    MsgBox(ex.Message, vbCritical)
-                    cn.Close()
-                    PrevBtn()
-                End Try
+                Else
+                    PrintSOA()
+                End If
             End If
         ElseIf frmMain.formTitle.Text = "Generate Transcript Of Records" Then
             If studentId = String.Empty Then
@@ -5108,6 +4822,7 @@ Public Class frmReports
 
         If ReportGenerated = True Then
             UserActivity("" & frmMain.formTitle.Text & "", "REPORTS")
+            ReportGenerated = False
         Else
         End If
     End Sub
@@ -5896,5 +5611,611 @@ Public Class frmReports
             dgStudentView.Visible = False
             dgStudentView.Rows.Clear()
         End If
+
+    End Sub
+    Sub PrintSOA()
+        Try
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand("SELECT * from tbl_enrollment where estudent_id = '" & studentId & "' and eperiod_id = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
+            dr = cm.ExecuteReader
+            dr.Read()
+            If dr.HasRows Then
+                NextBtn()
+                dr.Close()
+                cn.Close()
+                Dim assessment As Decimal
+                Dim institutionaldiscount As Decimal
+                Dim downpayment As Decimal
+                Dim additionaladjustment As Decimal
+                Dim lessadjustment As Decimal
+                Dim totalassessment As Decimal
+                Dim balance As Decimal
+                Dim totalpaid As Decimal
+                Dim otherfees As Decimal
+                Dim prelim_date As String
+                Dim midterm_date As String
+                Dim semifinal_date As String
+                Dim final_date As String
+                Dim assessmentid As Integer
+                Dim oldaccount As Decimal
+                Dim lackingcredentials As String
+                Dim scholarname As String
+                Dim petition As Decimal
+                Dim petition_no As Integer
+                Dim additional_fees As Decimal
+                Dim non_petition_no As Integer
+                Dim prcnt As Decimal
+                Dim discount As Decimal
+
+                cn.Open()
+                cm = New MySqlCommand("SELECT `Additional Fee (Subject Fee/Petition)` FROM `student_assessment_total` WHERE `spab_stud_id` =  '" & studentId & "' and `spab_period_id` = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
+                petition = CDec(cm.ExecuteScalar)
+                cn.Close()
+                cn.Open()
+                cm = New MySqlCommand("SELECT COUNT(class_schedule_id) as 'ClassSchedule_ID' from tbl_students_grades JOIN tbl_class_schedule ON tbl_students_grades.sg_class_id = tbl_class_schedule.class_schedule_id and tbl_students_grades.sg_period_id = tbl_class_schedule.csperiod_id WHERE cs_is_petition = 'Yes' and `sg_student_id` =  '" & studentId & "' and `sg_period_id` = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
+                petition_no = CInt(cm.ExecuteScalar)
+                cn.Close()
+                cn.Open()
+                cm = New MySqlCommand("SELECT COUNT(class_schedule_id) as 'ClassSchedule_ID' from tbl_students_grades JOIN tbl_class_schedule ON tbl_students_grades.sg_class_id = tbl_class_schedule.class_schedule_id and tbl_students_grades.sg_period_id = tbl_class_schedule.csperiod_id WHERE cs_amount > 0 and cs_is_petition NOT IN ('Yes') and `sg_student_id` =  '" & studentId & "' and `sg_period_id` = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
+                non_petition_no = CInt(cm.ExecuteScalar)
+                cn.Close()
+                cn.Close()
+                cn.Open()
+                cm = New MySqlCommand("SELECT `Academic Year`, `Assessment`, `Institutional Discount`, `Discounted Assessment`, `Other Fees`, `Additional Fee (Uniforms, etc.)`, `Additional Fee (Subject Fee/Petition)`, `Additional Adjustment`, `Less Adjustment`, `Down Payment`, `Total Assessment`, (`Total Paid` + `Down Payment`) as `Paid`, `Total Balance`, `Excess`, spab_ass_id, `Discount` FROM `student_assessment_total` WHERE `spab_stud_id` =  '" & studentId & "' and `spab_period_id` = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
+                dr = cm.ExecuteReader
+                dr.Read()
+                If dr.HasRows Then
+                    assessment = CDec(dr.Item("Assessment").ToString)
+                    institutionaldiscount = CDec(dr.Item("Institutional Discount").ToString)
+                    downpayment = CDec(dr.Item("Down Payment").ToString)
+                    additionaladjustment = CDec(dr.Item("Additional Adjustment").ToString)
+                    lessadjustment = CDec(dr.Item("Less Adjustment").ToString)
+                    totalassessment = CDec(dr.Item("Total Assessment").ToString)
+                    balance = CDec(dr.Item("Total Balance").ToString)
+                    totalpaid = CDec(dr.Item("Paid").ToString)
+                    otherfees = CDec(dr.Item("Other Fees").ToString)
+                    assessmentid = CInt(dr.Item("spab_ass_id").ToString)
+                    additional_fees = CDec(dr.Item("Additional Fee (Uniforms, etc.)").ToString)
+                    discount = CDec(dr.Item("discount").ToString)
+                End If
+                dr.Close()
+                cn.Close()
+                cn.Open()
+                cm = New MySqlCommand("SELECT (SELECT DISTINCT afb_breakdown_period_date FROM tbl_assessment_fee_breakdown WHERE afb_period_id = " & CInt(cbAcademicYear.SelectedValue) & " AND afb_breakdown_period = 'PRELIM' AND afb_breakdown_period_date IS NOT NULL) AS PRELIM, (SELECT DISTINCT afb_breakdown_period_date FROM tbl_assessment_fee_breakdown WHERE afb_period_id = " & CInt(cbAcademicYear.SelectedValue) & " AND afb_breakdown_period = 'MID-TERM' AND afb_breakdown_period_date IS NOT NULL) AS MIDTERM, (SELECT DISTINCT afb_breakdown_period_date FROM tbl_assessment_fee_breakdown WHERE afb_period_id = " & CInt(cbAcademicYear.SelectedValue) & " AND afb_breakdown_period = 'SEMI-FINAL' AND afb_breakdown_period_date IS NOT NULL) AS 'SEMI-FINAL', (SELECT DISTINCT afb_breakdown_period_date FROM tbl_assessment_fee_breakdown WHERE afb_period_id = " & CInt(cbAcademicYear.SelectedValue) & " AND afb_breakdown_period = 'FINAL' AND afb_breakdown_period_date IS NOT NULL) AS FINAL;", cn)
+                dr = cm.ExecuteReader
+                dr.Read()
+                If dr.HasRows Then
+                    prelim_date = dr.Item("PRELIM").ToString
+                    midterm_date = dr.Item("MIDTERM").ToString
+                    semifinal_date = dr.Item("SEMI-FINAL").ToString
+                    final_date = dr.Item("FINAL").ToString
+                End If
+                dr.Close()
+                cn.Close()
+                cn.Open()
+                cm = New MySqlCommand("SELECT ifNULL(SUM(`Total Balance`),0) - ifNULL(SUM(`Excess`),0) as 'OldAccount' FROM `student_assessment_total` WHERE `spab_stud_id` = '" & studentId & "' and `spab_period_id` NOT IN(" & CInt(cbAcademicYear.SelectedValue) & ")", cn)
+                oldaccount = CDec(cm.ExecuteScalar)
+                cn.Close()
+                cn.Open()
+                cm = New MySqlCommand("SELECT s_notes from tbl_student JOIN tbl_scholarship_status where tbl_student.s_scholarship = tbl_scholarship_status.scholar_id and s_id_no = '" & studentId & "'", cn)
+                lackingcredentials = cm.ExecuteScalar
+                cn.Close()
+                cn.Open()
+                cm = New MySqlCommand("SELECT scholar_name from tbl_student JOIN tbl_scholarship_status where tbl_student.s_scholarship = tbl_scholarship_status.scholar_id and s_id_no = '" & studentId & "'", cn)
+                scholarname = cm.ExecuteScalar
+                cn.Close()
+                cn.Open()
+                cm = New MySqlCommand("SELECT ROUND(aid_percentage, 2) from tbl_assessment_institutional_discount where aid_student_id = '" & studentId & "' and aid_period_id = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
+                prcnt = CDec(cm.ExecuteScalar)
+                cn.Close()
+                Dim prelimpercent As Decimal
+                Dim midtermpercent As Decimal
+                Dim semipercent As Decimal
+                Dim finalpercent As Decimal
+
+                cn.Open()
+                cm = New MySqlCommand("SELECT af_prelim_percentage, af_midterm_percentage, af_semifinal_percentage, af_final_percentage from tbl_assessment_fee where af_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and af_id = " & assessmentid & "", cn)
+                dr = cm.ExecuteReader
+                dr.Read()
+                If dr.HasRows Then
+                    prelimpercent = dr.Item("af_prelim_percentage").ToString
+                    midtermpercent = dr.Item("af_midterm_percentage").ToString
+                    semipercent = dr.Item("af_semifinal_percentage").ToString
+                    finalpercent = dr.Item("af_final_percentage").ToString
+                End If
+                dr.Close()
+                cn.Close()
+                Dim totalaccountpaid As Decimal
+                cn.Open()
+                cm = New MySqlCommand("SELECT `Total Paid` as 'TotalPaid' FROM `student_assessment_total` WHERE `spab_stud_id` = '" & studentId & "' and `spab_period_id` = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
+                totalaccountpaid = CDec(cm.ExecuteScalar)
+                cn.Close()
+
+                Dim totalcurrentassessment As Decimal
+                Dim totalcurrent_assessment As Decimal
+                Dim totalcurrent_balance As Decimal
+                Dim total_assessment As Decimal
+                Dim a As Decimal
+                Dim b As Decimal
+                Dim c As Decimal
+                Dim d As Decimal
+                Dim f As Decimal
+                Dim g As Decimal
+                Dim h As Decimal
+                a = oldaccount
+                b = assessment
+                c = additionaladjustment
+                d = balance
+                f = totalassessment
+                g = institutionaldiscount
+                h = downpayment
+                totalcurrent_assessment = b + c
+                totalcurrent_balance = d
+                total_assessment = f
+                totalcurrentassessment = a + b + otherfees - g
+                totalcurrent_assessment = (totalassessment + oldaccount) - h
+
+                Dim total_prelim As Decimal
+                Dim total_midterm As Decimal
+                Dim total_semifinal As Decimal
+                Dim total_final As Decimal
+                Dim withdownpayment As Decimal
+                Dim totalwithdownpayment As Decimal
+                If downpayment >= 2000 Then
+                    total_prelim = totalcurrent_assessment * prelimpercent
+                    total_midterm = totalcurrent_assessment * midtermpercent
+                    total_semifinal = totalcurrent_assessment * semipercent
+                    total_final = totalcurrent_assessment * finalpercent
+                ElseIf downpayment < 2000 Then
+                    withdownpayment = totalcurrent_assessment - 2000 + downpayment
+                    totalwithdownpayment = 2000 - downpayment
+                    total_prelim = (withdownpayment * prelimpercent) + totalwithdownpayment
+                    total_midterm = withdownpayment * midtermpercent
+                    total_semifinal = withdownpayment * semipercent
+                    total_final = withdownpayment * finalpercent
+                End If
+
+                Dim balance_prelim As Decimal
+                Dim balance_midterm As Decimal
+                Dim balance_semifinal As Decimal
+                Dim balance_final As Decimal
+
+                If totalaccountpaid > total_prelim Then
+                    Dim subtractprelim As Decimal
+                    subtractprelim = totalaccountpaid - total_prelim
+                    If subtractprelim > total_midterm Then
+                        Dim subtractmidterm As Decimal
+                        subtractmidterm = subtractprelim - total_midterm
+                        If subtractmidterm > total_semifinal Then
+                            Dim subtractsemi As Decimal
+                            subtractsemi = subtractmidterm - total_semifinal
+                            If subtractsemi > total_final Then
+                                Dim subtractfinal As Decimal
+                                subtractfinal = subtractsemi - total_final
+                                If subtractfinal <= total_final Then
+                                    balance_prelim = "0.00"
+                                    balance_midterm = "0.00"
+                                    balance_semifinal = "0.00"
+                                    balance_final = "0.00"
+                                End If
+                            Else
+                                balance_prelim = "0.00"
+                                balance_midterm = "0.00"
+                                balance_semifinal = "0.00"
+                                balance_final = total_final - subtractsemi
+                            End If
+                        Else
+                            balance_prelim = "0.00"
+                            balance_midterm = "0.00"
+                            balance_semifinal = total_semifinal - subtractmidterm
+                            balance_final = total_final
+                        End If
+                    Else
+                        balance_prelim = "0.00"
+                        balance_midterm = total_midterm - subtractprelim
+                        balance_semifinal = total_semifinal
+                        balance_final = total_final
+                    End If
+                Else
+                    balance_prelim = total_prelim - totalaccountpaid
+                    balance_midterm = total_midterm
+                    balance_semifinal = total_semifinal
+                    balance_final = total_final
+                End If
+
+                If frmMain.systemModule.Text = "College Module" Then
+                    cn.Open()
+                    Dim courseId As Integer = 0
+                    cm = New MySqlCommand("SELECT `sg_course_id` FROM `tbl_students_grades` WHERE `sg_student_id` = '" & studentId & "' and `sg_period_id` = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
+                    courseId = cm.ExecuteScalar
+                    cn.Close()
+                    cn.Open()
+
+                    Dim dtable As DataTable
+                    Dim sql As String
+                    If studentGradeLevel.Contains("1st Year") Then
+                        sql = "SELECT (ofsp_particular_id) as 'ID', (ap_particular_code) as 'Code', (ap_particular_name) as 'Particular', (ofsp_amount) as 'Amount' from tbl_assessment_ofs_particulars JOIN tbl_assessment_particulars where tbl_assessment_ofs_particulars.ofsp_particular_id = tbl_assessment_particulars.ap_id and ofsp_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and ofsp_course_id = " & courseId & " and ofsp_year_level = '1st Year' and ofsp_gender ='" & studentGender & "'"
+                    Else
+                        sql = "SELECT (ofsp_particular_id) as 'ID', (ap_particular_code) as 'Code', (ap_particular_name) as 'Particular', (ofsp_amount) as 'Amount' from tbl_assessment_ofs_particulars JOIN tbl_assessment_particulars where tbl_assessment_ofs_particulars.ofsp_particular_id = tbl_assessment_particulars.ap_id and ofsp_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and ofsp_course_id = " & courseId & " and ofsp_year_level = LEFT('" & studentGradeLevel & "', 8) and ofsp_gender ='Both'"
+                    End If
+                    Dim dbcommand As New MySqlCommand(sql, cn)
+                    Dim adt As New MySqlDataAdapter
+                    adt.SelectCommand = dbcommand
+                    dtable = New DataTable
+                    adt.Fill(dtable)
+                    dg_report2.DataSource = dtable
+                    adt.Dispose()
+                    dbcommand.Dispose()
+                    cn.Close()
+
+                    dt2.Columns.Clear()
+                    dt2.Rows.Clear()
+                    With dt2
+                        .Columns.Add("name")
+                        .Columns.Add("amount")
+                    End With
+
+                    For Each dr As DataGridViewRow In dg_report2.Rows
+                        dt2.Rows.Add(dr.Cells(2).Value, dr.Cells(3).Value)
+                    Next
+                End If
+
+                Dim rptdoc As CrystalDecisions.CrystalReports.Engine.ReportDocument
+                If frmMain.systemModule.Text = "College Module" Then
+                    rptdoc = New StatementOfAccount6
+                    rptdoc.Subreports(0).SetDataSource(dt2)
+                Else
+                    rptdoc = New StatementOfAccount4
+                End If
+                rptdoc.SetParameterValue("sname", studentName)
+                rptdoc.SetParameterValue("sid", studentId)
+                rptdoc.SetParameterValue("scourse_yrlvl", studentGradeLevel & " - " & studentGradeLevelCourseCode)
+                rptdoc.SetParameterValue("prelim_date", Format(Convert.ToDateTime(prelim_date), "MMM yyyy"))
+                rptdoc.SetParameterValue("midterm_date", Format(Convert.ToDateTime(midterm_date), "MMM yyyy"))
+                rptdoc.SetParameterValue("semifinal_date", Format(Convert.ToDateTime(semifinal_date), "MMM yyyy"))
+                rptdoc.SetParameterValue("final_date", Format(Convert.ToDateTime(final_date), "MMM yyyy"))
+                rptdoc.SetParameterValue("prelim_balance", Format(balance_prelim, "n2"))
+                rptdoc.SetParameterValue("midterm_balance", Format(balance_midterm, "n2"))
+                rptdoc.SetParameterValue("semifinal_balance", Format(balance_semifinal, "n2"))
+                rptdoc.SetParameterValue("final_balance", Format(balance_final, "n2"))
+                rptdoc.SetParameterValue("otherdiscount", Format(discount, "n2"))
+                rptdoc.SetParameterValue("oldaccounts", Format(oldaccount, "n2"))
+                rptdoc.SetParameterValue("addadjustment", Format(additionaladjustment, "n2"))
+                rptdoc.SetParameterValue("lessadjustment", Format(lessadjustment, "n2"))
+                rptdoc.SetParameterValue("downpayment", Format(downpayment, "n2"))
+                rptdoc.SetParameterValue("institutionaldiscount", Format(institutionaldiscount, "n2"))
+                rptdoc.SetParameterValue("totalcurrentassessment", Format(totalcurrentassessment, "n2"))
+                rptdoc.SetParameterValue("currentbalance", Format(((totalassessment + oldaccount) - totalaccountpaid) - downpayment, "n2"))
+                rptdoc.SetParameterValue("president_admin", cbPresident.Text)
+                rptdoc.SetParameterValue("prepared_by", str_name)
+                rptdoc.SetParameterValue("currentassessment", Format(assessment, "n2"))
+                rptdoc.SetParameterValue("payments", Format(totalaccountpaid, "n2"))
+                rptdoc.SetParameterValue("currentperiod", cbAcademicYear.Text)
+                rptdoc.SetParameterValue("lackingcredentials", lackingcredentials)
+                rptdoc.SetParameterValue("otherfee", Format(otherfees, "n2"))
+                rptdoc.SetParameterValue("scholarship", scholarname)
+                rptdoc.SetParameterValue("discountpercent", Math.Round(prcnt * 100, 0) & "%")
+
+                If petition > 0 Then
+                    rptdoc.SetParameterValue("petitiontitle", "Add: Subject Fee: Regular -" & non_petition_no & " / Petition - " & petition_no & "")
+                    rptdoc.SetParameterValue("petition_amount", Format(petition, "n2"))
+                Else
+                    rptdoc.SetParameterValue("petitiontitle", " ")
+                    rptdoc.SetParameterValue("petition_amount", " ")
+                End If
+
+                rptdoc.SetParameterValue("additional_amount", Format(additional_fees, "n2"))
+                rptdoc.SetParameterValue("date_generated", Format(Convert.ToDateTime(DateToday), "MMMM d, yyyy"))
+                ReportViewer.ReportSource = rptdoc
+                dg_report2.DataSource = Nothing
+                ReportViewer.Select()
+                ReportGenerated = True
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical)
+            cn.Close()
+            PrevBtn()
+        End Try
+    End Sub
+
+    Sub PrintSOAScholar()
+        'Try
+        cn.Close()
+            cn.Open()
+            cm = New MySqlCommand("SELECT * from tbl_enrollment where estudent_id = '" & studentId & "' and eperiod_id = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
+            dr = cm.ExecuteReader
+            dr.Read()
+            If dr.HasRows Then
+                NextBtn()
+                dr.Close()
+                cn.Close()
+                Dim assessment As Decimal
+                Dim institutionaldiscount As Decimal
+                Dim downpayment As Decimal
+                Dim additionaladjustment As Decimal
+                Dim lessadjustment As Decimal
+                Dim totalassessment As Decimal
+                Dim balance As Decimal
+                Dim totalpaid As Decimal
+                Dim otherfees As Decimal
+                Dim prelim_date As String
+                Dim midterm_date As String
+                Dim semifinal_date As String
+                Dim final_date As String
+                Dim assessmentid As Integer
+                Dim oldaccount As Decimal
+                Dim lackingcredentials As String
+                Dim scholarname As String
+                Dim petition As Decimal
+                Dim petition_no As Integer
+                Dim additional_fees As Decimal
+                Dim non_petition_no As Integer
+                Dim prcnt As Decimal
+                Dim discount As Decimal
+
+                cn.Open()
+                cm = New MySqlCommand("SELECT `Additional Fee (Subject Fee/Petition)` FROM `student_assessment_total` WHERE `spab_stud_id` =  '" & studentId & "' and `spab_period_id` = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
+                petition = CDec(cm.ExecuteScalar)
+                cn.Close()
+                cn.Open()
+                cm = New MySqlCommand("SELECT COUNT(class_schedule_id) as 'ClassSchedule_ID' from tbl_students_grades JOIN tbl_class_schedule ON tbl_students_grades.sg_class_id = tbl_class_schedule.class_schedule_id and tbl_students_grades.sg_period_id = tbl_class_schedule.csperiod_id WHERE cs_is_petition = 'Yes' and `sg_student_id` =  '" & studentId & "' and `sg_period_id` = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
+                petition_no = CInt(cm.ExecuteScalar)
+                cn.Close()
+                cn.Open()
+                cm = New MySqlCommand("SELECT COUNT(class_schedule_id) as 'ClassSchedule_ID' from tbl_students_grades JOIN tbl_class_schedule ON tbl_students_grades.sg_class_id = tbl_class_schedule.class_schedule_id and tbl_students_grades.sg_period_id = tbl_class_schedule.csperiod_id WHERE cs_amount > 0 and cs_is_petition NOT IN ('Yes') and `sg_student_id` =  '" & studentId & "' and `sg_period_id` = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
+                non_petition_no = CInt(cm.ExecuteScalar)
+                cn.Close()
+                cn.Close()
+                cn.Open()
+                cm = New MySqlCommand("SELECT `Academic Year`, `Assessment`, `Institutional Discount`, `Discounted Assessment`, `Other Fees`, `Additional Fee (Uniforms, etc.)`, `Additional Fee (Subject Fee/Petition)`, `Additional Adjustment`, `Less Adjustment`, `Down Payment`, `Total Assessment`, (`Total Paid` + `Down Payment`) as `Paid`, `Total Balance`, `Excess`, spab_ass_id, `Discount` FROM `student_assessment_total` WHERE `spab_stud_id` =  '" & studentId & "' and `spab_period_id` = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
+                dr = cm.ExecuteReader
+                dr.Read()
+                If dr.HasRows Then
+                    assessment = CDec(dr.Item("Assessment").ToString)
+                    institutionaldiscount = CDec(dr.Item("Institutional Discount").ToString)
+                    downpayment = CDec(dr.Item("Down Payment").ToString)
+                    additionaladjustment = 0
+                    lessadjustment = 0
+                    totalassessment = CDec(dr.Item("Total Assessment").ToString)
+                    balance = CDec(dr.Item("Total Balance").ToString)
+                    totalpaid = CDec(dr.Item("Paid").ToString)
+                    otherfees = CDec(dr.Item("Other Fees").ToString)
+                    assessmentid = CInt(dr.Item("spab_ass_id").ToString)
+                    additional_fees = CDec(dr.Item("Additional Fee (Uniforms, etc.)").ToString)
+                    discount = CDec(dr.Item("discount").ToString)
+                End If
+                dr.Close()
+                cn.Close()
+                cn.Open()
+                cm = New MySqlCommand("SELECT (SELECT DISTINCT afb_breakdown_period_date FROM tbl_assessment_fee_breakdown WHERE afb_period_id = " & CInt(cbAcademicYear.SelectedValue) & " AND afb_breakdown_period = 'PRELIM' AND afb_breakdown_period_date IS NOT NULL) AS PRELIM, (SELECT DISTINCT afb_breakdown_period_date FROM tbl_assessment_fee_breakdown WHERE afb_period_id = " & CInt(cbAcademicYear.SelectedValue) & " AND afb_breakdown_period = 'MID-TERM' AND afb_breakdown_period_date IS NOT NULL) AS MIDTERM, (SELECT DISTINCT afb_breakdown_period_date FROM tbl_assessment_fee_breakdown WHERE afb_period_id = " & CInt(cbAcademicYear.SelectedValue) & " AND afb_breakdown_period = 'SEMI-FINAL' AND afb_breakdown_period_date IS NOT NULL) AS 'SEMI-FINAL', (SELECT DISTINCT afb_breakdown_period_date FROM tbl_assessment_fee_breakdown WHERE afb_period_id = " & CInt(cbAcademicYear.SelectedValue) & " AND afb_breakdown_period = 'FINAL' AND afb_breakdown_period_date IS NOT NULL) AS FINAL;", cn)
+                dr = cm.ExecuteReader
+                dr.Read()
+                If dr.HasRows Then
+                    prelim_date = dr.Item("PRELIM").ToString
+                    midterm_date = dr.Item("MIDTERM").ToString
+                    semifinal_date = dr.Item("SEMI-FINAL").ToString
+                    final_date = dr.Item("FINAL").ToString
+                End If
+                dr.Close()
+                oldaccount = 0
+                cn.Close()
+                cn.Open()
+                cm = New MySqlCommand("SELECT s_notes from tbl_student JOIN tbl_scholarship_status where tbl_student.s_scholarship = tbl_scholarship_status.scholar_id and s_id_no = '" & studentId & "'", cn)
+                lackingcredentials = cm.ExecuteScalar
+                cn.Close()
+                cn.Open()
+                cm = New MySqlCommand("SELECT scholar_name from tbl_student JOIN tbl_scholarship_status where tbl_student.s_scholarship = tbl_scholarship_status.scholar_id and s_id_no = '" & studentId & "'", cn)
+                scholarname = cm.ExecuteScalar
+                cn.Close()
+                cn.Open()
+                cm = New MySqlCommand("SELECT ROUND(aid_percentage, 2) from tbl_assessment_institutional_discount where aid_student_id = '" & studentId & "' and aid_period_id = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
+                prcnt = CDec(cm.ExecuteScalar)
+                cn.Close()
+                Dim prelimpercent As Decimal
+                Dim midtermpercent As Decimal
+                Dim semipercent As Decimal
+                Dim finalpercent As Decimal
+
+                cn.Open()
+                cm = New MySqlCommand("SELECT af_prelim_percentage, af_midterm_percentage, af_semifinal_percentage, af_final_percentage from tbl_assessment_fee where af_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and af_id = " & assessmentid & "", cn)
+                dr = cm.ExecuteReader
+                dr.Read()
+                If dr.HasRows Then
+                    prelimpercent = dr.Item("af_prelim_percentage").ToString
+                    midtermpercent = dr.Item("af_midterm_percentage").ToString
+                    semipercent = dr.Item("af_semifinal_percentage").ToString
+                    finalpercent = dr.Item("af_final_percentage").ToString
+                End If
+                dr.Close()
+                cn.Close()
+                Dim totalaccountpaid As Decimal
+                cn.Open()
+                cm = New MySqlCommand("SELECT `Total Paid` as 'TotalPaid' FROM `student_assessment_total` WHERE `spab_stud_id` = '" & studentId & "' and `spab_period_id` = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
+                totalaccountpaid = CDec(cm.ExecuteScalar)
+                cn.Close()
+
+                Dim totalcurrentassessment As Decimal
+                Dim totalcurrent_assessment As Decimal
+                Dim totalcurrent_balance As Decimal
+                Dim total_assessment As Decimal
+                Dim a As Decimal
+                Dim b As Decimal
+                Dim c As Decimal
+                Dim d As Decimal
+                Dim f As Decimal
+                Dim g As Decimal
+                Dim h As Decimal
+                a = oldaccount
+                b = assessment
+                c = additionaladjustment
+                d = balance
+                f = totalassessment
+                g = institutionaldiscount
+                h = downpayment
+                totalcurrent_assessment = b + c
+                totalcurrent_balance = d
+                total_assessment = f
+            totalcurrentassessment = a + b + otherfees + c
+
+            totalcurrentassessment = (assessment + otherfees + additional_fees + petition)
+            totalcurrent_assessment = (assessment + otherfees + additional_fees + petition) - institutionaldiscount
+
+            Dim total_prelim As Decimal
+                Dim total_midterm As Decimal
+                Dim total_semifinal As Decimal
+                Dim total_final As Decimal
+                Dim withdownpayment As Decimal
+                Dim totalwithdownpayment As Decimal
+                If downpayment >= 2000 Then
+                    total_prelim = totalcurrent_assessment * prelimpercent
+                    total_midterm = totalcurrent_assessment * midtermpercent
+                    total_semifinal = totalcurrent_assessment * semipercent
+                    total_final = totalcurrent_assessment * finalpercent
+                ElseIf downpayment < 2000 Then
+                    withdownpayment = totalcurrent_assessment - 2000 + downpayment
+                    totalwithdownpayment = 2000 - downpayment
+                    total_prelim = (withdownpayment * prelimpercent) + totalwithdownpayment
+                    total_midterm = withdownpayment * midtermpercent
+                    total_semifinal = withdownpayment * semipercent
+                    total_final = withdownpayment * finalpercent
+                End If
+
+                Dim balance_prelim As Decimal
+                Dim balance_midterm As Decimal
+                Dim balance_semifinal As Decimal
+                Dim balance_final As Decimal
+
+                If totalaccountpaid > total_prelim Then
+                    Dim subtractprelim As Decimal
+                    subtractprelim = totalaccountpaid - total_prelim
+                    If subtractprelim > total_midterm Then
+                        Dim subtractmidterm As Decimal
+                        subtractmidterm = subtractprelim - total_midterm
+                        If subtractmidterm > total_semifinal Then
+                            Dim subtractsemi As Decimal
+                            subtractsemi = subtractmidterm - total_semifinal
+                            If subtractsemi > total_final Then
+                                Dim subtractfinal As Decimal
+                                subtractfinal = subtractsemi - total_final
+                                If subtractfinal <= total_final Then
+                                    balance_prelim = "0.00"
+                                    balance_midterm = "0.00"
+                                    balance_semifinal = "0.00"
+                                    balance_final = "0.00"
+                                End If
+                            Else
+                                balance_prelim = "0.00"
+                                balance_midterm = "0.00"
+                                balance_semifinal = "0.00"
+                                balance_final = total_final - subtractsemi
+                            End If
+                        Else
+                            balance_prelim = "0.00"
+                            balance_midterm = "0.00"
+                            balance_semifinal = total_semifinal - subtractmidterm
+                            balance_final = total_final
+                        End If
+                    Else
+                        balance_prelim = "0.00"
+                        balance_midterm = total_midterm - subtractprelim
+                        balance_semifinal = total_semifinal
+                        balance_final = total_final
+                    End If
+                Else
+                    balance_prelim = total_prelim - totalaccountpaid
+                    balance_midterm = total_midterm
+                    balance_semifinal = total_semifinal
+                    balance_final = total_final
+                End If
+
+                If frmMain.systemModule.Text = "College Module" Then
+                    cn.Open()
+                    Dim courseId As Integer = 0
+                    cm = New MySqlCommand("SELECT `sg_course_id` FROM `tbl_students_grades` WHERE `sg_student_id` = '" & studentId & "' and `sg_period_id` = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
+                    courseId = cm.ExecuteScalar
+                    cn.Close()
+                    cn.Open()
+
+                    Dim dtable As DataTable
+                    Dim sql As String
+                    If studentGradeLevel.Contains("1st Year") Then
+                        sql = "SELECT (ofsp_particular_id) as 'ID', (ap_particular_code) as 'Code', (ap_particular_name) as 'Particular', (ofsp_amount) as 'Amount' from tbl_assessment_ofs_particulars JOIN tbl_assessment_particulars where tbl_assessment_ofs_particulars.ofsp_particular_id = tbl_assessment_particulars.ap_id and ofsp_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and ofsp_course_id = " & courseId & " and ofsp_year_level = '1st Year' and ofsp_gender ='" & studentGender & "'"
+                    Else
+                        sql = "SELECT (ofsp_particular_id) as 'ID', (ap_particular_code) as 'Code', (ap_particular_name) as 'Particular', (ofsp_amount) as 'Amount' from tbl_assessment_ofs_particulars JOIN tbl_assessment_particulars where tbl_assessment_ofs_particulars.ofsp_particular_id = tbl_assessment_particulars.ap_id and ofsp_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and ofsp_course_id = " & courseId & " and ofsp_year_level = LEFT('" & studentGradeLevel & "', 8) and ofsp_gender ='Both'"
+                    End If
+                    Dim dbcommand As New MySqlCommand(sql, cn)
+                    Dim adt As New MySqlDataAdapter
+                    adt.SelectCommand = dbcommand
+                    dtable = New DataTable
+                    adt.Fill(dtable)
+                    dg_report2.DataSource = dtable
+                    adt.Dispose()
+                    dbcommand.Dispose()
+                    cn.Close()
+
+                    dt2.Columns.Clear()
+                    dt2.Rows.Clear()
+                    With dt2
+                        .Columns.Add("name")
+                        .Columns.Add("amount")
+                    End With
+
+                    For Each dr As DataGridViewRow In dg_report2.Rows
+                        dt2.Rows.Add(dr.Cells(2).Value, dr.Cells(3).Value)
+                    Next
+                End If
+
+                Dim rptdoc As CrystalDecisions.CrystalReports.Engine.ReportDocument
+                rptdoc = New StatementOfAccount7
+            rptdoc.SetParameterValue("sname", studentName)
+            rptdoc.SetParameterValue("sid", studentId)
+            rptdoc.SetParameterValue("scourse_yrlvl", studentGradeLevel & " - " & studentGradeLevelCourseCode)
+            rptdoc.SetParameterValue("prelim_date", Format(Convert.ToDateTime(prelim_date), "MMM yyyy"))
+                rptdoc.SetParameterValue("midterm_date", Format(Convert.ToDateTime(midterm_date), "MMM yyyy"))
+                rptdoc.SetParameterValue("semifinal_date", Format(Convert.ToDateTime(semifinal_date), "MMM yyyy"))
+                rptdoc.SetParameterValue("final_date", Format(Convert.ToDateTime(final_date), "MMM yyyy"))
+                rptdoc.SetParameterValue("prelim_balance", Format(balance_prelim, "n2"))
+                rptdoc.SetParameterValue("midterm_balance", Format(balance_midterm, "n2"))
+                rptdoc.SetParameterValue("semifinal_balance", Format(balance_semifinal, "n2"))
+                rptdoc.SetParameterValue("final_balance", Format(balance_final, "n2"))
+                'rptdoc.SetParameterValue("otherdiscount", Format(discount, "n2"))
+                'rptdoc.SetParameterValue("oldaccounts", Format(oldaccount, "n2"))
+                'rptdoc.SetParameterValue("addadjustment", Format(additionaladjustment, "n2"))
+                'rptdoc.SetParameterValue("lessadjustment", Format(lessadjustment, "n2"))
+                rptdoc.SetParameterValue("downpayment", Format(downpayment, "n2"))
+                rptdoc.SetParameterValue("institutionaldiscount", Format(institutionaldiscount, "n2"))
+            rptdoc.SetParameterValue("totalcurrentassessment", Format(totalcurrentassessment - institutionaldiscount, "n2"))
+            rptdoc.SetParameterValue("currentbalance", Format((totalcurrent_assessment - downpayment) - totalaccountpaid, "n2"))
+            rptdoc.SetParameterValue("president_admin", cbPresident.Text)
+                rptdoc.SetParameterValue("prepared_by", str_name)
+            rptdoc.SetParameterValue("currentassessment", Format(totalcurrentassessment, "n2"))
+            rptdoc.SetParameterValue("payments", Format(totalaccountpaid, "n2"))
+                rptdoc.SetParameterValue("currentperiod", cbAcademicYear.Text)
+                rptdoc.SetParameterValue("lackingcredentials", lackingcredentials)
+                'rptdoc.SetParameterValue("otherfee", Format(otherfees, "n2"))
+                rptdoc.SetParameterValue("scholarship", scholarname)
+                rptdoc.SetParameterValue("discountpercent", Math.Round(prcnt * 100, 0) & "%")
+
+            'If petition > 0 Then
+            '    rptdoc.SetParameterValue("petitiontitle", "Add: Subject Fee: Regular -" & non_petition_no & " / Petition - " & petition_no & "")
+            '    rptdoc.SetParameterValue("petition_amount", Format(petition, "n2"))
+            'Else
+            '    rptdoc.SetParameterValue("petitiontitle", " ")
+            '    rptdoc.SetParameterValue("petition_amount", " ")
+            'End If
+            rptdoc.SetParameterValue("scourse", studentGradeLevelCourseName)
+            'rptdoc.SetParameterValue("additional_amount", Format(additional_fees, "n2"))
+            rptdoc.SetParameterValue("date_generated", Format(Convert.ToDateTime(DateToday), "MMMM d, yyyy"))
+                ReportViewer.ReportSource = rptdoc
+                dg_report2.DataSource = Nothing
+                ReportViewer.Select()
+                ReportGenerated = True
+            End If
+        'Catch ex As Exception
+        '    MsgBox(ex.Message, vbCritical)
+        '    cn.Close()
+        '    PrevBtn()
+        'End Try
     End Sub
 End Class

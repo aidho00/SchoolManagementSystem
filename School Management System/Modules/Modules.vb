@@ -53,13 +53,23 @@ Module Modules
     End Sub
 
     Sub Date_Time()
-        cn.Close()
-        cn.Open()
-        'cm = New MySqlCommand("SELECT CONCAT(date_format(curdate(), '%b %d, %Y'), ' | ', time_format(curtime(), '%h:%i %p')), dayname(curdate()), LEFT(time_format(curtime(), '%h:%i:%s %p'),5), RIGHT(time_format(curtime(), '%h:%i %p'),2), LEFT(time_format(curtime(), '%h:%i:%s %p'),8), date_format(curdate(), '%M %d, %Y')", cn)
-        cm = New MySqlCommand("SELECT CONCAT(date_format(curdate(), '%b %d, %Y')), dayname(curdate()), LEFT(time_format(curtime(), '%h:%i:%s %p'),5), RIGHT(time_format(curtime(), '%h:%i %p'),2), LEFT(time_format(curtime(), '%h:%i:%s %p'),8), date_format(curdate(), '%M %d, %Y')", cn)
-        frmMain.lblDate.Text = cm.ExecuteScalar
-        cn.Close()
-
+        Try
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand("SELECT CONCAT(date_format(curdate(), '%b %d, %Y'))", cn)
+            frmMain.lblDate.Text = cm.ExecuteScalar
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand("SELECT time_format(curtime(), '%h:%i:%s %p')", cn)
+            frmMain.lblTime.Text = cm.ExecuteScalar
+            cn.Close()
+            frmReconnecting.Close()
+        Catch ex As Exception
+            cn.Close()
+            frmMain.Timer1.Stop()
+            MsgBox("Connection to the database has been lost!", vbCritical)
+            frmReconnecting.ShowDialog()
+        End Try
     End Sub
 
     Sub Date_Today()

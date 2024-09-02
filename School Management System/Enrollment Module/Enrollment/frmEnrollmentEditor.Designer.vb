@@ -535,7 +535,7 @@ Partial Class frmEnrollmentEditor
         Me.btnSelect.Name = "btnSelect"
         Me.btnSelect.Size = New System.Drawing.Size(96, 34)
         Me.btnSelect.TabIndex = 3
-        Me.btnSelect.Text = "SELECT"
+        Me.btnSelect.Text = "WITHDRAW"
         Me.btnSelect.UseVisualStyleBackColor = True
         '
         'ReportPanel

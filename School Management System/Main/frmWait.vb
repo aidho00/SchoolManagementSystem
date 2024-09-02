@@ -3,7 +3,6 @@
     Dim counter As Integer
     Private Sub frmWait_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
-            ' CenterForm(Me)
 
             Timer1.Interval = seconds * 1000
             Timer2.Interval = 1000

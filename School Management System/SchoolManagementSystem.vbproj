@@ -887,6 +887,12 @@
     <Compile Include="Main Dashboard\frmPaymentCollectedPerCashier.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Main\frmReconnecting.Designer.vb">
+      <DependentUpon>frmReconnecting.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Main\frmReconnecting.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Main\frmUserLogs.Designer.vb">
       <DependentUpon>frmUserLogs.vb</DependentUpon>
     </Compile>
@@ -1756,6 +1762,12 @@
     <Compile Include="Enrollment Module\Report\frmReportViewer.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Tools\frmExportDBTable.Designer.vb">
+      <DependentUpon>frmExportDBTable.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\frmExportDBTable.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Account User\frmUser.resx">
@@ -2133,6 +2145,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main Dashboard\frmPaymentCollectedPerCashier.resx">
       <DependentUpon>frmPaymentCollectedPerCashier.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\frmReconnecting.resx">
+      <DependentUpon>frmReconnecting.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\frmUserLogs.resx">
       <DependentUpon>frmUserLogs.vb</DependentUpon>
@@ -2681,6 +2696,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Enrollment Module\Report\frmReportViewer.resx">
       <DependentUpon>frmReportViewer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\frmExportDBTable.resx">
+      <DependentUpon>frmExportDBTable.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

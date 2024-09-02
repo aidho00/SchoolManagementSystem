@@ -438,10 +438,10 @@ Public Class frmMain
         Try
             Date_Time()
         Catch ex As Exception
-            Timer1.Stop()
+            ''Timer1.Stop()
         End Try
 
-        Timer1.Stop()
+        'Timer1.Stop()
     End Sub
 
     Private Sub btnEnrollment_Click(sender As Object, e As EventArgs) Handles btnEnrollment.Click
@@ -2581,6 +2581,9 @@ Public Class frmMain
         End With
     End Sub
 
+    Private Sub lblDate_Click(sender As Object, e As EventArgs) Handles lblDate.Click
+
+    End Sub
 End Class
 
 Public Class RotatedLabel

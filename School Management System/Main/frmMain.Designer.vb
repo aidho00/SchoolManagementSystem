@@ -41,6 +41,7 @@ Partial Class frmMain
         Me.User_Photo = New System.Windows.Forms.PictureBox()
         Me.PanelMenu = New System.Windows.Forms.Panel()
         Me.databasePanel = New System.Windows.Forms.Panel()
+        Me.btnExportDatabaseTables = New System.Windows.Forms.Button()
         Me.btnUserAccounts = New System.Windows.Forms.Button()
         Me.cbUserLogs = New System.Windows.Forms.Button()
         Me.btnDBrestore = New System.Windows.Forms.Button()
@@ -150,9 +151,13 @@ Partial Class frmMain
         Me.hideMenu = New System.Windows.Forms.PictureBox()
         Me.showMenu = New System.Windows.Forms.PictureBox()
         Me.Panel11 = New System.Windows.Forms.Panel()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Panel15 = New System.Windows.Forms.Panel()
+        Me.lblDate = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.lblTime = New System.Windows.Forms.Label()
         Me.schoolName = New System.Windows.Forms.Label()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
-        Me.lblDate = New System.Windows.Forms.Label()
         Me.formPanels = New System.Windows.Forms.Panel()
         Me.formPanel = New System.Windows.Forms.Panel()
         Me.Panel13 = New System.Windows.Forms.Panel()
@@ -302,6 +307,8 @@ Partial Class frmMain
         CType(Me.hideMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.showMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel11.SuspendLayout()
+        Me.Panel1.SuspendLayout()
+        Me.Panel15.SuspendLayout()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.formPanels.SuspendLayout()
         Me.Panel7.SuspendLayout()
@@ -518,6 +525,7 @@ Partial Class frmMain
         'databasePanel
         '
         Me.databasePanel.AutoSize = True
+        Me.databasePanel.Controls.Add(Me.btnExportDatabaseTables)
         Me.databasePanel.Controls.Add(Me.btnUserAccounts)
         Me.databasePanel.Controls.Add(Me.cbUserLogs)
         Me.databasePanel.Controls.Add(Me.btnDBrestore)
@@ -526,9 +534,33 @@ Partial Class frmMain
         Me.databasePanel.Location = New System.Drawing.Point(0, 2070)
         Me.databasePanel.Name = "databasePanel"
         Me.databasePanel.Padding = New System.Windows.Forms.Padding(24, 0, 0, 0)
-        Me.databasePanel.Size = New System.Drawing.Size(221, 96)
+        Me.databasePanel.Size = New System.Drawing.Size(221, 120)
         Me.databasePanel.TabIndex = 56
         Me.databasePanel.Visible = False
+        '
+        'btnExportDatabaseTables
+        '
+        Me.btnExportDatabaseTables.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnExportDatabaseTables.Cursor = System.Windows.Forms.Cursors.Default
+        Me.btnExportDatabaseTables.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnExportDatabaseTables.Enabled = False
+        Me.btnExportDatabaseTables.FlatAppearance.BorderSize = 0
+        Me.btnExportDatabaseTables.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnExportDatabaseTables.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.btnExportDatabaseTables.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnExportDatabaseTables.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExportDatabaseTables.ForeColor = System.Drawing.Color.White
+        Me.btnExportDatabaseTables.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnExportDatabaseTables.Location = New System.Drawing.Point(24, 96)
+        Me.btnExportDatabaseTables.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnExportDatabaseTables.Name = "btnExportDatabaseTables"
+        Me.btnExportDatabaseTables.Size = New System.Drawing.Size(197, 24)
+        Me.btnExportDatabaseTables.TabIndex = 32
+        Me.btnExportDatabaseTables.Text = "Export Database Table"
+        Me.btnExportDatabaseTables.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnExportDatabaseTables.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnExportDatabaseTables.UseVisualStyleBackColor = False
+        Me.btnExportDatabaseTables.Visible = False
         '
         'btnUserAccounts
         '
@@ -592,7 +624,7 @@ Partial Class frmMain
         Me.btnDBrestore.Name = "btnDBrestore"
         Me.btnDBrestore.Size = New System.Drawing.Size(197, 24)
         Me.btnDBrestore.TabIndex = 29
-        Me.btnDBrestore.Text = "Restore"
+        Me.btnDBrestore.Text = "Restore Database"
         Me.btnDBrestore.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnDBrestore.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnDBrestore.UseVisualStyleBackColor = False
@@ -616,7 +648,7 @@ Partial Class frmMain
         Me.btnDBbackup.Name = "btnDBbackup"
         Me.btnDBbackup.Size = New System.Drawing.Size(197, 24)
         Me.btnDBbackup.TabIndex = 23
-        Me.btnDBbackup.Text = "Backup"
+        Me.btnDBbackup.Text = "Backup Database"
         Me.btnDBbackup.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnDBbackup.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnDBbackup.UseVisualStyleBackColor = False
@@ -639,7 +671,7 @@ Partial Class frmMain
         Me.btnDatabase.Name = "btnDatabase"
         Me.btnDatabase.Size = New System.Drawing.Size(221, 31)
         Me.btnDatabase.TabIndex = 55
-        Me.btnDatabase.Text = "  Database"
+        Me.btnDatabase.Text = "  Administrative Tools"
         Me.btnDatabase.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnDatabase.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnDatabase.UseVisualStyleBackColor = False
@@ -2442,7 +2474,7 @@ Partial Class frmMain
         Me.btnLogout.ForeColor = System.Drawing.Color.White
         Me.btnLogout.Image = CType(resources.GetObject("btnLogout.Image"), System.Drawing.Image)
         Me.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnLogout.Location = New System.Drawing.Point(0, 2166)
+        Me.btnLogout.Location = New System.Drawing.Point(0, 2190)
         Me.btnLogout.Name = "btnLogout"
         Me.btnLogout.Size = New System.Drawing.Size(221, 31)
         Me.btnLogout.TabIndex = 38
@@ -2787,14 +2819,75 @@ Partial Class frmMain
         'Panel11
         '
         Me.Panel11.BackColor = System.Drawing.Color.White
+        Me.Panel11.Controls.Add(Me.Panel1)
         Me.Panel11.Controls.Add(Me.schoolName)
         Me.Panel11.Controls.Add(Me.PictureBox4)
-        Me.Panel11.Controls.Add(Me.lblDate)
         Me.Panel11.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel11.Location = New System.Drawing.Point(0, 0)
         Me.Panel11.Name = "Panel11"
         Me.Panel11.Size = New System.Drawing.Size(998, 52)
         Me.Panel11.TabIndex = 19
+        '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.Panel15)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Panel1.Location = New System.Drawing.Point(524, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(474, 52)
+        Me.Panel1.TabIndex = 33
+        '
+        'Panel15
+        '
+        Me.Panel15.Controls.Add(Me.lblDate)
+        Me.Panel15.Controls.Add(Me.Label15)
+        Me.Panel15.Controls.Add(Me.lblTime)
+        Me.Panel15.Location = New System.Drawing.Point(-212, 17)
+        Me.Panel15.Name = "Panel15"
+        Me.Panel15.Size = New System.Drawing.Size(688, 26)
+        Me.Panel15.TabIndex = 35
+        '
+        'lblDate
+        '
+        Me.lblDate.AutoSize = True
+        Me.lblDate.BackColor = System.Drawing.Color.White
+        Me.lblDate.Dock = System.Windows.Forms.DockStyle.Right
+        Me.lblDate.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDate.ForeColor = System.Drawing.Color.Black
+        Me.lblDate.Location = New System.Drawing.Point(629, 0)
+        Me.lblDate.Name = "lblDate"
+        Me.lblDate.Size = New System.Drawing.Size(19, 21)
+        Me.lblDate.TabIndex = 38
+        Me.lblDate.Text = "0"
+        Me.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.BackColor = System.Drawing.Color.White
+        Me.Label15.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Label15.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.ForeColor = System.Drawing.Color.Black
+        Me.Label15.Location = New System.Drawing.Point(648, 0)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(21, 21)
+        Me.Label15.TabIndex = 37
+        Me.Label15.Text = "|"
+        Me.Label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblTime
+        '
+        Me.lblTime.AutoSize = True
+        Me.lblTime.BackColor = System.Drawing.Color.White
+        Me.lblTime.Dock = System.Windows.Forms.DockStyle.Right
+        Me.lblTime.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTime.ForeColor = System.Drawing.Color.Black
+        Me.lblTime.Location = New System.Drawing.Point(669, 0)
+        Me.lblTime.Name = "lblTime"
+        Me.lblTime.Size = New System.Drawing.Size(19, 21)
+        Me.lblTime.TabIndex = 35
+        Me.lblTime.Text = "0"
+        Me.lblTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'schoolName
         '
@@ -2804,7 +2897,7 @@ Partial Class frmMain
         Me.schoolName.ForeColor = System.Drawing.Color.Black
         Me.schoolName.Location = New System.Drawing.Point(25, 0)
         Me.schoolName.Name = "schoolName"
-        Me.schoolName.Size = New System.Drawing.Size(751, 52)
+        Me.schoolName.Size = New System.Drawing.Size(973, 52)
         Me.schoolName.TabIndex = 30
         Me.schoolName.Text = "Cronasia Foundation College Inc,."
         Me.schoolName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -2819,18 +2912,6 @@ Partial Class frmMain
         Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox4.TabIndex = 29
         Me.PictureBox4.TabStop = False
-        '
-        'lblDate
-        '
-        Me.lblDate.BackColor = System.Drawing.Color.White
-        Me.lblDate.Dock = System.Windows.Forms.DockStyle.Right
-        Me.lblDate.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDate.ForeColor = System.Drawing.Color.Black
-        Me.lblDate.Location = New System.Drawing.Point(776, 0)
-        Me.lblDate.Name = "lblDate"
-        Me.lblDate.Size = New System.Drawing.Size(222, 52)
-        Me.lblDate.TabIndex = 7
-        Me.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'formPanels
         '
@@ -4250,6 +4331,9 @@ Partial Class frmMain
         CType(Me.hideMenu, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.showMenu, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel11.ResumeLayout(False)
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel15.ResumeLayout(False)
+        Me.Panel15.PerformLayout()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.formPanels.ResumeLayout(False)
         Me.Panel7.ResumeLayout(False)
@@ -4401,7 +4485,6 @@ Partial Class frmMain
     Friend WithEvents hideMenu As PictureBox
     Friend WithEvents showMenu As PictureBox
     Private WithEvents Panel11 As Panel
-    Friend WithEvents lblDate As Label
     Friend WithEvents formPanels As Panel
     Friend WithEvents formPanel As Panel
     Friend WithEvents Panel13 As Panel
@@ -4558,4 +4641,10 @@ Partial Class frmMain
     Friend WithEvents PictureBox14 As PictureBox
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents PictureBox15 As PictureBox
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Panel15 As Panel
+    Friend WithEvents lblDate As Label
+    Friend WithEvents Label15 As Label
+    Friend WithEvents lblTime As Label
+    Friend WithEvents btnExportDatabaseTables As Button
 End Class

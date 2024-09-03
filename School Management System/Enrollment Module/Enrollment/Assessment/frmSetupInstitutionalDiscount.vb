@@ -165,6 +165,9 @@ Public Class frmSetupInstitutionalDiscount
         ElseIf frmTitle.Text = "Search Course" Then
             AssessmentCourseID = dgCourseList.CurrentRow.Cells(0).Value
             lblCourse.Text = dgCourseList.CurrentRow.Cells(1).Value & " - " & dgCourseList.CurrentRow.Cells(2).Value
+            cbYearLevel.SelectedIndex = 0
+            fillCombo("SELECT distinct(af_gender) as af_gender, af_id from tbl_assessment_fee where af_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and af_course_id = " & AssessmentCourseID & " and af_year_level = LEFT('" & cbYearLevel.Text & "', 8)", cbGender, "tbl_assessment_fee", "af_gender", "af_id")
+            cbGender.SelectedIndex = 0
             SearchPanel.Visible = False
             Assessment()
         End If

@@ -700,7 +700,7 @@ Partial Class frmSetupInstitutionalDiscount
         'CheckBoxAssessment
         '
         Me.CheckBoxAssessment.AutoSize = True
-        Me.CheckBoxAssessment.Location = New System.Drawing.Point(585, 102)
+        Me.CheckBoxAssessment.Location = New System.Drawing.Point(655, 102)
         Me.CheckBoxAssessment.Name = "CheckBoxAssessment"
         Me.CheckBoxAssessment.Size = New System.Drawing.Size(250, 20)
         Me.CheckBoxAssessment.TabIndex = 186
@@ -749,9 +749,9 @@ Partial Class frmSetupInstitutionalDiscount
         Me.Label16.AutoSize = True
         Me.Label16.Location = New System.Drawing.Point(438, 81)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(50, 16)
+        Me.Label16.Size = New System.Drawing.Size(120, 16)
         Me.Label16.TabIndex = 179
-        Me.Label16.Text = "Gender"
+        Me.Label16.Text = "Assessment Category"
         '
         'Label14
         '
@@ -769,7 +769,7 @@ Partial Class frmSetupInstitutionalDiscount
         Me.cbGender.Items.AddRange(New Object() {"Both", "Male", "Female"})
         Me.cbGender.Location = New System.Drawing.Point(441, 100)
         Me.cbGender.Name = "cbGender"
-        Me.cbGender.Size = New System.Drawing.Size(102, 24)
+        Me.cbGender.Size = New System.Drawing.Size(196, 24)
         Me.cbGender.TabIndex = 177
         '
         'cbYearLevel

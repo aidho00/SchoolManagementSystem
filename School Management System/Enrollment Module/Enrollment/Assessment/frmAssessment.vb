@@ -22,11 +22,30 @@ Public Class frmAssessment
             dr.Close()
             cn.Close()
 
+            AdjustDataGridViewColumns()
         Catch ex As Exception
             dr.Close()
             cn.Close()
             dgCourseList.Rows.Clear()
         End Try
+    End Sub
+
+    Private Sub AdjustDataGridViewColumns()
+        ' Calculate the total width of all columns
+        Dim totalColumnWidth As Integer = 0
+
+        For Each column As DataGridViewColumn In dgCourseList.Columns
+            totalColumnWidth += column.Width
+        Next
+
+        ' Compare total column width with the panel's width
+        If dgCourseList.Size.Width < Panel1.Size.Width Then
+            ' If total column width is less than the panel's width, set AutoSizeColumnsMode to Fill
+            dgCourseList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        Else
+            ' If total column width is greater than or equal to the panel's width, set AutoSizeColumnsMode to AllCells
+            dgCourseList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+        End If
     End Sub
 
     Sub CourseAssessmentList()
@@ -182,9 +201,11 @@ Public Class frmAssessment
     Private Sub btnAddAssessment_Click(sender As Object, e As EventArgs) Handles btnAddAssessment.Click
         If cbAcademicYear.Text = String.Empty Then
         Else
+            frmAssessmentSetup.AssessmentCourseID = CInt(dgCourseList.CurrentRow.Cells(0).Value)
             frmAssessmentSetup.AssessmentPeriodID = CInt(cbAcademicYear.SelectedValue)
             frmAssessmentSetup.lblAcademicYear.Text = cbAcademicYear.Text
             frmAssessmentSetup.lblCourse.Text = txtSelectedCourse.Text
+            fillCombo("SELECT category_name from tbl_assessment_fee_category where category_status = 'Active'", frmAssessmentSetup.cbGender, "tbl_assessment_fee_category", "category_name", "category_name")
             frmMain.OpenForm(frmAssessmentSetup, "Course Assessment Setup")
             frmMain.HideAllFormsInPanelExcept(frmAssessmentSetup)
             frmMain.controlsPanel.Visible = False

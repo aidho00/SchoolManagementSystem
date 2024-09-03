@@ -43,7 +43,13 @@ Public Class frmCashiering
     End Sub
 
     Private Sub cbView_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbView.SelectedIndexChanged
-        ViewDG()
+        If frmMain.formTitle.Text = "Cashiering" Then
+            ViewDG()
+        ElseIf frmMain.formTitle.Text = "Pre-Cashiering" Then
+            StudentAssessmentID = CInt(cbView.SelectedValue)
+            MsgBox("Assessment ID: " & CInt(cbView.SelectedValue) & "")
+
+        End If
     End Sub
 
     Private Sub ViewDG()
@@ -332,27 +338,32 @@ Public Class frmCashiering
     End Sub
 
     Sub AssessmentID()
-        If frmMain.systemModule.Text = "College Module" Then
-            If YearLevel.Contains("1st Year") Then
-                cn.Close()
-                cn.Open()
-                cm = New MySqlCommand("SELECT af_id from tbl_assessment_fee where af_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and af_course_id = " & CourseID & " and af_year_level = LEFT('" & YearLevel & "', 8) and af_gender = '" & Gender & "'", cn)
-                StudentAssessmentID = cm.ExecuteScalar
-                cn.Close()
-            Else
-                cn.Close()
-                cn.Open()
-                cm = New MySqlCommand("SELECT af_id from tbl_assessment_fee where af_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and af_course_id = " & CourseID & " and af_year_level = LEFT('" & YearLevel & "', 8) and af_gender = 'Both'", cn)
-                StudentAssessmentID = cm.ExecuteScalar
-                cn.Close()
-            End If
-        Else
-            cn.Close()
-            cn.Open()
-            cm = New MySqlCommand("SELECT af_id from tbl_assessment_fee where af_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and af_course_id = " & CourseID & " and af_year_level = '" & YearLevel & "' and af_gender = 'Both'", cn)
-            StudentAssessmentID = cm.ExecuteScalar
-            cn.Close()
-        End If
+        'If frmMain.systemModule.Text = "College Module" Then
+        '    If YearLevel.Contains("1st Year") Then
+        '        cn.Close()
+        '        cn.Open()
+        '        cm = New MySqlCommand("SELECT af_id from tbl_assessment_fee where af_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and af_course_id = " & CourseID & " and af_year_level = LEFT('" & YearLevel & "', 8) and af_gender = '" & Gender & "'", cn)
+        '        StudentAssessmentID = cm.ExecuteScalar
+        '        cn.Close()
+        '    Else
+        '        cn.Close()
+        '        cn.Open()
+        '        cm = New MySqlCommand("SELECT af_id from tbl_assessment_fee where af_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and af_course_id = " & CourseID & " and af_year_level = LEFT('" & YearLevel & "', 8) and af_gender = 'Both'", cn)
+        '        StudentAssessmentID = cm.ExecuteScalar
+        '        cn.Close()
+        '    End If
+        'Else
+        '    cn.Close()
+        '    cn.Open()
+        '    cm = New MySqlCommand("SELECT af_id from tbl_assessment_fee where af_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and af_course_id = " & CourseID & " and af_year_level = '" & YearLevel & "' and af_gender = 'Both'", cn)
+        '    StudentAssessmentID = cm.ExecuteScalar
+        '    cn.Close()
+        'End If
+
+        fillCombo("SELECT distinct(af_gender) as af_gender, af_id from tbl_assessment_fee where af_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and af_course_id = " & CourseID & " and af_year_level = LEFT('" & YearLevel & "', 8)", cbView, "tbl_assessment_fee", "af_gender", "af_id")
+
+        cbView.SelectedIndex = 0
+        MsgBox("Assessment ID: " & CInt(cbView.SelectedValue) & "")
     End Sub
 
 

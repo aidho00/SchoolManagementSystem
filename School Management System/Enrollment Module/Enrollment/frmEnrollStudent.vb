@@ -45,27 +45,27 @@ Public Class frmEnrollStudent
             txtCourse.Text = dgStudentList.CurrentRow.Cells(8).Value & " - " & dgStudentList.CurrentRow.Cells(10).Value
             txtGenderYearLevel.Text = dgStudentList.CurrentRow.Cells(6).Value & " - " & dgStudentList.CurrentRow.Cells(7).Value
 
-            If frmMain.systemModule.Text = "College Module" Then
-                If YearLevel.Contains("1st Year") Then
-                    cn.Close()
-                    cn.Open()
-                    cm = New MySqlCommand("SELECT af_id from tbl_assessment_fee where af_period_id = " & CInt(cbAcad.SelectedValue) & " and af_course_id = " & CourseID & " and af_year_level = LEFT('" & YearLevel & "', 8) and af_gender = '" & Gender & "'", cn)
-                    StudentAssessmentID = cm.ExecuteScalar
-                    cn.Close()
-                Else
-                    cn.Close()
-                    cn.Open()
-                    cm = New MySqlCommand("SELECT af_id from tbl_assessment_fee where af_period_id = " & CInt(cbAcad.SelectedValue) & " and af_course_id = " & CourseID & " and af_year_level = LEFT('" & YearLevel & "', 8) and af_gender = 'Both'", cn)
-                    StudentAssessmentID = cm.ExecuteScalar
-                    cn.Close()
-                End If
-            Else
-                cn.Close()
-                cn.Open()
-                cm = New MySqlCommand("SELECT af_id from tbl_assessment_fee where af_period_id = " & CInt(cbAcad.SelectedValue) & " and af_course_id = " & CourseID & " and af_year_level = '" & YearLevel & "' and af_gender = 'Both'", cn)
-                StudentAssessmentID = cm.ExecuteScalar
-                cn.Close()
-            End If
+            'If frmMain.systemModule.Text = "College Module" Then
+            '    If YearLevel.Contains("1st Year") Then
+            '        cn.Close()
+            '        cn.Open()
+            '        cm = New MySqlCommand("SELECT af_id from tbl_assessment_fee where af_period_id = " & CInt(cbAcad.SelectedValue) & " and af_course_id = " & CourseID & " and af_year_level = LEFT('" & YearLevel & "', 8) and af_gender = '" & Gender & "'", cn)
+            '        StudentAssessmentID = cm.ExecuteScalar
+            '        cn.Close()
+            '    Else
+            '        cn.Close()
+            '        cn.Open()
+            '        cm = New MySqlCommand("SELECT af_id from tbl_assessment_fee where af_period_id = " & CInt(cbAcad.SelectedValue) & " and af_course_id = " & CourseID & " and af_year_level = LEFT('" & YearLevel & "', 8) and af_gender = 'Both'", cn)
+            '        StudentAssessmentID = cm.ExecuteScalar
+            '        cn.Close()
+            '    End If
+            'Else
+            cn.Close()
+            cn.Open()
+            cm = New MySqlCommand("SELECT ps_ass_id from tbl_pre_cashiering where period_id = " & CInt(cbAcad.SelectedValue) & " and student_id = '" & StudentID & "'", cn)
+            StudentAssessmentID = cm.ExecuteScalar
+            cn.Close()
+            'End If
 
             If frmMain.formTitle.Text = "Enroll Class Schedule" Then
 

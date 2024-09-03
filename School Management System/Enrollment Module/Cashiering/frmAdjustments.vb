@@ -75,12 +75,14 @@ Public Class frmAdjustments
             txtCourse.Text = dgStudentList.CurrentRow.Cells(8).Value & " - " & dgStudentList.CurrentRow.Cells(10).Value
             txtGenderYearLevel.Text = dgStudentList.CurrentRow.Cells(6).Value & " - " & dgStudentList.CurrentRow.Cells(7).Value
             fillCombo("Select CONCAT(period_name,'-',period_semester) as 'PERIOD', period_id FROM  tbl_student_paid_account_breakdown JOIN tbl_period ON tbl_student_paid_account_breakdown.spab_period_id = tbl_period.period_id WHERE spab_stud_id = '" & StudentID & "' order by `period_name` desc, `period_status` asc, `period_semester` desc", cbAcademicYear, "CashieringPeriodList", "PERIOD", "period_id")
-
+            cbAcademicYear.SelectedIndex = 0
             'cn.Close()
             'cn.Open()
             'cm = New MySqlCommand("SELECT af_id from tbl_assessment_fee where af_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and af_course_id = " & CourseID & " and af_year_level = LEFT('" & YearLevel & "', 8) and af_gender = '" & Gender & "'", cn)
             'StudentAssessmentID = cm.ExecuteScalar
             'cn.Close()
+            fillCombo("SELECT distinct(af_gender) as af_gender, af_id from tbl_assessment_fee where af_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and af_course_id = " & CourseID & " and af_year_level = LEFT('" & YearLevel & "', 8)", cbGender, "tbl_assessment_fee", "af_gender", "af_id")
+            cbGender.SelectedIndex = 0
 
             SearchPanel.Visible = False
         ElseIf frmTitle.Text = "Search Course" Then

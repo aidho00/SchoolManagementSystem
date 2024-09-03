@@ -23,6 +23,10 @@ Public Class frmExportDBTable
         drr = MessageBox.Show("Are you sure you want export this data?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If drr = DialogResult.No Then
         Else
+            If cbData.Text = "" Then
+                MsgBox("Please select a data to export.", vbCritical)
+                Return
+            End If
             cn.Close()
             cn.Open()
             Dim sql As String = ""

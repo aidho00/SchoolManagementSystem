@@ -22,13 +22,13 @@ Partial Class frmAssessmentSetup
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAssessmentSetup))
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.BasePanel = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel8 = New System.Windows.Forms.Panel()
@@ -113,6 +113,7 @@ Partial Class frmAssessmentSetup
         Me.Panel23 = New System.Windows.Forms.Panel()
         Me.Panel24 = New System.Windows.Forms.Panel()
         Me.btnSelect = New System.Windows.Forms.Button()
+        Me.btnAddAssessment = New System.Windows.Forms.Label()
         Me.BasePanel.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel8.SuspendLayout()
@@ -160,7 +161,7 @@ Partial Class frmAssessmentSetup
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(382, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
+        Me.Panel2.Padding = New System.Windows.Forms.Padding(20, 0, 0, 0)
         Me.Panel2.Size = New System.Drawing.Size(616, 601)
         Me.Panel2.TabIndex = 172
         '
@@ -169,10 +170,10 @@ Partial Class frmAssessmentSetup
         Me.Panel8.Controls.Add(Me.dgOtherFees)
         Me.Panel8.Controls.Add(Me.Panel19)
         Me.Panel8.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel8.Location = New System.Drawing.Point(5, 141)
+        Me.Panel8.Location = New System.Drawing.Point(20, 141)
         Me.Panel8.Name = "Panel8"
-        Me.Panel8.Padding = New System.Windows.Forms.Padding(0, 5, 0, 0)
-        Me.Panel8.Size = New System.Drawing.Size(611, 421)
+        Me.Panel8.Padding = New System.Windows.Forms.Padding(0, 10, 0, 0)
+        Me.Panel8.Size = New System.Drawing.Size(596, 421)
         Me.Panel8.TabIndex = 173
         '
         'dgOtherFees
@@ -183,36 +184,36 @@ Partial Class frmAssessmentSetup
         Me.dgOtherFees.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgOtherFees.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgOtherFees.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgOtherFees.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgOtherFees.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.dgOtherFees.ColumnHeadersHeight = 40
         Me.dgOtherFees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgOtherFees.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn12, Me.colRemove2})
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgOtherFees.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgOtherFees.DefaultCellStyle = DataGridViewCellStyle8
         Me.dgOtherFees.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgOtherFees.EnableHeadersVisualStyles = False
         Me.dgOtherFees.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.dgOtherFees.Location = New System.Drawing.Point(0, 25)
+        Me.dgOtherFees.Location = New System.Drawing.Point(0, 30)
         Me.dgOtherFees.Name = "dgOtherFees"
         Me.dgOtherFees.ReadOnly = True
         Me.dgOtherFees.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.dgOtherFees.RowHeadersVisible = False
         Me.dgOtherFees.RowTemplate.Height = 26
         Me.dgOtherFees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgOtherFees.Size = New System.Drawing.Size(611, 396)
+        Me.dgOtherFees.Size = New System.Drawing.Size(596, 391)
         Me.dgOtherFees.TabIndex = 175
         '
         'Column1
@@ -259,16 +260,16 @@ Partial Class frmAssessmentSetup
         Me.Panel19.Controls.Add(Me.btnOFparticularADD)
         Me.Panel19.Controls.Add(Me.Label6)
         Me.Panel19.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel19.Location = New System.Drawing.Point(0, 5)
+        Me.Panel19.Location = New System.Drawing.Point(0, 10)
         Me.Panel19.Name = "Panel19"
-        Me.Panel19.Size = New System.Drawing.Size(611, 20)
+        Me.Panel19.Size = New System.Drawing.Size(596, 20)
         Me.Panel19.TabIndex = 174
         '
         'btnOFparticularADD
         '
         Me.btnOFparticularADD.AutoSize = True
         Me.btnOFparticularADD.Dock = System.Windows.Forms.DockStyle.Right
-        Me.btnOFparticularADD.Location = New System.Drawing.Point(565, 0)
+        Me.btnOFparticularADD.Location = New System.Drawing.Point(550, 0)
         Me.btnOFparticularADD.Name = "btnOFparticularADD"
         Me.btnOFparticularADD.Size = New System.Drawing.Size(46, 16)
         Me.btnOFparticularADD.TabIndex = 123
@@ -288,9 +289,9 @@ Partial Class frmAssessmentSetup
         '
         Me.Panel4.Controls.Add(Me.FlowLayoutPanel1)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel4.Location = New System.Drawing.Point(5, 562)
+        Me.Panel4.Location = New System.Drawing.Point(20, 562)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(611, 39)
+        Me.Panel4.Size = New System.Drawing.Size(596, 39)
         Me.Panel4.TabIndex = 171
         '
         'FlowLayoutPanel1
@@ -300,7 +301,7 @@ Partial Class frmAssessmentSetup
         Me.FlowLayoutPanel1.Controls.Add(Me.btnSave)
         Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right
         Me.FlowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft
-        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(291, 0)
+        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(276, 0)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
         Me.FlowLayoutPanel1.Size = New System.Drawing.Size(320, 39)
         Me.FlowLayoutPanel1.TabIndex = 1
@@ -342,9 +343,9 @@ Partial Class frmAssessmentSetup
         Me.Panel6.Controls.Add(Me.dgTuition)
         Me.Panel6.Controls.Add(Me.Panel16)
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel6.Location = New System.Drawing.Point(5, 0)
+        Me.Panel6.Location = New System.Drawing.Point(20, 0)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(611, 141)
+        Me.Panel6.Size = New System.Drawing.Size(596, 141)
         Me.Panel6.TabIndex = 170
         '
         'dgTuition
@@ -355,25 +356,25 @@ Partial Class frmAssessmentSetup
         Me.dgTuition.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgTuition.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgTuition.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgTuition.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgTuition.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
         Me.dgTuition.ColumnHeadersHeight = 40
         Me.dgTuition.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgTuition.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.colRemove1})
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgTuition.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgTuition.DefaultCellStyle = DataGridViewCellStyle10
         Me.dgTuition.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgTuition.EnableHeadersVisualStyles = False
         Me.dgTuition.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
@@ -384,7 +385,7 @@ Partial Class frmAssessmentSetup
         Me.dgTuition.RowHeadersVisible = False
         Me.dgTuition.RowTemplate.Height = 26
         Me.dgTuition.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgTuition.Size = New System.Drawing.Size(611, 121)
+        Me.dgTuition.Size = New System.Drawing.Size(596, 121)
         Me.dgTuition.TabIndex = 176
         '
         'DataGridViewTextBoxColumn1
@@ -433,14 +434,14 @@ Partial Class frmAssessmentSetup
         Me.Panel16.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel16.Location = New System.Drawing.Point(0, 0)
         Me.Panel16.Name = "Panel16"
-        Me.Panel16.Size = New System.Drawing.Size(611, 20)
+        Me.Panel16.Size = New System.Drawing.Size(596, 20)
         Me.Panel16.TabIndex = 172
         '
         'btnTFparticularADD
         '
         Me.btnTFparticularADD.AutoSize = True
         Me.btnTFparticularADD.Dock = System.Windows.Forms.DockStyle.Right
-        Me.btnTFparticularADD.Location = New System.Drawing.Point(565, 0)
+        Me.btnTFparticularADD.Location = New System.Drawing.Point(550, 0)
         Me.btnTFparticularADD.Name = "btnTFparticularADD"
         Me.btnTFparticularADD.Size = New System.Drawing.Size(46, 16)
         Me.btnTFparticularADD.TabIndex = 123
@@ -484,7 +485,7 @@ Partial Class frmAssessmentSetup
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Padding = New System.Windows.Forms.Padding(0, 0, 5, 0)
+        Me.Panel1.Padding = New System.Windows.Forms.Padding(0, 0, 20, 0)
         Me.Panel1.Size = New System.Drawing.Size(381, 601)
         Me.Panel1.TabIndex = 170
         '
@@ -506,7 +507,7 @@ Partial Class frmAssessmentSetup
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel3.Location = New System.Drawing.Point(0, 185)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(376, 210)
+        Me.Panel3.Size = New System.Drawing.Size(361, 210)
         Me.Panel3.TabIndex = 190
         '
         'Panel25
@@ -548,9 +549,9 @@ Partial Class frmAssessmentSetup
         Me.Label19.AutoSize = True
         Me.Label19.Location = New System.Drawing.Point(-3, 120)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(244, 16)
+        Me.Label19.Size = New System.Drawing.Size(166, 16)
         Me.Label19.TabIndex = 172
-        Me.Label19.Text = "Tuition Fee Institutional Discount Percentage"
+        Me.Label19.Text = " Institutional Discount Percent"
         '
         'Label24
         '
@@ -574,7 +575,7 @@ Partial Class frmAssessmentSetup
         '
         Me.txtPercentageFinal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtPercentageFinal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtPercentageFinal.Location = New System.Drawing.Point(299, 59)
+        Me.txtPercentageFinal.Location = New System.Drawing.Point(307, 59)
         Me.txtPercentageFinal.Name = "txtPercentageFinal"
         Me.txtPercentageFinal.Size = New System.Drawing.Size(48, 21)
         Me.txtPercentageFinal.TabIndex = 125
@@ -585,9 +586,9 @@ Partial Class frmAssessmentSetup
         '
         Me.txtInstitutionalDiscount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtInstitutionalDiscount.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtInstitutionalDiscount.Location = New System.Drawing.Point(299, 118)
+        Me.txtInstitutionalDiscount.Location = New System.Drawing.Point(175, 118)
         Me.txtInstitutionalDiscount.Name = "txtInstitutionalDiscount"
-        Me.txtInstitutionalDiscount.Size = New System.Drawing.Size(48, 21)
+        Me.txtInstitutionalDiscount.Size = New System.Drawing.Size(180, 21)
         Me.txtInstitutionalDiscount.TabIndex = 125
         Me.txtInstitutionalDiscount.Text = "0.00"
         Me.txtInstitutionalDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -596,7 +597,7 @@ Partial Class frmAssessmentSetup
         '
         Me.txtPercentageSemi.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtPercentageSemi.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtPercentageSemi.Location = New System.Drawing.Point(299, 30)
+        Me.txtPercentageSemi.Location = New System.Drawing.Point(307, 30)
         Me.txtPercentageSemi.Name = "txtPercentageSemi"
         Me.txtPercentageSemi.Size = New System.Drawing.Size(48, 21)
         Me.txtPercentageSemi.TabIndex = 125
@@ -641,16 +642,17 @@ Partial Class frmAssessmentSetup
         Me.Panel20.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel20.Location = New System.Drawing.Point(0, 395)
         Me.Panel20.Name = "Panel20"
-        Me.Panel20.Size = New System.Drawing.Size(376, 27)
+        Me.Panel20.Size = New System.Drawing.Size(361, 27)
         Me.Panel20.TabIndex = 189
         '
         'Label20
         '
         Me.Label20.AutoSize = True
         Me.Label20.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Label20.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label20.Location = New System.Drawing.Point(0, 0)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(72, 16)
+        Me.Label20.Size = New System.Drawing.Size(72, 15)
         Me.Label20.TabIndex = 124
         Me.Label20.Text = "Break Down"
         '
@@ -661,7 +663,7 @@ Partial Class frmAssessmentSetup
         Me.Panel13.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel13.Location = New System.Drawing.Point(0, 422)
         Me.Panel13.Name = "Panel13"
-        Me.Panel13.Size = New System.Drawing.Size(376, 35)
+        Me.Panel13.Size = New System.Drawing.Size(361, 35)
         Me.Panel13.TabIndex = 188
         '
         'Label15
@@ -679,7 +681,7 @@ Partial Class frmAssessmentSetup
         Me.amount_TuitionFee.Font = New System.Drawing.Font("Century Gothic", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.amount_TuitionFee.Location = New System.Drawing.Point(0, 1)
         Me.amount_TuitionFee.Name = "amount_TuitionFee"
-        Me.amount_TuitionFee.Size = New System.Drawing.Size(376, 34)
+        Me.amount_TuitionFee.Size = New System.Drawing.Size(361, 34)
         Me.amount_TuitionFee.TabIndex = 123
         Me.amount_TuitionFee.Text = "0.00"
         Me.amount_TuitionFee.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -691,7 +693,7 @@ Partial Class frmAssessmentSetup
         Me.Panel9.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel9.Location = New System.Drawing.Point(0, 457)
         Me.Panel9.Name = "Panel9"
-        Me.Panel9.Size = New System.Drawing.Size(376, 35)
+        Me.Panel9.Size = New System.Drawing.Size(361, 35)
         Me.Panel9.TabIndex = 187
         '
         'lblDiscount
@@ -709,7 +711,7 @@ Partial Class frmAssessmentSetup
         Me.amount_Discount.Font = New System.Drawing.Font("Century Gothic", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.amount_Discount.Location = New System.Drawing.Point(0, 1)
         Me.amount_Discount.Name = "amount_Discount"
-        Me.amount_Discount.Size = New System.Drawing.Size(376, 34)
+        Me.amount_Discount.Size = New System.Drawing.Size(361, 34)
         Me.amount_Discount.TabIndex = 123
         Me.amount_Discount.Text = "0.00"
         Me.amount_Discount.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -721,7 +723,7 @@ Partial Class frmAssessmentSetup
         Me.Panel11.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel11.Location = New System.Drawing.Point(0, 492)
         Me.Panel11.Name = "Panel11"
-        Me.Panel11.Size = New System.Drawing.Size(376, 35)
+        Me.Panel11.Size = New System.Drawing.Size(361, 35)
         Me.Panel11.TabIndex = 186
         '
         'Label10
@@ -739,7 +741,7 @@ Partial Class frmAssessmentSetup
         Me.amount_OtherFees.Font = New System.Drawing.Font("Century Gothic", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.amount_OtherFees.Location = New System.Drawing.Point(0, 1)
         Me.amount_OtherFees.Name = "amount_OtherFees"
-        Me.amount_OtherFees.Size = New System.Drawing.Size(376, 34)
+        Me.amount_OtherFees.Size = New System.Drawing.Size(361, 34)
         Me.amount_OtherFees.TabIndex = 123
         Me.amount_OtherFees.Text = "0.00"
         Me.amount_OtherFees.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -751,7 +753,7 @@ Partial Class frmAssessmentSetup
         Me.Panel12.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel12.Location = New System.Drawing.Point(0, 527)
         Me.Panel12.Name = "Panel12"
-        Me.Panel12.Size = New System.Drawing.Size(376, 35)
+        Me.Panel12.Size = New System.Drawing.Size(361, 35)
         Me.Panel12.TabIndex = 185
         '
         'Label12
@@ -769,7 +771,7 @@ Partial Class frmAssessmentSetup
         Me.amount_Total.Font = New System.Drawing.Font("Century Gothic", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.amount_Total.Location = New System.Drawing.Point(0, 1)
         Me.amount_Total.Name = "amount_Total"
-        Me.amount_Total.Size = New System.Drawing.Size(376, 34)
+        Me.amount_Total.Size = New System.Drawing.Size(361, 34)
         Me.amount_Total.TabIndex = 123
         Me.amount_Total.Text = "0.00"
         Me.amount_Total.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -781,7 +783,7 @@ Partial Class frmAssessmentSetup
         Me.Panel17.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel17.Location = New System.Drawing.Point(0, 143)
         Me.Panel17.Name = "Panel17"
-        Me.Panel17.Size = New System.Drawing.Size(376, 42)
+        Me.Panel17.Size = New System.Drawing.Size(361, 42)
         Me.Panel17.TabIndex = 179
         '
         'cbGender
@@ -789,9 +791,9 @@ Partial Class frmAssessmentSetup
         Me.cbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbGender.FormattingEnabled = True
         Me.cbGender.Items.AddRange(New Object() {"Male", "Female", "Both"})
-        Me.cbGender.Location = New System.Drawing.Point(205, 4)
+        Me.cbGender.Location = New System.Drawing.Point(185, 4)
         Me.cbGender.Name = "cbGender"
-        Me.cbGender.Size = New System.Drawing.Size(142, 24)
+        Me.cbGender.Size = New System.Drawing.Size(170, 24)
         Me.cbGender.TabIndex = 0
         '
         'cbYearLevel
@@ -801,17 +803,18 @@ Partial Class frmAssessmentSetup
         Me.cbYearLevel.Items.AddRange(New Object() {"1st Year", "2nd Year", "3rd Year", "4th Year", "5th Year"})
         Me.cbYearLevel.Location = New System.Drawing.Point(3, 4)
         Me.cbYearLevel.Name = "cbYearLevel"
-        Me.cbYearLevel.Size = New System.Drawing.Size(142, 24)
+        Me.cbYearLevel.Size = New System.Drawing.Size(160, 24)
         Me.cbYearLevel.TabIndex = 0
         '
         'Panel15
         '
+        Me.Panel15.Controls.Add(Me.btnAddAssessment)
         Me.Panel15.Controls.Add(Me.Label17)
         Me.Panel15.Controls.Add(Me.Label18)
         Me.Panel15.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel15.Location = New System.Drawing.Point(0, 109)
         Me.Panel15.Name = "Panel15"
-        Me.Panel15.Size = New System.Drawing.Size(376, 34)
+        Me.Panel15.Size = New System.Drawing.Size(361, 34)
         Me.Panel15.TabIndex = 177
         '
         'Label17
@@ -826,11 +829,11 @@ Partial Class frmAssessmentSetup
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(202, 15)
+        Me.Label18.Location = New System.Drawing.Point(182, 15)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(50, 16)
+        Me.Label18.Size = New System.Drawing.Size(120, 16)
         Me.Label18.TabIndex = 179
-        Me.Label18.Text = "Gender"
+        Me.Label18.Text = "Assessment Category"
         '
         'Panel14
         '
@@ -838,7 +841,7 @@ Partial Class frmAssessmentSetup
         Me.Panel14.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel14.Location = New System.Drawing.Point(0, 57)
         Me.Panel14.Name = "Panel14"
-        Me.Panel14.Size = New System.Drawing.Size(376, 52)
+        Me.Panel14.Size = New System.Drawing.Size(361, 52)
         Me.Panel14.TabIndex = 175
         '
         'lblCourse
@@ -847,7 +850,7 @@ Partial Class frmAssessmentSetup
         Me.lblCourse.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCourse.Location = New System.Drawing.Point(0, 0)
         Me.lblCourse.Name = "lblCourse"
-        Me.lblCourse.Size = New System.Drawing.Size(376, 52)
+        Me.lblCourse.Size = New System.Drawing.Size(361, 52)
         Me.lblCourse.TabIndex = 131
         Me.lblCourse.Text = "-"
         '
@@ -888,7 +891,7 @@ Partial Class frmAssessmentSetup
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel7.Location = New System.Drawing.Point(0, 562)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(376, 39)
+        Me.Panel7.Size = New System.Drawing.Size(361, 39)
         Me.Panel7.TabIndex = 121
         '
         'Label3
@@ -932,25 +935,25 @@ Partial Class frmAssessmentSetup
         Me.dgParticulars.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgParticulars.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgParticulars.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgParticulars.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgParticulars.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
         Me.dgParticulars.ColumnHeadersHeight = 40
         Me.dgParticulars.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgParticulars.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7})
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgParticulars.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgParticulars.DefaultCellStyle = DataGridViewCellStyle12
         Me.dgParticulars.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgParticulars.EnableHeadersVisualStyles = False
         Me.dgParticulars.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
@@ -1074,6 +1077,15 @@ Partial Class frmAssessmentSetup
         Me.btnSelect.Text = "SELECT"
         Me.btnSelect.UseVisualStyleBackColor = True
         '
+        'btnAddAssessment
+        '
+        Me.btnAddAssessment.AutoSize = True
+        Me.btnAddAssessment.Location = New System.Drawing.Point(315, 14)
+        Me.btnAddAssessment.Name = "btnAddAssessment"
+        Me.btnAddAssessment.Size = New System.Drawing.Size(46, 16)
+        Me.btnAddAssessment.TabIndex = 181
+        Me.btnAddAssessment.Text = "[ ADD ]"
+        '
         'frmAssessmentSetup
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
@@ -1081,8 +1093,8 @@ Partial Class frmAssessmentSetup
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(998, 601)
         Me.ControlBox = False
-        Me.Controls.Add(Me.BasePanel)
         Me.Controls.Add(Me.SearchPanel)
+        Me.Controls.Add(Me.BasePanel)
         Me.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
@@ -1210,4 +1222,5 @@ Partial Class frmAssessmentSetup
     Friend WithEvents Label12 As Label
     Friend WithEvents amount_Total As Label
     Friend WithEvents lblDiscount As Label
+    Friend WithEvents btnAddAssessment As Label
 End Class

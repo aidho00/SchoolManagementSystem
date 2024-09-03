@@ -4,9 +4,9 @@
             MsgBox("Amount cannot be empty.", vbCritical)
         Else
             If frmAssessmentSetup.frmTitle.Text = "Search Tuition Fee Particular" Then
-                frmAssessmentSetup.dgTuition.Rows.Add(frmAssessmentSetup.dgParticulars.CurrentRow.Cells(0).Value, frmAssessmentSetup.dgParticulars.CurrentRow.Cells(1).Value, frmAssessmentSetup.dgParticulars.CurrentRow.Cells(2).Value, CDec(txtAmount.Text))
+                frmAssessmentSetup.dgTuition.Rows.Add(frmAssessmentSetup.dgParticulars.CurrentRow.Cells(0).Value, frmAssessmentSetup.dgParticulars.CurrentRow.Cells(1).Value, frmAssessmentSetup.dgParticulars.CurrentRow.Cells(2).Value, Format(CDec(txtAmount.Text), "#,##0.00"))
             ElseIf frmAssessmentSetup.frmTitle.Text = "Search Other Fees Particular" Then
-                frmAssessmentSetup.dgOtherFees.Rows.Add(frmAssessmentSetup.dgParticulars.CurrentRow.Cells(0).Value, frmAssessmentSetup.dgParticulars.CurrentRow.Cells(1).Value, frmAssessmentSetup.dgParticulars.CurrentRow.Cells(2).Value, CDec(txtAmount.Text))
+                frmAssessmentSetup.dgOtherFees.Rows.Add(frmAssessmentSetup.dgParticulars.CurrentRow.Cells(0).Value, frmAssessmentSetup.dgParticulars.CurrentRow.Cells(1).Value, frmAssessmentSetup.dgParticulars.CurrentRow.Cells(2).Value, Format(CDec(txtAmount.Text), "#,##0.00"))
             End If
             lblParticular.Text = "-"
             txtAmount.Text = "0.00"

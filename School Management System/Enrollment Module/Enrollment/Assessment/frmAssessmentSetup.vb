@@ -137,6 +137,11 @@ Public Class frmAssessmentSetup
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        If cbGender.Text = "" Then
+            MsgBox("Please select an assessment category.", vbCritical)
+            Return
+        End If
+
         cn.Close()
         cn.Open()
         'Try
@@ -154,7 +159,7 @@ Public Class frmAssessmentSetup
             MsgBox("Institutional Discount Percentage cannot be greater than 1(100%).", vbCritical)
         Else
             Dim dr As DialogResult
-            dr = MessageBox.Show("Are you sure you want to create this assessment for '" & lblCourse.Text & " ' - ' " & lblAcademicYear.Text & "' with a payment breakdown of PRELIM: " & CDec(txtPerentagePrelim.Text) * 100 & "%, MIDTERM: " & CDec(txtPercentageMidterm.Text) * 100 & "%, SEMI-FINAL: " & CDec(txtPercentageSemi.Text) * 100 & "%, FINAL: " & CDec(txtPercentageFinal.Text) * 100 & "% and INSTITUTIONAL DISCOUNT of " & CDec(txtInstitutionalDiscount.Text) * 100 & "%?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            dr = MessageBox.Show("Are you sure you want to create this assessment for '" & lblCourse.Text & " ' - ' " & lblAcademicYear.Text & "' with a payment breakdown of PRELIM: " & Math.Round(CDec(txtPerentagePrelim.Text) * 100) & "%, MIDTERM: " & Math.Round(CDec(txtPercentageMidterm.Text) * 100) & "%, SEMI-FINAL: " & Math.Round(CDec(txtPercentageSemi.Text) * 100) & "%, FINAL: " & Math.Round(CDec(txtPercentageFinal.Text) * 100) & "% and INSTITUTIONAL DISCOUNT of " & Math.Round(CDec(txtInstitutionalDiscount.Text) * 100) & "%?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If dr = DialogResult.No Then
             Else
                 cn.Close()
@@ -162,7 +167,7 @@ Public Class frmAssessmentSetup
                 cm = New MySqlCommand("select * from tbl_assessment_fee where af_period_id = " & AssessmentPeriodID & " and af_course_id = " & AssessmentCourseID & " and af_year_level = '" & cbYearLevel.Text & "' and af_gender = '" & cbGender.Text & "'", cn)
                 Dim sdr As MySqlDataReader = cm.ExecuteReader()
                 If (sdr.Read() = True) Then
-                    MsgBox("Assessment for Academic year " & lblAcademicYear.Text & " with Course " & lblCourse.Text & " has already created.", vbInformation)
+                    MsgBox("Assessment for Academic year " & lblAcademicYear.Text & " with Course: " & lblCourse.Text & ", Year Level:" & cbYearLevel.Text & " and Gender: " & cbGender.Text & " has already created.", vbInformation)
                     sdr.Dispose()
                     cn.Close()
                 Else
@@ -183,7 +188,12 @@ Public Class frmAssessmentSetup
 
                     MsgBox("Assessment successfully created.", vbInformation)
                     frmAssessment.CourseAssessmentList()
+
                     Me.Close()
+                    frmMain.OpenForm(frmAssessment, "Course Assessment")
+                    frmMain.HideAllFormsInPanelExcept(frmAssessment)
+                    frmMain.controlsPanel.Visible = False
+
                 End If
             End If
         End If
@@ -193,6 +203,11 @@ Public Class frmAssessmentSetup
     End Sub
 
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
+        If cbGender.Text = "" Then
+            MsgBox("Please select an assessment category.", vbCritical)
+            Return
+        End If
+
         cn.Close()
         cn.Open()
         'Try
@@ -237,5 +252,9 @@ Public Class frmAssessmentSetup
         'Catch ex As Exception
         'End Try
         cn.Close()
+    End Sub
+
+    Private Sub btnAddAssessment_Click(sender As Object, e As EventArgs) Handles btnAddAssessment.Click
+        frmAssessmentCategory.ShowDialog()
     End Sub
 End Class

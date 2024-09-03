@@ -90,7 +90,7 @@ Partial Class frmDiscountAdd
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(23, 69)
+        Me.Label6.Location = New System.Drawing.Point(23, 65)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(116, 16)
         Me.Label6.TabIndex = 126
@@ -100,7 +100,7 @@ Partial Class frmDiscountAdd
         '
         Me.txtAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtAmount.Font = New System.Drawing.Font("Century Gothic", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtAmount.Location = New System.Drawing.Point(26, 154)
+        Me.txtAmount.Location = New System.Drawing.Point(26, 150)
         Me.txtAmount.Name = "txtAmount"
         Me.txtAmount.Size = New System.Drawing.Size(529, 43)
         Me.txtAmount.TabIndex = 129
@@ -110,7 +110,7 @@ Partial Class frmDiscountAdd
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(23, 131)
+        Me.Label2.Location = New System.Drawing.Point(23, 127)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(50, 16)
         Me.Label2.TabIndex = 128
@@ -148,7 +148,7 @@ Partial Class frmDiscountAdd
         'cbDesc
         '
         Me.cbDesc.FormattingEnabled = True
-        Me.cbDesc.Location = New System.Drawing.Point(26, 93)
+        Me.cbDesc.Location = New System.Drawing.Point(26, 89)
         Me.cbDesc.Name = "cbDesc"
         Me.cbDesc.Size = New System.Drawing.Size(529, 24)
         Me.cbDesc.TabIndex = 131

@@ -882,6 +882,13 @@ Public Class frmMain
             frmCashiering.viewSOA.Visible = True
             frmCashiering.txtAcadBalance.Visible = True
             frmCashiering.Label17.Visible = True
+
+            frmCashiering.Label20.Text = "View"
+            frmCashiering.cbView.DataSource = Nothing
+            frmCashiering.cbView.Items.Add("Current Account")
+            frmCashiering.cbView.Items.Add("Academic Year Accounts")
+            frmCashiering.cbView.Items.Add("Payment History")
+
             frmCashiering.ClearAll()
             frmCashiering.btnSearchStudent.Select()
         End If
@@ -897,12 +904,14 @@ Public Class frmMain
         OpenForm(frmCashiering, "Pre-Cashiering")
         HideAllFormsInPanelExcept(frmCashiering)
         controlsPanel.Visible = False
-        frmCashiering.Panel8.Visible = False
+        frmCashiering.Panel8.Visible = True
         frmCashiering.Panel9.Visible = False
         frmCashiering.cbNDP.Visible = True
         frmCashiering.viewSOA.Visible = False
         frmCashiering.txtAcadBalance.Visible = False
         frmCashiering.Label17.Visible = False
+        frmCashiering.Label20.Text = "Assessment Category"
+        frmCashiering.cbView.Items.Clear()
         frmCashiering.ClearAll()
         fillCombo("Select CONCAT(period_name,'-',period_semester) as 'PERIOD', period_id FROM tbl_period WHERE period_enrollment_status = 'OPEN' order by `period_name` desc, `period_status` asc, `period_semester` desc", frmCashiering.cbAcademicYear, "CashieringPeriodList", "PERIOD", "period_id")
 
@@ -1390,6 +1399,7 @@ Public Class frmMain
     End Sub
 
     Private Sub btnAccountAdjustment_Click(sender As Object, e As EventArgs) Handles btnAccountAdjustment.Click
+        'fillCombo("SELECT category_name from tbl_assessment_fee_category where category_status = 'Active'", frmAdjustments.cbGender, "tbl_assessment_fee_category", "category_name", "category_name")
         OpenForm(frmAdjustments, "Student Account Adjustment")
         HideAllFormsInPanelExcept(frmAdjustments)
         controlsPanel.Visible = False
@@ -2102,7 +2112,7 @@ Public Class frmMain
             Dim barHeight As Integer = If(CInt(Convert.ToInt32(row.Field(Of Long)("Students"))) >= 100, CInt((Convert.ToInt32(row.Field(Of Long)("Students")) / maxValue) * panelHeight), 40)
             barPanel.Width = barWidth
             barPanel.Height = barHeight
-            barPanel.BackColor = Color.FromArgb(222, 154, 9)
+            barPanel.BackColor = Color.FromArgb(15, 101, 208)
             barPanel.Location = New Point(barSpacing + (barWidth + barSpacing) * dt.Rows.IndexOf(row), panelHeight - barHeight)
             EnrollmentBarGraph.Controls.Add(barPanel)
 
@@ -2139,7 +2149,7 @@ Public Class frmMain
             Else
                 ' Not enough space, place label inside the bar panel
                 rotatedLabel.Location = New Point(barPanel.Location.X + barWidth / 2 - rotatedLabel.Width / 2, barPanel.Location.Y + 30) ' Adjust this value to set the label at the top
-                rotatedLabel.BackColor = Color.FromArgb(222, 154, 9)
+                rotatedLabel.BackColor = Color.FromArgb(15, 101, 208)
                 rotatedLabel.ForeColor = Color.Black
             End If
             EnrollmentBarGraph.Controls.Add(rotatedLabel)

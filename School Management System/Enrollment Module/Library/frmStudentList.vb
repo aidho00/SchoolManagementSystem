@@ -395,48 +395,61 @@ Public Class frmStudentList
                     .txtMotherName.Text = .mother_fname & " " & .mother_mname & " " & .mother_lname
                     .txtFatherName.Text = .father_fname & " " & .father_mname & " " & .father_lname
 
-                    Try
-                        cn.Close()
-                        cn.Open()
-                        cm = New MySqlCommand("select sp_profile_photo from tbl_student_photos where sp_student_id = @1", cn)
-                        With cm
-                            .Parameters.AddWithValue("@1", dgStudentList.Rows(e.RowIndex).Cells(1).Value.ToString)
-                        End With
-                        dr = cm.ExecuteReader
-                        While dr.Read
-                            Dim len As Long = dr.GetBytes(0, 0, Nothing, 0, 0)
-                            Dim array(CInt(len)) As Byte
-                            dr.GetBytes(0, 0, array, 0, CInt(len))
-                            Dim ms As New MemoryStream(array)
-                            Dim bitmap As New System.Drawing.Bitmap(ms)
-                            .studentPhoto.Image = bitmap
-                        End While
-                        dr.Close()
-                        cn.Close()
-                    Catch ex As Exception
+
+
+                    cn.Open()
+                    cm = New MySqlCommand("select * from cfcissmsdb_sphotos.tbl_student_photos where sp_student_id = '" & .OldStudentID & "'", cn)
+                    dr = cm.ExecuteReader
+                    dr.Read()
+                    If dr.HasRows Then
+                        Try
+                            cn.Close()
+                            cn.Open()
+                            cm = New MySqlCommand("select sp_profile_photo from cfcissmsdb_sphotos.tbl_student_photos where sp_student_id = @1", cn)
+                            With cm
+                                .Parameters.AddWithValue("@1", dgStudentList.Rows(e.RowIndex).Cells(1).Value.ToString)
+                            End With
+                            dr = cm.ExecuteReader
+                            While dr.Read
+                                Dim len As Long = dr.GetBytes(0, 0, Nothing, 0, 0)
+                                Dim array(CInt(len)) As Byte
+                                dr.GetBytes(0, 0, array, 0, CInt(len))
+                                Dim ms As New MemoryStream(array)
+                                Dim bitmap As New System.Drawing.Bitmap(ms)
+                                .studentPhoto.Image = bitmap
+                            End While
+                            dr.Close()
+                            cn.Close()
+                        Catch ex As Exception
+                            .studentPhoto.Image = .studentDummypicture.Image
+                        End Try
+                        Try
+                            cn.Close()
+                            cn.Open()
+                            cm = New MySqlCommand("select sp_sign_photo from cfcissmsdb_sphotos.tbl_student_photos where sp_student_id   = @1", cn)
+                            With cm
+                                .Parameters.AddWithValue("@1", dgStudentList.Rows(e.RowIndex).Cells(1).Value.ToString)
+                            End With
+                            dr = cm.ExecuteReader
+                            While dr.Read
+                                Dim len As Long = dr.GetBytes(0, 0, Nothing, 0, 0)
+                                Dim array(CInt(len)) As Byte
+                                dr.GetBytes(0, 0, array, 0, CInt(len))
+                                Dim ms As New MemoryStream(array)
+                                Dim bitmap As New System.Drawing.Bitmap(ms)
+                                .studentSignature.Image = bitmap
+                            End While
+                            dr.Close()
+                            cn.Close()
+                        Catch ex As Exception
+                            .studentSignature.Image = .studentDummysign.Image
+                        End Try
+                    Else
                         .studentPhoto.Image = .studentDummypicture.Image
-                    End Try
-                    Try
-                        cn.Close()
-                        cn.Open()
-                        cm = New MySqlCommand("select sp_sign_photo from tbl_student_photos where sp_student_id   = @1", cn)
-                        With cm
-                            .Parameters.AddWithValue("@1", dgStudentList.Rows(e.RowIndex).Cells(1).Value.ToString)
-                        End With
-                        dr = cm.ExecuteReader
-                        While dr.Read
-                            Dim len As Long = dr.GetBytes(0, 0, Nothing, 0, 0)
-                            Dim array(CInt(len)) As Byte
-                            dr.GetBytes(0, 0, array, 0, CInt(len))
-                            Dim ms As New MemoryStream(array)
-                            Dim bitmap As New System.Drawing.Bitmap(ms)
-                            .studentSignature.Image = bitmap
-                        End While
-                        dr.Close()
-                        cn.Close()
-                    Catch ex As Exception
                         .studentSignature.Image = .studentDummysign.Image
-                    End Try
+                    End If
+                    dr.Close()
+                    cn.Close()
 
                     LoadData()
                     .btnSave.Visible = False

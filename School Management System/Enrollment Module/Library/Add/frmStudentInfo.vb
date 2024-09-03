@@ -333,19 +333,19 @@
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         Try
-            If PWDID = 0 Or cbDisability.SelectedValue Is Nothing Then
+            If PWDID = 0 Or CInt(cbDisability.SelectedValue) = 0 Then
                 MsgBox("Invalid Disability.", vbCritical)
                 Return
             End If
-            If RelegionID = 0 Or cbReligion.SelectedValue Is Nothing Then
+            If RelegionID = 0 Or CInt(cbReligion.SelectedValue) = 0 Then
                 MsgBox("Invalid Religion.", vbCritical)
                 Return
             End If
-            If ScholarshipID = 0 Or cbScholarship.SelectedValue Is Nothing Then
+            If ScholarshipID = 0 Or CInt(cbScholarship.SelectedValue) = 0 Then
                 MsgBox("Invalid Scholarship.", vbCritical)
                 Return
             End If
-            If CourseID = 0 Or cbCourse.SelectedValue Is Nothing Then
+            If CourseID = 0 Or CInt(cbCourse.SelectedValue) = 0 Then
                 MsgBox("Invalid Course.", vbCritical)
                 Return
             End If
@@ -377,20 +377,20 @@
     End Sub
 
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
-        Try
-            If PWDID = 0 Or cbDisability.SelectedValue Is Nothing Then
+        'Try
+        If PWDID = 0 Or CInt(cbDisability.SelectedValue) = 0 Then
                 MsgBox("Invalid Disability.", vbCritical)
                 Return
             End If
-            If RelegionID = 0 Or cbReligion.SelectedValue Is Nothing Then
+            If RelegionID = 0 Or CInt(cbReligion.SelectedValue) = 0 Then
                 MsgBox("Invalid Religion.", vbCritical)
                 Return
             End If
-            If ScholarshipID = 0 Or cbScholarship.SelectedValue Is Nothing Then
+            If ScholarshipID = 0 Or CInt(cbScholarship.SelectedValue) = 0 Then
                 MsgBox("Invalid Scholarship.", vbCritical)
                 Return
             End If
-            If CourseID = 0 Or cbCourse.SelectedValue Is Nothing Then
+            If CourseID = 0 Or CInt(cbCourse.SelectedValue) = 0 Then
                 MsgBox("Invalid Course.", vbCritical)
                 Return
             End If
@@ -416,9 +416,9 @@
                 End If
                 UpdateStudent()
             End If
-        Catch ex As Exception
-            MsgBox(ex.Message, vbCritical, "")
-        End Try
+        'Catch ex As Exception
+        '    MsgBox(ex.Message, vbCritical, "")
+        'End Try
     End Sub
 
     Private Sub cbTransferMode_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cbTransferMode.KeyPress

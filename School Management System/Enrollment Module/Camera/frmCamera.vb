@@ -302,9 +302,15 @@ Public Class frmCamera
         End If
     End Sub
 
-    Private Sub btn_Click(sender As Object, e As EventArgs) Handles btnCopy.Click
+    Private Sub btnCopy_Click(sender As Object, e As EventArgs) Handles btnCopy.Click
         If lblCameraSubject.Text = "Employee" Then
             frmEmployee.empPhoto.Image = CroppedImg.Image
+            MsgBox("Cropped Image copied!", MsgBoxStyle.Information)
+        ElseIf lblCameraSubject.Text = "User" Then
+            frmUser.userPhoto.Image = CroppedImg.Image
+            MsgBox("Cropped Image copied!", MsgBoxStyle.Information)
+        ElseIf lblCameraSubject.Text = "Student" Then
+            frmStudentInfo.studentPhoto.Image = CroppedImg.Image
             MsgBox("Cropped Image copied!", MsgBoxStyle.Information)
         End If
     End Sub

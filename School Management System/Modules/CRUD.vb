@@ -18,7 +18,7 @@ Module CRUD
             AutoIDNumber()
             cn.Close()
             cn.Open()
-            cm = New MySqlCommand("INSERT INTO tbl_employee (`s_id_no`, `s_lrn_no`, `s_so_no`, `s_fn`, `s_ln`, `s_mn`, `s_dob`, `s_pob`, `s_address`, `s_photo`, `s_tribe`, `s_religion_id`, `s_gender`, `s_civil_status`, `s_pwd`, `s_status`, `s_contact`, `s_email`, `s_nationality`, `s_yr_lvl`, `s_course_id`, `s_p_school_id`, `s_p_school_ya`, `s_p_school_remarks`, `s_s_school_id`, `s_s_school_ya`, `s_s_school_remarks`, `s_c_school_id`, `s_c_school_ya`, `s_c_school_remarks`, `s_m_school_id`, `s_m_school_remarks`, `s_m_school_ya`, `s_d_school_id`, `s_d_school_ya`, `s_d_school_remarks`, `s_active_status`, `s_begin_date`, `s_grad_date`, `s_bloodtype`, `s_lst_yr_attend`, `s_ent_cred`, `s_period_id`, `s_period_grad_id`, `s_scholarship`, `s_mother_name`, `s_mother_address`, `s_mother_occu`, `s_mother_contact`, `s_father_name`, `s_father_address`, `s_father_occu`, `s_father_contact`, `s_guardian_name`, `s_guardian_address`, `s_guardian_contact`, `s_guardian_occu`, `s_guardian_income`, `s_family_annual_income`, `s_sh_school_ya`, `s_sh_school_id`, `s_sh_school_remarks`, `s_self_support`, `s_lys_school_id`, `s_lys_school_ya`, `s_lys_school_remarks`, `s_4ps_ID`, `s_1ps_ID`, `s_notes`, `s_shirt_size`, `s_sign_photo`, `s_nstp_no`, `s_so_date`, `s_address_zipcode`, `s_cred_hscard`, `s_cred_f137`, `s_cred_birth`, `s_cred_marriage_cert`, `s_cred_gmc`, `s_cred_ncae`, `s_cred_hd`, `s_cred_tor`, `s_cred_ofc_tor`, `s_cred_als_cert`, `s_acad_awards`, `s_ext`, `s_is_tranfer`, `s_school_transfer`, `s_otr_released`, `s_otr_received`, `s_otr_mode`, `s_otr_remarks`,s_address_prov,s_address_citymun,s_address_brgy,s_mother_mname,s_mother_lname,s_father_mname,s_father_lname,s_course_status) values (@s_id_no, @s_lrn_no, @s_so_no, @s_fn, @s_ln, @s_mn, @s_dob, @s_pob, @s_address, @s_photo, @s_tribe, @s_religion_id, @s_gender, @s_civil_status, @s_pwd, @s_status, @s_contact, @s_email, @s_nationality, @s_yr_lvl, @s_course_id, @s_p_school_id, @s_p_school_ya, @s_p_school_remarks, @s_s_school_id, @s_s_school_ya, @s_s_school_remarks, @s_c_school_id, @s_c_school_ya, @s_c_school_remarks, @s_m_school_id, @s_m_school_remarks, @s_m_school_ya, @s_d_school_id, @s_d_school_ya, @s_d_school_remarks, @s_active_status, @s_begin_date, @s_grad_date, @s_bloodtype, @s_lst_yr_attend, @s_ent_cred, @s_period_id, @s_period_grad_id, @s_scholarship, @s_mother_name, @s_mother_address, @s_mother_occu, @s_mother_contact, @s_father_name, @s_father_address, @s_father_occu, @s_father_contact, @s_guardian_name, @s_guardian_address, @s_guardian_contact, @s_guardian_occu, @s_guardian_income, @s_family_annual_income, @s_sh_school_ya, @s_sh_school_id, @s_sh_school_remarks, @s_self_support, @s_lys_school_id, @s_lys_school_ya, @s_lys_school_remarks, @s_4ps_ID, @s_1ps_ID, @s_notes, @s_shirt_size, @s_sign_photo, @s_nstp_no, @s_so_date, @s_address_zipcode, @s_cred_hscard, @s_cred_f137, @s_cred_birth, @s_cred_marriage_cert, @s_cred_gmc, @s_cred_ncae, @s_cred_hd, @s_cred_tor, @s_cred_ofc_tor, @s_cred_als_cert, @s_acad_awards, @s_ext, @s_is_tranfer, @s_school_transfer, @s_otr_released, @s_otr_received, @s_otr_mode, @s_otr_remarks,@s_address_prov,@s_address_citymun,@s_address_brgy,@s_mother_mname,@s_mother_lname,@s_father_mname,@s_father_lname,@s_course_status)", cn)
+            cm = New MySqlCommand("INSERT INTO tbl_student (`s_id_no`, `s_lrn_no`, `s_so_no`, `s_fn`, `s_ln`, `s_mn`, `s_dob`, `s_pob`, `s_address`, `s_tribe`, `s_religion_id`, `s_gender`, `s_civil_status`, `s_pwd`, `s_status`, `s_contact`, `s_email`, `s_nationality`, `s_yr_lvl`, `s_course_id`, `s_p_school_id`, `s_p_school_ya`, `s_p_school_remarks`, `s_s_school_id`, `s_s_school_ya`, `s_s_school_remarks`, `s_c_school_id`, `s_c_school_ya`, `s_c_school_remarks`, `s_m_school_id`, `s_m_school_remarks`, `s_m_school_ya`, `s_d_school_id`, `s_d_school_ya`, `s_d_school_remarks`, `s_active_status`, `s_begin_date`, `s_grad_date`, `s_bloodtype`, `s_lst_yr_attend`, `s_ent_cred`, `s_period_id`, `s_period_grad_id`, `s_scholarship`, `s_mother_name`, `s_mother_address`, `s_mother_occu`, `s_mother_contact`, `s_father_name`, `s_father_address`, `s_father_occu`, `s_father_contact`, `s_guardian_name`, `s_guardian_address`, `s_guardian_contact`, `s_guardian_occu`, `s_guardian_income`, `s_family_annual_income`, `s_sh_school_ya`, `s_sh_school_id`, `s_sh_school_remarks`, `s_self_support`, `s_lys_school_id`, `s_lys_school_ya`, `s_lys_school_remarks`, `s_4ps_ID`, `s_1ps_ID`, `s_notes`, `s_shirt_size`, `s_nstp_no`, `s_so_date`, `s_address_zipcode`, `s_cred_hscard`, `s_cred_f137`, `s_cred_birth`, `s_cred_marriage_cert`, `s_cred_gmc`, `s_cred_ncae`, `s_cred_hd`, `s_cred_tor`, `s_cred_ofc_tor`, `s_cred_als_cert`, `s_acad_awards`, `s_ext`, `s_is_tranfer`, `s_school_transfer`, `s_otr_released`, `s_otr_received`, `s_otr_mode`, `s_otr_remarks`,s_address_prov,s_address_citymun,s_address_brgy,s_mother_mname,s_mother_lname,s_father_mname,s_father_lname,s_course_status) values (@s_id_no, @s_lrn_no, @s_so_no, @s_fn, @s_ln, @s_mn, @s_dob, @s_pob, @s_address, @s_tribe, @s_religion_id, @s_gender, @s_civil_status, @s_pwd, @s_status, @s_contact, @s_email, @s_nationality, @s_yr_lvl, @s_course_id, @s_p_school_id, @s_p_school_ya, @s_p_school_remarks, @s_s_school_id, @s_s_school_ya, @s_s_school_remarks, @s_c_school_id, @s_c_school_ya, @s_c_school_remarks, @s_m_school_id, @s_m_school_remarks, @s_m_school_ya, @s_d_school_id, @s_d_school_ya, @s_d_school_remarks, @s_active_status, @s_begin_date, @s_grad_date, @s_bloodtype, @s_lst_yr_attend, @s_ent_cred, @s_period_id, @s_period_grad_id, @s_scholarship, @s_mother_name, @s_mother_address, @s_mother_occu, @s_mother_contact, @s_father_name, @s_father_address, @s_father_occu, @s_father_contact, @s_guardian_name, @s_guardian_address, @s_guardian_contact, @s_guardian_occu, @s_guardian_income, @s_family_annual_income, @s_sh_school_ya, @s_sh_school_id, @s_sh_school_remarks, @s_self_support, @s_lys_school_id, @s_lys_school_ya, @s_lys_school_remarks, @s_4ps_ID, @s_1ps_ID, @s_notes, @s_shirt_size, @s_nstp_no, @s_so_date, @s_address_zipcode, @s_cred_hscard, @s_cred_f137, @s_cred_birth, @s_cred_marriage_cert, @s_cred_gmc, @s_cred_ncae, @s_cred_hd, @s_cred_tor, @s_cred_ofc_tor, @s_cred_als_cert, @s_acad_awards, @s_ext, @s_is_tranfer, @s_school_transfer, @s_otr_released, @s_otr_received, @s_otr_mode, @s_otr_remarks,@s_address_prov,@s_address_citymun,@s_address_brgy,@s_mother_mname,@s_mother_lname,@s_father_mname,@s_father_lname,@s_course_status)", cn)
             With frmStudentInfo
                 cm.Parameters.AddWithValue("@s_id_no", .NewStudentID)
                 cm.Parameters.AddWithValue("@s_lrn_no", .txtLRN.Text.Trim)
@@ -29,26 +29,7 @@ Module CRUD
                 cm.Parameters.AddWithValue("@s_dob", .dtBirthdate.Value)
                 cm.Parameters.AddWithValue("@s_pob", .txtBrithplace.Text.Trim)
                 cm.Parameters.AddWithValue("@s_address", .txtAddress.Text.Trim)
-                If frmStudentInfo.studentPhoto.Image Is Nothing Then
-                    Dim mstream3 As New MemoryStream
-                    frmStudentInfo.studentDummypicture.Image.Save(mstream3, System.Drawing.Imaging.ImageFormat.Jpeg)
-                    Dim arrImage3() As Byte = mstream3.GetBuffer
 
-                    cm.Parameters.AddWithValue("@s_photo", arrImage3)
-                Else
-                    Try
-                        Dim mstream As New MemoryStream
-                        frmStudentInfo.studentPhoto.Image.Save(mstream, System.Drawing.Imaging.ImageFormat.Jpeg)
-                        Dim arrImage() As Byte = mstream.GetBuffer
-                        cm.Parameters.AddWithValue("@s_photo", arrImage)
-                    Catch ex As Exception
-                        Dim mstream3 As New MemoryStream
-                        frmStudentInfo.studentDummypicture.Image.Save(mstream3, System.Drawing.Imaging.ImageFormat.Jpeg)
-                        Dim arrImage3() As Byte = mstream3.GetBuffer
-
-                        cm.Parameters.AddWithValue("@s_photo", arrImage3)
-                    End Try
-                End If
                 cm.Parameters.AddWithValue("@s_tribe", .cbEthnicity.Text.Trim)
                 cm.Parameters.AddWithValue("@s_religion_id", .RelegionID)
                 cm.Parameters.AddWithValue("@s_gender", .cbSex.Text)
@@ -109,24 +90,7 @@ Module CRUD
                 cm.Parameters.AddWithValue("@s_1ps_ID", .txt1ps.Text.Trim)
                 cm.Parameters.AddWithValue("@s_notes", .txtNotes.Text.Trim)
                 cm.Parameters.AddWithValue("@s_shirt_size", .txtShirtSize.Text.Trim)
-                If frmStudentInfo.studentSignature.Image Is Nothing Then
-                    Dim mstream4 As New MemoryStream
-                    frmStudentInfo.studentDummysign.Image.Save(mstream4, System.Drawing.Imaging.ImageFormat.Jpeg)
-                    Dim arrImage4() As Byte = mstream4.GetBuffer
-                    cm.Parameters.AddWithValue("@s_sign_photo", arrImage4)
-                Else
-                    Try
-                        Dim mstream2 As New MemoryStream
-                        frmStudentInfo.studentSignature.Image.Save(mstream2, System.Drawing.Imaging.ImageFormat.Jpeg)
-                        Dim arrImage2() As Byte = mstream2.GetBuffer
-                        cm.Parameters.AddWithValue("@s_sign_photo", arrImage2)
-                    Catch ex As Exception
-                        Dim mstream4 As New MemoryStream
-                        frmStudentInfo.studentDummysign.Image.Save(mstream4, System.Drawing.Imaging.ImageFormat.Jpeg)
-                        Dim arrImage4() As Byte = mstream4.GetBuffer
-                        cm.Parameters.AddWithValue("@s_sign_photo", arrImage4)
-                    End Try
-                End If
+
                 cm.Parameters.AddWithValue("@s_nstp_no", .txtNSTP.Text.Trim)
                 cm.Parameters.AddWithValue("@s_so_date", .txtSODate.Text.Trim)
                 cm.Parameters.AddWithValue("@s_address_zipcode", .txtZipCode.Text.Trim)
@@ -210,6 +174,51 @@ Module CRUD
                 cm.Parameters.AddWithValue("@s_course_status", .cbCourseStatus.Text)
                 cm.ExecuteNonQuery()
                 cn.Close()
+
+                cn.Open()
+                cm = New MySqlCommand("Insert into cfcissmsdb_sphotos.tbl_student_photos (sp_student_id, sp_profile_photo, sp_sign_photo) values (@sp_student_id, @sp_profile_photo, @sp_sign_photo)", cn)
+                cm.Parameters.AddWithValue("@sp_student_id", .NewStudentID)
+                If frmStudentInfo.studentPhoto.Image Is Nothing Then
+                    Dim mstream3 As New MemoryStream
+                    frmStudentInfo.studentDummypicture.Image.Save(mstream3, System.Drawing.Imaging.ImageFormat.Jpeg)
+                    Dim arrImage3() As Byte = mstream3.GetBuffer
+
+                    cm.Parameters.AddWithValue("@sp_profile_photo", arrImage3)
+                Else
+                    Try
+                        Dim mstream As New MemoryStream
+                        frmStudentInfo.studentPhoto.Image.Save(mstream, System.Drawing.Imaging.ImageFormat.Jpeg)
+                        Dim arrImage() As Byte = mstream.GetBuffer
+                        cm.Parameters.AddWithValue("@sp_profile_photo", arrImage)
+                    Catch ex As Exception
+                        Dim mstream3 As New MemoryStream
+                        frmStudentInfo.studentDummypicture.Image.Save(mstream3, System.Drawing.Imaging.ImageFormat.Jpeg)
+                        Dim arrImage3() As Byte = mstream3.GetBuffer
+
+                        cm.Parameters.AddWithValue("@sp_profile_photo", arrImage3)
+                    End Try
+                End If
+                If frmStudentInfo.studentSignature.Image Is Nothing Then
+                    Dim mstream4 As New MemoryStream
+                    frmStudentInfo.studentDummysign.Image.Save(mstream4, System.Drawing.Imaging.ImageFormat.Jpeg)
+                    Dim arrImage4() As Byte = mstream4.GetBuffer
+                    cm.Parameters.AddWithValue("@sp_sign_photo", arrImage4)
+                Else
+                    Try
+                        Dim mstream2 As New MemoryStream
+                        frmStudentInfo.studentSignature.Image.Save(mstream2, System.Drawing.Imaging.ImageFormat.Jpeg)
+                        Dim arrImage2() As Byte = mstream2.GetBuffer
+                        cm.Parameters.AddWithValue("@sp_sign_photo", arrImage2)
+                    Catch ex As Exception
+                        Dim mstream4 As New MemoryStream
+                        frmStudentInfo.studentDummysign.Image.Save(mstream4, System.Drawing.Imaging.ImageFormat.Jpeg)
+                        Dim arrImage4() As Byte = mstream4.GetBuffer
+                        cm.Parameters.AddWithValue("@sp_sign_photo", arrImage4)
+                    End Try
+                End If
+                cm.ExecuteNonQuery()
+                cn.Close()
+
                 UserActivity("Added a student information " & .txtFname.Text.Trim & " " & .txtMname.Text.Trim & " " & .txtLname.Text.Trim & " with ID Number:" & .NewStudentID & ".", "LIBRARY STUDENT PROFILING")
                 frmWait.seconds = 1
                 frmWait.ShowDialog()
@@ -251,7 +260,7 @@ Module CRUD
         Try
             cn.Close()
             cn.Open()
-            cm = New MySqlCommand("UPDATE `tbl_student` SET `s_lrn_no`=@s_lrn_no,`s_so_no`=@s_so_no,`s_fn`=@s_fn,`s_ln`=@s_ln,`s_mn`=@s_mn,`s_dob`=@s_dob,`s_pob`=@s_pob,`s_address`=@s_address,`s_photo`=@s_photo,`s_tribe`=@s_tribe,`s_religion_id`=@s_religion_id,`s_gender`=@s_gender,`s_civil_status`=@s_civil_status,`s_pwd`=@s_pwd,`s_status`=@s_status,`s_contact`=@s_contact,`s_email`=@s_email,`s_nationality`=@s_nationality,`s_yr_lvl`=@s_yr_lvl,`s_course_id`=@s_course_id,`s_p_school_id`=@s_p_school_id,`s_p_school_ya`=@s_p_school_ya,`s_p_school_remarks`=@s_p_school_remarks,`s_s_school_id`=@s_s_school_id,`s_s_school_ya`=@s_s_school_ya,`s_s_school_remarks`=@s_s_school_remarks,`s_c_school_id`=@s_c_school_id,`s_c_school_ya`=@s_c_school_ya,`s_c_school_remarks`=@s_c_school_remarks,`s_m_school_id`=@s_m_school_id,`s_m_school_remarks`=@s_m_school_remarks,`s_m_school_ya`=@s_m_school_ya,`s_d_school_id`=@s_d_school_id,`s_d_school_ya`=@s_d_school_ya,`s_d_school_remarks`=@s_d_school_remarks,`s_active_status`=@s_active_status,`s_begin_date`=@s_begin_date,`s_grad_date`=@s_grad_date,`s_bloodtype`=@s_bloodtype,`s_lst_yr_attend`=@s_lst_yr_attend,`s_ent_cred`=@s_ent_cred,`s_period_id`=@s_period_id,`s_period_grad_id`=@s_period_grad_id,`s_scholarship`=@s_scholarship,`s_mother_name`=@s_mother_name,`s_mother_address`=@s_mother_address,`s_mother_occu`=@s_mother_occu,`s_mother_contact`=@s_mother_contact,`s_father_name`=@s_father_name,`s_father_address`=@s_father_address,`s_father_occu`=@s_father_occu,`s_father_contact`=@s_father_contact,`s_guardian_name`=@s_guardian_name,`s_guardian_address`=@s_guardian_address,`s_guardian_contact`=@s_guardian_contact,`s_guardian_occu`=@s_guardian_occu,`s_guardian_income`=@s_guardian_income,`s_family_annual_income`=@s_family_annual_income,`s_sh_school_ya`=@s_sh_school_ya,`s_sh_school_id`=@s_sh_school_id,`s_sh_school_remarks`=@s_sh_school_remarks,`s_self_support`=@s_self_support,`s_lys_school_id`=@s_lys_school_id,`s_lys_school_ya`=@s_lys_school_ya,`s_lys_school_remarks`=@s_lys_school_remarks,`s_4ps_ID`=@s_4ps_ID,`s_1ps_ID`=@s_1ps_ID,`s_notes`=@s_notes,`s_shirt_size`=@s_shirt_size,`s_sign_photo`=@s_sign_photo,`s_nstp_no`=@s_nstp_no,`s_so_date`=@s_so_date,`s_address_zipcode`=@s_address_zipcode,`s_cred_hscard`=@s_cred_hscard,`s_cred_f137`=@s_cred_f137,`s_cred_birth`=@s_cred_birth,`s_cred_marriage_cert`=@s_cred_marriage_cert,`s_cred_gmc`=@s_cred_gmc,`s_cred_ncae`=@s_cred_ncae,`s_cred_hd`=@s_cred_hd,`s_cred_tor`=@s_cred_tor,`s_cred_ofc_tor`=@s_cred_ofc_tor,`s_cred_als_cert`=@s_cred_als_cert,`s_acad_awards`=@s_acad_awards,`s_ext`=@s_ext,`s_is_tranfer`=@s_is_tranfer,`s_school_transfer`=@s_school_transfer,`s_otr_released`=@s_otr_released,`s_otr_received`=@s_otr_received,`s_otr_mode`=@s_otr_mode,`s_otr_remarks`=@s_otr_remarks,s_address_prov=@s_address_prov,s_address_citymun=@s_address_citymun,s_address_brgy=@s_address_brgy,s_mother_mname=@s_mother_mname,s_mother_lname=@s_mother_lname,s_father_mname=@s_father_mname,s_father_lname=@s_father_lname,s_course_status=@s_course_status WHERE `s_id_no`=@s_id_no", cn)
+            cm = New MySqlCommand("UPDATE `tbl_student` SET `s_lrn_no`=@s_lrn_no,`s_so_no`=@s_so_no,`s_fn`=@s_fn,`s_ln`=@s_ln,`s_mn`=@s_mn,`s_dob`=@s_dob,`s_pob`=@s_pob,`s_address`=@s_address,`s_tribe`=@s_tribe,`s_religion_id`=@s_religion_id,`s_gender`=@s_gender,`s_civil_status`=@s_civil_status,`s_pwd`=@s_pwd,`s_status`=@s_status,`s_contact`=@s_contact,`s_email`=@s_email,`s_nationality`=@s_nationality,`s_yr_lvl`=@s_yr_lvl,`s_course_id`=@s_course_id,`s_p_school_id`=@s_p_school_id,`s_p_school_ya`=@s_p_school_ya,`s_p_school_remarks`=@s_p_school_remarks,`s_s_school_id`=@s_s_school_id,`s_s_school_ya`=@s_s_school_ya,`s_s_school_remarks`=@s_s_school_remarks,`s_c_school_id`=@s_c_school_id,`s_c_school_ya`=@s_c_school_ya,`s_c_school_remarks`=@s_c_school_remarks,`s_m_school_id`=@s_m_school_id,`s_m_school_remarks`=@s_m_school_remarks,`s_m_school_ya`=@s_m_school_ya,`s_d_school_id`=@s_d_school_id,`s_d_school_ya`=@s_d_school_ya,`s_d_school_remarks`=@s_d_school_remarks,`s_active_status`=@s_active_status,`s_begin_date`=@s_begin_date,`s_grad_date`=@s_grad_date,`s_bloodtype`=@s_bloodtype,`s_lst_yr_attend`=@s_lst_yr_attend,`s_ent_cred`=@s_ent_cred,`s_period_id`=@s_period_id,`s_period_grad_id`=@s_period_grad_id,`s_scholarship`=@s_scholarship,`s_mother_name`=@s_mother_name,`s_mother_address`=@s_mother_address,`s_mother_occu`=@s_mother_occu,`s_mother_contact`=@s_mother_contact,`s_father_name`=@s_father_name,`s_father_address`=@s_father_address,`s_father_occu`=@s_father_occu,`s_father_contact`=@s_father_contact,`s_guardian_name`=@s_guardian_name,`s_guardian_address`=@s_guardian_address,`s_guardian_contact`=@s_guardian_contact,`s_guardian_occu`=@s_guardian_occu,`s_guardian_income`=@s_guardian_income,`s_family_annual_income`=@s_family_annual_income,`s_sh_school_ya`=@s_sh_school_ya,`s_sh_school_id`=@s_sh_school_id,`s_sh_school_remarks`=@s_sh_school_remarks,`s_self_support`=@s_self_support,`s_lys_school_id`=@s_lys_school_id,`s_lys_school_ya`=@s_lys_school_ya,`s_lys_school_remarks`=@s_lys_school_remarks,`s_4ps_ID`=@s_4ps_ID,`s_1ps_ID`=@s_1ps_ID,`s_notes`=@s_notes,`s_shirt_size`=@s_shirt_size,`s_nstp_no`=@s_nstp_no,`s_so_date`=@s_so_date,`s_address_zipcode`=@s_address_zipcode,`s_cred_hscard`=@s_cred_hscard,`s_cred_f137`=@s_cred_f137,`s_cred_birth`=@s_cred_birth,`s_cred_marriage_cert`=@s_cred_marriage_cert,`s_cred_gmc`=@s_cred_gmc,`s_cred_ncae`=@s_cred_ncae,`s_cred_hd`=@s_cred_hd,`s_cred_tor`=@s_cred_tor,`s_cred_ofc_tor`=@s_cred_ofc_tor,`s_cred_als_cert`=@s_cred_als_cert,`s_acad_awards`=@s_acad_awards,`s_ext`=@s_ext,`s_is_tranfer`=@s_is_tranfer,`s_school_transfer`=@s_school_transfer,`s_otr_released`=@s_otr_released,`s_otr_received`=@s_otr_received,`s_otr_mode`=@s_otr_mode,`s_otr_remarks`=@s_otr_remarks,s_address_prov=@s_address_prov,s_address_citymun=@s_address_citymun,s_address_brgy=@s_address_brgy,s_mother_mname=@s_mother_mname,s_mother_lname=@s_mother_lname,s_father_mname=@s_father_mname,s_father_lname=@s_father_lname,s_course_status=@s_course_status WHERE `s_id_no`=@s_id_no", cn)
             With frmStudentInfo
                 cm.Parameters.AddWithValue("@s_id_no", .OldStudentID)
                 cm.Parameters.AddWithValue("@s_lrn_no", .txtLRN.Text.Trim)
@@ -262,25 +271,6 @@ Module CRUD
                 cm.Parameters.AddWithValue("@s_dob", .dtBirthdate.Value)
                 cm.Parameters.AddWithValue("@s_pob", .txtBrithplace.Text.Trim)
                 cm.Parameters.AddWithValue("@s_address", .address_street.ToString.Trim)
-                If frmStudentInfo.studentPhoto.Image Is Nothing Then
-                    Dim mstream3 As New MemoryStream
-                    frmStudentInfo.studentDummypicture.Image.Save(mstream3, System.Drawing.Imaging.ImageFormat.Jpeg)
-                    Dim arrImage3() As Byte = mstream3.GetBuffer
-                    cm.Parameters.AddWithValue("@s_photo", arrImage3)
-                Else
-                    Try
-                        Dim mstream As New MemoryStream
-                        frmStudentInfo.studentPhoto.Image.Save(mstream, System.Drawing.Imaging.ImageFormat.Jpeg)
-                        Dim arrImage() As Byte = mstream.GetBuffer
-                        cm.Parameters.AddWithValue("@s_photo", arrImage)
-                    Catch ex As Exception
-                        Dim mstream3 As New MemoryStream
-                        frmStudentInfo.studentDummypicture.Image.Save(mstream3, System.Drawing.Imaging.ImageFormat.Jpeg)
-                        Dim arrImage3() As Byte = mstream3.GetBuffer
-                        cm.Parameters.AddWithValue("@s_photo", arrImage3)
-                    End Try
-                End If
-
 
                 cm.Parameters.AddWithValue("@s_tribe", .cbEthnicity.Text.Trim)
                 cm.Parameters.AddWithValue("@s_religion_id", .RelegionID)
@@ -342,25 +332,6 @@ Module CRUD
                 cm.Parameters.AddWithValue("@s_1ps_ID", .txt1ps.Text.Trim)
                 cm.Parameters.AddWithValue("@s_notes", .txtNotes.Text.Trim)
                 cm.Parameters.AddWithValue("@s_shirt_size", .txtShirtSize.Text.Trim)
-                If frmStudentInfo.studentSignature.Image Is Nothing Then
-                    Dim mstream4 As New MemoryStream
-                    frmStudentInfo.studentDummysign.Image.Save(mstream4, System.Drawing.Imaging.ImageFormat.Jpeg)
-                    Dim arrImage4() As Byte = mstream4.GetBuffer
-                    cm.Parameters.AddWithValue("@s_sign_photo", arrImage4)
-                Else
-                    Try
-                        Dim mstream2 As New MemoryStream
-                        frmStudentInfo.studentSignature.Image.Save(mstream2, System.Drawing.Imaging.ImageFormat.Jpeg)
-                        Dim arrImage2() As Byte = mstream2.GetBuffer
-                        cm.Parameters.AddWithValue("@s_sign_photo", arrImage2)
-                    Catch ex As Exception
-                        Dim mstream4 As New MemoryStream
-                        frmStudentInfo.studentDummysign.Image.Save(mstream4, System.Drawing.Imaging.ImageFormat.Jpeg)
-                        Dim arrImage4() As Byte = mstream4.GetBuffer
-                        cm.Parameters.AddWithValue("@s_sign_photo", arrImage4)
-                    End Try
-                End If
-
 
                 cm.Parameters.AddWithValue("@s_nstp_no", .txtNSTP.Text.Trim)
                 cm.Parameters.AddWithValue("@s_so_date", .txtSODate.Text.Trim)
@@ -446,6 +417,105 @@ Module CRUD
 
                 cm.ExecuteNonQuery()
                 cn.Close()
+
+                cn.Open()
+                cm = New MySqlCommand("select * from cfcissmsdb_sphotos.tbl_student_photos where sp_student_id = '" & .OldStudentID & "'", cn)
+                dr = cm.ExecuteReader
+                dr.Read()
+                If dr.HasRows Then
+                    dr.Close()
+                    cn.Open()
+                    cm = New MySqlCommand("Update cfcissmsdb_sphotos.tbl_student_photos set sp_profile_photo = @sp_profile_photo, sp_sign_photo = @sp_sign_photo where sp_student_id = @sp_student_id", cn)
+                    cm.Parameters.AddWithValue("@sp_student_id", .OldStudentID)
+                    If frmStudentInfo.studentPhoto.Image Is Nothing Then
+                        Dim mstream3 As New MemoryStream
+                        frmStudentInfo.studentDummypicture.Image.Save(mstream3, System.Drawing.Imaging.ImageFormat.Jpeg)
+                        Dim arrImage3() As Byte = mstream3.GetBuffer
+
+                        cm.Parameters.AddWithValue("@sp_profile_photo", arrImage3)
+                    Else
+                        Try
+                            Dim mstream As New MemoryStream
+                            frmStudentInfo.studentPhoto.Image.Save(mstream, System.Drawing.Imaging.ImageFormat.Jpeg)
+                            Dim arrImage() As Byte = mstream.GetBuffer
+                            cm.Parameters.AddWithValue("@sp_profile_photo", arrImage)
+                        Catch ex As Exception
+                            Dim mstream3 As New MemoryStream
+                            frmStudentInfo.studentDummypicture.Image.Save(mstream3, System.Drawing.Imaging.ImageFormat.Jpeg)
+                            Dim arrImage3() As Byte = mstream3.GetBuffer
+
+                            cm.Parameters.AddWithValue("@sp_profile_photo", arrImage3)
+                        End Try
+                    End If
+                    If frmStudentInfo.studentSignature.Image Is Nothing Then
+                        Dim mstream4 As New MemoryStream
+                        frmStudentInfo.studentDummysign.Image.Save(mstream4, System.Drawing.Imaging.ImageFormat.Jpeg)
+                        Dim arrImage4() As Byte = mstream4.GetBuffer
+                        cm.Parameters.AddWithValue("@sp_sign_photo", arrImage4)
+                    Else
+                        Try
+                            Dim mstream2 As New MemoryStream
+                            frmStudentInfo.studentSignature.Image.Save(mstream2, System.Drawing.Imaging.ImageFormat.Jpeg)
+                            Dim arrImage2() As Byte = mstream2.GetBuffer
+                            cm.Parameters.AddWithValue("@sp_sign_photo", arrImage2)
+                        Catch ex As Exception
+                            Dim mstream4 As New MemoryStream
+                            frmStudentInfo.studentDummysign.Image.Save(mstream4, System.Drawing.Imaging.ImageFormat.Jpeg)
+                            Dim arrImage4() As Byte = mstream4.GetBuffer
+                            cm.Parameters.AddWithValue("@sp_sign_photo", arrImage4)
+                        End Try
+                    End If
+                    cm.ExecuteNonQuery()
+                    cn.Close()
+
+                Else
+                    dr.Close()
+                    cn.Close()
+                    cn.Open()
+                    cm = New MySqlCommand("Insert into cfcissmsdb_sphotos.tbl_student_photos (sp_student_id, sp_profile_photo, sp_sign_photo) values (@sp_student_id, @sp_profile_photo, @sp_sign_photo)", cn)
+                    cm.Parameters.AddWithValue("@sp_student_id", .OldStudentID)
+                    If frmStudentInfo.studentPhoto.Image Is Nothing Then
+                        Dim mstream3 As New MemoryStream
+                        frmStudentInfo.studentDummypicture.Image.Save(mstream3, System.Drawing.Imaging.ImageFormat.Jpeg)
+                        Dim arrImage3() As Byte = mstream3.GetBuffer
+
+                        cm.Parameters.AddWithValue("@sp_profile_photo", arrImage3)
+                    Else
+                        Try
+                            Dim mstream As New MemoryStream
+                            frmStudentInfo.studentPhoto.Image.Save(mstream, System.Drawing.Imaging.ImageFormat.Jpeg)
+                            Dim arrImage() As Byte = mstream.GetBuffer
+                            cm.Parameters.AddWithValue("@sp_profile_photo", arrImage)
+                        Catch ex As Exception
+                            Dim mstream3 As New MemoryStream
+                            frmStudentInfo.studentDummypicture.Image.Save(mstream3, System.Drawing.Imaging.ImageFormat.Jpeg)
+                            Dim arrImage3() As Byte = mstream3.GetBuffer
+
+                            cm.Parameters.AddWithValue("@sp_profile_photo", arrImage3)
+                        End Try
+                    End If
+                    If frmStudentInfo.studentSignature.Image Is Nothing Then
+                        Dim mstream4 As New MemoryStream
+                        frmStudentInfo.studentDummysign.Image.Save(mstream4, System.Drawing.Imaging.ImageFormat.Jpeg)
+                        Dim arrImage4() As Byte = mstream4.GetBuffer
+                        cm.Parameters.AddWithValue("@sp_sign_photo", arrImage4)
+                    Else
+                        Try
+                            Dim mstream2 As New MemoryStream
+                            frmStudentInfo.studentSignature.Image.Save(mstream2, System.Drawing.Imaging.ImageFormat.Jpeg)
+                            Dim arrImage2() As Byte = mstream2.GetBuffer
+                            cm.Parameters.AddWithValue("@sp_sign_photo", arrImage2)
+                        Catch ex As Exception
+                            Dim mstream4 As New MemoryStream
+                            frmStudentInfo.studentDummysign.Image.Save(mstream4, System.Drawing.Imaging.ImageFormat.Jpeg)
+                            Dim arrImage4() As Byte = mstream4.GetBuffer
+                            cm.Parameters.AddWithValue("@sp_sign_photo", arrImage4)
+                        End Try
+                    End If
+                    cm.ExecuteNonQuery()
+                    cn.Close()
+                End If
+
                 UserActivity("Updated student " & .txtFname.Text.Trim & " " & .txtMname.Text.Trim & " " & .txtLname.Text.Trim & " with ID Number:" & .OldStudentID & " details.", "LIBRARY STUDENT PROFILING")
                 frmWait.seconds = 1
                 frmWait.ShowDialog()

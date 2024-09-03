@@ -4238,7 +4238,7 @@ Partial Class frmMain
         Me.Label12.ForeColor = System.Drawing.Color.White
         Me.Label12.Location = New System.Drawing.Point(110, 22)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(96, 32)
+        Me.Label12.Size = New System.Drawing.Size(95, 32)
         Me.Label12.TabIndex = 399
         Me.Label12.Text = "ALERT!"
         '

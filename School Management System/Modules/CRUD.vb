@@ -752,6 +752,35 @@ Module CRUD
         End Try
     End Sub
 
+    Public Sub fillComboWithBlank(ByVal sql As String, ByVal combo_box As Object, ByVal table As String, ByVal dmember As String, ByVal vmember As String)
+        Try
+            cn.Close()
+            cn.Open()
+            Dim dtc As DataTableCollection
+            ds = New DataSet
+            dtc = ds.Tables
+            da = New MySqlDataAdapter(sql, cn)
+            da.Fill(ds, table)
+
+            ' Create a new blank row and insert it at the beginning
+            Dim newRow As DataRow = ds.Tables(table).NewRow()
+            newRow(dmember) = ""  ' Set display member as blank
+            newRow(vmember) = DBNull.Value  ' Set value member as DBNull
+            ds.Tables(table).Rows.InsertAt(newRow, 0)  ' Insert the blank row at the top
+
+            Dim view1 As New DataView(dtc(0))
+            With combo_box
+                .DataSource = ds.Tables(table)
+                .DisplayMember = dmember
+                .ValueMember = vmember
+                .AutoCompleteSource = AutoCompleteSource.ListItems
+                .AutoCompleteMode = AutoCompleteMode.SuggestAppend
+            End With
+            cn.Close()
+        Catch ex As Exception
+        End Try
+    End Sub
+
     Public Sub load_datagrid(ByVal sql As String, ByVal DTG As Object)
         cn.Close()
         cn.Open()

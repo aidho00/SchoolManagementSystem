@@ -167,7 +167,7 @@ Public Class frmAssessmentSetup
                 cm = New MySqlCommand("select * from tbl_assessment_fee where af_period_id = " & AssessmentPeriodID & " and af_course_id = " & AssessmentCourseID & " and af_year_level = '" & cbYearLevel.Text & "' and af_gender = '" & cbGender.Text & "'", cn)
                 Dim sdr As MySqlDataReader = cm.ExecuteReader()
                 If (sdr.Read() = True) Then
-                    MsgBox("Assessment for Academic year " & lblAcademicYear.Text & " with Course: " & lblCourse.Text & ", Year Level:" & cbYearLevel.Text & " and Gender: " & cbGender.Text & " has already created.", vbInformation)
+                    MsgBox("Assessment for Academic year " & lblAcademicYear.Text & " with Course: " & lblCourse.Text & ", Year Level:" & cbYearLevel.Text & " and Category: " & cbGender.Text & " has already created.", vbCritical)
                     sdr.Dispose()
                     cn.Close()
                 Else
@@ -177,14 +177,14 @@ Public Class frmAssessmentSetup
                     query("INSERT INTO tbl_assessment_fee (af_period_id, af_course_id, af_year_level, af_total_amount, af_date_created, af_subtotal_amount, af_gender, af_prelim_percentage, af_midterm_percentage, af_semifinal_percentage, af_final_percentage, af_other_fee, af_institutional_discount_percent) values (" & AssessmentPeriodID & ", " & AssessmentCourseID & ", '" & cbYearLevel.Text & "', " & CDec(amount_TuitionFee.Text) + CDec(amount_OtherFees.Text) & ", CURDATE(), " & CDec(amount_TuitionFee.Text) & ", '" & cbGender.Text & "', " & CDec(txtPerentagePrelim.Text) & ", " & CDec(txtPercentageSemi.Text) & ", " & CDec(txtPercentageSemi.Text) & ", " & CDec(txtPercentageFinal.Text) & ", " & CDec(amount_OtherFees.Text) & ", " & CDec(txtInstitutionalDiscount.Text) & ")")
 
                     For Each row As DataGridViewRow In dgTuition.Rows
-                        query("INSERT INTO tbl_assessment_fee_particulars (afp_particular_id, afp_period_id, afp_course_id, afp_year_level, afp_amount, afp_gender) values ('" & row.Cells(0).Value & "', " & AssessmentPeriodID & ", " & AssessmentCourseID & ", '" & cbYearLevel.Text & "', '" & row.Cells(3).Value & "', '" & cbGender.Text & "')")
+                        query("INSERT INTO tbl_assessment_fee_particulars (afp_particular_id, afp_period_id, afp_course_id, afp_year_level, afp_amount, afp_gender) values ('" & row.Cells(0).Value & "', " & AssessmentPeriodID & ", " & AssessmentCourseID & ", '" & cbYearLevel.Text & "', " & CDec(row.Cells(3).Value) & ", '" & cbGender.Text & "')")
                     Next
 
                     For Each row As DataGridViewRow In dgOtherFees.Rows
-                        query("INSERT INTO tbl_assessment_ofs_particulars (`ofsp_particular_id`, `ofsp_period_id`, `ofsp_course_id`, `ofsp_year_level`, `ofsp_amount`, `ofsp_gender`) values ('" & row.Cells(0).Value & "', " & AssessmentPeriodID & ", " & AssessmentCourseID & ", '" & cbYearLevel.Text & "', '" & row.Cells(3).Value & "', '" & cbGender.Text & "')")
+                        query("INSERT INTO tbl_assessment_ofs_particulars (`ofsp_particular_id`, `ofsp_period_id`, `ofsp_course_id`, `ofsp_year_level`, `ofsp_amount`, `ofsp_gender`) values ('" & row.Cells(0).Value & "', " & AssessmentPeriodID & ", " & AssessmentCourseID & ", '" & cbYearLevel.Text & "', " & CDec(row.Cells(3).Value) & ", '" & cbGender.Text & "')")
                     Next
 
-                    UserActivity("Added a course assessment on course " & lblCourse.Text & " for  gender " & cbGender.Text & " " & cbYearLevel.Text & " in Academic Year " & lblAcademicYear.Text & ".", "ASSESSMENT SETUP")
+                    UserActivity("Added a course assessment on course " & lblCourse.Text & " for category " & cbGender.Text & " " & cbYearLevel.Text & " in Academic Year " & lblAcademicYear.Text & ".", "ASSESSMENT SETUP")
 
                     MsgBox("Assessment successfully created.", vbInformation)
                     frmAssessment.CourseAssessmentList()
@@ -234,18 +234,22 @@ Public Class frmAssessmentSetup
                 query("UPDATE tbl_assessment_fee SET af_total_amount = " & CDec(amount_TuitionFee.Text) + CDec(amount_OtherFees.Text) & ", af_other_fee = " & CDec(amount_OtherFees.Text) & ", af_subtotal_amount = " & CDec(amount_TuitionFee.Text) & ", af_prelim_percentage = " & CDec(txtPercentageMidterm.Text) & ", af_midterm_percentage = " & CDec(txtPercentageMidterm.Text) & ", af_semifinal_percentage = " & CDec(txtPercentageSemi.Text) & ", af_final_percentage = " & CDec(txtPercentageFinal.Text) & ", af_institutional_discount_percent = " & CDec(txtInstitutionalDiscount.Text) & " where af_id = " & AssessmentID & "")
 
                 For Each row As DataGridViewRow In dgTuition.Rows
-                    query("INSERT INTO tbl_assessment_fee_particulars (afp_particular_id, afp_period_id, afp_course_id, afp_year_level, afp_amount, afp_gender) values ('" & row.Cells(0).Value & "', " & AssessmentPeriodID & ", " & AssessmentCourseID & ", '" & cbYearLevel.Text & "', '" & row.Cells(3).Value & "', '" & cbGender.Text & "')")
+                    query("INSERT INTO tbl_assessment_fee_particulars (afp_particular_id, afp_period_id, afp_course_id, afp_year_level, afp_amount, afp_gender) values ('" & row.Cells(0).Value & "', " & AssessmentPeriodID & ", " & AssessmentCourseID & ", '" & cbYearLevel.Text & "', " & CDec(row.Cells(3).Value) & ", '" & cbGender.Text & "')")
                 Next
 
                 For Each row As DataGridViewRow In dgOtherFees.Rows
-                    query("INSERT INTO tbl_assessment_ofs_particulars (`ofsp_particular_id`, `ofsp_period_id`, `ofsp_course_id`, `ofsp_year_level`, `ofsp_amount`, `ofsp_gender`) values ('" & row.Cells(0).Value & "', " & AssessmentPeriodID & ", " & AssessmentCourseID & ", '" & cbYearLevel.Text & "', '" & row.Cells(3).Value & "', '" & cbGender.Text & "')")
+                    query("INSERT INTO tbl_assessment_ofs_particulars (`ofsp_particular_id`, `ofsp_period_id`, `ofsp_course_id`, `ofsp_year_level`, `ofsp_amount`, `ofsp_gender`) values ('" & row.Cells(0).Value & "', " & AssessmentPeriodID & ", " & AssessmentCourseID & ", '" & cbYearLevel.Text & "', " & CDec(row.Cells(3).Value) & ", '" & cbGender.Text & "')")
                 Next
 
                 UserActivity("Updated a course assessment on course " & lblCourse.Text & " for  gender " & cbGender.Text & " " & cbYearLevel.Text & " in Academic Year " & lblAcademicYear.Text & ".", "ASSESSMENT SETUP")
 
-                MsgBox("Assessment successfully created.", vbInformation)
+                MsgBox("Assessment successfully updated.", vbInformation)
                 frmAssessment.CourseAssessmentList()
+
                 Me.Close()
+                frmMain.OpenForm(frmAssessment, "Course Assessment")
+                frmMain.HideAllFormsInPanelExcept(frmAssessment)
+                frmMain.controlsPanel.Visible = False
 
             End If
         End If

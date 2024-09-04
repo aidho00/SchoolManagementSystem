@@ -83,6 +83,7 @@ Public Class frmEvaluationSubjects
                         dr.Close()
                         cn.Close()
 
+                        query("DELETE FROM `tbl_enrollment_subjects` WHERE `es_student_id` = '" & frmStudentEvaluation.StudentID & "' and `es_period_id` = " & CInt(cbAcademicYear.SelectedValue) & "")
                         For Each row As DataGridViewRow In dgClassSchedList.Rows
                             query("INSERT INTO `tbl_enrollment_subjects`(`es_student_id`, `es_class_schedule_id`, `es_period_id`, `es_userid`) VALUES ('" & frmStudentEvaluation.StudentID & "', " & row.Cells(0).Value & ", " & CInt(cbAcademicYear.SelectedValue) & ", " & str_userid & ")")
                         Next

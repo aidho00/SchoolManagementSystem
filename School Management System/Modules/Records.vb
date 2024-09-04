@@ -1874,20 +1874,26 @@ Module Records
                     End If
 
                     If frmMain.systemModule.Text = "College Module" Then
+
                         cn.Open()
-                        Dim courseId As Integer = 0
-                        cm = New MySqlCommand("SELECT `sg_course_id` FROM `tbl_students_grades` WHERE `sg_student_id` = '" & frmCashiering.StudentID & "' and `sg_period_id` = " & CInt(frmCashiering.cbAcademicYear.SelectedValue) & "", cn)
-                        courseId = cm.ExecuteScalar
+                        Dim studentAssessmentID As Integer = 0
+                        cm = New MySqlCommand("SELECT ps_ass_id FROM `tbl_pre_cashiering` WHERE `student_id` = '" & frmCashiering.StudentID & "' and `period_id` = " & CInt(frmCashiering.cbAcademicYear.SelectedValue) & "", cn)
+                        studentAssessmentID = cm.ExecuteScalar
+                        cn.Close()
+                        cn.Open()
+
+                        cn.Open()
+                        Dim asseessmentCategory As String = ""
+                        cm = New MySqlCommand("SELECT af_gender FROM `tbl_assessment_fee` WHERE `af_id` = " & studentAssessmentID & "", cn)
+                        asseessmentCategory = cm.ExecuteScalar
                         cn.Close()
                         cn.Open()
 
                         Dim dtable As DataTable
                         Dim sql As String
-                        If studentGradeLevel.Contains("1st Year") Then
-                            sql = "SELECT (ofsp_particular_id) as 'ID', (ap_particular_code) as 'Code', (ap_particular_name) as 'Particular', (ofsp_amount) as 'Amount' from tbl_assessment_ofs_particulars JOIN tbl_assessment_particulars where tbl_assessment_ofs_particulars.ofsp_particular_id = tbl_assessment_particulars.ap_id and ofsp_period_id = " & CInt(frmCashiering.cbAcademicYear.SelectedValue) & " and ofsp_course_id = " & studentGradeLevelCourseID & " and ofsp_year_level = '1st Year' and ofsp_gender ='" & frmCashiering.Gender & "'"
-                        Else
-                            sql = "SELECT (ofsp_particular_id) as 'ID', (ap_particular_code) as 'Code', (ap_particular_name) as 'Particular', (ofsp_amount) as 'Amount' from tbl_assessment_ofs_particulars JOIN tbl_assessment_particulars where tbl_assessment_ofs_particulars.ofsp_particular_id = tbl_assessment_particulars.ap_id and ofsp_period_id = " & CInt(frmCashiering.cbAcademicYear.SelectedValue) & " and ofsp_course_id = " & studentGradeLevelCourseID & " and ofsp_year_level = LEFT('" & studentGradeLevel & "', 8) and ofsp_gender ='Both'"
-                        End If
+
+                        sql = "SELECT (ofsp_particular_id) as 'ID', (ap_particular_code) as 'Code', (ap_particular_name) as 'Particular', (ofsp_amount) as 'Amount' from tbl_assessment_ofs_particulars JOIN tbl_assessment_particulars where tbl_assessment_ofs_particulars.ofsp_particular_id = tbl_assessment_particulars.ap_id and ofsp_period_id = " & CInt(frmCashiering.cbAcademicYear.SelectedValue) & " and ofsp_course_id = " & studentGradeLevelCourseID & " and ofsp_year_level = LEFT('" & studentGradeLevel & "', 8) and ofsp_gender ='" & asseessmentCategory & "'"
+
                         Dim dbcommand As New MySqlCommand(sql, cn)
                         Dim adt As New MySqlDataAdapter
                         adt.SelectCommand = dbcommand

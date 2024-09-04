@@ -105,6 +105,7 @@ Partial Class frmParticularAmountAdd
         '
         'lblParticular
         '
+        Me.lblParticular.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblParticular.Location = New System.Drawing.Point(37, 44)
         Me.lblParticular.Name = "lblParticular"
         Me.lblParticular.Size = New System.Drawing.Size(337, 42)

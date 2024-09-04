@@ -46,9 +46,13 @@ Public Class frmCashiering
         If frmMain.formTitle.Text = "Cashiering" Then
             ViewDG()
         ElseIf frmMain.formTitle.Text = "Pre-Cashiering" Then
-            StudentAssessmentID = CInt(cbView.SelectedValue)
-            MsgBox("Assessment ID: " & CInt(cbView.SelectedValue) & "")
-
+            Try
+                StudentAssessmentID = CInt(cbView.SelectedValue)
+                MsgBox("Assessment ID: " & CInt(cbView.SelectedValue) & "")
+            Catch ex As Exception
+                cbView.SelectedIndex = 0
+                StudentAssessmentID = 0
+            End Try
         End If
     End Sub
 
@@ -208,6 +212,8 @@ Public Class frmCashiering
         ElseIf frmMain.formTitle.Text = "Pre-Cashiering" Then
             If StudentID = String.Empty Then
                 MsgBox("Please select student.", MessageBoxIcon.Error)
+            ElseIf cbView.text = String.Empty Then
+                MsgBox("Please select student assessment category for the selected semester.", MessageBoxIcon.Error)
             Else
                 Dim dr As DialogResult
                 dr = MessageBox.Show("Are you sure you want to save this transaction?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
@@ -360,10 +366,7 @@ Public Class frmCashiering
         '    cn.Close()
         'End If
 
-        fillCombo("SELECT distinct(af_gender) as af_gender, af_id from tbl_assessment_fee where af_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and af_course_id = " & CourseID & " and af_year_level = LEFT('" & YearLevel & "', 8)", cbView, "tbl_assessment_fee", "af_gender", "af_id")
-
-        cbView.SelectedIndex = 0
-        MsgBox("Assessment ID: " & CInt(cbView.SelectedValue) & "")
+        fillComboWithBlank("SELECT distinct(af_gender) as af_gender, af_id from tbl_assessment_fee where af_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and af_course_id = " & CourseID & " and af_year_level = LEFT('" & YearLevel & "', 8)", cbView, "tbl_assessment_fee", "af_gender", "af_id")
     End Sub
 
 

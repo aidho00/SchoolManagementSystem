@@ -12,6 +12,8 @@
         frmWait.ShowDialog()
         MsgBox("New assessment category has been successfully added.", vbInformation, "")
         fillCombo("SELECT category_name from tbl_assessment_fee_category ", frmAssessmentSetup.cbGender, "tbl_assessment_fee_category", "category_name", "category_name")
+        frmAssessmentSetup.cbGender.Text = txtDesc.Text
+        txtDesc.Text = ""
         Me.Close()
     End Sub
 End Class

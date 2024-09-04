@@ -205,6 +205,8 @@ Public Class frmAssessment
             frmAssessmentSetup.AssessmentPeriodID = CInt(cbAcademicYear.SelectedValue)
             frmAssessmentSetup.lblAcademicYear.Text = cbAcademicYear.Text
             frmAssessmentSetup.lblCourse.Text = txtSelectedCourse.Text
+            frmAssessmentSetup.btnAdd.Visible = True
+            frmAssessmentSetup.btnUpdate.Visible = False
             fillCombo("SELECT category_name from tbl_assessment_fee_category where category_status = 'Active'", frmAssessmentSetup.cbGender, "tbl_assessment_fee_category", "category_name", "category_name")
             frmMain.OpenForm(frmAssessmentSetup, "Course Assessment Setup")
             frmMain.HideAllFormsInPanelExcept(frmAssessmentSetup)
@@ -220,6 +222,11 @@ Public Class frmAssessment
             frmMain.controlsPanel.Visible = False
             Try
                 With frmAssessmentSetup
+                    .btnAdd.Visible = False
+                    .btnUpdate.Visible = True
+
+                    fillCombo("SELECT category_name from tbl_assessment_fee_category where category_status = 'Active'", frmAssessmentSetup.cbGender, "tbl_assessment_fee_category", "category_name", "category_name")
+
                     .AssessmentID = CInt(dgCourseAssessments.CurrentRow.Cells(0).Value)
                     .AssessmentPeriodID = CInt(cbAcademicYear.SelectedValue)
                     .AssessmentCourseID = CInt(dgCourseList.CurrentRow.Cells(0).Value)

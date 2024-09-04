@@ -914,7 +914,10 @@ Public Class frmMain
         frmCashiering.cbView.Items.Clear()
         frmCashiering.ClearAll()
         fillCombo("Select CONCAT(period_name,'-',period_semester) as 'PERIOD', period_id FROM tbl_period WHERE period_enrollment_status = 'OPEN' order by `period_name` desc, `period_status` asc, `period_semester` desc", frmCashiering.cbAcademicYear, "CashieringPeriodList", "PERIOD", "period_id")
-
+        Try
+            frmCashiering.cbAcademicYear.SelectedIndex = 0
+        Catch ex As Exception
+        End Try
         frmCashiering.btnSearchStudent.Select()
     End Sub
 

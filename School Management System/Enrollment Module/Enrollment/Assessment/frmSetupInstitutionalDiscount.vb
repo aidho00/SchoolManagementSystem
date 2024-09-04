@@ -1,4 +1,5 @@
 ﻿Imports MySql.Data.MySqlClient
+Imports System.IO
 
 Public Class frmSetupInstitutionalDiscount
 
@@ -52,18 +53,22 @@ Public Class frmSetupInstitutionalDiscount
             lblAssessmentStatus.ForeColor = Color.Green
         End If
         Try
+            Dim institutionalDiscountAmount As Decimal = 0
             cn.Close()
             cn.Open()
-            cm = New MySqlCommand("SELECT af_id, af_subtotal_amount, af_other_fee FROM tbl_assessment_fee where af_id = " & StudentAssessmentID & "", cn)
+            cm = New MySqlCommand("SELECT af_id, af_subtotal_amount, af_other_fee, af_institutional_discount_percent FROM tbl_assessment_fee where af_id = " & StudentAssessmentID & "", cn)
             dr = cm.ExecuteReader
             dr.Read()
             If dr.HasRows Then
                 txtAssessmentAmount.Text = Format(CDec(dr.Item("af_subtotal_amount").ToString), "#,##0.00")
                 txtOtherFees.Text = Format(CDec(dr.Item("af_other_fee").ToString), "#,##0.00")
+                institutionalDiscountAmount = CDec(dr.Item("af_institutional_discount_percent").ToString)
+
             Else
             End If
             dr.Close()
             cn.Close()
+            'txtPercentage.Text = CDec(txtAssessmentAmount.Text) * institutionalDiscountAmount
         Catch ex As Exception
             dr.Close()
             cn.Close()
@@ -131,7 +136,7 @@ Public Class frmSetupInstitutionalDiscount
             dgCourseList.Rows.Clear()
             Dim i As Integer
             Dim sql As String
-            sql = "select course_id, course_code, course_name, course_major, course_status from tbl_course where (course_code LIKE '%" & txtSearch.Text & "%' or course_name LIKE '%" & txtSearch.Text & "%') order by course_name asc limit 500"
+            sql = "select course_id, course_code, course_name, course_major, course_status from tbl_course where course_id IN (Select distinct(af_course_id) from tbl_assessment_fee where af_period_id = " & CInt(cbAcademicYear.SelectedValue) & ") and (course_code LIKE '%" & txtSearch.Text & "%' or course_name LIKE '%" & txtSearch.Text & "%') order by course_name asc limit 500"
             cn.Close()
             cn.Open()
             cm = New MySqlCommand(sql, cn)
@@ -167,7 +172,10 @@ Public Class frmSetupInstitutionalDiscount
             lblCourse.Text = dgCourseList.CurrentRow.Cells(1).Value & " - " & dgCourseList.CurrentRow.Cells(2).Value
             cbYearLevel.SelectedIndex = 0
             fillCombo("SELECT distinct(af_gender) as af_gender, af_id from tbl_assessment_fee where af_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and af_course_id = " & AssessmentCourseID & " and af_year_level = LEFT('" & cbYearLevel.Text & "', 8)", cbGender, "tbl_assessment_fee", "af_gender", "af_id")
-            cbGender.SelectedIndex = 0
+            Try
+                cbGender.SelectedIndex = 0
+            Catch ex As Exception
+            End Try
             SearchPanel.Visible = False
             Assessment()
         End If
@@ -183,6 +191,8 @@ Public Class frmSetupInstitutionalDiscount
     End Sub
 
     Private Sub cbYearLevel_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbYearLevel.SelectedIndexChanged
+        fillCombo("SELECT distinct(af_gender) as af_gender, af_id from tbl_assessment_fee where af_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and af_course_id = " & AssessmentCourseID & " and af_year_level = LEFT('" & cbYearLevel.Text & "', 8)", cbGender, "tbl_assessment_fee", "af_gender", "af_id")
+
         Assessment()
     End Sub
 
@@ -191,41 +201,76 @@ Public Class frmSetupInstitutionalDiscount
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        If StudentAssessmentID = 0 Then
-            MsgBox("No assessment selected. Please select an assessment to proceed with setup.", vbCritical)
-            Return
-        End If
-        If MsgBox("Are you sure you want to save these assessment settings?", vbYesNo + vbQuestion) = vbYes Then
-            'Institutional Discount Setup
-            For Each row As DataGridViewRow In dgStudentListSetup.Rows
-                cn.Close()
-                cn.Open()
-                cm = New MySqlCommand("SELECT * FROM tbl_assessment_institutional_discount where aid_student_id = '" & row.Cells(0).Value & "' and aid_period_id = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
-                Dim sdr2 As MySqlDataReader = cm.ExecuteReader()
-                If (sdr2.Read() = True) Then
-                    query("update tbl_assessment_institutional_discount set aid_percentage = " & CDec(txtPercentage.Text) & " where aid_student_id = '" & row.Cells(0).Value & "' and aid_period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
-                    UserActivity("Updated student " & row.Cells(0).Value & " " & row.Cells(4).Value & ", " & row.Cells(2).Value & " " & row.Cells(3).Value & " institutional discount in Academic Year " & cbAcademicYear.Text & ".", "STUDENT DISCOUNT")
-                Else
-                    query("Insert into tbl_assessment_institutional_discount (`aid_student_id`, `aid_period_id`, `aid_percentage`, `aid_assessment_id`) values ('" & row.Cells(0).Value & "', " & CInt(cbAcademicYear.SelectedValue) & ", " & CDec(txtPercentage.Text) & ", " & StudentAssessmentID & ")")
-                    UserActivity("Added student " & row.Cells(0).Value & " " & row.Cells(4).Value & ", " & row.Cells(2).Value & " " & row.Cells(3).Value & " institutional discount in Academic Year " & cbAcademicYear.Text & ".", "STUDENT DISCOUNT")
-                End If
-                sdr2.Close()
-                cn.Close()
-            Next
 
-            'Assessment Setup
-            If CheckBoxAssessment.Checked = True Then
+        If cbSaveProcess.Text = "Institutional Discount" Then
+            If MsgBox("Are you sure you want to save these assessment settings?", vbYesNo + vbQuestion) = vbYes Then
+                'Institutional Discount Setup
+                For Each row As DataGridViewRow In dgStudentListSetup.Rows
+                    cn.Close()
+                    cn.Open()
+                    cm = New MySqlCommand("SELECT * FROM tbl_assessment_institutional_discount where aid_student_id = '" & row.Cells(0).Value & "' and aid_period_id = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
+                    Dim sdr2 As MySqlDataReader = cm.ExecuteReader()
+                    If (sdr2.Read() = True) Then
+                        query("update tbl_assessment_institutional_discount set aid_percentage = " & CDec(txtPercentage.Text) & " where aid_student_id = '" & row.Cells(0).Value & "' and aid_period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
+                        UserActivity("Updated student " & row.Cells(0).Value & " " & row.Cells(4).Value & ", " & row.Cells(2).Value & " " & row.Cells(3).Value & " institutional discount in Academic Year " & cbAcademicYear.Text & ".", "STUDENT DISCOUNT")
+                    Else
+                        query("Insert into tbl_assessment_institutional_discount (`aid_student_id`, `aid_period_id`, `aid_percentage`, `aid_assessment_id`) values ('" & row.Cells(0).Value & "', " & CInt(cbAcademicYear.SelectedValue) & ", " & CDec(txtPercentage.Text) & ", " & StudentAssessmentID & ")")
+                        UserActivity("Added student " & row.Cells(0).Value & " " & row.Cells(4).Value & ", " & row.Cells(2).Value & " " & row.Cells(3).Value & " institutional discount in Academic Year " & cbAcademicYear.Text & ".", "STUDENT DISCOUNT")
+                    End If
+                    sdr2.Close()
+                    cn.Close()
+                Next
+
+                MsgBox("Settings successfully saved.", vbInformation)
+                Me.Close()
+            End If
+
+
+        ElseIf cbSaveProcess.Text = "Assessment" Then
+            If MsgBox("Are you sure you want to save these assessment settings?", vbYesNo + vbQuestion) = vbYes Then
+                'Assessment Setup
                 For Each row As DataGridViewRow In dgStudentListSetup.Rows
                     query("UPDATE tbl_student_paid_account_breakdown SET spab_ass_id= " & StudentAssessmentID & " where spab_stud_id = '" & row.Cells(0).Value & "' and spab_period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
                     query("UPDATE tbl_pre_cashiering SET ps_ass_id = " & StudentAssessmentID & " where student_id = '" & row.Cells(0).Value & "' and period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
                     query("UPDATE tbl_assessment_institutional_discount SET aid_assessment_id = " & StudentAssessmentID & " where aid_student_id = '" & row.Cells(0).Value & "' and aid_period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
                     UserActivity("Changed student " & row.Cells(0).Value & " " & row.Cells(4).Value & ", " & row.Cells(2).Value & " " & row.Cells(3).Value & " account assessment in Academic Year " & cbAcademicYear.Text & ".", "STUDENT ACCOUNT ADJUSTMENT")
                 Next
-            Else
-
+                MsgBox("Settings successfully saved.", vbInformation)
+                Me.Close()
             End If
-            MsgBox("Settings successfully saved.", vbInformation)
-            Me.Close()
+
+
+        ElseIf cbSaveProcess.Text = "Institutional Discount & Assessment" Then
+            If MsgBox("Are you sure you want to save these assessment settings?", vbYesNo + vbQuestion) = vbYes Then
+                'Institutional Discount Setup
+                For Each row As DataGridViewRow In dgStudentListSetup.Rows
+                    cn.Close()
+                    cn.Open()
+                    cm = New MySqlCommand("SELECT * FROM tbl_assessment_institutional_discount where aid_student_id = '" & row.Cells(0).Value & "' and aid_period_id = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
+                    Dim sdr2 As MySqlDataReader = cm.ExecuteReader()
+                    If (sdr2.Read() = True) Then
+                        query("update tbl_assessment_institutional_discount set aid_percentage = " & CDec(txtPercentage.Text) & " where aid_student_id = '" & row.Cells(0).Value & "' and aid_period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
+                        UserActivity("Updated student " & row.Cells(0).Value & " " & row.Cells(4).Value & ", " & row.Cells(2).Value & " " & row.Cells(3).Value & " institutional discount in Academic Year " & cbAcademicYear.Text & ".", "STUDENT DISCOUNT")
+                    Else
+                        query("Insert into tbl_assessment_institutional_discount (`aid_student_id`, `aid_period_id`, `aid_percentage`, `aid_assessment_id`) values ('" & row.Cells(0).Value & "', " & CInt(cbAcademicYear.SelectedValue) & ", " & CDec(txtPercentage.Text) & ", " & StudentAssessmentID & ")")
+                        UserActivity("Added student " & row.Cells(0).Value & " " & row.Cells(4).Value & ", " & row.Cells(2).Value & " " & row.Cells(3).Value & " institutional discount in Academic Year " & cbAcademicYear.Text & ".", "STUDENT DISCOUNT")
+                    End If
+                    sdr2.Close()
+                    cn.Close()
+                Next
+
+                'Assessment Setup
+                For Each row As DataGridViewRow In dgStudentListSetup.Rows
+                    query("UPDATE tbl_student_paid_account_breakdown SET spab_ass_id= " & StudentAssessmentID & " where spab_stud_id = '" & row.Cells(0).Value & "' and spab_period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
+                    query("UPDATE tbl_pre_cashiering SET ps_ass_id = " & StudentAssessmentID & " where student_id = '" & row.Cells(0).Value & "' and period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
+                    query("UPDATE tbl_assessment_institutional_discount SET aid_assessment_id = " & StudentAssessmentID & " where aid_student_id = '" & row.Cells(0).Value & "' and aid_period_id = " & CInt(cbAcademicYear.SelectedValue) & "")
+                    UserActivity("Changed student " & row.Cells(0).Value & " " & row.Cells(4).Value & ", " & row.Cells(2).Value & " " & row.Cells(3).Value & " account assessment in Academic Year " & cbAcademicYear.Text & ".", "STUDENT ACCOUNT ADJUSTMENT")
+                Next
+                MsgBox("Settings successfully saved.", vbInformation)
+                Me.Close()
+            End If
+
+
         End If
     End Sub
 
@@ -264,7 +309,7 @@ Public Class frmSetupInstitutionalDiscount
         Dim dt As New DataTable
         Try
             With OpenFileDialog1
-                .Filter = "Excel files(.xls)|*.xls| Excel files(*.xlsx)|*.xlsx| All files (*.*)|*.*"
+                .Filter = "Excel files(.csv)|*.csv| Excel files(*.xlsx)|*.xlsx| All files (*.*)|*.*"
                 .FilterIndex = 1
                 .Title = "Import grading sheet data from Excel file"
             End With
@@ -274,7 +319,7 @@ Public Class frmSetupInstitutionalDiscount
                 con.Open()
                 With cmdd
                     .Connection = con
-                    .CommandText = "select * from [Sheet1$]"
+                    .CommandText = "select * from [Institutional Discount Template$]"
                 End With
                 da.SelectCommand = cmdd
                 da.Fill(dt)
@@ -293,5 +338,33 @@ Public Class frmSetupInstitutionalDiscount
             MessageBox.Show(ex.Message)
         End Try
         dgDummyList.DataSource = Nothing
+    End Sub
+
+    Private Sub btnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
+        Dim csv As String = String.Empty
+        For Each column As DataGridViewColumn In dgStudentListSetup.Columns
+            csv += column.HeaderText & ","c
+        Next
+        csv += vbCr & vbLf
+        For Each row2 As DataGridViewRow In dgStudentListSetup.Rows
+            For Each cell As DataGridViewCell In row2.Cells
+                csv += cell.Value.ToString().Replace(",", ";") & ","c
+            Next
+            csv += vbCr & vbLf
+        Next
+
+        Dim proc As New System.Diagnostics.Process()
+        Dim folderPath As String
+        folderPath = "C:\Institutional Discount Template\"
+        If Not IO.Directory.Exists(folderPath) Then
+            IO.Directory.CreateDirectory(folderPath)
+            File.WriteAllText(folderPath & "Institutional Discount Template.csv", csv)
+            MessageBox.Show("Institutional Discount Template successfully exported.", "", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            proc = Process.Start(folderPath & "Institutional Discount Template.csv", "")
+        Else
+            File.WriteAllText(folderPath & "Institutional Discount Template.csv", csv)
+            MessageBox.Show("Institutional Discount Template successfully exported.", "", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            proc = Process.Start(folderPath & "Institutional Discount Template.csv", "")
+        End If
     End Sub
 End Class

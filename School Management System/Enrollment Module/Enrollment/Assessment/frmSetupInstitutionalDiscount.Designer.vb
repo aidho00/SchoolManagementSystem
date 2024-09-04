@@ -108,8 +108,6 @@ Partial Class frmSetupInstitutionalDiscount
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.FlowLayoutPanel2 = New System.Windows.Forms.FlowLayoutPanel()
         Me.btnImport = New System.Windows.Forms.Button()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.DGrowCount = New System.Windows.Forms.Label()
         Me.dgDummyList = New System.Windows.Forms.DataGridView()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.btnCancel = New System.Windows.Forms.Button()
@@ -119,6 +117,13 @@ Partial Class frmSetupInstitutionalDiscount
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.btnExport = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.DGrowCount = New System.Windows.Forms.Label()
+        Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.cbSaveProcess = New System.Windows.Forms.ComboBox()
+        Me.Label9 = New System.Windows.Forms.Label()
         Me.BasePanel.SuspendLayout()
         Me.SearchPanel.SuspendLayout()
         Me.dgPanel.SuspendLayout()
@@ -136,6 +141,8 @@ Partial Class frmSetupInstitutionalDiscount
         CType(Me.dgDummyList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.FlowLayoutPanel1.SuspendLayout()
         Me.systemSign.SuspendLayout()
+        Me.Panel6.SuspendLayout()
+        Me.Panel7.SuspendLayout()
         Me.SuspendLayout()
         '
         'BasePanel
@@ -706,6 +713,7 @@ Partial Class frmSetupInstitutionalDiscount
         Me.CheckBoxAssessment.TabIndex = 186
         Me.CheckBoxAssessment.Text = "Include Assessment Setup in Save Process"
         Me.CheckBoxAssessment.UseVisualStyleBackColor = True
+        Me.CheckBoxAssessment.Visible = False
         '
         'Panel5
         '
@@ -942,13 +950,12 @@ Partial Class frmSetupInstitutionalDiscount
         'FlowLayoutPanel2
         '
         Me.FlowLayoutPanel2.Controls.Add(Me.btnImport)
-        Me.FlowLayoutPanel2.Controls.Add(Me.Label8)
-        Me.FlowLayoutPanel2.Controls.Add(Me.DGrowCount)
+        Me.FlowLayoutPanel2.Controls.Add(Me.Panel6)
         Me.FlowLayoutPanel2.Controls.Add(Me.dgDummyList)
         Me.FlowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Left
         Me.FlowLayoutPanel2.Location = New System.Drawing.Point(0, 0)
         Me.FlowLayoutPanel2.Name = "FlowLayoutPanel2"
-        Me.FlowLayoutPanel2.Size = New System.Drawing.Size(380, 39)
+        Me.FlowLayoutPanel2.Size = New System.Drawing.Size(291, 39)
         Me.FlowLayoutPanel2.TabIndex = 2
         '
         'btnImport
@@ -960,24 +967,6 @@ Partial Class frmSetupInstitutionalDiscount
         Me.btnImport.TabIndex = 129
         Me.btnImport.Text = "IMPORT"
         Me.btnImport.UseVisualStyleBackColor = True
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(105, 0)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(45, 16)
-        Me.Label8.TabIndex = 127
-        Me.Label8.Text = "Count:"
-        '
-        'DGrowCount
-        '
-        Me.DGrowCount.AutoSize = True
-        Me.DGrowCount.Location = New System.Drawing.Point(156, 0)
-        Me.DGrowCount.Name = "DGrowCount"
-        Me.DGrowCount.Size = New System.Drawing.Size(14, 16)
-        Me.DGrowCount.TabIndex = 128
-        Me.DGrowCount.Text = "0"
         '
         'dgDummyList
         '
@@ -1008,7 +997,7 @@ Partial Class frmSetupInstitutionalDiscount
         Me.dgDummyList.DefaultCellStyle = DataGridViewCellStyle13
         Me.dgDummyList.EnableHeadersVisualStyles = False
         Me.dgDummyList.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.dgDummyList.Location = New System.Drawing.Point(176, 12)
+        Me.dgDummyList.Location = New System.Drawing.Point(233, 14)
         Me.dgDummyList.Name = "dgDummyList"
         Me.dgDummyList.ReadOnly = True
         Me.dgDummyList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
@@ -1023,18 +1012,19 @@ Partial Class frmSetupInstitutionalDiscount
         '
         Me.FlowLayoutPanel1.Controls.Add(Me.btnCancel)
         Me.FlowLayoutPanel1.Controls.Add(Me.btnSave)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Panel7)
         Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right
         Me.FlowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft
-        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(597, 0)
+        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(330, 0)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(415, 39)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(682, 39)
         Me.FlowLayoutPanel1.TabIndex = 1
         '
         'btnCancel
         '
         Me.btnCancel.BackColor = System.Drawing.SystemColors.Control
         Me.btnCancel.FlatAppearance.BorderSize = 0
-        Me.btnCancel.Location = New System.Drawing.Point(316, 3)
+        Me.btnCancel.Location = New System.Drawing.Point(583, 3)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(96, 34)
         Me.btnCancel.TabIndex = 0
@@ -1044,7 +1034,7 @@ Partial Class frmSetupInstitutionalDiscount
         'btnSave
         '
         Me.btnSave.FlatAppearance.BorderSize = 0
-        Me.btnSave.Location = New System.Drawing.Point(214, 3)
+        Me.btnSave.Location = New System.Drawing.Point(481, 3)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(96, 34)
         Me.btnSave.TabIndex = 2
@@ -1104,6 +1094,73 @@ Partial Class frmSetupInstitutionalDiscount
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
+        'Panel6
+        '
+        Me.Panel6.Controls.Add(Me.Label8)
+        Me.Panel6.Controls.Add(Me.DGrowCount)
+        Me.Panel6.Controls.Add(Me.btnExport)
+        Me.Panel6.Location = New System.Drawing.Point(105, 3)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(122, 36)
+        Me.Panel6.TabIndex = 131
+        '
+        'btnExport
+        '
+        Me.btnExport.AutoSize = True
+        Me.btnExport.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnExport.Dock = System.Windows.Forms.DockStyle.Left
+        Me.btnExport.Location = New System.Drawing.Point(0, 0)
+        Me.btnExport.Name = "btnExport"
+        Me.btnExport.Size = New System.Drawing.Size(120, 16)
+        Me.btnExport.TabIndex = 132
+        Me.btnExport.Text = "[ EXPORT TEMPLATE ]"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(1, 17)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(45, 16)
+        Me.Label8.TabIndex = 134
+        Me.Label8.Text = "Count:"
+        '
+        'DGrowCount
+        '
+        Me.DGrowCount.AutoSize = True
+        Me.DGrowCount.Location = New System.Drawing.Point(52, 17)
+        Me.DGrowCount.Name = "DGrowCount"
+        Me.DGrowCount.Size = New System.Drawing.Size(14, 16)
+        Me.DGrowCount.TabIndex = 135
+        Me.DGrowCount.Text = "0"
+        '
+        'Panel7
+        '
+        Me.Panel7.Controls.Add(Me.cbSaveProcess)
+        Me.Panel7.Controls.Add(Me.Label9)
+        Me.Panel7.Location = New System.Drawing.Point(53, 3)
+        Me.Panel7.Name = "Panel7"
+        Me.Panel7.Size = New System.Drawing.Size(422, 100)
+        Me.Panel7.TabIndex = 3
+        '
+        'cbSaveProcess
+        '
+        Me.cbSaveProcess.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbSaveProcess.FormattingEnabled = True
+        Me.cbSaveProcess.Items.AddRange(New Object() {"Institutional Discount & Assessment", "Institutional Discount", "Assessment"})
+        Me.cbSaveProcess.Location = New System.Drawing.Point(167, 7)
+        Me.cbSaveProcess.Name = "cbSaveProcess"
+        Me.cbSaveProcess.Size = New System.Drawing.Size(245, 24)
+        Me.cbSaveProcess.TabIndex = 179
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(80, 11)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(79, 16)
+        Me.Label9.TabIndex = 180
+        Me.Label9.Text = "Save Process"
+        '
         'frmSetupInstitutionalDiscount
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
@@ -1133,10 +1190,13 @@ Partial Class frmSetupInstitutionalDiscount
         Me.Panel4.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.FlowLayoutPanel2.ResumeLayout(False)
-        Me.FlowLayoutPanel2.PerformLayout()
         CType(Me.dgDummyList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.FlowLayoutPanel1.ResumeLayout(False)
         Me.systemSign.ResumeLayout(False)
+        Me.Panel6.ResumeLayout(False)
+        Me.Panel6.PerformLayout()
+        Me.Panel7.ResumeLayout(False)
+        Me.Panel7.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1219,9 +1279,14 @@ Partial Class frmSetupInstitutionalDiscount
     Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn10 As DataGridViewTextBoxColumn
     Friend WithEvents colRemove As DataGridViewImageColumn
-    Friend WithEvents Label8 As Label
-    Friend WithEvents DGrowCount As Label
     Friend WithEvents btnImport As Button
     Friend WithEvents dgDummyList As DataGridView
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
+    Friend WithEvents Panel6 As Panel
+    Friend WithEvents Label8 As Label
+    Friend WithEvents DGrowCount As Label
+    Friend WithEvents btnExport As Label
+    Friend WithEvents Panel7 As Panel
+    Friend WithEvents cbSaveProcess As ComboBox
+    Friend WithEvents Label9 As Label
 End Class

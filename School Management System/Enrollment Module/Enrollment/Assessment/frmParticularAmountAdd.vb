@@ -8,8 +8,10 @@
             ElseIf frmAssessmentSetup.frmTitle.Text = "Search Other Fees Particular" Then
                 frmAssessmentSetup.dgOtherFees.Rows.Add(frmAssessmentSetup.dgParticulars.CurrentRow.Cells(0).Value, frmAssessmentSetup.dgParticulars.CurrentRow.Cells(1).Value, frmAssessmentSetup.dgParticulars.CurrentRow.Cells(2).Value, Format(CDec(txtAmount.Text), "#,##0.00"))
             End If
+            MsgBox("Amount added to the list.", vbInformation)
             lblParticular.Text = "-"
             txtAmount.Text = "0.00"
+            frmAssessmentSetup.SearchPanel.Visible = False
             Me.Dispose()
         End If
     End Sub

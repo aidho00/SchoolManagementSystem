@@ -22,44 +22,44 @@ Partial Class frmStudentEvaluation
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle112 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle113 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmStudentEvaluation))
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle31 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle32 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle33 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle34 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle35 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle36 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle37 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle114 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle115 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle116 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle117 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle118 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle119 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle120 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle121 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle122 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle123 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle124 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle125 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle126 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle127 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle128 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle129 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle130 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle131 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle132 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle133 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle134 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle135 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle136 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle137 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle138 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle139 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle140 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle141 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle142 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle143 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle144 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle145 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle146 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle147 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle148 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.CurriculumPanel = New System.Windows.Forms.Panel()
         Me.Panel_4YS = New System.Windows.Forms.Panel()
@@ -551,25 +551,25 @@ Partial Class frmStudentEvaluation
         Me.dg4YS.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dg4YS.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dg4YS.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg4YS.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle112.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle112.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle112.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle112.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle112.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle112.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle112.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg4YS.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle112
         Me.dg4YS.ColumnHeadersHeight = 20
         Me.dg4YS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dg4YS.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn132, Me.DataGridViewTextBoxColumn133, Me.DataGridViewTextBoxColumn134, Me.DataGridViewTextBoxColumn135, Me.DataGridViewTextBoxColumn136, Me.DataGridViewTextBoxColumn137, Me.DataGridViewTextBoxColumn138, Me.DataGridViewTextBoxColumn139, Me.DataGridViewTextBoxColumn140, Me.DataGridViewTextBoxColumn141, Me.DataGridViewComboBoxColumn11, Me.DataGridViewTextBoxColumn142, Me.DataGridViewTextBoxColumn143, Me.DataGridViewImageColumn11, Me.Column21})
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg4YS.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle113.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle113.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle113.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle113.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle113.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle113.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle113.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg4YS.DefaultCellStyle = DataGridViewCellStyle113
         Me.dg4YS.EnableHeadersVisualStyles = False
         Me.dg4YS.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
         Me.dg4YS.Location = New System.Drawing.Point(7, 23)
@@ -587,7 +587,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn132.HeaderText = "ID"
         Me.DataGridViewTextBoxColumn132.Name = "DataGridViewTextBoxColumn132"
         Me.DataGridViewTextBoxColumn132.Visible = False
-        Me.DataGridViewTextBoxColumn132.Width = 44
+        Me.DataGridViewTextBoxColumn132.Width = 43
         '
         'DataGridViewTextBoxColumn133
         '
@@ -595,7 +595,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn133.HeaderText = "Code"
         Me.DataGridViewTextBoxColumn133.Name = "DataGridViewTextBoxColumn133"
         Me.DataGridViewTextBoxColumn133.ReadOnly = True
-        Me.DataGridViewTextBoxColumn133.Width = 62
+        Me.DataGridViewTextBoxColumn133.Width = 61
         '
         'DataGridViewTextBoxColumn134
         '
@@ -611,7 +611,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn135.Name = "DataGridViewTextBoxColumn135"
         Me.DataGridViewTextBoxColumn135.ReadOnly = True
         Me.DataGridViewTextBoxColumn135.Visible = False
-        Me.DataGridViewTextBoxColumn135.Width = 59
+        Me.DataGridViewTextBoxColumn135.Width = 58
         '
         'DataGridViewTextBoxColumn136
         '
@@ -619,7 +619,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn136.HeaderText = "Units"
         Me.DataGridViewTextBoxColumn136.Name = "DataGridViewTextBoxColumn136"
         Me.DataGridViewTextBoxColumn136.ReadOnly = True
-        Me.DataGridViewTextBoxColumn136.Width = 56
+        Me.DataGridViewTextBoxColumn136.Width = 55
         '
         'DataGridViewTextBoxColumn137
         '
@@ -627,7 +627,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn137.HeaderText = "Group"
         Me.DataGridViewTextBoxColumn137.Name = "DataGridViewTextBoxColumn137"
         Me.DataGridViewTextBoxColumn137.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn137.Width = 66
+        Me.DataGridViewTextBoxColumn137.Width = 65
         '
         'DataGridViewTextBoxColumn138
         '
@@ -636,7 +636,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn138.Name = "DataGridViewTextBoxColumn138"
         Me.DataGridViewTextBoxColumn138.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridViewTextBoxColumn138.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.DataGridViewTextBoxColumn138.Width = 45
+        Me.DataGridViewTextBoxColumn138.Width = 44
         '
         'DataGridViewTextBoxColumn139
         '
@@ -656,7 +656,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn141.HeaderText = "Pre-requisite"
         Me.DataGridViewTextBoxColumn141.Name = "DataGridViewTextBoxColumn141"
         Me.DataGridViewTextBoxColumn141.ReadOnly = True
-        Me.DataGridViewTextBoxColumn141.Width = 96
+        Me.DataGridViewTextBoxColumn141.Width = 95
         '
         'DataGridViewComboBoxColumn11
         '
@@ -664,14 +664,14 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewComboBoxColumn11.HeaderText = "Grade"
         Me.DataGridViewComboBoxColumn11.Name = "DataGridViewComboBoxColumn11"
         Me.DataGridViewComboBoxColumn11.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewComboBoxColumn11.Width = 67
+        Me.DataGridViewComboBoxColumn11.Width = 66
         '
         'DataGridViewTextBoxColumn142
         '
         Me.DataGridViewTextBoxColumn142.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.DataGridViewTextBoxColumn142.HeaderText = "Credit"
         Me.DataGridViewTextBoxColumn142.Name = "DataGridViewTextBoxColumn142"
-        Me.DataGridViewTextBoxColumn142.Width = 64
+        Me.DataGridViewTextBoxColumn142.Width = 63
         '
         'DataGridViewTextBoxColumn143
         '
@@ -713,9 +713,9 @@ Partial Class frmStudentEvaluation
         Me.earned_4YS.AutoSize = True
         Me.earned_4YS.Dock = System.Windows.Forms.DockStyle.Left
         Me.earned_4YS.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.earned_4YS.Location = New System.Drawing.Point(124, 0)
+        Me.earned_4YS.Location = New System.Drawing.Point(121, 0)
         Me.earned_4YS.Name = "earned_4YS"
-        Me.earned_4YS.Size = New System.Drawing.Size(14, 16)
+        Me.earned_4YS.Size = New System.Drawing.Size(13, 16)
         Me.earned_4YS.TabIndex = 117
         Me.earned_4YS.Text = "0"
         '
@@ -724,9 +724,9 @@ Partial Class frmStudentEvaluation
         Me.Label43.AutoSize = True
         Me.Label43.Dock = System.Windows.Forms.DockStyle.Left
         Me.Label43.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label43.Location = New System.Drawing.Point(74, 0)
+        Me.Label43.Location = New System.Drawing.Point(72, 0)
         Me.Label43.Name = "Label43"
-        Me.Label43.Size = New System.Drawing.Size(50, 16)
+        Me.Label43.Size = New System.Drawing.Size(49, 16)
         Me.Label43.TabIndex = 116
         Me.Label43.Text = "Earned:"
         '
@@ -734,9 +734,9 @@ Partial Class frmStudentEvaluation
         '
         Me.Label45.AutoSize = True
         Me.Label45.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label45.Location = New System.Drawing.Point(51, 0)
+        Me.Label45.Location = New System.Drawing.Point(50, 0)
         Me.Label45.Name = "Label45"
-        Me.Label45.Size = New System.Drawing.Size(23, 16)
+        Me.Label45.Size = New System.Drawing.Size(22, 16)
         Me.Label45.TabIndex = 115
         Me.Label45.Text = "     "
         '
@@ -746,7 +746,7 @@ Partial Class frmStudentEvaluation
         Me.Label21.Dock = System.Windows.Forms.DockStyle.Left
         Me.Label21.Location = New System.Drawing.Point(0, 0)
         Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(51, 16)
+        Me.Label21.Size = New System.Drawing.Size(50, 16)
         Me.Label21.TabIndex = 109
         Me.Label21.Text = "Summer"
         '
@@ -771,25 +771,25 @@ Partial Class frmStudentEvaluation
         Me.dg4Y2S.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dg4Y2S.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dg4Y2S.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg4Y2S.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle114.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle114.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle114.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle114.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle114.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle114.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle114.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg4Y2S.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle114
         Me.dg4Y2S.ColumnHeadersHeight = 20
         Me.dg4Y2S.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dg4Y2S.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn120, Me.DataGridViewTextBoxColumn121, Me.DataGridViewTextBoxColumn122, Me.DataGridViewTextBoxColumn123, Me.DataGridViewTextBoxColumn124, Me.DataGridViewTextBoxColumn125, Me.DataGridViewTextBoxColumn126, Me.DataGridViewTextBoxColumn127, Me.DataGridViewTextBoxColumn128, Me.DataGridViewTextBoxColumn129, Me.DataGridViewComboBoxColumn10, Me.DataGridViewTextBoxColumn130, Me.DataGridViewTextBoxColumn131, Me.DataGridViewImageColumn10, Me.Column20})
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg4Y2S.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle115.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle115.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle115.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle115.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle115.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle115.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle115.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg4Y2S.DefaultCellStyle = DataGridViewCellStyle115
         Me.dg4Y2S.EnableHeadersVisualStyles = False
         Me.dg4Y2S.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
         Me.dg4Y2S.Location = New System.Drawing.Point(7, 23)
@@ -807,7 +807,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn120.HeaderText = "ID"
         Me.DataGridViewTextBoxColumn120.Name = "DataGridViewTextBoxColumn120"
         Me.DataGridViewTextBoxColumn120.Visible = False
-        Me.DataGridViewTextBoxColumn120.Width = 44
+        Me.DataGridViewTextBoxColumn120.Width = 43
         '
         'DataGridViewTextBoxColumn121
         '
@@ -815,7 +815,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn121.HeaderText = "Code"
         Me.DataGridViewTextBoxColumn121.Name = "DataGridViewTextBoxColumn121"
         Me.DataGridViewTextBoxColumn121.ReadOnly = True
-        Me.DataGridViewTextBoxColumn121.Width = 62
+        Me.DataGridViewTextBoxColumn121.Width = 61
         '
         'DataGridViewTextBoxColumn122
         '
@@ -831,7 +831,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn123.Name = "DataGridViewTextBoxColumn123"
         Me.DataGridViewTextBoxColumn123.ReadOnly = True
         Me.DataGridViewTextBoxColumn123.Visible = False
-        Me.DataGridViewTextBoxColumn123.Width = 59
+        Me.DataGridViewTextBoxColumn123.Width = 58
         '
         'DataGridViewTextBoxColumn124
         '
@@ -839,7 +839,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn124.HeaderText = "Units"
         Me.DataGridViewTextBoxColumn124.Name = "DataGridViewTextBoxColumn124"
         Me.DataGridViewTextBoxColumn124.ReadOnly = True
-        Me.DataGridViewTextBoxColumn124.Width = 56
+        Me.DataGridViewTextBoxColumn124.Width = 55
         '
         'DataGridViewTextBoxColumn125
         '
@@ -847,7 +847,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn125.HeaderText = "Group"
         Me.DataGridViewTextBoxColumn125.Name = "DataGridViewTextBoxColumn125"
         Me.DataGridViewTextBoxColumn125.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn125.Width = 66
+        Me.DataGridViewTextBoxColumn125.Width = 65
         '
         'DataGridViewTextBoxColumn126
         '
@@ -856,7 +856,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn126.Name = "DataGridViewTextBoxColumn126"
         Me.DataGridViewTextBoxColumn126.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridViewTextBoxColumn126.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.DataGridViewTextBoxColumn126.Width = 45
+        Me.DataGridViewTextBoxColumn126.Width = 44
         '
         'DataGridViewTextBoxColumn127
         '
@@ -876,7 +876,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn129.HeaderText = "Pre-requisite"
         Me.DataGridViewTextBoxColumn129.Name = "DataGridViewTextBoxColumn129"
         Me.DataGridViewTextBoxColumn129.ReadOnly = True
-        Me.DataGridViewTextBoxColumn129.Width = 96
+        Me.DataGridViewTextBoxColumn129.Width = 95
         '
         'DataGridViewComboBoxColumn10
         '
@@ -884,14 +884,14 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewComboBoxColumn10.HeaderText = "Grade"
         Me.DataGridViewComboBoxColumn10.Name = "DataGridViewComboBoxColumn10"
         Me.DataGridViewComboBoxColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewComboBoxColumn10.Width = 67
+        Me.DataGridViewComboBoxColumn10.Width = 66
         '
         'DataGridViewTextBoxColumn130
         '
         Me.DataGridViewTextBoxColumn130.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.DataGridViewTextBoxColumn130.HeaderText = "Credit"
         Me.DataGridViewTextBoxColumn130.Name = "DataGridViewTextBoxColumn130"
-        Me.DataGridViewTextBoxColumn130.Width = 64
+        Me.DataGridViewTextBoxColumn130.Width = 63
         '
         'DataGridViewTextBoxColumn131
         '
@@ -933,9 +933,9 @@ Partial Class frmStudentEvaluation
         Me.earned_4Y2S.AutoSize = True
         Me.earned_4Y2S.Dock = System.Windows.Forms.DockStyle.Left
         Me.earned_4Y2S.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.earned_4Y2S.Location = New System.Drawing.Point(153, 0)
+        Me.earned_4Y2S.Location = New System.Drawing.Point(150, 0)
         Me.earned_4Y2S.Name = "earned_4Y2S"
-        Me.earned_4Y2S.Size = New System.Drawing.Size(14, 16)
+        Me.earned_4Y2S.Size = New System.Drawing.Size(13, 16)
         Me.earned_4Y2S.TabIndex = 117
         Me.earned_4Y2S.Text = "0"
         '
@@ -944,9 +944,9 @@ Partial Class frmStudentEvaluation
         Me.Label41.AutoSize = True
         Me.Label41.Dock = System.Windows.Forms.DockStyle.Left
         Me.Label41.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label41.Location = New System.Drawing.Point(103, 0)
+        Me.Label41.Location = New System.Drawing.Point(101, 0)
         Me.Label41.Name = "Label41"
-        Me.Label41.Size = New System.Drawing.Size(50, 16)
+        Me.Label41.Size = New System.Drawing.Size(49, 16)
         Me.Label41.TabIndex = 116
         Me.Label41.Text = "Earned:"
         '
@@ -954,9 +954,9 @@ Partial Class frmStudentEvaluation
         '
         Me.Label44.AutoSize = True
         Me.Label44.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label44.Location = New System.Drawing.Point(80, 0)
+        Me.Label44.Location = New System.Drawing.Point(79, 0)
         Me.Label44.Name = "Label44"
-        Me.Label44.Size = New System.Drawing.Size(23, 16)
+        Me.Label44.Size = New System.Drawing.Size(22, 16)
         Me.Label44.TabIndex = 115
         Me.Label44.Text = "     "
         '
@@ -966,7 +966,7 @@ Partial Class frmStudentEvaluation
         Me.Label20.Dock = System.Windows.Forms.DockStyle.Left
         Me.Label20.Location = New System.Drawing.Point(0, 0)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(80, 16)
+        Me.Label20.Size = New System.Drawing.Size(79, 16)
         Me.Label20.TabIndex = 109
         Me.Label20.Text = "2nd Semester"
         '
@@ -991,25 +991,25 @@ Partial Class frmStudentEvaluation
         Me.dg4Y1S.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dg4Y1S.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dg4Y1S.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg4Y1S.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle116.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle116.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle116.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle116.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle116.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle116.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle116.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg4Y1S.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle116
         Me.dg4Y1S.ColumnHeadersHeight = 20
         Me.dg4Y1S.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dg4Y1S.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn108, Me.DataGridViewTextBoxColumn109, Me.DataGridViewTextBoxColumn110, Me.DataGridViewTextBoxColumn111, Me.DataGridViewTextBoxColumn112, Me.DataGridViewTextBoxColumn113, Me.DataGridViewTextBoxColumn114, Me.DataGridViewTextBoxColumn115, Me.DataGridViewTextBoxColumn116, Me.DataGridViewTextBoxColumn117, Me.DataGridViewComboBoxColumn9, Me.DataGridViewTextBoxColumn118, Me.DataGridViewTextBoxColumn119, Me.DataGridViewImageColumn9, Me.Column19})
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg4Y1S.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle117.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle117.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle117.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle117.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle117.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle117.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle117.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg4Y1S.DefaultCellStyle = DataGridViewCellStyle117
         Me.dg4Y1S.EnableHeadersVisualStyles = False
         Me.dg4Y1S.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
         Me.dg4Y1S.Location = New System.Drawing.Point(7, 23)
@@ -1027,7 +1027,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn108.HeaderText = "ID"
         Me.DataGridViewTextBoxColumn108.Name = "DataGridViewTextBoxColumn108"
         Me.DataGridViewTextBoxColumn108.Visible = False
-        Me.DataGridViewTextBoxColumn108.Width = 44
+        Me.DataGridViewTextBoxColumn108.Width = 43
         '
         'DataGridViewTextBoxColumn109
         '
@@ -1035,7 +1035,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn109.HeaderText = "Code"
         Me.DataGridViewTextBoxColumn109.Name = "DataGridViewTextBoxColumn109"
         Me.DataGridViewTextBoxColumn109.ReadOnly = True
-        Me.DataGridViewTextBoxColumn109.Width = 62
+        Me.DataGridViewTextBoxColumn109.Width = 61
         '
         'DataGridViewTextBoxColumn110
         '
@@ -1051,7 +1051,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn111.Name = "DataGridViewTextBoxColumn111"
         Me.DataGridViewTextBoxColumn111.ReadOnly = True
         Me.DataGridViewTextBoxColumn111.Visible = False
-        Me.DataGridViewTextBoxColumn111.Width = 59
+        Me.DataGridViewTextBoxColumn111.Width = 58
         '
         'DataGridViewTextBoxColumn112
         '
@@ -1059,7 +1059,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn112.HeaderText = "Units"
         Me.DataGridViewTextBoxColumn112.Name = "DataGridViewTextBoxColumn112"
         Me.DataGridViewTextBoxColumn112.ReadOnly = True
-        Me.DataGridViewTextBoxColumn112.Width = 56
+        Me.DataGridViewTextBoxColumn112.Width = 55
         '
         'DataGridViewTextBoxColumn113
         '
@@ -1067,7 +1067,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn113.HeaderText = "Group"
         Me.DataGridViewTextBoxColumn113.Name = "DataGridViewTextBoxColumn113"
         Me.DataGridViewTextBoxColumn113.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn113.Width = 66
+        Me.DataGridViewTextBoxColumn113.Width = 65
         '
         'DataGridViewTextBoxColumn114
         '
@@ -1076,7 +1076,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn114.Name = "DataGridViewTextBoxColumn114"
         Me.DataGridViewTextBoxColumn114.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridViewTextBoxColumn114.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.DataGridViewTextBoxColumn114.Width = 45
+        Me.DataGridViewTextBoxColumn114.Width = 44
         '
         'DataGridViewTextBoxColumn115
         '
@@ -1096,7 +1096,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn117.HeaderText = "Pre-requisite"
         Me.DataGridViewTextBoxColumn117.Name = "DataGridViewTextBoxColumn117"
         Me.DataGridViewTextBoxColumn117.ReadOnly = True
-        Me.DataGridViewTextBoxColumn117.Width = 96
+        Me.DataGridViewTextBoxColumn117.Width = 95
         '
         'DataGridViewComboBoxColumn9
         '
@@ -1104,14 +1104,14 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewComboBoxColumn9.HeaderText = "Grade"
         Me.DataGridViewComboBoxColumn9.Name = "DataGridViewComboBoxColumn9"
         Me.DataGridViewComboBoxColumn9.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewComboBoxColumn9.Width = 67
+        Me.DataGridViewComboBoxColumn9.Width = 66
         '
         'DataGridViewTextBoxColumn118
         '
         Me.DataGridViewTextBoxColumn118.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.DataGridViewTextBoxColumn118.HeaderText = "Credit"
         Me.DataGridViewTextBoxColumn118.Name = "DataGridViewTextBoxColumn118"
-        Me.DataGridViewTextBoxColumn118.Width = 64
+        Me.DataGridViewTextBoxColumn118.Width = 63
         '
         'DataGridViewTextBoxColumn119
         '
@@ -1153,9 +1153,9 @@ Partial Class frmStudentEvaluation
         Me.earned_4Y1S.AutoSize = True
         Me.earned_4Y1S.Dock = System.Windows.Forms.DockStyle.Left
         Me.earned_4Y1S.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.earned_4Y1S.Location = New System.Drawing.Point(146, 0)
+        Me.earned_4Y1S.Location = New System.Drawing.Point(143, 0)
         Me.earned_4Y1S.Name = "earned_4Y1S"
-        Me.earned_4Y1S.Size = New System.Drawing.Size(14, 16)
+        Me.earned_4Y1S.Size = New System.Drawing.Size(13, 16)
         Me.earned_4Y1S.TabIndex = 117
         Me.earned_4Y1S.Text = "0"
         '
@@ -1164,9 +1164,9 @@ Partial Class frmStudentEvaluation
         Me.Label39.AutoSize = True
         Me.Label39.Dock = System.Windows.Forms.DockStyle.Left
         Me.Label39.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label39.Location = New System.Drawing.Point(96, 0)
+        Me.Label39.Location = New System.Drawing.Point(94, 0)
         Me.Label39.Name = "Label39"
-        Me.Label39.Size = New System.Drawing.Size(50, 16)
+        Me.Label39.Size = New System.Drawing.Size(49, 16)
         Me.Label39.TabIndex = 116
         Me.Label39.Text = "Earned:"
         '
@@ -1174,9 +1174,9 @@ Partial Class frmStudentEvaluation
         '
         Me.Label42.AutoSize = True
         Me.Label42.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label42.Location = New System.Drawing.Point(73, 0)
+        Me.Label42.Location = New System.Drawing.Point(72, 0)
         Me.Label42.Name = "Label42"
-        Me.Label42.Size = New System.Drawing.Size(23, 16)
+        Me.Label42.Size = New System.Drawing.Size(22, 16)
         Me.Label42.TabIndex = 115
         Me.Label42.Text = "     "
         '
@@ -1186,7 +1186,7 @@ Partial Class frmStudentEvaluation
         Me.Label19.Dock = System.Windows.Forms.DockStyle.Left
         Me.Label19.Location = New System.Drawing.Point(0, 0)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(73, 16)
+        Me.Label19.Size = New System.Drawing.Size(72, 16)
         Me.Label19.TabIndex = 109
         Me.Label19.Text = "1st Semester"
         '
@@ -1232,25 +1232,25 @@ Partial Class frmStudentEvaluation
         Me.dg3YS.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dg3YS.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dg3YS.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg3YS.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle118.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle118.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle118.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle118.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle118.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle118.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle118.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg3YS.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle118
         Me.dg3YS.ColumnHeadersHeight = 20
         Me.dg3YS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dg3YS.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn72, Me.DataGridViewTextBoxColumn73, Me.DataGridViewTextBoxColumn74, Me.DataGridViewTextBoxColumn75, Me.DataGridViewTextBoxColumn76, Me.DataGridViewTextBoxColumn77, Me.DataGridViewTextBoxColumn78, Me.DataGridViewTextBoxColumn79, Me.DataGridViewTextBoxColumn80, Me.DataGridViewTextBoxColumn81, Me.DataGridViewComboBoxColumn6, Me.DataGridViewTextBoxColumn82, Me.DataGridViewTextBoxColumn83, Me.DataGridViewImageColumn6, Me.Column18})
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg3YS.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle119.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle119.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle119.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle119.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle119.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle119.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle119.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg3YS.DefaultCellStyle = DataGridViewCellStyle119
         Me.dg3YS.EnableHeadersVisualStyles = False
         Me.dg3YS.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
         Me.dg3YS.Location = New System.Drawing.Point(7, 23)
@@ -1268,7 +1268,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn72.HeaderText = "ID"
         Me.DataGridViewTextBoxColumn72.Name = "DataGridViewTextBoxColumn72"
         Me.DataGridViewTextBoxColumn72.Visible = False
-        Me.DataGridViewTextBoxColumn72.Width = 44
+        Me.DataGridViewTextBoxColumn72.Width = 43
         '
         'DataGridViewTextBoxColumn73
         '
@@ -1276,7 +1276,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn73.HeaderText = "Code"
         Me.DataGridViewTextBoxColumn73.Name = "DataGridViewTextBoxColumn73"
         Me.DataGridViewTextBoxColumn73.ReadOnly = True
-        Me.DataGridViewTextBoxColumn73.Width = 62
+        Me.DataGridViewTextBoxColumn73.Width = 61
         '
         'DataGridViewTextBoxColumn74
         '
@@ -1292,7 +1292,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn75.Name = "DataGridViewTextBoxColumn75"
         Me.DataGridViewTextBoxColumn75.ReadOnly = True
         Me.DataGridViewTextBoxColumn75.Visible = False
-        Me.DataGridViewTextBoxColumn75.Width = 59
+        Me.DataGridViewTextBoxColumn75.Width = 58
         '
         'DataGridViewTextBoxColumn76
         '
@@ -1300,7 +1300,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn76.HeaderText = "Units"
         Me.DataGridViewTextBoxColumn76.Name = "DataGridViewTextBoxColumn76"
         Me.DataGridViewTextBoxColumn76.ReadOnly = True
-        Me.DataGridViewTextBoxColumn76.Width = 56
+        Me.DataGridViewTextBoxColumn76.Width = 55
         '
         'DataGridViewTextBoxColumn77
         '
@@ -1308,7 +1308,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn77.HeaderText = "Group"
         Me.DataGridViewTextBoxColumn77.Name = "DataGridViewTextBoxColumn77"
         Me.DataGridViewTextBoxColumn77.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn77.Width = 66
+        Me.DataGridViewTextBoxColumn77.Width = 65
         '
         'DataGridViewTextBoxColumn78
         '
@@ -1317,7 +1317,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn78.Name = "DataGridViewTextBoxColumn78"
         Me.DataGridViewTextBoxColumn78.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridViewTextBoxColumn78.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.DataGridViewTextBoxColumn78.Width = 45
+        Me.DataGridViewTextBoxColumn78.Width = 44
         '
         'DataGridViewTextBoxColumn79
         '
@@ -1337,7 +1337,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn81.HeaderText = "Pre-requisite"
         Me.DataGridViewTextBoxColumn81.Name = "DataGridViewTextBoxColumn81"
         Me.DataGridViewTextBoxColumn81.ReadOnly = True
-        Me.DataGridViewTextBoxColumn81.Width = 96
+        Me.DataGridViewTextBoxColumn81.Width = 95
         '
         'DataGridViewComboBoxColumn6
         '
@@ -1345,14 +1345,14 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewComboBoxColumn6.HeaderText = "Grade"
         Me.DataGridViewComboBoxColumn6.Name = "DataGridViewComboBoxColumn6"
         Me.DataGridViewComboBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewComboBoxColumn6.Width = 67
+        Me.DataGridViewComboBoxColumn6.Width = 66
         '
         'DataGridViewTextBoxColumn82
         '
         Me.DataGridViewTextBoxColumn82.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.DataGridViewTextBoxColumn82.HeaderText = "Credit"
         Me.DataGridViewTextBoxColumn82.Name = "DataGridViewTextBoxColumn82"
-        Me.DataGridViewTextBoxColumn82.Width = 64
+        Me.DataGridViewTextBoxColumn82.Width = 63
         '
         'DataGridViewTextBoxColumn83
         '
@@ -1394,9 +1394,9 @@ Partial Class frmStudentEvaluation
         Me.earned_3YS.AutoSize = True
         Me.earned_3YS.Dock = System.Windows.Forms.DockStyle.Left
         Me.earned_3YS.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.earned_3YS.Location = New System.Drawing.Point(124, 0)
+        Me.earned_3YS.Location = New System.Drawing.Point(121, 0)
         Me.earned_3YS.Name = "earned_3YS"
-        Me.earned_3YS.Size = New System.Drawing.Size(14, 16)
+        Me.earned_3YS.Size = New System.Drawing.Size(13, 16)
         Me.earned_3YS.TabIndex = 117
         Me.earned_3YS.Text = "0"
         '
@@ -1405,9 +1405,9 @@ Partial Class frmStudentEvaluation
         Me.Label37.AutoSize = True
         Me.Label37.Dock = System.Windows.Forms.DockStyle.Left
         Me.Label37.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label37.Location = New System.Drawing.Point(74, 0)
+        Me.Label37.Location = New System.Drawing.Point(72, 0)
         Me.Label37.Name = "Label37"
-        Me.Label37.Size = New System.Drawing.Size(50, 16)
+        Me.Label37.Size = New System.Drawing.Size(49, 16)
         Me.Label37.TabIndex = 116
         Me.Label37.Text = "Earned:"
         '
@@ -1415,9 +1415,9 @@ Partial Class frmStudentEvaluation
         '
         Me.Label40.AutoSize = True
         Me.Label40.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label40.Location = New System.Drawing.Point(51, 0)
+        Me.Label40.Location = New System.Drawing.Point(50, 0)
         Me.Label40.Name = "Label40"
-        Me.Label40.Size = New System.Drawing.Size(23, 16)
+        Me.Label40.Size = New System.Drawing.Size(22, 16)
         Me.Label40.TabIndex = 115
         Me.Label40.Text = "     "
         '
@@ -1427,7 +1427,7 @@ Partial Class frmStudentEvaluation
         Me.Label12.Dock = System.Windows.Forms.DockStyle.Left
         Me.Label12.Location = New System.Drawing.Point(0, 0)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(51, 16)
+        Me.Label12.Size = New System.Drawing.Size(50, 16)
         Me.Label12.TabIndex = 109
         Me.Label12.Text = "Summer"
         '
@@ -1452,25 +1452,25 @@ Partial Class frmStudentEvaluation
         Me.dg3Y2S.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dg3Y2S.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dg3Y2S.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle9.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg3Y2S.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle120.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle120.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle120.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle120.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle120.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle120.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle120.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg3Y2S.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle120
         Me.dg3Y2S.ColumnHeadersHeight = 20
         Me.dg3Y2S.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dg3Y2S.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn84, Me.DataGridViewTextBoxColumn85, Me.DataGridViewTextBoxColumn86, Me.DataGridViewTextBoxColumn87, Me.DataGridViewTextBoxColumn88, Me.DataGridViewTextBoxColumn89, Me.DataGridViewTextBoxColumn90, Me.DataGridViewTextBoxColumn91, Me.DataGridViewTextBoxColumn92, Me.DataGridViewTextBoxColumn93, Me.DataGridViewComboBoxColumn7, Me.DataGridViewTextBoxColumn94, Me.DataGridViewTextBoxColumn95, Me.DataGridViewImageColumn7, Me.Column15})
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg3Y2S.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle121.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle121.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle121.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle121.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle121.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle121.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle121.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg3Y2S.DefaultCellStyle = DataGridViewCellStyle121
         Me.dg3Y2S.EnableHeadersVisualStyles = False
         Me.dg3Y2S.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
         Me.dg3Y2S.Location = New System.Drawing.Point(7, 23)
@@ -1488,7 +1488,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn84.HeaderText = "ID"
         Me.DataGridViewTextBoxColumn84.Name = "DataGridViewTextBoxColumn84"
         Me.DataGridViewTextBoxColumn84.Visible = False
-        Me.DataGridViewTextBoxColumn84.Width = 44
+        Me.DataGridViewTextBoxColumn84.Width = 43
         '
         'DataGridViewTextBoxColumn85
         '
@@ -1496,7 +1496,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn85.HeaderText = "Code"
         Me.DataGridViewTextBoxColumn85.Name = "DataGridViewTextBoxColumn85"
         Me.DataGridViewTextBoxColumn85.ReadOnly = True
-        Me.DataGridViewTextBoxColumn85.Width = 62
+        Me.DataGridViewTextBoxColumn85.Width = 61
         '
         'DataGridViewTextBoxColumn86
         '
@@ -1512,7 +1512,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn87.Name = "DataGridViewTextBoxColumn87"
         Me.DataGridViewTextBoxColumn87.ReadOnly = True
         Me.DataGridViewTextBoxColumn87.Visible = False
-        Me.DataGridViewTextBoxColumn87.Width = 59
+        Me.DataGridViewTextBoxColumn87.Width = 58
         '
         'DataGridViewTextBoxColumn88
         '
@@ -1520,7 +1520,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn88.HeaderText = "Units"
         Me.DataGridViewTextBoxColumn88.Name = "DataGridViewTextBoxColumn88"
         Me.DataGridViewTextBoxColumn88.ReadOnly = True
-        Me.DataGridViewTextBoxColumn88.Width = 56
+        Me.DataGridViewTextBoxColumn88.Width = 55
         '
         'DataGridViewTextBoxColumn89
         '
@@ -1528,7 +1528,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn89.HeaderText = "Group"
         Me.DataGridViewTextBoxColumn89.Name = "DataGridViewTextBoxColumn89"
         Me.DataGridViewTextBoxColumn89.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn89.Width = 66
+        Me.DataGridViewTextBoxColumn89.Width = 65
         '
         'DataGridViewTextBoxColumn90
         '
@@ -1537,7 +1537,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn90.Name = "DataGridViewTextBoxColumn90"
         Me.DataGridViewTextBoxColumn90.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridViewTextBoxColumn90.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.DataGridViewTextBoxColumn90.Width = 45
+        Me.DataGridViewTextBoxColumn90.Width = 44
         '
         'DataGridViewTextBoxColumn91
         '
@@ -1557,7 +1557,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn93.HeaderText = "Pre-requisite"
         Me.DataGridViewTextBoxColumn93.Name = "DataGridViewTextBoxColumn93"
         Me.DataGridViewTextBoxColumn93.ReadOnly = True
-        Me.DataGridViewTextBoxColumn93.Width = 96
+        Me.DataGridViewTextBoxColumn93.Width = 95
         '
         'DataGridViewComboBoxColumn7
         '
@@ -1565,14 +1565,14 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewComboBoxColumn7.HeaderText = "Grade"
         Me.DataGridViewComboBoxColumn7.Name = "DataGridViewComboBoxColumn7"
         Me.DataGridViewComboBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewComboBoxColumn7.Width = 67
+        Me.DataGridViewComboBoxColumn7.Width = 66
         '
         'DataGridViewTextBoxColumn94
         '
         Me.DataGridViewTextBoxColumn94.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.DataGridViewTextBoxColumn94.HeaderText = "Credit"
         Me.DataGridViewTextBoxColumn94.Name = "DataGridViewTextBoxColumn94"
-        Me.DataGridViewTextBoxColumn94.Width = 64
+        Me.DataGridViewTextBoxColumn94.Width = 63
         '
         'DataGridViewTextBoxColumn95
         '
@@ -1614,9 +1614,9 @@ Partial Class frmStudentEvaluation
         Me.earned_3Y2S.AutoSize = True
         Me.earned_3Y2S.Dock = System.Windows.Forms.DockStyle.Left
         Me.earned_3Y2S.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.earned_3Y2S.Location = New System.Drawing.Point(153, 0)
+        Me.earned_3Y2S.Location = New System.Drawing.Point(150, 0)
         Me.earned_3Y2S.Name = "earned_3Y2S"
-        Me.earned_3Y2S.Size = New System.Drawing.Size(14, 16)
+        Me.earned_3Y2S.Size = New System.Drawing.Size(13, 16)
         Me.earned_3Y2S.TabIndex = 117
         Me.earned_3Y2S.Text = "0"
         '
@@ -1625,9 +1625,9 @@ Partial Class frmStudentEvaluation
         Me.Label35.AutoSize = True
         Me.Label35.Dock = System.Windows.Forms.DockStyle.Left
         Me.Label35.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label35.Location = New System.Drawing.Point(103, 0)
+        Me.Label35.Location = New System.Drawing.Point(101, 0)
         Me.Label35.Name = "Label35"
-        Me.Label35.Size = New System.Drawing.Size(50, 16)
+        Me.Label35.Size = New System.Drawing.Size(49, 16)
         Me.Label35.TabIndex = 116
         Me.Label35.Text = "Earned:"
         '
@@ -1635,9 +1635,9 @@ Partial Class frmStudentEvaluation
         '
         Me.Label38.AutoSize = True
         Me.Label38.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label38.Location = New System.Drawing.Point(80, 0)
+        Me.Label38.Location = New System.Drawing.Point(79, 0)
         Me.Label38.Name = "Label38"
-        Me.Label38.Size = New System.Drawing.Size(23, 16)
+        Me.Label38.Size = New System.Drawing.Size(22, 16)
         Me.Label38.TabIndex = 115
         Me.Label38.Text = "     "
         '
@@ -1647,7 +1647,7 @@ Partial Class frmStudentEvaluation
         Me.Label14.Dock = System.Windows.Forms.DockStyle.Left
         Me.Label14.Location = New System.Drawing.Point(0, 0)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(80, 16)
+        Me.Label14.Size = New System.Drawing.Size(79, 16)
         Me.Label14.TabIndex = 109
         Me.Label14.Text = "2nd Semester"
         '
@@ -1672,25 +1672,25 @@ Partial Class frmStudentEvaluation
         Me.dg3Y1S.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dg3Y1S.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dg3Y1S.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle11.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg3Y1S.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle122.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle122.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle122.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle122.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle122.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle122.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle122.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg3Y1S.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle122
         Me.dg3Y1S.ColumnHeadersHeight = 20
         Me.dg3Y1S.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dg3Y1S.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn96, Me.DataGridViewTextBoxColumn97, Me.DataGridViewTextBoxColumn98, Me.DataGridViewTextBoxColumn99, Me.DataGridViewTextBoxColumn100, Me.DataGridViewTextBoxColumn101, Me.DataGridViewTextBoxColumn102, Me.DataGridViewTextBoxColumn103, Me.DataGridViewTextBoxColumn104, Me.DataGridViewTextBoxColumn105, Me.DataGridViewComboBoxColumn8, Me.DataGridViewTextBoxColumn106, Me.DataGridViewTextBoxColumn107, Me.DataGridViewImageColumn8, Me.Column14})
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg3Y1S.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle123.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle123.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle123.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle123.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle123.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle123.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle123.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg3Y1S.DefaultCellStyle = DataGridViewCellStyle123
         Me.dg3Y1S.EnableHeadersVisualStyles = False
         Me.dg3Y1S.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
         Me.dg3Y1S.Location = New System.Drawing.Point(7, 23)
@@ -1708,7 +1708,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn96.HeaderText = "ID"
         Me.DataGridViewTextBoxColumn96.Name = "DataGridViewTextBoxColumn96"
         Me.DataGridViewTextBoxColumn96.Visible = False
-        Me.DataGridViewTextBoxColumn96.Width = 44
+        Me.DataGridViewTextBoxColumn96.Width = 43
         '
         'DataGridViewTextBoxColumn97
         '
@@ -1716,7 +1716,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn97.HeaderText = "Code"
         Me.DataGridViewTextBoxColumn97.Name = "DataGridViewTextBoxColumn97"
         Me.DataGridViewTextBoxColumn97.ReadOnly = True
-        Me.DataGridViewTextBoxColumn97.Width = 62
+        Me.DataGridViewTextBoxColumn97.Width = 61
         '
         'DataGridViewTextBoxColumn98
         '
@@ -1732,7 +1732,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn99.Name = "DataGridViewTextBoxColumn99"
         Me.DataGridViewTextBoxColumn99.ReadOnly = True
         Me.DataGridViewTextBoxColumn99.Visible = False
-        Me.DataGridViewTextBoxColumn99.Width = 59
+        Me.DataGridViewTextBoxColumn99.Width = 58
         '
         'DataGridViewTextBoxColumn100
         '
@@ -1740,7 +1740,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn100.HeaderText = "Units"
         Me.DataGridViewTextBoxColumn100.Name = "DataGridViewTextBoxColumn100"
         Me.DataGridViewTextBoxColumn100.ReadOnly = True
-        Me.DataGridViewTextBoxColumn100.Width = 56
+        Me.DataGridViewTextBoxColumn100.Width = 55
         '
         'DataGridViewTextBoxColumn101
         '
@@ -1748,7 +1748,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn101.HeaderText = "Group"
         Me.DataGridViewTextBoxColumn101.Name = "DataGridViewTextBoxColumn101"
         Me.DataGridViewTextBoxColumn101.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn101.Width = 66
+        Me.DataGridViewTextBoxColumn101.Width = 65
         '
         'DataGridViewTextBoxColumn102
         '
@@ -1757,7 +1757,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn102.Name = "DataGridViewTextBoxColumn102"
         Me.DataGridViewTextBoxColumn102.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridViewTextBoxColumn102.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.DataGridViewTextBoxColumn102.Width = 45
+        Me.DataGridViewTextBoxColumn102.Width = 44
         '
         'DataGridViewTextBoxColumn103
         '
@@ -1777,7 +1777,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn105.HeaderText = "Pre-requisite"
         Me.DataGridViewTextBoxColumn105.Name = "DataGridViewTextBoxColumn105"
         Me.DataGridViewTextBoxColumn105.ReadOnly = True
-        Me.DataGridViewTextBoxColumn105.Width = 96
+        Me.DataGridViewTextBoxColumn105.Width = 95
         '
         'DataGridViewComboBoxColumn8
         '
@@ -1785,14 +1785,14 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewComboBoxColumn8.HeaderText = "Grade"
         Me.DataGridViewComboBoxColumn8.Name = "DataGridViewComboBoxColumn8"
         Me.DataGridViewComboBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewComboBoxColumn8.Width = 67
+        Me.DataGridViewComboBoxColumn8.Width = 66
         '
         'DataGridViewTextBoxColumn106
         '
         Me.DataGridViewTextBoxColumn106.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.DataGridViewTextBoxColumn106.HeaderText = "Credit"
         Me.DataGridViewTextBoxColumn106.Name = "DataGridViewTextBoxColumn106"
-        Me.DataGridViewTextBoxColumn106.Width = 64
+        Me.DataGridViewTextBoxColumn106.Width = 63
         '
         'DataGridViewTextBoxColumn107
         '
@@ -1834,9 +1834,9 @@ Partial Class frmStudentEvaluation
         Me.earned_3Y1S.AutoSize = True
         Me.earned_3Y1S.Dock = System.Windows.Forms.DockStyle.Left
         Me.earned_3Y1S.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.earned_3Y1S.Location = New System.Drawing.Point(146, 0)
+        Me.earned_3Y1S.Location = New System.Drawing.Point(143, 0)
         Me.earned_3Y1S.Name = "earned_3Y1S"
-        Me.earned_3Y1S.Size = New System.Drawing.Size(14, 16)
+        Me.earned_3Y1S.Size = New System.Drawing.Size(13, 16)
         Me.earned_3Y1S.TabIndex = 117
         Me.earned_3Y1S.Text = "0"
         '
@@ -1845,9 +1845,9 @@ Partial Class frmStudentEvaluation
         Me.Label33.AutoSize = True
         Me.Label33.Dock = System.Windows.Forms.DockStyle.Left
         Me.Label33.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label33.Location = New System.Drawing.Point(96, 0)
+        Me.Label33.Location = New System.Drawing.Point(94, 0)
         Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(50, 16)
+        Me.Label33.Size = New System.Drawing.Size(49, 16)
         Me.Label33.TabIndex = 116
         Me.Label33.Text = "Earned:"
         '
@@ -1855,9 +1855,9 @@ Partial Class frmStudentEvaluation
         '
         Me.Label36.AutoSize = True
         Me.Label36.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label36.Location = New System.Drawing.Point(73, 0)
+        Me.Label36.Location = New System.Drawing.Point(72, 0)
         Me.Label36.Name = "Label36"
-        Me.Label36.Size = New System.Drawing.Size(23, 16)
+        Me.Label36.Size = New System.Drawing.Size(22, 16)
         Me.Label36.TabIndex = 115
         Me.Label36.Text = "     "
         '
@@ -1867,7 +1867,7 @@ Partial Class frmStudentEvaluation
         Me.Label16.Dock = System.Windows.Forms.DockStyle.Left
         Me.Label16.Location = New System.Drawing.Point(0, 0)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(73, 16)
+        Me.Label16.Size = New System.Drawing.Size(72, 16)
         Me.Label16.TabIndex = 109
         Me.Label16.Text = "1st Semester"
         '
@@ -1913,25 +1913,25 @@ Partial Class frmStudentEvaluation
         Me.dg2YS.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dg2YS.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dg2YS.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle13.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle13.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg2YS.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle124.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle124.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle124.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle124.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle124.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle124.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle124.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg2YS.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle124
         Me.dg2YS.ColumnHeadersHeight = 20
         Me.dg2YS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dg2YS.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn60, Me.DataGridViewTextBoxColumn61, Me.DataGridViewTextBoxColumn62, Me.DataGridViewTextBoxColumn63, Me.DataGridViewTextBoxColumn64, Me.DataGridViewTextBoxColumn65, Me.DataGridViewTextBoxColumn66, Me.DataGridViewTextBoxColumn67, Me.DataGridViewTextBoxColumn68, Me.DataGridViewTextBoxColumn69, Me.DataGridViewComboBoxColumn5, Me.DataGridViewTextBoxColumn70, Me.DataGridViewTextBoxColumn71, Me.DataGridViewImageColumn5, Me.Column13})
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg2YS.DefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle125.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle125.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle125.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle125.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle125.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle125.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle125.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg2YS.DefaultCellStyle = DataGridViewCellStyle125
         Me.dg2YS.EnableHeadersVisualStyles = False
         Me.dg2YS.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
         Me.dg2YS.Location = New System.Drawing.Point(7, 23)
@@ -1949,7 +1949,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn60.HeaderText = "ID"
         Me.DataGridViewTextBoxColumn60.Name = "DataGridViewTextBoxColumn60"
         Me.DataGridViewTextBoxColumn60.Visible = False
-        Me.DataGridViewTextBoxColumn60.Width = 44
+        Me.DataGridViewTextBoxColumn60.Width = 43
         '
         'DataGridViewTextBoxColumn61
         '
@@ -1957,7 +1957,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn61.HeaderText = "Code"
         Me.DataGridViewTextBoxColumn61.Name = "DataGridViewTextBoxColumn61"
         Me.DataGridViewTextBoxColumn61.ReadOnly = True
-        Me.DataGridViewTextBoxColumn61.Width = 62
+        Me.DataGridViewTextBoxColumn61.Width = 61
         '
         'DataGridViewTextBoxColumn62
         '
@@ -1973,7 +1973,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn63.Name = "DataGridViewTextBoxColumn63"
         Me.DataGridViewTextBoxColumn63.ReadOnly = True
         Me.DataGridViewTextBoxColumn63.Visible = False
-        Me.DataGridViewTextBoxColumn63.Width = 59
+        Me.DataGridViewTextBoxColumn63.Width = 58
         '
         'DataGridViewTextBoxColumn64
         '
@@ -1981,7 +1981,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn64.HeaderText = "Units"
         Me.DataGridViewTextBoxColumn64.Name = "DataGridViewTextBoxColumn64"
         Me.DataGridViewTextBoxColumn64.ReadOnly = True
-        Me.DataGridViewTextBoxColumn64.Width = 56
+        Me.DataGridViewTextBoxColumn64.Width = 55
         '
         'DataGridViewTextBoxColumn65
         '
@@ -1989,7 +1989,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn65.HeaderText = "Group"
         Me.DataGridViewTextBoxColumn65.Name = "DataGridViewTextBoxColumn65"
         Me.DataGridViewTextBoxColumn65.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn65.Width = 66
+        Me.DataGridViewTextBoxColumn65.Width = 65
         '
         'DataGridViewTextBoxColumn66
         '
@@ -1998,7 +1998,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn66.Name = "DataGridViewTextBoxColumn66"
         Me.DataGridViewTextBoxColumn66.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridViewTextBoxColumn66.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.DataGridViewTextBoxColumn66.Width = 45
+        Me.DataGridViewTextBoxColumn66.Width = 44
         '
         'DataGridViewTextBoxColumn67
         '
@@ -2018,7 +2018,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn69.HeaderText = "Pre-requisite"
         Me.DataGridViewTextBoxColumn69.Name = "DataGridViewTextBoxColumn69"
         Me.DataGridViewTextBoxColumn69.ReadOnly = True
-        Me.DataGridViewTextBoxColumn69.Width = 96
+        Me.DataGridViewTextBoxColumn69.Width = 95
         '
         'DataGridViewComboBoxColumn5
         '
@@ -2026,14 +2026,14 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewComboBoxColumn5.HeaderText = "Grade"
         Me.DataGridViewComboBoxColumn5.Name = "DataGridViewComboBoxColumn5"
         Me.DataGridViewComboBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewComboBoxColumn5.Width = 67
+        Me.DataGridViewComboBoxColumn5.Width = 66
         '
         'DataGridViewTextBoxColumn70
         '
         Me.DataGridViewTextBoxColumn70.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.DataGridViewTextBoxColumn70.HeaderText = "Credit"
         Me.DataGridViewTextBoxColumn70.Name = "DataGridViewTextBoxColumn70"
-        Me.DataGridViewTextBoxColumn70.Width = 64
+        Me.DataGridViewTextBoxColumn70.Width = 63
         '
         'DataGridViewTextBoxColumn71
         '
@@ -2075,9 +2075,9 @@ Partial Class frmStudentEvaluation
         Me.earned_2YS.AutoSize = True
         Me.earned_2YS.Dock = System.Windows.Forms.DockStyle.Left
         Me.earned_2YS.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.earned_2YS.Location = New System.Drawing.Point(124, 0)
+        Me.earned_2YS.Location = New System.Drawing.Point(121, 0)
         Me.earned_2YS.Name = "earned_2YS"
-        Me.earned_2YS.Size = New System.Drawing.Size(14, 16)
+        Me.earned_2YS.Size = New System.Drawing.Size(13, 16)
         Me.earned_2YS.TabIndex = 117
         Me.earned_2YS.Text = "0"
         '
@@ -2086,9 +2086,9 @@ Partial Class frmStudentEvaluation
         Me.Label31.AutoSize = True
         Me.Label31.Dock = System.Windows.Forms.DockStyle.Left
         Me.Label31.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label31.Location = New System.Drawing.Point(74, 0)
+        Me.Label31.Location = New System.Drawing.Point(72, 0)
         Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(50, 16)
+        Me.Label31.Size = New System.Drawing.Size(49, 16)
         Me.Label31.TabIndex = 116
         Me.Label31.Text = "Earned:"
         '
@@ -2096,9 +2096,9 @@ Partial Class frmStudentEvaluation
         '
         Me.Label34.AutoSize = True
         Me.Label34.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label34.Location = New System.Drawing.Point(51, 0)
+        Me.Label34.Location = New System.Drawing.Point(50, 0)
         Me.Label34.Name = "Label34"
-        Me.Label34.Size = New System.Drawing.Size(23, 16)
+        Me.Label34.Size = New System.Drawing.Size(22, 16)
         Me.Label34.TabIndex = 115
         Me.Label34.Text = "     "
         '
@@ -2108,7 +2108,7 @@ Partial Class frmStudentEvaluation
         Me.Label10.Dock = System.Windows.Forms.DockStyle.Left
         Me.Label10.Location = New System.Drawing.Point(0, 0)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(51, 16)
+        Me.Label10.Size = New System.Drawing.Size(50, 16)
         Me.Label10.TabIndex = 109
         Me.Label10.Text = "Summer"
         '
@@ -2133,25 +2133,25 @@ Partial Class frmStudentEvaluation
         Me.dg2Y2S.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dg2Y2S.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dg2Y2S.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle15.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg2Y2S.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle126.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle126.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle126.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle126.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle126.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle126.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle126.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg2Y2S.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle126
         Me.dg2Y2S.ColumnHeadersHeight = 20
         Me.dg2Y2S.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dg2Y2S.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn48, Me.DataGridViewTextBoxColumn49, Me.DataGridViewTextBoxColumn50, Me.DataGridViewTextBoxColumn51, Me.DataGridViewTextBoxColumn52, Me.DataGridViewTextBoxColumn53, Me.DataGridViewTextBoxColumn54, Me.DataGridViewTextBoxColumn55, Me.DataGridViewTextBoxColumn56, Me.DataGridViewTextBoxColumn57, Me.DataGridViewComboBoxColumn4, Me.DataGridViewTextBoxColumn58, Me.DataGridViewTextBoxColumn59, Me.DataGridViewImageColumn4, Me.Column12})
-        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle16.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg2Y2S.DefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle127.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle127.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle127.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle127.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle127.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle127.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle127.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg2Y2S.DefaultCellStyle = DataGridViewCellStyle127
         Me.dg2Y2S.EnableHeadersVisualStyles = False
         Me.dg2Y2S.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
         Me.dg2Y2S.Location = New System.Drawing.Point(7, 23)
@@ -2169,7 +2169,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn48.HeaderText = "ID"
         Me.DataGridViewTextBoxColumn48.Name = "DataGridViewTextBoxColumn48"
         Me.DataGridViewTextBoxColumn48.Visible = False
-        Me.DataGridViewTextBoxColumn48.Width = 44
+        Me.DataGridViewTextBoxColumn48.Width = 43
         '
         'DataGridViewTextBoxColumn49
         '
@@ -2177,7 +2177,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn49.HeaderText = "Code"
         Me.DataGridViewTextBoxColumn49.Name = "DataGridViewTextBoxColumn49"
         Me.DataGridViewTextBoxColumn49.ReadOnly = True
-        Me.DataGridViewTextBoxColumn49.Width = 62
+        Me.DataGridViewTextBoxColumn49.Width = 61
         '
         'DataGridViewTextBoxColumn50
         '
@@ -2193,7 +2193,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn51.Name = "DataGridViewTextBoxColumn51"
         Me.DataGridViewTextBoxColumn51.ReadOnly = True
         Me.DataGridViewTextBoxColumn51.Visible = False
-        Me.DataGridViewTextBoxColumn51.Width = 59
+        Me.DataGridViewTextBoxColumn51.Width = 58
         '
         'DataGridViewTextBoxColumn52
         '
@@ -2201,7 +2201,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn52.HeaderText = "Units"
         Me.DataGridViewTextBoxColumn52.Name = "DataGridViewTextBoxColumn52"
         Me.DataGridViewTextBoxColumn52.ReadOnly = True
-        Me.DataGridViewTextBoxColumn52.Width = 56
+        Me.DataGridViewTextBoxColumn52.Width = 55
         '
         'DataGridViewTextBoxColumn53
         '
@@ -2209,7 +2209,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn53.HeaderText = "Group"
         Me.DataGridViewTextBoxColumn53.Name = "DataGridViewTextBoxColumn53"
         Me.DataGridViewTextBoxColumn53.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn53.Width = 66
+        Me.DataGridViewTextBoxColumn53.Width = 65
         '
         'DataGridViewTextBoxColumn54
         '
@@ -2218,7 +2218,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn54.Name = "DataGridViewTextBoxColumn54"
         Me.DataGridViewTextBoxColumn54.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridViewTextBoxColumn54.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.DataGridViewTextBoxColumn54.Width = 45
+        Me.DataGridViewTextBoxColumn54.Width = 44
         '
         'DataGridViewTextBoxColumn55
         '
@@ -2238,7 +2238,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn57.HeaderText = "Pre-requisite"
         Me.DataGridViewTextBoxColumn57.Name = "DataGridViewTextBoxColumn57"
         Me.DataGridViewTextBoxColumn57.ReadOnly = True
-        Me.DataGridViewTextBoxColumn57.Width = 96
+        Me.DataGridViewTextBoxColumn57.Width = 95
         '
         'DataGridViewComboBoxColumn4
         '
@@ -2246,14 +2246,14 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewComboBoxColumn4.HeaderText = "Grade"
         Me.DataGridViewComboBoxColumn4.Name = "DataGridViewComboBoxColumn4"
         Me.DataGridViewComboBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewComboBoxColumn4.Width = 67
+        Me.DataGridViewComboBoxColumn4.Width = 66
         '
         'DataGridViewTextBoxColumn58
         '
         Me.DataGridViewTextBoxColumn58.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.DataGridViewTextBoxColumn58.HeaderText = "Credit"
         Me.DataGridViewTextBoxColumn58.Name = "DataGridViewTextBoxColumn58"
-        Me.DataGridViewTextBoxColumn58.Width = 64
+        Me.DataGridViewTextBoxColumn58.Width = 63
         '
         'DataGridViewTextBoxColumn59
         '
@@ -2295,9 +2295,9 @@ Partial Class frmStudentEvaluation
         Me.earned_2Y2S.AutoSize = True
         Me.earned_2Y2S.Dock = System.Windows.Forms.DockStyle.Left
         Me.earned_2Y2S.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.earned_2Y2S.Location = New System.Drawing.Point(153, 0)
+        Me.earned_2Y2S.Location = New System.Drawing.Point(150, 0)
         Me.earned_2Y2S.Name = "earned_2Y2S"
-        Me.earned_2Y2S.Size = New System.Drawing.Size(14, 16)
+        Me.earned_2Y2S.Size = New System.Drawing.Size(13, 16)
         Me.earned_2Y2S.TabIndex = 117
         Me.earned_2Y2S.Text = "0"
         '
@@ -2306,9 +2306,9 @@ Partial Class frmStudentEvaluation
         Me.Label29.AutoSize = True
         Me.Label29.Dock = System.Windows.Forms.DockStyle.Left
         Me.Label29.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label29.Location = New System.Drawing.Point(103, 0)
+        Me.Label29.Location = New System.Drawing.Point(101, 0)
         Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(50, 16)
+        Me.Label29.Size = New System.Drawing.Size(49, 16)
         Me.Label29.TabIndex = 116
         Me.Label29.Text = "Earned:"
         '
@@ -2316,9 +2316,9 @@ Partial Class frmStudentEvaluation
         '
         Me.Label32.AutoSize = True
         Me.Label32.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label32.Location = New System.Drawing.Point(80, 0)
+        Me.Label32.Location = New System.Drawing.Point(79, 0)
         Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(23, 16)
+        Me.Label32.Size = New System.Drawing.Size(22, 16)
         Me.Label32.TabIndex = 115
         Me.Label32.Text = "     "
         '
@@ -2328,7 +2328,7 @@ Partial Class frmStudentEvaluation
         Me.Label9.Dock = System.Windows.Forms.DockStyle.Left
         Me.Label9.Location = New System.Drawing.Point(0, 0)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(80, 16)
+        Me.Label9.Size = New System.Drawing.Size(79, 16)
         Me.Label9.TabIndex = 109
         Me.Label9.Text = "2nd Semester"
         '
@@ -2353,25 +2353,25 @@ Partial Class frmStudentEvaluation
         Me.dg2Y1S.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dg2Y1S.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dg2Y1S.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle17.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle17.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle17.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg2Y1S.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle17
+        DataGridViewCellStyle128.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle128.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle128.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle128.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle128.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle128.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle128.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg2Y1S.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle128
         Me.dg2Y1S.ColumnHeadersHeight = 20
         Me.dg2Y1S.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dg2Y1S.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn36, Me.DataGridViewTextBoxColumn37, Me.DataGridViewTextBoxColumn38, Me.DataGridViewTextBoxColumn39, Me.DataGridViewTextBoxColumn40, Me.DataGridViewTextBoxColumn41, Me.DataGridViewTextBoxColumn42, Me.DataGridViewTextBoxColumn43, Me.DataGridViewTextBoxColumn44, Me.DataGridViewTextBoxColumn45, Me.DataGridViewComboBoxColumn3, Me.DataGridViewTextBoxColumn46, Me.DataGridViewTextBoxColumn47, Me.DataGridViewImageColumn3, Me.Column11})
-        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle18.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg2Y1S.DefaultCellStyle = DataGridViewCellStyle18
+        DataGridViewCellStyle129.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle129.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle129.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle129.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle129.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle129.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle129.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg2Y1S.DefaultCellStyle = DataGridViewCellStyle129
         Me.dg2Y1S.EnableHeadersVisualStyles = False
         Me.dg2Y1S.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
         Me.dg2Y1S.Location = New System.Drawing.Point(7, 23)
@@ -2389,7 +2389,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn36.HeaderText = "ID"
         Me.DataGridViewTextBoxColumn36.Name = "DataGridViewTextBoxColumn36"
         Me.DataGridViewTextBoxColumn36.Visible = False
-        Me.DataGridViewTextBoxColumn36.Width = 44
+        Me.DataGridViewTextBoxColumn36.Width = 43
         '
         'DataGridViewTextBoxColumn37
         '
@@ -2397,7 +2397,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn37.HeaderText = "Code"
         Me.DataGridViewTextBoxColumn37.Name = "DataGridViewTextBoxColumn37"
         Me.DataGridViewTextBoxColumn37.ReadOnly = True
-        Me.DataGridViewTextBoxColumn37.Width = 62
+        Me.DataGridViewTextBoxColumn37.Width = 61
         '
         'DataGridViewTextBoxColumn38
         '
@@ -2413,7 +2413,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn39.Name = "DataGridViewTextBoxColumn39"
         Me.DataGridViewTextBoxColumn39.ReadOnly = True
         Me.DataGridViewTextBoxColumn39.Visible = False
-        Me.DataGridViewTextBoxColumn39.Width = 59
+        Me.DataGridViewTextBoxColumn39.Width = 58
         '
         'DataGridViewTextBoxColumn40
         '
@@ -2421,7 +2421,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn40.HeaderText = "Units"
         Me.DataGridViewTextBoxColumn40.Name = "DataGridViewTextBoxColumn40"
         Me.DataGridViewTextBoxColumn40.ReadOnly = True
-        Me.DataGridViewTextBoxColumn40.Width = 56
+        Me.DataGridViewTextBoxColumn40.Width = 55
         '
         'DataGridViewTextBoxColumn41
         '
@@ -2429,7 +2429,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn41.HeaderText = "Group"
         Me.DataGridViewTextBoxColumn41.Name = "DataGridViewTextBoxColumn41"
         Me.DataGridViewTextBoxColumn41.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn41.Width = 66
+        Me.DataGridViewTextBoxColumn41.Width = 65
         '
         'DataGridViewTextBoxColumn42
         '
@@ -2438,7 +2438,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn42.Name = "DataGridViewTextBoxColumn42"
         Me.DataGridViewTextBoxColumn42.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridViewTextBoxColumn42.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.DataGridViewTextBoxColumn42.Width = 45
+        Me.DataGridViewTextBoxColumn42.Width = 44
         '
         'DataGridViewTextBoxColumn43
         '
@@ -2458,7 +2458,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn45.HeaderText = "Pre-requisite"
         Me.DataGridViewTextBoxColumn45.Name = "DataGridViewTextBoxColumn45"
         Me.DataGridViewTextBoxColumn45.ReadOnly = True
-        Me.DataGridViewTextBoxColumn45.Width = 96
+        Me.DataGridViewTextBoxColumn45.Width = 95
         '
         'DataGridViewComboBoxColumn3
         '
@@ -2466,14 +2466,14 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewComboBoxColumn3.HeaderText = "Grade"
         Me.DataGridViewComboBoxColumn3.Name = "DataGridViewComboBoxColumn3"
         Me.DataGridViewComboBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewComboBoxColumn3.Width = 67
+        Me.DataGridViewComboBoxColumn3.Width = 66
         '
         'DataGridViewTextBoxColumn46
         '
         Me.DataGridViewTextBoxColumn46.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.DataGridViewTextBoxColumn46.HeaderText = "Credit"
         Me.DataGridViewTextBoxColumn46.Name = "DataGridViewTextBoxColumn46"
-        Me.DataGridViewTextBoxColumn46.Width = 64
+        Me.DataGridViewTextBoxColumn46.Width = 63
         '
         'DataGridViewTextBoxColumn47
         '
@@ -2515,9 +2515,9 @@ Partial Class frmStudentEvaluation
         Me.earned_2Y1S.AutoSize = True
         Me.earned_2Y1S.Dock = System.Windows.Forms.DockStyle.Left
         Me.earned_2Y1S.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.earned_2Y1S.Location = New System.Drawing.Point(146, 0)
+        Me.earned_2Y1S.Location = New System.Drawing.Point(143, 0)
         Me.earned_2Y1S.Name = "earned_2Y1S"
-        Me.earned_2Y1S.Size = New System.Drawing.Size(14, 16)
+        Me.earned_2Y1S.Size = New System.Drawing.Size(13, 16)
         Me.earned_2Y1S.TabIndex = 117
         Me.earned_2Y1S.Text = "0"
         '
@@ -2526,9 +2526,9 @@ Partial Class frmStudentEvaluation
         Me.Label27.AutoSize = True
         Me.Label27.Dock = System.Windows.Forms.DockStyle.Left
         Me.Label27.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label27.Location = New System.Drawing.Point(96, 0)
+        Me.Label27.Location = New System.Drawing.Point(94, 0)
         Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(50, 16)
+        Me.Label27.Size = New System.Drawing.Size(49, 16)
         Me.Label27.TabIndex = 116
         Me.Label27.Text = "Earned:"
         '
@@ -2536,9 +2536,9 @@ Partial Class frmStudentEvaluation
         '
         Me.Label30.AutoSize = True
         Me.Label30.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label30.Location = New System.Drawing.Point(73, 0)
+        Me.Label30.Location = New System.Drawing.Point(72, 0)
         Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(23, 16)
+        Me.Label30.Size = New System.Drawing.Size(22, 16)
         Me.Label30.TabIndex = 115
         Me.Label30.Text = "     "
         '
@@ -2548,7 +2548,7 @@ Partial Class frmStudentEvaluation
         Me.Label8.Dock = System.Windows.Forms.DockStyle.Left
         Me.Label8.Location = New System.Drawing.Point(0, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(73, 16)
+        Me.Label8.Size = New System.Drawing.Size(72, 16)
         Me.Label8.TabIndex = 109
         Me.Label8.Text = "1st Semester"
         '
@@ -2594,25 +2594,25 @@ Partial Class frmStudentEvaluation
         Me.dg1YS.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dg1YS.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dg1YS.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle19.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle19.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle19.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg1YS.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle19
+        DataGridViewCellStyle130.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle130.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle130.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle130.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle130.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle130.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle130.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg1YS.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle130
         Me.dg1YS.ColumnHeadersHeight = 20
         Me.dg1YS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dg1YS.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn24, Me.DataGridViewTextBoxColumn25, Me.DataGridViewTextBoxColumn26, Me.DataGridViewTextBoxColumn27, Me.DataGridViewTextBoxColumn28, Me.DataGridViewTextBoxColumn29, Me.DataGridViewTextBoxColumn30, Me.DataGridViewTextBoxColumn31, Me.DataGridViewTextBoxColumn32, Me.DataGridViewTextBoxColumn33, Me.DataGridViewComboBoxColumn2, Me.DataGridViewTextBoxColumn34, Me.DataGridViewTextBoxColumn35, Me.DataGridViewImageColumn2, Me.Column10})
-        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle20.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg1YS.DefaultCellStyle = DataGridViewCellStyle20
+        DataGridViewCellStyle131.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle131.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle131.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle131.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle131.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle131.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle131.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg1YS.DefaultCellStyle = DataGridViewCellStyle131
         Me.dg1YS.EnableHeadersVisualStyles = False
         Me.dg1YS.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
         Me.dg1YS.Location = New System.Drawing.Point(7, 23)
@@ -2630,7 +2630,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn24.HeaderText = "ID"
         Me.DataGridViewTextBoxColumn24.Name = "DataGridViewTextBoxColumn24"
         Me.DataGridViewTextBoxColumn24.Visible = False
-        Me.DataGridViewTextBoxColumn24.Width = 44
+        Me.DataGridViewTextBoxColumn24.Width = 43
         '
         'DataGridViewTextBoxColumn25
         '
@@ -2638,7 +2638,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn25.HeaderText = "Code"
         Me.DataGridViewTextBoxColumn25.Name = "DataGridViewTextBoxColumn25"
         Me.DataGridViewTextBoxColumn25.ReadOnly = True
-        Me.DataGridViewTextBoxColumn25.Width = 62
+        Me.DataGridViewTextBoxColumn25.Width = 61
         '
         'DataGridViewTextBoxColumn26
         '
@@ -2654,7 +2654,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn27.Name = "DataGridViewTextBoxColumn27"
         Me.DataGridViewTextBoxColumn27.ReadOnly = True
         Me.DataGridViewTextBoxColumn27.Visible = False
-        Me.DataGridViewTextBoxColumn27.Width = 59
+        Me.DataGridViewTextBoxColumn27.Width = 58
         '
         'DataGridViewTextBoxColumn28
         '
@@ -2662,7 +2662,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn28.HeaderText = "Units"
         Me.DataGridViewTextBoxColumn28.Name = "DataGridViewTextBoxColumn28"
         Me.DataGridViewTextBoxColumn28.ReadOnly = True
-        Me.DataGridViewTextBoxColumn28.Width = 56
+        Me.DataGridViewTextBoxColumn28.Width = 55
         '
         'DataGridViewTextBoxColumn29
         '
@@ -2670,7 +2670,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn29.HeaderText = "Group"
         Me.DataGridViewTextBoxColumn29.Name = "DataGridViewTextBoxColumn29"
         Me.DataGridViewTextBoxColumn29.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn29.Width = 66
+        Me.DataGridViewTextBoxColumn29.Width = 65
         '
         'DataGridViewTextBoxColumn30
         '
@@ -2679,7 +2679,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn30.Name = "DataGridViewTextBoxColumn30"
         Me.DataGridViewTextBoxColumn30.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridViewTextBoxColumn30.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.DataGridViewTextBoxColumn30.Width = 45
+        Me.DataGridViewTextBoxColumn30.Width = 44
         '
         'DataGridViewTextBoxColumn31
         '
@@ -2699,7 +2699,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn33.HeaderText = "Pre-requisite"
         Me.DataGridViewTextBoxColumn33.Name = "DataGridViewTextBoxColumn33"
         Me.DataGridViewTextBoxColumn33.ReadOnly = True
-        Me.DataGridViewTextBoxColumn33.Width = 96
+        Me.DataGridViewTextBoxColumn33.Width = 95
         '
         'DataGridViewComboBoxColumn2
         '
@@ -2707,14 +2707,14 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewComboBoxColumn2.HeaderText = "Grade"
         Me.DataGridViewComboBoxColumn2.Name = "DataGridViewComboBoxColumn2"
         Me.DataGridViewComboBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewComboBoxColumn2.Width = 67
+        Me.DataGridViewComboBoxColumn2.Width = 66
         '
         'DataGridViewTextBoxColumn34
         '
         Me.DataGridViewTextBoxColumn34.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.DataGridViewTextBoxColumn34.HeaderText = "Credit"
         Me.DataGridViewTextBoxColumn34.Name = "DataGridViewTextBoxColumn34"
-        Me.DataGridViewTextBoxColumn34.Width = 64
+        Me.DataGridViewTextBoxColumn34.Width = 63
         '
         'DataGridViewTextBoxColumn35
         '
@@ -2757,9 +2757,9 @@ Partial Class frmStudentEvaluation
         Me.earned_1YS.AutoSize = True
         Me.earned_1YS.Dock = System.Windows.Forms.DockStyle.Left
         Me.earned_1YS.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.earned_1YS.Location = New System.Drawing.Point(124, 0)
+        Me.earned_1YS.Location = New System.Drawing.Point(121, 0)
         Me.earned_1YS.Name = "earned_1YS"
-        Me.earned_1YS.Size = New System.Drawing.Size(14, 16)
+        Me.earned_1YS.Size = New System.Drawing.Size(13, 16)
         Me.earned_1YS.TabIndex = 117
         Me.earned_1YS.Text = "0"
         '
@@ -2768,9 +2768,9 @@ Partial Class frmStudentEvaluation
         Me.Label25.AutoSize = True
         Me.Label25.Dock = System.Windows.Forms.DockStyle.Left
         Me.Label25.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label25.Location = New System.Drawing.Point(74, 0)
+        Me.Label25.Location = New System.Drawing.Point(72, 0)
         Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(50, 16)
+        Me.Label25.Size = New System.Drawing.Size(49, 16)
         Me.Label25.TabIndex = 116
         Me.Label25.Text = "Earned:"
         '
@@ -2778,9 +2778,9 @@ Partial Class frmStudentEvaluation
         '
         Me.Label28.AutoSize = True
         Me.Label28.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label28.Location = New System.Drawing.Point(51, 0)
+        Me.Label28.Location = New System.Drawing.Point(50, 0)
         Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(23, 16)
+        Me.Label28.Size = New System.Drawing.Size(22, 16)
         Me.Label28.TabIndex = 115
         Me.Label28.Text = "     "
         '
@@ -2790,7 +2790,7 @@ Partial Class frmStudentEvaluation
         Me.Label6.Dock = System.Windows.Forms.DockStyle.Left
         Me.Label6.Location = New System.Drawing.Point(0, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(51, 16)
+        Me.Label6.Size = New System.Drawing.Size(50, 16)
         Me.Label6.TabIndex = 109
         Me.Label6.Text = "Summer"
         '
@@ -2815,25 +2815,25 @@ Partial Class frmStudentEvaluation
         Me.dg1Y2S.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dg1Y2S.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dg1Y2S.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle21.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle21.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle21.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg1Y2S.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle21
+        DataGridViewCellStyle132.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle132.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle132.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle132.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle132.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle132.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle132.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg1Y2S.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle132
         Me.dg1Y2S.ColumnHeadersHeight = 20
         Me.dg1Y2S.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dg1Y2S.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn12, Me.DataGridViewTextBoxColumn13, Me.DataGridViewTextBoxColumn18, Me.DataGridViewTextBoxColumn21, Me.DataGridViewComboBoxColumn1, Me.DataGridViewTextBoxColumn22, Me.DataGridViewTextBoxColumn23, Me.DataGridViewImageColumn1, Me.Column9})
-        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle22.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg1Y2S.DefaultCellStyle = DataGridViewCellStyle22
+        DataGridViewCellStyle133.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle133.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle133.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle133.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle133.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle133.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle133.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg1Y2S.DefaultCellStyle = DataGridViewCellStyle133
         Me.dg1Y2S.EnableHeadersVisualStyles = False
         Me.dg1Y2S.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
         Me.dg1Y2S.Location = New System.Drawing.Point(7, 23)
@@ -2851,7 +2851,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn6.HeaderText = "ID"
         Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
         Me.DataGridViewTextBoxColumn6.Visible = False
-        Me.DataGridViewTextBoxColumn6.Width = 44
+        Me.DataGridViewTextBoxColumn6.Width = 43
         '
         'DataGridViewTextBoxColumn7
         '
@@ -2859,7 +2859,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn7.HeaderText = "Code"
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
         Me.DataGridViewTextBoxColumn7.ReadOnly = True
-        Me.DataGridViewTextBoxColumn7.Width = 62
+        Me.DataGridViewTextBoxColumn7.Width = 61
         '
         'DataGridViewTextBoxColumn8
         '
@@ -2875,7 +2875,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
         Me.DataGridViewTextBoxColumn9.ReadOnly = True
         Me.DataGridViewTextBoxColumn9.Visible = False
-        Me.DataGridViewTextBoxColumn9.Width = 59
+        Me.DataGridViewTextBoxColumn9.Width = 58
         '
         'DataGridViewTextBoxColumn10
         '
@@ -2883,7 +2883,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn10.HeaderText = "Units"
         Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
         Me.DataGridViewTextBoxColumn10.ReadOnly = True
-        Me.DataGridViewTextBoxColumn10.Width = 56
+        Me.DataGridViewTextBoxColumn10.Width = 55
         '
         'DataGridViewTextBoxColumn11
         '
@@ -2891,7 +2891,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn11.HeaderText = "Group"
         Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
         Me.DataGridViewTextBoxColumn11.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn11.Width = 66
+        Me.DataGridViewTextBoxColumn11.Width = 65
         '
         'DataGridViewTextBoxColumn12
         '
@@ -2900,7 +2900,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
         Me.DataGridViewTextBoxColumn12.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridViewTextBoxColumn12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.DataGridViewTextBoxColumn12.Width = 45
+        Me.DataGridViewTextBoxColumn12.Width = 44
         '
         'DataGridViewTextBoxColumn13
         '
@@ -2920,7 +2920,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn21.HeaderText = "Pre-requisite"
         Me.DataGridViewTextBoxColumn21.Name = "DataGridViewTextBoxColumn21"
         Me.DataGridViewTextBoxColumn21.ReadOnly = True
-        Me.DataGridViewTextBoxColumn21.Width = 96
+        Me.DataGridViewTextBoxColumn21.Width = 95
         '
         'DataGridViewComboBoxColumn1
         '
@@ -2928,14 +2928,14 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewComboBoxColumn1.HeaderText = "Grade"
         Me.DataGridViewComboBoxColumn1.Name = "DataGridViewComboBoxColumn1"
         Me.DataGridViewComboBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewComboBoxColumn1.Width = 67
+        Me.DataGridViewComboBoxColumn1.Width = 66
         '
         'DataGridViewTextBoxColumn22
         '
         Me.DataGridViewTextBoxColumn22.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.DataGridViewTextBoxColumn22.HeaderText = "Credit"
         Me.DataGridViewTextBoxColumn22.Name = "DataGridViewTextBoxColumn22"
-        Me.DataGridViewTextBoxColumn22.Width = 64
+        Me.DataGridViewTextBoxColumn22.Width = 63
         '
         'DataGridViewTextBoxColumn23
         '
@@ -2978,9 +2978,9 @@ Partial Class frmStudentEvaluation
         Me.earned_1Y2S.AutoSize = True
         Me.earned_1Y2S.Dock = System.Windows.Forms.DockStyle.Left
         Me.earned_1Y2S.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.earned_1Y2S.Location = New System.Drawing.Point(153, 0)
+        Me.earned_1Y2S.Location = New System.Drawing.Point(150, 0)
         Me.earned_1Y2S.Name = "earned_1Y2S"
-        Me.earned_1Y2S.Size = New System.Drawing.Size(14, 16)
+        Me.earned_1Y2S.Size = New System.Drawing.Size(13, 16)
         Me.earned_1Y2S.TabIndex = 117
         Me.earned_1Y2S.Text = "0"
         '
@@ -2989,9 +2989,9 @@ Partial Class frmStudentEvaluation
         Me.Label23.AutoSize = True
         Me.Label23.Dock = System.Windows.Forms.DockStyle.Left
         Me.Label23.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label23.Location = New System.Drawing.Point(103, 0)
+        Me.Label23.Location = New System.Drawing.Point(101, 0)
         Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(50, 16)
+        Me.Label23.Size = New System.Drawing.Size(49, 16)
         Me.Label23.TabIndex = 116
         Me.Label23.Text = "Earned:"
         '
@@ -2999,9 +2999,9 @@ Partial Class frmStudentEvaluation
         '
         Me.Label26.AutoSize = True
         Me.Label26.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label26.Location = New System.Drawing.Point(80, 0)
+        Me.Label26.Location = New System.Drawing.Point(79, 0)
         Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(23, 16)
+        Me.Label26.Size = New System.Drawing.Size(22, 16)
         Me.Label26.TabIndex = 115
         Me.Label26.Text = "     "
         '
@@ -3011,7 +3011,7 @@ Partial Class frmStudentEvaluation
         Me.Label3.Dock = System.Windows.Forms.DockStyle.Left
         Me.Label3.Location = New System.Drawing.Point(0, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(80, 16)
+        Me.Label3.Size = New System.Drawing.Size(79, 16)
         Me.Label3.TabIndex = 109
         Me.Label3.Text = "2nd Semester"
         '
@@ -3036,25 +3036,25 @@ Partial Class frmStudentEvaluation
         Me.dg1Y1S.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dg1Y1S.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dg1Y1S.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle23.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle23.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle23.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg1Y1S.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle23
+        DataGridViewCellStyle134.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle134.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle134.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle134.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle134.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle134.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle134.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg1Y1S.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle134
         Me.dg1Y1S.ColumnHeadersHeight = 20
         Me.dg1Y1S.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dg1Y1S.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn14, Me.DataGridViewTextBoxColumn15, Me.DataGridViewTextBoxColumn16, Me.DataGridViewTextBoxColumn17, Me.DataGridViewTextBoxColumn19, Me.cbGroup, Me.cbPassingGrade, Me.pID, Me.Column3, Me.DataGridViewTextBoxColumn20, Me.cbGrades, Me.Column1, Me.colView, Me.subjectChange, Me.colAdd})
-        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle24.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg1Y1S.DefaultCellStyle = DataGridViewCellStyle24
+        DataGridViewCellStyle135.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle135.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle135.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle135.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle135.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle135.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle135.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg1Y1S.DefaultCellStyle = DataGridViewCellStyle135
         Me.dg1Y1S.EnableHeadersVisualStyles = False
         Me.dg1Y1S.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
         Me.dg1Y1S.Location = New System.Drawing.Point(7, 23)
@@ -3072,7 +3072,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn14.HeaderText = "ID"
         Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
         Me.DataGridViewTextBoxColumn14.Visible = False
-        Me.DataGridViewTextBoxColumn14.Width = 44
+        Me.DataGridViewTextBoxColumn14.Width = 43
         '
         'DataGridViewTextBoxColumn15
         '
@@ -3080,7 +3080,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn15.HeaderText = "Code"
         Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
         Me.DataGridViewTextBoxColumn15.ReadOnly = True
-        Me.DataGridViewTextBoxColumn15.Width = 62
+        Me.DataGridViewTextBoxColumn15.Width = 61
         '
         'DataGridViewTextBoxColumn16
         '
@@ -3096,7 +3096,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
         Me.DataGridViewTextBoxColumn17.ReadOnly = True
         Me.DataGridViewTextBoxColumn17.Visible = False
-        Me.DataGridViewTextBoxColumn17.Width = 59
+        Me.DataGridViewTextBoxColumn17.Width = 58
         '
         'DataGridViewTextBoxColumn19
         '
@@ -3104,7 +3104,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn19.HeaderText = "Units"
         Me.DataGridViewTextBoxColumn19.Name = "DataGridViewTextBoxColumn19"
         Me.DataGridViewTextBoxColumn19.ReadOnly = True
-        Me.DataGridViewTextBoxColumn19.Width = 56
+        Me.DataGridViewTextBoxColumn19.Width = 55
         '
         'cbGroup
         '
@@ -3112,7 +3112,7 @@ Partial Class frmStudentEvaluation
         Me.cbGroup.HeaderText = "Group"
         Me.cbGroup.Name = "cbGroup"
         Me.cbGroup.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.cbGroup.Width = 66
+        Me.cbGroup.Width = 65
         '
         'cbPassingGrade
         '
@@ -3121,7 +3121,7 @@ Partial Class frmStudentEvaluation
         Me.cbPassingGrade.Name = "cbPassingGrade"
         Me.cbPassingGrade.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.cbPassingGrade.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.cbPassingGrade.Width = 45
+        Me.cbPassingGrade.Width = 44
         '
         'pID
         '
@@ -3141,7 +3141,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn20.HeaderText = "Pre-requisite"
         Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
         Me.DataGridViewTextBoxColumn20.ReadOnly = True
-        Me.DataGridViewTextBoxColumn20.Width = 96
+        Me.DataGridViewTextBoxColumn20.Width = 95
         '
         'cbGrades
         '
@@ -3149,14 +3149,14 @@ Partial Class frmStudentEvaluation
         Me.cbGrades.HeaderText = "Grade"
         Me.cbGrades.Name = "cbGrades"
         Me.cbGrades.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.cbGrades.Width = 67
+        Me.cbGrades.Width = 66
         '
         'Column1
         '
         Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.Column1.HeaderText = "Credit"
         Me.Column1.Name = "Column1"
-        Me.Column1.Width = 64
+        Me.Column1.Width = 63
         '
         'colView
         '
@@ -3199,9 +3199,9 @@ Partial Class frmStudentEvaluation
         Me.earned_1Y1S.AutoSize = True
         Me.earned_1Y1S.Dock = System.Windows.Forms.DockStyle.Left
         Me.earned_1Y1S.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.earned_1Y1S.Location = New System.Drawing.Point(146, 0)
+        Me.earned_1Y1S.Location = New System.Drawing.Point(143, 0)
         Me.earned_1Y1S.Name = "earned_1Y1S"
-        Me.earned_1Y1S.Size = New System.Drawing.Size(14, 16)
+        Me.earned_1Y1S.Size = New System.Drawing.Size(13, 16)
         Me.earned_1Y1S.TabIndex = 116
         Me.earned_1Y1S.Text = "0"
         '
@@ -3210,9 +3210,9 @@ Partial Class frmStudentEvaluation
         Me.Label22.AutoSize = True
         Me.Label22.Dock = System.Windows.Forms.DockStyle.Left
         Me.Label22.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label22.Location = New System.Drawing.Point(96, 0)
+        Me.Label22.Location = New System.Drawing.Point(94, 0)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(50, 16)
+        Me.Label22.Size = New System.Drawing.Size(49, 16)
         Me.Label22.TabIndex = 115
         Me.Label22.Text = "Earned:"
         '
@@ -3220,9 +3220,9 @@ Partial Class frmStudentEvaluation
         '
         Me.Label24.AutoSize = True
         Me.Label24.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label24.Location = New System.Drawing.Point(73, 0)
+        Me.Label24.Location = New System.Drawing.Point(72, 0)
         Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(23, 16)
+        Me.Label24.Size = New System.Drawing.Size(22, 16)
         Me.Label24.TabIndex = 114
         Me.Label24.Text = "     "
         '
@@ -3232,7 +3232,7 @@ Partial Class frmStudentEvaluation
         Me.Label4.Dock = System.Windows.Forms.DockStyle.Left
         Me.Label4.Location = New System.Drawing.Point(0, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(73, 16)
+        Me.Label4.Size = New System.Drawing.Size(72, 16)
         Me.Label4.TabIndex = 109
         Me.Label4.Text = "1st Semester"
         '
@@ -3305,25 +3305,25 @@ Partial Class frmStudentEvaluation
         Me.dgStudentCurrList.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgStudentCurrList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgStudentCurrList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle25.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle25.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle25.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle25.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle25.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgStudentCurrList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle25
+        DataGridViewCellStyle136.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle136.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle136.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle136.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle136.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle136.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle136.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgStudentCurrList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle136
         Me.dgStudentCurrList.ColumnHeadersHeight = 40
         Me.dgStudentCurrList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgStudentCurrList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colLoad, Me.DataGridViewTextBoxColumn154, Me.DataGridViewTextBoxColumn155, Me.DataGridViewTextBoxColumn156, Me.DataGridViewTextBoxColumn157, Me.Column5, Me.Column6, Me.DataGridViewTextBoxColumn158, Me.Column7, Me.colStatus, Me.colRemove})
-        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle26.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle26.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgStudentCurrList.DefaultCellStyle = DataGridViewCellStyle26
+        DataGridViewCellStyle137.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle137.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle137.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle137.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle137.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle137.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle137.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgStudentCurrList.DefaultCellStyle = DataGridViewCellStyle137
         Me.dgStudentCurrList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgStudentCurrList.EnableHeadersVisualStyles = False
         Me.dgStudentCurrList.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
@@ -3355,7 +3355,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn154.Name = "DataGridViewTextBoxColumn154"
         Me.DataGridViewTextBoxColumn154.ReadOnly = True
         Me.DataGridViewTextBoxColumn154.Visible = False
-        Me.DataGridViewTextBoxColumn154.Width = 44
+        Me.DataGridViewTextBoxColumn154.Width = 43
         '
         'DataGridViewTextBoxColumn155
         '
@@ -3371,7 +3371,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn156.Name = "DataGridViewTextBoxColumn156"
         Me.DataGridViewTextBoxColumn156.ReadOnly = True
         Me.DataGridViewTextBoxColumn156.Visible = False
-        Me.DataGridViewTextBoxColumn156.Width = 70
+        Me.DataGridViewTextBoxColumn156.Width = 69
         '
         'DataGridViewTextBoxColumn157
         '
@@ -3387,7 +3387,7 @@ Partial Class frmStudentEvaluation
         Me.Column5.HeaderText = "Units"
         Me.Column5.Name = "Column5"
         Me.Column5.ReadOnly = True
-        Me.Column5.Width = 56
+        Me.Column5.Width = 55
         '
         'Column6
         '
@@ -3395,7 +3395,7 @@ Partial Class frmStudentEvaluation
         Me.Column6.HeaderText = "Earned"
         Me.Column6.Name = "Column6"
         Me.Column6.ReadOnly = True
-        Me.Column6.Width = 70
+        Me.Column6.Width = 69
         '
         'DataGridViewTextBoxColumn158
         '
@@ -3403,7 +3403,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn158.HeaderText = "Status"
         Me.DataGridViewTextBoxColumn158.Name = "DataGridViewTextBoxColumn158"
         Me.DataGridViewTextBoxColumn158.ReadOnly = True
-        Me.DataGridViewTextBoxColumn158.Width = 64
+        Me.DataGridViewTextBoxColumn158.Width = 63
         '
         'Column7
         '
@@ -3460,9 +3460,9 @@ Partial Class frmStudentEvaluation
         Me.FlowLayoutPanel1.Controls.Add(Me.btnAssignCurriculum)
         Me.FlowLayoutPanel1.Controls.Add(Me.btnSubjects)
         Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(112, 0)
+        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(110, 0)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(346, 20)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(348, 20)
         Me.FlowLayoutPanel1.TabIndex = 141
         '
         'btnLoadGrades
@@ -3471,7 +3471,7 @@ Partial Class frmStudentEvaluation
         Me.btnLoadGrades.Dock = System.Windows.Forms.DockStyle.Left
         Me.btnLoadGrades.Location = New System.Drawing.Point(3, 0)
         Me.btnLoadGrades.Name = "btnLoadGrades"
-        Me.btnLoadGrades.Size = New System.Drawing.Size(53, 16)
+        Me.btnLoadGrades.Size = New System.Drawing.Size(52, 16)
         Me.btnLoadGrades.TabIndex = 142
         Me.btnLoadGrades.Text = "[ LOAD ]"
         Me.btnLoadGrades.Visible = False
@@ -3481,9 +3481,9 @@ Partial Class frmStudentEvaluation
         Me.btnAssignCurriculum.AutoSize = True
         Me.btnAssignCurriculum.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnAssignCurriculum.Dock = System.Windows.Forms.DockStyle.Left
-        Me.btnAssignCurriculum.Location = New System.Drawing.Point(62, 0)
+        Me.btnAssignCurriculum.Location = New System.Drawing.Point(61, 0)
         Me.btnAssignCurriculum.Name = "btnAssignCurriculum"
-        Me.btnAssignCurriculum.Size = New System.Drawing.Size(63, 16)
+        Me.btnAssignCurriculum.Size = New System.Drawing.Size(62, 16)
         Me.btnAssignCurriculum.TabIndex = 143
         Me.btnAssignCurriculum.Text = "[ ASSIGN ]"
         Me.btnAssignCurriculum.Visible = False
@@ -3491,9 +3491,9 @@ Partial Class frmStudentEvaluation
         'btnSubjects
         '
         Me.btnSubjects.AutoSize = True
-        Me.btnSubjects.Location = New System.Drawing.Point(131, 0)
+        Me.btnSubjects.Location = New System.Drawing.Point(129, 0)
         Me.btnSubjects.Name = "btnSubjects"
-        Me.btnSubjects.Size = New System.Drawing.Size(125, 16)
+        Me.btnSubjects.Size = New System.Drawing.Size(124, 16)
         Me.btnSubjects.TabIndex = 143
         Me.btnSubjects.Text = "[ ENROLLMENT CART ]"
         Me.btnSubjects.Visible = False
@@ -3513,9 +3513,9 @@ Partial Class frmStudentEvaluation
         '
         Me.Label5.AutoSize = True
         Me.Label5.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Label5.Location = New System.Drawing.Point(65, 0)
+        Me.Label5.Location = New System.Drawing.Point(64, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(47, 16)
+        Me.Label5.Size = New System.Drawing.Size(46, 16)
         Me.Label5.TabIndex = 133
         Me.Label5.Text = "             "
         '
@@ -3525,7 +3525,7 @@ Partial Class frmStudentEvaluation
         Me.Label1.Dock = System.Windows.Forms.DockStyle.Left
         Me.Label1.Location = New System.Drawing.Point(0, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(65, 16)
+        Me.Label1.Size = New System.Drawing.Size(64, 16)
         Me.Label1.TabIndex = 109
         Me.Label1.Text = "Curriculum"
         '
@@ -3579,7 +3579,7 @@ Partial Class frmStudentEvaluation
         Me.Label11.Dock = System.Windows.Forms.DockStyle.Left
         Me.Label11.Location = New System.Drawing.Point(0, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(51, 16)
+        Me.Label11.Size = New System.Drawing.Size(50, 16)
         Me.Label11.TabIndex = 109
         Me.Label11.Text = "Student"
         '
@@ -3666,25 +3666,25 @@ Partial Class frmStudentEvaluation
         Me.dgStudentList.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgStudentList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgStudentList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle27.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle27.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle27.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgStudentList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle27
+        DataGridViewCellStyle138.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle138.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle138.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle138.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle138.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle138.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle138.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgStudentList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle138
         Me.dgStudentList.ColumnHeadersHeight = 40
         Me.dgStudentList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgStudentList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn144, Me.DataGridViewTextBoxColumn145, Me.DataGridViewTextBoxColumn146, Me.DataGridViewTextBoxColumn147, Me.DataGridViewTextBoxColumn148, Me.DataGridViewTextBoxColumn149, Me.DataGridViewTextBoxColumn150, Me.DataGridViewTextBoxColumn151, Me.DataGridViewTextBoxColumn152, Me.Column16, Me.Column17, Me.DataGridViewImageColumn12})
-        DataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle28.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle28.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle28.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgStudentList.DefaultCellStyle = DataGridViewCellStyle28
+        DataGridViewCellStyle139.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle139.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle139.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle139.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle139.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle139.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle139.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgStudentList.DefaultCellStyle = DataGridViewCellStyle139
         Me.dgStudentList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgStudentList.EnableHeadersVisualStyles = False
         Me.dgStudentList.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
@@ -3704,7 +3704,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn144.HeaderText = "#"
         Me.DataGridViewTextBoxColumn144.Name = "DataGridViewTextBoxColumn144"
         Me.DataGridViewTextBoxColumn144.ReadOnly = True
-        Me.DataGridViewTextBoxColumn144.Width = 39
+        Me.DataGridViewTextBoxColumn144.Width = 38
         '
         'DataGridViewTextBoxColumn145
         '
@@ -3712,7 +3712,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn145.HeaderText = "ID"
         Me.DataGridViewTextBoxColumn145.Name = "DataGridViewTextBoxColumn145"
         Me.DataGridViewTextBoxColumn145.ReadOnly = True
-        Me.DataGridViewTextBoxColumn145.Width = 42
+        Me.DataGridViewTextBoxColumn145.Width = 41
         '
         'DataGridViewTextBoxColumn146
         '
@@ -3741,7 +3741,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn149.HeaderText = "Suffix"
         Me.DataGridViewTextBoxColumn149.Name = "DataGridViewTextBoxColumn149"
         Me.DataGridViewTextBoxColumn149.ReadOnly = True
-        Me.DataGridViewTextBoxColumn149.Width = 58
+        Me.DataGridViewTextBoxColumn149.Width = 57
         '
         'DataGridViewTextBoxColumn150
         '
@@ -3749,7 +3749,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn150.HeaderText = "Gender"
         Me.DataGridViewTextBoxColumn150.Name = "DataGridViewTextBoxColumn150"
         Me.DataGridViewTextBoxColumn150.ReadOnly = True
-        Me.DataGridViewTextBoxColumn150.Width = 73
+        Me.DataGridViewTextBoxColumn150.Width = 72
         '
         'DataGridViewTextBoxColumn151
         '
@@ -3757,7 +3757,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn151.HeaderText = "Year Level"
         Me.DataGridViewTextBoxColumn151.Name = "DataGridViewTextBoxColumn151"
         Me.DataGridViewTextBoxColumn151.ReadOnly = True
-        Me.DataGridViewTextBoxColumn151.Width = 81
+        Me.DataGridViewTextBoxColumn151.Width = 80
         '
         'DataGridViewTextBoxColumn152
         '
@@ -3765,7 +3765,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn152.HeaderText = "Course/Strand/Grade"
         Me.DataGridViewTextBoxColumn152.Name = "DataGridViewTextBoxColumn152"
         Me.DataGridViewTextBoxColumn152.ReadOnly = True
-        Me.DataGridViewTextBoxColumn152.Width = 150
+        Me.DataGridViewTextBoxColumn152.Width = 149
         '
         'Column16
         '
@@ -3798,25 +3798,25 @@ Partial Class frmStudentEvaluation
         Me.dgCurrList.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgCurrList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgCurrList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle29.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle29.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle29.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle29.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle29.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgCurrList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle29
+        DataGridViewCellStyle140.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle140.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle140.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle140.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle140.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle140.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle140.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgCurrList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle140
         Me.dgCurrList.ColumnHeadersHeight = 40
         Me.dgCurrList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgCurrList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column4, Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.colUpdate, Me.colSetup})
-        DataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle30.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgCurrList.DefaultCellStyle = DataGridViewCellStyle30
+        DataGridViewCellStyle141.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle141.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle141.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle141.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle141.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle141.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle141.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgCurrList.DefaultCellStyle = DataGridViewCellStyle141
         Me.dgCurrList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgCurrList.EnableHeadersVisualStyles = False
         Me.dgCurrList.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
@@ -3836,7 +3836,7 @@ Partial Class frmStudentEvaluation
         Me.Column4.HeaderText = "#"
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
-        Me.Column4.Width = 39
+        Me.Column4.Width = 38
         '
         'DataGridViewTextBoxColumn1
         '
@@ -3845,7 +3845,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
         Me.DataGridViewTextBoxColumn1.ReadOnly = True
         Me.DataGridViewTextBoxColumn1.Visible = False
-        Me.DataGridViewTextBoxColumn1.Width = 44
+        Me.DataGridViewTextBoxColumn1.Width = 43
         '
         'DataGridViewTextBoxColumn3
         '
@@ -3853,7 +3853,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn3.HeaderText = "Curriculum"
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
         Me.DataGridViewTextBoxColumn3.ReadOnly = True
-        Me.DataGridViewTextBoxColumn3.Width = 88
+        Me.DataGridViewTextBoxColumn3.Width = 87
         '
         'DataGridViewTextBoxColumn2
         '
@@ -3861,7 +3861,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn2.HeaderText = "Course"
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
         Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        Me.DataGridViewTextBoxColumn2.Width = 68
+        Me.DataGridViewTextBoxColumn2.Width = 67
         '
         'DataGridViewTextBoxColumn4
         '
@@ -3876,7 +3876,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn5.HeaderText = "Status"
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
         Me.DataGridViewTextBoxColumn5.ReadOnly = True
-        Me.DataGridViewTextBoxColumn5.Width = 64
+        Me.DataGridViewTextBoxColumn5.Width = 63
         '
         'colUpdate
         '
@@ -3908,25 +3908,25 @@ Partial Class frmStudentEvaluation
         Me.dgGradeList.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgGradeList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgGradeList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle31.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle31.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle31.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle31.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgGradeList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle31
+        DataGridViewCellStyle142.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle142.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle142.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle142.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle142.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle142.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle142.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgGradeList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle142
         Me.dgGradeList.ColumnHeadersHeight = 40
         Me.dgGradeList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgGradeList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn159, Me.Column2, Me.DataGridViewTextBoxColumn153, Me.DataGridViewTextBoxColumn160, Me.DataGridViewTextBoxColumn161, Me.DataGridViewTextBoxColumn167, Me.Column8})
-        DataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle32.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle32.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle32.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgGradeList.DefaultCellStyle = DataGridViewCellStyle32
+        DataGridViewCellStyle143.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle143.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle143.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle143.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle143.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle143.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle143.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgGradeList.DefaultCellStyle = DataGridViewCellStyle143
         Me.dgGradeList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgGradeList.EnableHeadersVisualStyles = False
         Me.dgGradeList.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
@@ -3947,7 +3947,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn159.Name = "DataGridViewTextBoxColumn159"
         Me.DataGridViewTextBoxColumn159.ReadOnly = True
         Me.DataGridViewTextBoxColumn159.Visible = False
-        Me.DataGridViewTextBoxColumn159.Width = 44
+        Me.DataGridViewTextBoxColumn159.Width = 43
         '
         'Column2
         '
@@ -3962,7 +3962,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn153.HeaderText = "Academic Year"
         Me.DataGridViewTextBoxColumn153.Name = "DataGridViewTextBoxColumn153"
         Me.DataGridViewTextBoxColumn153.ReadOnly = True
-        Me.DataGridViewTextBoxColumn153.Width = 105
+        Me.DataGridViewTextBoxColumn153.Width = 104
         '
         'DataGridViewTextBoxColumn160
         '
@@ -3970,7 +3970,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn160.HeaderText = "Code"
         Me.DataGridViewTextBoxColumn160.Name = "DataGridViewTextBoxColumn160"
         Me.DataGridViewTextBoxColumn160.ReadOnly = True
-        Me.DataGridViewTextBoxColumn160.Width = 62
+        Me.DataGridViewTextBoxColumn160.Width = 61
         '
         'DataGridViewTextBoxColumn161
         '
@@ -3985,7 +3985,7 @@ Partial Class frmStudentEvaluation
         Me.DataGridViewTextBoxColumn167.HeaderText = "Grade"
         Me.DataGridViewTextBoxColumn167.Name = "DataGridViewTextBoxColumn167"
         Me.DataGridViewTextBoxColumn167.ReadOnly = True
-        Me.DataGridViewTextBoxColumn167.Width = 67
+        Me.DataGridViewTextBoxColumn167.Width = 66
         '
         'Column8
         '
@@ -3993,7 +3993,7 @@ Partial Class frmStudentEvaluation
         Me.Column8.HeaderText = "Status"
         Me.Column8.Name = "Column8"
         Me.Column8.ReadOnly = True
-        Me.Column8.Width = 64
+        Me.Column8.Width = 63
         '
         'Panel16
         '
@@ -4198,51 +4198,51 @@ Partial Class frmStudentEvaluation
         'dgadditional
         '
         Me.dgadditional.AllowUserToAddRows = False
-        DataGridViewCellStyle33.BackColor = System.Drawing.Color.White
-        Me.dgadditional.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle33
+        DataGridViewCellStyle144.BackColor = System.Drawing.Color.White
+        Me.dgadditional.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle144
         Me.dgadditional.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgadditional.BackgroundColor = System.Drawing.Color.White
         Me.dgadditional.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgadditional.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle34.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
-        DataGridViewCellStyle34.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle34.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle34.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgadditional.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle34
+        DataGridViewCellStyle145.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle145.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        DataGridViewCellStyle145.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle145.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle145.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle145.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle145.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgadditional.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle145
         Me.dgadditional.ColumnHeadersHeight = 30
         Me.dgadditional.Cursor = System.Windows.Forms.Cursors.Hand
-        DataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle35.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle35.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle35.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgadditional.DefaultCellStyle = DataGridViewCellStyle35
+        DataGridViewCellStyle146.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle146.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle146.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle146.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle146.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle146.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle146.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgadditional.DefaultCellStyle = DataGridViewCellStyle146
         Me.dgadditional.EnableHeadersVisualStyles = False
         Me.dgadditional.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
         Me.dgadditional.Location = New System.Drawing.Point(3, 6)
         Me.dgadditional.Name = "dgadditional"
         Me.dgadditional.ReadOnly = True
         Me.dgadditional.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle36.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
-        DataGridViewCellStyle36.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle36.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle36.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
-        DataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgadditional.RowHeadersDefaultCellStyle = DataGridViewCellStyle36
+        DataGridViewCellStyle147.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle147.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        DataGridViewCellStyle147.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle147.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle147.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        DataGridViewCellStyle147.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle147.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgadditional.RowHeadersDefaultCellStyle = DataGridViewCellStyle147
         Me.dgadditional.RowHeadersWidth = 25
         Me.dgadditional.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle37.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle37.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle37.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        DataGridViewCellStyle37.SelectionForeColor = System.Drawing.Color.White
-        Me.dgadditional.RowsDefaultCellStyle = DataGridViewCellStyle37
+        DataGridViewCellStyle148.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle148.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle148.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle148.SelectionForeColor = System.Drawing.Color.White
+        Me.dgadditional.RowsDefaultCellStyle = DataGridViewCellStyle148
         Me.dgadditional.RowTemplate.Height = 20
         Me.dgadditional.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.dgadditional.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
@@ -4268,8 +4268,8 @@ Partial Class frmStudentEvaluation
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(998, 601)
         Me.ControlBox = False
-        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.SearchPanel)
+        Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)

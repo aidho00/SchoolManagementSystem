@@ -1292,7 +1292,8 @@ Public Class frmStudentEvaluation
     End Sub
 
     Private Sub btnSubjects_Click(sender As Object, e As EventArgs) Handles btnSubjects.Click
-        OpenFormEvaluation(frmEvaluationSubjects)
+        frmEvaluationSubjects.Show()
+        'OpenFormEvaluation(frmEvaluationSubjects)
         ''frmEvaluationSubjects.Show()
         ''fillCombo("SELECT CONCAT(period_name,'-',period_semester) as 'PERIOD', period_id FROM  tbl_period where period_enrollment_status = 'OPEN' order by  `period_name` desc, `period_semester` desc, `period_status` asc", frmEvaluationSubjects.cbAcademicYear, "tbl_period", "PERIOD", "period_id")
     End Sub

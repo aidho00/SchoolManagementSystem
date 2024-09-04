@@ -88,7 +88,7 @@ Public Class frmEvaluationSubjects
                         Next
                         UserActivity("Saved subject schedules for student " & frmStudentEvaluation.txtStudent.Text & " enrollment in academic year " & cbAcademicYear.Text & ".", "STUDENT EVALUATION")
 
-                        query("UPDATE tbl_students_curriculum SET `sc_total_units` = " & CInt(frmStudentEvaluation.dgStudentCurrList.CurrentRow.Cells(6).Value) & ", `sc_status` = '" & If(CInt(frmStudentEvaluation.dgStudentCurrList.CurrentRow.Cells(5).Value) >= CInt(frmStudentEvaluation.dgStudentCurrList.CurrentRow.Cells(6).Value), "Completed", "Ongoing") & "' WHERE sc_student_id = '" & frmStudentEvaluation.StudentID & "' and scg_curr_id = " & frmStudentEvaluation.currid & "")
+                        query("UPDATE tbl_students_curriculum SET `sc_total_units` = " & CInt(frmStudentEvaluation.dgStudentCurrList.CurrentRow.Cells(6).Value) & ", `sc_status` = '" & If(CInt(frmStudentEvaluation.dgStudentCurrList.CurrentRow.Cells(6).Value) >= CInt(frmStudentEvaluation.dgStudentCurrList.CurrentRow.Cells(5).Value), "Completed", "Ongoing") & "' WHERE sc_student_id = '" & frmStudentEvaluation.StudentID & "' and sc_curr_id = " & frmStudentEvaluation.currid & "")
                         UserActivity("Updated student " & frmStudentEvaluation.txtStudent.Text & " curriculum " & frmStudentEvaluation.txtCurr.Text & " record. " & frmStudentEvaluation.dgStudentCurrList.CurrentRow.Cells(5).Value & " units earned out of " & frmStudentEvaluation.dgStudentCurrList.CurrentRow.Cells(6).Value & ".", "STUDENT EVALUATION")
                         Dim imageFromPictureBox As Image = frmStudentEvaluation.pic2.Image
                         frmStudentEvaluation.dgStudentCurrList.CurrentRow.Cells(9).Value = imageFromPictureBox
@@ -107,10 +107,10 @@ Public Class frmEvaluationSubjects
         cn.Close()
         cn.Open()
         frmReportViewer.Show()
-        Try
-            Dim dtable As DataTable
-            Dim dbcommand As New MySqlCommand("Select (class_schedule_id) As 'ID', (cb_code) as 'Class', (subject_code) as 'Subject Code', (subject_description) as 'Subject Desc.', (subject_units) as 'Units', if(ds_code = 'M T W TH F SAT SUN', 'DAILY', ds_code) as 'Days', (time_start_schedule) as 'Start Time', (time_end_schedule) as 'End Time', (room_code) as 'Room', (Instructor) as 'Instructor', DATE_FORMAT(tbl_enrollment.eenrolledby_datetime,'%M %d, %Y') as 'DateEnrolled', CONCAT(tbl_user_account.ua_first_name,' ',tbl_user_account.ua_middle_name, ' ', tbl_user_account.ua_last_name) as 'EnrolledBy', ewithdrawn_datetime from from tbl_class_schedule, tbl_class_block, tbl_subject, tbl_day_schedule, tbl_room, employee, tbl_enrollment_subjects where tbl_class_schedule.class_block_id = tbl_class_block.cb_id and tbl_class_schedule.cssubject_id = tbl_subject.subject_id and tbl_class_schedule.days_schedule = tbl_day_schedule.ds_id and tbl_class_schedule.csroom_id = tbl_room.room_id and tbl_class_schedule.csemp_id = employee.emp_id and tbl_class_schedule.class_schedule_id = tbl_enrollment_subjects.es_class_schedule_id and tbl_enrollment_subjects.es_student_id = '" & frmStudentEvaluation.StudentID & "' and tbl_enrollment_subjects.es_period_id = " & CInt(cbAcademicYear.SelectedValue) & " order by Days asc, STR_TO_DATE(`Start Time`,'%l:%i:%s %p') asc", cn)
-            Dim adt As New MySqlDataAdapter
+        'Try
+        Dim dtable As DataTable
+        Dim dbcommand As New MySqlCommand("SELECT tbl_class_schedule.class_schedule_id AS 'ID', tbl_class_block.cb_code AS 'Class', tbl_subject.subject_code AS 'Subject Code', tbl_subject.subject_description AS 'Subject Desc.', tbl_subject.subject_units AS 'Units', IF(tbl_day_schedule.ds_code = 'M T W TH F SAT SUN', 'DAILY', tbl_day_schedule.ds_code) AS 'Days', tbl_class_schedule.time_start_schedule AS 'Start Time', tbl_class_schedule.time_end_schedule AS 'End Time', tbl_room.room_code AS 'Room', employee.Instructor AS 'Instructor', DATE_FORMAT(tbl_enrollment.eenrolledby_datetime, '%M %d, %Y') AS 'DateEnrolled', CONCAT(tbl_user_account.ua_first_name, ' ', tbl_user_account.ua_middle_name, ' ', tbl_user_account.ua_last_name) AS 'EnrolledBy', '' as `Nothing` FROM tbl_class_schedule JOIN tbl_class_block ON tbl_class_schedule.class_block_id = tbl_class_block.cb_id JOIN tbl_subject ON tbl_class_schedule.cssubject_id = tbl_subject.subject_id JOIN tbl_day_schedule ON tbl_class_schedule.days_schedule = tbl_day_schedule.ds_id JOIN tbl_room ON tbl_class_schedule.csroom_id = tbl_room.room_id JOIN employee ON tbl_class_schedule.csemp_id = employee.emp_id JOIN tbl_enrollment_subjects ON tbl_class_schedule.class_schedule_id = tbl_enrollment_subjects.es_class_schedule_id JOIN tbl_enrollment ON tbl_enrollment_subjects.es_student_id = tbl_enrollment.estudent_id JOIN tbl_user_account ON tbl_enrollment.eenrolledby_id = tbl_user_account.ua_id WHERE tbl_enrollment_subjects.es_student_id = '" & frmStudentEvaluation.StudentID & "' AND tbl_enrollment_subjects.es_period_id = " & CInt(cbAcademicYear.SelectedIndex) & " ORDER BY tbl_day_schedule.ds_code ASC, STR_TO_DATE(tbl_class_schedule.time_start_schedule, '%l:%i:%s %p') ASC", cn)
+        Dim adt As New MySqlDataAdapter
             adt.SelectCommand = dbcommand
             dtable = New DataTable
             adt.Fill(dtable)
@@ -143,10 +143,10 @@ Public Class frmEvaluationSubjects
             dg_report.DataSource = Nothing
             frmReportViewer.ReportViewer.Select()
 
-        Catch ex As Exception
-            MsgBox(ex.Message, vbCritical)
-            cn.Close()
-        End Try
+        'Catch ex As Exception
+        '    MsgBox(ex.Message, vbCritical)
+        '    cn.Close()
+        'End Try
     End Sub
 
     Private Sub frmEvaluationSubjects_Load(sender As Object, e As EventArgs) Handles Me.Load

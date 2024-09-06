@@ -5825,12 +5825,12 @@ Public Class frmReports
                 End If
 
                 If frmMain.systemModule.Text = "College Module" Then
+                    cn.Close()
                     cn.Open()
                     Dim studentAssessmentID As Integer = 0
                     cm = New MySqlCommand("SELECT ps_ass_id FROM `tbl_pre_cashiering` WHERE `student_id` = '" & studentId & "' and `period_id` = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
                     studentAssessmentID = cm.ExecuteScalar
                     cn.Close()
-                    cn.Open()
 
                     cn.Open()
                     Dim asseessmentCategory As String = ""
@@ -6141,44 +6141,45 @@ Public Class frmReports
                     balance_final = total_final
                 End If
 
-                If frmMain.systemModule.Text = "College Module" Then
-                    cn.Open()
-                    Dim courseId As Integer = 0
-                    cm = New MySqlCommand("SELECT `sg_course_id` FROM `tbl_students_grades` WHERE `sg_student_id` = '" & studentId & "' and `sg_period_id` = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
-                    courseId = cm.ExecuteScalar
-                    cn.Close()
-                    cn.Open()
+            If frmMain.systemModule.Text = "College Module" Then
+                cn.Close()
+                cn.Open()
+                Dim courseId As Integer = 0
+                cm = New MySqlCommand("SELECT `sg_course_id` FROM `tbl_students_grades` WHERE `sg_student_id` = '" & studentId & "' and `sg_period_id` = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
+                courseId = cm.ExecuteScalar
+                cn.Close()
+                cn.Open()
 
-                    Dim dtable As DataTable
-                    Dim sql As String
-                    If studentGradeLevel.Contains("1st Year") Then
-                        sql = "SELECT (ofsp_particular_id) as 'ID', (ap_particular_code) as 'Code', (ap_particular_name) as 'Particular', (ofsp_amount) as 'Amount' from tbl_assessment_ofs_particulars JOIN tbl_assessment_particulars where tbl_assessment_ofs_particulars.ofsp_particular_id = tbl_assessment_particulars.ap_id and ofsp_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and ofsp_course_id = " & courseId & " and ofsp_year_level = '1st Year' and ofsp_gender ='" & studentGender & "'"
-                    Else
-                        sql = "SELECT (ofsp_particular_id) as 'ID', (ap_particular_code) as 'Code', (ap_particular_name) as 'Particular', (ofsp_amount) as 'Amount' from tbl_assessment_ofs_particulars JOIN tbl_assessment_particulars where tbl_assessment_ofs_particulars.ofsp_particular_id = tbl_assessment_particulars.ap_id and ofsp_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and ofsp_course_id = " & courseId & " and ofsp_year_level = LEFT('" & studentGradeLevel & "', 8) and ofsp_gender ='Both'"
-                    End If
-                    Dim dbcommand As New MySqlCommand(sql, cn)
-                    Dim adt As New MySqlDataAdapter
-                    adt.SelectCommand = dbcommand
-                    dtable = New DataTable
-                    adt.Fill(dtable)
-                    dg_report2.DataSource = dtable
-                    adt.Dispose()
-                    dbcommand.Dispose()
-                    cn.Close()
-
-                    dt2.Columns.Clear()
-                    dt2.Rows.Clear()
-                    With dt2
-                        .Columns.Add("name")
-                        .Columns.Add("amount")
-                    End With
-
-                    For Each dr As DataGridViewRow In dg_report2.Rows
-                        dt2.Rows.Add(dr.Cells(2).Value, dr.Cells(3).Value)
-                    Next
+                Dim dtable As DataTable
+                Dim sql As String
+                If studentGradeLevel.Contains("1st Year") Then
+                    sql = "SELECT (ofsp_particular_id) as 'ID', (ap_particular_code) as 'Code', (ap_particular_name) as 'Particular', (ofsp_amount) as 'Amount' from tbl_assessment_ofs_particulars JOIN tbl_assessment_particulars where tbl_assessment_ofs_particulars.ofsp_particular_id = tbl_assessment_particulars.ap_id and ofsp_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and ofsp_course_id = " & courseId & " and ofsp_year_level = '1st Year' and ofsp_gender ='" & studentGender & "'"
+                Else
+                    sql = "SELECT (ofsp_particular_id) as 'ID', (ap_particular_code) as 'Code', (ap_particular_name) as 'Particular', (ofsp_amount) as 'Amount' from tbl_assessment_ofs_particulars JOIN tbl_assessment_particulars where tbl_assessment_ofs_particulars.ofsp_particular_id = tbl_assessment_particulars.ap_id and ofsp_period_id = " & CInt(cbAcademicYear.SelectedValue) & " and ofsp_course_id = " & courseId & " and ofsp_year_level = LEFT('" & studentGradeLevel & "', 8) and ofsp_gender ='Both'"
                 End If
+                Dim dbcommand As New MySqlCommand(sql, cn)
+                Dim adt As New MySqlDataAdapter
+                adt.SelectCommand = dbcommand
+                dtable = New DataTable
+                adt.Fill(dtable)
+                dg_report2.DataSource = dtable
+                adt.Dispose()
+                dbcommand.Dispose()
+                cn.Close()
 
-                Dim rptdoc As CrystalDecisions.CrystalReports.Engine.ReportDocument
+                dt2.Columns.Clear()
+                dt2.Rows.Clear()
+                With dt2
+                    .Columns.Add("name")
+                    .Columns.Add("amount")
+                End With
+
+                For Each dr As DataGridViewRow In dg_report2.Rows
+                    dt2.Rows.Add(dr.Cells(2).Value, dr.Cells(3).Value)
+                Next
+            End If
+
+            Dim rptdoc As CrystalDecisions.CrystalReports.Engine.ReportDocument
                 rptdoc = New StatementOfAccount7
             rptdoc.SetParameterValue("sname", studentName)
             rptdoc.SetParameterValue("sid", studentId)
@@ -6197,11 +6198,11 @@ Public Class frmReports
                 'rptdoc.SetParameterValue("lessadjustment", Format(lessadjustment, "n2"))
                 rptdoc.SetParameterValue("downpayment", Format(downpayment, "n2"))
                 rptdoc.SetParameterValue("institutionaldiscount", Format(institutionaldiscount, "n2"))
-            rptdoc.SetParameterValue("totalcurrentassessment", Format(totalcurrentassessment - institutionaldiscount, "n2"))
-            rptdoc.SetParameterValue("currentbalance", Format((totalcurrent_assessment - downpayment) - totalaccountpaid, "n2"))
+            rptdoc.SetParameterValue("totalcurrentassessment", Format(assessment - institutionaldiscount, "n2"))
+            rptdoc.SetParameterValue("currentbalance", Format(((assessment - institutionaldiscount) - downpayment) - totalaccountpaid, "n2"))
             rptdoc.SetParameterValue("president_admin", "KRISTINE J. CABRERA, MBM, LPT")
             rptdoc.SetParameterValue("prepared_by", str_name)
-            rptdoc.SetParameterValue("currentassessment", Format(totalcurrentassessment, "n2"))
+            rptdoc.SetParameterValue("currentassessment", Format(assessment, "n2"))
             rptdoc.SetParameterValue("payments", Format(totalaccountpaid, "n2"))
                 rptdoc.SetParameterValue("currentperiod", cbAcademicYear.Text)
                 rptdoc.SetParameterValue("lackingcredentials", lackingcredentials)

@@ -513,4 +513,5 @@ Module Modules
         Next
         Return visibleControlCount
     End Function
+
 End Module

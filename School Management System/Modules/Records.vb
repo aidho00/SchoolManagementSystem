@@ -342,7 +342,6 @@ Module Records
             cn.Close()
 
             dgPanelPadding(frmAcademicYearList.dgAcadList, frmAcademicYearList.dgPanel)
-
         Catch ex As Exception
             dr.Close()
             cn.Close()

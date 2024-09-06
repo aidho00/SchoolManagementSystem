@@ -23,9 +23,11 @@ Partial Class frmAcademicYearList
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAcademicYearList))
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.dgAcadList = New System.Windows.Forms.DataGridView()
+        Me.dgPanel = New System.Windows.Forms.Panel()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -34,7 +36,7 @@ Partial Class frmAcademicYearList
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colUpdate = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.dgPanel = New System.Windows.Forms.Panel()
+        Me.colUpdate2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgAcadList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.dgPanel.SuspendLayout()
         Me.SuspendLayout()
@@ -56,15 +58,15 @@ Partial Class frmAcademicYearList
         Me.dgAcadList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgAcadList.ColumnHeadersHeight = 40
         Me.dgAcadList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgAcadList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column4, Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.Column1, Me.Column2, Me.Column3, Me.colUpdate})
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgAcadList.DefaultCellStyle = DataGridViewCellStyle2
+        Me.dgAcadList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column4, Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.Column1, Me.Column2, Me.Column3, Me.colUpdate, Me.colUpdate2})
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgAcadList.DefaultCellStyle = DataGridViewCellStyle3
         Me.dgAcadList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgAcadList.EnableHeadersVisualStyles = False
         Me.dgAcadList.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
@@ -77,6 +79,16 @@ Partial Class frmAcademicYearList
         Me.dgAcadList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgAcadList.Size = New System.Drawing.Size(1019, 670)
         Me.dgAcadList.TabIndex = 85
+        '
+        'dgPanel
+        '
+        Me.dgPanel.Controls.Add(Me.dgAcadList)
+        Me.dgPanel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgPanel.Location = New System.Drawing.Point(0, 0)
+        Me.dgPanel.Name = "dgPanel"
+        Me.dgPanel.Padding = New System.Windows.Forms.Padding(7, 0, 0, 0)
+        Me.dgPanel.Size = New System.Drawing.Size(1026, 670)
+        Me.dgPanel.TabIndex = 92
         '
         'Column4
         '
@@ -93,7 +105,7 @@ Partial Class frmAcademicYearList
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
         Me.DataGridViewTextBoxColumn1.ReadOnly = True
         Me.DataGridViewTextBoxColumn1.Visible = False
-        Me.DataGridViewTextBoxColumn1.Width = 44
+        Me.DataGridViewTextBoxColumn1.Width = 42
         '
         'DataGridViewTextBoxColumn2
         '
@@ -140,15 +152,15 @@ Partial Class frmAcademicYearList
         Me.colUpdate.ReadOnly = True
         Me.colUpdate.Width = 5
         '
-        'dgPanel
+        'colUpdate2
         '
-        Me.dgPanel.Controls.Add(Me.dgAcadList)
-        Me.dgPanel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgPanel.Location = New System.Drawing.Point(0, 0)
-        Me.dgPanel.Name = "dgPanel"
-        Me.dgPanel.Padding = New System.Windows.Forms.Padding(7, 0, 0, 0)
-        Me.dgPanel.Size = New System.Drawing.Size(1026, 670)
-        Me.dgPanel.TabIndex = 92
+        Me.colUpdate2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.colUpdate2.DefaultCellStyle = DataGridViewCellStyle2
+        Me.colUpdate2.HeaderText = ""
+        Me.colUpdate2.Name = "colUpdate2"
+        Me.colUpdate2.ReadOnly = True
+        Me.colUpdate2.Width = 17
         '
         'frmAcademicYearList
         '
@@ -179,4 +191,5 @@ Partial Class frmAcademicYearList
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
     Friend WithEvents colUpdate As DataGridViewImageColumn
+    Friend WithEvents colUpdate2 As DataGridViewTextBoxColumn
 End Class

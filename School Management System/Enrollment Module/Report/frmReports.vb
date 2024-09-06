@@ -5979,9 +5979,13 @@ Public Class frmReports
                 If dr.HasRows Then
                     assessment = CDec(dr.Item("Assessment").ToString)
                     institutionaldiscount = CDec(dr.Item("Institutional Discount").ToString)
-                    downpayment = CDec(dr.Item("Down Payment").ToString)
-                    additionaladjustment = 0
-                    lessadjustment = 0
+
+                'downpayment = CDec(dr.Item("Down Payment").ToString)
+                downpayment = 0
+
+
+                additionaladjustment = 0
+                lessadjustment = 0
                     totalassessment = CDec(dr.Item("Total Assessment").ToString)
                     balance = CDec(dr.Item("Total Balance").ToString)
                     totalpaid = CDec(dr.Item("Paid").ToString)
@@ -6038,12 +6042,12 @@ Public Class frmReports
                 cn.Open()
                 cm = New MySqlCommand("SELECT `Total Paid` as 'TotalPaid' FROM `student_assessment_total` WHERE `spab_stud_id` = '" & studentId & "' and `spab_period_id` = " & CInt(cbAcademicYear.SelectedValue) & "", cn)
             totalaccountpaid = CDec(cm.ExecuteScalar)
-            If totalaccountpaid = 1 Then
-                totalaccountpaid = 0
-            End If
+
+            totalaccountpaid = 0
+
             cn.Close()
 
-                Dim totalcurrentassessment As Decimal
+            Dim totalcurrentassessment As Decimal
                 Dim totalcurrent_assessment As Decimal
                 Dim totalcurrent_balance As Decimal
                 Dim total_assessment As Decimal
@@ -6195,8 +6199,8 @@ Public Class frmReports
                 rptdoc.SetParameterValue("institutionaldiscount", Format(institutionaldiscount, "n2"))
             rptdoc.SetParameterValue("totalcurrentassessment", Format(totalcurrentassessment - institutionaldiscount, "n2"))
             rptdoc.SetParameterValue("currentbalance", Format((totalcurrent_assessment - downpayment) - totalaccountpaid, "n2"))
-            rptdoc.SetParameterValue("president_admin", cbPresident.Text)
-                rptdoc.SetParameterValue("prepared_by", str_name)
+            rptdoc.SetParameterValue("president_admin", "KRISTINE J. CABRERA, MBM, LPT")
+            rptdoc.SetParameterValue("prepared_by", str_name)
             rptdoc.SetParameterValue("currentassessment", Format(totalcurrentassessment, "n2"))
             rptdoc.SetParameterValue("payments", Format(totalaccountpaid, "n2"))
                 rptdoc.SetParameterValue("currentperiod", cbAcademicYear.Text)

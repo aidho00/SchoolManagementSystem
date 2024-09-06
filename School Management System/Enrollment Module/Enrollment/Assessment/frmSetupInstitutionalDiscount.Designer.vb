@@ -108,22 +108,22 @@ Partial Class frmSetupInstitutionalDiscount
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.FlowLayoutPanel2 = New System.Windows.Forms.FlowLayoutPanel()
         Me.btnImport = New System.Windows.Forms.Button()
+        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.DGrowCount = New System.Windows.Forms.Label()
+        Me.btnExport = New System.Windows.Forms.Label()
         Me.dgDummyList = New System.Windows.Forms.DataGridView()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnSave = New System.Windows.Forms.Button()
+        Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.cbSaveProcess = New System.Windows.Forms.ComboBox()
+        Me.Label9 = New System.Windows.Forms.Label()
         Me.systemSign = New System.Windows.Forms.Panel()
         Me.btnClose = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.btnExport = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.DGrowCount = New System.Windows.Forms.Label()
-        Me.Panel7 = New System.Windows.Forms.Panel()
-        Me.cbSaveProcess = New System.Windows.Forms.ComboBox()
-        Me.Label9 = New System.Windows.Forms.Label()
         Me.BasePanel.SuspendLayout()
         Me.SearchPanel.SuspendLayout()
         Me.dgPanel.SuspendLayout()
@@ -138,11 +138,11 @@ Partial Class frmSetupInstitutionalDiscount
         Me.Panel4.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.FlowLayoutPanel2.SuspendLayout()
+        Me.Panel6.SuspendLayout()
         CType(Me.dgDummyList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.FlowLayoutPanel1.SuspendLayout()
-        Me.systemSign.SuspendLayout()
-        Me.Panel6.SuspendLayout()
         Me.Panel7.SuspendLayout()
+        Me.systemSign.SuspendLayout()
         Me.SuspendLayout()
         '
         'BasePanel
@@ -968,6 +968,45 @@ Partial Class frmSetupInstitutionalDiscount
         Me.btnImport.Text = "IMPORT"
         Me.btnImport.UseVisualStyleBackColor = True
         '
+        'Panel6
+        '
+        Me.Panel6.Controls.Add(Me.Label8)
+        Me.Panel6.Controls.Add(Me.DGrowCount)
+        Me.Panel6.Controls.Add(Me.btnExport)
+        Me.Panel6.Location = New System.Drawing.Point(105, 3)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(122, 36)
+        Me.Panel6.TabIndex = 131
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(1, 17)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(45, 16)
+        Me.Label8.TabIndex = 134
+        Me.Label8.Text = "Count:"
+        '
+        'DGrowCount
+        '
+        Me.DGrowCount.AutoSize = True
+        Me.DGrowCount.Location = New System.Drawing.Point(52, 17)
+        Me.DGrowCount.Name = "DGrowCount"
+        Me.DGrowCount.Size = New System.Drawing.Size(14, 16)
+        Me.DGrowCount.TabIndex = 135
+        Me.DGrowCount.Text = "0"
+        '
+        'btnExport
+        '
+        Me.btnExport.AutoSize = True
+        Me.btnExport.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnExport.Dock = System.Windows.Forms.DockStyle.Left
+        Me.btnExport.Location = New System.Drawing.Point(0, 0)
+        Me.btnExport.Name = "btnExport"
+        Me.btnExport.Size = New System.Drawing.Size(120, 16)
+        Me.btnExport.TabIndex = 132
+        Me.btnExport.Text = "[ EXPORT TEMPLATE ]"
+        '
         'dgDummyList
         '
         Me.dgDummyList.AllowUserToAddRows = False
@@ -1041,6 +1080,34 @@ Partial Class frmSetupInstitutionalDiscount
         Me.btnSave.Text = "SAVE"
         Me.btnSave.UseVisualStyleBackColor = True
         '
+        'Panel7
+        '
+        Me.Panel7.Controls.Add(Me.cbSaveProcess)
+        Me.Panel7.Controls.Add(Me.Label9)
+        Me.Panel7.Location = New System.Drawing.Point(53, 3)
+        Me.Panel7.Name = "Panel7"
+        Me.Panel7.Size = New System.Drawing.Size(422, 100)
+        Me.Panel7.TabIndex = 3
+        '
+        'cbSaveProcess
+        '
+        Me.cbSaveProcess.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbSaveProcess.FormattingEnabled = True
+        Me.cbSaveProcess.Items.AddRange(New Object() {"Institutional Discount & Assessment", "Institutional Discount", "Assessment"})
+        Me.cbSaveProcess.Location = New System.Drawing.Point(167, 7)
+        Me.cbSaveProcess.Name = "cbSaveProcess"
+        Me.cbSaveProcess.Size = New System.Drawing.Size(245, 24)
+        Me.cbSaveProcess.TabIndex = 179
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(80, 11)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(79, 16)
+        Me.Label9.TabIndex = 180
+        Me.Label9.Text = "Save Process"
+        '
         'systemSign
         '
         Me.systemSign.BackColor = System.Drawing.Color.White
@@ -1094,73 +1161,6 @@ Partial Class frmSetupInstitutionalDiscount
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
-        'Panel6
-        '
-        Me.Panel6.Controls.Add(Me.Label8)
-        Me.Panel6.Controls.Add(Me.DGrowCount)
-        Me.Panel6.Controls.Add(Me.btnExport)
-        Me.Panel6.Location = New System.Drawing.Point(105, 3)
-        Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(122, 36)
-        Me.Panel6.TabIndex = 131
-        '
-        'btnExport
-        '
-        Me.btnExport.AutoSize = True
-        Me.btnExport.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnExport.Dock = System.Windows.Forms.DockStyle.Left
-        Me.btnExport.Location = New System.Drawing.Point(0, 0)
-        Me.btnExport.Name = "btnExport"
-        Me.btnExport.Size = New System.Drawing.Size(120, 16)
-        Me.btnExport.TabIndex = 132
-        Me.btnExport.Text = "[ EXPORT TEMPLATE ]"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(1, 17)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(45, 16)
-        Me.Label8.TabIndex = 134
-        Me.Label8.Text = "Count:"
-        '
-        'DGrowCount
-        '
-        Me.DGrowCount.AutoSize = True
-        Me.DGrowCount.Location = New System.Drawing.Point(52, 17)
-        Me.DGrowCount.Name = "DGrowCount"
-        Me.DGrowCount.Size = New System.Drawing.Size(14, 16)
-        Me.DGrowCount.TabIndex = 135
-        Me.DGrowCount.Text = "0"
-        '
-        'Panel7
-        '
-        Me.Panel7.Controls.Add(Me.cbSaveProcess)
-        Me.Panel7.Controls.Add(Me.Label9)
-        Me.Panel7.Location = New System.Drawing.Point(53, 3)
-        Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(422, 100)
-        Me.Panel7.TabIndex = 3
-        '
-        'cbSaveProcess
-        '
-        Me.cbSaveProcess.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbSaveProcess.FormattingEnabled = True
-        Me.cbSaveProcess.Items.AddRange(New Object() {"Institutional Discount & Assessment", "Institutional Discount", "Assessment"})
-        Me.cbSaveProcess.Location = New System.Drawing.Point(167, 7)
-        Me.cbSaveProcess.Name = "cbSaveProcess"
-        Me.cbSaveProcess.Size = New System.Drawing.Size(245, 24)
-        Me.cbSaveProcess.TabIndex = 179
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(80, 11)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(79, 16)
-        Me.Label9.TabIndex = 180
-        Me.Label9.Text = "Save Process"
-        '
         'frmSetupInstitutionalDiscount
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
@@ -1190,13 +1190,13 @@ Partial Class frmSetupInstitutionalDiscount
         Me.Panel4.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.FlowLayoutPanel2.ResumeLayout(False)
-        CType(Me.dgDummyList, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.FlowLayoutPanel1.ResumeLayout(False)
-        Me.systemSign.ResumeLayout(False)
         Me.Panel6.ResumeLayout(False)
         Me.Panel6.PerformLayout()
+        CType(Me.dgDummyList, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.FlowLayoutPanel1.ResumeLayout(False)
         Me.Panel7.ResumeLayout(False)
         Me.Panel7.PerformLayout()
+        Me.systemSign.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub

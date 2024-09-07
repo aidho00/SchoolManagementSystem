@@ -9,6 +9,11 @@ Module Modules
     Public amount As Double
     Public sysTime As String
 
+    Public EditButton As Bitmap
+    Public ViewButton As Bitmap
+
+    Public RemoveButton As Bitmap
+    Public DeleteButton As Bitmap
 
 
 

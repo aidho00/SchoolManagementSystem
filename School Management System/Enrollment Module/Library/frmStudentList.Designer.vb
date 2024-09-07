@@ -23,9 +23,12 @@ Partial Class frmStudentList
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmStudentList))
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.dgStudentList = New System.Windows.Forms.DataGridView()
+        Me.dgPanel = New System.Windows.Forms.Panel()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -36,7 +39,9 @@ Partial Class frmStudentList
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colUpdate = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.dgPanel = New System.Windows.Forms.Panel()
+        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colView = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgStudentList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.dgPanel.SuspendLayout()
         Me.SuspendLayout()
@@ -59,15 +64,15 @@ Partial Class frmStudentList
         Me.dgStudentList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgStudentList.ColumnHeadersHeight = 40
         Me.dgStudentList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgStudentList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column4, Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.Column1, Me.Column3, Me.Column2, Me.Column5, Me.Column6, Me.colUpdate})
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgStudentList.DefaultCellStyle = DataGridViewCellStyle2
+        Me.dgStudentList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column4, Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.Column1, Me.Column3, Me.Column2, Me.Column5, Me.Column6, Me.colUpdate, Me.Column7, Me.colView, Me.Column9})
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgStudentList.DefaultCellStyle = DataGridViewCellStyle4
         Me.dgStudentList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgStudentList.EnableHeadersVisualStyles = False
         Me.dgStudentList.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
@@ -80,6 +85,17 @@ Partial Class frmStudentList
         Me.dgStudentList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgStudentList.Size = New System.Drawing.Size(1019, 670)
         Me.dgStudentList.TabIndex = 85
+        '
+        'dgPanel
+        '
+        Me.dgPanel.BackColor = System.Drawing.Color.White
+        Me.dgPanel.Controls.Add(Me.dgStudentList)
+        Me.dgPanel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgPanel.Location = New System.Drawing.Point(0, 0)
+        Me.dgPanel.Name = "dgPanel"
+        Me.dgPanel.Padding = New System.Windows.Forms.Padding(7, 0, 0, 0)
+        Me.dgPanel.Size = New System.Drawing.Size(1026, 670)
+        Me.dgPanel.TabIndex = 84
         '
         'Column4
         '
@@ -159,16 +175,35 @@ Partial Class frmStudentList
         Me.colUpdate.ReadOnly = True
         Me.colUpdate.Width = 5
         '
-        'dgPanel
+        'Column7
         '
-        Me.dgPanel.BackColor = System.Drawing.Color.White
-        Me.dgPanel.Controls.Add(Me.dgStudentList)
-        Me.dgPanel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgPanel.Location = New System.Drawing.Point(0, 0)
-        Me.dgPanel.Name = "dgPanel"
-        Me.dgPanel.Padding = New System.Windows.Forms.Padding(7, 0, 0, 0)
-        Me.dgPanel.Size = New System.Drawing.Size(1026, 670)
-        Me.dgPanel.TabIndex = 84
+        Me.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Column7.DefaultCellStyle = DataGridViewCellStyle2
+        Me.Column7.HeaderText = ""
+        Me.Column7.Name = "Column7"
+        Me.Column7.ReadOnly = True
+        Me.Column7.Width = 17
+        '
+        'colView
+        '
+        Me.colView.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.colView.HeaderText = ""
+        Me.colView.Name = "colView"
+        Me.colView.ReadOnly = True
+        Me.colView.Width = 5
+        '
+        'Column9
+        '
+        Me.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Column9.DefaultCellStyle = DataGridViewCellStyle3
+        Me.Column9.HeaderText = ""
+        Me.Column9.Name = "Column9"
+        Me.Column9.ReadOnly = True
+        Me.Column9.Width = 17
         '
         'frmStudentList
         '
@@ -189,6 +224,7 @@ Partial Class frmStudentList
 
     End Sub
     Friend WithEvents dgStudentList As DataGridView
+    Friend WithEvents dgPanel As Panel
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
@@ -199,5 +235,7 @@ Partial Class frmStudentList
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Friend WithEvents colUpdate As DataGridViewImageColumn
-    Friend WithEvents dgPanel As Panel
+    Friend WithEvents Column7 As DataGridViewTextBoxColumn
+    Friend WithEvents colView As DataGridViewImageColumn
+    Friend WithEvents Column9 As DataGridViewTextBoxColumn
 End Class

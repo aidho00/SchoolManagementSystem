@@ -10,7 +10,7 @@ Public Class frmStudentList
     Private Sub dgStudentList_CellMouseEnter(sender As Object, e As DataGridViewCellEventArgs) Handles dgStudentList.CellMouseEnter
         If e.RowIndex >= 0 AndAlso e.ColumnIndex >= 0 Then
             Dim columnName As String = CType(sender, DataGridView).Columns(e.ColumnIndex).Name
-            If columnName = "colUpdate" Then
+            If columnName = "colUpdate" Or columnName = "colView" Then
                 CType(sender, DataGridView).Cursor = Cursors.Hand
             Else
                 CType(sender, DataGridView).Cursor = Cursors.Default
@@ -21,10 +21,10 @@ Public Class frmStudentList
 
     Public Sub LoadComboBoxData()
         With frmStudentInfo
-            fillCombo("select * from tbl_pwd", .cbDisability, "tbl_pwd", "pwd_name", "pwd_id")
-            fillCombo("select * from tbl_religion", .cbReligion, "tbl_religion", "r_name", "r_id")
-            fillCombo("select * from tbl_course", .cbCourse, "tbl_course", "course_code", "course_id")
-            fillCombo("select * from tbl_scholarship_status order by case when scholar_name = 'PAYING' then 1 else 2 end", .cbScholarship, "tbl_scholarship_status", "scholar_name", "scholar_id")
+            fillComboWithBlank("select * from tbl_pwd", .cbDisability, "tbl_pwd", "pwd_name", "pwd_id")
+            fillComboWithBlank("select * from tbl_religion", .cbReligion, "tbl_religion", "r_name", "r_id")
+            fillComboWithBlank("select * from tbl_course", .cbCourse, "tbl_course", "course_code", "course_id")
+            fillComboWithBlank("select * from tbl_scholarship_status order by case when scholar_name = 'PAYING' then 1 else 2 end", .cbScholarship, "tbl_scholarship_status", "scholar_name", "scholar_id")
         End With
     End Sub
 

@@ -1,6 +1,17 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports System.IO
 Public Class frmUserList
+
+    Private Sub dgUserList_CellMouseEnter(sender As Object, e As DataGridViewCellEventArgs) Handles dgUserList.CellMouseEnter
+        If e.RowIndex >= 0 AndAlso e.ColumnIndex >= 0 Then
+            Dim columnName As String = CType(sender, DataGridView).Columns(e.ColumnIndex).Name
+            If columnName = "colUpdate" Then
+                CType(sender, DataGridView).Cursor = Cursors.Hand
+            Else
+                CType(sender, DataGridView).Cursor = Cursors.Default
+            End If
+        End If
+    End Sub
     Private Sub dgUserList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgUserList.CellContentClick
         Dim colname As String = dgUserList.Columns(e.ColumnIndex).Name
         If colname = "colUpdate" Then

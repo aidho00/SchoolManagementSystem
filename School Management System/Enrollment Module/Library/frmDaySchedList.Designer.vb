@@ -23,8 +23,9 @@ Partial Class frmDaySchedList
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmDaySchedList))
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.dgPanel = New System.Windows.Forms.Panel()
         Me.dgDaySchedList = New System.Windows.Forms.DataGridView()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -32,6 +33,7 @@ Partial Class frmDaySchedList
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colUpdate = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dgPanel.SuspendLayout()
         CType(Me.dgDaySchedList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -43,7 +45,7 @@ Partial Class frmDaySchedList
         Me.dgPanel.Location = New System.Drawing.Point(0, 0)
         Me.dgPanel.Name = "dgPanel"
         Me.dgPanel.Padding = New System.Windows.Forms.Padding(7, 0, 0, 0)
-        Me.dgPanel.Size = New System.Drawing.Size(1026, 670)
+        Me.dgPanel.Size = New System.Drawing.Size(873, 394)
         Me.dgPanel.TabIndex = 96
         '
         'dgDaySchedList
@@ -64,15 +66,15 @@ Partial Class frmDaySchedList
         Me.dgDaySchedList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgDaySchedList.ColumnHeadersHeight = 40
         Me.dgDaySchedList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgDaySchedList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column4, Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.colUpdate})
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgDaySchedList.DefaultCellStyle = DataGridViewCellStyle2
+        Me.dgDaySchedList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column4, Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.colUpdate, Me.Column1})
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgDaySchedList.DefaultCellStyle = DataGridViewCellStyle3
         Me.dgDaySchedList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgDaySchedList.EnableHeadersVisualStyles = False
         Me.dgDaySchedList.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
@@ -83,7 +85,7 @@ Partial Class frmDaySchedList
         Me.dgDaySchedList.RowHeadersVisible = False
         Me.dgDaySchedList.RowTemplate.Height = 26
         Me.dgDaySchedList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgDaySchedList.Size = New System.Drawing.Size(1019, 670)
+        Me.dgDaySchedList.Size = New System.Drawing.Size(866, 394)
         Me.dgDaySchedList.TabIndex = 86
         '
         'Column4
@@ -101,7 +103,7 @@ Partial Class frmDaySchedList
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
         Me.DataGridViewTextBoxColumn1.ReadOnly = True
         Me.DataGridViewTextBoxColumn1.Visible = False
-        Me.DataGridViewTextBoxColumn1.Width = 44
+        Me.DataGridViewTextBoxColumn1.Width = 42
         '
         'DataGridViewTextBoxColumn2
         '
@@ -126,12 +128,23 @@ Partial Class frmDaySchedList
         Me.colUpdate.ReadOnly = True
         Me.colUpdate.Width = 5
         '
+        'Column1
+        '
+        Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Column1.DefaultCellStyle = DataGridViewCellStyle2
+        Me.Column1.HeaderText = ""
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Width = 17
+        '
         'frmDaySchedList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1026, 670)
+        Me.ClientSize = New System.Drawing.Size(873, 394)
         Me.ControlBox = False
         Me.Controls.Add(Me.dgPanel)
         Me.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -153,4 +166,5 @@ Partial Class frmDaySchedList
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents colUpdate As DataGridViewImageColumn
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
 End Class

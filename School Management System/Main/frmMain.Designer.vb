@@ -33,7 +33,9 @@ Partial Class frmMain
         Me.applicationVersion = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.schoolLogo = New System.Windows.Forms.PictureBox()
+        Me.editBtn = New System.Windows.Forms.PictureBox()
         Me.ComboBoxMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.cbStudentStatus = New System.Windows.Forms.ToolStripComboBox()
         Me.cmbSupplyType = New System.Windows.Forms.ToolStripComboBox()
         Me.cmbAcad = New System.Windows.Forms.ToolStripComboBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
@@ -160,6 +162,7 @@ Partial Class frmMain
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.formPanels = New System.Windows.Forms.Panel()
         Me.formPanel = New System.Windows.Forms.Panel()
+        Me.viewBtn = New System.Windows.Forms.PictureBox()
         Me.Panel13 = New System.Windows.Forms.Panel()
         Me.Panel14 = New System.Windows.Forms.Panel()
         Me.Panel7 = New System.Windows.Forms.Panel()
@@ -280,8 +283,11 @@ Partial Class frmMain
         Me.Label16 = New System.Windows.Forms.Label()
         Me.PictureBox13 = New System.Windows.Forms.PictureBox()
         Me.btnCloseSupplyWarning = New System.Windows.Forms.Label()
+        Me.deleteBtn = New System.Windows.Forms.PictureBox()
+        Me.removeBtn = New System.Windows.Forms.PictureBox()
         Me.systemSign.SuspendLayout()
         CType(Me.schoolLogo, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.editBtn, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ComboBoxMenu.SuspendLayout()
         CType(Me.User_Photo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelMenu.SuspendLayout()
@@ -311,6 +317,8 @@ Partial Class frmMain
         Me.Panel15.SuspendLayout()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.formPanels.SuspendLayout()
+        Me.formPanel.SuspendLayout()
+        CType(Me.viewBtn, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel7.SuspendLayout()
         Me.libraryControls.SuspendLayout()
         Me.controlsPanel.SuspendLayout()
@@ -361,6 +369,8 @@ Partial Class frmMain
         Me.PanelSupplyWarning.SuspendLayout()
         Me.warning.SuspendLayout()
         CType(Me.PictureBox13, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.deleteBtn, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.removeBtn, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'systemSign
@@ -429,7 +439,6 @@ Partial Class frmMain
         'schoolLogo
         '
         Me.schoolLogo.Dock = System.Windows.Forms.DockStyle.Left
-        Me.schoolLogo.Image = CType(resources.GetObject("schoolLogo.Image"), System.Drawing.Image)
         Me.schoolLogo.Location = New System.Drawing.Point(5, 5)
         Me.schoolLogo.Name = "schoolLogo"
         Me.schoolLogo.Size = New System.Drawing.Size(26, 26)
@@ -438,12 +447,33 @@ Partial Class frmMain
         Me.schoolLogo.TabStop = False
         Me.schoolLogo.Visible = False
         '
+        'editBtn
+        '
+        Me.editBtn.Image = CType(resources.GetObject("editBtn.Image"), System.Drawing.Image)
+        Me.editBtn.Location = New System.Drawing.Point(13, 14)
+        Me.editBtn.Name = "editBtn"
+        Me.editBtn.Size = New System.Drawing.Size(17, 19)
+        Me.editBtn.TabIndex = 348
+        Me.editBtn.TabStop = False
+        Me.editBtn.Visible = False
+        '
         'ComboBoxMenu
         '
         Me.ComboBoxMenu.ImageScalingSize = New System.Drawing.Size(24, 24)
-        Me.ComboBoxMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmbSupplyType, Me.cmbAcad})
+        Me.ComboBoxMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cbStudentStatus, Me.cmbSupplyType, Me.cmbAcad})
         Me.ComboBoxMenu.Name = "acadMenu"
-        Me.ComboBoxMenu.Size = New System.Drawing.Size(241, 62)
+        Me.ComboBoxMenu.Size = New System.Drawing.Size(241, 91)
+        '
+        'cbStudentStatus
+        '
+        Me.cbStudentStatus.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cbStudentStatus.BackColor = System.Drawing.SystemColors.Window
+        Me.cbStudentStatus.DropDownWidth = 180
+        Me.cbStudentStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbStudentStatus.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbStudentStatus.Items.AddRange(New Object() {"Active Students", "All Students"})
+        Me.cbStudentStatus.Name = "cbStudentStatus"
+        Me.cbStudentStatus.Size = New System.Drawing.Size(180, 25)
         '
         'cmbSupplyType
         '
@@ -2779,7 +2809,6 @@ Partial Class frmMain
         'PictureBox1
         '
         Me.PictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
         Me.PictureBox1.Location = New System.Drawing.Point(21, -60)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(94, 111)
@@ -2791,7 +2820,6 @@ Partial Class frmMain
         'hideMenu
         '
         Me.hideMenu.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.hideMenu.Image = CType(resources.GetObject("hideMenu.Image"), System.Drawing.Image)
         Me.hideMenu.Location = New System.Drawing.Point(4, 159)
         Me.hideMenu.Name = "hideMenu"
         Me.hideMenu.Size = New System.Drawing.Size(20, 20)
@@ -2803,7 +2831,6 @@ Partial Class frmMain
         'showMenu
         '
         Me.showMenu.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.showMenu.Image = CType(resources.GetObject("showMenu.Image"), System.Drawing.Image)
         Me.showMenu.Location = New System.Drawing.Point(4, 159)
         Me.showMenu.Name = "showMenu"
         Me.showMenu.Size = New System.Drawing.Size(20, 20)
@@ -2925,11 +2952,25 @@ Partial Class frmMain
         '
         'formPanel
         '
+        Me.formPanel.Controls.Add(Me.removeBtn)
+        Me.formPanel.Controls.Add(Me.deleteBtn)
+        Me.formPanel.Controls.Add(Me.viewBtn)
+        Me.formPanel.Controls.Add(Me.editBtn)
         Me.formPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.formPanel.Location = New System.Drawing.Point(0, 41)
         Me.formPanel.Name = "formPanel"
         Me.formPanel.Size = New System.Drawing.Size(998, 621)
         Me.formPanel.TabIndex = 94
+        '
+        'viewBtn
+        '
+        Me.viewBtn.Image = CType(resources.GetObject("viewBtn.Image"), System.Drawing.Image)
+        Me.viewBtn.Location = New System.Drawing.Point(38, 14)
+        Me.viewBtn.Name = "viewBtn"
+        Me.viewBtn.Size = New System.Drawing.Size(17, 19)
+        Me.viewBtn.TabIndex = 349
+        Me.viewBtn.TabStop = False
+        Me.viewBtn.Visible = False
         '
         'Panel13
         '
@@ -3201,7 +3242,6 @@ Partial Class frmMain
         '
         'PictureBox10
         '
-        Me.PictureBox10.Image = CType(resources.GetObject("PictureBox10.Image"), System.Drawing.Image)
         Me.PictureBox10.Location = New System.Drawing.Point(10, 36)
         Me.PictureBox10.Name = "PictureBox10"
         Me.PictureBox10.Size = New System.Drawing.Size(30, 30)
@@ -3265,7 +3305,6 @@ Partial Class frmMain
         '
         'PictureBox11
         '
-        Me.PictureBox11.Image = CType(resources.GetObject("PictureBox11.Image"), System.Drawing.Image)
         Me.PictureBox11.Location = New System.Drawing.Point(11, 36)
         Me.PictureBox11.Name = "PictureBox11"
         Me.PictureBox11.Size = New System.Drawing.Size(30, 30)
@@ -3329,7 +3368,6 @@ Partial Class frmMain
         '
         'PictureBox12
         '
-        Me.PictureBox12.Image = CType(resources.GetObject("PictureBox12.Image"), System.Drawing.Image)
         Me.PictureBox12.Location = New System.Drawing.Point(10, 36)
         Me.PictureBox12.Name = "PictureBox12"
         Me.PictureBox12.Size = New System.Drawing.Size(30, 30)
@@ -3699,7 +3737,6 @@ Partial Class frmMain
         '
         'PictureBox6
         '
-        Me.PictureBox6.Image = CType(resources.GetObject("PictureBox6.Image"), System.Drawing.Image)
         Me.PictureBox6.Location = New System.Drawing.Point(10, 36)
         Me.PictureBox6.Name = "PictureBox6"
         Me.PictureBox6.Size = New System.Drawing.Size(30, 30)
@@ -4198,7 +4235,6 @@ Partial Class frmMain
         '
         'dummypic
         '
-        Me.dummypic.Image = CType(resources.GetObject("dummypic.Image"), System.Drawing.Image)
         Me.dummypic.Location = New System.Drawing.Point(13, 10)
         Me.dummypic.Name = "dummypic"
         Me.dummypic.Size = New System.Drawing.Size(46, 49)
@@ -4258,9 +4294,9 @@ Partial Class frmMain
         Me.PictureBox13.BackColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(84, Byte), Integer), CType(CType(96, Byte), Integer))
         Me.PictureBox13.Cursor = System.Windows.Forms.Cursors.Hand
         Me.PictureBox13.Image = CType(resources.GetObject("PictureBox13.Image"), System.Drawing.Image)
-        Me.PictureBox13.Location = New System.Drawing.Point(-21, -20)
+        Me.PictureBox13.Location = New System.Drawing.Point(8, 12)
         Me.PictureBox13.Name = "PictureBox13"
-        Me.PictureBox13.Size = New System.Drawing.Size(153, 134)
+        Me.PictureBox13.Size = New System.Drawing.Size(108, 77)
         Me.PictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox13.TabIndex = 0
         Me.PictureBox13.TabStop = False
@@ -4279,6 +4315,26 @@ Partial Class frmMain
         Me.btnCloseSupplyWarning.Text = "✕"
         Me.btnCloseSupplyWarning.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'deleteBtn
+        '
+        Me.deleteBtn.Image = CType(resources.GetObject("deleteBtn.Image"), System.Drawing.Image)
+        Me.deleteBtn.Location = New System.Drawing.Point(62, 14)
+        Me.deleteBtn.Name = "deleteBtn"
+        Me.deleteBtn.Size = New System.Drawing.Size(17, 19)
+        Me.deleteBtn.TabIndex = 349
+        Me.deleteBtn.TabStop = False
+        Me.deleteBtn.Visible = False
+        '
+        'removeBtn
+        '
+        Me.removeBtn.Image = CType(resources.GetObject("removeBtn.Image"), System.Drawing.Image)
+        Me.removeBtn.Location = New System.Drawing.Point(85, 14)
+        Me.removeBtn.Name = "removeBtn"
+        Me.removeBtn.Size = New System.Drawing.Size(17, 19)
+        Me.removeBtn.TabIndex = 349
+        Me.removeBtn.TabStop = False
+        Me.removeBtn.Visible = False
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -4291,11 +4347,11 @@ Partial Class frmMain
         Me.Controls.Add(Me.systemSign)
         Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.systemSign.ResumeLayout(False)
         CType(Me.schoolLogo, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.editBtn, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ComboBoxMenu.ResumeLayout(False)
         CType(Me.User_Photo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelMenu.ResumeLayout(False)
@@ -4332,6 +4388,8 @@ Partial Class frmMain
         Me.Panel15.PerformLayout()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.formPanels.ResumeLayout(False)
+        Me.formPanel.ResumeLayout(False)
+        CType(Me.viewBtn, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel7.ResumeLayout(False)
         Me.libraryControls.ResumeLayout(False)
         Me.controlsPanel.ResumeLayout(False)
@@ -4385,6 +4443,8 @@ Partial Class frmMain
         Me.warning.ResumeLayout(False)
         Me.warning.PerformLayout()
         CType(Me.PictureBox13, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.deleteBtn, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.removeBtn, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -4643,4 +4703,9 @@ Partial Class frmMain
     Friend WithEvents btnExportDatabaseTables As Button
     Friend WithEvents btnUserAccounts As Button
     Friend WithEvents cbUserLogs As Button
+    Friend WithEvents editBtn As PictureBox
+    Friend WithEvents viewBtn As PictureBox
+    Friend WithEvents cbStudentStatus As ToolStripComboBox
+    Friend WithEvents removeBtn As PictureBox
+    Friend WithEvents deleteBtn As PictureBox
 End Class

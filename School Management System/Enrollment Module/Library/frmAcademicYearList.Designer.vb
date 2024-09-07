@@ -156,6 +156,7 @@ Partial Class frmAcademicYearList
         '
         Me.colUpdate2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.colUpdate2.DefaultCellStyle = DataGridViewCellStyle2
         Me.colUpdate2.HeaderText = ""
         Me.colUpdate2.Name = "colUpdate2"

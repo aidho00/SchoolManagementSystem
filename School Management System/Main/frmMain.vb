@@ -14,6 +14,9 @@ Public Class frmMain
     Dim GraphSelectedYear As String = ""
     Dim GraphSelectedAcademicYear As String = ""
     Dim AcademicYearID2 As Integer = activeAcademicYear
+
+
+
 #Region "Drag Form"
 
     Public MoveForm As Boolean
@@ -242,6 +245,7 @@ Public Class frmMain
         If str_role = "Administrator" Then
 
         Else
+
 #Region "Information Registry"
             AccessArea("Information Registry", btnLibrary)
             AccessArea("Information Registry - Academic Year", btnAcamedicYearList)
@@ -341,6 +345,7 @@ Public Class frmMain
 #End Region
 
             btnDatabase.Visible = False
+
         End If
 
     End Sub
@@ -373,6 +378,10 @@ Public Class frmMain
 
         UserAccountsAccessAreas()
 
+        EditButton = CType(editBtn.Image, Bitmap)
+        ViewButton = CType(viewBtn.Image, Bitmap)
+        RemoveButton = CType(removeBtn.Image, Bitmap)
+        DeleteButton = CType(deleteBtn.Image, Bitmap)
     End Sub
 
     Private Sub HideSubbuttons()
@@ -562,6 +571,7 @@ Public Class frmMain
         btnAdd.Visible = False
         Label3.Visible = False
         frmClassSchedList.colUpdate.Visible = False
+        frmClassSchedList.colUpdateLabel.Visible = False
     End Sub
 
 #Region "List Of Class Schedules"
@@ -782,27 +792,39 @@ Public Class frmMain
             SelectionTitle.Visible = True
             ComboClick.Text = "  ▼  "
             ComboClick.Enabled = True
-            classSchedAcademicYear()
             cmbAcad.Visible = True
             cmbSupplyType.Visible = False
+            cbStudentStatus.Visible = False
             cmbAcad.SelectedIndex = 0
+            classSchedAcademicYear()
             academicYearID()
+        ElseIf formTitle.Text = "List Of Students" Then
+            SelectionTitle.Visible = True
+            ComboClick.Text = "  ▼  "
+            ComboClick.Enabled = True
+            cbStudentStatus.Visible = True
+            cmbAcad.Visible = False
+            cmbSupplyType.Visible = False
+            cbStudentStatus.SelectedIndex = 0
+            LibraryStudentList()
         ElseIf formTitle.Text = "List Of Supply Items" Then
             SelectionTitle.Visible = True
             ComboClick.Text = "  ▼  "
             ComboClick.Enabled = True
-            frmSupplyItems.SupplyItemList()
             cmbAcad.Visible = False
             cmbSupplyType.Visible = True
+            cbStudentStatus.Visible = False
             cmbSupplyType.SelectedIndex = 0
+            frmSupplyItems.SupplyItemList()
         ElseIf formTitle.Text = "Supply Items Stock Level" Then
             SelectionTitle.Visible = True
             ComboClick.Text = "  ▼  "
             ComboClick.Enabled = True
-            frmSupplyStockLevel.SupplyItemStockLevel()
             cmbAcad.Visible = False
+            cbStudentStatus.Visible = False
             cmbSupplyType.Visible = True
             cmbSupplyType.SelectedIndex = 0
+            frmSupplyStockLevel.SupplyItemStockLevel()
         ElseIf formTitle.Text = "List Of Purchase Requests" Then
             SelectionTitle.Visible = False
             ComboClick.Text = "     "
@@ -1251,6 +1273,8 @@ Public Class frmMain
         OpenForm(frmClassSchedList, "Setup Class Schedules")
         HideAllFormsInPanelExcept(frmClassSchedList)
         controlsPanel.Visible = True
+        frmClassSchedList.colUpdate.Visible = True
+        frmClassSchedList.colUpdateLabel.Visible = True
     End Sub
 
     Private Sub btnDatabase_Click(sender As Object, e As EventArgs) Handles btnDatabase.Click
@@ -1992,6 +2016,11 @@ Public Class frmMain
 
     Private Sub cmbSupplyType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbSupplyType.SelectedIndexChanged
         SelectionTitle.Text = cmbSupplyType.Text
+        MainSearch()
+    End Sub
+
+    Private Sub cbStudentStatus_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbStudentStatus.SelectedIndexChanged
+        SelectionTitle.Text = cbStudentStatus.Text
         MainSearch()
     End Sub
 

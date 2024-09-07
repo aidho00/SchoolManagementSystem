@@ -23,16 +23,18 @@ Partial Class frmUserList
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmUserList))
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.dgUserList = New System.Windows.Forms.DataGridView()
+        Me.dgPanel = New System.Windows.Forms.Panel()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colUpdate = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.dgPanel = New System.Windows.Forms.Panel()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgUserList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.dgPanel.SuspendLayout()
         Me.SuspendLayout()
@@ -55,15 +57,15 @@ Partial Class frmUserList
         Me.dgUserList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgUserList.ColumnHeadersHeight = 40
         Me.dgUserList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgUserList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column4, Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.Column1, Me.colUpdate})
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgUserList.DefaultCellStyle = DataGridViewCellStyle2
+        Me.dgUserList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column4, Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.Column1, Me.colUpdate, Me.Column2})
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgUserList.DefaultCellStyle = DataGridViewCellStyle3
         Me.dgUserList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgUserList.EnableHeadersVisualStyles = False
         Me.dgUserList.GridColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(63, Byte), Integer))
@@ -76,6 +78,16 @@ Partial Class frmUserList
         Me.dgUserList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgUserList.Size = New System.Drawing.Size(926, 554)
         Me.dgUserList.TabIndex = 85
+        '
+        'dgPanel
+        '
+        Me.dgPanel.Controls.Add(Me.dgUserList)
+        Me.dgPanel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgPanel.Location = New System.Drawing.Point(0, 0)
+        Me.dgPanel.Name = "dgPanel"
+        Me.dgPanel.Padding = New System.Windows.Forms.Padding(7, 0, 0, 0)
+        Me.dgPanel.Size = New System.Drawing.Size(933, 554)
+        Me.dgPanel.TabIndex = 88
         '
         'Column4
         '
@@ -92,7 +104,7 @@ Partial Class frmUserList
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
         Me.DataGridViewTextBoxColumn1.ReadOnly = True
         Me.DataGridViewTextBoxColumn1.Visible = False
-        Me.DataGridViewTextBoxColumn1.Width = 44
+        Me.DataGridViewTextBoxColumn1.Width = 42
         '
         'DataGridViewTextBoxColumn2
         '
@@ -126,15 +138,16 @@ Partial Class frmUserList
         Me.colUpdate.ReadOnly = True
         Me.colUpdate.Width = 5
         '
-        'dgPanel
+        'Column2
         '
-        Me.dgPanel.Controls.Add(Me.dgUserList)
-        Me.dgPanel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgPanel.Location = New System.Drawing.Point(0, 0)
-        Me.dgPanel.Name = "dgPanel"
-        Me.dgPanel.Padding = New System.Windows.Forms.Padding(7, 0, 0, 0)
-        Me.dgPanel.Size = New System.Drawing.Size(933, 554)
-        Me.dgPanel.TabIndex = 88
+        Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Column2.DefaultCellStyle = DataGridViewCellStyle2
+        Me.Column2.HeaderText = ""
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        Me.Column2.Width = 17
         '
         'frmUserList
         '
@@ -156,11 +169,12 @@ Partial Class frmUserList
     End Sub
 
     Friend WithEvents dgUserList As DataGridView
+    Friend WithEvents dgPanel As Panel
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents colUpdate As DataGridViewImageColumn
-    Friend WithEvents dgPanel As Panel
+    Friend WithEvents Column2 As DataGridViewTextBoxColumn
 End Class

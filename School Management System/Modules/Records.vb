@@ -265,14 +265,18 @@ Module Records
             frmStudentList.dgStudentList.Rows.Clear()
             Dim i As Integer
             Dim sql As String
-            sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course' from tbl_student JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where (s_ln like '%" & frmMain.txtSearch.Text & "%' or s_fn like '%" & frmMain.txtSearch.Text & "%' or s_mn like '%" & frmMain.txtSearch.Text & "%' or s_id_no like '%" & frmMain.txtSearch.Text & "%' or course_code like '%" & frmMain.txtSearch.Text & "%' or s_yr_lvl like '%" & frmMain.txtSearch.Text & "%') order by s_id_no asc limit 500"
+            If frmMain.cbStudentStatus.Text = "Active Students" Then
+                sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course' from tbl_student JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where s_active_status = 'Active' and (s_ln like '%" & frmMain.txtSearch.Text & "%' or s_fn like '%" & frmMain.txtSearch.Text & "%' or s_mn like '%" & frmMain.txtSearch.Text & "%' or s_id_no like '%" & frmMain.txtSearch.Text & "%' or course_code like '%" & frmMain.txtSearch.Text & "%' or s_yr_lvl like '%" & frmMain.txtSearch.Text & "%') order by s_id_no asc limit 500"
+            Else
+                sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course' from tbl_student JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where (s_ln like '%" & frmMain.txtSearch.Text & "%' or s_fn like '%" & frmMain.txtSearch.Text & "%' or s_mn like '%" & frmMain.txtSearch.Text & "%' or s_id_no like '%" & frmMain.txtSearch.Text & "%' or course_code like '%" & frmMain.txtSearch.Text & "%' or s_yr_lvl like '%" & frmMain.txtSearch.Text & "%') order by s_id_no asc limit 500"
+            End If
             cn.Close()
             cn.Open()
             cm = New MySqlCommand(sql, cn)
             dr = cm.ExecuteReader
             While dr.Read
                 i += 1
-                frmStudentList.dgStudentList.Rows.Add(i, dr.Item("ID Number").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, dr.Item("Suffix").ToString, dr.Item("Gender").ToString, dr.Item("Year Level").ToString, dr.Item("Course").ToString)
+                frmStudentList.dgStudentList.Rows.Add(i, dr.Item("ID Number").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, dr.Item("Suffix").ToString, dr.Item("Gender").ToString, dr.Item("Year Level").ToString, dr.Item("Course").ToString, EditButton, "Edit", ViewButton, "View")
             End While
             dr.Close()
             cn.Close()
@@ -308,8 +312,8 @@ Module Records
         dr = cm.ExecuteReader
         While dr.Read
             i += 1
-            frmCourseList.dgCourseList.Rows.Add(i, dr.Item("course_id").ToString, dr.Item("course_code").ToString, dr.Item("course_name").ToString, dr.Item("course_major").ToString, dr.Item("course_status").ToString)
-        End While
+                frmCourseList.dgCourseList.Rows.Add(i, dr.Item("course_id").ToString, dr.Item("course_code").ToString, dr.Item("course_name").ToString, dr.Item("course_major").ToString, dr.Item("course_status").ToString, EditButton, "Edit")
+            End While
         dr.Close()
         cn.Close()
 
@@ -336,7 +340,7 @@ Module Records
             dr = cm.ExecuteReader
             While dr.Read
                 i += 1
-                frmAcademicYearList.dgAcadList.Rows.Add(i, dr.Item("period_id").ToString, dr.Item("Period").ToString, dr.Item("Semester").ToString, dr.Item("period_enrollment_status").ToString, dr.Item("period_enrollment_ad_status").ToString, dr.Item("Status").ToString)
+                frmAcademicYearList.dgAcadList.Rows.Add(i, dr.Item("period_id").ToString, dr.Item("Period").ToString, dr.Item("Semester").ToString, dr.Item("period_enrollment_status").ToString, dr.Item("period_enrollment_ad_status").ToString, dr.Item("Status").ToString, EditButton, "Edit")
             End While
             dr.Close()
             cn.Close()
@@ -362,7 +366,7 @@ Module Records
             dr = cm.ExecuteReader
             While dr.Read
                 i += 1
-                frmSubjectList.dgSubjectList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("Description").ToString, dr.Item("Type").ToString, dr.Item("Group").ToString, dr.Item("Units").ToString, dr.Item("Prerequisite").ToString, dr.Item("Status").ToString)
+                frmSubjectList.dgSubjectList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("Description").ToString, dr.Item("Type").ToString, dr.Item("Group").ToString, dr.Item("Units").ToString, dr.Item("Prerequisite").ToString, dr.Item("Status").ToString, EditButton, "Edit")
             End While
             dr.Close()
             cn.Close()
@@ -415,7 +419,7 @@ Module Records
             dr = cm.ExecuteReader
             While dr.Read
                 i += 1
-                frmSectionList.dgSectionList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("Description").ToString)
+                frmSectionList.dgSectionList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("Description").ToString, EditButton, "Edit")
             End While
             dr.Close()
             cn.Close()
@@ -442,7 +446,7 @@ Module Records
             dr = cm.ExecuteReader
             While dr.Read
                 i += 1
-                frmDaySchedList.dgDaySchedList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("Description").ToString)
+                frmDaySchedList.dgDaySchedList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("Description").ToString, EditButton, "Edit")
             End While
             dr.Close()
             cn.Close()
@@ -469,7 +473,7 @@ Module Records
             dr = cm.ExecuteReader
             While dr.Read
                 i += 1
-                frmRoomList.dgRoomList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("Description").ToString, dr.Item("Capacity").ToString, dr.Item("Status").ToString)
+                frmRoomList.dgRoomList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("Description").ToString, dr.Item("Capacity").ToString, dr.Item("Status").ToString, EditButton, "Edit")
             End While
             dr.Close()
             cn.Close()
@@ -496,7 +500,7 @@ Module Records
             dr = cm.ExecuteReader
             While dr.Read
                 i += 1
-                frmSchoolList.dgSchoolList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("School Name").ToString, dr.Item("School Address").ToString)
+                frmSchoolList.dgSchoolList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Code").ToString, dr.Item("School Name").ToString, dr.Item("School Address").ToString, EditButton, "Edit")
             End While
             dr.Close()
             cn.Close()
@@ -524,7 +528,7 @@ Module Records
             dr = cm.ExecuteReader
             While dr.Read
                 i += 1
-                frmEmployeeList.dgEmployeeList.Rows.Add(i, dr.Item("emp_id").ToString, dr.Item("BIO No.").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, "", dr.Item("Status").ToString, dr.Item("Required Subject Load (Units)").ToString)
+                frmEmployeeList.dgEmployeeList.Rows.Add(i, dr.Item("emp_id").ToString, dr.Item("BIO No.").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, "", dr.Item("Status").ToString, dr.Item("Required Subject Load (Units)").ToString, EditButton, "Edit")
             End While
             dr.Close()
             cn.Close()
@@ -542,7 +546,7 @@ Module Records
     Public Sub LibraryClassSchedList()
         Try
 
-            frmClassSchedList.dgClassSchedList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnMode.None
+            frmClassSchedList.dgClassSchedList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnMode.AllCells
             frmClassSchedList.dgClassSchedList.Rows.Clear()
             Dim i As Integer
             Dim sql As String
@@ -553,7 +557,7 @@ Module Records
             dr = cm.ExecuteReader
             While dr.Read
                 i += 1
-                frmClassSchedList.dgClassSchedList.Rows.Add(i, dr.Item("class_schedule_id").ToString, dr.Item("cb_code").ToString, dr.Item("subject_code").ToString, dr.Item("subject_description").ToString, dr.Item("subject_units").ToString, dr.Item("ds_code").ToString, dr.Item("time_start_schedule").ToString, dr.Item("time_end_schedule").ToString, dr.Item("room_code").ToString, dr.Item("Instructor").ToString, dr.Item("population").ToString, "👁", dr.Item("csperiod_id").ToString, dr.Item("is_active").ToString)
+                frmClassSchedList.dgClassSchedList.Rows.Add(i, dr.Item("class_schedule_id").ToString, dr.Item("cb_code").ToString, dr.Item("subject_code").ToString, dr.Item("subject_description").ToString, dr.Item("subject_units").ToString, dr.Item("ds_code").ToString, dr.Item("time_start_schedule").ToString, dr.Item("time_end_schedule").ToString, dr.Item("room_code").ToString, dr.Item("Instructor").ToString, dr.Item("population").ToString, "👁", dr.Item("csperiod_id").ToString, dr.Item("is_active").ToString, EditButton, "Edit")
             End While
             dr.Close()
             cn.Close()
@@ -581,7 +585,7 @@ Module Records
             dr = cm.ExecuteReader
             While dr.Read
                 i += 1
-                frmUserList.dgUserList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Username").ToString, dr.Item("Name").ToString, dr.Item("Role").ToString)
+                frmUserList.dgUserList.Rows.Add(i, dr.Item("ID").ToString, dr.Item("Username").ToString, dr.Item("Name").ToString, dr.Item("Role").ToString, EditButton, "Edit")
             End While
             dr.Close()
             cn.Close()

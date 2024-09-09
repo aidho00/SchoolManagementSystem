@@ -22,9 +22,11 @@ Partial Class frmPaymentMonitoring
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPaymentMonitoring))
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.cbFilter = New System.Windows.Forms.ComboBox()
         Me.PanelDate = New System.Windows.Forms.Panel()
@@ -36,6 +38,11 @@ Partial Class frmPaymentMonitoring
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.dgPayments = New System.Windows.Forms.DataGridView()
+        Me.PanelReason = New System.Windows.Forms.Panel()
+        Me.txtReason = New System.Windows.Forms.TextBox()
+        Me.closeReasonPanel = New System.Windows.Forms.Label()
+        Me.btnUpdate2 = New System.Windows.Forms.Button()
+        Me.Label20 = New System.Windows.Forms.Label()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -50,12 +57,9 @@ Partial Class frmPaymentMonitoring
         Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colUpdate = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colRemove = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.PanelReason = New System.Windows.Forms.Panel()
-        Me.txtReason = New System.Windows.Forms.TextBox()
-        Me.closeReasonPanel = New System.Windows.Forms.Label()
-        Me.btnUpdate2 = New System.Windows.Forms.Button()
-        Me.Label20 = New System.Windows.Forms.Label()
+        Me.Column12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel1.SuspendLayout()
         Me.PanelDate.SuspendLayout()
         CType(Me.dgPayments, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -168,17 +172,17 @@ Partial Class frmPaymentMonitoring
         Me.dgPayments.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgPayments.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgPayments.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgPayments.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgPayments.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgPayments.ColumnHeadersHeight = 40
         Me.dgPayments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgPayments.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column7, Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.Column1, Me.Column2, Me.Column3, Me.Column5, Me.Column8, Me.Column6, Me.Column9, Me.Column10, Me.Column11, Me.colUpdate, Me.colRemove})
+        Me.dgPayments.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column7, Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.Column1, Me.Column2, Me.Column3, Me.Column5, Me.Column8, Me.Column6, Me.Column9, Me.Column10, Me.Column11, Me.colUpdate, Me.Column4, Me.colRemove, Me.Column12})
         DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle4.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -200,6 +204,60 @@ Partial Class frmPaymentMonitoring
         Me.dgPayments.Size = New System.Drawing.Size(961, 392)
         Me.dgPayments.TabIndex = 89
         '
+        'PanelReason
+        '
+        Me.PanelReason.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.PanelReason.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PanelReason.Controls.Add(Me.txtReason)
+        Me.PanelReason.Controls.Add(Me.closeReasonPanel)
+        Me.PanelReason.Controls.Add(Me.btnUpdate2)
+        Me.PanelReason.Controls.Add(Me.Label20)
+        Me.PanelReason.Location = New System.Drawing.Point(280, 138)
+        Me.PanelReason.Name = "PanelReason"
+        Me.PanelReason.Size = New System.Drawing.Size(400, 210)
+        Me.PanelReason.TabIndex = 189
+        Me.PanelReason.Visible = False
+        '
+        'txtReason
+        '
+        Me.txtReason.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtReason.Location = New System.Drawing.Point(12, 33)
+        Me.txtReason.Multiline = True
+        Me.txtReason.Name = "txtReason"
+        Me.txtReason.Size = New System.Drawing.Size(375, 128)
+        Me.txtReason.TabIndex = 184
+        '
+        'closeReasonPanel
+        '
+        Me.closeReasonPanel.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.closeReasonPanel.Font = New System.Drawing.Font("Corbel", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.closeReasonPanel.ForeColor = System.Drawing.Color.Black
+        Me.closeReasonPanel.Location = New System.Drawing.Point(375, 2)
+        Me.closeReasonPanel.Name = "closeReasonPanel"
+        Me.closeReasonPanel.Size = New System.Drawing.Size(20, 27)
+        Me.closeReasonPanel.TabIndex = 183
+        Me.closeReasonPanel.Text = "✕"
+        Me.closeReasonPanel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'btnUpdate2
+        '
+        Me.btnUpdate2.FlatAppearance.BorderSize = 0
+        Me.btnUpdate2.Location = New System.Drawing.Point(88, 167)
+        Me.btnUpdate2.Name = "btnUpdate2"
+        Me.btnUpdate2.Size = New System.Drawing.Size(227, 34)
+        Me.btnUpdate2.TabIndex = 182
+        Me.btnUpdate2.Text = "CANCEL PAYMENT"
+        Me.btnUpdate2.UseVisualStyleBackColor = True
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(9, 10)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(155, 13)
+        Me.Label20.TabIndex = 95
+        Me.Label20.Text = "Reason on Cancelling Payment"
+        '
         'Column7
         '
         Me.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
@@ -207,7 +265,7 @@ Partial Class frmPaymentMonitoring
         Me.Column7.Name = "Column7"
         Me.Column7.ReadOnly = True
         Me.Column7.Visible = False
-        Me.Column7.Width = 107
+        Me.Column7.Width = 105
         '
         'DataGridViewTextBoxColumn1
         '
@@ -308,6 +366,17 @@ Partial Class frmPaymentMonitoring
         Me.colUpdate.ReadOnly = True
         Me.colUpdate.Width = 5
         '
+        'Column4
+        '
+        Me.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle2
+        Me.Column4.HeaderText = ""
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        Me.Column4.Width = 17
+        '
         'colRemove
         '
         Me.colRemove.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
@@ -317,59 +386,16 @@ Partial Class frmPaymentMonitoring
         Me.colRemove.ReadOnly = True
         Me.colRemove.Width = 5
         '
-        'PanelReason
+        'Column12
         '
-        Me.PanelReason.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.PanelReason.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PanelReason.Controls.Add(Me.txtReason)
-        Me.PanelReason.Controls.Add(Me.closeReasonPanel)
-        Me.PanelReason.Controls.Add(Me.btnUpdate2)
-        Me.PanelReason.Controls.Add(Me.Label20)
-        Me.PanelReason.Location = New System.Drawing.Point(280, 138)
-        Me.PanelReason.Name = "PanelReason"
-        Me.PanelReason.Size = New System.Drawing.Size(400, 210)
-        Me.PanelReason.TabIndex = 189
-        Me.PanelReason.Visible = False
-        '
-        'txtReason
-        '
-        Me.txtReason.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtReason.Location = New System.Drawing.Point(12, 33)
-        Me.txtReason.Multiline = True
-        Me.txtReason.Name = "txtReason"
-        Me.txtReason.Size = New System.Drawing.Size(375, 128)
-        Me.txtReason.TabIndex = 184
-        '
-        'closeReasonPanel
-        '
-        Me.closeReasonPanel.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.closeReasonPanel.Font = New System.Drawing.Font("Corbel", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.closeReasonPanel.ForeColor = System.Drawing.Color.Black
-        Me.closeReasonPanel.Location = New System.Drawing.Point(375, 2)
-        Me.closeReasonPanel.Name = "closeReasonPanel"
-        Me.closeReasonPanel.Size = New System.Drawing.Size(20, 27)
-        Me.closeReasonPanel.TabIndex = 183
-        Me.closeReasonPanel.Text = "✕"
-        Me.closeReasonPanel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'btnUpdate2
-        '
-        Me.btnUpdate2.FlatAppearance.BorderSize = 0
-        Me.btnUpdate2.Location = New System.Drawing.Point(88, 167)
-        Me.btnUpdate2.Name = "btnUpdate2"
-        Me.btnUpdate2.Size = New System.Drawing.Size(227, 34)
-        Me.btnUpdate2.TabIndex = 182
-        Me.btnUpdate2.Text = "CANCEL PAYMENT"
-        Me.btnUpdate2.UseVisualStyleBackColor = True
-        '
-        'Label20
-        '
-        Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(9, 10)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(155, 13)
-        Me.Label20.TabIndex = 95
-        Me.Label20.Text = "Reason on Cancelling Payment"
+        Me.Column12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Column12.DefaultCellStyle = DataGridViewCellStyle3
+        Me.Column12.HeaderText = ""
+        Me.Column12.Name = "Column12"
+        Me.Column12.ReadOnly = True
+        Me.Column12.Width = 17
         '
         'frmPaymentMonitoring
         '
@@ -407,6 +433,11 @@ Partial Class frmPaymentMonitoring
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents dtTo As DateTimePicker
+    Friend WithEvents PanelReason As Panel
+    Friend WithEvents txtReason As TextBox
+    Friend WithEvents closeReasonPanel As Label
+    Friend WithEvents btnUpdate2 As Button
+    Friend WithEvents Label20 As Label
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
@@ -421,10 +452,7 @@ Partial Class frmPaymentMonitoring
     Friend WithEvents Column10 As DataGridViewTextBoxColumn
     Friend WithEvents Column11 As DataGridViewTextBoxColumn
     Friend WithEvents colUpdate As DataGridViewImageColumn
+    Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents colRemove As DataGridViewImageColumn
-    Friend WithEvents PanelReason As Panel
-    Friend WithEvents txtReason As TextBox
-    Friend WithEvents closeReasonPanel As Label
-    Friend WithEvents btnUpdate2 As Button
-    Friend WithEvents Label20 As Label
+    Friend WithEvents Column12 As DataGridViewTextBoxColumn
 End Class

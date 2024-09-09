@@ -164,9 +164,9 @@ Partial Class frmLogin
         'applicationVersion
         '
         Me.applicationVersion.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.applicationVersion.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.applicationVersion.Font = New System.Drawing.Font("Century Gothic", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.applicationVersion.ForeColor = System.Drawing.Color.Black
-        Me.applicationVersion.Location = New System.Drawing.Point(79, 31)
+        Me.applicationVersion.Location = New System.Drawing.Point(76, 30)
         Me.applicationVersion.Name = "applicationVersion"
         Me.applicationVersion.Size = New System.Drawing.Size(159, 16)
         Me.applicationVersion.TabIndex = 8
@@ -329,7 +329,7 @@ Partial Class frmLogin
         Me.lblConnection.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblConnection.Font = New System.Drawing.Font("Century Gothic", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblConnection.ForeColor = System.Drawing.Color.Black
-        Me.lblConnection.Location = New System.Drawing.Point(36, 45)
+        Me.lblConnection.Location = New System.Drawing.Point(35, 46)
         Me.lblConnection.Name = "lblConnection"
         Me.lblConnection.Size = New System.Drawing.Size(246, 16)
         Me.lblConnection.TabIndex = 8
@@ -339,21 +339,21 @@ Partial Class frmLogin
         'Label6
         '
         Me.Label6.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Label6.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Font = New System.Drawing.Font("Century Gothic", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.Black
-        Me.Label6.Location = New System.Drawing.Point(35, 31)
+        Me.Label6.Location = New System.Drawing.Point(35, 30)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(60, 16)
+        Me.Label6.Size = New System.Drawing.Size(47, 16)
         Me.Label6.TabIndex = 8
-        Me.Label6.Text = "Build 2 -"
+        Me.Label6.Text = "Build 2 - V."
         Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'SystemDataBase
         '
         Me.SystemDataBase.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.SystemDataBase.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SystemDataBase.Font = New System.Drawing.Font("Century Gothic", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SystemDataBase.ForeColor = System.Drawing.Color.Black
-        Me.SystemDataBase.Location = New System.Drawing.Point(34, 65)
+        Me.SystemDataBase.Location = New System.Drawing.Point(36, 62)
         Me.SystemDataBase.Name = "SystemDataBase"
         Me.SystemDataBase.Size = New System.Drawing.Size(281, 16)
         Me.SystemDataBase.TabIndex = 8

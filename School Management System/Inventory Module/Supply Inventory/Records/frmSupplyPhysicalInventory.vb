@@ -161,4 +161,8 @@ Public Class frmSupplyPhysicalInventory
             Me.Close()
         End If
     End Sub
+
+    Private Sub dgSupplyItemList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgSupplyItemList.CellContentClick
+
+    End Sub
 End Class

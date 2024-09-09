@@ -11,6 +11,18 @@ Public Class frmPaymentMonitoring
         LoadRecords()
     End Sub
 
+
+    Private Sub dgPayments_CellMouseEnter(sender As Object, e As DataGridViewCellEventArgs) Handles dgPayments.CellMouseEnter
+        If e.RowIndex >= 0 AndAlso e.ColumnIndex >= 0 Then
+            Dim columnName As String = CType(sender, DataGridView).Columns(e.ColumnIndex).Name
+            If columnName = "colUpdate" Or columnName = "colRemove" Then
+                CType(sender, DataGridView).Cursor = Cursors.Hand
+            Else
+                CType(sender, DataGridView).Cursor = Cursors.Default
+            End If
+        End If
+    End Sub
+
     Sub LoadRecords()
         Try
             dgPayments.Rows.Clear()
@@ -29,7 +41,7 @@ Public Class frmPaymentMonitoring
             cm = New MySqlCommand(sql, cn)
             dr = cm.ExecuteReader
             While dr.Read
-                dgPayments.Rows.Add(dr.Item("Academic Year").ToString, dr.Item("Student ID").ToString, dr.Item("Student Name").ToString, dr.Item("OR Number").ToString, dr.Item("Amount Paid").ToString, dr.Item("Amount Received").ToString, dr.Item("Cashier").ToString, dr.Item("Date").ToString, dr.Item("Type").ToString, dr.Item("Notes").ToString, dr.Item("csh_id").ToString, dr.Item("csh_period_id").ToString, dr.Item("pre_cash_id").ToString)
+                dgPayments.Rows.Add(dr.Item("Academic Year").ToString, dr.Item("Student ID").ToString, dr.Item("Student Name").ToString, dr.Item("OR Number").ToString, dr.Item("Amount Paid").ToString, dr.Item("Amount Received").ToString, dr.Item("Cashier").ToString, dr.Item("Date").ToString, dr.Item("Type").ToString, dr.Item("Notes").ToString, dr.Item("csh_id").ToString, dr.Item("csh_period_id").ToString, dr.Item("pre_cash_id").ToString, EditButton, "Update", RemoveButton, "Cancel")
             End While
             dr.Close()
             cn.Close()

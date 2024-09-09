@@ -38,6 +38,8 @@ Partial Class frmStudentList
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colUpdate = New System.Windows.Forms.DataGridViewImageColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colView = New System.Windows.Forms.DataGridViewImageColumn()
@@ -64,7 +66,7 @@ Partial Class frmStudentList
         Me.dgStudentList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgStudentList.ColumnHeadersHeight = 40
         Me.dgStudentList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgStudentList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column4, Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.Column1, Me.Column3, Me.Column2, Me.Column5, Me.Column6, Me.colUpdate, Me.Column7, Me.colView, Me.Column9})
+        Me.dgStudentList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column4, Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.Column1, Me.Column3, Me.Column2, Me.Column5, Me.Column6, Me.Column8, Me.Column10, Me.colUpdate, Me.Column7, Me.colView, Me.Column9})
         DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -161,10 +163,25 @@ Partial Class frmStudentList
         'Column6
         '
         Me.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column6.HeaderText = "Course/Strand/Grade"
+        Me.Column6.HeaderText = "Course"
         Me.Column6.Name = "Column6"
         Me.Column6.ReadOnly = True
-        Me.Column6.Width = 139
+        Me.Column6.Width = 66
+        '
+        'Column8
+        '
+        Me.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column8.HeaderText = "SO Number"
+        Me.Column8.Name = "Column8"
+        Me.Column8.ReadOnly = True
+        Me.Column8.Width = 82
+        '
+        'Column10
+        '
+        Me.Column10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Column10.HeaderText = "Lacking Credentials"
+        Me.Column10.Name = "Column10"
+        Me.Column10.ReadOnly = True
         '
         'colUpdate
         '
@@ -192,6 +209,7 @@ Partial Class frmStudentList
         Me.colView.HeaderText = ""
         Me.colView.Name = "colView"
         Me.colView.ReadOnly = True
+        Me.colView.Visible = False
         Me.colView.Width = 5
         '
         'Column9
@@ -203,6 +221,7 @@ Partial Class frmStudentList
         Me.Column9.HeaderText = ""
         Me.Column9.Name = "Column9"
         Me.Column9.ReadOnly = True
+        Me.Column9.Visible = False
         Me.Column9.Width = 17
         '
         'frmStudentList
@@ -234,6 +253,8 @@ Partial Class frmStudentList
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
+    Friend WithEvents Column8 As DataGridViewTextBoxColumn
+    Friend WithEvents Column10 As DataGridViewTextBoxColumn
     Friend WithEvents colUpdate As DataGridViewImageColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents colView As DataGridViewImageColumn

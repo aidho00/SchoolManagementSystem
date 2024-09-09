@@ -266,9 +266,9 @@ Module Records
             Dim i As Integer
             Dim sql As String
             If frmMain.cbStudentStatus.Text = "Active Students" Then
-                sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course' from tbl_student JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where s_active_status = 'Active' and (s_ln like '%" & frmMain.txtSearch.Text & "%' or s_fn like '%" & frmMain.txtSearch.Text & "%' or s_mn like '%" & frmMain.txtSearch.Text & "%' or s_id_no like '%" & frmMain.txtSearch.Text & "%' or course_code like '%" & frmMain.txtSearch.Text & "%' or s_yr_lvl like '%" & frmMain.txtSearch.Text & "%') order by s_id_no asc limit 500"
+                sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course', s_so_no, s_notes from tbl_student JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where s_active_status = 'Active' and (s_ln like '%" & frmMain.txtSearch.Text & "%' or s_fn like '%" & frmMain.txtSearch.Text & "%' or s_mn like '%" & frmMain.txtSearch.Text & "%' or s_id_no like '%" & frmMain.txtSearch.Text & "%' or course_code like '%" & frmMain.txtSearch.Text & "%' or s_yr_lvl like '%" & frmMain.txtSearch.Text & "%') order by s_id_no asc limit 500"
             Else
-                sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course' from tbl_student JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where (s_ln like '%" & frmMain.txtSearch.Text & "%' or s_fn like '%" & frmMain.txtSearch.Text & "%' or s_mn like '%" & frmMain.txtSearch.Text & "%' or s_id_no like '%" & frmMain.txtSearch.Text & "%' or course_code like '%" & frmMain.txtSearch.Text & "%' or s_yr_lvl like '%" & frmMain.txtSearch.Text & "%') order by s_id_no asc limit 500"
+                sql = "select (s_id_no) as 'ID Number', (s_ln) as 'Last Name', (s_fn) as 'First Name',  (s_mn) as 'Middle Name',  (s_ext) as 'Suffix', (s_gender) as 'Gender', (s_yr_lvl) as 'Year Level', (course_code) as 'Course', s_so_no, s_notes from tbl_student JOIN tbl_course ON tbl_student.s_course_id = tbl_course.course_id where (s_ln like '%" & frmMain.txtSearch.Text & "%' or s_fn like '%" & frmMain.txtSearch.Text & "%' or s_mn like '%" & frmMain.txtSearch.Text & "%' or s_id_no like '%" & frmMain.txtSearch.Text & "%' or course_code like '%" & frmMain.txtSearch.Text & "%' or s_yr_lvl like '%" & frmMain.txtSearch.Text & "%') order by s_id_no asc limit 500"
             End If
             cn.Close()
             cn.Open()
@@ -276,20 +276,20 @@ Module Records
             dr = cm.ExecuteReader
             While dr.Read
                 i += 1
-                frmStudentList.dgStudentList.Rows.Add(i, dr.Item("ID Number").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, dr.Item("Suffix").ToString, dr.Item("Gender").ToString, dr.Item("Year Level").ToString, dr.Item("Course").ToString, EditButton, "Edit", ViewButton, "View")
+                frmStudentList.dgStudentList.Rows.Add(i, dr.Item("ID Number").ToString, dr.Item("Last Name").ToString, dr.Item("First Name").ToString, dr.Item("Middle Name").ToString, dr.Item("Suffix").ToString, dr.Item("Gender").ToString, dr.Item("Year Level").ToString, dr.Item("Course").ToString, dr.Item("s_so_no").ToString, dr.Item("s_notes").ToString, EditButton, "Edit", ViewButton, "View")
             End While
             dr.Close()
             cn.Close()
 
-            If frmMain.systemModule.Text = "College Module" Then
-                frmStudentList.dgStudentList.Columns(7).HeaderText = "Year Level"
-                frmStudentList.dgStudentList.Columns(8).HeaderText = "Course"
-            Else
-                frmStudentList.dgStudentList.Columns(8).HeaderText = "Strand/Grade"
-                frmStudentList.dgStudentList.Columns(7).HeaderText = "Grade Level"
-            End If
-
             dgPanelPadding(frmStudentList.dgStudentList, frmStudentList.dgPanel)
+
+            If str_role = "Administrator" Or str_role = "Registrar" Then
+                frmStudentList.dgStudentList.Columns(9).Visible = True
+                frmStudentList.dgStudentList.Columns(10).Visible = True
+            Else
+                frmStudentList.dgStudentList.Columns(9).Visible = False
+                frmStudentList.dgStudentList.Columns(10).Visible = False
+            End If
 
         Catch ex As Exception
             dr.Close()

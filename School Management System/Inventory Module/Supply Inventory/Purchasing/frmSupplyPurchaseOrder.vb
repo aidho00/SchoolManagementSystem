@@ -193,4 +193,12 @@ Public Class frmSupplyPurchaseOrder
         rptdoc.SetParameterValue("preparedby", user_name)
         frmReportViewer.ReportViewer.ReportSource = rptdoc
     End Sub
+
+    Private Sub btnCancelSearch_Click(sender As Object, e As EventArgs) Handles btnCancelSearch.Click
+
+    End Sub
+
+    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
+
+    End Sub
 End Class

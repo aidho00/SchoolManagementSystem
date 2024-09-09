@@ -149,7 +149,6 @@ Partial Class frmMain
         Me.btnLibrary = New System.Windows.Forms.Button()
         Me.btnDashboard = New System.Windows.Forms.Button()
         Me.Panel12 = New System.Windows.Forms.Panel()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.hideMenu = New System.Windows.Forms.PictureBox()
         Me.showMenu = New System.Windows.Forms.PictureBox()
         Me.Panel11 = New System.Windows.Forms.Panel()
@@ -162,6 +161,8 @@ Partial Class frmMain
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.formPanels = New System.Windows.Forms.Panel()
         Me.formPanel = New System.Windows.Forms.Panel()
+        Me.removeBtn = New System.Windows.Forms.PictureBox()
+        Me.deleteBtn = New System.Windows.Forms.PictureBox()
         Me.viewBtn = New System.Windows.Forms.PictureBox()
         Me.Panel13 = New System.Windows.Forms.Panel()
         Me.Panel14 = New System.Windows.Forms.Panel()
@@ -283,8 +284,6 @@ Partial Class frmMain
         Me.Label16 = New System.Windows.Forms.Label()
         Me.PictureBox13 = New System.Windows.Forms.PictureBox()
         Me.btnCloseSupplyWarning = New System.Windows.Forms.Label()
-        Me.deleteBtn = New System.Windows.Forms.PictureBox()
-        Me.removeBtn = New System.Windows.Forms.PictureBox()
         Me.systemSign.SuspendLayout()
         CType(Me.schoolLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.editBtn, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -309,7 +308,6 @@ Partial Class frmMain
         Me.PanelAssessment.SuspendLayout()
         Me.libraryPanel.SuspendLayout()
         Me.Panel12.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.hideMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.showMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel11.SuspendLayout()
@@ -318,6 +316,8 @@ Partial Class frmMain
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.formPanels.SuspendLayout()
         Me.formPanel.SuspendLayout()
+        CType(Me.removeBtn, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.deleteBtn, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.viewBtn, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel7.SuspendLayout()
         Me.libraryControls.SuspendLayout()
@@ -369,8 +369,6 @@ Partial Class frmMain
         Me.PanelSupplyWarning.SuspendLayout()
         Me.warning.SuspendLayout()
         CType(Me.PictureBox13, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.deleteBtn, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.removeBtn, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'systemSign
@@ -439,6 +437,7 @@ Partial Class frmMain
         'schoolLogo
         '
         Me.schoolLogo.Dock = System.Windows.Forms.DockStyle.Left
+        Me.schoolLogo.Image = CType(resources.GetObject("schoolLogo.Image"), System.Drawing.Image)
         Me.schoolLogo.Location = New System.Drawing.Point(5, 5)
         Me.schoolLogo.Name = "schoolLogo"
         Me.schoolLogo.Size = New System.Drawing.Size(26, 26)
@@ -2796,7 +2795,6 @@ Partial Class frmMain
         '
         'Panel12
         '
-        Me.Panel12.Controls.Add(Me.PictureBox1)
         Me.Panel12.Controls.Add(Me.lblUser)
         Me.Panel12.Controls.Add(Me.hideMenu)
         Me.Panel12.Controls.Add(Me.showMenu)
@@ -2805,17 +2803,6 @@ Partial Class frmMain
         Me.Panel12.Name = "Panel12"
         Me.Panel12.Size = New System.Drawing.Size(221, 22)
         Me.Panel12.TabIndex = 25
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.PictureBox1.Location = New System.Drawing.Point(21, -60)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(94, 111)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox1.TabIndex = 348
-        Me.PictureBox1.TabStop = False
-        Me.PictureBox1.Visible = False
         '
         'hideMenu
         '
@@ -2961,6 +2948,26 @@ Partial Class frmMain
         Me.formPanel.Name = "formPanel"
         Me.formPanel.Size = New System.Drawing.Size(998, 621)
         Me.formPanel.TabIndex = 94
+        '
+        'removeBtn
+        '
+        Me.removeBtn.Image = CType(resources.GetObject("removeBtn.Image"), System.Drawing.Image)
+        Me.removeBtn.Location = New System.Drawing.Point(85, 14)
+        Me.removeBtn.Name = "removeBtn"
+        Me.removeBtn.Size = New System.Drawing.Size(17, 19)
+        Me.removeBtn.TabIndex = 349
+        Me.removeBtn.TabStop = False
+        Me.removeBtn.Visible = False
+        '
+        'deleteBtn
+        '
+        Me.deleteBtn.Image = CType(resources.GetObject("deleteBtn.Image"), System.Drawing.Image)
+        Me.deleteBtn.Location = New System.Drawing.Point(62, 14)
+        Me.deleteBtn.Name = "deleteBtn"
+        Me.deleteBtn.Size = New System.Drawing.Size(17, 19)
+        Me.deleteBtn.TabIndex = 349
+        Me.deleteBtn.TabStop = False
+        Me.deleteBtn.Visible = False
         '
         'viewBtn
         '
@@ -4315,26 +4322,6 @@ Partial Class frmMain
         Me.btnCloseSupplyWarning.Text = "✕"
         Me.btnCloseSupplyWarning.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'deleteBtn
-        '
-        Me.deleteBtn.Image = CType(resources.GetObject("deleteBtn.Image"), System.Drawing.Image)
-        Me.deleteBtn.Location = New System.Drawing.Point(62, 14)
-        Me.deleteBtn.Name = "deleteBtn"
-        Me.deleteBtn.Size = New System.Drawing.Size(17, 19)
-        Me.deleteBtn.TabIndex = 349
-        Me.deleteBtn.TabStop = False
-        Me.deleteBtn.Visible = False
-        '
-        'removeBtn
-        '
-        Me.removeBtn.Image = CType(resources.GetObject("removeBtn.Image"), System.Drawing.Image)
-        Me.removeBtn.Location = New System.Drawing.Point(85, 14)
-        Me.removeBtn.Name = "removeBtn"
-        Me.removeBtn.Size = New System.Drawing.Size(17, 19)
-        Me.removeBtn.TabIndex = 349
-        Me.removeBtn.TabStop = False
-        Me.removeBtn.Visible = False
-        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -4379,7 +4366,6 @@ Partial Class frmMain
         Me.PanelAssessment.ResumeLayout(False)
         Me.libraryPanel.ResumeLayout(False)
         Me.Panel12.ResumeLayout(False)
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.hideMenu, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.showMenu, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel11.ResumeLayout(False)
@@ -4389,6 +4375,8 @@ Partial Class frmMain
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.formPanels.ResumeLayout(False)
         Me.formPanel.ResumeLayout(False)
+        CType(Me.removeBtn, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.deleteBtn, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.viewBtn, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel7.ResumeLayout(False)
         Me.libraryControls.ResumeLayout(False)
@@ -4443,8 +4431,6 @@ Partial Class frmMain
         Me.warning.ResumeLayout(False)
         Me.warning.PerformLayout()
         CType(Me.PictureBox13, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.deleteBtn, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.removeBtn, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -4563,7 +4549,6 @@ Partial Class frmMain
     Friend WithEvents lblRole As Label
     Friend WithEvents User_Name As Label
     Friend WithEvents Panel27 As Panel
-    Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents dashboardBasePanel As Panel
     Friend WithEvents dashboard As Panel
     Friend WithEvents Panel21 As Panel

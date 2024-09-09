@@ -795,9 +795,12 @@ Public Class frmMain
             cmbAcad.Visible = True
             cmbSupplyType.Visible = False
             cbStudentStatus.Visible = False
-            cmbAcad.SelectedIndex = 0
             classSchedAcademicYear()
             academicYearID()
+            Try
+                cmbAcad.SelectedIndex = 0
+            Catch ex As Exception
+            End Try
         ElseIf formTitle.Text = "List Of Students" Then
             SelectionTitle.Visible = True
             ComboClick.Text = "  ▼  "
